@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainTray));
             this.notification = new System.Windows.Forms.NotifyIcon(this.components);
             this.NotificationMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.設定ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -221,6 +222,7 @@
             this.Controls.Add(this.panel1);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainTray";
             this.Text = "原神プレイ時間チェッカー";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainTray_FormClosing);
