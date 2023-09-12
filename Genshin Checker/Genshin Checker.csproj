@@ -1,0 +1,50 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <RootNamespace>Genshin_Checker</RootNamespace>
+    <Nullable>enable</Nullable>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <ApplicationIcon>resource\nahida.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="resource\nahida.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="resource\font.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>font.resx</DependentUpon>
+    </Compile>
+    <Compile Update="resource\icon.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>icon.resx</DependentUpon>
+    </Compile>
+    <Compile Update="resource\namecard.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>namecard.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="resource\font.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>font.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="resource\icon.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>icon.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="resource\namecard.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>namecard.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+</Project>
