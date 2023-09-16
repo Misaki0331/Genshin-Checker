@@ -42,7 +42,8 @@ namespace Genshin_Checker
                 //はじめからMainメソッドにあったコードを実行
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
-                Application.Run(new MainTray());
+                new MainTray();
+                Application.Run();
             }
             finally
             {
