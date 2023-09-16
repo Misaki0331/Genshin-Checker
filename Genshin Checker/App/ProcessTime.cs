@@ -8,6 +8,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Timers;
+using System.Xml.Schema;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Genshin_Checker.App
@@ -16,6 +17,8 @@ namespace Genshin_Checker.App
     {
         /// <summary>定期的に実行するタイマー</summary>
         readonly System.Timers.Timer checker;
+        /// <summary>合計起動時間</summary>
+        TimeSpan LatestTotalSessionTime;
         /// <summary>セッション中のストップウォッチ</summary>
         readonly Stopwatch SessionTime;
         public readonly ProcessTimeOption option;
@@ -27,6 +30,7 @@ namespace Genshin_Checker.App
         Window.WindowInfo? WindowInfo;
         public ProcessState CurrentProcessState { get; private set; }
         public TimeSpan Session { get=>SessionTime.Elapsed; }
+        public TimeSpan TotalSession { get =>SessionTime.Elapsed + LatestTotalSessionTime;  }
         private ProcessTime()
         {
             checker = new System.Timers.Timer
@@ -39,6 +43,8 @@ namespace Genshin_Checker.App
             TargetProcess= null;
             option= new ProcessTimeOption();
             option.OnlyActiveWindow = true;
+
+            LatestTotalSessionTime = new(App.SessionCheck.Instance.Load());
         }
         static ProcessTime? instance = null;
         public static ProcessTime Instance { get => instance ??= new ProcessTime(); }
@@ -62,6 +68,9 @@ namespace Genshin_Checker.App
                 {
                     case ProcessState.NotRunning:
                         SessionTime.Stop();
+                        App.SessionCheck.Instance.Append(SessionTime.Elapsed.Ticks);
+                        LatestTotalSessionTime += SessionTime.Elapsed;
+                        
                         SessionEnd?.Invoke(null, new(SessionTime.Elapsed,state));
                         break;
                     case ProcessState.Foreground:
@@ -78,7 +87,19 @@ namespace Genshin_Checker.App
                 ChangedState?.Invoke(null, new(SessionTime.Elapsed, state));
             }
         }
-
+        /// <summary>
+        /// 緊急シャットダウン用関数。進捗を保存しリセットする
+        /// </summary>
+        public void EmergencyReset()
+        {
+            if (CurrentProcessState!=ProcessState.NotRunning)
+            {
+                App.SessionCheck.Instance.Append(Session.Ticks);
+                SessionTime.Reset();
+                if (CurrentProcessState == ProcessState.Foreground)
+                    SessionTime.Start();
+            }
+        }
         /// <summary>【内部関数】特定プロセスの起動チェック</summary>
         /// <returns>特定プロセスが起動済みか</returns>
         public ProcessState ProcessSearch()

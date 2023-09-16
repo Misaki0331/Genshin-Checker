@@ -7,7 +7,6 @@ namespace Genshin_Checker
     public partial class MainTray : Form
     {
         long sessionTime = 0;
-        bool IsHide = false;
         Window.TimerDisplay? TimerDisplay= null;
         public MainTray()
         {
@@ -19,12 +18,11 @@ namespace Genshin_Checker
                 switch (cmd)
                 {
                     case "-hide":
-                        IsHide = true;
+                        //IsHide = true;
                         break;
                 }
             }
             //アプリの初期化&UIの初期化
-            sessionTime = App.SessionCheck.Instance.Load();
             App.ProcessTime.Instance.option.OnlyActiveWindow = true;
             App.ProcessTime.WatchDog = true;
             App.ProcessTime.Instance.SessionStart += TargetStart;
@@ -49,7 +47,6 @@ namespace Genshin_Checker
             notification.BalloonTipTitle = "原神チェッカー";
             notification.BalloonTipText = $"遊んだ時間 : {(int)e.SessionTime.TotalHours} 時間 {e.SessionTime.Minutes:00} 分";
             notification.ShowBalloonTip(30000);
-            App.SessionCheck.Instance.Append(e.SessionTime.Ticks);
 
         }
 
@@ -60,10 +57,7 @@ namespace Genshin_Checker
 
         private void 終了ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (App.ProcessTime.Instance.CurrentProcessState != App.ProcessTime.ProcessState.NotRunning)
-            {
-                App.SessionCheck.Instance.Append(App.ProcessTime.Instance.Session.Ticks);
-            }
+            App.ProcessTime.Instance.EmergencyReset();
             Close();
         }
 

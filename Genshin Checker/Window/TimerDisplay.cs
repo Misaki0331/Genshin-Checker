@@ -17,17 +17,15 @@ namespace Genshin_Checker.Window
         {
             InitializeComponent();
         }
-        long sessionTime=0;
         private void timer1_Tick(object sender, EventArgs e)
         {
             var time = App.ProcessTime.Instance.Session;
             SessionTime.Text = $"{((int)time.TotalHours)}:{time:mm\\:ss\\.ff}";
-            var totaltime = new TimeSpan((sessionTime + time.Ticks));
+            var totaltime = App.ProcessTime.Instance.TotalSession;
             TotalSessionTime.Text = $"{((int)totaltime.TotalHours)}:{totaltime:mm\\:ss\\.ff}";
         }
         void TargetStart(object? sender, EventArgs e)
         {
-            sessionTime = App.SessionCheck.Instance.Load();
         }
         void DisplayChangeState(App.ProcessTime.ProcessState state)
         {
@@ -76,9 +74,6 @@ namespace Genshin_Checker.Window
             Marshal.FreeCoTaskMem(fontBufPtr);
             SessionTime.Font = new(pfc.Families[0], 36, FontStyle.Bold | FontStyle.Italic);
             TotalSessionTime.Font = new(pfc.Families[0], 28, FontStyle.Bold | FontStyle.Italic);
-
-            //アプリの初期化&UIの初期化
-            sessionTime = App.SessionCheck.Instance.Load();
 
             DisplayChangeState(App.ProcessTime.Instance.CurrentProcessState);
             App.ProcessTime.Instance.SessionStart += TargetStart;

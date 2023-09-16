@@ -78,7 +78,9 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainTray";
+            this.ShowInTaskbar = false;
             this.Text = "MainTray";
+            this.WindowState = System.Windows.Forms.FormWindowState.Minimized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainTray_FormClosing);
             this.Load += new System.EventHandler(this.MainTray_Load);
             this.NotificationMenu.ResumeLayout(false);
