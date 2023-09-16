@@ -16,7 +16,6 @@ namespace Genshin_Checker
             string mutexName = "Genshin Checker";
             //Mutexオブジェクトを作成する
             System.Threading.Mutex mutex = new System.Threading.Mutex(false, mutexName);
-
             bool hasHandle = false;
             try
             {

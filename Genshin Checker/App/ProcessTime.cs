@@ -21,9 +21,12 @@ namespace Genshin_Checker.App
         TimeSpan LatestTotalSessionTime;
         /// <summary>セッション中のストップウォッチ</summary>
         readonly Stopwatch SessionTime;
+        long LatestCheckedDateTime=0;
         public readonly ProcessTimeOption option;
         /// <summary>該当プロセスが実行中であるかどうか</summary>
         Process? TargetProcess;
+
+        private object lockObject = new object(); //ロック処理に必要
         public event EventHandler<Result>? SessionEnd;
         public event EventHandler<Result>? ChangedState;
         public event EventHandler? SessionStart;
@@ -53,6 +56,7 @@ namespace Genshin_Checker.App
         /// <summary>プロセスをチェックする頻度 (単位 ms)</summary>
         public static double WatchDogInterval { get => Instance.checker.Interval; set => Instance.checker.Interval = value; }
         /// <summary> 【内部関数】プロセスチェック用の関数</summary>
+        int cnt = 0;
         /// <param name="SignalTime"></param>
         void WatchDogElapsed(DateTime signalTime)
         {
@@ -85,6 +89,29 @@ namespace Genshin_Checker.App
                 }
                 CurrentProcessState = state;
                 ChangedState?.Invoke(null, new(SessionTime.Elapsed, state));
+            }
+            lock(lockObject)
+            {
+                var a = new DateTimeOffset(DateTime.UtcNow.Ticks, TimeSpan.Zero).ToUnixTimeSeconds();
+                if (LatestCheckedDateTime != a)
+                {
+                    string ps = " ";
+                    switch (CurrentProcessState)
+                    {
+                        case ProcessState.NotRunning:
+                            ps = "_";
+                            break;
+                        case ProcessState.Background:
+                            ps = "B";
+                            break;
+                        case ProcessState.Foreground:
+                            ps = "F";
+                            break;
+
+                    }
+                    App.TimeTable.SavePoint(DateTime.UtcNow, ps);
+                    LatestCheckedDateTime = a;
+                }
             }
         }
         /// <summary>

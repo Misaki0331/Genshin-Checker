@@ -8,6 +8,7 @@
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
     <ApplicationIcon>resource\nahida.ico</ApplicationIcon>
+    <Version>0.1</Version>
   </PropertyGroup>
 
   <ItemGroup>
