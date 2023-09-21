@@ -34,6 +34,8 @@
             this.NotificationMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.設定ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.終了ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.Delay = new System.Windows.Forms.Timer(this.components);
+            this.詳細プレイデータToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.NotificationMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -47,24 +49,37 @@
             // NotificationMenu
             // 
             this.NotificationMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.詳細プレイデータToolStripMenuItem,
             this.設定ToolStripMenuItem,
             this.終了ToolStripMenuItem});
             this.NotificationMenu.Name = "contextMenuStrip1";
-            this.NotificationMenu.Size = new System.Drawing.Size(99, 48);
+            this.NotificationMenu.Size = new System.Drawing.Size(181, 92);
             // 
             // 設定ToolStripMenuItem
             // 
             this.設定ToolStripMenuItem.Enabled = false;
             this.設定ToolStripMenuItem.Name = "設定ToolStripMenuItem";
-            this.設定ToolStripMenuItem.Size = new System.Drawing.Size(98, 22);
+            this.設定ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.設定ToolStripMenuItem.Text = "設定";
             // 
             // 終了ToolStripMenuItem
             // 
             this.終了ToolStripMenuItem.Name = "終了ToolStripMenuItem";
-            this.終了ToolStripMenuItem.Size = new System.Drawing.Size(98, 22);
+            this.終了ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.終了ToolStripMenuItem.Text = "終了";
             this.終了ToolStripMenuItem.Click += new System.EventHandler(this.終了ToolStripMenuItem_Click);
+            // 
+            // Delay
+            // 
+            this.Delay.Enabled = true;
+            this.Delay.Tick += new System.EventHandler(this.Delay_Tick);
+            // 
+            // 詳細プレイデータToolStripMenuItem
+            // 
+            this.詳細プレイデータToolStripMenuItem.Name = "詳細プレイデータToolStripMenuItem";
+            this.詳細プレイデータToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.詳細プレイデータToolStripMenuItem.Text = "詳細プレイデータ";
+            this.詳細プレイデータToolStripMenuItem.Click += new System.EventHandler(this.詳細プレイデータToolStripMenuItem_Click);
             // 
             // MainTray
             // 
@@ -94,5 +109,7 @@
         private ContextMenuStrip NotificationMenu;
         private ToolStripMenuItem 設定ToolStripMenuItem;
         private ToolStripMenuItem 終了ToolStripMenuItem;
+        private System.Windows.Forms.Timer Delay;
+        private ToolStripMenuItem 詳細プレイデータToolStripMenuItem;
     }
 }

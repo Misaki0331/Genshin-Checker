@@ -8,6 +8,7 @@ namespace Genshin_Checker
     {
         long sessionTime = 0;
         Window.TimerDisplay? TimerDisplay= null;
+        Window.TimeGraph? TimeGraph= null;
         public MainTray()
         {
             InitializeComponent();
@@ -81,6 +82,28 @@ namespace Genshin_Checker
         private void MainTray_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void Delay_Tick(object sender, EventArgs e)
+        {
+            Hide();
+        }
+
+        private void 詳細プレイデータToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (TimeGraph == null || TimeGraph.IsDisposed)
+            {
+                TimeGraph = new();
+                TimeGraph.WindowState = FormWindowState.Normal;
+                TimeGraph.Show();
+                TimeGraph.Activate();
+            }
+            else
+            {
+                TimeGraph.Show();
+                if (TimeGraph.WindowState == FormWindowState.Minimized) TimeGraph.WindowState = FormWindowState.Normal;
+                TimeGraph.Activate();
+            }
         }
     }
 }

@@ -5,6 +5,7 @@ using System.IO.Compression;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Genshin_Checker.App
 {
@@ -31,6 +32,31 @@ namespace Genshin_Checker.App
                 for (int i = 0; i < 24; i++) empty3 += empty2;
                 return empty3;
             }
+        }
+        public static Task<string> LoadDateLocal(DateTime date)
+        {
+            return Task.Run(async() =>
+            {
+                var rawdata = Task.Run(() => LoadDate(date));
+                var timezone = TimeZoneInfo.Local.GetUtcOffset(DateTime.Now);
+                int offset = 0;
+                string result = "";
+                if (timezone > TimeSpan.Zero)
+                {
+                    var spare = Task.Run(() => LoadDate(date.AddDays(-1)));
+                    result = await spare + await rawdata;
+                    offset = 86400 - (int)timezone.TotalSeconds;
+                    result = result.Substring(offset, 86400);
+                }
+                else if (timezone < TimeSpan.Zero)
+                {
+                    var spare = Task.Run(() => LoadDate(date.AddDays(1)));
+                    result = await rawdata + await spare;
+                    offset = -(int)timezone.TotalSeconds;
+                    result = result.Substring(offset, 86400);
+                }
+                return result;
+            });
         }
         public static bool SaveDate(DateTime date,string data)
         {

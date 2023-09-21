@@ -65,6 +65,7 @@ namespace Genshin_Checker.App
             {
                 if (CurrentProcessState == ProcessState.NotRunning)
                 {
+                    LatestTotalSessionTime += SessionTime.Elapsed;
                     SessionTime.Reset();
                     SessionStart?.Invoke(null,EventArgs.Empty);
                 }
@@ -73,7 +74,6 @@ namespace Genshin_Checker.App
                     case ProcessState.NotRunning:
                         SessionTime.Stop();
                         App.SessionCheck.Instance.Append(SessionTime.Elapsed.Ticks);
-                        LatestTotalSessionTime += SessionTime.Elapsed;
                         
                         SessionEnd?.Invoke(null, new(SessionTime.Elapsed,state));
                         break;
@@ -98,6 +98,9 @@ namespace Genshin_Checker.App
                     string ps = " ";
                     switch (CurrentProcessState)
                     {
+                        case ProcessState.EmptyState:
+                            ps = " ";
+                            break;
                         case ProcessState.NotRunning:
                             ps = "_";
                             break;
@@ -162,6 +165,8 @@ namespace Genshin_Checker.App
         }
         public enum ProcessState
         {
+            /// <summary>本アプリ自体が起動していない状態</summary>
+            EmptyState,
             /// <summary>未起動</summary>
             NotRunning,
             /// <summary>ユーザーが作業中</summary>
