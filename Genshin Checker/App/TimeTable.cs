@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO.Compression;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -11,6 +12,17 @@ namespace Genshin_Checker.App
 {
     public class TimeTable
     {
+        static DayCache DayCacheData = new DayCache();
+        class DayCache
+        {
+            public DateTime date = DateTime.MinValue;
+            public bool IsDateEqual(DateTime diff)
+            {
+                if (date.Year == diff.Year && date.Month == diff.Month && date.Day == diff.Day) return true;
+                return false;
+            }
+            public string raw = "";
+        }
         public static string LoadDate(DateTime date)
         {
             var data = Registry.GetValue($"TimeTable\\{date.Year}\\{date.Month:00}\\{date.Day:00}", "PlayAlias");
@@ -70,9 +82,15 @@ namespace Genshin_Checker.App
             if (State.Length != 1) throw new InvalidDataException();
             try
             {
-                var data = LoadDate(time);
+                if (!DayCacheData.IsDateEqual(time))
+                {
+                    DayCacheData.raw=LoadDate(time);
+                    DayCacheData.date = time;
+                }
+                var data = DayCacheData.raw;
                 int cnt = (time.Hour * 60 + time.Minute) * 60 + time.Second;
                 data = ReplaceChar(data, cnt, State);
+                DayCacheData.raw = data;
                 SaveDate(time, data);
                 return true;
             }catch

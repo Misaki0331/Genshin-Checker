@@ -28,10 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TimeGraph));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.Day = new System.Windows.Forms.TabPage();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.DailyGraph = new System.Windows.Forms.PictureBox();
             this.Week = new System.Windows.Forms.TabPage();
             this.Month = new System.Windows.Forms.TabPage();
             this.Version = new System.Windows.Forms.TabPage();
@@ -40,8 +39,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.tabControl1.SuspendLayout();
-            this.Day.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DailyGraph)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -60,8 +57,6 @@
             // 
             // Day
             // 
-            this.Day.Controls.Add(this.comboBox1);
-            this.Day.Controls.Add(this.DailyGraph);
             this.Day.Location = new System.Drawing.Point(4, 24);
             this.Day.Name = "Day";
             this.Day.Padding = new System.Windows.Forms.Padding(3);
@@ -69,29 +64,6 @@
             this.Day.TabIndex = 0;
             this.Day.Text = "1日間";
             this.Day.UseVisualStyleBackColor = true;
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "時間毎のプレイ時間遷移",
-            "タイムライン(24時間)"});
-            this.comboBox1.Location = new System.Drawing.Point(336, 6);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(144, 23);
-            this.comboBox1.TabIndex = 1;
-            // 
-            // DailyGraph
-            // 
-            this.DailyGraph.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.DailyGraph.Location = new System.Drawing.Point(3, 3);
-            this.DailyGraph.Name = "DailyGraph";
-            this.DailyGraph.Size = new System.Drawing.Size(482, 272);
-            this.DailyGraph.TabIndex = 0;
-            this.DailyGraph.TabStop = false;
-            this.DailyGraph.Resize += new System.EventHandler(this.DailyGraph_Resize);
             // 
             // Week
             // 
@@ -167,11 +139,10 @@
             this.ClientSize = new System.Drawing.Size(496, 306);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.tabControl1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "TimeGraph";
-            this.Text = "TimeGraph";
+            this.Text = "詳細プレイ時間";
             this.tabControl1.ResumeLayout(false);
-            this.Day.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.DailyGraph)).EndInit();
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
