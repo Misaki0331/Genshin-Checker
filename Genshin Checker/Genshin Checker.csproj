@@ -36,6 +36,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>namecard.resx</DependentUpon>
     </Compile>
+    <Compile Update="resource\GenshinAsset.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>GenshinAsset.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
@@ -51,6 +56,17 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>namecard.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Update="resource\GenshinAsset.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>GenshinAsset.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="resource\GenshinAsset\SeasonName.txt">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>SeasonName.Designer.cs</LastGenOutput>
+    </None>
   </ItemGroup>
 
 </Project>
