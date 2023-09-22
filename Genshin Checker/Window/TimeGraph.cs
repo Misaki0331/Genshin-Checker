@@ -172,7 +172,7 @@ namespace Genshin_Checker.Window
                     {
                         Name = "Day",
                         MinStep = 1,
-                        Labeler = d1 => string.Format(" {0:M/dd}", System.DateTime.FromOADate(d1)),
+                        Labeler = d1 => string.Format(" {0:M/d}", System.DateTime.FromOADate(d1)),
                         NamePaint = new SolidColorPaint(SKColors.Black),
                         SeparatorsPaint = new SolidColorPaint(SKColors.LightSlateGray) { StrokeThickness = 1 },
                         SeparatorsAtCenter = false,
@@ -245,7 +245,7 @@ namespace Genshin_Checker.Window
                     {
                         Name = "Day",
                         MinStep = 1,
-                        Labeler = d1 => string.Format(" {0:M/dd}", System.DateTime.FromOADate(d1)),
+                        Labeler = d1 => string.Format(" {0:M/d}", System.DateTime.FromOADate(d1)),
                         NamePaint = new SolidColorPaint(SKColors.Black),
                         SeparatorsPaint = new SolidColorPaint(SKColors.LightSlateGray) { StrokeThickness = 1 },
                         SeparatorsAtCenter = true,
@@ -291,7 +291,7 @@ namespace Genshin_Checker.Window
                     {
                         Name = "Day",
                         MinStep = 1,
-                        Labeler = d1 => string.Format(" {0:M/dd}", System.DateTime.FromOADate(d1)),
+                        Labeler = d1 => string.Format(" {0:M/d}", System.DateTime.FromOADate(d1)),
                         NamePaint = new SolidColorPaint(SKColors.Black),
                         SeparatorsPaint = new SolidColorPaint(SKColors.LightSlateGray) { StrokeThickness = 1 },
                         SeparatorsAtCenter = true,
@@ -543,49 +543,58 @@ namespace Genshin_Checker.Window
         }
         private void Graph_Reload(object sender, EventArgs e)
         {
-            switch (GraphTab.SelectedIndex)
+            try
             {
-                case 0:
-                    DailyGraph_Drawing();
-                    Prev.Enabled = dateTimePicker1.MinDate<=dateTimePicker1.Value.AddDays(-1);
-                    Next.Enabled = dateTimePicker1.MaxDate>=dateTimePicker1.Value.AddDays(1);
-                    FromLabel.Text = "1日分のデータ";
-                    break;
-                case 1:
-                    WeekGraph_Drawing();
-                    Prev.Enabled = dateTimePicker1.MinDate <= dateTimePicker1.Value.AddDays(-7);
-                    Next.Enabled = dateTimePicker1.MaxDate >= dateTimePicker1.Value.AddDays(7);
+                switch (GraphTab.SelectedIndex)
+                {
+                    case 0:
+                        DailyGraph_Drawing();
+                        Prev.Enabled = dateTimePicker1.MinDate <= dateTimePicker1.Value.AddDays(-1);
+                        Next.Enabled = dateTimePicker1.MaxDate >= dateTimePicker1.Value.AddDays(1);
+                        FromLabel.Text = "1日分のデータ";
+                        break;
+                    case 1:
+                        WeekGraph_Drawing();
+                        Prev.Enabled = dateTimePicker1.MinDate <= dateTimePicker1.Value.AddDays(-7);
+                        Next.Enabled = dateTimePicker1.MaxDate >= dateTimePicker1.Value.AddDays(7);
 
-                    FromLabel.Text = $"{dateTimePicker1.Value.AddDays(-6):yyyy/MM/dd} ～";
-                    break;
-                case 2:
-                    MonthGraph_Drawing();
-                    Prev.Enabled = dateTimePicker1.MinDate <= dateTimePicker1.Value.AddMonths(-1);
-                    Next.Enabled = dateTimePicker1.MaxDate >= dateTimePicker1.Value.AddMonths(1);
-                    FromLabel.Text = $"{dateTimePicker1.Value:yyyy/MM} のデータ";
-                    break;
-                case 3:
-                    VersionGraph_Drawing();
-                    var from = new DateTime(2020, 9, 30);
-                    if (TimeZoneInfo.Local.GetUtcOffset(DateTime.Now) < TimeSpan.Zero) from.AddDays(-1);
-                    double timezone = TimeZoneInfo.Local.GetUtcOffset(DateTime.Now).TotalHours;
-                    timezone = (24 + timezone) % 24;
-                    var to = dateTimePicker1.Value;
-                    int season = ((int)to.ToOADate() - (int)from.ToOADate()) / 42 + 1; //26=4.0
-                    Prev.Enabled = dateTimePicker1.MinDate <= from.AddDays((season - 1) * 42);
-                    Prev.Enabled = dateTimePicker1.MaxDate >= from.AddDays((season) * 42);
+                        FromLabel.Text = $"{dateTimePicker1.Value.AddDays(-6):yyyy/MM/dd} ～";
+                        break;
+                    case 2:
+                        MonthGraph_Drawing();
+                        Prev.Enabled = dateTimePicker1.MinDate <= dateTimePicker1.Value.AddMonths(-1);
+                        Next.Enabled = dateTimePicker1.MaxDate >= dateTimePicker1.Value.AddMonths(1);
+                        FromLabel.Text = $"{dateTimePicker1.Value:yyyy/MM} のデータ";
+                        break;
+                    case 3:
+                        VersionGraph_Drawing();
+                        var from = new DateTime(2020, 9, 30);
+                        if (TimeZoneInfo.Local.GetUtcOffset(DateTime.Now) < TimeSpan.Zero) from.AddDays(-1);
+                        double timezone = TimeZoneInfo.Local.GetUtcOffset(DateTime.Now).TotalHours;
+                        timezone = (24 + timezone) % 24;
+                        var to = dateTimePicker1.Value;
+                        int season = ((int)to.ToOADate() - (int)from.ToOADate()) / 42 + 1; //26=4.0
+                        Prev.Enabled = dateTimePicker1.MinDate <= from.AddDays((season - 1) * 42);
+                        Prev.Enabled = dateTimePicker1.MaxDate >= from.AddDays((season) * 42);
 
-                    var source = GenshinAsset.SeasonName.Replace("\r", "").Split('\n');
-                    string seasonName = $"Season {season}";
-                    if (source.Length > season - 1) seasonName = source[season - 1];
+                        var source = GenshinAsset.SeasonName.Replace("\r", "").Split('\n');
+                        string seasonName = $"Season {season}";
+                        if (source.Length > season - 1) seasonName = source[season - 1];
 
-                    FromLabel.Text = $"{seasonName} 期間のデータ";
-                    break;
+                        FromLabel.Text = $"{seasonName} 期間のデータ";
+                        break;
+                }
+            }
+            catch (Exception ex)
+            {
+                var window = new ErrorMessage("グラフ描画中にエラーが発生しました。", $"{ex.GetType()}\n{ex.Message}");
+                window.ShowDialog(this);
             }
         }
 
         private void Prev_Click(object sender, EventArgs e)
         {
+            try {
             switch (GraphTab.SelectedIndex)
             {
                 case 0:
@@ -607,10 +616,18 @@ namespace Genshin_Checker.Window
                     dateTimePicker1.Value = from.AddDays((season - 1) * 42-1);
                     break;
             }
+
+            }
+            catch (Exception ex)
+            {
+                var window = new ErrorMessage("グラフ描画中にエラーが発生しました。", $"{ex.GetType()}\n{ex.Message}");
+                window.ShowDialog(this);
+            }
         }
 
         private void Next_Click(object sender, EventArgs e)
         {
+            try { 
             switch (GraphTab.SelectedIndex)
             {
                 case 0:
@@ -632,12 +649,27 @@ namespace Genshin_Checker.Window
                     dateTimePicker1.Value = from.AddDays((season) * 42);
                     break;
             }
+
+            }
+            catch (Exception ex)
+            {
+                var window = new ErrorMessage("グラフ描画中にエラーが発生しました。", $"{ex.GetType()}\n{ex.Message}");
+                window.ShowDialog(this);
+            }
         }
 
         private void Now_Click(object sender, EventArgs e)
         {
+            try { 
             if (DateTime.Now > dateTimePicker1.MaxDate) dateTimePicker1.MaxDate = DateTime.Now;
             dateTimePicker1.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
+
+            }
+            catch (Exception ex)
+            {
+                var window = new ErrorMessage("グラフ描画中にエラーが発生しました。", $"{ex.GetType()}\n{ex.Message}");
+                window.ShowDialog(this);
+            }
         }
     }
 }

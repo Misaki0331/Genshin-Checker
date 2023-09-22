@@ -7,6 +7,9 @@
     <Compile Update="MainTray.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Window\ErrorMessage.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Window\TimeGraph.cs">
       <SubType>Form</SubType>
     </Compile>

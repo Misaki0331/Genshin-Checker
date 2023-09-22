@@ -56,7 +56,6 @@ namespace Genshin_Checker.App
         /// <summary>プロセスをチェックする頻度 (単位 ms)</summary>
         public static double WatchDogInterval { get => Instance.checker.Interval; set => Instance.checker.Interval = value; }
         /// <summary> 【内部関数】プロセスチェック用の関数</summary>
-        int cnt = 0;
         /// <param name="SignalTime"></param>
         void WatchDogElapsed(DateTime signalTime)
         {

@@ -116,7 +116,6 @@
             this.FromLabel.Name = "FromLabel";
             this.FromLabel.Size = new System.Drawing.Size(113, 24);
             this.FromLabel.TabIndex = 2;
-            this.FromLabel.Text = "XXXX/XX/XX ～";
             this.FromLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // panel1
@@ -141,7 +140,6 @@
             this.TotalLabel.Name = "TotalLabel";
             this.TotalLabel.Size = new System.Drawing.Size(91, 24);
             this.TotalLabel.TabIndex = 6;
-            this.TotalLabel.Text = "Total : 000:00:00";
             this.TotalLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // Prev
@@ -197,14 +195,12 @@
 
         private TabControl GraphTab;
         private TabPage Day;
-        private PictureBox DailyGraph;
         private TabPage Week;
         private TabPage Month;
         private TabPage Version;
         private DateTimePicker dateTimePicker1;
         private Label FromLabel;
         private Panel panel1;
-        private ComboBox comboBox1;
         private Label TotalLabel;
         private Button Prev;
         private Button Now;

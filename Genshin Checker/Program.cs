@@ -8,6 +8,12 @@ namespace Genshin_Checker
         [STAThread]
         static void Main()
         {
+#if !DEBUG
+            //ThreadExceptionイベントハンドラを追加
+            Application.ThreadException +=
+                new System.Threading.ThreadExceptionEventHandler(
+                    Application_ThreadException);
+#endif
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
@@ -52,6 +58,25 @@ namespace Genshin_Checker
                     mutex.ReleaseMutex();
                 }
                 mutex.Close();
+            }
+        }
+        //ThreadExceptionイベントハンドラ
+        private static void Application_ThreadException(object sender,
+            System.Threading.ThreadExceptionEventArgs e)
+        {
+            try
+            {
+                //エラーメッセージを表示する
+                var res=MessageBox.Show($"アプリケーションエラーが発生しました。\n再起動しますか？\n\n--- デバッグ情報 ---\n{e.Exception.GetType()}\n{e.Exception.Message}\n--- StackTrace ---\n{e.Exception.StackTrace}\n--- StackTrace 終わり ---", "Genshin Checker アプリケーションエラー",MessageBoxButtons.YesNo,MessageBoxIcon.Stop);
+                if (res == DialogResult.Yes)
+                {
+                    Application.Restart();
+                }
+            }
+            finally
+            {
+                //アプリケーションを終了する
+                Application.Exit();
             }
         }
     }

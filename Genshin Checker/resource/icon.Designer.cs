@@ -61,6 +61,16 @@ namespace Genshin_Checker.resource {
         }
         
         /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap Fungus_1 {
+            get {
+                object obj = ResourceManager.GetObject("Fungus_1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   (アイコン) に類似した型 System.Drawing.Icon のローカライズされたリソースを検索します。
         /// </summary>
         internal static System.Drawing.Icon nahida {
