@@ -18,6 +18,7 @@
   <ItemGroup>
     <PackageReference Include="LiveChartsCore" Version="2.0.0-rc1" />
     <PackageReference Include="LiveChartsCore.SkiaSharpView.WinForms" Version="2.0.0-rc1" />
+    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.2106-prerelease" />
   </ItemGroup>
 
   <ItemGroup>

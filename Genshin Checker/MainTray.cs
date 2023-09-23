@@ -31,6 +31,7 @@ namespace Genshin_Checker
             App.ProcessTime.Instance.ChangedState += ChangeState;
             notification.Icon = resource.icon.nahida;
             notification.Visible = true;
+            new Window.WebMiniBrowser(new("https://www.google.com/"));
         }
 
         private void timer1_Tick(object sender, EventArgs e)

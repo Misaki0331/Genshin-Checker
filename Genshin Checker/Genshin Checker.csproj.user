@@ -16,5 +16,8 @@
     <Compile Update="Window\TimerDisplay.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Window\WebMiniBrowser.cs">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
 </Project>
