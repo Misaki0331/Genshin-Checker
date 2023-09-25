@@ -19,6 +19,7 @@
     <PackageReference Include="LiveChartsCore" Version="2.0.0-rc1" />
     <PackageReference Include="LiveChartsCore.SkiaSharpView.WinForms" Version="2.0.0-rc1" />
     <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.2106-prerelease" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>
 
   <ItemGroup>
@@ -42,6 +43,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>GenshinAsset.resx</DependentUpon>
     </Compile>
+    <Compile Update="Window\BrowserApp\HoYoApp.cs" />
   </ItemGroup>
 
   <ItemGroup>

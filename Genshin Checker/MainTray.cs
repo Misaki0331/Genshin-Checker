@@ -2,6 +2,8 @@ using System;
 using System.Text;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
+using System.Diagnostics;
+
 namespace Genshin_Checker
 {
     public partial class MainTray : Form
@@ -9,6 +11,7 @@ namespace Genshin_Checker
         long sessionTime = 0;
         Window.TimerDisplay? TimerDisplay= null;
         Window.TimeGraph? TimeGraph= null;
+        Window.RealTimeData? RealTimeData = null;
         public MainTray()
         {
             InitializeComponent();
@@ -31,7 +34,8 @@ namespace Genshin_Checker
             App.ProcessTime.Instance.ChangedState += ChangeState;
             notification.Icon = resource.icon.nahida;
             notification.Visible = true;
-            new Window.WebMiniBrowser(new("https://www.google.com/"));
+            //new Window.WebMiniBrowser(new("https://google.com"));
+            //new BrowserApp.HoYoApp();
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -63,7 +67,7 @@ namespace Genshin_Checker
             Close();
         }
 
-        private void notification_Click(object sender, EventArgs e)
+        private async void notification_Click(object sender, EventArgs e)
         {
             if (TimerDisplay == null || TimerDisplay.IsDisposed)
             {
@@ -104,6 +108,23 @@ namespace Genshin_Checker
                 TimeGraph.Show();
                 if (TimeGraph.WindowState == FormWindowState.Minimized) TimeGraph.WindowState = FormWindowState.Normal;
                 TimeGraph.Activate();
+            }
+        }
+
+        private void リアルタイムデータToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (RealTimeData == null || RealTimeData.IsDisposed)
+            {
+                RealTimeData = new();
+                RealTimeData.WindowState = FormWindowState.Normal;
+                RealTimeData.Show();
+                RealTimeData.Activate();
+            }
+            else
+            {
+                RealTimeData.Show();
+                if (RealTimeData.WindowState == FormWindowState.Minimized) RealTimeData.WindowState = FormWindowState.Normal;
+                RealTimeData.Activate();
             }
         }
     }

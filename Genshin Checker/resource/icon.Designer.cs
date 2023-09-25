@@ -71,12 +71,62 @@ namespace Genshin_Checker.resource {
         }
         
         /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap Icon_Commission {
+            get {
+                object obj = ResourceManager.GetObject("Icon_Commission", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap Item_Fragile_Resin {
+            get {
+                object obj = ResourceManager.GetObject("Item_Fragile_Resin", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap Item_Parametric_Transformer {
+            get {
+                object obj = ResourceManager.GetObject("Item_Parametric_Transformer", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap Item_Realm_Currency {
+            get {
+                object obj = ResourceManager.GetObject("Item_Realm_Currency", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   (アイコン) に類似した型 System.Drawing.Icon のローカライズされたリソースを検索します。
         /// </summary>
         internal static System.Drawing.Icon nahida {
             get {
                 object obj = ResourceManager.GetObject("nahida", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap UI_Domains {
+            get {
+                object obj = ResourceManager.GetObject("UI_Domains", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
     }
