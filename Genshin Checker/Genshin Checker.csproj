@@ -11,6 +11,14 @@
     <Version>0.1</Version>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <NoWarn>1701;1702; NU1701; NU1702</NoWarn>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <NoWarn>1701;1702; NU1701; NU1702</NoWarn>
+  </PropertyGroup>
+
   <ItemGroup>
     <Content Include="resource\nahida.ico" />
   </ItemGroup>

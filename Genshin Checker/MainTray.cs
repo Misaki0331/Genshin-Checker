@@ -67,7 +67,7 @@ namespace Genshin_Checker
             Close();
         }
 
-        private async void notification_Click(object sender, EventArgs e)
+        private void notification_Click(object sender, EventArgs e)
         {
             if (TimerDisplay == null || TimerDisplay.IsDisposed)
             {

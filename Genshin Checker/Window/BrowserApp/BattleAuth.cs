@@ -16,8 +16,8 @@ namespace Genshin_Checker.BrowserApp
 {
     public partial class BattleAuth : WebMiniBrowser
     {
-        bool IsAutoAuth = false;
-        Button AuthButton;
+        readonly bool IsAutoAuth = false;
+        readonly Button AuthButton;
         public BattleAuth(bool isAutoAuth=true) : base(new("https://act.hoyolab.com/app/community-game-records-sea/index.html"), autoshow: false)
         {
 
@@ -35,6 +35,10 @@ namespace Genshin_Checker.BrowserApp
             panel_menu.Controls.Add(AuthButton);
             panel_menu.ResumeLayout(false);
             IsAutoAuth = isAutoAuth;
+            if (isAutoAuth)
+            {
+                AuthButton.Enabled = false;
+            }
         }
 
         private async void Timer_Tick(object? sender, EventArgs e)
@@ -45,15 +49,20 @@ namespace Genshin_Checker.BrowserApp
                 var data = JsonConvert.DeserializeObject<Root>(await Web.CoreWebView2.ExecuteScriptAsync("var GetUID = function(){for(var i=0;i<5;i++){var uid = document.getElementsByClassName(\"uid\"); if(uid.length!=1){throw \"No Data.\";} var id=uid[0].outerText.replace(\"UID\",\"\"); if(id.length<8){throw \"UID is empty. Please again later.\";} return id}}; \r\nvar res = {};\r\ntry{ res = {message:\"ok\",uid:GetUID(),cookie:document.cookie}}catch(e){res = {message:e,uid:null,cookie:document.cookie}} res;"));
                 if (data != null && data.message == "ok" && int.TryParse(data.uid,out int uid))
                 {
-                    App.RealTimeNote.uid = uid;
-                    App.RealTimeNote.Cookie = data.cookie;
-                    timer.Stop();
-                    timer.Tick -= Timer_Tick;
-                    Close();
+                    try
+                    {
+                        App.RealTimeNote.Instance.SetUserData(data.cookie, uid);
+                        timer.Stop();
+                        timer.Tick -= Timer_Tick;
+                        Close();
+                    }
+                    catch (Exception)
+                    {
+                    }
                 }
             }
             timer_count++;
-            if (timer_count > 5)
+            if (timer_count > 10)
             {
                 timer.Stop();
                 AuthButton.Enabled = true;
@@ -69,7 +78,7 @@ namespace Genshin_Checker.BrowserApp
             Web.CoreWebView2.NavigationStarting += CoreWebView2_NavigationStarting;
             Web.CoreWebView2.NavigationCompleted += CoreWebView2_NavigationCompleted;
         }
-        System.Windows.Forms.Timer timer;
+        readonly System.Windows.Forms.Timer timer;
         int timer_count = 0;
         public class Root
         {
