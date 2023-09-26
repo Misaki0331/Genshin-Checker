@@ -34,7 +34,9 @@
             this.NotificationMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.詳細プレイデータToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.リアルタイムデータToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.設定ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.終了ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Delay = new System.Windows.Forms.Timer(this.components);
             this.NotificationMenu.SuspendLayout();
@@ -44,44 +46,55 @@
             // 
             this.notification.ContextMenuStrip = this.NotificationMenu;
             this.notification.Text = "原神チェッカー";
-            this.notification.Visible = true;
-            this.notification.Click += new System.EventHandler(this.notification_Click);
+            this.notification.MouseUp += new System.Windows.Forms.MouseEventHandler(this.notification_Click);
             // 
             // NotificationMenu
             // 
             this.NotificationMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.詳細プレイデータToolStripMenuItem,
             this.リアルタイムデータToolStripMenuItem,
+            this.toolStripSeparator2,
             this.設定ToolStripMenuItem,
+            this.toolStripSeparator1,
             this.終了ToolStripMenuItem});
             this.NotificationMenu.Name = "contextMenuStrip1";
-            this.NotificationMenu.Size = new System.Drawing.Size(155, 92);
+            this.NotificationMenu.Size = new System.Drawing.Size(181, 126);
             // 
             // 詳細プレイデータToolStripMenuItem
             // 
             this.詳細プレイデータToolStripMenuItem.Name = "詳細プレイデータToolStripMenuItem";
-            this.詳細プレイデータToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
+            this.詳細プレイデータToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.詳細プレイデータToolStripMenuItem.Text = "詳細プレイデータ";
             this.詳細プレイデータToolStripMenuItem.Click += new System.EventHandler(this.詳細プレイデータToolStripMenuItem_Click);
             // 
             // リアルタイムデータToolStripMenuItem
             // 
             this.リアルタイムデータToolStripMenuItem.Name = "リアルタイムデータToolStripMenuItem";
-            this.リアルタイムデータToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
-            this.リアルタイムデータToolStripMenuItem.Text = "リアルタイムデータ";
+            this.リアルタイムデータToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.リアルタイムデータToolStripMenuItem.Text = "リアルタイムノート";
             this.リアルタイムデータToolStripMenuItem.Click += new System.EventHandler(this.リアルタイムデータToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(177, 6);
             // 
             // 設定ToolStripMenuItem
             // 
             this.設定ToolStripMenuItem.Name = "設定ToolStripMenuItem";
-            this.設定ToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
+            this.設定ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.設定ToolStripMenuItem.Text = "設定";
             this.設定ToolStripMenuItem.Click += new System.EventHandler(this.設定ToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
             // 
             // 終了ToolStripMenuItem
             // 
             this.終了ToolStripMenuItem.Name = "終了ToolStripMenuItem";
-            this.終了ToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
+            this.終了ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.終了ToolStripMenuItem.Text = "終了";
             this.終了ToolStripMenuItem.Click += new System.EventHandler(this.終了ToolStripMenuItem_Click);
             // 
@@ -121,5 +134,7 @@
         private System.Windows.Forms.Timer Delay;
         private ToolStripMenuItem 詳細プレイデータToolStripMenuItem;
         private ToolStripMenuItem リアルタイムデータToolStripMenuItem;
+        private ToolStripSeparator toolStripSeparator2;
+        private ToolStripSeparator toolStripSeparator1;
     }
 }

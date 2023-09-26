@@ -23,6 +23,8 @@ namespace Genshin_Checker.Window
         {
             UiUpdate.Stop();
             var Note = App.RealTimeNote.Instance.Data;
+            if (App.RealTimeNote.Instance.uid != 0) Text = $"リアルタイムノート (UID:{App.RealTimeNote.Instance.uid})";
+            else Text = $"リアルタイムノート";
             if (Note.Meta.Message == "OK")
             {
                 var r = Note.RealTime;

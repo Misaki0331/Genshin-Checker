@@ -43,9 +43,6 @@ namespace Genshin_Checker
             RealTimeNote.Instance.Notification += Notification;
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-        }
         void TargetStart(object? sender, EventArgs e)
         {
             sessionTime = App.SessionCheck.Instance.Load();
@@ -91,26 +88,13 @@ namespace Genshin_Checker
             Close();
         }
 
-        private void notification_Click(object sender, EventArgs e)
-        {
-            if (TimerDisplay == null || TimerDisplay.IsDisposed)
-            {
-                TimerDisplay = new();
-                TimerDisplay.WindowState = FormWindowState.Normal;
-                TimerDisplay.Show();
-                TimerDisplay.Activate();
-            }
-            else
-            {
-                TimerDisplay.Show();
-                if (TimerDisplay.WindowState == FormWindowState.Minimized) TimerDisplay.WindowState = FormWindowState.Normal;
-                TimerDisplay.Activate();
-            }
-        }
 
         private void MainTray_Load(object sender, EventArgs e)
         {
-
+            notification.Visible = true;
+            notification.BalloonTipTitle = $"原神チェッカー";
+            notification.BalloonTipText = $"起動しました。\nタスクトレイから開くことができます。";
+            notification.ShowBalloonTip(30000);
         }
 
         private void Delay_Tick(object sender, EventArgs e)
@@ -166,6 +150,26 @@ namespace Genshin_Checker
                 SettingWindow.Show();
                 if (SettingWindow.WindowState == FormWindowState.Minimized) SettingWindow.WindowState = FormWindowState.Normal;
                 SettingWindow.Activate();
+            }
+        }
+
+        private void notification_Click(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                if (TimerDisplay == null || TimerDisplay.IsDisposed)
+                {
+                    TimerDisplay = new();
+                    TimerDisplay.WindowState = FormWindowState.Normal;
+                    TimerDisplay.Show();
+                    TimerDisplay.Activate();
+                }
+                else
+                {
+                    TimerDisplay.Show();
+                    if (TimerDisplay.WindowState == FormWindowState.Minimized) TimerDisplay.WindowState = FormWindowState.Normal;
+                    TimerDisplay.Activate();
+                }
             }
         }
     }
