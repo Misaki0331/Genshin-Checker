@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using System.Diagnostics;
 using Genshin_Checker.App;
+using Genshin_Checker.Window;
 
 namespace Genshin_Checker
 {
@@ -104,6 +105,7 @@ namespace Genshin_Checker
 
         private void 詳細プレイデータToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            try { 
             if (TimeGraph == null || TimeGraph.IsDisposed)
             {
                 TimeGraph = new();
@@ -117,10 +119,18 @@ namespace Genshin_Checker
                 if (TimeGraph.WindowState == FormWindowState.Minimized) TimeGraph.WindowState = FormWindowState.Normal;
                 TimeGraph.Activate();
             }
+
+            }
+            catch (Exception ex)
+            {
+                var n = new ErrorMessage(ex.GetType().ToString(), ex.Message);
+                n.ShowDialog(this);
+            }
         }
 
         private void リアルタイムデータToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            try { 
             if (RealTimeData == null || RealTimeData.IsDisposed)
             {
                 RealTimeData = new();
@@ -134,10 +144,18 @@ namespace Genshin_Checker
                 if (RealTimeData.WindowState == FormWindowState.Minimized) RealTimeData.WindowState = FormWindowState.Normal;
                 RealTimeData.Activate();
             }
+
+            }
+            catch (Exception ex)
+            {
+                var n = new ErrorMessage(ex.GetType().ToString(), ex.Message);
+                n.ShowDialog(this);
+            }
         }
 
         private void 設定ToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            try { 
             if (SettingWindow == null || SettingWindow.IsDisposed)
             {
                 SettingWindow = new();
@@ -151,25 +169,39 @@ namespace Genshin_Checker
                 if (SettingWindow.WindowState == FormWindowState.Minimized) SettingWindow.WindowState = FormWindowState.Normal;
                 SettingWindow.Activate();
             }
+
+            }
+            catch (Exception ex)
+            {
+                var n = new ErrorMessage(ex.GetType().ToString(), ex.Message);
+                n.ShowDialog(this);
+            }
         }
 
         private void notification_Click(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Left)
+            try
             {
-                if (TimerDisplay == null || TimerDisplay.IsDisposed)
+                if (e.Button == MouseButtons.Left)
                 {
-                    TimerDisplay = new();
-                    TimerDisplay.WindowState = FormWindowState.Normal;
-                    TimerDisplay.Show();
-                    TimerDisplay.Activate();
+                    if (TimerDisplay == null || TimerDisplay.IsDisposed)
+                    {
+                        TimerDisplay = new();
+                        TimerDisplay.WindowState = FormWindowState.Normal;
+                        TimerDisplay.Show();
+                        TimerDisplay.Activate();
+                    }
+                    else
+                    {
+                        TimerDisplay.Show();
+                        if (TimerDisplay.WindowState == FormWindowState.Minimized) TimerDisplay.WindowState = FormWindowState.Normal;
+                        TimerDisplay.Activate();
+                    }
                 }
-                else
-                {
-                    TimerDisplay.Show();
-                    if (TimerDisplay.WindowState == FormWindowState.Minimized) TimerDisplay.WindowState = FormWindowState.Normal;
-                    TimerDisplay.Activate();
-                }
+            }catch(Exception ex)
+            {
+                var n = new ErrorMessage(ex.GetType().ToString(), ex.Message);
+                n.ShowDialog(this);
             }
         }
     }

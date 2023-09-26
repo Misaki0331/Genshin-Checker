@@ -13,9 +13,30 @@ namespace Genshin_Checker.Window
 {
     public partial class TimerDisplay : Form
     {
+        System.Drawing.Text.PrivateFontCollection pfc = new();
         public TimerDisplay()
         {
             InitializeComponent();
+
+
+            try
+            {
+                //resource内のフォントの呼び出し
+                byte[] fontBuf = resource.font.DSEG7Classic_BoldItalic;
+                IntPtr fontBufPtr = Marshal.AllocCoTaskMem(fontBuf.Length);
+                Marshal.Copy(fontBuf, 0, fontBufPtr, fontBuf.Length);
+                pfc.AddMemoryFont(fontBufPtr, fontBuf.Length);
+                Marshal.FreeCoTaskMem(fontBufPtr);
+                SessionTime.Font = new(pfc.Families[0], 36, FontStyle.Bold | FontStyle.Italic);
+                TotalSessionTime.Font = new(pfc.Families[0], 28, FontStyle.Bold | FontStyle.Italic);
+            }
+            catch (Exception ex)
+            {
+                var n = new ErrorMessage(ex.GetType().ToString(), ex.Message);
+                n.ShowDialog(this);
+                Close();
+            }
+
         }
         private void timer1_Tick(object sender, EventArgs e)
         {
@@ -64,17 +85,6 @@ namespace Genshin_Checker.Window
 
         private void TimerDisplay_Load(object sender, EventArgs e)
         {
-            System.Drawing.Text.PrivateFontCollection pfc = new();
-
-            //resource内のフォントの呼び出し
-            byte[] fontBuf = resource.font.DSEG7Classic_BoldItalic;
-            IntPtr fontBufPtr = Marshal.AllocCoTaskMem(fontBuf.Length);
-            Marshal.Copy(fontBuf, 0, fontBufPtr, fontBuf.Length);
-            pfc.AddMemoryFont(fontBufPtr, fontBuf.Length);
-            Marshal.FreeCoTaskMem(fontBufPtr);
-            SessionTime.Font = new(pfc.Families[0], 36, FontStyle.Bold | FontStyle.Italic);
-            TotalSessionTime.Font = new(pfc.Families[0], 28, FontStyle.Bold | FontStyle.Italic);
-
             DisplayChangeState(App.ProcessTime.Instance.CurrentProcessState);
             App.ProcessTime.Instance.SessionStart += TargetStart;
             App.ProcessTime.Instance.SessionEnd += TargetEnd;

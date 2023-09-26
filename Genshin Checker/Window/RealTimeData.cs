@@ -76,7 +76,7 @@ namespace Genshin_Checker.Window
                         if (DateTime.Now > data.EstimatedTime) ex_label[i].Text = "探索完了";
                         else
                         {
-                            var time = (int)(r.RealmCoin.RecoveryTime - DateTime.Now).TotalSeconds;
+                            var time = (int)(data.EstimatedTime - DateTime.Now).TotalSeconds;
                             ex_label[i].Text = $"{(time / 3600)}:{(time / 60 % 60):00}:{(time % 60):00}";
                         }
                     }

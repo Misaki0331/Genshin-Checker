@@ -124,7 +124,7 @@ namespace Genshin_Checker.App
                         if (int.TryParse(ex.remained_time, out time))
                         {
                             EndTime = TruncateToSeconds(DateTime.Now).AddSeconds(time);
-                            if (Data.RealTime.Resin.RecoveryTime <= DateTime.Now)
+                            if (EndTime <= DateTime.Now)
                                 EndTime = DateTime.MinValue;
                         }
                         Data.RealTime.Expedition.Expeditions.Add(new Genshin_Checker.App.Store.RealTimeNote.ExpeditionDetail()
