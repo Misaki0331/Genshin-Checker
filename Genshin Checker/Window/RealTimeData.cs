@@ -17,16 +17,11 @@ namespace Genshin_Checker.Window
         public RealTimeData()
         {
             InitializeComponent();
-            ServerUpdate.Interval = 1;
-        }
-        Stopwatch LatestUpdate= new();
-        int UpdateTemp = 0;
-        private async void ServerUpdate_Tick(object sender, EventArgs e)
-        {
         }
 
         private void UiUpdate_Tick(object sender, EventArgs e)
         {
+            UiUpdate.Stop();
             var Note = App.RealTimeNote.Instance.Data;
             if (Note.Meta.Message == "OK")
             {
@@ -57,11 +52,11 @@ namespace Genshin_Checker.Window
                 if (r.Transform.IsReached) label9.Text = "利用可能";
                 else
                 {
-                    string data = "残り 約 ";
-                    if (r.Transform.TransformTime.Day > 0) data += $"{r.Transform.TransformTime.Day} 日";
-                    if (r.Transform.TransformTime.Hour > 0) data += $"{r.Transform.TransformTime.Hour} 時間";
-                    if (r.Transform.TransformTime.Minute > 0) data += $"{r.Transform.TransformTime.Minute} 分";
-                    if (r.Transform.TransformTime.Second > 0) data += $"{r.Transform.TransformTime.Second} 秒";
+                    string data = "残り 約";
+                    if (r.Transform.TransformTime.Day > 0) data += $" {r.Transform.TransformTime.Day} 日";
+                    if (r.Transform.TransformTime.Hour > 0) data += $" {r.Transform.TransformTime.Hour} 時間";
+                    if (r.Transform.TransformTime.Minute > 0) data += $" {r.Transform.TransformTime.Minute} 分";
+                    if (r.Transform.TransformTime.Second > 0) data += $" {r.Transform.TransformTime.Second} 秒";
                     label9.Text = data;
                 }
                 label_expendition_num.Text = $"{r.Expedition.Dispatched.Current} / {r.Expedition.Dispatched.Max}";
@@ -88,7 +83,6 @@ namespace Genshin_Checker.Window
             }
             else
             {
-
                 panel_main.Visible = false;
                 panel_Error.Visible = true;
                 if (Note.Meta.Retcode!= 0)
@@ -98,9 +92,15 @@ namespace Genshin_Checker.Window
                     label_ErrorMessage.Text = $"エラーコード : {Note.Meta.Retcode}\n{Note.Meta.Message}";
                 }
             }
+            UiUpdate.Interval = 1000 - (DateTime.Now - TruncateToSeconds(DateTime.Now)).Milliseconds;
+            UiUpdate.Start();
             
         }
 
+        static DateTime TruncateToSeconds(DateTime dateTime)
+        {
+            return dateTime.AddTicks(-(dateTime.Ticks % TimeSpan.TicksPerSecond));
+        }
         private void label4_Click(object sender, EventArgs e)
         {
 
@@ -120,9 +120,6 @@ namespace Genshin_Checker.Window
         {
             var browser = new BrowserApp.BattleAuth();
             browser.ShowDialog(this);
-            ServerUpdate.Stop();
-            ServerUpdate.Interval = 1;
-            ServerUpdate.Start();
         }
     }
 }

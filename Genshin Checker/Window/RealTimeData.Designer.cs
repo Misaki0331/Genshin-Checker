@@ -29,14 +29,13 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RealTimeData));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.ServerUpdate = new System.Windows.Forms.Timer(this.components);
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.UiUpdate = new System.Windows.Forms.Timer(this.components);
             this.panel_resin = new System.Windows.Forms.Panel();
             this.panel_comission = new System.Windows.Forms.Panel();
@@ -180,17 +179,6 @@
             this.label4.Text = "-/-";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.label4.Click += new System.EventHandler(this.label4_Click);
-            // 
-            // ServerUpdate
-            // 
-            this.ServerUpdate.Enabled = true;
-            this.ServerUpdate.Interval = 1;
-            this.ServerUpdate.Tick += new System.EventHandler(this.ServerUpdate_Tick);
-            // 
-            // timer1
-            // 
-            this.timer1.Enabled = true;
-            this.timer1.Interval = 1;
             // 
             // UiUpdate
             // 
@@ -659,6 +647,7 @@
             this.Controls.Add(this.panel_main);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "RealTimeData";
             this.Text = "リアルタイム情報";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -698,8 +687,6 @@
         private Label label3;
         private PictureBox pictureBox2;
         private Label label4;
-        private System.Windows.Forms.Timer ServerUpdate;
-        private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Timer UiUpdate;
         private Panel panel_resin;
         private Panel panel_comission;

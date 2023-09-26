@@ -3,6 +3,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using System.Diagnostics;
+using Genshin_Checker.App;
 
 namespace Genshin_Checker
 {
@@ -12,6 +13,7 @@ namespace Genshin_Checker
         Window.TimerDisplay? TimerDisplay= null;
         Window.TimeGraph? TimeGraph= null;
         Window.RealTimeData? RealTimeData = null;
+        Window.SettingWindow? SettingWindow= null;
         public MainTray()
         {
             InitializeComponent();
@@ -28,6 +30,7 @@ namespace Genshin_Checker
             }
             //アプリの初期化&UIの初期化
             App.ProcessTime.Instance.option.OnlyActiveWindow = true;
+            if (Registry.GetValue("Config\\Setting", "IsCountBackground") == "True") App.ProcessTime.Instance.option.OnlyActiveWindow = false;
             App.ProcessTime.WatchDog = true;
             App.ProcessTime.Instance.SessionStart += TargetStart;
             App.ProcessTime.Instance.SessionEnd += TargetEnd;
@@ -36,6 +39,8 @@ namespace Genshin_Checker
             notification.Visible = true;
             //new Window.WebMiniBrowser(new("https://google.com"));
             //new BrowserApp.HoYoApp();
+            var realTime = App.RealTimeNote.Instance;
+            RealTimeNote.Instance.Notification += Notification;
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -44,15 +49,34 @@ namespace Genshin_Checker
         void TargetStart(object? sender, EventArgs e)
         {
             sessionTime = App.SessionCheck.Instance.Load();
+            if (Option.Instance.Notification.IsGameStart)
+            {
+                notification.BalloonTipTitle = "原神チェッカー";
+                notification.BalloonTipText = $"原神の起動を検知しました。";
+                notification.ShowBalloonTip(30000);
+            }
         }
         void ChangeState(object? sender, App.ProcessTime.Result e)
         {
         }
         void TargetEnd(object? sender, App.ProcessTime.Result e)
         {
-            notification.BalloonTipTitle = "原神チェッカー";
-            notification.BalloonTipText = $"遊んだ時間 : {(int)e.SessionTime.TotalHours} 時間 {e.SessionTime.Minutes:00} 分";
-            notification.ShowBalloonTip(30000);
+            if (Option.Instance.Notification.IsGameEnd)
+            {
+                notification.BalloonTipTitle = "原神チェッカー";
+                notification.BalloonTipText = $"遊んだ時間 : {(int)e.SessionTime.TotalHours} 時間 {e.SessionTime.Minutes:00} 分";
+                notification.ShowBalloonTip(30000);
+            }
+
+        }
+
+
+        void Notification(object? sender, string e)
+        {
+            Trace.WriteLine(sender);
+                notification.BalloonTipTitle = $"{sender}";
+                notification.BalloonTipText = $"{e}";
+                notification.ShowBalloonTip(30000);
 
         }
 
@@ -125,6 +149,23 @@ namespace Genshin_Checker
                 RealTimeData.Show();
                 if (RealTimeData.WindowState == FormWindowState.Minimized) RealTimeData.WindowState = FormWindowState.Normal;
                 RealTimeData.Activate();
+            }
+        }
+
+        private void 設定ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (SettingWindow == null || SettingWindow.IsDisposed)
+            {
+                SettingWindow = new();
+                SettingWindow.WindowState = FormWindowState.Normal;
+                SettingWindow.Show();
+                SettingWindow.Activate();
+            }
+            else
+            {
+                SettingWindow.Show();
+                if (SettingWindow.WindowState == FormWindowState.Minimized) SettingWindow.WindowState = FormWindowState.Normal;
+                SettingWindow.Activate();
             }
         }
     }

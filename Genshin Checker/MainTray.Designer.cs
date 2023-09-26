@@ -33,10 +33,10 @@
             this.notification = new System.Windows.Forms.NotifyIcon(this.components);
             this.NotificationMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.詳細プレイデータToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.リアルタイムデータToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.設定ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.終了ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Delay = new System.Windows.Forms.Timer(this.components);
-            this.リアルタイムデータToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.NotificationMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -55,26 +55,33 @@
             this.設定ToolStripMenuItem,
             this.終了ToolStripMenuItem});
             this.NotificationMenu.Name = "contextMenuStrip1";
-            this.NotificationMenu.Size = new System.Drawing.Size(181, 114);
+            this.NotificationMenu.Size = new System.Drawing.Size(155, 92);
             // 
             // 詳細プレイデータToolStripMenuItem
             // 
             this.詳細プレイデータToolStripMenuItem.Name = "詳細プレイデータToolStripMenuItem";
-            this.詳細プレイデータToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.詳細プレイデータToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
             this.詳細プレイデータToolStripMenuItem.Text = "詳細プレイデータ";
             this.詳細プレイデータToolStripMenuItem.Click += new System.EventHandler(this.詳細プレイデータToolStripMenuItem_Click);
             // 
+            // リアルタイムデータToolStripMenuItem
+            // 
+            this.リアルタイムデータToolStripMenuItem.Name = "リアルタイムデータToolStripMenuItem";
+            this.リアルタイムデータToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
+            this.リアルタイムデータToolStripMenuItem.Text = "リアルタイムデータ";
+            this.リアルタイムデータToolStripMenuItem.Click += new System.EventHandler(this.リアルタイムデータToolStripMenuItem_Click);
+            // 
             // 設定ToolStripMenuItem
             // 
-            this.設定ToolStripMenuItem.Enabled = false;
             this.設定ToolStripMenuItem.Name = "設定ToolStripMenuItem";
-            this.設定ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.設定ToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
             this.設定ToolStripMenuItem.Text = "設定";
+            this.設定ToolStripMenuItem.Click += new System.EventHandler(this.設定ToolStripMenuItem_Click);
             // 
             // 終了ToolStripMenuItem
             // 
             this.終了ToolStripMenuItem.Name = "終了ToolStripMenuItem";
-            this.終了ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.終了ToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
             this.終了ToolStripMenuItem.Text = "終了";
             this.終了ToolStripMenuItem.Click += new System.EventHandler(this.終了ToolStripMenuItem_Click);
             // 
@@ -82,13 +89,6 @@
             // 
             this.Delay.Enabled = true;
             this.Delay.Tick += new System.EventHandler(this.Delay_Tick);
-            // 
-            // リアルタイムデータToolStripMenuItem
-            // 
-            this.リアルタイムデータToolStripMenuItem.Name = "リアルタイムデータToolStripMenuItem";
-            this.リアルタイムデータToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.リアルタイムデータToolStripMenuItem.Text = "リアルタイムデータ";
-            this.リアルタイムデータToolStripMenuItem.Click += new System.EventHandler(this.リアルタイムデータToolStripMenuItem_Click);
             // 
             // MainTray
             // 

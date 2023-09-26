@@ -12,6 +12,7 @@ using System.Net;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Windows.Forms.AxHost;
 
 namespace Genshin_Checker.App
 {
@@ -26,6 +27,8 @@ namespace Genshin_Checker.App
             };
             ServerUpdate.Tick += ServerUpdate_Tick;
         }
+
+        public event EventHandler<string>? Notification;
         public Genshin_Checker.App.Store.RealTimeNote.Data Data { get; private set; } = new();
         static DateTime TruncateToSeconds(DateTime dateTime)
         {
@@ -39,6 +42,18 @@ namespace Genshin_Checker.App
                 var json = await getNote();
                 if (json.retcode == 0 && json.message == "OK")
                 {
+
+                    if (Data.RealTime.Resin.Current < json.data.max_resin && json.data.current_resin >= json.data.max_resin)
+                    {
+                        if (Option.Instance.Notification.RealTimeNote.ResinMax)
+                            Notification?.Invoke("樹脂上限到達通知", $"現在樹脂が {json.data.current_resin} 貯まっています。");
+                    }
+                    else if (Data.RealTime.Resin.Current < 120 && json.data.current_resin >= 120)
+                    {
+                        if (Option.Instance.Notification.RealTimeNote.Resin120)
+                            Notification?.Invoke("樹脂到達通知", $"現在樹脂が {json.data.current_resin} 貯まっています。");
+                    }
+
                     Data.RealTime.Resin.Current = json.data.current_resin;
                     Data.RealTime.Resin.Max = json.data.max_resin;
                     if(int.TryParse(json.data.resin_recovery_time,out int time))
@@ -58,6 +73,17 @@ namespace Genshin_Checker.App
                         ServerUpdate.Interval = 60000;
                     }
                     ServerUpdate.Start();
+
+                    if (Data.RealTime.RealmCoin.Current < json.data.max_home_coin && json.data.current_home_coin >= json.data.max_home_coin)
+                    {
+                        if (Option.Instance.Notification.RealTimeNote.RealmCoinMax)
+                            Notification?.Invoke("塵歌壺の洞天宝銭の上限到達通知", $"洞天宝銭が現在 {json.data.current_home_coin} 貯まっています。");
+                    }
+                    else if (Data.RealTime.RealmCoin.Current < 1800 && json.data.current_home_coin >= 1800)
+                    {
+                        if (Option.Instance.Notification.RealTimeNote.RealmCoin1800)
+                            Notification?.Invoke("塵歌壺の洞天宝銭の到達通知", $"洞天宝銭が現在 {json.data.current_home_coin} 貯まっています。");
+                    }
                     Data.RealTime.RealmCoin.Current = json.data.current_home_coin;
                     Data.RealTime.RealmCoin.Max = json.data.max_home_coin;
                     if(int.TryParse(json.data.home_coin_recovery_time,out time))
@@ -72,6 +98,11 @@ namespace Genshin_Checker.App
                     Data.RealTime.Commission.IsClaimed = json.data.is_extra_task_reward_received;
                     Data.RealTime.DiscountResin.Current = json.data.remain_resin_discount_num;
                     Data.RealTime.DiscountResin.Max = json.data.resin_discount_num_limit;
+                    if (!Data.RealTime.Transform.IsReached && json.data.transformer.recovery_time.reached)
+                    {
+                        if (Option.Instance.Notification.RealTimeNote.TransformerReached)
+                            Notification?.Invoke("参量物質変化器が利用可能", $"今週の変換もお忘れなく！");
+                    }
                     Data.RealTime.Transform.IsReached = json.data.transformer.recovery_time.reached;
                     Data.RealTime.Transform.TransformTime.Day = json.data.transformer.recovery_time.Day;
                     Data.RealTime.Transform.TransformTime.Hour = json.data.transformer.recovery_time.Hour;
@@ -79,9 +110,16 @@ namespace Genshin_Checker.App
                     Data.RealTime.Transform.TransformTime.Second = json.data.transformer.recovery_time.Second;
                     Data.RealTime.Expedition.Dispatched.Current = json.data.current_expedition_num;
                     Data.RealTime.Expedition.Dispatched.Max = json.data.max_expedition_num;
+                    int finished = 0, total = 0, finished2= 0;
+                    foreach(var ex in Data.RealTime.Expedition.Expeditions)
+                    {
+                        total++;
+                        if (ex.Status == "Finished") finished++;
+                    }
                     Data.RealTime.Expedition.Expeditions.Clear();
                     foreach(var ex in json.data.expeditions)
                     {
+                        if (ex.status == "Finished") finished2++;
                         DateTime EndTime = DateTime.MinValue;
                         if (int.TryParse(ex.remained_time, out time))
                         {
@@ -96,10 +134,16 @@ namespace Genshin_Checker.App
                             EstimatedTime = EndTime,
                         });
                     }
+                    if (finished != total && finished2 == Data.RealTime.Expedition.Expeditions.Count)
+                    {
+                        if(Option.Instance.Notification.RealTimeNote.ExpeditionAllCompleted)
+                            Notification?.Invoke("探索派遣が完了しました", $"ゲームを開き報酬を獲得してください。");
+                    }
                     Data.Meta.LatestSuccess = DateTime.Now;
                     Data.Meta.Retcode = 0;
                     Data.Meta.IsAPIError = false;
                     Data.Meta.Message = "OK";
+
                 }
                 else
                 {
@@ -131,7 +175,7 @@ namespace Genshin_Checker.App
         const string CHECKIN_ACTID = "e202102251931481";
 
         private string Cookie = "";
-        private int uid = 0;
+        public int uid { get; private set; } = 0;
 
         private readonly System.Windows.Forms.Timer ServerUpdate;
 
