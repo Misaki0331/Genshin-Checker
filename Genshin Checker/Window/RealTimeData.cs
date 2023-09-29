@@ -39,7 +39,7 @@ namespace Genshin_Checker.Window
                     label3.Text = $"残り {(time / 3600)}:{(time / 60 % 60):00}:{(time % 60):00}";
                 }
                 if (r.Commission.IsClaimed) label4.Text = $"{r.Commission.Current} / {r.Commission.Max} 完了";
-                else if (r.Commission.Current == r.Commission.Max) label4.Text = $"{r.Commission.Current} / {r.Commission.Max} 報酬未受取";
+                else if (r.Commission.Current == r.Commission.Max) label4.Text = $"{r.Commission.Current} / {r.Commission.Max} 未受取";
                 else label4.Text = $"{r.Commission.Current} / {r.Commission.Max}";
 
                 label5.Text = $"{r.RealmCoin.Current}";
