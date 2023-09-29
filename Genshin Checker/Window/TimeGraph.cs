@@ -140,7 +140,7 @@ namespace Genshin_Checker.Window
                     {
                         Values = ObservableDayFore,
                         Stroke = null,
-                        DataLabelsPaint = new SolidColorPaint(new SKColor(45, 45, 45)),
+                        DataLabelsPaint = new SolidColorPaint(new SKColor(45, 45, 45,0)),
                         DataLabelsSize= 0,
                         Name = "Active",
                         Fill = new SolidColorPaint(SKColors.Green),
@@ -149,7 +149,7 @@ namespace Genshin_Checker.Window
                     {
                         Values = ObservableDayBack,
                         Stroke = null,
-                        DataLabelsPaint = new SolidColorPaint(new SKColor(45, 45, 45)),
+                        DataLabelsPaint = new SolidColorPaint(new SKColor(45, 45, 45,0)),
                         DataLabelsSize= 0,
                         Name = "Background",
                         Fill= new SolidColorPaint(SKColors.Orange),
@@ -195,7 +195,7 @@ namespace Genshin_Checker.Window
                     {
                         Values = ObservableWeekDawn,
                         Stroke = null,
-                        DataLabelsPaint = new SolidColorPaint(new SKColor(45, 45, 45)),
+                        DataLabelsPaint = new SolidColorPaint(new SKColor(45, 45, 45,0)),
                         DataLabelsSize= 0,
                         Name = "0:00 - 5:59",
                         Fill = new SolidColorPaint(new SKColor(0xFF000066)),
@@ -204,7 +204,7 @@ namespace Genshin_Checker.Window
                     {
                         Values = ObservableWeekMorning,
                         Stroke = null,
-                        DataLabelsPaint = new SolidColorPaint(new SKColor(45, 45, 45)),
+                        DataLabelsPaint = new SolidColorPaint(new SKColor(45, 45, 45,0)),
                         DataLabelsSize= 0,
                         Name = "6:00 - 11:59",
                         Fill = new SolidColorPaint(new SKColor(0xFF99CCFF)),
@@ -213,7 +213,7 @@ namespace Genshin_Checker.Window
                     {
                         Values = ObservableWeekAfternoon,
                         Stroke = null,
-                        DataLabelsPaint = new SolidColorPaint(new SKColor(45, 45, 45)),
+                        DataLabelsPaint = new SolidColorPaint(new SKColor(45, 45, 45,0)),
                         DataLabelsSize= 0,
                         Name = "12:00 - 17:59",
                         Fill = new SolidColorPaint(new SKColor(0xFFFF9933)),
@@ -222,7 +222,7 @@ namespace Genshin_Checker.Window
                     {
                         Values = ObservableWeekNight,
                         Stroke = null,
-                        DataLabelsPaint = new SolidColorPaint(new SKColor(45, 45, 45)),
+                        DataLabelsPaint = new SolidColorPaint(new SKColor(45, 45, 45,0)),
                         DataLabelsSize= 0,
                         Name = "18:00 - 23:59",
                         Fill = new SolidColorPaint(new SKColor(0xFFFF99CC)),
@@ -268,7 +268,7 @@ namespace Genshin_Checker.Window
                     {
                         Values = ObservableMonth,
                         //Stroke = null,
-                        DataLabelsPaint = new SolidColorPaint(new SKColor(45, 45, 45)),
+                        DataLabelsPaint = new SolidColorPaint(new SKColor(45, 45, 45, 0)),
                         DataLabelsSize= 0,
                         Name = "Active Time",
                         //Fill = new SolidColorPaint(new SKColor(0xFFFF99CC)),
