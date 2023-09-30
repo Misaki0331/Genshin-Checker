@@ -5,7 +5,8 @@ using System.Runtime.InteropServices;
 using System.Diagnostics;
 using Genshin_Checker.App;
 using Genshin_Checker.Window;
-
+using Newtonsoft.Json;
+using Genshin_Checker.Model.HoYoLab;
 namespace Genshin_Checker
 {
     public partial class MainTray : Form
@@ -223,10 +224,7 @@ namespace Genshin_Checker
 
         private async void testToolStripMenuItem_ClickAsync(object sender, EventArgs e)
         {
-            //Trace.WriteLine(await RealTimeNote.Instance.getraw("https://sg-hk4e-api.hoyolab.com/event/ysledgeros/month_info", "month=7&region=os_asia&uid=807810806&lang=ja-jp"));
-            //Trace.WriteLine(await RealTimeNote.Instance.getraw(" https://sg-hk4e-api.hoyolab.com/event/ysledgeros/month_detail", "month=0&current_page=180&type=2&region=os_asia&uid=807810806&lang=ja-jp"));
-            Trace.WriteLine(await RealTimeNote.Instance.getraw(" \r\nhttps://bbs-api-os.hoyolab.com/game_record/genshin/api/spiralAbyss", "server=os_asia&role_id=807810806&schedule_type=1"));
-            //Trace.WriteLine(Registry.GetAppReg("miHoYo", "Genshin Impact", "GENERAL_DATA_h2389025596"));
+            
         }
     }
 }

@@ -60,7 +60,10 @@ namespace Genshin_Checker.App
                     {
                         Data.RealTime.Resin.RecoveryTime = TruncateToSeconds(DateTime.Now).AddSeconds(time);
                         if (Data.RealTime.Resin.RecoveryTime > DateTime.Now)
+                        {
                             ServerUpdate.Interval = (int)(Data.RealTime.Resin.RecoveryTime - DateTime.Now).TotalMilliseconds % 60000;
+                            if (ServerUpdate.Interval < 5000) ServerUpdate.Interval = 5000;
+                        }
                         else
                         {
                             Data.RealTime.Resin.RecoveryTime = DateTime.MinValue;
@@ -162,6 +165,7 @@ namespace Genshin_Checker.App
                 ServerUpdate.Interval = 60000;
                 ServerUpdate.Start();
             }
+            
             Trace.WriteLine($"次のサーバー情報更新は {ServerUpdate.Interval} ミリ秒後です。メッセージ : {Data.Meta.Message}");
 
         }
