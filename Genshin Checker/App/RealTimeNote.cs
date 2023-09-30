@@ -268,7 +268,41 @@ namespace Genshin_Checker.App
             if (store == null) throw new ArgumentNullException($"Couldn't deserialized. Data : \"{responseBody}\"");
             return store;
         }
-        
+
+        public async Task<string> getraw(string URL, string parm="")
+        {
+            if (uid == 0) throw new NoNullAllowedException("ログインデータがありません。\n連携してください。");
+            string role_id = uid.ToString();
+            string server = GetServer(uid);
+            string query = $"role_id={role_id}&server={server}";
+            string full_url = $"{URL}?{parm}";
+            var uri = new Uri(full_url);
+            string root = $"{uri.Scheme}://{uri.Host}";
+            Dictionary<string, string> headers = new Dictionary<string, string>()
+                {
+                    { "Origin", root },
+                    { "Referer", root },
+                    { "Accept", "application/json, text/plain, */*" },
+                    { "Accept-Encoding", "None" },
+                    { "Accept-Language", "en-US;q=0.5" },
+                    { "x-rpc-app_version", "1.5.0" },
+                    { "x-rpc-client_type", "5" },
+                    { "x-rpc-language", "en-us" },
+                    { "User-Agent", "Mozilla/5.0 (X11; Linux x86_64; rv:100.0) Gecko/20100101 Firefox/100.0" },
+                    { "Cookie", Cookie },
+                    { "DS", DS() }
+                };
+            HttpClient client = new HttpClient();
+            client.DefaultRequestHeaders.Clear();
+            foreach (KeyValuePair<string, string> header in headers)
+                client.DefaultRequestHeaders.Add(header.Key, header.Value);
+
+            HttpResponseMessage response = await client.GetAsync(full_url);
+            response.EnsureSuccessStatusCode();
+            var responseBody = await response.Content.ReadAsStringAsync();
+            return responseBody;
+        }
+
     }
 }
 namespace Genshin_Checker.App.Store.RealTimeNote 

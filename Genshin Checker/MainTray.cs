@@ -15,7 +15,7 @@ namespace Genshin_Checker
         Window.TimeGraph? TimeGraph= null;
         Window.RealTimeData? RealTimeData = null;
         Window.SettingWindow? SettingWindow= null;
-        public MainTray()
+        public MainTray(bool safemode=false)
         {
             InitializeComponent();
             var cmds = System.Environment.GetCommandLineArgs();
@@ -29,6 +29,8 @@ namespace Genshin_Checker
                         break;
                 }
             }
+
+            
             //アプリの初期化&UIの初期化
             App.ProcessTime.Instance.option.OnlyActiveWindow = true;
             if (Registry.GetValue("Config\\Setting", "IsCountBackground") == "True") App.ProcessTime.Instance.option.OnlyActiveWindow = false;
@@ -42,6 +44,20 @@ namespace Genshin_Checker
             //new BrowserApp.HoYoApp();
             var realTime = App.RealTimeNote.Instance;
             RealTimeNote.Instance.Notification += Notification;
+            var name = System.Reflection.Assembly.GetExecutingAssembly().GetName();
+            Console.WriteLine("{0} {1}", name.Name, name.Version);
+
+            versionNameToolStripMenuItem.Text = $"{name.Name} {name.Version}";
+#if DEBUG
+            versionNameToolStripMenuItem.Text += "(DEBUG)";
+#endif
+            if (safemode)
+            {
+                Trace.WriteLine("【警告】現在セーフモードです。アプリは読み取り専用になっています。");
+
+                versionNameToolStripMenuItem.Text += "[Readonly]";
+                Registry.IsReadOnly = true;
+            }
         }
 
         void TargetStart(object? sender, EventArgs e)
@@ -203,6 +219,14 @@ namespace Genshin_Checker
                 var n = new ErrorMessage(ex.GetType().ToString(), ex.Message);
                 n.ShowDialog(this);
             }
+        }
+
+        private async void testToolStripMenuItem_ClickAsync(object sender, EventArgs e)
+        {
+            //Trace.WriteLine(await RealTimeNote.Instance.getraw("https://sg-hk4e-api.hoyolab.com/event/ysledgeros/month_info", "month=7&region=os_asia&uid=807810806&lang=ja-jp"));
+            //Trace.WriteLine(await RealTimeNote.Instance.getraw(" https://sg-hk4e-api.hoyolab.com/event/ysledgeros/month_detail", "month=0&current_page=180&type=2&region=os_asia&uid=807810806&lang=ja-jp"));
+            Trace.WriteLine(await RealTimeNote.Instance.getraw(" \r\nhttps://bbs-api-os.hoyolab.com/game_record/genshin/api/spiralAbyss", "server=os_asia&role_id=807810806&schedule_type=1"));
+            //Trace.WriteLine(Registry.GetAppReg("miHoYo", "Genshin Impact", "GENERAL_DATA_h2389025596"));
         }
     }
 }

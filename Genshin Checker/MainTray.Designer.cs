@@ -38,7 +38,10 @@
             this.設定ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.終了ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.testToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Delay = new System.Windows.Forms.Timer(this.components);
+            this.versionNameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.NotificationMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -51,14 +54,17 @@
             // NotificationMenu
             // 
             this.NotificationMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.versionNameToolStripMenuItem,
+            this.toolStripSeparator3,
             this.詳細プレイデータToolStripMenuItem,
             this.リアルタイムデータToolStripMenuItem,
             this.toolStripSeparator2,
             this.設定ToolStripMenuItem,
             this.toolStripSeparator1,
-            this.終了ToolStripMenuItem});
+            this.終了ToolStripMenuItem,
+            this.testToolStripMenuItem});
             this.NotificationMenu.Name = "contextMenuStrip1";
-            this.NotificationMenu.Size = new System.Drawing.Size(181, 126);
+            this.NotificationMenu.Size = new System.Drawing.Size(181, 176);
             // 
             // 詳細プレイデータToolStripMenuItem
             // 
@@ -98,10 +104,29 @@
             this.終了ToolStripMenuItem.Text = "終了";
             this.終了ToolStripMenuItem.Click += new System.EventHandler(this.終了ToolStripMenuItem_Click);
             // 
+            // testToolStripMenuItem
+            // 
+            this.testToolStripMenuItem.Name = "testToolStripMenuItem";
+            this.testToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.testToolStripMenuItem.Text = "TestFunction";
+            this.testToolStripMenuItem.Click += new System.EventHandler(this.testToolStripMenuItem_ClickAsync);
+            // 
             // Delay
             // 
             this.Delay.Enabled = true;
             this.Delay.Tick += new System.EventHandler(this.Delay_Tick);
+            // 
+            // versionNameToolStripMenuItem
+            // 
+            this.versionNameToolStripMenuItem.Enabled = false;
+            this.versionNameToolStripMenuItem.Name = "versionNameToolStripMenuItem";
+            this.versionNameToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.versionNameToolStripMenuItem.Text = "VersionName";
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(177, 6);
             // 
             // MainTray
             // 
@@ -136,5 +161,8 @@
         private ToolStripMenuItem リアルタイムデータToolStripMenuItem;
         private ToolStripSeparator toolStripSeparator2;
         private ToolStripSeparator toolStripSeparator1;
+        private ToolStripMenuItem testToolStripMenuItem;
+        private ToolStripMenuItem versionNameToolStripMenuItem;
+        private ToolStripSeparator toolStripSeparator3;
     }
 }

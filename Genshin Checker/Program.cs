@@ -36,19 +36,21 @@ namespace Genshin_Checker
                     //別のアプリケーションがミューテックスを解放しないで終了した時
                     hasHandle = true;
                 }
+#if !DEBUG
                 //ミューテックスを得られたか調べる
-                if (hasHandle == false)
+                if (!hasHandle)
                 {
                     //得られなかった場合は、すでに起動していると判断して終了
                     MessageBox.Show("多重起動はできません。","Genshin Checker",MessageBoxButtons.OK,MessageBoxIcon.Error);
                     return;
                 }
+#endif
 
                 //はじめからMainメソッドにあったコードを実行
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
                 
-                Application.Run(new MainTray());
+                Application.Run(new MainTray(safemode:!hasHandle));
             }
             finally
             {

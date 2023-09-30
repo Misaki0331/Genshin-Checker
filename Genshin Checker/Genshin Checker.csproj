@@ -12,8 +12,10 @@
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
     <ApplicationIcon>resource\nahida.ico</ApplicationIcon>
-    <Version>0.1</Version>
+    <Version>0.3.0</Version>
     <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
+    <AssemblyVersion>0.3.0.0</AssemblyVersion>
+    <FileVersion>0.3.0.0</FileVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -84,5 +86,14 @@
       <LastGenOutput>SeasonName.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
+
+  <Target Name="BeforeBuild">
+    <ItemGroup>
+      <AssemblyAttributes Include="AssemblyVersion">
+        <_Parameter1>1.0.0.$([System.DateTime]::Now.ToString(`yyMMdd`))</_Parameter1>
+      </AssemblyAttributes>
+    </ItemGroup>
+    <WriteCodeFragment Language="C#" OutputFile="BuildVersion.cs" AssemblyAttributes="@(AssemblyAttributes)" />
+  </Target>
 
 </Project>
