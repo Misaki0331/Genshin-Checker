@@ -18,7 +18,7 @@ using System.Threading.Tasks;
 namespace Genshin_Checker.Model.HoYoLab.GameRecords
 {
     #region HoYoLabマップリンク(未使用)
-    
+
     public class FieldExtMap_Link
     {
         [JsonProperty("link")]
@@ -26,59 +26,12 @@ namespace Genshin_Checker.Model.HoYoLab.GameRecords
 
         [JsonProperty("backup_link")]
         public string backup_link { get; set; } = string.Empty;
-    
-        /*
-    public class FieldExtMap
-    {
-        [JsonProperty("spiral_abyss")]
-        public FieldExtMap_Link spiral_abyss { get; set; }
-
-        [JsonProperty("anemoculus_number")]
-        public FieldExtMap_Link anemoculus_number { get; set; }
-
-        [JsonProperty("hydroculus_number")]
-        public FieldExtMap_Link hydroculus_number { get; set; }
-
-        [JsonProperty("domain_number")]
-        public FieldExtMap_Link domain_number { get; set; }
-
-        [JsonProperty("geoculus_number")]
-        public FieldExtMap_Link geoculus_number { get; set; }
-
-        [JsonProperty("exquisite_chest_number")]
-        public FieldExtMap_Link exquisite_chest_number { get; set; }
-
-        [JsonProperty("way_point_number")]
-        public FieldExtMap_Link way_point_number { get; set; }
-
-        [JsonProperty("dendroculus_number")]
-        public FieldExtMap_Link dendroculus_number { get; set; }
-
-        [JsonProperty("avatar_number")]
-        public FieldExtMap_Link avatar_number { get; set; }
-
-        [JsonProperty("electroculus_number")]
-        public FieldExtMap_Link electroculus_number { get; set; }
-
-        [JsonProperty("luxurious_chest_number")]
-        public FieldExtMap_Link luxurious_chest_number { get; set; }
-
-        [JsonProperty("magic_chest_number")]
-        public FieldExtMap_Link magic_chest_number { get; set; }
-
-        [JsonProperty("precious_chest_number")]
-        public FieldExtMap_Link precious_chest_number { get; set; }
-
-        [JsonProperty("common_chest_number")]
-        public FieldExtMap_Link common_chest_number { get; set; }
     }
-
-    */
     #endregion
     public class AreaExplorationList
     {
         [JsonProperty("name")]
-        public string name { get; set; }
+        public string name { get; set; } = string.Empty;
 
         [JsonProperty("exploration_percentage")]
         public int exploration_percentage { get; set; }
@@ -272,7 +225,7 @@ namespace Genshin_Checker.Model.HoYoLab.GameRecords
         public int hydroculus_number { get; set; }
 
         [JsonProperty("field_ext_map")]
-        public KeyValuePair<FieldExtMap_Link> field_ext_map { get; set; } = null;
+        public KeyValuePair<string,FieldExtMap_Link> field_ext_map { get; set; }
     }
 
     public class WorldExploration
