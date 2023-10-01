@@ -5,6 +5,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+/*---------------------------------------------------------------------------------------------+
+| 機能名 : キャラクタービルド情報                                                              |
+| URL : https://enka.network/api/uid/{UID}                                                     |
+| パラメーター : なし                                                                          |
+| UID : [Number] ゲーム内UID アジア圏なら8から始まる9桁 例: 「800000000」                      |
++---------------------------------------------------------------------------------------------*/
+
 namespace Genshin_Checker.Model.EnkaNetwork.ShowCase 
 { 
 

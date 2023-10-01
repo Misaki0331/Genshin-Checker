@@ -18,7 +18,7 @@ using System.Threading.Tasks;
 namespace Genshin_Checker.Model.HoYoLab.GameRecords
 {
     #region HoYoLabマップリンク(未使用)
-    /*
+    
     public class FieldExtMap_Link
     {
         [JsonProperty("link")]
@@ -26,8 +26,8 @@ namespace Genshin_Checker.Model.HoYoLab.GameRecords
 
         [JsonProperty("backup_link")]
         public string backup_link { get; set; } = string.Empty;
-    }
-
+    
+        /*
     public class FieldExtMap
     {
         [JsonProperty("spiral_abyss")]
@@ -272,7 +272,7 @@ namespace Genshin_Checker.Model.HoYoLab.GameRecords
         public int hydroculus_number { get; set; }
 
         [JsonProperty("field_ext_map")]
-        public object? field_ext_map { get; set; } = null;
+        public KeyValuePair<FieldExtMap_Link> field_ext_map { get; set; } = null;
     }
 
     public class WorldExploration
