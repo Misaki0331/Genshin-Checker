@@ -43,8 +43,8 @@ namespace Genshin_Checker
             notification.Visible = true;
             //new Window.WebMiniBrowser(new("https://google.com"));
             //new BrowserApp.HoYoApp();
-            var realTime = App.RealTimeNote.Instance;
-            RealTimeNote.Instance.Notification += Notification;
+            Store.Accounts.Data.AccountAdded += AccountAdded;
+            Store.Accounts.Data.Load();
             var name = System.Reflection.Assembly.GetExecutingAssembly().GetName();
             Console.WriteLine("{0} {1}", name.Name, name.Version);
 
@@ -59,9 +59,12 @@ namespace Genshin_Checker
                 versionNameToolStripMenuItem.Text += "[Readonly]";
                 Registry.IsReadOnly = true;
             }
-            account = new(Registry.GetValue("Config\\UserData", "Cookie"), int.Parse(Registry.GetValue("Config\\UserData", "UID")));
         }
-        App.Account account;
+
+        void AccountAdded(object? sender, App.Account e)
+        {
+            e.RealTimeNote.Notification += Notification;
+        }
         void TargetStart(object? sender, EventArgs e)
         {
             sessionTime = App.SessionCheck.Instance.Load();
@@ -151,7 +154,13 @@ namespace Genshin_Checker
             try { 
             if (RealTimeData == null || RealTimeData.IsDisposed)
             {
-                RealTimeData = new();
+                    if (Store.Accounts.Data.Count == 0)
+                    {
+                        var n = new ErrorMessage("連携しているアカウントはまだ無いようです。", "お手数ですが、以下の操作を行って認証してください。\n設定⇒アプリ連携⇒HoYoLabとの連携");
+                        n.ShowDialog(this);
+                        return;
+                    }
+                    RealTimeData = new(Store.Accounts.Data[0]);
                 RealTimeData.WindowState = FormWindowState.Normal;
                 RealTimeData.Show();
                 RealTimeData.Activate();
@@ -225,27 +234,9 @@ namespace Genshin_Checker
 
         private async void testToolStripMenuItem_ClickAsync(object sender, EventArgs e)
         {
-            //Trace.WriteLine(await RealTimeNote.Instance.getraw("https://sg-hk4e-api.hoyolab.com/event/ysledgeros/month_info", "month=7&region=os_asia&uid=807810806&lang=ja-jp"));
-            // var info = JsonConvert.DeserializeObject<Root<Model.HoYoLab.TravelersDiary.Infomation.Data>>(await RealTimeNote.Instance.getraw("https://sg-hk4e-api.hoyolab.com/event/ysledgeros/month_info", "month=7&region=os_asia&uid=807810806&lang=ja-jp"));
-
-            //List<Model.HoYoLab.TravelersDiary.Detail.List> list = new();
-            /*for (int i = 1; i < 9999; i++)
-            {
-                var detail = JsonConvert.DeserializeObject<Root<Model.HoYoLab.TravelersDiary.Detail.Data>>(await RealTimeNote.Instance.getraw(" https://sg-hk4e-api.hoyolab.com/event/ysledgeros/month_detail", $"month=7&current_page={i}&type=2&region=os_asia&uid=807810806&lang=ja-jp"));
-                if(detail==null)throw new ArgumentNullException(nameof(detail));
-                if (detail.Data == null) throw new InvalidDataException($"API Error - {detail.Message}({detail.Retcode})");
-                if (detail.Data.Current_page != i) throw new InvalidDataException($"Current Page is {i} but api was returned {detail.Data.Current_page}");
-                if (detail.Data.List.Count == 0) break;
-                foreach(var a in detail.Data.List)
-                {
-                    list.Add(a);
-                    //Trace.WriteLine($"[{list.Count}] {a.Time} : {a.Action}({a.Action_id}) x{a.Num}");
-                }
-                Trace.WriteLine($"Page {i} 取得完了");
-            }*/
-
-            //Trace.WriteLine(JsonConvert.SerializeObject(list));
-
+            Account account;
+            if (Store.Accounts.Data.Count == 0) return;
+            account = Store.Accounts.Data[0];
             var user = await account.GetServerAccounts(Account.Servers.os_asia);
             var nowabyss = await account.GetSpiralAbyss(true);
             var oldabyss = await account.GetSpiralAbyss(false);
@@ -253,9 +244,6 @@ namespace Genshin_Checker
             var realtime = await account.GetRealTimeNote();
             var character = await account.GetCharacters();
             var diaryinfo = await account.GetTravelersDiaryInfo();
-
-            //Trace.WriteLine(await RealTimeNote.Instance.getraw("https://bbs-api-os.hoyolab.com/game_record/genshin/api/spiralAbyss", "server=os_asia&role_id=807810806&schedule_type=2&lang=ja-jp"));
-            //Trace.WriteLine(Registry.GetAppReg("miHoYo", "Genshin Impact", "GENERAL_DATA_h2389025596"));
         }
     }
 }

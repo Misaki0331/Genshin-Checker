@@ -14,12 +14,15 @@ namespace Genshin_Checker.App
 {
     public class Account
     {
-
+        public RealTimeNote RealTimeNote;
         public Account(string cookie, int UID) {
             Server = GetServer(UID);
             Cookie = cookie;
-            this.UID = UID;
+            _uid = UID;
+            CheckUID(_uid);
             Culture = CultureInfo.CurrentCulture;
+            RealTimeNote = new(this);
+
         }
 
         /// <summary>

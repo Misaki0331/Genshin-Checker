@@ -1,4 +1,5 @@
-﻿using Genshin_Checker.Window;
+﻿using Genshin_Checker.App;
+using Genshin_Checker.Window;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -18,9 +19,10 @@ namespace Genshin_Checker.BrowserApp
     {
         readonly bool IsAutoAuth = false;
         readonly Button AuthButton;
-        public BattleAuth(bool isAutoAuth=true) : base(new("https://act.hoyolab.com/app/community-game-records-sea/index.html"), autoshow: false)
+        Account? account;
+        public BattleAuth(bool isAutoAuth=true,Account? account=null) : base(new("https://act.hoyolab.com/app/community-game-records-sea/index.html"), autoshow: false)
         {
-
+            this.account= account;
             Web.CoreWebView2InitializationCompleted += Web_CoreWebView2InitializationCompleted;
             //UrlBox.Visible = false;
             Size = new(1280, 720);
@@ -51,7 +53,25 @@ namespace Genshin_Checker.BrowserApp
                 {
                     try
                     {
-                        App.RealTimeNote.Instance.SetUserData(data.cookie, uid);
+                        if (account != null)
+                        {
+                            account.Cookie = data.cookie;
+                            account.UID = uid;
+                        }
+                        else
+                        {
+                            var instance = Store.Accounts.Data;
+                            var a = instance.Find(account=> account.UID == uid);
+                            if(a == null)
+                            {
+                                instance.Add(new Account(data.cookie, uid));
+                            }
+                            else
+                            {
+                                a.Cookie= data.cookie;
+                            }
+                            
+                        }
                         timer.Stop();
                         timer.Tick -= Timer_Tick;
                         Close();

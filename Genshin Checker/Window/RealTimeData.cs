@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Genshin_Checker.App;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,16 +15,18 @@ namespace Genshin_Checker.Window
 {
     public partial class RealTimeData : Form
     {
-        public RealTimeData()
+        Account account;
+        public RealTimeData(Account account)
         {
+            this.account = account;
             InitializeComponent();
         }
 
         private void UiUpdate_Tick(object sender, EventArgs e)
         {
             UiUpdate.Stop();
-            var Note = App.RealTimeNote.Instance.Data;
-            if (App.RealTimeNote.Instance.uid != 0) Text = $"リアルタイムノート (UID:{App.RealTimeNote.Instance.uid})";
+            var Note = account.RealTimeNote.Data;
+            if (account.UID!= 0) Text = $"リアルタイムノート (UID:{account.UID})";
             else Text = $"リアルタイムノート";
             if (Note.Meta.Message == "OK")
             {
@@ -120,7 +123,7 @@ namespace Genshin_Checker.Window
 
         private void button_Auth_Click(object sender, EventArgs e)
         {
-            var browser = new BrowserApp.BattleAuth();
+            var browser = new BrowserApp.BattleAuth(account:account);
             browser.ShowDialog(this);
         }
     }

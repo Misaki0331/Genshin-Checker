@@ -16,10 +16,11 @@ using static System.Windows.Forms.AxHost;
 
 namespace Genshin_Checker.App
 {
-    internal class RealTimeNote
+    public class RealTimeNote
     {
-        private RealTimeNote() {
-            LoadUserData();
+        private Account account;
+        public RealTimeNote(Account account) {
+            this.account = account;
             ServerUpdate = new()
             {
                 Interval = 100,
@@ -40,23 +41,21 @@ namespace Genshin_Checker.App
             try
             {
                 var json = await getNote();
-                if (json.retcode == 0 && json.message == "OK")
-                {
 
-                    if (Data.RealTime.Resin.Current < json.data.max_resin && json.data.current_resin >= json.data.max_resin)
+                    if (Data.RealTime.Resin.Current < json.max_resin && json.current_resin >= json.max_resin)
                     {
                         if (Option.Instance.Notification.RealTimeNote.ResinMax)
-                            Notification?.Invoke("樹脂上限到達通知", $"現在樹脂が {json.data.current_resin} 貯まっています。");
+                            Notification?.Invoke("樹脂上限到達通知", $"現在樹脂が {json.current_resin} 貯まっています。");
                     }
-                    else if (Data.RealTime.Resin.Current < 120 && json.data.current_resin >= 120)
+                    else if (Data.RealTime.Resin.Current < 120 && json.current_resin >= 120)
                     {
                         if (Option.Instance.Notification.RealTimeNote.Resin120)
-                            Notification?.Invoke("樹脂到達通知", $"現在樹脂が {json.data.current_resin} 貯まっています。");
+                            Notification?.Invoke("樹脂到達通知", $"現在樹脂が {json.current_resin} 貯まっています。");
                     }
 
-                    Data.RealTime.Resin.Current = json.data.current_resin;
-                    Data.RealTime.Resin.Max = json.data.max_resin;
-                    if(int.TryParse(json.data.resin_recovery_time,out int time))
+                    Data.RealTime.Resin.Current = json.current_resin;
+                    Data.RealTime.Resin.Max = json.max_resin;
+                    if(int.TryParse(json.resin_recovery_time,out int time))
                     {
                         Data.RealTime.Resin.RecoveryTime = TruncateToSeconds(DateTime.Now).AddSeconds(time);
                         if (Data.RealTime.Resin.RecoveryTime > DateTime.Now)
@@ -77,42 +76,42 @@ namespace Genshin_Checker.App
                     }
                     ServerUpdate.Start();
 
-                    if (Data.RealTime.RealmCoin.Current < json.data.max_home_coin && json.data.current_home_coin >= json.data.max_home_coin)
+                    if (Data.RealTime.RealmCoin.Current < json.max_home_coin && json.current_home_coin >= json.max_home_coin)
                     {
                         if (Option.Instance.Notification.RealTimeNote.RealmCoinMax)
-                            Notification?.Invoke("塵歌壺の洞天宝銭の上限到達通知", $"洞天宝銭が現在 {json.data.current_home_coin} 貯まっています。");
+                            Notification?.Invoke("塵歌壺の洞天宝銭の上限到達通知", $"洞天宝銭が現在 {json.current_home_coin} 貯まっています。");
                     }
-                    else if (Data.RealTime.RealmCoin.Current < 1800 && json.data.current_home_coin >= 1800)
+                    else if (Data.RealTime.RealmCoin.Current < 1800 && json.current_home_coin >= 1800)
                     {
                         if (Option.Instance.Notification.RealTimeNote.RealmCoin1800)
-                            Notification?.Invoke("塵歌壺の洞天宝銭の到達通知", $"洞天宝銭が現在 {json.data.current_home_coin} 貯まっています。");
+                            Notification?.Invoke("塵歌壺の洞天宝銭の到達通知", $"洞天宝銭が現在 {json.current_home_coin} 貯まっています。");
                     }
-                    Data.RealTime.RealmCoin.Current = json.data.current_home_coin;
-                    Data.RealTime.RealmCoin.Max = json.data.max_home_coin;
-                    if(int.TryParse(json.data.home_coin_recovery_time,out time))
+                    Data.RealTime.RealmCoin.Current = json.current_home_coin;
+                    Data.RealTime.RealmCoin.Max = json.max_home_coin;
+                    if(int.TryParse(json.home_coin_recovery_time,out time))
                     {
                         Data.RealTime.RealmCoin.RecoveryTime = TruncateToSeconds(DateTime.Now).AddSeconds(time);
                         if (Data.RealTime.Resin.RecoveryTime <= DateTime.Now) 
                             Data.RealTime.Resin.RecoveryTime = DateTime.MinValue;
                     }
                     else Data.RealTime.Resin.RecoveryTime = DateTime.MinValue;
-                    Data.RealTime.Commission.Current = json.data.finished_task_num;
-                    Data.RealTime.Commission.Max = json.data.total_task_num;
-                    Data.RealTime.Commission.IsClaimed = json.data.is_extra_task_reward_received;
-                    Data.RealTime.DiscountResin.Current = json.data.remain_resin_discount_num;
-                    Data.RealTime.DiscountResin.Max = json.data.resin_discount_num_limit;
-                    if (!Data.RealTime.Transform.IsReached && json.data.transformer.recovery_time.reached)
+                    Data.RealTime.Commission.Current = json.finished_task_num;
+                    Data.RealTime.Commission.Max = json.total_task_num;
+                    Data.RealTime.Commission.IsClaimed = json.is_extra_task_reward_received;
+                    Data.RealTime.DiscountResin.Current = json.remain_resin_discount_num;
+                    Data.RealTime.DiscountResin.Max = json.resin_discount_num_limit;
+                    if (!Data.RealTime.Transform.IsReached && json.transformer.recovery_time.reached)
                     {
                         if (Option.Instance.Notification.RealTimeNote.TransformerReached)
                             Notification?.Invoke("参量物質変化器が利用可能", $"今週の変換もお忘れなく！");
                     }
-                    Data.RealTime.Transform.IsReached = json.data.transformer.recovery_time.reached;
-                    Data.RealTime.Transform.TransformTime.Day = json.data.transformer.recovery_time.Day;
-                    Data.RealTime.Transform.TransformTime.Hour = json.data.transformer.recovery_time.Hour;
-                    Data.RealTime.Transform.TransformTime.Minute = json.data.transformer.recovery_time.Minute;
-                    Data.RealTime.Transform.TransformTime.Second = json.data.transformer.recovery_time.Second;
-                    Data.RealTime.Expedition.Dispatched.Current = json.data.current_expedition_num;
-                    Data.RealTime.Expedition.Dispatched.Max = json.data.max_expedition_num;
+                    Data.RealTime.Transform.IsReached = json.transformer.recovery_time.reached;
+                    Data.RealTime.Transform.TransformTime.Day = json.transformer.recovery_time.Day;
+                    Data.RealTime.Transform.TransformTime.Hour = json.transformer.recovery_time.Hour;
+                    Data.RealTime.Transform.TransformTime.Minute = json.transformer.recovery_time.Minute;
+                    Data.RealTime.Transform.TransformTime.Second = json.transformer.recovery_time.Second;
+                    Data.RealTime.Expedition.Dispatched.Current = json.current_expedition_num;
+                    Data.RealTime.Expedition.Dispatched.Max = json.max_expedition_num;
                     int finished = 0, total = 0, finished2= 0;
                     foreach(var ex in Data.RealTime.Expedition.Expeditions)
                     {
@@ -120,7 +119,7 @@ namespace Genshin_Checker.App
                         if (ex.Status == "Finished") finished++;
                     }
                     Data.RealTime.Expedition.Expeditions.Clear();
-                    foreach(var ex in json.data.expeditions)
+                    foreach(var ex in json.expeditions)
                     {
                         if (ex.status == "Finished") finished2++;
                         DateTime EndTime = DateTime.MinValue;
@@ -147,15 +146,6 @@ namespace Genshin_Checker.App
                     Data.Meta.IsAPIError = false;
                     Data.Meta.Message = "OK";
 
-                }
-                else
-                {
-                    Data.Meta.IsAPIError = true;
-                    Data.Meta.Message = json.message;
-                    Data.Meta.Retcode = json.retcode;
-                    ServerUpdate.Interval = 60000;
-                    ServerUpdate.Start();
-                }
             }
             catch(Exception ex)
             {
@@ -170,142 +160,24 @@ namespace Genshin_Checker.App
 
         }
 
-        static RealTimeNote? _instance = null;
-        public static RealTimeNote Instance {get=> _instance ??= new RealTimeNote(); }
 
         const string PATH_GET_NOTES = "https://bbs-api-os.hoyolab.com/game_record/genshin/api/dailyNote";
         const string PATH_GET_CHECKIN = "https://sg-hk4e-api.hoyolab.com/event/sol/info";
         const string PATH_DO_CHECKIN = "https://sg-hk4e-api.hoyolab.com/event/sol/sign";
         const string CHECKIN_ACTID = "e202102251931481";
 
-        private string Cookie = "";
-        public int uid { get; private set; } = 0;
+        public int uid { get => account.UID; }
 
         private readonly System.Windows.Forms.Timer ServerUpdate;
 
-        public void SetUserData(string cookie,int uid)
+        private async Task<Model.HoYoLab.RealTimeNote.Data> getNote()
         {
-            if (uid < 100000000) throw new ArgumentOutOfRangeException(nameof(uid), "Invalid UID.");
-            Registry.SetValue("Config\\UserData", "Cookie", cookie);
-            Registry.SetValue("Config\\UserData", "UID", uid.ToString());
-            this.uid = uid;
-            this.Cookie = cookie;
-            ServerUpdate.Stop();
-            ServerUpdate.Interval = 1;
-            ServerUpdate.Start();
-        }
-        private void LoadUserData()
-        {
-            var data = Registry.GetValue("Config\\UserData", "Cookie");
-            if (data != null) Cookie = data;
-            data = Registry.GetValue("Config\\UserData", "UID");
-            if (int.TryParse(data, out int uid)) this.uid = uid;
+            var instance = Genshin_Checker.Store.Accounts.Data;
+            if (instance.Count == 0) throw new InvalidDataException("ログインデータがありません。\n連携してください。");
+            var user = instance[0];
+            return (await user.GetRealTimeNote());
         }
 
-        private static string GetServer(int uid)
-        {
-            return uid.ToString()[..1] switch
-            {
-                "6" => "os_usa",
-                "7" => "os_euro",
-                "8" => "os_asia",
-                "9" => "os_cht",
-                _ => throw new InvalidDataException("unknown uid"),
-            };
-        }
-
-        static string DS()
-        {
-            const string salt = "6s25p5ox5y14umn1p61aqyyvbvvl3lrt";
-            const string r = "Noelle";
-
-            var time = (int)(DateTime.UtcNow - new DateTime(1970, 1, 1)).TotalSeconds;
-            var input = $"salt={salt}&t={time}&r={r}";
-            using (var md5 = MD5.Create())
-            {
-                var hashBytes = md5.ComputeHash(Encoding.UTF8.GetBytes(input));
-                var builder = new StringBuilder();
-                foreach (var b in hashBytes)
-                {
-                    builder.Append(b.ToString("x2"));
-                }
-                return $"{time},Noelle,{builder}";
-            }
-        }
-        private async Task<Store.RealTimeNote.JSON.Root> getNote()
-        {
-            string root = "sea";
-            if (root == "sea") root = "https://webstatic-sea.hoyolab.com";
-            else if (root == "act") root = "https://act.hoyolab.com";
-            Dictionary<string, string> headers = new Dictionary<string, string>()
-                {
-                    { "Origin", root },
-                    { "Referer", root },
-                    { "Accept", "application/json, text/plain, */*" },
-                    { "Accept-Encoding", "None" },
-                    { "Accept-Language", "en-US;q=0.5" },
-                    { "x-rpc-app_version", "1.5.0" },
-                    { "x-rpc-client_type", "5" },
-                    { "x-rpc-language", "en-us" },
-                    { "User-Agent", "Mozilla/5.0 (X11; Linux x86_64; rv:100.0) Gecko/20100101 Firefox/100.0" },
-                    { "Cookie", Cookie },
-                    { "DS", DS() }
-                };
-            if (uid == 0) throw new NoNullAllowedException("ログインデータがありません。\n連携してください。");
-            string role_id = uid.ToString();
-            string server = GetServer(uid);
-            string url = PATH_GET_NOTES;
-            string query = $"role_id={role_id}&server={server}";
-            string full_url = $"{url}?{query}";
-
-            HttpClient client = new HttpClient();
-            client.DefaultRequestHeaders.Clear();
-            foreach (KeyValuePair<string, string> header in headers)
-            {
-                client.DefaultRequestHeaders.Add(header.Key, header.Value);
-            }
-
-            HttpResponseMessage response = await client.GetAsync(full_url);
-            response.EnsureSuccessStatusCode();
-            var responseBody = await response.Content.ReadAsStringAsync();
-            var store = JsonConvert.DeserializeObject<Store.RealTimeNote.JSON.Root>(responseBody);
-            if (store == null) throw new ArgumentNullException($"Couldn't deserialized. Data : \"{responseBody}\"");
-            return store;
-        }
-
-        public async Task<string> getraw(string URL, string parm="")
-        {
-            if (uid == 0) throw new NoNullAllowedException("ログインデータがありません。\n連携してください。");
-            string role_id = uid.ToString();
-            string server = GetServer(uid);
-            string query = $"role_id={role_id}&server={server}";
-            string full_url = $"{URL}?{parm}";
-            var uri = new Uri(full_url);
-            string root = $"{uri.Scheme}://{uri.Host}";
-            Dictionary<string, string> headers = new Dictionary<string, string>()
-                {
-                    { "Origin", root },
-                    { "Referer", root },
-                    { "Accept", "application/json, text/plain, */*" },
-                    { "Accept-Encoding", "None" },
-                    { "Accept-Language", "en-US;q=0.5" },
-                    { "x-rpc-app_version", "1.5.0" },
-                    { "x-rpc-client_type", "5" },
-                    { "x-rpc-language", "en-us" },
-                    { "User-Agent", "Mozilla/5.0 (X11; Linux x86_64; rv:100.0) Gecko/20100101 Firefox/100.0" },
-                    { "Cookie", Cookie },
-                    { "DS", DS() }
-                };
-            HttpClient client = new HttpClient();
-            client.DefaultRequestHeaders.Clear();
-            foreach (KeyValuePair<string, string> header in headers)
-                client.DefaultRequestHeaders.Add(header.Key, header.Value);
-
-            HttpResponseMessage response = await client.GetAsync(full_url);
-            response.EnsureSuccessStatusCode();
-            var responseBody = await response.Content.ReadAsStringAsync();
-            return responseBody;
-        }
 
     }
 }
