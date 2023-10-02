@@ -5,6 +5,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+/*---------------------------------------------------------------------------------------------+
+| 機能名 : キャラクター情報                                                                    |
+| URL : https://raw.githubusercontent.com/EnkaNetwork/API-docs/master/store/characters.json    |
+| パラメーター : なし                                                                          |
++---------------------------------------------------------------------------------------------*/
+
 namespace Genshin_Checker.Model.EnkaNetwork.Store
 {
     public class Data

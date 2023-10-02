@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 
 namespace Genshin_Checker.Model.HoYoLab
 {
-    internal class Root<T>
+    public class Root<T>
     {
         /// <summary>
         /// HoYoLab内部エラーコード<br/>
@@ -29,7 +29,7 @@ namespace Genshin_Checker.Model.HoYoLab
         /// </summary>
         [JsonProperty("message")]
         public string Message { get; set; } = "";
-
+        
         /// <summary>
         /// 詳細なデータ<br/>
         /// <typeparamref name="T"/>に基づいてデータが返される。<br/>

@@ -19,6 +19,10 @@ using System.Threading.Tasks;
 
 namespace Genshin_Checker.Model.HoYoLab.TravelersDiary.Infomation
 {
+    public class Root : Model.HoYoLab.Root<Data>
+    {
+    }
+
     public class Data
     {
         [JsonProperty("uid")]

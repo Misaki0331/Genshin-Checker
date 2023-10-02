@@ -88,10 +88,6 @@
     </None>
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Model\EnkaNetwork\" />
-  </ItemGroup>
-
   <Target Name="BeforeBuild">
     <ItemGroup>
       <AssemblyAttributes Include="AssemblyVersion">

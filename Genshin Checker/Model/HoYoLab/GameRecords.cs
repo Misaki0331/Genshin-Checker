@@ -17,6 +17,10 @@ using System.Threading.Tasks;
 
 namespace Genshin_Checker.Model.HoYoLab.GameRecords
 {
+    public class Root : Model.HoYoLab.Root<Data>
+    {
+    }
+
     #region HoYoLabマップリンク(未使用)
 
     public class FieldExtMap_Link
@@ -160,18 +164,6 @@ namespace Genshin_Checker.Model.HoYoLab.GameRecords
 
         [JsonProperty("game_head_icon")]
         public string game_head_icon { get; set; } = string.Empty;
-    }
-
-    public class Root
-    {
-        [JsonProperty("retcode")]
-        public int retcode { get; set; }
-
-        [JsonProperty("message")]
-        public string message { get; set; } = string.Empty;
-
-        [JsonProperty("data")]
-        public Data data { get; set; } = new();
     }
 
     public class Stats

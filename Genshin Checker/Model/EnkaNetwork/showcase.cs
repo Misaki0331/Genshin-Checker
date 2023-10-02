@@ -225,7 +225,7 @@ namespace Genshin_Checker.Model.EnkaNetwork.ShowCase
         public Owner owner { get; set; } = new();
 
         [JsonProperty("uid")]
-        public string uid { get; set; }
+        public string uid { get; set; } = string.Empty;
     }
 
     public class ShowAvatarInfoList

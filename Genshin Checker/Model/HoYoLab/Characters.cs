@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 /*-----------------------------------------------------------------------------+
 | 機能名 : 原神戦績 / 育成計算機                                               |
-| APIの仕様 : キャラクターの所持と育成状況(突破を除く)を取得                   |
+| APIの仕様 : キャラクターの所持と育成状況(突破を除く)を取得 POST              |
 | 利用可能端末 : HoYoLabモバイル / モバイルブラウザ / PCブラウザ               |
 | URL : https://bbs-api-os.hoyolab.com/game_record/genshin/api/character       |
 | パラメーター :                                                               |
@@ -17,6 +18,10 @@ using System.Threading.Tasks;
 
 namespace Genshin_Checker.Model.HoYoLab.Characters
 {
+    public class Root : Model.HoYoLab.Root<Data>
+    {
+    }
+
     public class Affix
     {
         public int activation_number { get; set; }
@@ -100,7 +105,7 @@ namespace Genshin_Checker.Model.HoYoLab.Characters
         public int level { get; set; }
         public int promote_level { get; set; }
         public string type_name { get; set; } = string.Empty;
-        public string desc { get; set; }
+        public string desc { get; set; } = string.Empty;
         public int affix_level { get; set; }
     }
 
