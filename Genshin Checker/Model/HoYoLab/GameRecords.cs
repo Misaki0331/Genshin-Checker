@@ -174,12 +174,6 @@ namespace Genshin_Checker.Model.HoYoLab.GameRecords
         [JsonProperty("achievement_number")]
         public int achievement_number { get; set; }
 
-        [JsonProperty("anemoculus_number")]
-        public int anemoculus_number { get; set; }
-
-        [JsonProperty("geoculus_number")]
-        public int geoculus_number { get; set; }
-
         [JsonProperty("avatar_number")]
         public int avatar_number { get; set; }
 
@@ -204,20 +198,40 @@ namespace Genshin_Checker.Model.HoYoLab.GameRecords
         [JsonProperty("common_chest_number")]
         public int common_chest_number { get; set; }
 
-        [JsonProperty("electroculus_number")]
-        public int electroculus_number { get; set; }
-
         [JsonProperty("magic_chest_number")]
         public int magic_chest_number { get; set; }
 
+        /// <summary> 風神の瞳 </summary>
+        [JsonProperty("anemoculus_number")]
+        public int anemoculus_number { get; set; }
+
+        /// <summary> 岩神の瞳 </summary>
+        [JsonProperty("geoculus_number")]
+        public int geoculus_number { get; set; }
+
+        /// <summary> 雷神の瞳 </summary>
+        [JsonProperty("electroculus_number")]
+        public int electroculus_number { get; set; }
+
+        /// <summary> 草神の瞳 </summary>
         [JsonProperty("dendroculus_number")]
         public int dendroculus_number { get; set; }
 
+        /// <summary> 水神の瞳 </summary>
         [JsonProperty("hydroculus_number")]
         public int hydroculus_number { get; set; }
 
+        /// <summary> 炎神の瞳 </summary>
+        [JsonProperty("pyroculus_number")]
+        public int pyroculus_number { get; set; }
+
+        /// <summary> 氷神の瞳 </summary>
+        [JsonProperty("cryoculus_number")]
+        public int cryoculus_number { get; set; }
+
+
         [JsonProperty("field_ext_map")]
-        public KeyValuePair<string,FieldExtMap_Link> field_ext_map { get; set; }
+        public List<KeyValuePair<string, FieldExtMap_Link>> field_ext_map { get; set; } = new();
     }
 
     public class WorldExploration
