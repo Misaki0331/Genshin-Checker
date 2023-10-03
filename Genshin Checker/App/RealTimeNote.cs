@@ -172,10 +172,7 @@ namespace Genshin_Checker.App
 
         private async Task<Model.HoYoLab.RealTimeNote.Data> getNote()
         {
-            var instance = Genshin_Checker.Store.Accounts.Data;
-            if (instance.Count == 0) throw new InvalidDataException("ログインデータがありません。\n連携してください。");
-            var user = instance[0];
-            return (await user.GetRealTimeNote());
+            return (await account.GetRealTimeNote());
         }
 
 

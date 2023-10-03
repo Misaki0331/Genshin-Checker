@@ -14,6 +14,7 @@ namespace Genshin_Checker.App
     public class Account
     {
         public RealTimeNote RealTimeNote;
+        public TravelersDiary TravelersDiary;
         public Account(string cookie, int UID) {
             Server = GetServer(UID);
             Cookie = cookie;
@@ -21,6 +22,7 @@ namespace Genshin_Checker.App
             CheckUID(_uid);
             Culture = CultureInfo.CurrentCulture;
             RealTimeNote = new(this);
+            TravelersDiary = new(this);
 
         }
 

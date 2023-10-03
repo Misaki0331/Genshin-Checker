@@ -19,6 +19,7 @@ namespace Genshin_Checker
         public MainTray(bool safemode=false)
         {
             InitializeComponent();
+            notification.Icon = resource.icon.nahida;
             var cmds = System.Environment.GetCommandLineArgs();
             //コマンドライン引数を列挙する
             foreach (string cmd in cmds)
@@ -232,9 +233,9 @@ namespace Genshin_Checker
             }
         }
 
-        private async void testToolStripMenuItem_ClickAsync(object sender, EventArgs e)
+        private void testToolStripMenuItem_ClickAsync(object sender, EventArgs e)
         {
-            Account account;
+            /*Account account;
             if (Store.Accounts.Data.Count == 0) return;
             account = Store.Accounts.Data[0];
             var user = await account.GetServerAccounts(Account.Servers.os_asia);
@@ -243,7 +244,10 @@ namespace Genshin_Checker
             var index = await account.GetGameRecords();
             var realtime = await account.GetRealTimeNote();
             var character = await account.GetCharacters();
-            var diaryinfo = await account.GetTravelersDiaryInfo();
+            var diaryinfo = await account.GetTravelersDiaryInfo();*/
+            var a=new Window.TravelersDiary(Store.Accounts.Data[0]);
+            a.Show();
+            a.Activate();
         }
     }
 }

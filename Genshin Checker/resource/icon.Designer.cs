@@ -83,6 +83,16 @@ namespace Genshin_Checker.resource {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
+        internal static System.Drawing.Bitmap Icon_TravelerDirty {
+            get {
+                object obj = ResourceManager.GetObject("Icon_TravelerDirty", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
         internal static System.Drawing.Bitmap Item_Fragile_Resin {
             get {
                 object obj = ResourceManager.GetObject("Item_Fragile_Resin", resourceCulture);
@@ -93,9 +103,29 @@ namespace Genshin_Checker.resource {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
+        internal static System.Drawing.Bitmap Item_Mora {
+            get {
+                object obj = ResourceManager.GetObject("Item_Mora", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
         internal static System.Drawing.Bitmap Item_Parametric_Transformer {
             get {
                 object obj = ResourceManager.GetObject("Item_Parametric_Transformer", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap Item_Primogem {
+            get {
+                object obj = ResourceManager.GetObject("Item_Primogem", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

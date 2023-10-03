@@ -11,7 +11,7 @@
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
-    <ApplicationIcon>resource\nahida.ico</ApplicationIcon>
+    <ApplicationIcon>resource\Icon\nahida.ico</ApplicationIcon>
     <Version>0.3.0</Version>
     <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
     <AssemblyVersion>0.3.0.0</AssemblyVersion>
@@ -28,7 +28,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="resource\nahida.ico" />
+    <None Remove="resource\Item\nahida.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="resource\Icon\nahida.ico" />
   </ItemGroup>
 
   <ItemGroup>
