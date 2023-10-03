@@ -575,7 +575,7 @@ namespace Genshin_Checker.Window
                         var to = dateTimePicker1.Value;
                         int season = ((int)to.ToOADate() - (int)from.ToOADate()) / 42 + 1; //26=4.0
                         Prev.Enabled = dateTimePicker1.MinDate <= from.AddDays((season - 1) * 42);
-                        Prev.Enabled = dateTimePicker1.MaxDate >= from.AddDays((season) * 42);
+                        Next.Enabled = dateTimePicker1.MaxDate >= from.AddDays((season) * 42);
 
                         var source = GenshinAsset.SeasonName.Replace("\r", "").Split('\n');
                         string seasonName = $"Season {season}";
