@@ -1,5 +1,4 @@
-﻿using Genshin_Checker.App.Store.RealTimeNote.JSON;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -112,11 +111,18 @@ namespace Genshin_Checker.App
         /// </summary>
         private int _uid = int.MinValue;
 
-
         /// <summary>
         /// ユーザーのゲーム内アカウントID(UID)
         /// </summary>
         public int UID { get => _uid; set=>CheckUID(value); }
+        /// <summary>
+        /// ユーザーのゲーム内アカウント名
+        /// </summary>
+        public string Name { get; private set; } = string.Empty;
+        /// <summary>
+        /// ユーザーのゲーム内冒険ランク
+        /// </summary>
+        public int Level { get; private set; } = -1;
         /// <summary>
         /// アカウント整合性の確認
         /// </summary>
@@ -128,6 +134,8 @@ namespace Genshin_Checker.App
             {
                 if (int.Parse(user.game_uid) == uid)
                 {
+                    Name = user.nickname;
+                    Level = user.level;
                     _uid = uid;
                     return;
                 }

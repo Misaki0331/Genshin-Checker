@@ -31,11 +31,11 @@ namespace Genshin_Checker.Window
             tabControl1.DrawItem += Tab_DrawItem;
             if (Store.Accounts.Data.Count > 0)
             {
-                LabelConnectedUID.Text = "連携済みのUID : " + Store.Accounts.Data[0].UID.ToString();
+                LabelConnectedUID.Text = $"連携済み : {Store.Accounts.Data[0].Name} AR.{Store.Accounts.Data[0].Level} (UID:{Store.Accounts.Data[0].UID})";
             }
             else
             {
-                LabelConnectedUID.Text = "連携済みのUID : 未連携";
+                LabelConnectedUID.Text = "未連携";
             }
             label4.Text = $"Version : {System.Reflection.Assembly.GetExecutingAssembly().GetName().Version}";
             IsCountBackground.Checked = !ProcessTime.Instance.option.OnlyActiveWindow;
