@@ -35,6 +35,12 @@ namespace Genshin_Checker.App
         {
             return dateTime.AddTicks(-(dateTime.Ticks % TimeSpan.TicksPerSecond));
         }
+        public bool IsDisposed { get; private set; } = false;
+        public void Dispose()
+        {
+            IsDisposed = true;
+            ServerUpdate.Stop();
+        }
         private async void ServerUpdate_Tick(object? sender, EventArgs e)
         {
             ServerUpdate.Stop();

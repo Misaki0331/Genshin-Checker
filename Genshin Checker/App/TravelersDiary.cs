@@ -11,6 +11,13 @@ namespace Genshin_Checker.App
     public class TravelersDiary
     {
         private Account account;
+
+        public bool IsDisposed { get; private set; } = false;
+        public void Dispose()
+        {
+            IsDisposed = true;
+            ServerUpdate.Stop();
+        }
         public TravelersDiary(Account account)
         {
             this.account = account;

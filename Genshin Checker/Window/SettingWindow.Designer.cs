@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SettingWindow));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.page_general = new System.Windows.Forms.TabPage();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
@@ -298,7 +297,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(370, 30);
             this.label1.TabIndex = 1;
-            this.label1.Text = "連携すると現在のアカウントステータスをリアルタイムで表示することができます。\r\n利用できる情報の例 : 樹脂、探索派遣、デイリー情報等";
+            this.label1.Text = "連携すると現在のアカウントステータスをリアルタイムで表示することができます。\r\n利用できる情報の例 : 樹脂、探索派遣、デイリー情報、旅人手帳等";
             // 
             // panel1
             // 
@@ -476,7 +475,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(624, 441);
             this.Controls.Add(this.tabControl1);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "SettingWindow";
             this.Text = "設定";
             this.Load += new System.EventHandler(this.SettingWindow_Load);

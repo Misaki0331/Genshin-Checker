@@ -20,6 +20,7 @@ namespace Genshin_Checker.Window
         public SettingWindow()
         {
             InitializeComponent();
+            Icon = resource.icon.nahida;
             tabControl1.Alignment = TabAlignment.Left;
             //タブのサイズを固定する
             tabControl1.SizeMode = TabSizeMode.Fixed;
@@ -30,13 +31,9 @@ namespace Genshin_Checker.Window
             //DrawItemイベントハンドラを追加
             tabControl1.DrawItem += Tab_DrawItem;
             if (Store.Accounts.Data.Count > 0)
-            {
                 LabelConnectedUID.Text = $"連携済み : {Store.Accounts.Data[0].Name} AR.{Store.Accounts.Data[0].Level} (UID:{Store.Accounts.Data[0].UID})";
-            }
             else
-            {
                 LabelConnectedUID.Text = "未連携";
-            }
             label4.Text = $"Version : {System.Reflection.Assembly.GetExecutingAssembly().GetName().Version}";
             IsCountBackground.Checked = !ProcessTime.Instance.option.OnlyActiveWindow;
             IsNotificationGameStart.Checked = Option.Instance.Notification.IsGameStart;
@@ -111,7 +108,7 @@ namespace Genshin_Checker.Window
             if (link!=null)Process.Start(pi);
     }
 
-        private void Open_HoYoLabAuth_Click(object sender, EventArgs e)
+        private async void Open_HoYoLabAuth_Click(object sender, EventArgs e)
         {
             Open_HoYoLabAuth.Enabled = false;
             try
@@ -123,7 +120,11 @@ namespace Genshin_Checker.Window
             {
 
             }
-            LabelConnectedUID.Text = "連携済みのUID : " + Store.Accounts.Data[0].UID.ToString();
+            await Task.Delay(1000);
+            if (Store.Accounts.Data.Count > 0)
+                LabelConnectedUID.Text = $"連携済み : {Store.Accounts.Data[0].Name} AR.{Store.Accounts.Data[0].Level} (UID:{Store.Accounts.Data[0].UID})";
+            else
+                LabelConnectedUID.Text = "未連携";
             Open_HoYoLabAuth.Enabled = true;
         }
     }

@@ -17,6 +17,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Newtonsoft.Json.Linq;
 using System.Runtime.InteropServices;
+using System.Windows.Forms.VisualStyles;
+using LiveChartsCore.Kernel.Sketches;
+using System.Globalization;
 
 namespace Genshin_Checker.Window
 {
@@ -25,7 +28,6 @@ namespace Genshin_Checker.Window
         Account account;
         List<int> month_index= new();
 
-        private readonly ObservableCollection<ObservableValue> ObservableTypeList = new();
 
         private readonly PieChart PrimogemsType;
 
@@ -36,9 +38,14 @@ namespace Genshin_Checker.Window
             this.account = account;
             PrimogemsType = new PieChart
             {
+                Font = new Font("MS Gothic UI", 12, FontStyle.Regular),
                 Dock = DockStyle.Fill,
                 Size = new(tabPage2.Width, tabPage2.Height),
-                Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top | AnchorStyles.Bottom
+                Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top | AnchorStyles.Bottom,
+                InitialRotation = -90,
+                Series = new List<ISeries>
+                {
+                },
             };
             try
             {
@@ -65,7 +72,6 @@ namespace Genshin_Checker.Window
                     comboBox1.SelectedIndex =
                         comboBox1.Items.Count - 1;
                 }
-                
                 tabPage2.SuspendLayout();
                 tabPage2.Controls.Add(PrimogemsType);
                 tabPage2.ResumeLayout(true);
@@ -76,11 +82,12 @@ namespace Genshin_Checker.Window
                 n.ShowDialog(this);
                 Close();
             }
-            
+            UIUpdate_Tick(new object(),EventArgs.Empty);
         }
 
         private void UIUpdate_Tick(object sender, EventArgs e)
         {
+            if (account.IsDisposed) Close();
             if (account.TravelersDiary.Data.Data == null)
             {
 
@@ -98,7 +105,8 @@ namespace Genshin_Checker.Window
             comboBox1.Enabled= false;
             try
             {
-                var data = await account.GetTravelersDiaryInfo(month_index[comboBox1.SelectedIndex]);
+                //グラフ内は文字化けしているのでus-enにしておく
+                var data = await account.GetTravelersDiaryInfo(month_index[comboBox1.SelectedIndex],new("us-en"));
                 Month_Primogem.Text = $"{data.month_data.current_primogems}";
                 Month_Mora.Text = $"{data.month_data.current_mora}";
                 Month_Primogem.Text = $"{data.month_data.current_primogems}";
@@ -114,11 +122,11 @@ namespace Genshin_Checker.Window
                 else Month_Mora_Diff.ForeColor = Color.White;
                 Month_Mora_Diff.Text = $"{(moradiff > 0 ? "+" : "")}{moradiff.ToString("#,##0")}";
                 var Series = new List<ISeries>();
+                PrimogemsType.Series = Series;
                 foreach (var a in data.month_data.group_by)
                 {
-                    Series.Add(new PieSeries<double> { Values = new List<double>() { a.num }, Name = a.action });
+                    if(a.num!=0)Series.Add(new PieSeries<double> { Values = new List<double>() { a.num }, Name = $"{a.action}",  });
                 }
-                PrimogemsType.Series = Series;
 
             }
             catch(Exception ex)

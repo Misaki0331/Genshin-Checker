@@ -101,6 +101,7 @@ namespace Genshin_Checker.Window
         public TimeGraph()
         {
             InitializeComponent();
+            Icon = resource.icon.nahida;
             DailyGraphDrawingDelay = new();
             //DailyGraphDrawingDelay.Tick += DailyGraph_Drawing;
             DailyGraphDrawingDelay.Interval = 10;

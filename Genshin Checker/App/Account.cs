@@ -13,6 +13,7 @@ namespace Genshin_Checker.App
 {
     public class Account
     {
+        public bool IsDisposed { get; set; } = false;
         public RealTimeNote RealTimeNote;
         public TravelersDiary TravelersDiary;
         public Account(string cookie, int UID) {
@@ -25,7 +26,7 @@ namespace Genshin_Checker.App
             TravelersDiary = new(this);
 
         }
-
+        
         /// <summary>
         /// UIDからサーバー名取得
         /// </summary>
@@ -144,7 +145,12 @@ namespace Genshin_Checker.App
             }
             throw new UserNotFoundException(uid);
         }
-
+        public void Dispose()
+        {
+            IsDisposed= true;
+            RealTimeNote.Dispose();
+            TravelersDiary.Dispose();
+        }
         public class HoYoLabAPIException : Exception
         {
             public HoYoLabAPIException(int retcode, string message)
@@ -248,9 +254,11 @@ namespace Genshin_Checker.App
         /// <returns></returns>
         /// <exception cref="InvalidDataException"></exception>
         /// <exception cref="HoYoLabAPIException"></exception>
-        public async Task<Model.HoYoLab.TravelersDiary.Infomation.Data> GetTravelersDiaryInfo(int month=0)
+        public async Task<Model.HoYoLab.TravelersDiary.Infomation.Data> GetTravelersDiaryInfo(int month=0,CultureInfo? culture=null)
         {
-            var url = $"https://sg-hk4e-api.hoyolab.com/event/ysledgeros/month_info?region={Server}&uid={UID}&lang={Culture.Name.ToLower()}&month={month}";
+            var cul = Culture.Name.ToLower();
+            if (culture != null) cul = culture.Name.ToLower();
+            var url = $"https://sg-hk4e-api.hoyolab.com/event/ysledgeros/month_info?region={Server}&uid={UID}&lang={cul}&month={month}";
             var json = await App.WebRequest.HoYoGetRequest(url, Cookie);
             var root = JsonConvert.DeserializeObject<Model.HoYoLab.TravelersDiary.Infomation.Root>(json);
             if (root == null) throw new InvalidDataException($"json形式に変換できません。\n\n--- Request URL ---\n{url}\n\n--- Received Data ---\n{json}\n--- Data End ---");

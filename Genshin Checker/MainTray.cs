@@ -16,6 +16,7 @@ namespace Genshin_Checker
         Window.TimeGraph? TimeGraph= null;
         Window.RealTimeData? RealTimeData = null;
         Window.SettingWindow? SettingWindow= null;
+        Window.TravelersDiary? TravelersDiary = null;
         public MainTray(bool safemode=false)
         {
             InitializeComponent();
@@ -52,6 +53,8 @@ namespace Genshin_Checker
             versionNameToolStripMenuItem.Text = $"{name.Name} {name.Version}";
 #if DEBUG
             versionNameToolStripMenuItem.Text += "(DEBUG)";
+#else
+            testToolStripMenuItem.Visible = false;      
 #endif
             if (safemode)
             {
@@ -248,6 +251,38 @@ namespace Genshin_Checker
             var a=new Window.TravelersDiary(Store.Accounts.Data[0]);
             a.Show();
             a.Activate();
+        }
+
+        private void 旅人手帳ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (TravelersDiary == null || TravelersDiary.IsDisposed)
+                {
+                    if (Store.Accounts.Data.Count == 0)
+                    {
+                        var n = new ErrorMessage("連携しているアカウントはまだ無いようです。", "お手数ですが、以下の操作を行って認証してください。\n設定⇒アプリ連携⇒HoYoLabとの連携");
+                        n.ShowDialog(this);
+                        return;
+                    }
+                    TravelersDiary = new(Store.Accounts.Data[0]);
+                    TravelersDiary.WindowState = FormWindowState.Normal;
+                    TravelersDiary.Show();
+                    TravelersDiary.Activate();
+                }
+                else
+                {
+                    TravelersDiary.Show();
+                    if (TravelersDiary.WindowState == FormWindowState.Minimized) TravelersDiary.WindowState = FormWindowState.Normal;
+                    TravelersDiary.Activate();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                var n = new ErrorMessage(ex.GetType().ToString(), ex.Message);
+                n.ShowDialog(this);
+            }
         }
     }
 }

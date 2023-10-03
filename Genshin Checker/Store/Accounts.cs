@@ -1,4 +1,5 @@
 ﻿using Genshin_Checker.App;
+using Genshin_Checker.Window;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -20,20 +21,29 @@ namespace Genshin_Checker.Store
         }
         public void Load()
         {
-            var str = Registry.GetValue("Config\\UserData", "PlayerData");
-            if (str == null) return;
-            AccountDatas.Clear();
-            var data = JsonConvert.DeserializeObject<List<Account.JSON.UserData>>(str);
-            if(data == null) return;
-            foreach (var d in data) {
-                try
+            try
+            {
+                var str = Registry.GetValue("Config\\UserData", "PlayerData", true);
+                if (str == null) return;
+                AccountDatas.Clear();
+                var data = JsonConvert.DeserializeObject<List<Account.JSON.UserData>>(str);
+                if (data == null) return;
+                foreach (var d in data)
                 {
-                    var ac = new App.Account(d.Cookie, d.UID);
-                    AccountDatas.Add(ac);
-                }catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
+                    try
+                    {
+                        var ac = new App.Account(d.Cookie, d.UID);
+                        AccountDatas.Add(ac);
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
                 }
+            }catch(Exception ex)
+            {
+                var a=new ErrorMessage("アカウントセーブデータに異常があります。", $"{ex.GetType()}\n{ex.Message}");
+                a.Show();
             }
         }
         public void Save()
@@ -44,7 +54,7 @@ namespace Genshin_Checker.Store
                 list.Add(new() { Cookie=d.Cookie, UID=d.UID });
             }
             var obj = JsonConvert.SerializeObject(list);
-            Registry.SetValue("Config\\UserData", "PlayerData",obj);
+            Registry.SetValue("Config\\UserData", "PlayerData",obj,true);
 
         }
         static Accounts? _instance = null;
@@ -63,6 +73,12 @@ namespace Genshin_Checker.Store
             AccountAdded?.Invoke(this, account);
             AccountDatas.Add(account);
             Save();
+        }
+        public void Clear()
+        {
+            foreach(var a in AccountDatas)
+                a.Dispose();
+            AccountDatas.Clear();
         }
         public bool Remove(App.Account account)
         {

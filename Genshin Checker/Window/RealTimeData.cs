@@ -20,10 +20,12 @@ namespace Genshin_Checker.Window
         {
             this.account = account;
             InitializeComponent();
+            Icon = resource.icon.nahida;
         }
 
         private void UiUpdate_Tick(object sender, EventArgs e)
         {
+            if (account.IsDisposed) Close();
             UiUpdate.Stop();
             var Note = account.RealTimeNote.Data;
             if (account.UID!= 0) Text = $"リアルタイムノート (UID:{account.UID})";

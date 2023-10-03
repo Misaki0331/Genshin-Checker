@@ -12,7 +12,7 @@ namespace Genshin_Checker.App
 {
     public class TimeTable
     {
-        public static bool UseCache = false;
+        public static bool UseCache { get; set; } = false;
         static DayCache DayCacheData = new();
         static readonly List<DayCache> PastDataCache = new();
         class DayCache
@@ -35,16 +35,15 @@ namespace Genshin_Checker.App
                 if (cache != null)
                     return cache.raw;
             }
-            var data = Registry.GetValue($"TimeTable\\{date.Year}\\{date.Month:00}\\{date.Day:00}", "PlayAlias");
             try
             {
+                var data = Registry.GetValue($"TimeTable\\{date.Year}\\{date.Month:00}\\{date.Day:00}", "PlayAlias", true);
                 if (data == null) throw new FileNotFoundException();
 
-                var raw = StringFromBase64Comp(data.ToString());
-                if (raw.Length != 86400) throw new InvalidCastException();
+                if (data.Length != 86400) throw new InvalidCastException();
                 if (UseCache&&date != now)
-                    PastDataCache.Add((new DayCache() { date = date, raw = raw }));
-                return raw;
+                    PastDataCache.Add((new DayCache() { date = date, raw = data }));
+                return data;
             }
             catch
             {
@@ -85,8 +84,7 @@ namespace Genshin_Checker.App
         public static bool SaveDate(DateTime date,string data)
         {
             if (data.Length != 86400) return false;
-            var compressed = Base64FromStringComp(data);
-            Registry.SetValue($"TimeTable\\{date.Year}\\{date.Month:00}\\{date.Day:00}", "PlayAlias",compressed);
+            Registry.SetValue($"TimeTable\\{date.Year}\\{date.Month:00}\\{date.Day:00}", "PlayAlias",data,true);
             return true;
         }
         public static bool SavePoint(DateTime time, string State)
@@ -121,34 +119,5 @@ namespace Genshin_Checker.App
             return sb.ToString();
         }
 
-        /// <summary>
-        /// 文字列からBASE64に圧縮する
-        /// </summary>
-        /// <param name="raw">変換したい文字列</param>
-        /// <returns>圧縮済みのBASE64文字列</returns>
-        static string Base64FromStringComp(string raw)
-        {
-            byte[] source = Encoding.UTF8.GetBytes(raw);
-            MemoryStream ms = new();
-            DeflateStream CompressedStream = new(ms, CompressionMode.Compress, true);
-            CompressedStream.Write(source, 0, source.Length);
-            CompressedStream.Close();
-            return System.Convert.ToBase64String(ms.ToArray(), Base64FormattingOptions.InsertLineBreaks);
-        }
-        /// <summary>
-        /// Base64から元の文字列に復元する
-        /// </summary>
-        /// <param name="compressed">圧縮済みのBASE64文字列</param>
-        /// <returns>解凍済みの文字列</returns>
-        static string StringFromBase64Comp(string compressed)
-        {
-            using MemoryStream ms = new();
-            using DeflateStream CompressedStream = new(new MemoryStream(System.Convert.FromBase64String(compressed)), CompressionMode.Decompress);
-            byte[] buffer = new byte[4096];
-            int bytesRead;
-            while ((bytesRead = CompressedStream.Read(buffer, 0, buffer.Length)) > 0)
-                ms.Write(buffer, 0, bytesRead);
-            return Encoding.UTF8.GetString(ms.ToArray());
-        }
     }
 }

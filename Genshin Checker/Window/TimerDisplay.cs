@@ -17,7 +17,7 @@ namespace Genshin_Checker.Window
         public TimerDisplay()
         {
             InitializeComponent();
-
+            Icon = resource.icon.nahida;
 
             try
             {
