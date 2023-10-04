@@ -4,11 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Genshin_Checker.App
+namespace Genshin_Checker.App.General
 {
     public class Option
     {
-        public Option() {
+        public Option()
+        {
             Notification.IsGameStart = Registry.GetValue("Config\\Setting", "IsNotificationGameStart") == "True";
             Notification.IsGameEnd = Registry.GetValue("Config\\Setting", "IsNotificationGameClosed") == "True";
             Notification.RealTimeNote.Resin120 = Registry.GetValue("Config\\Setting", "IsNotificationRealTimeNoteResin120") == "True";

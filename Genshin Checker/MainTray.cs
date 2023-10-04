@@ -7,6 +7,10 @@ using Genshin_Checker.App;
 using Genshin_Checker.Window;
 using Newtonsoft.Json;
 using Genshin_Checker.Model.HoYoLab;
+using Genshin_Checker.App.HoYoLab;
+using Genshin_Checker.App.Game;
+using Genshin_Checker.App.General;
+
 namespace Genshin_Checker
 {
     public partial class MainTray : Form
@@ -35,12 +39,12 @@ namespace Genshin_Checker
 
             
             //ÉAÉvÉäÇÃèâä˙âª&UIÇÃèâä˙âª
-            App.ProcessTime.Instance.option.OnlyActiveWindow = true;
-            if (Registry.GetValue("Config\\Setting", "IsCountBackground") == "True") App.ProcessTime.Instance.option.OnlyActiveWindow = false;
-            App.ProcessTime.WatchDog = true;
-            App.ProcessTime.Instance.SessionStart += TargetStart;
-            App.ProcessTime.Instance.SessionEnd += TargetEnd;
-            App.ProcessTime.Instance.ChangedState += ChangeState;
+            ProcessTime.Instance.option.OnlyActiveWindow = true;
+            if (Registry.GetValue("Config\\Setting", "IsCountBackground") == "True") ProcessTime.Instance.option.OnlyActiveWindow = false;
+            ProcessTime.WatchDog = true;
+            ProcessTime.Instance.SessionStart += TargetStart;
+            ProcessTime.Instance.SessionEnd += TargetEnd;
+            ProcessTime.Instance.ChangedState += ChangeState;
             notification.Icon = resource.icon.nahida;
             notification.Visible = true;
             //new Window.WebMiniBrowser(new("https://google.com"));
@@ -65,7 +69,7 @@ namespace Genshin_Checker
             }
         }
 
-        void AccountAdded(object? sender, App.Account e)
+        void AccountAdded(object? sender, Account e)
         {
             e.RealTimeNote.Notification += Notification;
         }
@@ -79,10 +83,10 @@ namespace Genshin_Checker
                 notification.ShowBalloonTip(30000);
             }
         }
-        void ChangeState(object? sender, App.ProcessTime.Result e)
+        void ChangeState(object? sender, ProcessTime.Result e)
         {
         }
-        void TargetEnd(object? sender, App.ProcessTime.Result e)
+        void TargetEnd(object? sender, ProcessTime.Result e)
         {
             if (Option.Instance.Notification.IsGameEnd)
             {
@@ -110,7 +114,7 @@ namespace Genshin_Checker
 
         private void èIóπToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            App.ProcessTime.Instance.EmergencyReset();
+            ProcessTime.Instance.EmergencyReset();
             Close();
         }
 

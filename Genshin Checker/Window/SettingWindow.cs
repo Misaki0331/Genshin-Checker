@@ -1,4 +1,6 @@
 ﻿using Genshin_Checker.App;
+using Genshin_Checker.App.Game;
+using Genshin_Checker.App.General;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;

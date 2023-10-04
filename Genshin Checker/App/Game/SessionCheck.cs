@@ -1,10 +1,9 @@
-﻿using Genshin_Checker.App;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static Genshin_Checker.App.ProcessTime;
+using static Genshin_Checker.App.Game.ProcessTime;
 
 namespace Genshin_Checker.App
 {

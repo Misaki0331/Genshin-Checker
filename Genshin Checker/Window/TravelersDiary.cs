@@ -1,5 +1,4 @@
-﻿using Genshin_Checker.App;
-using LiveChartsCore;
+﻿using LiveChartsCore;
 using LiveChartsCore.Defaults;
 using LiveChartsCore.SkiaSharpView.Painting;
 using LiveChartsCore.SkiaSharpView;
@@ -20,6 +19,7 @@ using System.Runtime.InteropServices;
 using System.Windows.Forms.VisualStyles;
 using LiveChartsCore.Kernel.Sketches;
 using System.Globalization;
+using Genshin_Checker.App.HoYoLab;
 
 namespace Genshin_Checker.Window
 {
@@ -36,6 +36,7 @@ namespace Genshin_Checker.Window
         {
             InitializeComponent();
             this.account = account;
+            this.Text = $"旅人手帳 (UID:{account.UID})";
             PrimogemsType = new PieChart
             {
                 Font = new Font("MS Gothic UI", 12, FontStyle.Regular),

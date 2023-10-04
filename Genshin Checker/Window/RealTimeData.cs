@@ -1,4 +1,4 @@
-﻿using Genshin_Checker.App;
+﻿using Genshin_Checker.App.HoYoLab;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

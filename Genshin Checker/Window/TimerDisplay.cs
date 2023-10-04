@@ -8,6 +8,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Genshin_Checker.App.Game;
 
 namespace Genshin_Checker.Window
 {
@@ -40,40 +41,40 @@ namespace Genshin_Checker.Window
         }
         private void timer1_Tick(object sender, EventArgs e)
         {
-            var time = App.ProcessTime.Instance.Session;
+            var time = ProcessTime.Instance.Session;
             SessionTime.Text = $"{((int)time.TotalHours)}:{time:mm\\:ss\\.ff}";
-            var totaltime = App.ProcessTime.Instance.TotalSession;
+            var totaltime = ProcessTime.Instance.TotalSession;
             TotalSessionTime.Text = $"{((int)totaltime.TotalHours)}:{totaltime:mm\\:ss\\.ff}";
         }
         void TargetStart(object? sender, EventArgs e)
         {
         }
-        void DisplayChangeState(App.ProcessTime.ProcessState state)
+        void DisplayChangeState(ProcessTime.ProcessState state)
         {
             switch (state)
             {
-                case App.ProcessTime.ProcessState.NotRunning:
+                case ProcessTime.ProcessState.NotRunning:
                     CurrentStatus.ForeColor = Color.Red;
                     CurrentStatus.Text = "未起動";
                     break;
-                case App.ProcessTime.ProcessState.Background:
+                case ProcessTime.ProcessState.Background:
                     CurrentStatus.ForeColor = Color.Orange;
                     CurrentStatus.Text = "バックグラウンド";
                     break;
-                case App.ProcessTime.ProcessState.Foreground:
+                case ProcessTime.ProcessState.Foreground:
                     CurrentStatus.ForeColor = Color.Lime;
                     CurrentStatus.Text = "アクティブ";
                     break;
             }
         }
-        void ChangeState(object? sender, App.ProcessTime.Result e)
+        void ChangeState(object? sender, ProcessTime.Result e)
         {
             this.Invoke(() =>
             {
                 DisplayChangeState(e.State);
             });
         }
-        void TargetEnd(object? sender, App.ProcessTime.Result e)
+        void TargetEnd(object? sender, ProcessTime.Result e)
         {
 
         }
@@ -85,17 +86,17 @@ namespace Genshin_Checker.Window
 
         private void TimerDisplay_Load(object sender, EventArgs e)
         {
-            DisplayChangeState(App.ProcessTime.Instance.CurrentProcessState);
-            App.ProcessTime.Instance.SessionStart += TargetStart;
-            App.ProcessTime.Instance.SessionEnd += TargetEnd;
-            App.ProcessTime.Instance.ChangedState += ChangeState;
+            DisplayChangeState(ProcessTime.Instance.CurrentProcessState);
+            ProcessTime.Instance.SessionStart += TargetStart;
+            ProcessTime.Instance.SessionEnd += TargetEnd;
+            ProcessTime.Instance.ChangedState += ChangeState;
         }
 
         private void TimerDisplay_FormClosed(object sender, FormClosedEventArgs e)
         {
-            App.ProcessTime.Instance.SessionStart -= TargetStart;
-            App.ProcessTime.Instance.SessionEnd -= TargetEnd;
-            App.ProcessTime.Instance.ChangedState -= ChangeState;
+            ProcessTime.Instance.SessionStart -= TargetStart;
+            ProcessTime.Instance.SessionEnd -= TargetEnd;
+            ProcessTime.Instance.ChangedState -= ChangeState;
         }
     }
 

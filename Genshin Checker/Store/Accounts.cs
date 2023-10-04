@@ -32,7 +32,7 @@ namespace Genshin_Checker.Store
                 {
                     try
                     {
-                        var ac = new App.Account(d.Cookie, d.UID);
+                        var ac = new App.HoYoLab.Account(d.Cookie, d.UID);
                         AccountDatas.Add(ac);
                     }
                     catch (Exception ex)
@@ -60,15 +60,15 @@ namespace Genshin_Checker.Store
         static Accounts? _instance = null;
         public static Accounts Data { get => _instance ??= new Accounts(); }
         public int Count { get=>AccountDatas.Count; }
-        public App.Account this[int i]
+        public App.HoYoLab.Account this[int i]
         {
             get { return AccountDatas[i]; }
         }
-        public App.Account? Find(Predicate<App.Account> match)
+        public App.HoYoLab.Account? Find(Predicate<App.HoYoLab.Account> match)
         {
             return AccountDatas.Find(match);
         }
-        public void Add(App.Account account)
+        public void Add(App.HoYoLab.Account account)
         {
             AccountAdded?.Invoke(this, account);
             AccountDatas.Add(account);
@@ -80,18 +80,18 @@ namespace Genshin_Checker.Store
                 a.Dispose();
             AccountDatas.Clear();
         }
-        public bool Remove(App.Account account)
+        public bool Remove(App.HoYoLab.Account account)
         {
             var b = AccountDatas.Remove(account);
             Save();
             return b;
         }
-        private List<App.Account> AccountDatas { get; set; }
-        public IEnumerator<App.Account> GetEnumerator()
+        private List<App.HoYoLab.Account> AccountDatas { get; set; }
+        public IEnumerator<App.HoYoLab.Account> GetEnumerator()
         {
             return AccountDatas.GetEnumerator();
         }
-        public event EventHandler<App.Account>? AccountAdded;
+        public event EventHandler<App.HoYoLab.Account>? AccountAdded;
     }
 }
 namespace Genshin_Checker.Store.Account.JSON

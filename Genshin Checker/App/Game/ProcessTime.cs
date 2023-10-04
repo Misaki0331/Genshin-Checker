@@ -11,7 +11,7 @@ using System.Timers;
 using System.Xml.Schema;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
-namespace Genshin_Checker.App
+namespace Genshin_Checker.App.Game
 {
     public class ProcessTime
     {
@@ -21,7 +21,7 @@ namespace Genshin_Checker.App
         TimeSpan LatestTotalSessionTime;
         /// <summary>セッション中のストップウォッチ</summary>
         readonly Stopwatch SessionTime;
-        long LatestCheckedDateTime=0;
+        long LatestCheckedDateTime = 0;
         public readonly ProcessTimeOption option;
         /// <summary>該当プロセスが実行中であるかどうか</summary>
         Process? TargetProcess;
@@ -30,10 +30,10 @@ namespace Genshin_Checker.App
         public event EventHandler<Result>? SessionEnd;
         public event EventHandler<Result>? ChangedState;
         public event EventHandler? SessionStart;
-        Window.WindowInfo? WindowInfo;
+        WindowInfo? WindowInfo;
         public ProcessState CurrentProcessState { get; private set; }
-        public TimeSpan Session { get=>SessionTime.Elapsed; }
-        public TimeSpan TotalSession { get =>SessionTime.Elapsed + LatestTotalSessionTime;  }
+        public TimeSpan Session { get => SessionTime.Elapsed; }
+        public TimeSpan TotalSession { get => SessionTime.Elapsed + LatestTotalSessionTime; }
         private ProcessTime()
         {
             checker = new System.Timers.Timer
@@ -43,11 +43,11 @@ namespace Genshin_Checker.App
             checker.Elapsed += (s, e) => { WatchDogElapsed(e.SignalTime); };
             SessionTime = new();
             CurrentProcessState = ProcessState.NotRunning;
-            TargetProcess= null;
-            option= new ProcessTimeOption();
+            TargetProcess = null;
+            option = new ProcessTimeOption();
             option.OnlyActiveWindow = true;
 
-            LatestTotalSessionTime = new(App.SessionCheck.Instance.Load());
+            LatestTotalSessionTime = new(SessionCheck.Instance.Load());
         }
         static ProcessTime? instance = null;
         public static ProcessTime Instance { get => instance ??= new ProcessTime(); }
@@ -66,15 +66,15 @@ namespace Genshin_Checker.App
                 {
                     LatestTotalSessionTime += SessionTime.Elapsed;
                     SessionTime.Reset();
-                    SessionStart?.Invoke(null,EventArgs.Empty);
+                    SessionStart?.Invoke(null, EventArgs.Empty);
                 }
                 switch (state)
                 {
                     case ProcessState.NotRunning:
                         SessionTime.Stop();
-                        App.SessionCheck.Instance.Append(SessionTime.Elapsed.Ticks);
-                        
-                        SessionEnd?.Invoke(null, new(SessionTime.Elapsed,state));
+                        SessionCheck.Instance.Append(SessionTime.Elapsed.Ticks);
+
+                        SessionEnd?.Invoke(null, new(SessionTime.Elapsed, state));
                         break;
                     case ProcessState.Foreground:
                         SessionTime.Start();
@@ -89,7 +89,7 @@ namespace Genshin_Checker.App
                 CurrentProcessState = state;
                 ChangedState?.Invoke(null, new(SessionTime.Elapsed, state));
             }
-            lock(lockObject)
+            lock (lockObject)
             {
                 var a = new DateTimeOffset(DateTime.UtcNow.Ticks, TimeSpan.Zero).ToUnixTimeSeconds();
                 if (LatestCheckedDateTime != a)
@@ -111,7 +111,7 @@ namespace Genshin_Checker.App
                             break;
 
                     }
-                    App.TimeTable.SavePoint(DateTime.UtcNow, ps);
+                    TimeTable.SavePoint(DateTime.UtcNow, ps);
                     LatestCheckedDateTime = a;
                 }
             }
@@ -121,9 +121,9 @@ namespace Genshin_Checker.App
         /// </summary>
         public void EmergencyReset()
         {
-            if (CurrentProcessState!=ProcessState.NotRunning)
+            if (CurrentProcessState != ProcessState.NotRunning)
             {
-                App.SessionCheck.Instance.Append(Session.Ticks);
+                SessionCheck.Instance.Append(Session.Ticks);
                 SessionTime.Reset();
                 if (CurrentProcessState == ProcessState.Foreground)
                     SessionTime.Start();
@@ -137,7 +137,7 @@ namespace Genshin_Checker.App
             {
                 if (WindowInfo.Reload())
                 {
-                    if (WindowInfo.IsCurrentWindow) return ProcessState.Foreground; 
+                    if (WindowInfo.IsCurrentWindow) return ProcessState.Foreground;
                     else return ProcessState.Background;
                 }
                 else
@@ -151,8 +151,8 @@ namespace Genshin_Checker.App
             foreach (var p in processes)
                 if (p.ProcessName == "GenshinImpact")
                 {
-                    Instance.TargetProcess= p;
-                    Window.WindowInfo window = new(p.MainWindowHandle);
+                    Instance.TargetProcess = p;
+                    WindowInfo window = new(p.MainWindowHandle);
                     if (!window.Reload()) continue;
                     if (window.WindowClassName != "UnityWndClass") continue;
                     WindowInfo = window;
@@ -180,15 +180,16 @@ namespace Genshin_Checker.App
                 SessionTime = span;
                 State = state;
             }
-            public TimeSpan SessionTime{ get; }
-            public ProcessState State{ get; }
+            public TimeSpan SessionTime { get; }
+            public ProcessState State { get; }
         }
     }
-    public class ProcessTimeOption{
+    public class ProcessTimeOption
+    {
         /// <summary>
         /// アクティブウィンドウ時のみタイマーのカウントを進める。
         /// </summary>
-        public bool OnlyActiveWindow=true;
+        public bool OnlyActiveWindow = true;
         /// <summary>
         /// プロセス検索頻度
         /// </summary>
@@ -198,7 +199,7 @@ namespace Genshin_Checker.App
         /// </summary>
         public int WindowDetectInterval = 10;
     }
-    
+
 }
 namespace Genshin_Checker.App.Window
 {
@@ -213,8 +214,8 @@ namespace Genshin_Checker.App.Window
             Hwnd = hwnd;
         }
         //Rect取得用
-        public struct RECT 
-        { 
+        public struct RECT
+        {
             public int left;
             public int top;
             public int right;
@@ -277,7 +278,7 @@ namespace Genshin_Checker.App.Window
         public string WindowTitle { get; private set; }
         public string WindowClassName { get; private set; }
         public Point? WindowPos { get => titlebar != null ? new(titlebar.Value.rcTitleBar.left, titlebar.Value.rcTitleBar.top) : null; }
-        public Size? WindowSize { get => titlebar != null ? new((titlebar.Value.rcTitleBar.right - titlebar.Value.rcTitleBar.left), (titlebar.Value.rcTitleBar.bottom - titlebar.Value.rcTitleBar.top)) : null; }
+        public Size? WindowSize { get => titlebar != null ? new(titlebar.Value.rcTitleBar.right - titlebar.Value.rcTitleBar.left, titlebar.Value.rcTitleBar.bottom - titlebar.Value.rcTitleBar.top) : null; }
         public bool IsCurrentWindow { get => GetForegroundWindow() == Hwnd; }
         /*public TitleBarButtonStates WindowButtonState { get => titlebar != null ? new(titlebar.Value.cbSize.)}
         public class WindowStatus
@@ -303,10 +304,10 @@ namespace Genshin_Checker.App.Window
         }
         public bool GetWindow(IntPtr hwnd)
         {
-            Hwnd = hwnd;            
-            var info= new TITLEBARINFO();
-            info.cbSize = System.Runtime.InteropServices.Marshal.SizeOf(info);
-            var isSuccess = Window.WindowInfo.GetTitleBarInfo(hwnd, ref info);
+            Hwnd = hwnd;
+            var info = new TITLEBARINFO();
+            info.cbSize = Marshal.SizeOf(info);
+            var isSuccess = GetTitleBarInfo(hwnd, ref info);
             if (!isSuccess)
             {
                 titlebar = null;
@@ -324,8 +325,8 @@ namespace Genshin_Checker.App.Window
                 StringBuilder csb = new StringBuilder(256);
                 GetClassName(hwnd, csb, csb.Capacity);
 
-                WindowClassName= csb.ToString();
-                WindowTitle= tsb.ToString();
+                WindowClassName = csb.ToString();
+                WindowTitle = tsb.ToString();
             }
             return true;
         }

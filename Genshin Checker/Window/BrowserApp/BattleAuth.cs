@@ -1,4 +1,4 @@
-﻿using Genshin_Checker.App;
+﻿using Genshin_Checker.App.HoYoLab;
 using Genshin_Checker.Window;
 using Newtonsoft.Json;
 using System;

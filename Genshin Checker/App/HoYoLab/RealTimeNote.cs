@@ -1,4 +1,6 @@
-﻿using Genshin_Checker.App.Store.RealTimeNote;
+﻿using Genshin_Checker.App.General;
+using Genshin_Checker.App.HoYoLab;
+using Genshin_Checker.App.Store.RealTimeNote;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -184,7 +186,7 @@ namespace Genshin_Checker.App
 
     }
 }
-namespace Genshin_Checker.App.Store.RealTimeNote 
+namespace Genshin_Checker.App.Store.RealTimeNote
 {
     public class Meta
     {
