@@ -67,6 +67,8 @@ namespace Genshin_Checker
                 versionNameToolStripMenuItem.Text += "[Readonly]";
                 Registry.IsReadOnly = true;
             }
+            App.Game.GameLogWatcher.Instance.LogUpdated += LogUpdated;
+            App.Game.GameLogWatcher.Instance.Init();
         }
 
         void AccountAdded(object? sender, Account e)
@@ -286,6 +288,13 @@ namespace Genshin_Checker
             {
                 var n = new ErrorMessage(ex.GetType().ToString(), ex.Message);
                 n.ShowDialog(this);
+            }
+        }
+        private void LogUpdated(object? sender, string[] e)
+        {
+            foreach(var item in e)
+            {
+                Trace.Write(item);
             }
         }
     }

@@ -49,7 +49,6 @@ namespace Genshin_Checker.App
             foreach (KeyValuePair<string, string> header in headers)
                 client.DefaultRequestHeaders.Add(header.Key, header.Value);
             HttpResponseMessage response = await client.GetAsync(url);
-            Trace.WriteLine($"{url}\n{response.StatusCode}");
             response.EnsureSuccessStatusCode();
             return await response.Content.ReadAsStringAsync();
         }
