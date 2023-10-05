@@ -13,47 +13,36 @@ namespace Genshin_Checker.App.Game
     {
         static GameLogWatcher? instance = null;
         public static GameLogWatcher Instance { get => instance ??= new GameLogWatcher(); }
-
-        //FileSystemWatcher LogWatcher;
         readonly System.Windows.Forms.Timer Delay;
-        string PATH = $"{Environment.GetFolderPath(Environment.SpecialFolder.UserProfile).ToString()}\\AppData\\LocalLow\\miHoYo\\Genshin Impact";
+        string PATH = $"{Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)}\\AppData\\LocalLow\\miHoYo\\Genshin Impact";
         const string FILENAME = "output_log.txt";
-        readonly SemaphoreSlim Semaphore = new SemaphoreSlim(1, 1);
+        readonly SemaphoreSlim Semaphore = new(1, 1);
+        /// <summary>
+        /// ログファイルの最終ポジション
+        /// </summary>
         long LogPosition = 0;
         public int WatchDogInterval { get=>Delay.Interval; set => Delay.Interval = value; }
         private GameLogWatcher()
         {
-
-            /*LogWatcher = new();
-            LogWatcher.Path = PATH;
-            LogWatcher.Filter = FILENAME;
-            LogWatcher.NotifyFilter = NotifyFilters.LastWrite;
-            LogWatcher.IncludeSubdirectories = false;
-            //イベントハンドラの追加*/
-            Delay = new();
-            Delay.Interval = 10;
+            Delay = new()
+            {
+                Interval = 10
+            };
             Delay.Tick += LogChanged;
         }
         public void Init()
         {
-            //watcher.InternalBufferSize = 4096
-            //LogWatcher.SynchronizingObject = synchronize;
-
-            //監視を開始する
-           // LogWatcher.EnableRaisingEvents = true;
            Delay.Enabled= true;
         }
         public event EventHandler<string[]>? LogUpdated = null;
         private async void LogChanged(object? source, EventArgs e)
         {
             await Semaphore.WaitAsync();
-            //Stopwatch stopwatch = Stopwatch.StartNew();
             try
             {
                 FileStream fs = new($"{PATH}/{FILENAME}", FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
                 try
                 {
-                    //Stopwatch sw = Stopwatch.StartNew();
                     long size = fs.Length;
                     if (LogPosition == size)
                     {
@@ -71,8 +60,7 @@ namespace Genshin_Checker.App.Game
                     if (res != null)
                     {
                         var a = Regex.Matches(res+"\r\n", @"^\[\d{4}-\d{2}-\d{2}\s\d{2}:\d{2}:\d{2}\.\d{3}\].*$",RegexOptions.Multiline);
-                            string[] s = new string[a.Count];
-                        //Trace.WriteLine(a.Count);
+                        string[] s = new string[a.Count];
                         for (int i=0;i<a.Count;i++)
                         {
                             s[i] = a[i].Value;
@@ -91,6 +79,7 @@ namespace Genshin_Checker.App.Game
             }
             catch (FileNotFoundException)
             {
+                LogPosition = 0;
             }
             catch (Exception ex)
             {
