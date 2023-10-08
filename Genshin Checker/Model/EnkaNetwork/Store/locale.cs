@@ -12,8 +12,4 @@ using System.Threading.Tasks;
 
 namespace Genshin_Checker.Model.EnkaNetwork.Store.Locale 
 { 
-    public class Root
-    {
-        public KeyValuePair<string, KeyValuePair<string, string>> Lang { get; set; }
-    }
 }

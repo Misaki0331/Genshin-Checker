@@ -33,10 +33,10 @@ namespace Genshin_Checker.Model.EnkaNetwork.ShowCase
         public int avatarId { get; set; }
 
         [JsonProperty("propMap")]
-        public KeyValuePair<string,PropMap> propMap { get; set; }
+        public Dictionary<string, PropMap> propMap { get; set; } = new();
 
         [JsonProperty("fightPropMap")]
-        public KeyValuePair<string,double> fightPropMap { get; set; }
+        public Dictionary<string, double> fightPropMap { get; set; } = new();
 
         [JsonProperty("skillDepotId")]
         public int skillDepotId { get; set; }
@@ -45,7 +45,7 @@ namespace Genshin_Checker.Model.EnkaNetwork.ShowCase
         public List<int> inherentProudSkillList { get; set; } = new();
 
         [JsonProperty("skillLevelMap")]
-        public KeyValuePair<string, int> skillLevelMap { get; set; }
+        public Dictionary<string, int> skillLevelMap { get; set; } = new();
 
         [JsonProperty("equipList")]
         public List<EquipList> equipList { get; set; } = new();
@@ -246,7 +246,7 @@ namespace Genshin_Checker.Model.EnkaNetwork.ShowCase
         public int promoteLevel { get; set; }
 
         [JsonProperty("affixMap")]
-        public KeyValuePair<string, int> affixMap { get; set; }
+        public Dictionary<string, int> affixMap { get; set; } = new();
     }
 
     public class WeaponStat

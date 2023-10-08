@@ -13,10 +13,6 @@ using System.Threading.Tasks;
 
 namespace Genshin_Checker.Model.EnkaNetwork.Store.Costumes
 {
-    public class Root
-    {
-        public KeyValuePair<int, Data> index { get; set; }
-    }
     public class Data
     {
         [JsonProperty("iconName")]

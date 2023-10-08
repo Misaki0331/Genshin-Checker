@@ -1,11 +1,14 @@
 ﻿using Genshin_Checker.App.HoYoLab;
+using Genshin_Checker.Store;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -28,7 +31,7 @@ namespace Genshin_Checker.Window
             if (account.IsDisposed) Close();
             UiUpdate.Stop();
             var Note = account.RealTimeNote.Data;
-            if (account.UID!= 0) Text = $"リアルタイムノート (UID:{account.UID})";
+            if (account.UID != 0) Text = $"リアルタイムノート (UID:{account.UID})";
             else Text = $"リアルタイムノート";
             if (Note.Meta.Message == "OK")
             {
@@ -37,10 +40,10 @@ namespace Genshin_Checker.Window
                 panel_Error.Visible = false;
                 label1.Text = $"{r.Resin.Current}";
                 label2.Text = $"/{r.Resin.Max}";
-                if(DateTime.Now>r.Resin.RecoveryTime) label3.Text = "最大まで回復済";
+                if (DateTime.Now > r.Resin.RecoveryTime) label3.Text = "最大まで回復済";
                 else
                 {
-                    var time = (int)(r.Resin.RecoveryTime-DateTime.Now).TotalSeconds;
+                    var time = (int)(r.Resin.RecoveryTime - DateTime.Now).TotalSeconds;
                     label3.Text = $"残り {(time / 3600)}:{(time / 60 % 60):00}:{(time % 60):00}";
                 }
                 if (r.Commission.IsClaimed) label4.Text = $"{r.Commission.Current} / {r.Commission.Max} 完了";
@@ -92,7 +95,7 @@ namespace Genshin_Checker.Window
             {
                 panel_main.Visible = false;
                 panel_Error.Visible = true;
-                if (Note.Meta.Retcode!= 0)
+                if (Note.Meta.Retcode != 0)
                 {
                     if (Note.Meta.IsAPIError) label10.Text = "APIエラー";
                     else label10.Text = "内部エラー";
@@ -101,7 +104,7 @@ namespace Genshin_Checker.Window
             }
             UiUpdate.Interval = 1000 - (DateTime.Now - TruncateToSeconds(DateTime.Now)).Milliseconds;
             UiUpdate.Start();
-            
+            //this.BackgroundImage.
         }
 
         static DateTime TruncateToSeconds(DateTime dateTime)
@@ -125,8 +128,65 @@ namespace Genshin_Checker.Window
 
         private void button_Auth_Click(object sender, EventArgs e)
         {
-            var browser = new BrowserApp.BattleAuth(account:account);
+            var browser = new BrowserApp.BattleAuth(account: account);
             browser.ShowDialog(this);
+        }
+
+        private async void RealTimeData_Load(object sender, EventArgs e)
+        {
+            var url = EnkaData.Convert.Namecard.GetNameCardURL(account.EnkaNetwork.Data.playerInfo.nameCardId);
+            var image = url == null ? null : await App.WebRequest.ImageGetRequest(url);
+            if (image != null) BackgroundImage = image;
+        }
+
+        private void DrawOutlineString(Graphics g, Label label, Color outlineColor, int outlineWidth)
+        {
+            ///Todo: LabelからPictureBoxに変更
+            using (GraphicsPath path = new GraphicsPath())
+            using (Pen pen = new Pen(outlineColor, outlineWidth) { LineJoin = LineJoin.Round })
+            using (SolidBrush brush = new SolidBrush(Color.White))
+            {
+                StringFormat format = StringFormat.GenericTypographic;
+
+                if (label.TextAlign == ContentAlignment.TopLeft ||
+                    label.TextAlign == ContentAlignment.MiddleLeft ||
+                    label.TextAlign == ContentAlignment.BottomLeft)
+                    format.Alignment = StringAlignment.Near;
+                if (label.TextAlign == ContentAlignment.TopCenter ||
+                    label.TextAlign == ContentAlignment.MiddleCenter ||
+                    label.TextAlign == ContentAlignment.BottomCenter)
+                    format.Alignment = StringAlignment.Center;
+                if (label.TextAlign == ContentAlignment.TopRight ||
+                    label.TextAlign == ContentAlignment.MiddleRight ||
+                    label.TextAlign == ContentAlignment.BottomRight)
+                    format.Alignment = StringAlignment.Far;
+                if (label.TextAlign == ContentAlignment.TopLeft ||
+                    label.TextAlign == ContentAlignment.TopCenter ||
+                    label.TextAlign == ContentAlignment.TopRight)
+                    format.LineAlignment = StringAlignment.Near;
+                if (label.TextAlign == ContentAlignment.MiddleLeft ||
+                    label.TextAlign == ContentAlignment.MiddleCenter ||
+                    label.TextAlign == ContentAlignment.MiddleRight)
+                    format.LineAlignment = StringAlignment.Center;
+                if (label.TextAlign == ContentAlignment.BottomLeft ||
+                    label.TextAlign == ContentAlignment.BottomCenter ||
+                    label.TextAlign == ContentAlignment.BottomRight)
+                    format.LineAlignment = StringAlignment.Far;
+
+                path.AddString(label.Text, label.Font.FontFamily, (int)label.Font.Style, (label.Font.Size - 10000) * 1.25f, label.ClientRectangle, StringFormat.GenericTypographic);
+                g.SmoothingMode = SmoothingMode.AntiAlias;
+                g.DrawPath(pen, path);
+                g.FillPath(brush, path);
+            }
+        }
+        private void Label_Paint(object sender, PaintEventArgs e)
+        {
+            var label = sender as Label;
+            if (label != null)
+            {
+                label.Enabled = false;
+                DrawOutlineString(e.Graphics, label, Color.Black, label.Font.Size<10018?2:3);
+            }
         }
     }
 }

@@ -16,6 +16,7 @@ namespace Genshin_Checker.App.HoYoLab
         public bool IsDisposed { get; set; } = false;
         public RealTimeNote RealTimeNote;
         public TravelersDiary TravelersDiary;
+        public EnkaNetwork.EnkaNetwork EnkaNetwork;
         public Account(string cookie, int UID)
         {
             Server = GetServer(UID);
@@ -25,6 +26,7 @@ namespace Genshin_Checker.App.HoYoLab
             Culture = CultureInfo.CurrentCulture;
             RealTimeNote = new(this);
             TravelersDiary = new(this);
+            EnkaNetwork = new(this);
 
         }
 
@@ -151,6 +153,7 @@ namespace Genshin_Checker.App.HoYoLab
             IsDisposed = true;
             RealTimeNote.Dispose();
             TravelersDiary.Dispose();
+            EnkaNetwork.Dispose();
         }
         public class HoYoLabAPIException : Exception
         {
@@ -159,6 +162,7 @@ namespace Genshin_Checker.App.HoYoLab
             {
                 Retcode = retcode;
                 APIMessage = message;
+                Retcode = retcode;
             }
             public readonly int Retcode;
             public readonly string APIMessage;
@@ -284,6 +288,21 @@ namespace Genshin_Checker.App.HoYoLab
             if (root == null) throw new InvalidDataException($"json形式に変換できません。\n\n--- Request URL ---\n{url}\n\n--- Received Data ---\n{json}\n--- Data End ---");
             if (root.Data == null) throw new HoYoLabAPIException(root.Retcode, root.Message);
             return root.Data;
+        }
+
+
+        /// <summary>
+        /// EnkaNetwork
+        /// </summary>
+        /// <returns></returns>
+        /// <exception cref="InvalidDataException"></exception>
+        public async Task<Model.EnkaNetwork.ShowCase.Root> GetEnkaNetwork()
+        {
+            var url = $"https://enka.network/api/uid/{UID}";
+            var json = await WebRequest.GeneralGetRequest(url);
+            var root = JsonConvert.DeserializeObject<Model.EnkaNetwork.ShowCase.Root>(json);
+            if (root == null) throw new InvalidDataException($"json形式に変換できません。\n\n--- Request URL ---\n{url}\n\n--- Received Data ---\n{json}\n--- Data End ---");
+            return root;
         }
     }
 }

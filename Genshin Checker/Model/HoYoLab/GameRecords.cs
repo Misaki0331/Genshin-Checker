@@ -231,7 +231,7 @@ namespace Genshin_Checker.Model.HoYoLab.GameRecords
 
 
         [JsonProperty("field_ext_map")]
-        public KeyValuePair<string, FieldExtMap_Link> field_ext_map { get; set; }
+        public Dictionary<string, FieldExtMap_Link> field_ext_map { get; set; } = new();
     }
 
     public class WorldExploration

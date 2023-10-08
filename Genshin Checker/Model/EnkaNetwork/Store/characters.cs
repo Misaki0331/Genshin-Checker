@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 | パラメーター : なし                                                                          |
 +---------------------------------------------------------------------------------------------*/
 
-namespace Genshin_Checker.Model.EnkaNetwork.Store
+namespace Genshin_Checker.Model.EnkaNetwork.Store.Characters
 {
     public class Data
     {
@@ -28,10 +28,10 @@ namespace Genshin_Checker.Model.EnkaNetwork.Store
         public KeyValuePair<int,string> Skills { get; set; }
 
         [JsonProperty("ProudMap")]
-        public KeyValuePair<int,int> ProudMap { get; set; }
+        public Dictionary<int, int> ProudMap { get; set; } = new();
 
         [JsonProperty("NameTextMapHash")]
-        public int NameTextMapHash { get; set; }
+        public long NameTextMapHash { get; set; }
 
         [JsonProperty("SideIconName")]
         public string SideIconName { get; set; } = string.Empty;
@@ -45,7 +45,6 @@ namespace Genshin_Checker.Model.EnkaNetwork.Store
 
     public class Root
     {
-        KeyValuePair<string, Data> index { get; set; } = new();
     }
 
 }

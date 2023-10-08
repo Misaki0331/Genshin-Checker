@@ -81,6 +81,57 @@ namespace Genshin_Checker.App
             response.EnsureSuccessStatusCode();
             return await response.Content.ReadAsStringAsync();
         }
+        public static async Task<string> GeneralGetRequest(string url)
+        {
+            var uri = new Uri(url);
+            var root = $"{uri.Scheme}://{uri.Host}";
+            Dictionary<string, string> headers = new()
+                {
+                    { "Origin", root },
+                    { "Referer", root },
+                    { "Accept", "application/json, text/plain, */*" },
+                    { "Accept-Encoding", "None" },
+                    { "Accept-Language", "en-US;q=0.5" },
+                    { "x-rpc-app_version", "1.5.0" },
+                    { "x-rpc-client_type", "5" },
+                    { "x-rpc-language", "en-us" },
+                    { "User-Agent", $"Genshin Checker/{System.Reflection.Assembly.GetExecutingAssembly().GetName().Version}" },
+                };
+            HttpClient client = new HttpClient();
+            client.DefaultRequestHeaders.Clear();
+            foreach (KeyValuePair<string, string> header in headers)
+                client.DefaultRequestHeaders.Add(header.Key, header.Value);
+            HttpResponseMessage response = await client.GetAsync(url);
+            response.EnsureSuccessStatusCode();
+            return await response.Content.ReadAsStringAsync();
+        }
+        public static async Task<Image> ImageGetRequest(string url)
+        {
+            var uri = new Uri(url);
+            var root = $"{uri.Scheme}://{uri.Host}";
+            Dictionary<string, string> headers = new()
+                {
+                    { "Origin", root },
+                    { "Referer", root },
+                    { "Accept", "application/json, text/plain, */*" },
+                    { "Accept-Encoding", "None" },
+                    { "Accept-Language", "en-US;q=0.5" },
+                    { "x-rpc-app_version", "1.5.0" },
+                    { "x-rpc-client_type", "5" },
+                    { "x-rpc-language", "en-us" },
+                    { "User-Agent", $"Genshin Checker/{System.Reflection.Assembly.GetExecutingAssembly().GetName().Version}" },
+                };
+            HttpClient client = new HttpClient();
+            client.DefaultRequestHeaders.Clear();
+            foreach (KeyValuePair<string, string> header in headers)
+                client.DefaultRequestHeaders.Add(header.Key, header.Value);
+            HttpResponseMessage response = await client.GetAsync(url);
+            Trace.WriteLine(url);
+            response.EnsureSuccessStatusCode();
+            var stream = await response.Content.ReadAsStreamAsync();
+            var bitmap = new Bitmap(stream);
+            return bitmap;
+        }
 
     }
 }

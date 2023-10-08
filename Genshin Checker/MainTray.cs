@@ -10,6 +10,7 @@ using Genshin_Checker.Model.HoYoLab;
 using Genshin_Checker.App.HoYoLab;
 using Genshin_Checker.App.Game;
 using Genshin_Checker.App.General;
+using Genshin_Checker.Store;
 
 namespace Genshin_Checker
 {
@@ -36,7 +37,7 @@ namespace Genshin_Checker
                         break;
                 }
             }
-
+            EnkaData.Data.GetStoreData();
             
             //アプリの初期化&UIの初期化
             ProcessTime.Instance.option.OnlyActiveWindow = true;
@@ -223,8 +224,10 @@ namespace Genshin_Checker
                 {
                     if (TimerDisplay == null || TimerDisplay.IsDisposed)
                     {
-                        TimerDisplay = new();
-                        TimerDisplay.WindowState = FormWindowState.Normal;
+                        TimerDisplay = new()
+                        {
+                            WindowState = FormWindowState.Normal
+                        };
                         TimerDisplay.Show();
                         TimerDisplay.Activate();
                     }
@@ -242,7 +245,7 @@ namespace Genshin_Checker
             }
         }
 
-        private void testToolStripMenuItem_ClickAsync(object sender, EventArgs e)
+        private async void testToolStripMenuItem_ClickAsync(object sender, EventArgs e)
         {
             /*Account account;
             if (Store.Accounts.Data.Count == 0) return;
@@ -254,9 +257,10 @@ namespace Genshin_Checker
             var realtime = await account.GetRealTimeNote();
             var character = await account.GetCharacters();
             var diaryinfo = await account.GetTravelersDiaryInfo();*/
-            var a=new Window.TravelersDiary(Store.Accounts.Data[0]);
-            a.Show();
-            a.Activate();
+            //var data = await Accounts.Data[0].GetEnkaNetwork();
+            //var a=new Window.TravelersDiary(Store.Accounts.Data[0]);
+            //a.Show();
+            //a.Activate();
         }
 
         private void 旅人手帳ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -265,14 +269,16 @@ namespace Genshin_Checker
             {
                 if (TravelersDiary == null || TravelersDiary.IsDisposed)
                 {
-                    if (Store.Accounts.Data.Count == 0)
+                    if (Accounts.Data.Count == 0)
                     {
                         var n = new ErrorMessage("連携しているアカウントはまだ無いようです。", "お手数ですが、以下の操作を行って認証してください。\n設定⇒アプリ連携⇒HoYoLabとの連携");
                         n.ShowDialog(this);
                         return;
                     }
-                    TravelersDiary = new(Store.Accounts.Data[0]);
-                    TravelersDiary.WindowState = FormWindowState.Normal;
+                    TravelersDiary = new(Accounts.Data[0])
+                    {
+                        WindowState = FormWindowState.Normal
+                    };
                     TravelersDiary.Show();
                     TravelersDiary.Activate();
                 }
