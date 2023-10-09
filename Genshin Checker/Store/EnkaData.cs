@@ -6,6 +6,7 @@ using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using Genshin_Checker.Model.EnkaNetwork.Store;
+using Genshin_Checker.Window;
 
 namespace Genshin_Checker.Store
 {
@@ -29,27 +30,32 @@ namespace Genshin_Checker.Store
         public Dictionary<int,Model.EnkaNetwork.Store.Affixes.Data> Affixes { get; private set; }
         public async void GetStoreData()
         {
-            var json = await App.WebRequest.GeneralGetRequest("https://raw.githubusercontent.com/EnkaNetwork/API-docs/master/store/namecards.json");
-            var namecard = JsonConvert.DeserializeObject<Dictionary<int,Model.EnkaNetwork.Store.Namecard.Icon>>(json);
-            if (namecard != null) Namecard = namecard;
-            else throw new ArgumentNullException(nameof(namecard));
-            json = await App.WebRequest.GeneralGetRequest("https://raw.githubusercontent.com/EnkaNetwork/API-docs/master/store/loc.json");
-            var locale = JsonConvert.DeserializeObject<Dictionary<string, Dictionary<string, string>>>(json);
-            if (locale != null) Locale = locale;
-            else throw new ArgumentNullException(nameof(locale));
-            json = await App.WebRequest.GeneralGetRequest("https://raw.githubusercontent.com/EnkaNetwork/API-docs/master/store/characters.json");
-            var characters = JsonConvert.DeserializeObject<Dictionary<string, Model.EnkaNetwork.Store.Characters.Data>>(json);
-            if (characters != null) Characters = characters;
-            else throw new ArgumentNullException(nameof(characters));
-            json = await App.WebRequest.GeneralGetRequest("https://raw.githubusercontent.com/EnkaNetwork/API-docs/master/store/costumes.json");
-            var costumes = JsonConvert.DeserializeObject<Dictionary<int,Model.EnkaNetwork.Store.Costumes.Data>>(json);
-            if (costumes != null) Costumes = costumes;
-            else throw new ArgumentNullException(nameof(costumes));
-            json = await App.WebRequest.GeneralGetRequest("https://raw.githubusercontent.com/EnkaNetwork/API-docs/master/store/affixes.json");
-            var affixes = JsonConvert.DeserializeObject<Dictionary<int, Model.EnkaNetwork.Store.Affixes.Data>>(json);
-            if (affixes != null) Affixes = affixes;
-            else throw new ArgumentNullException(nameof(affixes));
-
+            try
+            {
+                var json = await App.WebRequest.GeneralGetRequest("https://raw.githubusercontent.com/EnkaNetwork/API-docs/master/store/namecards.json");
+                var namecard = JsonConvert.DeserializeObject<Dictionary<int, Model.EnkaNetwork.Store.Namecard.Icon>>(json);
+                if (namecard != null) Namecard = namecard;
+                else throw new ArgumentNullException(nameof(namecard));
+                json = await App.WebRequest.GeneralGetRequest("https://raw.githubusercontent.com/EnkaNetwork/API-docs/master/store/loc.json");
+                var locale = JsonConvert.DeserializeObject<Dictionary<string, Dictionary<string, string>>>(json);
+                if (locale != null) Locale = locale;
+                else throw new ArgumentNullException(nameof(locale));
+                json = await App.WebRequest.GeneralGetRequest("https://raw.githubusercontent.com/EnkaNetwork/API-docs/master/store/characters.json");
+                var characters = JsonConvert.DeserializeObject<Dictionary<string, Model.EnkaNetwork.Store.Characters.Data>>(json);
+                if (characters != null) Characters = characters;
+                else throw new ArgumentNullException(nameof(characters));
+                json = await App.WebRequest.GeneralGetRequest("https://raw.githubusercontent.com/EnkaNetwork/API-docs/master/store/costumes.json");
+                var costumes = JsonConvert.DeserializeObject<Dictionary<int, Model.EnkaNetwork.Store.Costumes.Data>>(json);
+                if (costumes != null) Costumes = costumes;
+                else throw new ArgumentNullException(nameof(costumes));
+                json = await App.WebRequest.GeneralGetRequest("https://raw.githubusercontent.com/EnkaNetwork/API-docs/master/store/affixes.json");
+                var affixes = JsonConvert.DeserializeObject<Dictionary<int, Model.EnkaNetwork.Store.Affixes.Data>>(json);
+                if (affixes != null) Affixes = affixes;
+                else throw new ArgumentNullException(nameof(affixes));
+            }catch(Exception ex)
+            {
+                new ErrorMessage("Download Failed", $"Fail to load Enka.network static data.\n{ex.GetType()}\n{ex.Message}");
+            }
         }
         public class Convert
         {

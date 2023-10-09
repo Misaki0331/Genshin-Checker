@@ -142,37 +142,47 @@ namespace Genshin_Checker.Window
         private void DrawOutlineString(Graphics g, Label label, Color outlineColor, int outlineWidth)
         {
             ///Todo: LabelからPictureBoxに変更
-            using (GraphicsPath path = new GraphicsPath())
-            using (Pen pen = new Pen(outlineColor, outlineWidth) { LineJoin = LineJoin.Round })
-            using (SolidBrush brush = new SolidBrush(Color.White))
+            using (GraphicsPath path = new())
+            using (Pen pen = new(outlineColor, outlineWidth) { LineJoin = LineJoin.Round })
+            using (SolidBrush brush = new(Color.White))
             {
                 StringFormat format = StringFormat.GenericTypographic;
-
-                if (label.TextAlign == ContentAlignment.TopLeft ||
-                    label.TextAlign == ContentAlignment.MiddleLeft ||
-                    label.TextAlign == ContentAlignment.BottomLeft)
-                    format.Alignment = StringAlignment.Near;
-                if (label.TextAlign == ContentAlignment.TopCenter ||
-                    label.TextAlign == ContentAlignment.MiddleCenter ||
-                    label.TextAlign == ContentAlignment.BottomCenter)
-                    format.Alignment = StringAlignment.Center;
-                if (label.TextAlign == ContentAlignment.TopRight ||
-                    label.TextAlign == ContentAlignment.MiddleRight ||
-                    label.TextAlign == ContentAlignment.BottomRight)
-                    format.Alignment = StringAlignment.Far;
-                if (label.TextAlign == ContentAlignment.TopLeft ||
-                    label.TextAlign == ContentAlignment.TopCenter ||
-                    label.TextAlign == ContentAlignment.TopRight)
-                    format.LineAlignment = StringAlignment.Near;
-                if (label.TextAlign == ContentAlignment.MiddleLeft ||
-                    label.TextAlign == ContentAlignment.MiddleCenter ||
-                    label.TextAlign == ContentAlignment.MiddleRight)
-                    format.LineAlignment = StringAlignment.Center;
-                if (label.TextAlign == ContentAlignment.BottomLeft ||
-                    label.TextAlign == ContentAlignment.BottomCenter ||
-                    label.TextAlign == ContentAlignment.BottomRight)
-                    format.LineAlignment = StringAlignment.Far;
-
+                switch (label.TextAlign)
+                {
+                    case ContentAlignment.TopLeft:
+                    case ContentAlignment.MiddleLeft:
+                    case ContentAlignment.BottomLeft:
+                        format.Alignment = StringAlignment.Near;
+                        break;
+                    case ContentAlignment.TopCenter:
+                    case ContentAlignment.MiddleCenter:
+                    case ContentAlignment.BottomCenter:
+                        format.Alignment = StringAlignment.Center;
+                        break;
+                    case ContentAlignment.TopRight:
+                    case ContentAlignment.MiddleRight:
+                    case ContentAlignment.BottomRight:
+                        format.Alignment = StringAlignment.Far;
+                        break;
+                }
+                switch (label.TextAlign)
+                {
+                    case ContentAlignment.TopLeft:
+                    case ContentAlignment.TopCenter:
+                    case ContentAlignment.TopRight:
+                        format.LineAlignment = StringAlignment.Near;
+                        break;
+                    case ContentAlignment.MiddleLeft:
+                    case ContentAlignment.MiddleCenter:
+                    case ContentAlignment.MiddleRight:
+                        format.LineAlignment = StringAlignment.Center;
+                        break;
+                    case ContentAlignment.BottomLeft:
+                    case ContentAlignment.BottomCenter:
+                    case ContentAlignment.BottomRight:
+                        format.LineAlignment = StringAlignment.Far;
+                        break;
+                }
                 path.AddString(label.Text, label.Font.FontFamily, (int)label.Font.Style, (label.Font.Size - 10000) * 1.25f, label.ClientRectangle, StringFormat.GenericTypographic);
                 g.SmoothingMode = SmoothingMode.AntiAlias;
                 g.DrawPath(pen, path);
@@ -185,7 +195,7 @@ namespace Genshin_Checker.Window
             if (label != null)
             {
                 label.Enabled = false;
-                DrawOutlineString(e.Graphics, label, Color.Black, label.Font.Size<10018?2:3);
+                DrawOutlineString(e.Graphics, label, Color.Black, label.Font.Size < 10018 ? 2 : 3);
             }
         }
     }

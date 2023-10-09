@@ -121,6 +121,7 @@
             label1.ForeColor = Color.Transparent;
             label1.Location = new Point(60, 0);
             label1.Name = "label1";
+            label1.Padding = new Padding(0, 0, 3, 0);
             label1.Size = new Size(133, 60);
             label1.TabIndex = 1;
             label1.Text = "---";
@@ -136,7 +137,7 @@
             label2.ForeColor = Color.Transparent;
             label2.Location = new Point(193, 26);
             label2.Name = "label2";
-            label2.Size = new Size(120, 34);
+            label2.Size = new Size(114, 34);
             label2.TabIndex = 2;
             label2.Text = "/---";
             label2.TextAlign = ContentAlignment.MiddleLeft;
@@ -149,8 +150,9 @@
             label3.Font = new Font("Meiryo UI", 10012F, FontStyle.Bold, GraphicsUnit.Point);
             label3.ForeColor = Color.Transparent;
             label3.Location = new Point(193, 0);
+            label3.Margin = new Padding(5, 0, 3, 0);
             label3.Name = "label3";
-            label3.Size = new Size(120, 26);
+            label3.Size = new Size(114, 26);
             label3.TabIndex = 3;
             label3.Text = "残り --:--:--";
             label3.TextAlign = ContentAlignment.BottomLeft;
@@ -176,7 +178,7 @@
             label4.ForeColor = Color.Transparent;
             label4.Location = new Point(40, 0);
             label4.Name = "label4";
-            label4.Size = new Size(273, 40);
+            label4.Size = new Size(267, 40);
             label4.TabIndex = 5;
             label4.Text = "-/-";
             label4.TextAlign = ContentAlignment.MiddleLeft;
@@ -198,7 +200,7 @@
             panel_resin.Dock = DockStyle.Top;
             panel_resin.Location = new Point(0, 0);
             panel_resin.Name = "panel_resin";
-            panel_resin.Size = new Size(313, 60);
+            panel_resin.Size = new Size(307, 60);
             panel_resin.TabIndex = 6;
             // 
             // panel_comission
@@ -209,7 +211,7 @@
             panel_comission.Dock = DockStyle.Top;
             panel_comission.Location = new Point(0, 113);
             panel_comission.Name = "panel_comission";
-            panel_comission.Size = new Size(313, 40);
+            panel_comission.Size = new Size(307, 40);
             panel_comission.TabIndex = 4;
             // 
             // panel_main
@@ -233,10 +235,10 @@
             panel_expedition.Controls.Add(panel_expendition_1);
             panel_expedition.Controls.Add(panel3);
             panel_expedition.Dock = DockStyle.Fill;
-            panel_expedition.Location = new Point(313, 0);
+            panel_expedition.Location = new Point(307, 0);
             panel_expedition.Name = "panel_expedition";
             panel_expedition.Padding = new Padding(0, 0, 4, 0);
-            panel_expedition.Size = new Size(186, 238);
+            panel_expedition.Size = new Size(192, 238);
             panel_expedition.TabIndex = 8;
             // 
             // panel_expendition_5
@@ -246,7 +248,7 @@
             panel_expendition_5.Dock = DockStyle.Top;
             panel_expendition_5.Location = new Point(0, 188);
             panel_expendition_5.Name = "panel_expendition_5";
-            panel_expendition_5.Size = new Size(182, 40);
+            panel_expendition_5.Size = new Size(188, 40);
             panel_expendition_5.TabIndex = 10;
             panel_expendition_5.Visible = false;
             // 
@@ -258,7 +260,7 @@
             label_expendition_5.ForeColor = Color.Transparent;
             label_expendition_5.Location = new Point(40, 0);
             label_expendition_5.Name = "label_expendition_5";
-            label_expendition_5.Size = new Size(142, 40);
+            label_expendition_5.Size = new Size(148, 40);
             label_expendition_5.TabIndex = 6;
             label_expendition_5.Text = "--:--:--";
             label_expendition_5.TextAlign = ContentAlignment.BottomRight;
@@ -281,7 +283,7 @@
             panel_expendition_4.Dock = DockStyle.Top;
             panel_expendition_4.Location = new Point(0, 148);
             panel_expendition_4.Name = "panel_expendition_4";
-            panel_expendition_4.Size = new Size(182, 40);
+            panel_expendition_4.Size = new Size(188, 40);
             panel_expendition_4.TabIndex = 9;
             panel_expendition_4.Visible = false;
             // 
@@ -293,7 +295,7 @@
             label_expendition_4.ForeColor = Color.Transparent;
             label_expendition_4.Location = new Point(40, 0);
             label_expendition_4.Name = "label_expendition_4";
-            label_expendition_4.Size = new Size(142, 40);
+            label_expendition_4.Size = new Size(148, 40);
             label_expendition_4.TabIndex = 6;
             label_expendition_4.Text = "--:--:--";
             label_expendition_4.TextAlign = ContentAlignment.BottomRight;
@@ -316,7 +318,7 @@
             panel_expendition_3.Dock = DockStyle.Top;
             panel_expendition_3.Location = new Point(0, 108);
             panel_expendition_3.Name = "panel_expendition_3";
-            panel_expendition_3.Size = new Size(182, 40);
+            panel_expendition_3.Size = new Size(188, 40);
             panel_expendition_3.TabIndex = 8;
             panel_expendition_3.Visible = false;
             // 
@@ -328,7 +330,7 @@
             label_expendition_3.ForeColor = Color.Transparent;
             label_expendition_3.Location = new Point(40, 0);
             label_expendition_3.Name = "label_expendition_3";
-            label_expendition_3.Size = new Size(142, 40);
+            label_expendition_3.Size = new Size(148, 40);
             label_expendition_3.TabIndex = 6;
             label_expendition_3.Text = "--:--:--";
             label_expendition_3.TextAlign = ContentAlignment.BottomRight;
@@ -351,7 +353,7 @@
             panel_expendition_2.Dock = DockStyle.Top;
             panel_expendition_2.Location = new Point(0, 68);
             panel_expendition_2.Name = "panel_expendition_2";
-            panel_expendition_2.Size = new Size(182, 40);
+            panel_expendition_2.Size = new Size(188, 40);
             panel_expendition_2.TabIndex = 7;
             panel_expendition_2.Visible = false;
             // 
@@ -363,7 +365,7 @@
             label_expendition_2.ForeColor = Color.Transparent;
             label_expendition_2.Location = new Point(40, 0);
             label_expendition_2.Name = "label_expendition_2";
-            label_expendition_2.Size = new Size(142, 40);
+            label_expendition_2.Size = new Size(148, 40);
             label_expendition_2.TabIndex = 6;
             label_expendition_2.Text = "--:--:--";
             label_expendition_2.TextAlign = ContentAlignment.BottomRight;
@@ -386,7 +388,7 @@
             panel_expendition_1.Dock = DockStyle.Top;
             panel_expendition_1.Location = new Point(0, 28);
             panel_expendition_1.Name = "panel_expendition_1";
-            panel_expendition_1.Size = new Size(182, 40);
+            panel_expendition_1.Size = new Size(188, 40);
             panel_expendition_1.TabIndex = 6;
             panel_expendition_1.Visible = false;
             // 
@@ -398,7 +400,7 @@
             label_expendition_1.ForeColor = Color.Transparent;
             label_expendition_1.Location = new Point(40, 0);
             label_expendition_1.Name = "label_expendition_1";
-            label_expendition_1.Size = new Size(142, 40);
+            label_expendition_1.Size = new Size(148, 40);
             label_expendition_1.TabIndex = 6;
             label_expendition_1.Text = "--:--:--";
             label_expendition_1.TextAlign = ContentAlignment.BottomRight;
@@ -421,18 +423,18 @@
             panel3.Dock = DockStyle.Top;
             panel3.Location = new Point(0, 0);
             panel3.Name = "panel3";
-            panel3.Size = new Size(182, 28);
+            panel3.Size = new Size(188, 28);
             panel3.TabIndex = 5;
             // 
             // label11
             // 
             label11.BackColor = Color.Transparent;
             label11.Dock = DockStyle.Fill;
-            label11.Font = new Font("Meiryo UI", 10012F, FontStyle.Bold, GraphicsUnit.Point);
+            label11.Font = new Font("Meiryo UI", 10016F, FontStyle.Bold, GraphicsUnit.Point);
             label11.ForeColor = Color.Transparent;
             label11.Location = new Point(0, 0);
             label11.Name = "label11";
-            label11.Size = new Size(121, 28);
+            label11.Size = new Size(127, 28);
             label11.TabIndex = 4;
             label11.Text = "探索派遣";
             label11.TextAlign = ContentAlignment.MiddleLeft;
@@ -442,9 +444,9 @@
             // 
             label_expendition_num.BackColor = Color.Transparent;
             label_expendition_num.Dock = DockStyle.Right;
-            label_expendition_num.Font = new Font("Meiryo UI", 10012F, FontStyle.Bold, GraphicsUnit.Point);
+            label_expendition_num.Font = new Font("Meiryo UI", 10016F, FontStyle.Bold, GraphicsUnit.Point);
             label_expendition_num.ForeColor = Color.Transparent;
-            label_expendition_num.Location = new Point(121, 0);
+            label_expendition_num.Location = new Point(127, 0);
             label_expendition_num.Name = "label_expendition_num";
             label_expendition_num.Size = new Size(61, 28);
             label_expendition_num.TabIndex = 5;
@@ -462,7 +464,7 @@
             panel2.Dock = DockStyle.Left;
             panel2.Location = new Point(0, 0);
             panel2.Name = "panel2";
-            panel2.Size = new Size(313, 238);
+            panel2.Size = new Size(307, 238);
             panel2.TabIndex = 7;
             // 
             // panel_transform
@@ -473,7 +475,7 @@
             panel_transform.Dock = DockStyle.Top;
             panel_transform.Location = new Point(0, 193);
             panel_transform.Name = "panel_transform";
-            panel_transform.Size = new Size(313, 40);
+            panel_transform.Size = new Size(307, 40);
             panel_transform.TabIndex = 9;
             // 
             // label9
@@ -484,7 +486,7 @@
             label9.ForeColor = Color.Transparent;
             label9.Location = new Point(40, 0);
             label9.Name = "label9";
-            label9.Size = new Size(273, 40);
+            label9.Size = new Size(267, 40);
             label9.TabIndex = 5;
             label9.Text = "あと ---:--:--";
             label9.TextAlign = ContentAlignment.MiddleLeft;
@@ -510,7 +512,7 @@
             panel_discountboss.Dock = DockStyle.Top;
             panel_discountboss.Location = new Point(0, 153);
             panel_discountboss.Name = "panel_discountboss";
-            panel_discountboss.Size = new Size(313, 40);
+            panel_discountboss.Size = new Size(307, 40);
             panel_discountboss.TabIndex = 8;
             // 
             // label8
@@ -521,7 +523,7 @@
             label8.ForeColor = Color.Transparent;
             label8.Location = new Point(40, 0);
             label8.Name = "label8";
-            label8.Size = new Size(273, 40);
+            label8.Size = new Size(267, 40);
             label8.TabIndex = 5;
             label8.Text = "-/-";
             label8.TextAlign = ContentAlignment.MiddleLeft;
@@ -549,7 +551,7 @@
             panel_homecoin.Dock = DockStyle.Top;
             panel_homecoin.Location = new Point(0, 60);
             panel_homecoin.Name = "panel_homecoin";
-            panel_homecoin.Size = new Size(313, 53);
+            panel_homecoin.Size = new Size(307, 53);
             panel_homecoin.TabIndex = 7;
             // 
             // label7
@@ -559,8 +561,9 @@
             label7.Font = new Font("Meiryo UI", 10012F, FontStyle.Bold, GraphicsUnit.Point);
             label7.ForeColor = Color.Transparent;
             label7.Location = new Point(193, 0);
+            label7.Margin = new Padding(5, 0, 3, 0);
             label7.Name = "label7";
-            label7.Size = new Size(120, 28);
+            label7.Size = new Size(114, 28);
             label7.TabIndex = 7;
             label7.Text = "残り --:--:--";
             label7.TextAlign = ContentAlignment.BottomLeft;
@@ -574,7 +577,7 @@
             label6.ForeColor = Color.Transparent;
             label6.Location = new Point(193, 28);
             label6.Name = "label6";
-            label6.Size = new Size(120, 25);
+            label6.Size = new Size(114, 25);
             label6.TabIndex = 6;
             label6.Text = "/----";
             label6.TextAlign = ContentAlignment.MiddleLeft;
@@ -588,6 +591,7 @@
             label5.ForeColor = Color.Transparent;
             label5.Location = new Point(50, 0);
             label5.Name = "label5";
+            label5.Padding = new Padding(0, 0, 3, 0);
             label5.Size = new Size(143, 53);
             label5.TabIndex = 5;
             label5.Text = "----";
