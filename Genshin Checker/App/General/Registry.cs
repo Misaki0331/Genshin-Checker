@@ -43,6 +43,7 @@ namespace Genshin_Checker.App
             if (compress) value = Base64FromStringComp(value);
             var regkey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey($"Software\\Genshin_Checker\\{Subkey}");
             if (regkey == null) throw new IOException("レジストリが開けませんでした。");
+            if (value.Length > 1024) throw new ArgumentException("書き込もうとしている値は1024文字以上です。");
             regkey.SetValue(key,value);
             regkey.Close();
         }

@@ -116,6 +116,8 @@ namespace Genshin_Checker.App.HoYoLab
         /// ゲームアカウント
         /// </summary>
         private int _uid = int.MinValue;
+        ///
+        public bool IsAuthed { get; private set; } = false;
 
         /// <summary>
         /// ユーザーのゲーム内アカウントID(UID)
@@ -143,6 +145,7 @@ namespace Genshin_Checker.App.HoYoLab
                     Name = user.nickname;
                     Level = user.level;
                     _uid = uid;
+                    IsAuthed = true;
                     return;
                 }
             }
@@ -176,12 +179,20 @@ namespace Genshin_Checker.App.HoYoLab
             }
             public readonly int uid;
         }
-        /// <summary>
-        /// アカウント情報を取得
-        /// </summary>
-        /// <param name="server">ゲームアカウントが所在しているサーバー</param>
-        /// <returns></returns>
-        /// <exception cref="InvalidDataException"></exception>
+        public class UserNotAuthenticatedException : Exception
+        {
+            public UserNotAuthenticatedException(int uid) : base($"該当のユーザーアカウント(UID:{uid})は認証されていない為、利用できません。")
+            {
+                this.uid = uid;
+            }
+            public readonly int uid;
+        }
+         /// <summary>
+         /// アカウント情報を取得
+         /// </summary>
+         /// <param name="server">ゲームアカウントが所在しているサーバー</param>
+         /// <returns></returns>
+         /// <exception cref="InvalidDataException"></exception>
         public async Task<Model.HoYoLab.Account.Data> GetServerAccounts(Servers server)
         {
             var url = $"https://api-account-os.hoyolab.com/binding/api/getUserGameRolesByLtoken?game_biz=hk4e_global&region={server}";
@@ -199,6 +210,7 @@ namespace Genshin_Checker.App.HoYoLab
         /// <exception cref="HoYoLabAPIException"></exception>
         public async Task<Model.HoYoLab.GameRecords.Data> GetGameRecords()
         {
+            if (!IsAuthed) throw new UserNotAuthenticatedException(UID);
             var url = $"https://bbs-api-os.hoyolab.com/game_record/genshin/api/index?server={Server}&role_id={UID}";
             var json = await WebRequest.HoYoGetRequest(url, Cookie);
             var root = JsonConvert.DeserializeObject<Model.HoYoLab.GameRecords.Root>(json);
@@ -214,6 +226,7 @@ namespace Genshin_Checker.App.HoYoLab
         /// <exception cref="HoYoLabAPIException"></exception>
         public async Task<Model.HoYoLab.Characters.Data> GetCharacters()
         {
+            if (!IsAuthed) throw new UserNotAuthenticatedException(UID);
             var url = $"https://bbs-api-os.hoyolab.com/game_record/genshin/api/character";
             string content = $"{{\"server\":\"{Server}\",\"role_id\":\"{UID}\"}}";
             var json = await WebRequest.HoYoPostRequest(url, Cookie, content);
@@ -231,6 +244,7 @@ namespace Genshin_Checker.App.HoYoLab
         /// <exception cref="HoYoLabAPIException"></exception>
         public async Task<Model.HoYoLab.SpiralAbyss.Data> GetSpiralAbyss(bool current)
         {
+            if (!IsAuthed) throw new UserNotAuthenticatedException(UID);
             var url = $"https://bbs-api-os.hoyolab.com/game_record/genshin/api/spiralAbyss?server={Server}&role_id={UID}&lang={Culture.Name.ToLower()}&schedule_type={(current ? 1 : 2)}";
             var json = await WebRequest.HoYoGetRequest(url, Cookie);
             var root = JsonConvert.DeserializeObject<Model.HoYoLab.SpiralAbyss.Root>(json);
@@ -246,6 +260,7 @@ namespace Genshin_Checker.App.HoYoLab
         /// <exception cref="HoYoLabAPIException"></exception>
         public async Task<Model.HoYoLab.RealTimeNote.Data> GetRealTimeNote()
         {
+            if (!IsAuthed) throw new UserNotAuthenticatedException(UID);
             var url = $"https://bbs-api-os.hoyolab.com/game_record/genshin/api/dailyNote?server={Server}&role_id={UID}";
             var json = await WebRequest.HoYoGetRequest(url, Cookie);
             var root = JsonConvert.DeserializeObject<Model.HoYoLab.RealTimeNote.Root>(json);
@@ -262,6 +277,7 @@ namespace Genshin_Checker.App.HoYoLab
         /// <exception cref="HoYoLabAPIException"></exception>
         public async Task<Model.HoYoLab.TravelersDiary.Infomation.Data> GetTravelersDiaryInfo(int month = 0, CultureInfo? culture = null)
         {
+            if (!IsAuthed) throw new UserNotAuthenticatedException(UID);
             var cul = Culture.Name.ToLower();
             if (culture != null) cul = culture.Name.ToLower();
             var url = $"https://sg-hk4e-api.hoyolab.com/event/ysledgeros/month_info?region={Server}&uid={UID}&lang={cul}&month={month}";
@@ -282,6 +298,7 @@ namespace Genshin_Checker.App.HoYoLab
         /// <exception cref="HoYoLabAPIException"></exception>
         public async Task<Model.HoYoLab.TravelersDiary.Detail.Data> GetTravelersDiaryDetail(int type, int page = 1, int month = 0)
         {
+            if (!IsAuthed) throw new UserNotAuthenticatedException(UID);
             var url = $"https://sg-hk4e-api.hoyolab.com/event/ysledgeros/month_detail?region={Server}&uid={UID}&lang={Culture.Name.ToLower()}&month={month}&type={type}&current_page={page}";
             var json = await WebRequest.HoYoGetRequest(url, Cookie);
             var root = JsonConvert.DeserializeObject<Model.HoYoLab.TravelersDiary.Detail.Root>(json);

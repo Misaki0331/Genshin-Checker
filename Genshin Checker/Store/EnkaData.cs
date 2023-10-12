@@ -7,6 +7,7 @@ using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using Genshin_Checker.Model.EnkaNetwork.Store;
 using Genshin_Checker.Window;
+using Microsoft.VisualBasic;
 
 namespace Genshin_Checker.Store
 {
@@ -16,47 +17,117 @@ namespace Genshin_Checker.Store
         public static EnkaData Data { get => _instance ??= new EnkaData(); }
         private EnkaData()
         {
-            Namecard = new();
-            Locale = new();
-            Characters = new();
-            Costumes = new();
-            Affixes = new();
-
+            FailReload = new()
+            {
+                Interval = 5000
+            };
+            FailReload.Tick += (s, e) => GetStoreData(false);
         }
-        public Dictionary<int,Model.EnkaNetwork.Store.Namecard.Icon> Namecard { get; private set; }
-        public Dictionary<string, Dictionary<string, string>> Locale { get; private set; }
-        public Dictionary<string, Model.EnkaNetwork.Store.Characters.Data> Characters { get; private set; }
-        public Dictionary<int, Model.EnkaNetwork.Store.Costumes.Data> Costumes { get; private set; }
-        public Dictionary<int,Model.EnkaNetwork.Store.Affixes.Data> Affixes { get; private set; }
-        public async void GetStoreData()
+        public Dictionary<int, Model.EnkaNetwork.Store.Namecard.Icon>? Namecard { 
+            get {
+                if (_namecard == null)
+                { GetNameCard(); return null; }
+                else return _namecard; 
+            } 
+            private set { _namecard = value; } 
+        }
+        private Dictionary<int, Model.EnkaNetwork.Store.Namecard.Icon>? _namecard;
+        public Dictionary<string, Dictionary<string, string>>? Locale
         {
+            get
+            {
+                if (_locale == null)
+                { GetLocale(); return null; }
+                else return _locale;
+            }
+            private set { _locale = value; }
+        }
+
+        private Dictionary<string, Dictionary<string, string>>? _locale;
+        public Dictionary<string, Model.EnkaNetwork.Store.Characters.Data>? Characters
+        {
+            get
+            {
+                if (_characters == null)
+                { GetCharacters(); return null; }
+                else return _characters;
+            }
+            private set { _characters = value; }
+        }
+        private Dictionary<string, Model.EnkaNetwork.Store.Characters.Data>? _characters;
+        public Dictionary<int, Model.EnkaNetwork.Store.Costumes.Data>? Costumes
+        {
+            get
+            {
+                if (_costumes == null)
+                { GetCostumes(); return null; }
+                else return _costumes;
+            }
+            private set { _costumes = value; }
+        }
+        private Dictionary<int, Model.EnkaNetwork.Store.Costumes.Data>? _costumes;
+        public Dictionary<int,Model.EnkaNetwork.Store.Affixes.Data>? Affixes
+        {
+            get
+            {
+                if (_affixes == null)
+                { GetAffixes(); return null; }
+                else return _affixes;
+            }
+            private set { _affixes = value; }
+        }
+        private Dictionary<int, Model.EnkaNetwork.Store.Affixes.Data>? _affixes;
+
+
+        async void GetNameCard()
+        {
+            var json = await App.WebRequest.GeneralGetRequest("https://raw.githubusercontent.com/EnkaNetwork/API-docs/master/store/namecards.json");
+            var namecard = JsonConvert.DeserializeObject<Dictionary<int, Model.EnkaNetwork.Store.Namecard.Icon>>(json);
+            if (namecard != null) Namecard = namecard;
+        }
+        async void GetLocale()
+        {
+            var json = await App.WebRequest.GeneralGetRequest("https://raw.githubusercontent.com/EnkaNetwork/API-docs/master/store/loc.json");
+            var locale = JsonConvert.DeserializeObject<Dictionary<string, Dictionary<string, string>>>(json);
+            if (locale != null) Locale = locale;
+        }
+        async void GetCharacters()
+        {
+            var json = await App.WebRequest.GeneralGetRequest("https://raw.githubusercontent.com/EnkaNetwork/API-docs/master/store/characters.json");
+            var characters = JsonConvert.DeserializeObject<Dictionary<string, Model.EnkaNetwork.Store.Characters.Data>>(json);
+            if (characters != null) Characters = characters;
+        }
+        async void GetCostumes()
+        {
+            var json = await App.WebRequest.GeneralGetRequest("https://raw.githubusercontent.com/EnkaNetwork/API-docs/master/store/costumes.json");
+            var costumes = JsonConvert.DeserializeObject<Dictionary<int, Model.EnkaNetwork.Store.Costumes.Data>>(json);
+            if (costumes != null) Costumes = costumes;
+        }
+        async void GetAffixes()
+        {
+            var json = await App.WebRequest.GeneralGetRequest("https://raw.githubusercontent.com/EnkaNetwork/API-docs/master/store/affixes.json");
+            var affixes = JsonConvert.DeserializeObject<Dictionary<int, Model.EnkaNetwork.Store.Affixes.Data>>(json);
+            if (affixes != null) Affixes = affixes;
+        }
+
+        public void GetStoreData(bool IsReload=false)
+        {
+            FailReload.Stop();
             try
             {
-                var json = await App.WebRequest.GeneralGetRequest("https://raw.githubusercontent.com/EnkaNetwork/API-docs/master/store/namecards.json");
-                var namecard = JsonConvert.DeserializeObject<Dictionary<int, Model.EnkaNetwork.Store.Namecard.Icon>>(json);
-                if (namecard != null) Namecard = namecard;
-                else throw new ArgumentNullException(nameof(namecard));
-                json = await App.WebRequest.GeneralGetRequest("https://raw.githubusercontent.com/EnkaNetwork/API-docs/master/store/loc.json");
-                var locale = JsonConvert.DeserializeObject<Dictionary<string, Dictionary<string, string>>>(json);
-                if (locale != null) Locale = locale;
-                else throw new ArgumentNullException(nameof(locale));
-                json = await App.WebRequest.GeneralGetRequest("https://raw.githubusercontent.com/EnkaNetwork/API-docs/master/store/characters.json");
-                var characters = JsonConvert.DeserializeObject<Dictionary<string, Model.EnkaNetwork.Store.Characters.Data>>(json);
-                if (characters != null) Characters = characters;
-                else throw new ArgumentNullException(nameof(characters));
-                json = await App.WebRequest.GeneralGetRequest("https://raw.githubusercontent.com/EnkaNetwork/API-docs/master/store/costumes.json");
-                var costumes = JsonConvert.DeserializeObject<Dictionary<int, Model.EnkaNetwork.Store.Costumes.Data>>(json);
-                if (costumes != null) Costumes = costumes;
-                else throw new ArgumentNullException(nameof(costumes));
-                json = await App.WebRequest.GeneralGetRequest("https://raw.githubusercontent.com/EnkaNetwork/API-docs/master/store/affixes.json");
-                var affixes = JsonConvert.DeserializeObject<Dictionary<int, Model.EnkaNetwork.Store.Affixes.Data>>(json);
-                if (affixes != null) Affixes = affixes;
-                else throw new ArgumentNullException(nameof(affixes));
-            }catch(Exception ex)
+                if (_namecard == null || IsReload) GetNameCard();
+                if (_locale == null || IsReload) GetLocale();
+                if (_characters == null || IsReload) GetCharacters();
+                if (_costumes == null || IsReload) GetCostumes();
+                if (_affixes == null || IsReload) GetAffixes();
+            }
+            catch (Exception ex)
             {
-                new ErrorMessage("Download Failed", $"Fail to load Enka.network static data.\n{ex.GetType()}\n{ex.Message}");
+                if(!IsReload)FailReload.Start();
+                new ErrorMessage("Download Failed", $"Fail to load Enka.network static data.\n{ex.GetType()}\n{ex.Message}").Show();
             }
         }
+        System.Windows.Forms.Timer FailReload;
         public class Convert
         {
             public class Namecard
@@ -65,6 +136,7 @@ namespace Genshin_Checker.Store
                 {
                     try
                     {
+                        if (Data.Namecard == null) return null;
                         var namecard = Data.Namecard[id];
                         if (namecard != null) return $"https://enka.network/ui/{namecard.icon}.png";
                         return null;
