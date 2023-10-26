@@ -12,7 +12,7 @@ namespace Genshin_Checker.App.General
     {
         public static string GetRandomPath()
         {
-            return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Genshin Checker", "Data", $"{Path.GetRandomFileName().Replace(".", "")}.bin");
+            return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Genshin Checker", "UserData", $"{Path.GetRandomFileName().Replace(".", "")}.misaki_gsc"); //水咲原神チェッカー
         }
         public static async Task<string> LoadFileData(string path, bool compress = true)
         {

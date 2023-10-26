@@ -42,7 +42,7 @@ namespace Genshin_Checker.Window.ProgressWindow
             {
                 account.TravelersDiaryDetail.ProgressChanged += ProgressChanged;
                 account.TravelersDiaryDetail.ProgressCompreted += ProgressCompreted;
-                await account.TravelersDiaryDetail.Correct();
+                await account.TravelersDiaryDetail.Correct(month,(TravelersDiaryDetail.CorrectMode)mode);
             }catch(Exception ex)
             {
                 new ErrorMessage("データベースからの取得に失敗しました。", $"{ex.Message}\n{ex.GetType()}").ShowDialog();
