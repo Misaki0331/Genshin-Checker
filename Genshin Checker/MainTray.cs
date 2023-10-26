@@ -22,6 +22,7 @@ namespace Genshin_Checker
         Window.RealTimeData? RealTimeData = null;
         Window.SettingWindow? SettingWindow= null;
         Window.TravelersDiary? TravelersDiary = null;
+        Window.TravelersDiaryDetailList? DetailList = null; 
         public MainTray(bool safemode=false)
         {
             InitializeComponent();
@@ -262,9 +263,34 @@ namespace Genshin_Checker
             //a.Show();
             //a.Activate();
             //var data = await Accounts.Data[0].GetTravelersDiaryDetail(1, 1, 0);
-            var a = new Window.ProgressWindow.LoadTravelersDiaryDetail(Accounts.Data[0], Window.ProgressWindow.LoadTravelersDiaryDetail.Mode.All, Accounts.Data[0].TravelersDiary.Data.Data?.optional_month);
-            a.ShowDialog();
 
+            //var a = new Window.ProgressWindow.LoadTravelersDiaryDetail(Accounts.Data[0], Window.ProgressWindow.LoadTravelersDiaryDetail.Mode.All, Accounts.Data[0].TravelersDiary.Data.Data?.optional_month);
+            //a.ShowDialog();
+
+
+
+            try
+            {
+                if (DetailList == null || DetailList.IsDisposed)
+                {
+                    DetailList = new(Accounts.Data[0]);
+                    DetailList.WindowState = FormWindowState.Normal;
+                    DetailList.Show();
+                    DetailList.Activate();
+                }
+                else
+                {
+                    DetailList.Show();
+                    if (DetailList.WindowState == FormWindowState.Minimized) DetailList.WindowState = FormWindowState.Normal;
+                    DetailList.Activate();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                var n = new ErrorMessage(ex.GetType().ToString(), ex.Message);
+                n.ShowDialog(this);
+            }
         }
 
         private void ó∑êléËí†ToolStripMenuItem_Click(object sender, EventArgs e)
