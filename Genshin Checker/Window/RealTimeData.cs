@@ -204,5 +204,11 @@ namespace Genshin_Checker.Window
         {
             account.RealTimeNote.Reload();
         }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            
+            account.RealTimeNote.Reload();
+        }
     }
 }
