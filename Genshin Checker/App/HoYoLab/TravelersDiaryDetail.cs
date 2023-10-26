@@ -49,11 +49,9 @@ namespace Genshin_Checker.App.HoYoLab
 
 
         int totalcount;
-        int searchcount;
         public async Task Correct(List<int>? months=null, CorrectMode mode = CorrectMode.All)
         {
             totalcount = 0;
-            searchcount = 0;
             months ??= new() { 0 }; //空だった場合は当月を取得
             int cnt = 0;
             foreach (var month in months)
@@ -75,6 +73,7 @@ namespace Genshin_Checker.App.HoYoLab
         private async Task CorrectData(int month, Mode mode, int position=0,int total=2147483647)
         {
             DateTime Latest = DateTime.MinValue;
+            int LatestCount = 0;
             bool IsEnd = false;
             var lists = new Model.UserData.TravelersDiary.Lists.Root();
             var eventlists = new Model.UserData.TravelersDiary.EventName.Root();
@@ -126,6 +125,7 @@ namespace Genshin_Checker.App.HoYoLab
                         {
                             lists.Details.Sort((a, b) => a.EventTime.CompareTo(b.EventTime));
                             Latest = lists.Details[^1].EventTime;
+                            LatestCount = lists.Details.FindAll(a => a.EventTime == Latest).Count;
                         }
                     }
                 }
@@ -133,7 +133,7 @@ namespace Genshin_Checker.App.HoYoLab
                 foreach (var d in data.List)
                 {
                     var time = DateTime.Parse(d.Time);
-                    if (Latest < time)
+                    if (Latest <= time)
                     {
                         if (FirstData == DateTime.MaxValue) FirstData = time;
                         lists.Details.Add(new() { EventTime = time, EventType = d.Action_id, Count = d.Num });
@@ -153,8 +153,6 @@ namespace Genshin_Checker.App.HoYoLab
                     if(progress2<0) progress2 = 0;
                     if (progress2 > 1) progress2 = 1;
                     progress = (progress2 / total + (double)position / total) * 100.0;
-
-
                 }
                 else
                 {
@@ -163,6 +161,7 @@ namespace Genshin_Checker.App.HoYoLab
                 ProgressChanged?.Invoke(null, new(progress,i,totalcount,$"{mode}",month));
                 if (IsEnd || i == MAXPAGE)
                 {
+                    for (int r = 0; r < LatestCount && lists.Details.Count > 0; r++) lists.Details.RemoveAt(lists.Details.Count - 1);
                     lists.Details.Sort((a, b) => a.EventTime.CompareTo(b.EventTime));
                     if (path != null) App.General.AppData.SaveFileData(path, JsonConvert.SerializeObject(lists));
                     eventlists.Events.Sort((a,b)=>a.ID.CompareTo(b.ID));
