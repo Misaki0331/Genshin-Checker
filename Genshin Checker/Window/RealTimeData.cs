@@ -24,6 +24,7 @@ namespace Genshin_Checker.Window
             this.account = account;
             InitializeComponent();
             Icon = resource.icon.nahida;
+            UiUpdate.Tick+= UiUpdate_Tick;
         }
 
         private void UiUpdate_Tick(object sender, EventArgs e)
@@ -197,6 +198,11 @@ namespace Genshin_Checker.Window
                 label.Enabled = false;
                 DrawOutlineString(e.Graphics, label, Color.Black, label.Font.Size < 10018 ? 2 : 3);
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            account.RealTimeNote.Reload();
         }
     }
 }

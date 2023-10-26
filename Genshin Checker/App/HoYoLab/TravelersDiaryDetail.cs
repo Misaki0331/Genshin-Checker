@@ -34,6 +34,7 @@ namespace Genshin_Checker.App.HoYoLab
         }
         public event EventHandler<ProgressState>? ProgressChanged;
         public event EventHandler? ProgressCompreted;
+        public event EventHandler<Exception>? ProgressFailed;
         public enum CorrectMode
         {
             Primogems,
@@ -51,18 +52,25 @@ namespace Genshin_Checker.App.HoYoLab
         int totalcount;
         public async Task Correct(List<int>? months=null, CorrectMode mode = CorrectMode.All)
         {
-            totalcount = 0;
-            months ??= new() { 0 }; //空だった場合は当月を取得
-            int cnt = 0;
-            foreach (var month in months)
+            try
             {
-                if (mode == CorrectMode.All || mode == CorrectMode.Primogems)
-                    await CorrectData(month, Mode.Primogems, cnt * (mode == CorrectMode.All ? 2 : 1), months.Count * (mode == CorrectMode.All ? 2 : 1));
-                if (mode == CorrectMode.All || mode == CorrectMode.Mora)
-                    await CorrectData(month, Mode.Mora, cnt * (mode == CorrectMode.All ? 2 : 1) + (mode == CorrectMode.All ? 1 : 0), months.Count * (mode == CorrectMode.All ? 2 : 1));
-                cnt++;
+                totalcount = 0;
+                months ??= new() { 0 }; //空だった場合は当月を取得
+                int cnt = 0;
+                foreach (var month in months)
+                {
+                    if (mode == CorrectMode.All || mode == CorrectMode.Primogems)
+                        await CorrectData(month, Mode.Primogems, cnt * (mode == CorrectMode.All ? 2 : 1), months.Count * (mode == CorrectMode.All ? 2 : 1));
+                    if (mode == CorrectMode.All || mode == CorrectMode.Mora)
+                        await CorrectData(month, Mode.Mora, cnt * (mode == CorrectMode.All ? 2 : 1) + (mode == CorrectMode.All ? 1 : 0), months.Count * (mode == CorrectMode.All ? 2 : 1));
+                    cnt++;
+                }
+                ProgressCompreted?.Invoke("", EventArgs.Empty);
+            }catch(Exception ex)
+            {
+                ProgressFailed?.Invoke("", ex);
+                throw;
             }
-            ProgressCompreted?.Invoke("", EventArgs.Empty);
         }
         /// <summary>
         /// 【内部関数】APIから詳細データの取得
@@ -143,9 +151,11 @@ namespace Genshin_Checker.App.HoYoLab
                 }
                 totalcount++;
                 double progress = 0;
-                if (data.List.Count > 0)
+                if (data.List.Count > 0||lists.Details.Count>0)
                 {
-                    var current = DateTime.Parse(data.List[^1].Time);
+                    DateTime current;
+                    if (data.List.Count > 0) current = DateTime.Parse(data.List[^1].Time);
+                    else current = lists.Details[^1].EventTime;
                     var start = FirstData;//Dateは最後、データベースは最初
                     var end = Latest == DateTime.MinValue ? new DateTime(current.Year, current.Month, 1) : Latest;//Dateは最初、データベースは最後
 

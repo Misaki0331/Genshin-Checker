@@ -25,7 +25,7 @@ namespace Genshin_Checker.App
             this.account = account;
             ServerUpdate = new()
             {
-                Interval = 100,
+                Interval = 3000,
                 Enabled = true,
             };
             ServerUpdate.Tick += ServerUpdate_Tick;
@@ -42,6 +42,11 @@ namespace Genshin_Checker.App
         {
             IsDisposed = true;
             ServerUpdate.Stop();
+        }
+        public void Reload()
+        {
+            ServerUpdate.Interval = 1;
+            ServerUpdate.Start();
         }
         private async void ServerUpdate_Tick(object? sender, EventArgs e)
         {

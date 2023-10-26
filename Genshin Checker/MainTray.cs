@@ -23,9 +23,12 @@ namespace Genshin_Checker
         Window.SettingWindow? SettingWindow= null;
         Window.TravelersDiary? TravelersDiary = null;
         Window.TravelersDiaryDetailList? DetailList = null; 
+        Window.GameLog? GameLog = null;
+        List<string> GameLogTemp;
         public MainTray(bool safemode=false)
         {
             InitializeComponent();
+            GameLogTemp = new();
             notification.Icon = resource.icon.nahida;
             var cmds = System.Environment.GetCommandLineArgs();
             //コマンドライン引数を列挙する
@@ -269,7 +272,7 @@ namespace Genshin_Checker
 
 
 
-            try
+            /*try
             {
                 if (DetailList == null || DetailList.IsDisposed)
                 {
@@ -290,7 +293,7 @@ namespace Genshin_Checker
             {
                 var n = new ErrorMessage(ex.GetType().ToString(), ex.Message);
                 n.ShowDialog(this);
-            }
+            }*/
         }
 
         private void 旅人手帳ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -326,11 +329,73 @@ namespace Genshin_Checker
                 n.ShowDialog(this);
             }
         }
+
+        private void 旅人通帳ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (DetailList == null || DetailList.IsDisposed)
+                {
+                    if (Accounts.Data.Count == 0)
+                    {
+                        var n = new ErrorMessage("連携しているアカウントはまだ無いようです。", "お手数ですが、以下の操作を行って認証してください。\n設定⇒アプリ連携⇒HoYoLabとの連携");
+                        n.ShowDialog(this);
+                        return;
+                    }
+                    DetailList = new(Accounts.Data[0])
+                    {
+                        WindowState = FormWindowState.Normal
+                    };
+                    DetailList.Show();
+                    DetailList.Activate();
+                }
+                else
+                {
+                    DetailList.Show();
+                    if (DetailList.WindowState == FormWindowState.Minimized) DetailList.WindowState = FormWindowState.Normal;
+                    DetailList.Activate();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                var n = new ErrorMessage(ex.GetType().ToString(), ex.Message);
+                n.ShowDialog(this);
+            }
+        }
         private void LogUpdated(object? sender, string[] e)
         {
-            foreach(var item in e)
+            foreach (var item in e)
             {
+                GameLogTemp.Add(item);
+                if (GameLogTemp.Count > 200) GameLogTemp.RemoveAt(0);
                 Trace.Write(item);
+            }
+        }
+
+        private void ゲームログ開発者向けToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (GameLog == null || GameLog.IsDisposed)
+                {
+                    GameLog = new(GameLogTemp);
+                    GameLog.WindowState = FormWindowState.Normal;
+                    GameLog.Show();
+                    GameLog.Activate();
+                }
+                else
+                {
+                    GameLog.Show();
+                    if (GameLog.WindowState == FormWindowState.Minimized) GameLog.WindowState = FormWindowState.Normal;
+                    GameLog.Activate();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                var n = new ErrorMessage(ex.GetType().ToString(), ex.Message);
+                n.ShowDialog(this);
             }
         }
     }

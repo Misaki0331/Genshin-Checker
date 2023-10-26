@@ -43,7 +43,12 @@ namespace Genshin_Checker.Window
             if (monthlist.Items.Count > 0) monthlist.SelectedIndex = 0;
             Text = $"旅人通帳 (UID:{account.UID})";
             Icon = Icon.FromHandle(resource.icon.Icon_TravelerDirty.GetHicon());
+            account.TravelersDiaryDetail.ProgressChanged += TravelersDiaryDetail_ProgressChanged;
+            account.TravelersDiaryDetail.ProgressFailed += TravelersDiaryDetail_ProgressFailed;
+            account.TravelersDiaryDetail.ProgressCompreted += TravelersDiaryDetail_ProgressCompreted;
+
         }
+
         Account account;
         private void UpdateDataMonth()
         {
@@ -73,6 +78,7 @@ namespace Genshin_Checker.Window
         {
             if (monthlist.SelectedIndex < 0) return;
             if (listtype.SelectedIndex < 0 || listtype.SelectedIndex > 1) return;
+            dataGridView1.Visible = false;
             try
             {
                 dataGridView1.Rows.Clear();
@@ -112,13 +118,51 @@ namespace Genshin_Checker.Window
                     var typename = App.General.TravelersDiaryDatailEventConverter.GetEventName(a.EventType, eventlists);
                     dataGridView1.Rows.Add($"{a.EventTime:yyyy/MM/dd(ddd) HH:mm:ss}", $"{a.EventType}",typename,$"{a.Count}");
                 }
-                dataGridView1.ResumeLayout(false);
+                lists.Details.Clear();
+                dataGridView1.ResumeLayout(true);
             }
             catch(Exception ex)
             {
                 new ErrorMessage("データベースを読み込めませんでした。", $"{ex.Message}\n{ex.GetType()}").ShowDialog();
             }
+            finally
+            {
+                dataGridView1.Visible = true;
+            }
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var a = new Window.ProgressWindow.LoadTravelersDiaryDetail(account, Window.ProgressWindow.LoadTravelersDiaryDetail.Mode.All, account.TravelersDiary.Data.Data?.optional_month);
+            a.ShowDialog();
+        }
+
+        private void TravelersDiaryDetail_ProgressChanged(object? sender, TravelersDiaryDetail.ProgressState e)
+        {
+            double p = e.Progress;
+            if (p < 0) p = 0;
+            if (p > 100) p = 100;
+            toolStripProgressBar1.Value = (int)p * 100;
+            toolStripStatusLabel1.Text = $"{p:0.0}% {(e.month == 0 ? "今" : $"{e.month}")}月分の{e.mode}({e.CurrentPage}ページ目)取得中...";
+
+        }
+        private void TravelersDiaryDetail_ProgressCompreted(object? sender, EventArgs e)
+        {
+            toolStripProgressBar1.Value = 10000;
+            toolStripStatusLabel1.Text = "完了";
+            UpdateComboBox("", EventArgs.Empty);
+        }
+
+        private void TravelersDiaryDetail_ProgressFailed(object? sender, Exception e)
+        {
+            toolStripProgressBar1.Value = 0;
+            toolStripStatusLabel1.Text = $"失敗 ({e.Message})";
+        }
+        private void TravelersDiaryDetailList_FormClosed(object sender, FormClosedEventArgs e)
+        {
+
+            account.TravelersDiaryDetail.ProgressChanged -= TravelersDiaryDetail_ProgressChanged;
         }
     }
 }

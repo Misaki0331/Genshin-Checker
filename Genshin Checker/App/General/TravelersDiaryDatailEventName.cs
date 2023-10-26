@@ -27,6 +27,8 @@ namespace Genshin_Checker.App.General
                         case 37: return "魔物討伐";
                         case 39: return "宝箱";
                         case 43: return "チュートリアル閲覧";
+                        case 48: return "深境螺旋(星の秘宝)";
+                        case 49: return "深境螺旋(初回クリア)";
                         case 52: return "ボス討伐";
                         case 81: return "評判任務";
                         case 116: return "デイリー(冒険修練)";
