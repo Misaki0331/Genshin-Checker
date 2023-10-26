@@ -199,15 +199,8 @@ namespace Genshin_Checker.Window
                 DrawOutlineString(e.Graphics, label, Color.Black, label.Font.Size < 10018 ? 2 : 3);
             }
         }
-
-        private void button1_Click(object sender, EventArgs e)
+        private void ReloadNote(object sender, EventArgs e)
         {
-            account.RealTimeNote.Reload();
-        }
-
-        private void button1_Click_1(object sender, EventArgs e)
-        {
-            
             account.RealTimeNote.Reload();
         }
     }
