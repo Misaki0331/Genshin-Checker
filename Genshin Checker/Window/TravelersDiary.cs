@@ -20,6 +20,7 @@ using System.Windows.Forms.VisualStyles;
 using LiveChartsCore.Kernel.Sketches;
 using System.Globalization;
 using Genshin_Checker.App.HoYoLab;
+using System.Diagnostics;
 
 namespace Genshin_Checker.Window
 {
@@ -123,16 +124,16 @@ namespace Genshin_Checker.Window
                 else Month_Mora_Diff.ForeColor = Color.White;
                 Month_Mora_Diff.Text = $"{(moradiff > 0 ? "+" : "")}{moradiff.ToString("#,##0")}";
                 var Series = new List<ISeries>();
-                PrimogemsType.Series = Series;
                 foreach (var a in data.month_data.group_by)
                 {
-                    if(a.num!=0)Series.Add(new PieSeries<double> { Values = new List<double>() { a.num }, Name = $"{a.action}",  });
+                    if(a.num!=0)Series.Add(new PieSeries<double> { Values = new List<double>() { a.num }, Name = $"{a.action} ({a.percent}%)",  });
                 }
+                PrimogemsType.Series = Series;
 
             }
             catch(Exception ex)
             {
-
+                Trace.WriteLine(ex);
             }
             comboBox1.Enabled= true;
         }

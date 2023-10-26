@@ -17,6 +17,7 @@ namespace Genshin_Checker.App.HoYoLab
         public RealTimeNote RealTimeNote;
         public TravelersDiary TravelersDiary;
         public EnkaNetwork.EnkaNetwork EnkaNetwork;
+        public TravelersDiaryDetail TravelersDiaryDetail;
         public Account(string cookie, int UID)
         {
             Server = GetServer(UID);
@@ -27,6 +28,7 @@ namespace Genshin_Checker.App.HoYoLab
             RealTimeNote = new(this);
             TravelersDiary = new(this);
             EnkaNetwork = new(this);
+            TravelersDiaryDetail = new(this);
 
         }
 

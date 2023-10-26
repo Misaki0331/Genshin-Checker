@@ -261,7 +261,9 @@ namespace Genshin_Checker
             //var a=new Window.TravelersDiary(Store.Accounts.Data[0]);
             //a.Show();
             //a.Activate();
-            var data = await Accounts.Data[0].GetTravelersDiaryDetail(1, 1, 0);
+            //var data = await Accounts.Data[0].GetTravelersDiaryDetail(1, 1, 0);
+            var a = new Window.ProgressWindow.LoadTravelersDiaryDetail(Accounts.Data[0]);
+            a.ShowDialog();
 
         }
 

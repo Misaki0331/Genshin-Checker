@@ -33,7 +33,15 @@ namespace Genshin_Checker.App
         private async void ServerUpdate_Tick(object? sender, EventArgs e)
         {
             ServerUpdate.Stop();
-            try
+
+            if (!account.IsAuthed)
+            {
+                Trace.WriteLine("未認証です。");
+                ServerUpdate.Interval = 1000;
+                ServerUpdate.Start();
+                return;
+            }
+                try
             {
                 var json = await getNote();
                 Data = new() { Data = json, Message = "OK" };
@@ -43,11 +51,13 @@ namespace Genshin_Checker.App
             {
                 Data.Message = $"HoYoLab API Error\n{ex.Message}";
                 Data.Retcode = ex.Retcode;
+                Trace.WriteLine(Data.Message);
             }
             catch (Exception ex)
             {
                 Data.Message = $"{ex.GetType()}\n{ex.Message}";
                 Data.Retcode = ex.HResult;
+                Trace.WriteLine(Data.Message);
             }
 
             ServerUpdate.Interval = 300000;
