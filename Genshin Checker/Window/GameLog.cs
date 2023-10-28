@@ -1,4 +1,5 @@
-﻿using Genshin_Checker.App.Game;
+﻿using Genshin_Checker.App;
+using Genshin_Checker.App.Game;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,7 +19,7 @@ namespace Genshin_Checker.Window
         public GameLog(List<string> old)
         {
             InitializeComponent();
-            Log.Font = new Font("ＭＳ ゴシック", (float)numericUpDown2.Value);
+            Log.Font = new Font("ＭＳ ゴシック", (float)numeric_FontSize.Value);
             foreach (var item in old)
             {
                 Log.AppendText(item.Replace("\r\n","\n").Replace("\n", Environment.NewLine)+Environment.NewLine);
@@ -28,6 +29,53 @@ namespace Genshin_Checker.Window
             ProcessTime.Instance.ChangedState += Instance_ChangedState;
 
         }
+        const string RegistryPath = @"Config\GameLog\";
+        enum ConfigName
+        {
+            WindowPositionX,
+            WindowPositionY,
+            WindowSizeWidth,
+            WindowSizeHeight,
+            WindowIsMaximized,
+            WindowIsTopMost,
+            ModeGameFullScreenSpecialized,
+            TextLogFontSize
+        }
+
+
+
+        void LoadSetting()
+        {
+            try
+            {
+                //前回のウィンドウ位置を呼び出し
+                var winPosX = Registry.GetValue(RegistryPath, $"{ConfigName.WindowPositionX}");
+                var winPosY = Registry.GetValue(RegistryPath, $"{ConfigName.WindowPositionY}");
+                if(winPosX!= null && winPosY != null) this.Location = new(int.Parse(winPosX),int.Parse(winPosY));
+                //前回のウィンドウサイズの呼び出し
+                var winSizeW = Registry.GetValue(RegistryPath, $"{ConfigName.WindowSizeWidth}");
+                var winSizeH = Registry.GetValue(RegistryPath, $"{ConfigName.WindowSizeHeight}");
+                if (winSizeW != null && winSizeH != null) this.Size = new(int.Parse(winSizeW), int.Parse(winSizeH));
+                //前回のウィンドウモードの呼び出し
+                var winSizeMode = Registry.GetValue(RegistryPath, $"{ConfigName.WindowIsMaximized}");
+                if (winSizeMode == "True") WindowState = FormWindowState.Maximized;
+                //最前面に表示する
+                var checkstatus = Registry.GetValue(RegistryPath, $"{ConfigName.WindowIsTopMost}");
+                if(checkstatus=="True")CheckBoxTopMost.Checked = true;
+                //フルスクリーン特化モード
+                checkstatus = Registry.GetValue(RegistryPath, $"{ConfigName.ModeGameFullScreenSpecialized}");
+                if (checkstatus == "True") CheckBox_GameFullScreenSpecialized.Checked = true;
+                //ログのフォントサイズ
+                checkstatus = Registry.GetValue(RegistryPath, $"{ConfigName.TextLogFontSize}");
+                if (checkstatus != null) numeric_FontSize.Value = int.Parse(checkstatus);
+            }
+            catch(Exception ex)
+            {
+                new ErrorMessage("設定を読み込めませんでした。",$"{ex}").ShowDialog();
+            }
+        }
+
+
 
         private void Instance_ChangedState(object? sender, ProcessTime.Result e)
         {
@@ -36,7 +84,7 @@ namespace Genshin_Checker.Window
                 switch (e.State)
                 {
                     case ProcessTime.ProcessState.Foreground:
-                        if (checkBox2.Checked)
+                        if (CheckBox_GameFullScreenSpecialized.Checked)
                         {
                             FormBorderStyle = FormBorderStyle.None;
                             Log.ScrollBars = ScrollBars.None;
@@ -86,6 +134,7 @@ namespace Genshin_Checker.Window
         private void CheckBoxTopMost_CheckedChanged(object sender, EventArgs e)
         {
             TopMost = CheckBoxTopMost.Checked;
+            Registry.SetValue(RegistryPath, $"{ConfigName.WindowIsTopMost}", $"{(CheckBoxTopMost.Checked ? "True" : "False")}");
         }
 
         private void GameLog_Load(object sender, EventArgs e)
@@ -93,6 +142,8 @@ namespace Genshin_Checker.Window
             Log.SelectionStart = Log.Text.Length;
             Log.Focus();
             Log.ScrollToCaret();
+
+            LoadSetting();
         }
 
         private void GameLog_Activated(object sender, EventArgs e)
@@ -109,7 +160,8 @@ namespace Genshin_Checker.Window
 
         private void numericUpDown2_ValueChanged(object sender, EventArgs e)
         {
-            Log.Font = new Font("ＭＳ ゴシック", (float)numericUpDown2.Value);
+            Log.Font = new Font("ＭＳ ゴシック", (float)numeric_FontSize.Value);
+            Registry.SetValue(RegistryPath, $"{ConfigName.TextLogFontSize}",$"{(int)numeric_FontSize.Value}");
         }
 
         private void GameLog_Deactivate(object sender, EventArgs e)
@@ -117,9 +169,23 @@ namespace Genshin_Checker.Window
 
         }
 
-        private void checkBox2_CheckedChanged(object sender, EventArgs e)
+        private void checkBox2_CheckedChanged(object sender, EventArgs e) 
         {
-            CheckBoxTopMost.Enabled=!checkBox2.Checked;
+            CheckBoxTopMost.Enabled=!CheckBox_GameFullScreenSpecialized.Checked;
+            Registry.SetValue(RegistryPath, $"{ConfigName.ModeGameFullScreenSpecialized}", $"{(CheckBox_GameFullScreenSpecialized.Checked?"True":"False")}");
+        }
+
+        private void GameLog_LocationChanged(object sender, EventArgs e)
+        {
+            Registry.SetValue(RegistryPath, $"{ConfigName.WindowPositionX}", $"{Location.X}");
+            Registry.SetValue(RegistryPath, $"{ConfigName.WindowPositionY}", $"{Location.Y}");
+        }
+
+        private void GameLog_SizeChanged(object sender, EventArgs e)
+        {
+            Registry.SetValue(RegistryPath, $"{ConfigName.WindowSizeWidth}", $"{Size.Width}");
+            Registry.SetValue(RegistryPath, $"{ConfigName.WindowSizeHeight}", $"{Size.Height}");
+            Registry.SetValue(RegistryPath, $"{ConfigName.WindowIsMaximized}", $"{(WindowState==FormWindowState.Maximized?"True":"False")}");
         }
     }
 }

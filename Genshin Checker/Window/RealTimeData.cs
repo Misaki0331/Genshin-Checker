@@ -27,7 +27,7 @@ namespace Genshin_Checker.Window
             UiUpdate.Tick+= UiUpdate_Tick;
         }
 
-        private void UiUpdate_Tick(object sender, EventArgs e)
+        private void UiUpdate_Tick(object? sender, EventArgs e)
         {
             if (account.IsDisposed) Close();
             UiUpdate.Stop();

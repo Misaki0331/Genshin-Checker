@@ -29,22 +29,22 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
+            this.numeric_FontSize = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.CheckBox_GameFullScreenSpecialized = new System.Windows.Forms.CheckBox();
             this.CheckBoxTopMost = new System.Windows.Forms.CheckBox();
             this.ClearConsole = new System.Windows.Forms.Button();
             this.Log = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numeric_FontSize)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Black;
-            this.panel1.Controls.Add(this.numericUpDown2);
+            this.panel1.Controls.Add(this.numeric_FontSize);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.checkBox2);
+            this.panel1.Controls.Add(this.CheckBox_GameFullScreenSpecialized);
             this.panel1.Controls.Add(this.CheckBoxTopMost);
             this.panel1.Controls.Add(this.ClearConsole);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -53,53 +53,53 @@
             this.panel1.Size = new System.Drawing.Size(959, 24);
             this.panel1.TabIndex = 0;
             // 
-            // numericUpDown2
+            // numeric_FontSize
             // 
-            this.numericUpDown2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.numericUpDown2.Location = new System.Drawing.Point(284, 0);
-            this.numericUpDown2.Maximum = new decimal(new int[] {
+            this.numeric_FontSize.Dock = System.Windows.Forms.DockStyle.Left;
+            this.numeric_FontSize.Location = new System.Drawing.Point(320, 0);
+            this.numeric_FontSize.Maximum = new decimal(new int[] {
             30,
             0,
             0,
             0});
-            this.numericUpDown2.Minimum = new decimal(new int[] {
+            this.numeric_FontSize.Minimum = new decimal(new int[] {
             6,
             0,
             0,
             0});
-            this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(39, 23);
-            this.numericUpDown2.TabIndex = 7;
-            this.numericUpDown2.Value = new decimal(new int[] {
+            this.numeric_FontSize.Name = "numeric_FontSize";
+            this.numeric_FontSize.Size = new System.Drawing.Size(39, 23);
+            this.numeric_FontSize.TabIndex = 7;
+            this.numeric_FontSize.Value = new decimal(new int[] {
             10,
             0,
             0,
             0});
-            this.numericUpDown2.ValueChanged += new System.EventHandler(this.numericUpDown2_ValueChanged);
+            this.numeric_FontSize.ValueChanged += new System.EventHandler(this.numericUpDown2_ValueChanged);
             // 
             // label1
             // 
             this.label1.Dock = System.Windows.Forms.DockStyle.Left;
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(206, 0);
+            this.label1.Location = new System.Drawing.Point(242, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(78, 24);
             this.label1.TabIndex = 6;
             this.label1.Text = "フォントサイズ :";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // checkBox2
+            // CheckBox_GameFullScreenSpecialized
             // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.checkBox2.ForeColor = System.Drawing.Color.White;
-            this.checkBox2.Location = new System.Drawing.Point(104, 0);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(102, 24);
-            this.checkBox2.TabIndex = 4;
-            this.checkBox2.Text = "ゲーム特化モード";
-            this.checkBox2.UseVisualStyleBackColor = true;
-            this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
+            this.CheckBox_GameFullScreenSpecialized.AutoSize = true;
+            this.CheckBox_GameFullScreenSpecialized.Dock = System.Windows.Forms.DockStyle.Left;
+            this.CheckBox_GameFullScreenSpecialized.ForeColor = System.Drawing.Color.White;
+            this.CheckBox_GameFullScreenSpecialized.Location = new System.Drawing.Point(104, 0);
+            this.CheckBox_GameFullScreenSpecialized.Name = "CheckBox_GameFullScreenSpecialized";
+            this.CheckBox_GameFullScreenSpecialized.Size = new System.Drawing.Size(138, 24);
+            this.CheckBox_GameFullScreenSpecialized.TabIndex = 4;
+            this.CheckBox_GameFullScreenSpecialized.Text = "フルスクリーンゲーム特化";
+            this.CheckBox_GameFullScreenSpecialized.UseVisualStyleBackColor = true;
+            this.CheckBox_GameFullScreenSpecialized.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
             // 
             // CheckBoxTopMost
             // 
@@ -149,15 +149,18 @@
             this.Controls.Add(this.Log);
             this.Controls.Add(this.panel1);
             this.Name = "GameLog";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "ゲームログ";
             this.Activated += new System.EventHandler(this.GameLog_Activated);
             this.Deactivate += new System.EventHandler(this.GameLog_Deactivate);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.GameLog_FormClosed);
             this.Load += new System.EventHandler(this.GameLog_Load);
+            this.LocationChanged += new System.EventHandler(this.GameLog_LocationChanged);
+            this.SizeChanged += new System.EventHandler(this.GameLog_SizeChanged);
             this.Leave += new System.EventHandler(this.GameLog_Leave);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numeric_FontSize)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -169,8 +172,8 @@
         private Button ClearConsole;
         private TextBox Log;
         private CheckBox CheckBoxTopMost;
-        private CheckBox checkBox2;
-        private NumericUpDown numericUpDown2;
+        private CheckBox CheckBox_GameFullScreenSpecialized;
+        private NumericUpDown numeric_FontSize;
         private Label label1;
     }
 }
