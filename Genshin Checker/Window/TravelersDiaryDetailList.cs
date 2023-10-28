@@ -1,5 +1,7 @@
 ﻿using Genshin_Checker.App;
 using Genshin_Checker.App.HoYoLab;
+using Genshin_Checker.App.General;
+using HarfBuzzSharp;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -117,6 +119,36 @@ namespace Genshin_Checker.Window
                 {
                     var typename = App.General.TravelersDiaryDatailEventConverter.GetEventName(a.EventType, eventlists);
                     dataGridView1.Rows.Add($"{a.EventTime:yyyy/MM/dd(ddd) HH:mm:ss}", $"{a.EventType}",typename,$"{a.Count}");
+                    Color col = Color.White;
+                    switch (App.General.TravelersDiaryDatailEventConverter.GetEventType(a.EventType))
+                    {
+                        case TravelersDiaryDatailEventConverter.EventType.Mail:
+                            col = Color.FromArgb(0xCC,0xBB,0xFF);
+                            break;
+                        case TravelersDiaryDatailEventConverter.EventType.Adventure:
+                            col = Color.FromArgb(0xFF, 0xBB, 0xBB);
+                            break;
+                        case TravelersDiaryDatailEventConverter.EventType.Daily:
+                            col = Color.FromArgb(0xFF, 0xFF, 0xBB);
+                            break;
+                        case TravelersDiaryDatailEventConverter.EventType.SpirialAbyss:
+                            col = Color.FromArgb(0xBB, 0xFF, 0xBB);
+                            break;
+                        case TravelersDiaryDatailEventConverter.EventType.Quest:
+                            col = Color.FromArgb(0xBB, 0xDD, 0xFF);
+                            break;
+                        case TravelersDiaryDatailEventConverter.EventType.Event:
+                            col = Color.FromArgb(0xBB, 0xBB, 0xFF);
+                            break;
+                        case TravelersDiaryDatailEventConverter.EventType.Achievement:
+                            col = Color.FromArgb(0xFF, 0xEE, 0xBB);
+                            break;
+
+                    }
+                    for(int l=0;l<dataGridView1.ColumnCount;l++)
+                    {
+                        dataGridView1.Rows[^1].Cells[l].Style.BackColor = col;
+                    }
                 }
                 lists.Details.Clear();
                 dataGridView1.ResumeLayout(true);
