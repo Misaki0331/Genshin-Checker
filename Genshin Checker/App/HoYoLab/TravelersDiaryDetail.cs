@@ -1,5 +1,6 @@
 ﻿using Genshin_Checker.App.General;
-using Genshin_Checker.Model.UserData.TravelersDiary.Lists;
+using Genshin_Checker.Model.UserData.TravelersDiary.EventName;
+using Genshin_Checker.Model.UserData.TravelersDiary.EventLists;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -78,13 +79,13 @@ namespace Genshin_Checker.App.HoYoLab
         /// <param name="month">月のデータ(0であれば当月)</param>
         /// <param name="mode">取得モード</param>
         /// <returns></returns>
-        private async Task CorrectData(int month, Mode mode, int position=0,int total=2147483647)
+        private async Task CorrectData(int month, Mode mode, int position=0,int total=int.MaxValue)
         {
-            DateTime Latest = DateTime.MinValue;
-            int LatestCount = 0;
-            bool IsEnd = false;
-            var lists = new Model.UserData.TravelersDiary.Lists.Root();
-            var eventlists = new Model.UserData.TravelersDiary.EventName.Root();
+            DateTime Latest = DateTime.MinValue;    //最後の更新日
+            int LatestCount = 0;                    //最後の更新の同時刻イベント数
+            bool IsEnd = false;                     //取得終了フラグ
+            var lists = new EventLists();                 //イベント(通帳)のリスト
+            var eventlists = new EventName();
             var localeEventPath = $"locale\\{account.Culture.Name.ToLower()}\\";
             var eventpath = Registry.GetValue(localeEventPath, $"EventName", true);
             var FirstData = DateTime.MaxValue;
@@ -95,7 +96,7 @@ namespace Genshin_Checker.App.HoYoLab
             }
             try
             {
-                eventlists = JsonConvert.DeserializeObject<Model.UserData.TravelersDiary.EventName.Root>(await App.General.AppData.LoadFileData(eventpath));
+                eventlists = JsonConvert.DeserializeObject<EventName>(await AppData.LoadFileData(eventpath));
             }
             catch (FileNotFoundException) { }
             catch (Exception)
@@ -121,7 +122,7 @@ namespace Genshin_Checker.App.HoYoLab
                         }
                         try
                         {
-                            lists = JsonConvert.DeserializeObject<Model.UserData.TravelersDiary.Lists.Root>(await App.General.AppData.LoadFileData(path));
+                            lists = JsonConvert.DeserializeObject<EventLists>(await App.General.AppData.LoadFileData(path));
                         }
                         catch (FileNotFoundException) { }
                         catch (Exception)

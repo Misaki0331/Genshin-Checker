@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Genshin_Checker.Model.UserData.TravelersDiary.EventName;
 
 namespace Genshin_Checker.App.General
 {
@@ -63,7 +64,7 @@ namespace Genshin_Checker.App.General
                     return EventType.Others;
             }
         }
-        public static string GetEventName(int id, Model.UserData.TravelersDiary.EventName.Root? events = null)
+        public static string GetEventName(int id, EventName? events = null)
         {
             switch (CultureInfo.CurrentCulture.Name.ToLower())
             {

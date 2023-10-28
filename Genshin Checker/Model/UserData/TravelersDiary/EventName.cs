@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Genshin_Checker.Model.UserData.TravelersDiary.EventName
 {
-    internal class Root
+    internal class EventName
     {
         /// <summary>
         /// タイプと名前の相互関係リスト

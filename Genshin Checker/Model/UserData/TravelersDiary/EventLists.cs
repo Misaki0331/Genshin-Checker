@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Genshin_Checker.Model.UserData.TravelersDiary.Lists
+namespace Genshin_Checker.Model.UserData.TravelersDiary.EventLists
 {
-    public class Root
+    public class EventLists
     {
         /// <summary>
         /// 詳細リスト

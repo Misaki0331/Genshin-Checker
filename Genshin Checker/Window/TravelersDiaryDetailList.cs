@@ -1,6 +1,8 @@
 ﻿using Genshin_Checker.App;
 using Genshin_Checker.App.HoYoLab;
 using Genshin_Checker.App.General;
+using Genshin_Checker.Model.UserData.TravelersDiary.EventName;
+using Genshin_Checker.Model.UserData.TravelersDiary.EventLists;
 using HarfBuzzSharp;
 using Newtonsoft.Json;
 using System;
@@ -96,18 +98,19 @@ namespace Genshin_Checker.Window
                 }
                 var localeEventPath = $"locale\\{account.Culture.Name.ToLower()}\\";
                 var eventpath = Registry.GetValue(localeEventPath, $"EventName", true);
-                var eventlists = new Model.UserData.TravelersDiary.EventName.Root();
-                var lists = new Model.UserData.TravelersDiary.Lists.Root();
+                var eventlists = new EventName();
+                var lists = new EventLists();
                 if (path == null) throw new ArgumentException($"{monthlist.SelectedText}に対応する{(listtype.SelectedIndex==0?"原石":"モラ")}データが見つかりませんでした。");
                 try
                 {
-                    if(eventpath!=null)eventlists = JsonConvert.DeserializeObject<Model.UserData.TravelersDiary.EventName.Root>(await App.General.AppData.LoadFileData(eventpath));
+                    if(eventpath!=null)eventlists = JsonConvert.DeserializeObject<EventName>(await App.General.AppData.LoadFileData(eventpath));
                 }
                 catch {}
                 try
                 {
-                    lists = JsonConvert.DeserializeObject<Model.UserData.TravelersDiary.Lists.Root>(await App.General.AppData.LoadFileData(path));
+                    lists = JsonConvert.DeserializeObject<EventLists>(await App.General.AppData.LoadFileData(path));
                 }
+                catch (FileNotFoundException) { }
                 catch (Exception)
                 {
                     throw;
@@ -123,7 +126,7 @@ namespace Genshin_Checker.Window
                     switch (App.General.TravelersDiaryDatailEventConverter.GetEventType(a.EventType))
                     {
                         case TravelersDiaryDatailEventConverter.EventType.Mail:
-                            col = Color.FromArgb(0xCC,0xBB,0xFF);
+                            col = Color.FromArgb(0xCC,0xAA,0xFF);
                             break;
                         case TravelersDiaryDatailEventConverter.EventType.Adventure:
                             col = Color.FromArgb(0xFF, 0xBB, 0xBB);
@@ -138,10 +141,10 @@ namespace Genshin_Checker.Window
                             col = Color.FromArgb(0xBB, 0xDD, 0xFF);
                             break;
                         case TravelersDiaryDatailEventConverter.EventType.Event:
-                            col = Color.FromArgb(0xBB, 0xBB, 0xFF);
+                            col = Color.FromArgb(0xBB, 0xBB, 0xEE);
                             break;
                         case TravelersDiaryDatailEventConverter.EventType.Achievement:
-                            col = Color.FromArgb(0xFF, 0xEE, 0xBB);
+                            col = Color.FromArgb(0xFF, 0xDD, 0xBB);
                             break;
 
                     }
