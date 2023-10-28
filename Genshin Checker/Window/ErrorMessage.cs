@@ -17,7 +17,7 @@ namespace Genshin_Checker.Window
             InitializeComponent();
             Text = windowtitle;
             label1.Text = title;
-            label2.Text = message;
+            textBox1.Text = message.Replace("\r\n","\n").Replace("\n",Environment.NewLine);
         }
 
         private void button1_Click(object sender, EventArgs e)

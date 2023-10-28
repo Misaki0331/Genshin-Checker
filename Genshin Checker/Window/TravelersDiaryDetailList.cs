@@ -149,8 +149,8 @@ namespace Genshin_Checker.Window
         }
         private void TravelersDiaryDetail_ProgressCompreted(object? sender, EventArgs e)
         {
-            toolStripProgressBar1.Value = 10000;
             toolStripStatusLabel1.Text = "完了";
+            toolStripProgressBar1.Value = 10000;
             UpdateComboBox("", EventArgs.Empty);
         }
 
@@ -163,6 +163,8 @@ namespace Genshin_Checker.Window
         {
 
             account.TravelersDiaryDetail.ProgressChanged -= TravelersDiaryDetail_ProgressChanged;
+            account.TravelersDiaryDetail.ProgressFailed -= TravelersDiaryDetail_ProgressFailed;
+            account.TravelersDiaryDetail.ProgressCompreted -= TravelersDiaryDetail_ProgressCompreted;
         }
     }
 }

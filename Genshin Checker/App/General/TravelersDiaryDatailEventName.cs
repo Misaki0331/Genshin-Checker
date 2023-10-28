@@ -31,6 +31,7 @@ namespace Genshin_Checker.App.General
                         case 49: return "深境螺旋(初回クリア)";
                         case 52: return "ボス討伐";
                         case 81: return "評判任務";
+                        case 93: return "冒険Exp変換";
                         case 116: return "デイリー(冒険修練)";
                         case 1049: return "アチーブメント";
 

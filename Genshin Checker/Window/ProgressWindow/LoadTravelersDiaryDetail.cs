@@ -45,7 +45,7 @@ namespace Genshin_Checker.Window.ProgressWindow
                 await account.TravelersDiaryDetail.Correct(month,(TravelersDiaryDetail.CorrectMode)mode);
             }catch(Exception ex)
             {
-                new ErrorMessage("データベースからの取得に失敗しました。", $"{ex.Message}\n{ex.GetType()}").ShowDialog();
+                new ErrorMessage("データベースからの取得に失敗しました。", $"{ex}").ShowDialog();
             }
             finally
             {
