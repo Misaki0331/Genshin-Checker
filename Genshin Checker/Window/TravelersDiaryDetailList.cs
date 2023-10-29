@@ -78,6 +78,7 @@ namespace Genshin_Checker.Window
         Account account;
         private void UpdateDataMonth()
         {
+            PathList.Clear();
             for(int year = DateTime.Now.Year; year >= 2023; year--)
             {
                 for (int month = 12; month >= 1; month--)
@@ -98,6 +99,7 @@ namespace Genshin_Checker.Window
             }
             monthlist.Items.Clear();
             foreach (var a in PathList) monthlist.Items.Add($"{a.year}年{a.month:00}月");
+            if (monthlist.Items.Count > 0) monthlist.SelectedIndex = 0;
         }
 
         private async void UpdateComboBox(object sender, EventArgs e)
@@ -167,6 +169,7 @@ namespace Genshin_Checker.Window
         {
             var a = new Window.ProgressWindow.LoadTravelersDiaryDetail(account, Window.ProgressWindow.LoadTravelersDiaryDetail.Mode.All, account.TravelersDiary.Data.Data?.optional_month);
             a.ShowDialog();
+            UpdateDataMonth();
         }
 
         private void TravelersDiaryDetail_ProgressChanged(object? sender, TravelersDiaryDetail.ProgressState e)
