@@ -31,6 +31,11 @@ namespace Genshin_Checker.App.EnkaNetwork
         public Model.EnkaNetwork.ShowCase.Root Data { get; private set; } = new();
         private async void ServerUpdate_Tick(object? sender, EventArgs e)
         {
+            if(uid== int.MinValue)
+            {
+                ServerUpdate.Interval = 100;
+                return;
+            }
             ServerUpdate.Stop();
             try
             {

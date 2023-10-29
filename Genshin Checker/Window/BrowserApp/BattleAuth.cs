@@ -20,9 +20,9 @@ namespace Genshin_Checker.BrowserApp
         readonly bool IsAutoAuth = false;
         readonly Button AuthButton;
         Account? account;
-        public BattleAuth(bool isAutoAuth=true,Account? account=null) : base(new("https://act.hoyolab.com/app/community-game-records-sea/index.html"), autoshow: false)
+        public BattleAuth(bool isAutoAuth = true, Account? account = null) : base(new("https://act.hoyolab.com/app/community-game-records-sea/index.html"), autoshow: false)
         {
-            this.account= account;
+            this.account = account;
             Web.CoreWebView2InitializationCompleted += Web_CoreWebView2InitializationCompleted;
             //UrlBox.Visible = false;
             Size = new(1280, 720);
@@ -32,8 +32,8 @@ namespace Genshin_Checker.BrowserApp
             panel_menu.SuspendLayout();
             panel_menu.Visible = true;
             AuthButton = new Button() { Visible = true, Text = "連携してアプリに戻る", AutoSize = true, Dock = DockStyle.Left };
-            AuthButton.Click += (s, e) => { timer.Start(); AuthButton.Enabled = false; };
-            panel_menu.Controls.Add(new Label() { AutoSize = false,TextAlign=ContentAlignment.MiddleLeft, Dock = DockStyle.Fill, Text = "ログインが完了したら「連携してアプリに戻る」を選択してください。その場合は自動的にこのウィンドウが閉じられます。" });
+            AuthButton.Click += (s, e) => { timer.Start(); AuthButton.Enabled = false; timer_count = 0; };
+            panel_menu.Controls.Add(new Label() { AutoSize = false, TextAlign = ContentAlignment.MiddleLeft, Dock = DockStyle.Fill, Text = "ログインが完了したら「連携してアプリに戻る」を選択してください。その場合は自動的にこのウィンドウが閉じられます。" });
             panel_menu.Controls.Add(AuthButton);
             panel_menu.ResumeLayout(false);
             IsAutoAuth = isAutoAuth;
@@ -41,15 +41,16 @@ namespace Genshin_Checker.BrowserApp
             {
                 AuthButton.Enabled = false;
             }
+            IsWebViewPopup = true;
         }
 
         private async void Timer_Tick(object? sender, EventArgs e)
         {
-            
+
             if (Web.Source.ToString().StartsWith("https://act.hoyolab.com/app/community-game-records-sea/index.html"))
             {
                 var data = JsonConvert.DeserializeObject<Root>(await Web.CoreWebView2.ExecuteScriptAsync("var GetUID = function(){for(var i=0;i<5;i++){var uid = document.getElementsByClassName(\"uid\"); if(uid.length!=1){throw \"No Data.\";} var id=uid[0].outerText.replace(\"UID\",\"\"); if(id.length<8){throw \"UID is empty. Please again later.\";} return id}}; \r\nvar res = {};\r\ntry{ res = {message:\"ok\",uid:GetUID(),cookie:document.cookie}}catch(e){res = {message:e,uid:null,cookie:document.cookie}} res;"));
-                if (data != null && data.message == "ok" && int.TryParse(data.uid,out int uid))
+                if (data != null && data.message == "ok" && int.TryParse(data.uid, out int uid))
                 {
                     try
                     {
@@ -61,21 +62,23 @@ namespace Genshin_Checker.BrowserApp
                         else
                         {
                             var instance = Store.Accounts.Data;
-                            var a = instance.Find(account=> account.UID == uid);
-                            if(a == null)
+                            var a = instance.Find(account => account.UID == uid);
+                            if (a == null)
                             {
                                 if (instance.Count > 0) instance.Clear();
                                 instance.Add(new Account(data.cookie, uid));
                             }
                             else
                             {
-                                a.Cookie= data.cookie;
+                                a.Cookie = data.cookie;
                             }
-                            
+
                         }
                         timer.Stop();
                         timer.Tick -= Timer_Tick;
                         Close();
+                        timer.Stop();
+                        return;
                     }
                     catch (Exception)
                     {
@@ -87,8 +90,9 @@ namespace Genshin_Checker.BrowserApp
             {
                 timer.Stop();
                 AuthButton.Enabled = true;
+                new ErrorMessage("連携できませんでした。", $"URLが戦績になっているか、ログインしているかを今一度ご確認ください。").ShowDialog();
             }
-            }
+        }
 
         private void CoreWebView2_NavigationStarting(object? sender, Microsoft.Web.WebView2.Core.CoreWebView2NavigationStartingEventArgs e)
         {

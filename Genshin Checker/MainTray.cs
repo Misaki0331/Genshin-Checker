@@ -369,7 +369,7 @@ namespace Genshin_Checker
             {
                 GameLogTemp.Add(item);
                 if (GameLogTemp.Count > 200) GameLogTemp.RemoveAt(0);
-                Trace.Write(item);
+                //Trace.Write(item);
             }
         }
 

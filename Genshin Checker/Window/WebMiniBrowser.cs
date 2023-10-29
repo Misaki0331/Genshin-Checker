@@ -13,6 +13,7 @@ namespace Genshin_Checker.Window
     public partial class WebMiniBrowser : Form
     {
         internal Uri DefaultUri;
+        internal bool IsWebViewPopup = false;
         public WebMiniBrowser(Uri uri, bool autoshow=true)
         {
             DefaultUri = uri;
@@ -38,8 +39,11 @@ namespace Genshin_Checker.Window
 
         private void CoreWebView2_NewWindowRequested(object? sender, Microsoft.Web.WebView2.Core.CoreWebView2NewWindowRequestedEventArgs e)
         {
-            e.Handled = true;
-            new WebMiniBrowser(new(e.Uri));
+            if (!IsWebViewPopup)
+            {
+                e.Handled = true;
+                new WebMiniBrowser(new(e.Uri));
+            }
         }
 
         private async void CoreWebView2_FaviconChanged(object? sender, object e)

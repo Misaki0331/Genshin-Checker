@@ -15,14 +15,14 @@ namespace Genshin_Checker.App.HoYoLab
 {
     public class TravelersDiaryDetail : Base
     {
-        const int MAXPAGE = 10000;
+        const int MAXPAGE = 10000; //取得ページ数上限
         public class ProgressState
         {
-            internal ProgressState(double progress,int current,int total,string mode,int month)
+            internal ProgressState(double progress, int current, int total, string mode, int month)
             {
-                Progress= progress;
-                CurrentPage= current;
-                TotalPage= total;
+                Progress = progress;
+                CurrentPage = current;
+                TotalPage = total;
                 this.mode = mode;
                 this.month = month;
             }
@@ -33,16 +33,25 @@ namespace Genshin_Checker.App.HoYoLab
             public readonly int month;
 
         }
+        /// <summary>進捗更新イベント</summary>
         public event EventHandler<ProgressState>? ProgressChanged;
+        /// <summary>完了イベント</summary>
         public event EventHandler? ProgressCompreted;
+        /// <summary>失敗イベント</summary>
         public event EventHandler<Exception>? ProgressFailed;
+        /// <summary>取得モード</summary>
         public enum CorrectMode
         {
+            /// <summary>原石</summary>
             Primogems,
+            /// <summary>モラ</summary>
             Mora,
+            /// <summary>全部</summary>
             All
         }
-        //API用
+        /// <summary>
+        /// API用
+        /// </summary>
         enum Mode
         {
             Primogems = 1,
@@ -51,7 +60,13 @@ namespace Genshin_Checker.App.HoYoLab
 
 
         int totalcount;
-        public async Task Correct(List<int>? months=null, CorrectMode mode = CorrectMode.All)
+        /// <summary>
+        /// データを取得します。
+        /// </summary>
+        /// <param name="months">月</param>
+        /// <param name="mode"></param>
+        /// <returns></returns>
+        public async Task Correct(List<int>? months = null, CorrectMode mode = CorrectMode.All)
         {
             try
             {
@@ -67,7 +82,8 @@ namespace Genshin_Checker.App.HoYoLab
                     cnt++;
                 }
                 ProgressCompreted?.Invoke("", EventArgs.Empty);
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 ProgressFailed?.Invoke("", ex);
                 throw;
@@ -79,89 +95,99 @@ namespace Genshin_Checker.App.HoYoLab
         /// <param name="month">月のデータ(0であれば当月)</param>
         /// <param name="mode">取得モード</param>
         /// <returns></returns>
-        private async Task CorrectData(int month, Mode mode, int position=0,int total=int.MaxValue)
+        private async Task CorrectData(int month, Mode mode, int position = 0, int total = int.MaxValue)
         {
             DateTime Latest = DateTime.MinValue;    //最後の更新日
             int LatestCount = 0;                    //最後の更新の同時刻イベント数
             bool IsEnd = false;                     //取得終了フラグ
-            var lists = new EventLists();                 //イベント(通帳)のリスト
-            var eventlists = new EventName();
-            var localeEventPath = $"locale\\{account.Culture.Name.ToLower()}\\";
-            var eventpath = Registry.GetValue(localeEventPath, $"EventName", true);
-            var FirstData = DateTime.MaxValue;
-            if (eventpath == null)
+            EventLists? eventLists = null;          //イベント(通帳)のリスト
+            EventName? eventNames = null;           //イベントの名前リスト  
+            string localeEventPath = $"locale\\{account.Culture.Name.ToLower()}\\"; //レジストリに保存するローカライズテキスト保存場所
+            var eventpath = Registry.GetValue(localeEventPath, $"EventName", true); //ローカライズデータのパス
+            var FirstData = DateTime.MaxValue;      //最初のイベントの日時
+            if (eventpath == null) //ローカライズデータが無い場合はパスの設定をする。
             {
                 eventpath = AppData.GetRandomPath();
                 Registry.SetValue(localeEventPath, $"EventName", eventpath, true);
             }
             try
             {
-                eventlists = JsonConvert.DeserializeObject<EventName>(await AppData.LoadFileData(eventpath));
+                eventNames = JsonConvert.DeserializeObject<EventName>(await AppData.LoadFileData(eventpath));
             }
-            catch (FileNotFoundException) { }
+            catch (FileNotFoundException) { } //ファイルが無い場合は放置
             catch (Exception)
             {
                 throw;
             }
-            eventlists??= new();
-            string? path = null;
+            eventNames ??= new(); //データがnullならインスタンス作成
+            string? path = null; //通帳データが保存されている場所
+            bool IsFirst = false;
             for (int i = 1; i <= MAXPAGE; i++)
             {
+                //HoYoLab API呼び出し
                 var data = await account.GetTravelersDiaryDetail((int)mode, i, month);
-                if (i == 1)
+                if (i == 1) //最初の場合のみの処理、ここで詳細な日付の解析をする。
                 {
                     if (data.List.Count != 0)
                     {
-                        var date = DateTime.Parse(data.List[0].Time);
-                        var regPath = $"UserData\\{uid}\\Date\\{date.Year}\\{date.Month:00}\\";
-                        path = Registry.GetValue(regPath, $"Latest{mode}Path", true);
-                        if (path == null)
+                        var date = DateTime.Parse(data.List[0].Time); //一番最初の日付の解析
+                        var regPath = $"UserData\\{uid}\\Date\\{date.Year}\\{date.Month:00}\\"; //レジストリのパスの設定
+                        path = Registry.GetValue(regPath, $"Latest{mode}Path", true); //レジストリからデータの所在地の呼び出し
+                        if (path == null) //無いなら新しく作成
                         {
                             path = AppData.GetRandomPath();
                             Registry.SetValue(regPath, $"Latest{mode}Path", path, true);
                         }
                         try
                         {
-                            lists = JsonConvert.DeserializeObject<EventLists>(await App.General.AppData.LoadFileData(path));
+                            eventLists = JsonConvert.DeserializeObject<EventLists>(await App.General.AppData.LoadFileData(path));
                         }
                         catch (FileNotFoundException) { }
                         catch (Exception)
                         {
                             throw;
                         }
-                        lists ??= new();
-                        if (lists.Details.Count > 0)
+                        if (eventLists != null && eventLists.Details.Count > 0) //イベントリストの下準備
                         {
-                            lists.Details.Sort((a, b) => a.EventTime.CompareTo(b.EventTime));
-                            Latest = lists.Details[^1].EventTime;
-                            LatestCount = lists.Details.FindAll(a => a.EventTime == Latest).Count;
+                            eventLists.Details.Sort((a, b) => a.EventTime.CompareTo(b.EventTime));      //リストを獲得時刻昇順に並び替え
+                            Latest = eventLists.Details[^1].EventTime;                                  //最終の獲得時刻
+                            LatestCount = eventLists.Details.FindAll(a => a.EventTime == Latest).Count; //同じ最終獲得時刻のイベント数
                         }
+                        IsFirst = true;
                     }
                 }
-                if (data.List.Count == 0) IsEnd = true;
+                eventLists ??= new();
+                if (data.List.Count == 0) IsEnd = true; //データが空の場合は終了
+
+                //リストの追加処理
                 foreach (var d in data.List)
                 {
                     var time = DateTime.Parse(d.Time);
                     if (Latest <= time)
                     {
                         if (FirstData == DateTime.MaxValue) FirstData = time;
-                        lists.Details.Add(new() { EventTime = time, EventType = d.Action_id, Count = d.Num });
-                        if (eventlists.Events.Find(a => a.ID == d.Action_id) == null) eventlists.Events.Add(new() { ID = d.Action_id, Name = d.Action });
+                        if (eventLists.Details.Count > 0 && eventLists.Details[^1].EventTime < time && !IsFirst) // 最初のみはリストの都合上除外する。
+                            throw new InvalidDataException("前後データのイベント時刻が対立しています。API側データが更新された可能性があります。");
+                        else IsFirst = false;
+                        eventLists.Details.Add(new() { EventTime = time, EventType = d.Action_id, Count = d.Num });
+                        if (eventNames.Events.Find(a => a.ID == d.Action_id) == null) eventNames.Events.Add(new() { ID = d.Action_id, Name = d.Action });
                     }
                     else IsEnd = true;
                 }
+
+                //進捗状況計算
                 totalcount++;
                 double progress = 0;
-                if (data.List.Count > 0||lists.Details.Count>0)
+                if (data.List.Count > 0 || eventLists.Details.Count > 0)
                 {
                     DateTime current;
                     if (data.List.Count > 0) current = DateTime.Parse(data.List[^1].Time);
-                    else current = lists.Details[^1].EventTime;
+                    else current = eventLists.Details[^1].EventTime;
                     var start = FirstData;//Dateは最後、データベースは最初
                     var end = Latest == DateTime.MinValue ? new DateTime(current.Year, current.Month, 1) : Latest;//Dateは最初、データベースは最後
 
-                    double progress2 = 1.00 - ((current - end) / (start - end)) ;
-                    if(progress2<0) progress2 = 0;
+                    double progress2 = 1.00 - ((current - end) / (start - end));
+                    if (progress2 < 0) progress2 = 0;
                     if (progress2 > 1) progress2 = 1;
                     progress = (progress2 / total + (double)position / total) * 100.0;
                 }
@@ -169,14 +195,17 @@ namespace Genshin_Checker.App.HoYoLab
                 {
                     progress = ((double)position / total) * 100.0;
                 }
-                ProgressChanged?.Invoke(null, new(progress,i,totalcount,$"{mode}",month));
+                ProgressChanged?.Invoke(null, new(progress, i, totalcount, $"{mode}", month));
+
+                //終了処理
                 if (IsEnd || i == MAXPAGE)
                 {
-                    for (int r = 0; r < LatestCount && lists.Details.Count > 0; r++) lists.Details.RemoveAt(lists.Details.Count - 1);
-                    lists.Details.Sort((a, b) => a.EventTime.CompareTo(b.EventTime));
-                    if (path != null) App.General.AppData.SaveFileData(path, JsonConvert.SerializeObject(lists));
-                    eventlists.Events.Sort((a,b)=>a.ID.CompareTo(b.ID));
-                    if (eventpath != null) AppData.SaveFileData(eventpath, JsonConvert.SerializeObject(eventlists));
+                    //重複があったものを削除
+                    for (int r = 0; r < LatestCount && eventLists.Details.Count > 0; r++) eventLists.Details.RemoveAt(eventLists.Details.Count - 1);
+                    eventLists.Details.Sort((a, b) => a.EventTime.CompareTo(b.EventTime));
+                    if (path != null) App.General.AppData.SaveFileData(path, JsonConvert.SerializeObject(eventLists));
+                    eventNames.Events.Sort((a, b) => a.ID.CompareTo(b.ID));
+                    if (eventpath != null) AppData.SaveFileData(eventpath, JsonConvert.SerializeObject(eventNames));
                     break;
                 }
             }

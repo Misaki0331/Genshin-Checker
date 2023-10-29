@@ -177,15 +177,21 @@ namespace Genshin_Checker.Window
 
         private void GameLog_LocationChanged(object sender, EventArgs e)
         {
-            Registry.SetValue(RegistryPath, $"{ConfigName.WindowPositionX}", $"{Location.X}");
-            Registry.SetValue(RegistryPath, $"{ConfigName.WindowPositionY}", $"{Location.Y}");
+            if (WindowState != FormWindowState.Minimized)
+            {
+                Registry.SetValue(RegistryPath, $"{ConfigName.WindowPositionX}", $"{Location.X}");
+                Registry.SetValue(RegistryPath, $"{ConfigName.WindowPositionY}", $"{Location.Y}");
+            }
         }
 
         private void GameLog_SizeChanged(object sender, EventArgs e)
         {
-            Registry.SetValue(RegistryPath, $"{ConfigName.WindowSizeWidth}", $"{Size.Width}");
-            Registry.SetValue(RegistryPath, $"{ConfigName.WindowSizeHeight}", $"{Size.Height}");
-            Registry.SetValue(RegistryPath, $"{ConfigName.WindowIsMaximized}", $"{(WindowState==FormWindowState.Maximized?"True":"False")}");
+            if (WindowState != FormWindowState.Minimized)
+            {
+                Registry.SetValue(RegistryPath, $"{ConfigName.WindowSizeWidth}", $"{Size.Width}");
+                Registry.SetValue(RegistryPath, $"{ConfigName.WindowSizeHeight}", $"{Size.Height}");
+                Registry.SetValue(RegistryPath, $"{ConfigName.WindowIsMaximized}", $"{(WindowState == FormWindowState.Maximized ? "True" : "False")}");
+            }
         }
     }
 }

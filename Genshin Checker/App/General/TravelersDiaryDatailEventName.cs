@@ -22,6 +22,8 @@ namespace Genshin_Checker.App.General
             Event,          //イベント
             Domains,        //秘境報酬(初回含む)
             Achievement,    //アチーブメント
+            AdventureExperience, //溢れた分の冒険経験
+            Reputation, //評判任務
             Others
         }
         public static EventType GetEventType(int id)
@@ -60,6 +62,15 @@ namespace Genshin_Checker.App.General
                     return EventType.Event;
                 case 1049:
                     return EventType.Achievement;
+                case 93:
+                    return EventType.AdventureExperience;
+                case 20:
+                case 1016:
+                    return EventType.Domains;
+                case 80:
+                case 81:
+                case 1054:
+                    return EventType.Reputation;
                 default:
                     return EventType.Others;
             }
@@ -86,10 +97,12 @@ namespace Genshin_Checker.App.General
                         case 49: return "深境螺旋(初回クリア)";
                         case 52: return "ボス討伐";
                         case 80: return "評判任務(住民リクエスト)";
-                        case 81: return "評判任務(討伐懸賞)";
+                        case 81: return "評判任務(探索度)";
                         case 93: return "冒険Exp変換";
                         case 116: return "デイリー(冒険修練)";
+                        case 1016: return "秘境クリア";
                         case 1049: return "アチーブメント";
+                        case 1054: return "評判任務(討伐懸賞)";
 
                         default:
                             if (events != null)
