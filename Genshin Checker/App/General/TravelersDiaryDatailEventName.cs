@@ -41,6 +41,7 @@ namespace Genshin_Checker.App.General
                     return EventType.Adventure;
                 case 26:
                 case 27:
+                case 33:
                 case 116:
                     return EventType.Daily;
                 case 28:
@@ -82,6 +83,7 @@ namespace Genshin_Checker.App.General
                 case "ja-jp":
                     switch (id)
                     {
+                        case 5: return "冒険ランク報酬";
                         case 12: return "メール";
                         case 17: return "七天神像LvUP";
                         case 19: return "ワープポイント解放";
@@ -90,6 +92,7 @@ namespace Genshin_Checker.App.General
                         case 27: return "デイリー(任務)";
                         case 28: return "ランダムクエスト";
                         case 29: return "探索派遣";
+                        case 33: return "デイリー(マルチプレイ任務)";
                         case 37: return "魔物討伐";
                         case 39: return "宝箱";
                         case 43: return "チュートリアル閲覧";
@@ -102,6 +105,7 @@ namespace Genshin_Checker.App.General
                         case 116: return "デイリー(冒険修練)";
                         case 1016: return "秘境クリア";
                         case 1049: return "アチーブメント";
+                        case 1052: return "低ランク聖遺物処理";
                         case 1054: return "評判任務(討伐懸賞)";
 
                         default:
