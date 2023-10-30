@@ -37,6 +37,8 @@ Windows版のみ対応。
 
 以上の免責事項をご理解し、ご承諾いただいた上で、原神チェッカーをご利用いただきますようお願い申し上げます。
 
+企業からのお問い合わせはこちらまで : contact.genshin-checker@misaki-chan.world
+
 
 
 
