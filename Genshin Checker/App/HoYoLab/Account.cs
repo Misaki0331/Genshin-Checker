@@ -18,17 +18,19 @@ namespace Genshin_Checker.App.HoYoLab
         public TravelersDiary TravelersDiary;
         public EnkaNetwork.EnkaNetwork EnkaNetwork;
         public TravelersDiaryDetail TravelersDiaryDetail;
+        public GameRecords GameRecords;
         public Account(string cookie, int UID)
         {
+            Culture = CultureInfo.CurrentCulture;
             Server = GetServer(UID);
-            Cookie = cookie;
+            RawCookie = cookie;
             _uid = UID;
             CheckUID(_uid);
-            Culture = CultureInfo.CurrentCulture;
             RealTimeNote = new(this);
             TravelersDiary = new(this);
             EnkaNetwork = new(this);
             TravelersDiaryDetail = new(this);
+            GameRecords = new(this);
 
         }
 
@@ -104,10 +106,22 @@ namespace Genshin_Checker.App.HoYoLab
             /// </summary>
             TravelersDiaryInfo
         }
+        private string RawCookie { get; set; } = "";
         /// <summary>
         /// HoYoLabログイン済のクッキー
         /// </summary>
-        public string Cookie { get; set; } = "";
+        public string Cookie
+        {
+            get { var split = RawCookie.Split(';');
+                for (int i = 0; i < split.Length; i++)
+                {
+                    split[i] = split[i].Trim();
+                    //if (split[i].StartsWith("mi18nLang=")) split[i] = $"mi18nLang={Culture.Name.ToLower()}";
+                }
+                return String.Join("; ", split);
+            }
+            set { RawCookie = value; }
+        }
         /// <summary>
         /// サーバー名
         /// </summary>

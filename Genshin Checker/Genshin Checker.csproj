@@ -63,6 +63,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>GenshinAsset.resx</DependentUpon>
     </Compile>
+    <Compile Update="Window\BrowserApp\Announcement.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Window\BrowserApp\HoYoApp.cs" />
   </ItemGroup>
 
