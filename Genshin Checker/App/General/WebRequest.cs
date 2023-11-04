@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Globalization;
 using System.Linq;
 using System.Net;
 using System.Security.Cryptography;
@@ -26,8 +27,9 @@ namespace Genshin_Checker.App
                 builder.Append(b.ToString("x2"));
             return $"{time},Noelle,{builder}";
         }
-        public static async Task<string> HoYoGetRequest(string url, string cookie)
+        public static async Task<string> HoYoGetRequest(string url, string cookie,CultureInfo? culture=null)
         {
+            if (culture == null) culture = CultureInfo.CurrentCulture;
             var uri = new Uri(url);
             var root = $"{uri.Scheme}://{uri.Host}";
             Dictionary<string, string> headers = new()
@@ -36,10 +38,10 @@ namespace Genshin_Checker.App
                     { "Referer", root },
                     { "Accept", "application/json, text/plain, */*" },
                     { "Accept-Encoding", "None" },
-                    { "Accept-Language", "en-US;q=0.5" },
+                    { "Accept-Language", $"{culture.Name};q=0.5" },
                     { "x-rpc-app_version", "1.5.0" },
                     { "x-rpc-client_type", "5" },
-                    { "x-rpc-language", "en-us" },
+                    { "x-rpc-language", culture.Name.ToLower() },
                     { "User-Agent", "Mozilla/5.0 (X11; Linux x86_64; rv:100.0) Gecko/20100101 Firefox/100.0" },
                     { "Cookie", cookie },
                     { "DS", DS() }
