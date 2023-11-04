@@ -23,7 +23,9 @@ namespace Genshin_Checker
         Window.SettingWindow? SettingWindow= null;
         Window.TravelersDiary? TravelersDiary = null;
         Window.TravelersDiaryDetailList? DetailList = null; 
+        Window.GameRecords? GameRecords = null;
         Window.GameLog? GameLog = null;
+        BrowserApp.WebGameAnnounce? WebGameAnnounce = null;
         List<string> GameLogTemp;
         public MainTray(bool safemode=false)
         {
@@ -274,18 +276,18 @@ namespace Genshin_Checker
 
             /*try
             {
-                if (DetailList == null || DetailList.IsDisposed)
+                if (GameRecords == null || GameRecords.IsDisposed)
                 {
-                    DetailList = new(Accounts.Data[0]);
-                    DetailList.WindowState = FormWindowState.Normal;
-                    DetailList.Show();
-                    DetailList.Activate();
+                    GameRecords = new(Accounts.Data[0]);
+                    GameRecords.WindowState = FormWindowState.Normal;
+                    GameRecords.Show();
+                    GameRecords.Activate();
                 }
                 else
                 {
-                    DetailList.Show();
-                    if (DetailList.WindowState == FormWindowState.Minimized) DetailList.WindowState = FormWindowState.Normal;
-                    DetailList.Activate();
+                    GameRecords.Show();
+                    if (GameRecords.WindowState == FormWindowState.Minimized) GameRecords.WindowState = FormWindowState.Normal;
+                    GameRecords.Activate();
                 }
 
             }
@@ -293,7 +295,28 @@ namespace Genshin_Checker
             {
                 var n = new ErrorMessage(ex.GetType().ToString(), ex.Message);
                 n.ShowDialog(this);
-            }*/
+            }*/try
+            {
+                if (WebGameAnnounce == null || WebGameAnnounce.IsDisposed)
+                {
+                    WebGameAnnounce = new(Accounts.Data[0]);
+                    WebGameAnnounce.WindowState = FormWindowState.Normal;
+                    WebGameAnnounce.Show();
+                    WebGameAnnounce.Activate();
+                }
+                else
+                {
+                    WebGameAnnounce.Show();
+                    if (WebGameAnnounce.WindowState == FormWindowState.Minimized) WebGameAnnounce.WindowState = FormWindowState.Normal;
+                    WebGameAnnounce.Activate();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                var n = new ErrorMessage(ex.GetType().ToString(), ex.Message);
+                n.ShowDialog(this);
+            }
         }
 
         private void ó∑êléËí†ToolStripMenuItem_Click(object sender, EventArgs e)

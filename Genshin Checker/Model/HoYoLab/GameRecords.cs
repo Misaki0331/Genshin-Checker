@@ -160,7 +160,7 @@ namespace Genshin_Checker.Model.HoYoLab.GameRecords
         public string region { get; set; } = string.Empty;
 
         [JsonProperty("level")]
-        public int level { get; set; }
+        public int Level { get; set; }
 
         [JsonProperty("game_head_icon")]
         public string game_head_icon { get; set; } = string.Empty;
@@ -169,65 +169,65 @@ namespace Genshin_Checker.Model.HoYoLab.GameRecords
     public class Stats
     {
         [JsonProperty("active_day_number")]
-        public int active_day_number { get; set; }
+        public int ActiveDay { get; set; }
 
         [JsonProperty("achievement_number")]
-        public int achievement_number { get; set; }
+        public int Achievement { get; set; }
 
         [JsonProperty("avatar_number")]
-        public int avatar_number { get; set; }
+        public int Characters { get; set; }
 
         [JsonProperty("way_point_number")]
-        public int way_point_number { get; set; }
+        public int WayPoint { get; set; }
 
         [JsonProperty("domain_number")]
-        public int domain_number { get; set; }
+        public int Domains { get; set; }
 
         [JsonProperty("spiral_abyss")]
-        public string spiral_abyss { get; set; } = string.Empty;
+        public string SpiralAbyss { get; set; } = string.Empty;
 
         [JsonProperty("precious_chest_number")]
-        public int precious_chest_number { get; set; }
+        public int ChestPrecious { get; set; }
 
         [JsonProperty("luxurious_chest_number")]
-        public int luxurious_chest_number { get; set; }
+        public int ChestLuxurious { get; set; }
 
         [JsonProperty("exquisite_chest_number")]
-        public int exquisite_chest_number { get; set; }
+        public int ChestExquisite { get; set; }
 
         [JsonProperty("common_chest_number")]
-        public int common_chest_number { get; set; }
+        public int ChestCommon { get; set; }
 
         [JsonProperty("magic_chest_number")]
-        public int magic_chest_number { get; set; }
+        public int ChestMagic { get; set; }
 
         /// <summary> 風神の瞳 </summary>
         [JsonProperty("anemoculus_number")]
-        public int anemoculus_number { get; set; }
+        public int OculusAnemo { get; set; }
 
         /// <summary> 岩神の瞳 </summary>
         [JsonProperty("geoculus_number")]
-        public int geoculus_number { get; set; }
+        public int OculusGeo { get; set; }
 
         /// <summary> 雷神の瞳 </summary>
         [JsonProperty("electroculus_number")]
-        public int electroculus_number { get; set; }
+        public int OculusElectro { get; set; }
 
         /// <summary> 草神の瞳 </summary>
         [JsonProperty("dendroculus_number")]
-        public int dendroculus_number { get; set; }
+        public int OculusDendro { get; set; }
 
         /// <summary> 水神の瞳 </summary>
         [JsonProperty("hydroculus_number")]
-        public int hydroculus_number { get; set; }
+        public int OculusHydro { get; set; }
 
         /// <summary> 炎神の瞳 </summary>
         [JsonProperty("pyroculus_number")]
-        public int pyroculus_number { get; set; }
+        public int OculusPyro { get; set; }
 
         /// <summary> 氷神の瞳 </summary>
         [JsonProperty("cryoculus_number")]
-        public int cryoculus_number { get; set; }
+        public int OculusCryo { get; set; }
 
 
         [JsonProperty("field_ext_map")]
@@ -237,31 +237,31 @@ namespace Genshin_Checker.Model.HoYoLab.GameRecords
     public class WorldExploration
     {
         [JsonProperty("level")]
-        public int level { get; set; }
+        public int? Level { get; set; }
 
         [JsonProperty("exploration_percentage")]
-        public int exploration_percentage { get; set; }
+        public int Exploration_percentage { get; set; }
 
         [JsonProperty("icon")]
-        public string icon { get; set; } = string.Empty;
+        public string Icon { get; set; } = string.Empty;
 
         [JsonProperty("name")]
-        public string name { get; set; } = string.Empty;
+        public string Name { get; set; } = string.Empty;
 
         [JsonProperty("type")]
-        public string type { get; set; } = string.Empty;
+        public string Type { get; set; } = string.Empty;
 
         [JsonProperty("offerings")]
-        public List<Offering> offerings { get; set; } = new();
+        public List<Offering> Offerings { get; set; } = new();
 
         [JsonProperty("id")]
-        public int id { get; set; }
+        public int Id { get; set; }
 
         [JsonProperty("parent_id")]
-        public int parent_id { get; set; }
+        public int Parent_id { get; set; }
 
         [JsonProperty("map_url")]
-        public string map_url { get; set; } = string.Empty;
+        public string Map_url { get; set; } = string.Empty;
 
         [JsonProperty("strategy_url")]
         public string strategy_url { get; set; } = string.Empty;
@@ -279,10 +279,10 @@ namespace Genshin_Checker.Model.HoYoLab.GameRecords
         public List<AreaExplorationList> area_exploration_list { get; set; } = new();
 
         [JsonProperty("boss_list")]
-        public List<BossList> boss_list { get; set; } = new();
+        public List<BossList> Boss_list { get; set; } = new();
 
         [JsonProperty("is_hot")]
-        public bool is_hot { get; set; }
+        public bool Is_hot { get; set; }
     }
 
 
