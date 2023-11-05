@@ -31,7 +31,8 @@ namespace Genshin_Checker.BrowserApp
             //UrlBox.Visible = false;
             Size = new(1280, 720);//System.Windows.Forms.Screen.PrimaryScreen.Bounds.Size;
             StartPosition = FormStartPosition.CenterScreen;
-            IsWebViewPopup = true;
+            PopupWindowSize = new(1280,720);
+            IsWebViewPopup = false;
             //TopMost = true;
         }
 
@@ -157,7 +158,10 @@ namespace Genshin_Checker.BrowserApp
 
         private void CoreWebView2_NavigationCompleted(object? sender, Microsoft.Web.WebView2.Core.CoreWebView2NavigationCompletedEventArgs e)
         {
-            Web.CoreWebView2.ExecuteScriptAsync("document.querySelector(\".home__close\").addEventListener(\"click\", function(){window.close();});");
+            Web.CoreWebView2.ExecuteScriptAsync(
+                "document.querySelector(\".home__close\").addEventListener(\"click\", function(){window.close();});" +
+                "miHoYoGameJSSDK.openInBrowser=function(a){window.open(a)};");// +
+              //  "miHoYoGameJSSDK.openInWebview=function(a){window.open(a);window.close()}");
             Text = "ゲームアナウンス";
         }
     }

@@ -14,7 +14,8 @@ namespace Genshin_Checker.Window
     {
         internal Uri DefaultUri;
         internal bool IsWebViewPopup = false;
-        public WebMiniBrowser(Uri uri, bool autoshow=true)
+        internal Size PopupWindowSize = new(1280, 720);
+        public WebMiniBrowser(Uri uri, bool autoshow=true, Size? size=null)
         {
             DefaultUri = uri;
             //Web.CoreWebView2InitializationCompleted += Web_InitializationCompleted;
@@ -22,6 +23,7 @@ namespace Genshin_Checker.Window
             Web.CoreWebView2InitializationCompleted += Web_CoreWebView2InitializationCompleted;
 
             Web.Source = DefaultUri;
+            if (size != null) Size = (Size)size;
             if (autoshow)
             {
                 Show();
@@ -42,7 +44,7 @@ namespace Genshin_Checker.Window
             if (!IsWebViewPopup)
             {
                 e.Handled = true;
-                new WebMiniBrowser(new(e.Uri));
+                new WebMiniBrowser(new(e.Uri), size: PopupWindowSize).Show();
             }
         }
 
