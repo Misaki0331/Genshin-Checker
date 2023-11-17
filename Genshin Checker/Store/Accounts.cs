@@ -19,11 +19,15 @@ namespace Genshin_Checker.Store
             AccountAdded = null;
             AccountDatas= new();
         }
-        public void Load()
+        public async void Load()
         {
             try
             {
-                var str = Registry.GetValue("Config\\UserData", "PlayerData", true);
+#if DEBUG //デバッグ用にアカウント未認証
+                string? str = null;
+#else //リリース用に
+                string? str = Registry.GetValue("Config\\UserData", "PlayerData", true);
+#endif
                 if (str == null) return;
                 AccountDatas.Clear();
                 var data = JsonConvert.DeserializeObject<List<Account.JSON.UserData>>(str);
@@ -32,7 +36,7 @@ namespace Genshin_Checker.Store
                 {
                     try
                     {
-                        var ac = new App.HoYoLab.Account(d.Cookie, d.UID);
+                        var ac = await App.HoYoLab.Account.GetInstance(d.Cookie, d.UID);
                         AccountDatas.Add(ac);
                     }
                     catch (Exception ex)

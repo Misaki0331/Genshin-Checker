@@ -220,6 +220,7 @@ namespace Genshin_Checker.App.HoYoLab
 
         private void ServerUpdate_Tick(object? sender, EventArgs e)
         {
+            if (IsDisposed) return;
             ServerUpdate.Stop();
             ServerUpdate.Start();
         }

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
 using System.Security.Cryptography;
@@ -19,19 +20,32 @@ namespace Genshin_Checker.App.HoYoLab
         public EnkaNetwork.EnkaNetwork EnkaNetwork;
         public TravelersDiaryDetail TravelersDiaryDetail;
         public GameRecords GameRecords;
-        public Account(string cookie, int UID)
+        public static async Task<Account> GetInstance(string cookie, int UID)
         {
-            Culture = CultureInfo.CurrentCulture;
-            Server = GetServer(UID);
-            RawCookie = cookie;
-            _uid = UID;
-            CheckUID(_uid);
+            var account = new Account();
+            try
+            {
+                account.Server = GetServer(UID);
+                account.RawCookie = cookie;
+                account._uid = UID;
+                await account.CheckUID(UID);
+                return account;
+            }
+            catch (Exception)
+            {
+                account.Dispose();
+                throw;
+            }
+        }
+        private Account()
+        {
+
             RealTimeNote = new(this);
             TravelersDiary = new(this);
             EnkaNetwork = new(this);
             TravelersDiaryDetail = new(this);
             GameRecords = new(this);
-
+            Culture = CultureInfo.CurrentCulture;
         }
 
         /// <summary>
@@ -116,7 +130,7 @@ namespace Genshin_Checker.App.HoYoLab
                 for (int i = 0; i < split.Length; i++)
                 {
                     split[i] = split[i].Trim();
-                    //if (split[i].StartsWith("mi18nLang=")) split[i] = $"mi18nLang={Culture.Name.ToLower()}";
+                    if (split[i].StartsWith("mi18nLang=")) split[i] = $"mi18nLang={Culture.Name.ToLower()}";
                 }
                 return String.Join("; ", split);
             }
@@ -151,7 +165,7 @@ namespace Genshin_Checker.App.HoYoLab
         /// アカウント整合性の確認
         /// </summary>
         /// <param name="uid"></param>
-        private async void CheckUID(int uid)
+        private async Task<bool> CheckUID(int uid)
         {
             var res = await GetServerAccounts(GetServer(uid));
             foreach (var user in res.list)
@@ -162,7 +176,7 @@ namespace Genshin_Checker.App.HoYoLab
                     Level = user.level;
                     _uid = uid;
                     IsAuthed = true;
-                    return;
+                    return true;
                 }
             }
             throw new UserNotFoundException(uid);
@@ -173,6 +187,8 @@ namespace Genshin_Checker.App.HoYoLab
             RealTimeNote.Dispose();
             TravelersDiary.Dispose();
             EnkaNetwork.Dispose();
+            TravelersDiaryDetail.Dispose();
+            GameRecords.Dispose();
         }
         public class HoYoLabAPIException : Exception
         {

@@ -32,6 +32,7 @@ namespace Genshin_Checker.App
         public Model.HoYoLab.TravelersDiary.Infomation.Root Data { get; private set; } = new();
         private async void ServerUpdate_Tick(object? sender, EventArgs e)
         {
+            if (IsDisposed) return;
             ServerUpdate.Stop();
 
             if (!account.IsAuthed)

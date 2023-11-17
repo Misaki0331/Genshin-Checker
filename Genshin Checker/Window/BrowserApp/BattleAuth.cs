@@ -1,5 +1,6 @@
 ﻿using Genshin_Checker.App.HoYoLab;
 using Genshin_Checker.Window;
+using Microsoft.Web.WebView2.Core;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -46,6 +47,7 @@ namespace Genshin_Checker.BrowserApp
 
         private async void Timer_Tick(object? sender, EventArgs e)
         {
+            timer.Stop();
 
             if (Web.Source.ToString().StartsWith("https://act.hoyolab.com/app/community-game-records-sea/index.html"))
             {
@@ -66,31 +68,38 @@ namespace Genshin_Checker.BrowserApp
                             if (a == null)
                             {
                                 if (instance.Count > 0) instance.Clear();
-                                instance.Add(new Account(data.cookie, uid));
+                                instance.Add(await Account.GetInstance(data.cookie, uid));
                             }
                             else
                             {
                                 a.Cookie = data.cookie;
                             }
 
-                        }
-                        timer.Stop();
+                        };
                         timer.Tick -= Timer_Tick;
                         Close();
                         timer.Stop();
                         return;
                     }
-                    catch (Exception)
+                    catch (Exception ex)
                     {
+                        Trace.WriteLine(ex);
+                        timer.Stop();
+                        AuthButton.Enabled = true;
+                        new ErrorMessage("連携に失敗しました。", $"{ex.Message}\n\n{ex.GetType()}\n\n{ex.StackTrace}").ShowDialog();
+                        return;
                     }
                 }
             }
             timer_count++;
             if (timer_count > 10)
             {
-                timer.Stop();
                 AuthButton.Enabled = true;
                 new ErrorMessage("連携できませんでした。", $"URLが戦績になっているか、ログインしているかを今一度ご確認ください。").ShowDialog();
+            }
+            else
+            {
+                timer.Start();
             }
         }
 
@@ -102,6 +111,7 @@ namespace Genshin_Checker.BrowserApp
         {
             Web.CoreWebView2.NavigationStarting += CoreWebView2_NavigationStarting;
             Web.CoreWebView2.NavigationCompleted += CoreWebView2_NavigationCompleted;
+            //Web.CoreWebView2.CookieManager.DeleteAllCookies();
         }
         readonly System.Windows.Forms.Timer timer;
         int timer_count = 0;

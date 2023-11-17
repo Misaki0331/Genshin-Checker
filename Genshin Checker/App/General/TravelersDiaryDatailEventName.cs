@@ -83,6 +83,7 @@ namespace Genshin_Checker.App.General
                 case "ja-jp":
                     switch (id)
                     {
+                        case 4: return "アイテム購入・交換報酬";
                         case 5: return "冒険ランク報酬";
                         case 12: return "メール";
                         case 17: return "七天神像LvUP";
@@ -92,21 +93,28 @@ namespace Genshin_Checker.App.General
                         case 27: return "デイリー(任務)";
                         case 28: return "ランダムクエスト";
                         case 29: return "探索派遣";
-                        case 33: return "デイリー(マルチプレイ任務)";
+                        case 32: return "ランダムクエスト(マルチ任務)";
+                        case 33: return "デイリー(マルチ任務)";
                         case 37: return "魔物討伐";
                         case 39: return "宝箱";
                         case 43: return "チュートリアル閲覧";
                         case 48: return "深境螺旋(星の秘宝)";
                         case 49: return "深境螺旋(初回クリア)";
                         case 52: return "ボス討伐";
+                        case 55: return "地脈の花挑戦報酬";
+                        case 67: return "期間限定イベント報酬";
                         case 80: return "評判任務(住民リクエスト)";
                         case 81: return "評判任務(探索度)";
                         case 93: return "冒険Exp変換";
+                        case 101: return "イベント終了告知メール";
+                        case 102: return "紀行終了告知メール";
                         case 116: return "デイリー(冒険修練)";
                         case 1016: return "秘境クリア";
                         case 1049: return "アチーブメント";
                         case 1052: return "低ランク聖遺物処理";
                         case 1054: return "評判任務(討伐懸賞)";
+                        case 1074: return "参量物質変化器変換報酬";
+                        case 1100: return "塵歌壺ギフトセット報酬";
 
                         default:
                             if (events != null)

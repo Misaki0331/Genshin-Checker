@@ -50,6 +50,7 @@ namespace Genshin_Checker.App
         }
         private async void ServerUpdate_Tick(object? sender, EventArgs e)
         {
+            if (IsDisposed) return;
             ServerUpdate.Stop();
             try
             {

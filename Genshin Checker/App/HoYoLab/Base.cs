@@ -16,7 +16,12 @@ namespace Genshin_Checker.App.HoYoLab
                 Enabled = true,
             };
         }
-
+        public bool IsDisposed { get; private set; }
+        public void Dispose()
+        {
+            IsDisposed = true;
+            ServerUpdate.Stop();
+        }
         internal Account account;
         public int uid { get => account.UID; }
 
