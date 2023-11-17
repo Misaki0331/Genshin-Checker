@@ -9,6 +9,7 @@ using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
@@ -52,13 +53,20 @@ namespace Genshin_Checker.BrowserApp
             if (Web.Source.ToString().StartsWith("https://act.hoyolab.com/app/community-game-records-sea/index.html"))
             {
                 var data = JsonConvert.DeserializeObject<Root>(await Web.CoreWebView2.ExecuteScriptAsync("var GetUID = function(){for(var i=0;i<5;i++){var uid = document.getElementsByClassName(\"uid\"); if(uid.length!=1){throw \"No Data.\";} var id=uid[0].outerText.replace(\"UID\",\"\"); if(id.length<8){throw \"UID is empty. Please again later.\";} return id}}; \r\nvar res = {};\r\ntry{ res = {message:\"ok\",uid:GetUID(),cookie:document.cookie}}catch(e){res = {message:e,uid:null,cookie:document.cookie}} res;"));
+
+                var cookies = await Web.CoreWebView2.CookieManager.GetCookiesAsync("https://hoyolab.com");
+
+                StringBuilder sb = new();
+                foreach (var cookie in cookies)
+                    sb.Append(cookie.Name + "=" + cookie.Value + "; ");
+                string cookieString = sb.ToString();
                 if (data != null && data.message == "ok" && int.TryParse(data.uid, out int uid))
                 {
                     try
                     {
                         if (account != null)
                         {
-                            account.Cookie = data.cookie;
+                            account.Cookie = cookieString;
                             account.UID = uid;
                         }
                         else
@@ -68,11 +76,11 @@ namespace Genshin_Checker.BrowserApp
                             if (a == null)
                             {
                                 if (instance.Count > 0) instance.Clear();
-                                instance.Add(await Account.GetInstance(data.cookie, uid));
+                                instance.Add(await Account.GetInstance(cookieString, uid));
                             }
                             else
                             {
-                                a.Cookie = data.cookie;
+                                a.Cookie = cookieString;
                             }
 
                         };
