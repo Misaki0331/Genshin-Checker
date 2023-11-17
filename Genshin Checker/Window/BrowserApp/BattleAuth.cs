@@ -66,6 +66,7 @@ namespace Genshin_Checker.BrowserApp
                     {
                         if (account != null)
                         {
+                            //ToDo: ここの処理ではアカウント情報が書き換わる可能性がある為整合性チェックを入れる
                             account.Cookie = cookieString;
                             account.UID = uid;
                         }
@@ -75,7 +76,11 @@ namespace Genshin_Checker.BrowserApp
                             var a = instance.Find(account => account.UID == uid);
                             if (a == null)
                             {
-                                if (instance.Count > 0) instance.Clear();
+                                if (instance.Count > 0)
+                                {
+                                    foreach (var a3 in instance) a3.Dispose();
+                                    instance.Clear();
+                                }
                                 instance.Add(await Account.GetInstance(cookieString, uid));
                             }
                             else
