@@ -36,29 +36,29 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel9 = new System.Windows.Forms.Panel();
-            this.NumOculus = new System.Windows.Forms.Label();
+            this.Summary_NumOculus = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.panel8 = new System.Windows.Forms.Panel();
-            this.NumUnlockChest = new System.Windows.Forms.Label();
+            this.Summary_NumUnlockChest = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.panel7 = new System.Windows.Forms.Panel();
-            this.NumAchievement = new System.Windows.Forms.Label();
+            this.Summary_NumAchievement = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.NumLoginDays = new System.Windows.Forms.Label();
+            this.Summary_NumLoginDays = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.panel10 = new System.Windows.Forms.Panel();
             this.panel12 = new System.Windows.Forms.Panel();
-            this.NumExpanding = new System.Windows.Forms.Label();
+            this.Summary_NumExpanding = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.panel13 = new System.Windows.Forms.Panel();
-            this.NumDomains = new System.Windows.Forms.Label();
+            this.Summary_NumDomains = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
-            this.panel14 = new System.Windows.Forms.Panel();
+            this.Summary_panel14 = new System.Windows.Forms.Panel();
             this.NumWaypoints = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.panel15 = new System.Windows.Forms.Panel();
-            this.NumCharacters = new System.Windows.Forms.Label();
+            this.Summary_NumCharacters = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -85,7 +85,7 @@
             this.panel10.SuspendLayout();
             this.panel12.SuspendLayout();
             this.panel13.SuspendLayout();
-            this.panel14.SuspendLayout();
+            this.Summary_panel14.SuspendLayout();
             this.panel15.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -104,7 +104,7 @@
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.MinimumSize = new System.Drawing.Size(0, 16);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(619, 16);
+            this.panel1.Size = new System.Drawing.Size(598, 16);
             this.panel1.TabIndex = 0;
             // 
             // label2
@@ -121,7 +121,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.label1.Location = new System.Drawing.Point(528, 0);
+            this.label1.Location = new System.Drawing.Point(507, 0);
             this.label1.MinimumSize = new System.Drawing.Size(0, 16);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(91, 16);
@@ -138,7 +138,7 @@
             this.tabControl1.Margin = new System.Windows.Forms.Padding(0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(619, 434);
+            this.tabControl1.Size = new System.Drawing.Size(598, 434);
             this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.FillToRight;
             this.tabControl1.TabIndex = 1;
             // 
@@ -150,7 +150,7 @@
             this.PageSummary.Location = new System.Drawing.Point(4, 24);
             this.PageSummary.Margin = new System.Windows.Forms.Padding(0);
             this.PageSummary.Name = "PageSummary";
-            this.PageSummary.Size = new System.Drawing.Size(611, 406);
+            this.PageSummary.Size = new System.Drawing.Size(590, 406);
             this.PageSummary.TabIndex = 0;
             this.PageSummary.Text = "概要";
             this.PageSummary.UseVisualStyleBackColor = true;
@@ -168,7 +168,7 @@
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(611, 209);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(590, 209);
             this.tableLayoutPanel1.TabIndex = 10;
             // 
             // panel6
@@ -180,31 +180,31 @@
             this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel6.Location = new System.Drawing.Point(3, 3);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(299, 203);
+            this.panel6.Size = new System.Drawing.Size(289, 203);
             this.panel6.TabIndex = 6;
             // 
             // panel9
             // 
             this.panel9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel9.Controls.Add(this.NumOculus);
+            this.panel9.Controls.Add(this.Summary_NumOculus);
             this.panel9.Controls.Add(this.label10);
             this.panel9.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel9.Location = new System.Drawing.Point(0, 150);
             this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(299, 50);
+            this.panel9.Size = new System.Drawing.Size(289, 50);
             this.panel9.TabIndex = 9;
             // 
-            // NumOculus
+            // Summary_NumOculus
             // 
-            this.NumOculus.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.NumOculus.Font = new System.Drawing.Font("Yu Gothic UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.NumOculus.Location = new System.Drawing.Point(123, 0);
-            this.NumOculus.Margin = new System.Windows.Forms.Padding(0);
-            this.NumOculus.Name = "NumOculus";
-            this.NumOculus.Size = new System.Drawing.Size(174, 48);
-            this.NumOculus.TabIndex = 5;
-            this.NumOculus.Text = "9999";
-            this.NumOculus.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.Summary_NumOculus.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Summary_NumOculus.Font = new System.Drawing.Font("Yu Gothic UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.Summary_NumOculus.Location = new System.Drawing.Point(123, 0);
+            this.Summary_NumOculus.Margin = new System.Windows.Forms.Padding(0);
+            this.Summary_NumOculus.Name = "Summary_NumOculus";
+            this.Summary_NumOculus.Size = new System.Drawing.Size(164, 48);
+            this.Summary_NumOculus.TabIndex = 5;
+            this.Summary_NumOculus.Text = "9999";
+            this.Summary_NumOculus.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label10
             // 
@@ -223,25 +223,25 @@
             // panel8
             // 
             this.panel8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel8.Controls.Add(this.NumUnlockChest);
+            this.panel8.Controls.Add(this.Summary_NumUnlockChest);
             this.panel8.Controls.Add(this.label8);
             this.panel8.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel8.Location = new System.Drawing.Point(0, 100);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(299, 50);
+            this.panel8.Size = new System.Drawing.Size(289, 50);
             this.panel8.TabIndex = 8;
             // 
-            // NumUnlockChest
+            // Summary_NumUnlockChest
             // 
-            this.NumUnlockChest.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.NumUnlockChest.Font = new System.Drawing.Font("Yu Gothic UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.NumUnlockChest.Location = new System.Drawing.Point(130, 0);
-            this.NumUnlockChest.Margin = new System.Windows.Forms.Padding(0);
-            this.NumUnlockChest.Name = "NumUnlockChest";
-            this.NumUnlockChest.Size = new System.Drawing.Size(167, 48);
-            this.NumUnlockChest.TabIndex = 5;
-            this.NumUnlockChest.Text = "99999";
-            this.NumUnlockChest.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.Summary_NumUnlockChest.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Summary_NumUnlockChest.Font = new System.Drawing.Font("Yu Gothic UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.Summary_NumUnlockChest.Location = new System.Drawing.Point(130, 0);
+            this.Summary_NumUnlockChest.Margin = new System.Windows.Forms.Padding(0);
+            this.Summary_NumUnlockChest.Name = "Summary_NumUnlockChest";
+            this.Summary_NumUnlockChest.Size = new System.Drawing.Size(157, 48);
+            this.Summary_NumUnlockChest.TabIndex = 5;
+            this.Summary_NumUnlockChest.Text = "99999";
+            this.Summary_NumUnlockChest.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label8
             // 
@@ -260,25 +260,25 @@
             // panel7
             // 
             this.panel7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel7.Controls.Add(this.NumAchievement);
+            this.panel7.Controls.Add(this.Summary_NumAchievement);
             this.panel7.Controls.Add(this.label6);
             this.panel7.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel7.Location = new System.Drawing.Point(0, 50);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(299, 50);
+            this.panel7.Size = new System.Drawing.Size(289, 50);
             this.panel7.TabIndex = 7;
             // 
-            // NumAchievement
+            // Summary_NumAchievement
             // 
-            this.NumAchievement.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.NumAchievement.Font = new System.Drawing.Font("Yu Gothic UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.NumAchievement.Location = new System.Drawing.Point(105, 0);
-            this.NumAchievement.Margin = new System.Windows.Forms.Padding(0);
-            this.NumAchievement.Name = "NumAchievement";
-            this.NumAchievement.Size = new System.Drawing.Size(192, 48);
-            this.NumAchievement.TabIndex = 5;
-            this.NumAchievement.Text = "9999";
-            this.NumAchievement.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.Summary_NumAchievement.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Summary_NumAchievement.Font = new System.Drawing.Font("Yu Gothic UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.Summary_NumAchievement.Location = new System.Drawing.Point(105, 0);
+            this.Summary_NumAchievement.Margin = new System.Windows.Forms.Padding(0);
+            this.Summary_NumAchievement.Name = "Summary_NumAchievement";
+            this.Summary_NumAchievement.Size = new System.Drawing.Size(182, 48);
+            this.Summary_NumAchievement.TabIndex = 5;
+            this.Summary_NumAchievement.Text = "9999";
+            this.Summary_NumAchievement.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label6
             // 
@@ -297,25 +297,25 @@
             // panel5
             // 
             this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel5.Controls.Add(this.NumLoginDays);
+            this.panel5.Controls.Add(this.Summary_NumLoginDays);
             this.panel5.Controls.Add(this.label3);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel5.Location = new System.Drawing.Point(0, 0);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(299, 50);
+            this.panel5.Size = new System.Drawing.Size(289, 50);
             this.panel5.TabIndex = 6;
             // 
-            // NumLoginDays
+            // Summary_NumLoginDays
             // 
-            this.NumLoginDays.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.NumLoginDays.Font = new System.Drawing.Font("Yu Gothic UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.NumLoginDays.Location = new System.Drawing.Point(101, 0);
-            this.NumLoginDays.Margin = new System.Windows.Forms.Padding(0);
-            this.NumLoginDays.Name = "NumLoginDays";
-            this.NumLoginDays.Size = new System.Drawing.Size(196, 48);
-            this.NumLoginDays.TabIndex = 5;
-            this.NumLoginDays.Text = "9999";
-            this.NumLoginDays.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.Summary_NumLoginDays.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Summary_NumLoginDays.Font = new System.Drawing.Font("Yu Gothic UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.Summary_NumLoginDays.Location = new System.Drawing.Point(101, 0);
+            this.Summary_NumLoginDays.Margin = new System.Windows.Forms.Padding(0);
+            this.Summary_NumLoginDays.Name = "Summary_NumLoginDays";
+            this.Summary_NumLoginDays.Size = new System.Drawing.Size(186, 48);
+            this.Summary_NumLoginDays.TabIndex = 5;
+            this.Summary_NumLoginDays.Text = "9999";
+            this.Summary_NumLoginDays.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label3
             // 
@@ -335,36 +335,36 @@
             // 
             this.panel10.Controls.Add(this.panel12);
             this.panel10.Controls.Add(this.panel13);
-            this.panel10.Controls.Add(this.panel14);
+            this.panel10.Controls.Add(this.Summary_panel14);
             this.panel10.Controls.Add(this.panel15);
             this.panel10.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel10.Location = new System.Drawing.Point(308, 3);
+            this.panel10.Location = new System.Drawing.Point(298, 3);
             this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(300, 203);
+            this.panel10.Size = new System.Drawing.Size(289, 203);
             this.panel10.TabIndex = 10;
             // 
             // panel12
             // 
             this.panel12.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel12.Controls.Add(this.NumExpanding);
+            this.panel12.Controls.Add(this.Summary_NumExpanding);
             this.panel12.Controls.Add(this.label12);
             this.panel12.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel12.Location = new System.Drawing.Point(0, 150);
             this.panel12.Name = "panel12";
-            this.panel12.Size = new System.Drawing.Size(300, 50);
+            this.panel12.Size = new System.Drawing.Size(289, 50);
             this.panel12.TabIndex = 9;
             // 
-            // NumExpanding
+            // Summary_NumExpanding
             // 
-            this.NumExpanding.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.NumExpanding.Font = new System.Drawing.Font("Yu Gothic UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.NumExpanding.Location = new System.Drawing.Point(101, 0);
-            this.NumExpanding.Margin = new System.Windows.Forms.Padding(0);
-            this.NumExpanding.Name = "NumExpanding";
-            this.NumExpanding.Size = new System.Drawing.Size(197, 48);
-            this.NumExpanding.TabIndex = 5;
-            this.NumExpanding.Text = "99.999%";
-            this.NumExpanding.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.Summary_NumExpanding.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Summary_NumExpanding.Font = new System.Drawing.Font("Yu Gothic UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.Summary_NumExpanding.Location = new System.Drawing.Point(101, 0);
+            this.Summary_NumExpanding.Margin = new System.Windows.Forms.Padding(0);
+            this.Summary_NumExpanding.Name = "Summary_NumExpanding";
+            this.Summary_NumExpanding.Size = new System.Drawing.Size(186, 48);
+            this.Summary_NumExpanding.TabIndex = 5;
+            this.Summary_NumExpanding.Text = "999.99%";
+            this.Summary_NumExpanding.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label12
             // 
@@ -383,25 +383,25 @@
             // panel13
             // 
             this.panel13.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel13.Controls.Add(this.NumDomains);
+            this.panel13.Controls.Add(this.Summary_NumDomains);
             this.panel13.Controls.Add(this.label14);
             this.panel13.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel13.Location = new System.Drawing.Point(0, 100);
             this.panel13.Name = "panel13";
-            this.panel13.Size = new System.Drawing.Size(300, 50);
+            this.panel13.Size = new System.Drawing.Size(289, 50);
             this.panel13.TabIndex = 8;
             // 
-            // NumDomains
+            // Summary_NumDomains
             // 
-            this.NumDomains.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.NumDomains.Font = new System.Drawing.Font("Yu Gothic UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.NumDomains.Location = new System.Drawing.Point(131, 0);
-            this.NumDomains.Margin = new System.Windows.Forms.Padding(0);
-            this.NumDomains.Name = "NumDomains";
-            this.NumDomains.Size = new System.Drawing.Size(167, 48);
-            this.NumDomains.TabIndex = 5;
-            this.NumDomains.Text = "99";
-            this.NumDomains.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.Summary_NumDomains.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Summary_NumDomains.Font = new System.Drawing.Font("Yu Gothic UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.Summary_NumDomains.Location = new System.Drawing.Point(131, 0);
+            this.Summary_NumDomains.Margin = new System.Windows.Forms.Padding(0);
+            this.Summary_NumDomains.Name = "Summary_NumDomains";
+            this.Summary_NumDomains.Size = new System.Drawing.Size(156, 48);
+            this.Summary_NumDomains.TabIndex = 5;
+            this.Summary_NumDomains.Text = "99";
+            this.Summary_NumDomains.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label14
             // 
@@ -417,16 +417,16 @@
             this.label14.Text = "解放済み秘境数 :";
             this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // panel14
+            // Summary_panel14
             // 
-            this.panel14.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel14.Controls.Add(this.NumWaypoints);
-            this.panel14.Controls.Add(this.label18);
-            this.panel14.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel14.Location = new System.Drawing.Point(0, 50);
-            this.panel14.Name = "panel14";
-            this.panel14.Size = new System.Drawing.Size(300, 50);
-            this.panel14.TabIndex = 7;
+            this.Summary_panel14.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Summary_panel14.Controls.Add(this.NumWaypoints);
+            this.Summary_panel14.Controls.Add(this.label18);
+            this.Summary_panel14.Dock = System.Windows.Forms.DockStyle.Top;
+            this.Summary_panel14.Location = new System.Drawing.Point(0, 50);
+            this.Summary_panel14.Name = "Summary_panel14";
+            this.Summary_panel14.Size = new System.Drawing.Size(289, 50);
+            this.Summary_panel14.TabIndex = 7;
             // 
             // NumWaypoints
             // 
@@ -435,7 +435,7 @@
             this.NumWaypoints.Location = new System.Drawing.Point(106, 0);
             this.NumWaypoints.Margin = new System.Windows.Forms.Padding(0);
             this.NumWaypoints.Name = "NumWaypoints";
-            this.NumWaypoints.Size = new System.Drawing.Size(192, 48);
+            this.NumWaypoints.Size = new System.Drawing.Size(181, 48);
             this.NumWaypoints.TabIndex = 5;
             this.NumWaypoints.Text = "999";
             this.NumWaypoints.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -457,25 +457,25 @@
             // panel15
             // 
             this.panel15.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel15.Controls.Add(this.NumCharacters);
+            this.panel15.Controls.Add(this.Summary_NumCharacters);
             this.panel15.Controls.Add(this.label20);
             this.panel15.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel15.Location = new System.Drawing.Point(0, 0);
             this.panel15.Name = "panel15";
-            this.panel15.Size = new System.Drawing.Size(300, 50);
+            this.panel15.Size = new System.Drawing.Size(289, 50);
             this.panel15.TabIndex = 6;
             // 
-            // NumCharacters
+            // Summary_NumCharacters
             // 
-            this.NumCharacters.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.NumCharacters.Font = new System.Drawing.Font("Yu Gothic UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.NumCharacters.Location = new System.Drawing.Point(139, 0);
-            this.NumCharacters.Margin = new System.Windows.Forms.Padding(0);
-            this.NumCharacters.Name = "NumCharacters";
-            this.NumCharacters.Size = new System.Drawing.Size(159, 48);
-            this.NumCharacters.TabIndex = 5;
-            this.NumCharacters.Text = "999";
-            this.NumCharacters.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.Summary_NumCharacters.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Summary_NumCharacters.Font = new System.Drawing.Font("Yu Gothic UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.Summary_NumCharacters.Location = new System.Drawing.Point(139, 0);
+            this.Summary_NumCharacters.Margin = new System.Windows.Forms.Padding(0);
+            this.Summary_NumCharacters.Name = "Summary_NumCharacters";
+            this.Summary_NumCharacters.Size = new System.Drawing.Size(148, 48);
+            this.Summary_NumCharacters.TabIndex = 5;
+            this.Summary_NumCharacters.Text = "999";
+            this.Summary_NumCharacters.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label20
             // 
@@ -498,7 +498,7 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(611, 100);
+            this.panel3.Size = new System.Drawing.Size(590, 100);
             this.panel3.TabIndex = 4;
             // 
             // panel2
@@ -510,7 +510,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(509, 100);
+            this.panel2.Size = new System.Drawing.Size(488, 100);
             this.panel2.TabIndex = 3;
             // 
             // Summary_StatusMessage
@@ -520,7 +520,7 @@
             this.Summary_StatusMessage.Font = new System.Drawing.Font("Meiryo UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Summary_StatusMessage.Location = new System.Drawing.Point(100, 37);
             this.Summary_StatusMessage.Name = "Summary_StatusMessage";
-            this.Summary_StatusMessage.Size = new System.Drawing.Size(407, 61);
+            this.Summary_StatusMessage.Size = new System.Drawing.Size(386, 61);
             this.Summary_StatusMessage.TabIndex = 2;
             this.Summary_StatusMessage.Text = "概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要";
             this.Summary_StatusMessage.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -532,7 +532,7 @@
             this.Summary_UserName.Font = new System.Drawing.Font("Meiryo UI", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.Summary_UserName.Location = new System.Drawing.Point(100, 0);
             this.Summary_UserName.Name = "Summary_UserName";
-            this.Summary_UserName.Size = new System.Drawing.Size(407, 37);
+            this.Summary_UserName.Size = new System.Drawing.Size(386, 37);
             this.Summary_UserName.TabIndex = 1;
             this.Summary_UserName.Text = "名前名前名前名";
             // 
@@ -553,7 +553,7 @@
             this.panel4.Controls.Add(this.Summary_AdventureRankState);
             this.panel4.Controls.Add(this.Text_AdventureRank);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel4.Location = new System.Drawing.Point(509, 0);
+            this.panel4.Location = new System.Drawing.Point(488, 0);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(102, 100);
             this.panel4.TabIndex = 4;
@@ -598,9 +598,9 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 24);
             this.tabPage2.Margin = new System.Windows.Forms.Padding(0);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Size = new System.Drawing.Size(611, 406);
+            this.tabPage2.Size = new System.Drawing.Size(590, 406);
             this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
+            this.tabPage2.Text = "探索";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // panel11
@@ -642,11 +642,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(619, 450);
+            this.ClientSize = new System.Drawing.Size(598, 450);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.panel1);
             this.Name = "GameRecords";
             this.Text = "GameRecords";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.GameRecords_FormClosed);
             this.Load += new System.EventHandler(this.GameRecords_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -667,8 +668,8 @@
             this.panel12.PerformLayout();
             this.panel13.ResumeLayout(false);
             this.panel13.PerformLayout();
-            this.panel14.ResumeLayout(false);
-            this.panel14.PerformLayout();
+            this.Summary_panel14.ResumeLayout(false);
+            this.Summary_panel14.PerformLayout();
             this.panel15.ResumeLayout(false);
             this.panel15.PerformLayout();
             this.panel3.ResumeLayout(false);
@@ -687,7 +688,6 @@
         private Label label1;
         private TabControl tabControl1;
         private TabPage PageSummary;
-        private TabPage tabPage2;
         private Label label2;
         private Panel panel2;
         private Label Summary_StatusMessage;
@@ -703,30 +703,31 @@
         private Label label16;
         private Panel panel10;
         private Panel panel12;
-        private Label NumExpanding;
+        private Label Summary_NumExpanding;
         private Label label12;
         private Panel panel13;
-        private Label NumDomains;
+        private Label Summary_NumDomains;
         private Label label14;
-        private Panel panel14;
+        private Panel Summary_panel14;
         private Label NumWaypoints;
         private Label label18;
         private Panel panel15;
-        private Label NumCharacters;
+        private Label Summary_NumCharacters;
         private Label label20;
         private Panel panel6;
         private Panel panel9;
-        private Label NumOculus;
+        private Label Summary_NumOculus;
         private Label label10;
         private Panel panel8;
-        private Label NumUnlockChest;
+        private Label Summary_NumUnlockChest;
         private Label label8;
         private Panel panel7;
-        private Label NumAchievement;
+        private Label Summary_NumAchievement;
         private Label label6;
         private Panel panel5;
-        private Label NumLoginDays;
+        private Label Summary_NumLoginDays;
         private Label label3;
         private TableLayoutPanel tableLayoutPanel1;
+        private TabPage tabPage2;
     }
 }

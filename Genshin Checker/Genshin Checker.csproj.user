@@ -7,11 +7,17 @@
     <Compile Update="MainTray.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="UI\Control\GameRecord\ExplorationProgressBar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="Window\BrowserApp\BattleAuth.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Window\BrowserApp\HoYoApp.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="UI\Control\GameRecord\Exploration.cs">
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="Window\ErrorMessage.cs">
       <SubType>Form</SubType>

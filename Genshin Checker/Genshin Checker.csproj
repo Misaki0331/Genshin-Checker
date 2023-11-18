@@ -95,6 +95,10 @@
     </None>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Window\Contains\" />
+  </ItemGroup>
+
   <Target Name="BeforeBuild">
     <ItemGroup>
       <AssemblyAttributes Include="AssemblyVersion">
