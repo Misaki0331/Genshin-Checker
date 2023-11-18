@@ -73,6 +73,14 @@ namespace Genshin_Checker.Window
                     areas.ID = ex.Id;
                     areas.Name = ex.Name;
                     areas.Images.Icon = ex.Icon;
+                    if(ex.Type== "Reputation"&&ex.Level!=null)
+                    {
+                        areas.Levels.Add(new() { Icon = "https://static-api.misaki-chan.world/genshin-checker/asset/game-records/ys_world_level.png", Name = "評判レベル", Level = (int)ex.Level });
+                    }
+                    foreach(var level in ex.Offerings)
+                    {
+                        areas.Levels.Add(new() { Icon=level.icon,Name=level.name, Level = level.level });
+                    }
                     areas.Progress.Add(new() { Value = ex.Exploration_percentage / 10.0 });
                     Area.Add(areas);
                 }

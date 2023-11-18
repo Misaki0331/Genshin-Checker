@@ -16,10 +16,12 @@ namespace Genshin_Checker.Window.Contains
     {
         Root Area;
         List<ExplorationProgressBar> ProgressBar;
+        List<ExplorationLevel> Levels;
         public Exploration(Root area)
         {
             Area = area;
             ProgressBar = new();
+            Levels = new();
             InitializeComponent();
             ContainLoad();
         }
@@ -29,9 +31,9 @@ namespace Genshin_Checker.Window.Contains
         public void Release()
         {
             foreach(var ex in ProgressBar)
-            {
                 ex.Dispose();
-            }
+            foreach (var ex in Levels)
+                ex.Dispose();
             Dispose();
         }
         private static Image CreateNegativeImage(Image img)
@@ -80,6 +82,18 @@ namespace Genshin_Checker.Window.Contains
                 };
                 ExContain_ProgressPanel.Controls.Add(control);
                 ProgressBar.Add(control);
+            }
+
+
+            for (int i = Area.Levels.Count - 1; i >= 0; i--)
+            {
+                var levels = Area.Levels[i];
+                var control = new ExplorationLevel(levels)
+                {
+                    Dock = DockStyle.Top
+                };
+                ExContain_Index.Controls.Add(control);
+                Levels.Add(control);
             }
         }
     }
