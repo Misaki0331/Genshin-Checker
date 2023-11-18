@@ -421,5 +421,38 @@ namespace Genshin_Checker
                 n.ShowDialog(this);
             }
         }
+
+        private void 公式アナウンスToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                if (WebGameAnnounce == null || WebGameAnnounce.IsDisposed)
+                {
+                    if (Accounts.Data.Count == 0)
+                    {
+                        var n = new ErrorMessage("連携しているアカウントはまだ無いようです。", "お手数ですが、以下の操作を行って認証してください。\n設定⇒アプリ連携⇒HoYoLabとの連携");
+                        n.ShowDialog(this);
+                        return;
+                    }
+                    WebGameAnnounce = new(Accounts.Data[0]);
+                    WebGameAnnounce.WindowState = FormWindowState.Normal;
+                    WebGameAnnounce.Show();
+                    WebGameAnnounce.Activate();
+                }
+                else
+                {
+                    WebGameAnnounce.Show();
+                    if (WebGameAnnounce.WindowState == FormWindowState.Minimized) WebGameAnnounce.WindowState = FormWindowState.Normal;
+                    WebGameAnnounce.Activate();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                var n = new ErrorMessage(ex.GetType().ToString(), ex.Message);
+                n.ShowDialog(this);
+            }
+        }
     }
 }

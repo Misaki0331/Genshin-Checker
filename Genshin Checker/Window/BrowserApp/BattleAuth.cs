@@ -52,7 +52,7 @@ namespace Genshin_Checker.BrowserApp
 
             if (Web.Source.ToString().StartsWith("https://act.hoyolab.com/app/community-game-records-sea/index.html"))
             {
-                var data = JsonConvert.DeserializeObject<Root>(await Web.CoreWebView2.ExecuteScriptAsync("var GetUID = function(){for(var i=0;i<5;i++){var uid = document.getElementsByClassName(\"uid\"); if(uid.length!=1){throw \"No Data.\";} var id=uid[0].outerText.replace(\"UID\",\"\"); if(id.length<8){throw \"UID is empty. Please again later.\";} return id}}; \r\nvar res = {};\r\ntry{ res = {message:\"ok\",uid:GetUID(),cookie:document.cookie}}catch(e){res = {message:e,uid:null,cookie:document.cookie}} res;"));
+                var data = JsonConvert.DeserializeObject<Root>(await Web.CoreWebView2.ExecuteScriptAsync("var GetUID = function(){for(var i=0;i<5;i++){var uid = document.getElementsByClassName(\"uid\"); if(uid.length!=1){throw \"No Data.\";} var id=uid[0].outerText.replace(\"UID\",\"\"); if(id.length<8){throw \"UID is empty. Please again later.\";} return id}}; \r\nvar res = {};\r\ntry{ res = {message:\"ok\",uid:GetUID()}}catch(e){res = {message:e,uid:null}} res;"));
 
                 var cookies = await Web.CoreWebView2.CookieManager.GetCookiesAsync("https://hoyolab.com");
 
@@ -66,7 +66,15 @@ namespace Genshin_Checker.BrowserApp
                     {
                         if (account != null)
                         {
-                            //ToDo: ここの処理ではアカウント情報が書き換わる可能性がある為整合性チェックを入れる
+                            try
+                            {
+                                var instance = await Account.GetInstance(cookieString, uid);
+                                instance.Dispose();
+                            }
+                            catch
+                            {
+                                throw;
+                            }
                             account.Cookie = cookieString;
                             account.UID = uid;
                         }
@@ -124,13 +132,13 @@ namespace Genshin_Checker.BrowserApp
         {
             Web.CoreWebView2.NavigationStarting += CoreWebView2_NavigationStarting;
             Web.CoreWebView2.NavigationCompleted += CoreWebView2_NavigationCompleted;
-            //Web.CoreWebView2.CookieManager.DeleteAllCookies();
+            //常にクッキーは削除するように
+            Web.CoreWebView2.CookieManager.DeleteAllCookies();
         }
         readonly System.Windows.Forms.Timer timer;
         int timer_count = 0;
         public class Root
         {
-            public string cookie { get; set; } = "";
             public string message { get; set; } = "";
             public string? uid { get; set; } = null;
         }

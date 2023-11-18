@@ -37,13 +37,14 @@
             this.リアルタイムデータToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.旅人手帳ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.旅人通帳ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ゲームログ開発者向けToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.設定ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.終了ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.testToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Delay = new System.Windows.Forms.Timer(this.components);
-            this.ゲームログ開発者向けToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.公式アナウンスToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.NotificationMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -62,6 +63,7 @@
             this.リアルタイムデータToolStripMenuItem,
             this.旅人手帳ToolStripMenuItem,
             this.旅人通帳ToolStripMenuItem,
+            this.公式アナウンスToolStripMenuItem,
             this.ゲームログ開発者向けToolStripMenuItem,
             this.toolStripSeparator2,
             this.設定ToolStripMenuItem,
@@ -69,7 +71,7 @@
             this.終了ToolStripMenuItem,
             this.testToolStripMenuItem});
             this.NotificationMenu.Name = "contextMenuStrip1";
-            this.NotificationMenu.Size = new System.Drawing.Size(185, 242);
+            this.NotificationMenu.Size = new System.Drawing.Size(185, 264);
             // 
             // versionNameToolStripMenuItem
             // 
@@ -111,6 +113,13 @@
             this.旅人通帳ToolStripMenuItem.Text = "旅人通帳";
             this.旅人通帳ToolStripMenuItem.Click += new System.EventHandler(this.旅人通帳ToolStripMenuItem_Click);
             // 
+            // ゲームログ開発者向けToolStripMenuItem
+            // 
+            this.ゲームログ開発者向けToolStripMenuItem.Name = "ゲームログ開発者向けToolStripMenuItem";
+            this.ゲームログ開発者向けToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.ゲームログ開発者向けToolStripMenuItem.Text = "ゲームログ(開発者向け)";
+            this.ゲームログ開発者向けToolStripMenuItem.Click += new System.EventHandler(this.ゲームログ開発者向けToolStripMenuItem_Click);
+            // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
@@ -147,12 +156,12 @@
             this.Delay.Enabled = true;
             this.Delay.Tick += new System.EventHandler(this.Delay_Tick);
             // 
-            // ゲームログ開発者向けToolStripMenuItem
+            // 公式アナウンスToolStripMenuItem
             // 
-            this.ゲームログ開発者向けToolStripMenuItem.Name = "ゲームログ開発者向けToolStripMenuItem";
-            this.ゲームログ開発者向けToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
-            this.ゲームログ開発者向けToolStripMenuItem.Text = "ゲームログ(開発者向け)";
-            this.ゲームログ開発者向けToolStripMenuItem.Click += new System.EventHandler(this.ゲームログ開発者向けToolStripMenuItem_Click);
+            this.公式アナウンスToolStripMenuItem.Name = "公式アナウンスToolStripMenuItem";
+            this.公式アナウンスToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.公式アナウンスToolStripMenuItem.Text = "公式アナウンス";
+            this.公式アナウンスToolStripMenuItem.Click += new System.EventHandler(this.公式アナウンスToolStripMenuItem_Click);
             // 
             // MainTray
             // 
@@ -192,5 +201,6 @@
         private ToolStripMenuItem 旅人手帳ToolStripMenuItem;
         private ToolStripMenuItem 旅人通帳ToolStripMenuItem;
         private ToolStripMenuItem ゲームログ開発者向けToolStripMenuItem;
+        private ToolStripMenuItem 公式アナウンスToolStripMenuItem;
     }
 }
