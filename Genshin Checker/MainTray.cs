@@ -274,7 +274,7 @@ namespace Genshin_Checker
 
 
 
-            /*try
+            try
             {
                 if (GameRecords == null || GameRecords.IsDisposed)
                 {
@@ -288,27 +288,6 @@ namespace Genshin_Checker
                     GameRecords.Show();
                     if (GameRecords.WindowState == FormWindowState.Minimized) GameRecords.WindowState = FormWindowState.Normal;
                     GameRecords.Activate();
-                }
-
-            }
-            catch (Exception ex)
-            {
-                var n = new ErrorMessage(ex.GetType().ToString(), ex.Message);
-                n.ShowDialog(this);
-            }*/try
-            {
-                if (WebGameAnnounce == null || WebGameAnnounce.IsDisposed)
-                {
-                    WebGameAnnounce = new(Accounts.Data[0]);
-                    WebGameAnnounce.WindowState = FormWindowState.Normal;
-                    WebGameAnnounce.Show();
-                    WebGameAnnounce.Activate();
-                }
-                else
-                {
-                    WebGameAnnounce.Show();
-                    if (WebGameAnnounce.WindowState == FormWindowState.Minimized) WebGameAnnounce.WindowState = FormWindowState.Normal;
-                    WebGameAnnounce.Activate();
                 }
 
             }

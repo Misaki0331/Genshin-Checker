@@ -176,7 +176,7 @@ namespace Genshin_Checker.Model.EnkaNetwork.ShowCase
 
     public class ProfilePicture
     {
-        [JsonProperty("avatarId")]
+        [JsonProperty("id")]
         public int avatarId { get; set; }
     }
 

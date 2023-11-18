@@ -133,7 +133,9 @@ namespace Genshin_Checker.BrowserApp
             Web.CoreWebView2.NavigationStarting += CoreWebView2_NavigationStarting;
             Web.CoreWebView2.NavigationCompleted += CoreWebView2_NavigationCompleted;
             //常にクッキーは削除するように
+#if !DEBUG
             Web.CoreWebView2.CookieManager.DeleteAllCookies();
+#endif
         }
         readonly System.Windows.Forms.Timer timer;
         int timer_count = 0;

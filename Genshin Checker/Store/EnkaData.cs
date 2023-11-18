@@ -78,34 +78,52 @@ namespace Genshin_Checker.Store
         }
         private Dictionary<int, Model.EnkaNetwork.Store.Affixes.Data>? _affixes;
 
+        public Dictionary<int, Model.EnkaNetwork.Store.Pfps.Data>? Pfps
+        {
+            get
+            {
+                if (_affixes == null)
+                { GetPfps(); return null; }
+                else return _pfps;
+            }
+            private set { _pfps = value; }
+        }
+        private Dictionary<int, Model.EnkaNetwork.Store.Pfps.Data>? _pfps;
+
 
         async void GetNameCard()
         {
-            var json = await App.WebRequest.GeneralGetRequest("https://static-api.misaki-chan.world/genshin-checker/docs/store/namecards.json");
+            var json = await App.WebRequest.GeneralGetRequest("https://raw.githubusercontent.com/EnkaNetwork/API-docs/master/store/namecards.json");
             var namecard = JsonConvert.DeserializeObject<Dictionary<int, Model.EnkaNetwork.Store.Namecard.Icon>>(json);
             if (namecard != null) Namecard = namecard;
         }
         async void GetLocale()
         {
-            var json = await App.WebRequest.GeneralGetRequest("https://static-api.misaki-chan.world/genshin-checker/docs/store/loc.json");
+            var json = await App.WebRequest.GeneralGetRequest("https://raw.githubusercontent.com/EnkaNetwork/API-docs/master/store/loc.json");
             var locale = JsonConvert.DeserializeObject<Dictionary<string, Dictionary<string, string>>>(json);
             if (locale != null) Locale = locale;
         }
         async void GetCharacters()
         {
-            var json = await App.WebRequest.GeneralGetRequest("https://static-api.misaki-chan.world/genshin-checker/docs/store/characters.json");
+            var json = await App.WebRequest.GeneralGetRequest("https://raw.githubusercontent.com/EnkaNetwork/API-docs/master/store/characters.json");
             var characters = JsonConvert.DeserializeObject<Dictionary<string, Model.EnkaNetwork.Store.Characters.Data>>(json);
             if (characters != null) Characters = characters;
         }
+        async void GetPfps()
+        {
+            var json = await App.WebRequest.GeneralGetRequest("https://raw.githubusercontent.com/EnkaNetwork/API-docs/master/store/pfps.json");
+            var pfps = JsonConvert.DeserializeObject<Dictionary<int, Model.EnkaNetwork.Store.Pfps.Data>>(json);
+            if (pfps != null) Pfps = pfps;
+        }
         async void GetCostumes()
         {
-            var json = await App.WebRequest.GeneralGetRequest("https://static-api.misaki-chan.world/genshin-checker/docs/store/costumes.json");
+            var json = await App.WebRequest.GeneralGetRequest("https://raw.githubusercontent.com/EnkaNetwork/API-docs/master/store/costumes.json");
             var costumes = JsonConvert.DeserializeObject<Dictionary<int, Model.EnkaNetwork.Store.Costumes.Data>>(json);
             if (costumes != null) Costumes = costumes;
         }
         async void GetAffixes()
         {
-            var json = await App.WebRequest.GeneralGetRequest("https://static-api.misaki-chan.world/genshin-checker/docs/store/affixes.json");
+            var json = await App.WebRequest.GeneralGetRequest("https://raw.githubusercontent.com/EnkaNetwork/API-docs/master/store/affixes.json");
             var affixes = JsonConvert.DeserializeObject<Dictionary<int, Model.EnkaNetwork.Store.Affixes.Data>>(json);
             if (affixes != null) Affixes = affixes;
         }
@@ -120,6 +138,7 @@ namespace Genshin_Checker.Store
                 if (_characters == null || IsReload) GetCharacters();
                 if (_costumes == null || IsReload) GetCostumes();
                 if (_affixes == null || IsReload) GetAffixes();
+                if (_pfps == null || IsReload) GetPfps();
             }
             catch (Exception ex)
             {
@@ -139,6 +158,24 @@ namespace Genshin_Checker.Store
                         if (Data.Namecard == null) return null;
                         var namecard = Data.Namecard[id];
                         if (namecard != null) return $"https://enka.network/ui/{namecard.icon}.png";
+                        return null;
+
+                    }
+                    catch
+                    {
+                        return null;
+                    }
+                }
+            }
+            public class AvaterIcon
+            {
+                public static string? GetIconURL(int id)
+                {
+                    try
+                    {
+                        if (Data.Pfps == null) return null;
+                        var icon = Data.Pfps[id];
+                        if (icon != null) return $"https://enka.network/ui/{icon.iconPath.Replace("_Circle","")}.png";
                         return null;
 
                     }
