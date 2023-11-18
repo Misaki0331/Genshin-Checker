@@ -71,8 +71,9 @@ namespace Genshin_Checker.Window.Contains
 
             ExContain_MapIcon.Image = CreateNegativeImage(await App.WebRequest.ImageGetRequest(Area.Images.Icon));
             ExContain_MapName.Text = Area.Name;
-            foreach(var progress in Area.Progress)
+            for(int i=Area.Progress.Count-1;i>=0;i--)
             {
+                var progress = Area.Progress[i];
                 var control = new ExplorationProgressBar(progress)
                 {
                     Dock = DockStyle.Top

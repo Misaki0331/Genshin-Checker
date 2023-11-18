@@ -83,8 +83,9 @@ namespace Genshin_Checker.Window
                     if (areas.Progress.Count == 1) areas.Progress[0].Name = areas.Name;
                     areas.Progress.Add(new() { Name = ex.Name, Value = ex.Exploration_percentage / 10.0 });
                 }
-                foreach (var ex in Area)
+                for(int i=Area.Count-1; i>=0; i--)
                 {
+                    var ex = Area[i];
                     var control = new Window.Contains.Exploration(ex);
                     control.Dock = DockStyle.Top;
                     tabPage2.Controls.Add(control);
