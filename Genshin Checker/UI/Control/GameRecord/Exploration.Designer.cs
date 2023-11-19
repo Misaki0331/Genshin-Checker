@@ -100,6 +100,7 @@
             this.ExContain_ShowDetailButton.TabIndex = 8;
             this.ExContain_ShowDetailButton.Text = "もっと見る ▶";
             this.ExContain_ShowDetailButton.UseVisualStyleBackColor = true;
+            this.ExContain_ShowDetailButton.Visible = false;
             // 
             // ExContain_ProgressPanel
             // 
