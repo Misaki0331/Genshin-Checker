@@ -353,5 +353,33 @@ namespace Genshin_Checker.App.HoYoLab
             if (root == null) throw new InvalidDataException($"json形式に変換できません。\n\n--- Request URL ---\n{url}\n\n--- Received Data ---\n{json}\n--- Data End ---");
             return root;
         }
+        /// <summary>
+        /// キャラクター詳細情報
+        /// </summary>
+        /// <returns></returns>
+        /// <exception cref="InvalidDataException"></exception>
+        public async Task<string> GetCharacterDetail(int characterID)
+        {
+            var url = $"https://sg-public-api.hoyolab.com/event/calculateos/sync/avatar/detail?avatar_id={characterID}&uid={UID}&region={Server}&lang={Culture.Name.ToLower()}";
+            var json = await WebRequest.HoYoGetRequest(url,Cookie);
+            //var root = JsonConvert.DeserializeObject<Model.EnkaNetwork.ShowCase.Root>(json);
+            //if (root == null) throw new InvalidDataException($"json形式に変換できません。\n\n--- Request URL ---\n{url}\n\n--- Received Data ---\n{json}\n--- Data End ---");
+            return json;
+        }
+
+
+        /// <summary>
+        /// キャラクター詳細情報
+        /// </summary>
+        /// <returns></returns>
+        /// <exception cref="InvalidDataException"></exception>
+        public async Task<string> GetActiveQuery(DateTime since)
+        {
+            var url = $"https://bbs-api-os.hoyolab.com/game_record/genshin/wapi/query_tool?server={Server}&role_id={UID}&year={since.Year}&month={since.Month:00}&day={since.Day:00}";
+            var json = await WebRequest.HoYoGetRequest(url, Cookie);
+            //var root = JsonConvert.DeserializeObject<Model.EnkaNetwork.ShowCase.Root>(json);
+            //if (root == null) throw new InvalidDataException($"json形式に変換できません。\n\n--- Request URL ---\n{url}\n\n--- Received Data ---\n{json}\n--- Data End ---");
+            return json;
+        }
     }
 }

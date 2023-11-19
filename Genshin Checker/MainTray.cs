@@ -272,7 +272,15 @@ namespace Genshin_Checker
             //var a = new Window.ProgressWindow.LoadTravelersDiaryDetail(Accounts.Data[0], Window.ProgressWindow.LoadTravelersDiaryDetail.Mode.All, Accounts.Data[0].TravelersDiary.Data.Data?.optional_month);
             //a.ShowDialog();
 
-
+            try
+            {
+                var data = await Accounts.Data[0].GetCharacterDetail(10000087);
+                new ErrorMessage("jsonコピー用", data, "ログ").ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                new ErrorMessage("json取得できませんでした。", ex.ToString()).ShowDialog();
+            }
 
             try
             {
