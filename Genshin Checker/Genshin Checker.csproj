@@ -63,6 +63,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>GenshinAsset.resx</DependentUpon>
     </Compile>
+    <Compile Update="resource\PaimonsPaint.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>PaimonsPaint.resx</DependentUpon>
+    </Compile>
     <Compile Update="Window\BrowserApp\Announcement.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -85,6 +90,10 @@
     <EmbeddedResource Update="resource\GenshinAsset.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>GenshinAsset.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="resource\PaimonsPaint.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>PaimonsPaint.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
 
