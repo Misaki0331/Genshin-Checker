@@ -274,16 +274,6 @@ namespace Genshin_Checker
 
             try
             {
-                var data = await Accounts.Data[0].GetCharacterDetail(10000087);
-                new ErrorMessage("jsonコピー用", data, "ログ").ShowDialog();
-            }
-            catch (Exception ex)
-            {
-                new ErrorMessage("json取得できませんでした。", ex.ToString()).ShowDialog();
-            }
-
-            try
-            {
                 if (GameRecords == null || GameRecords.IsDisposed)
                 {
                     GameRecords = new(Accounts.Data[0]);
