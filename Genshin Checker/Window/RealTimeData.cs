@@ -27,13 +27,14 @@ namespace Genshin_Checker.Window
             UiUpdate.Tick+= UiUpdate_Tick;
         }
 
-        private void UiUpdate_Tick(object? sender, EventArgs e)
+        private async void UiUpdate_Tick(object? sender, EventArgs e)
         {
             if (account.IsDisposed) Close();
             UiUpdate.Stop();
             var Note = account.RealTimeNote.Data;
             if (account.UID != 0) Text = $"リアルタイムノート (UID:{account.UID})";
             else Text = $"リアルタイムノート";
+            button_Auth.Visible = false;
             if (Note.Meta.Message == "OK")
             {
                 var r = Note.RealTime;
@@ -80,7 +81,7 @@ namespace Genshin_Checker.Window
                     {
                         var data = r.Expedition.Expeditions[i];
                         ex_panel[i].Visible = true;
-                        if (data.ImageURL != ex_icon[i].Name) ex_icon[i].Load(data.ImageURL);
+                        if (data.ImageURL != ex_icon[i].Name) ex_icon[i].Image = await App.WebRequest.ImageGetRequest(data.ImageURL);
                         ex_icon[i].Name = data.ImageURL;
                         if (DateTime.Now > data.EstimatedTime) ex_label[i].Text = "探索完了";
                         else
