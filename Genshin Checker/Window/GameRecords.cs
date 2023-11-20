@@ -101,6 +101,7 @@ namespace Genshin_Checker.Window
                     var OculusName = new string[] { "風神の瞳", "岩神の瞳", "雷神の瞳", "草神の瞳", "水神の瞳", "炎神の瞳", "氷神の瞳" };
                     var OculusValue = new int[] { data.stats.OculusAnemo, data.stats.OculusGeo, data.stats.OculusElectro, data.stats.OculusDendro, data.stats.OculusHydro, data.stats.OculusPyro, data.stats.OculusCyro };
                     int OculusAreaCount = 0;
+                    Area.Sort((a, b) => b.ID - a.ID);
                     for (int i = Area.Count - 1; i >= 0; i--)
                     {
                         var ex = Area[i];
