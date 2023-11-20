@@ -121,6 +121,8 @@ namespace Genshin_Checker.App
         public static async Task<Image> ImageGetRequest(string url)
         {
             var uri = new Uri(url);
+            bool IsQuery = url.Contains('?');
+            //Todo:キャッシュ処理を入れる
             var root = $"{uri.Scheme}://{uri.Host}";
             Dictionary<string, string> headers = new()
                 {
