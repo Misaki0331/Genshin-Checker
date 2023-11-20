@@ -48,7 +48,7 @@ namespace Genshin_Checker.Window
                 Summary_NumAchievement.Text = $"{data.Achievement}";
                 var cnt = data.ChestLuxurious + data.ChestCommon + data.ChestExquisite + data.ChestMagic + data.ChestPrecious;
                 Summary_NumUnlockChest.Text = $"{cnt}";
-                cnt = data.OculusAnemo + data.OculusGeo + data.OculusElectro + data.OculusDendro + data.OculusHydro + data.OculusPyro + data.OculusCryo;
+                cnt = data.OculusAnemo + data.OculusGeo + data.OculusElectro + data.OculusDendro + data.OculusHydro + data.OculusPyro + data.OculusCyro;
                 Summary_NumOculus.Text = $"{cnt}";
                 Summary_NumCharacters.Text = $"{data.Characters}";
                 NumWaypoints.Text = $"{data.WayPoint}";
@@ -66,8 +66,9 @@ namespace Genshin_Checker.Window
             #region テスト部分(探索)
             if (account.GameRecords.Data != null)
             {
+                var data = account.GameRecords.Data;
                 List<Root> Area = new();
-                foreach (var ex in account.GameRecords.Data.world_explorations.FindAll(a => a.Parent_id == 0))
+                foreach (var ex in data.world_explorations.FindAll(a => a.Parent_id == 0))
                 {
                     Root areas = new();
                     areas.ID = ex.Id;
@@ -75,6 +76,7 @@ namespace Genshin_Checker.Window
                     areas.Images.Icon = ex.Icon;
                     if(ex.Type== "Reputation"&&ex.Level!=null)
                     {
+                        areas.Oculus = new();
                         areas.Levels.Add(new() { Icon = "https://static-api.misaki-chan.world/genshin-checker/asset/game-records/ys_world_level.png", Name = "評判レベル", Level = (int)ex.Level });
                     }
                     foreach(var level in ex.Offerings)
@@ -84,16 +86,25 @@ namespace Genshin_Checker.Window
                     areas.Progress.Add(new() { Value = ex.Exploration_percentage / 10.0 });
                     Area.Add(areas);
                 }
-                foreach (var ex in account.GameRecords.Data.world_explorations.FindAll(a => a.Parent_id != 0))
+                foreach (var ex in data.world_explorations.FindAll(a => a.Parent_id != 0))
                 {
                     Root? areas = Area.Find(a=>a.ID==ex.Parent_id);
                     if (areas == null) continue;
                     if (areas.Progress.Count == 1) areas.Progress[0].Name = areas.Name;
                     areas.Progress.Add(new() { Name = ex.Name, Value = ex.Exploration_percentage / 10.0 });
                 }
+                var OculusName = new string[]{ "風神の瞳", "岩神の瞳", "雷神の瞳","草神の瞳","水神の瞳","炎神の瞳","氷神の瞳" };
+                var OculusValue = new int[] { data.stats.OculusAnemo, data.stats.OculusGeo, data.stats.OculusElectro, data.stats.OculusDendro, data.stats.OculusHydro, data.stats.OculusPyro, data.stats.OculusCyro };
+                int OculusAreaCount = 0;
                 for(int i=Area.Count-1; i>=0; i--)
                 {
                     var ex = Area[i];
+                    if (ex.Oculus != null&&OculusAreaCount<OculusName.Length)
+                    {
+                        ex.Oculus.Name= OculusName[OculusAreaCount];
+                        ex.Oculus.Count = OculusValue[OculusAreaCount];
+                        OculusAreaCount++;
+                    }
                     var control = new Window.Contains.Exploration(ex);
                     control.Dock = DockStyle.Top;
                     tabPage2.Controls.Add(control);

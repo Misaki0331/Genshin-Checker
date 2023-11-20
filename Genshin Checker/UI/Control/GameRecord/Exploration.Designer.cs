@@ -30,14 +30,17 @@
         {
             this.ExContainer = new System.Windows.Forms.Panel();
             this.ExContain_Main = new System.Windows.Forms.Panel();
-            this.ExContain_Index = new System.Windows.Forms.Panel();
             this.ExContain_MapName = new System.Windows.Forms.Label();
+            this.ExContain_Index = new System.Windows.Forms.Panel();
+            this.OculusCount = new System.Windows.Forms.Label();
             this.ExContain_MapIcon = new System.Windows.Forms.PictureBox();
             this.ExContain_ShowDetailButton = new System.Windows.Forms.Button();
             this.ExContain_ProgressPanel = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.ExContainer.SuspendLayout();
             this.ExContain_Main.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ExContain_MapIcon)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // ExContainer
@@ -53,7 +56,7 @@
             // 
             // ExContain_Main
             // 
-            this.ExContain_Main.Controls.Add(this.ExContain_Index);
+            this.ExContain_Main.Controls.Add(this.panel1);
             this.ExContain_Main.Controls.Add(this.ExContain_MapName);
             this.ExContain_Main.Controls.Add(this.ExContain_MapIcon);
             this.ExContain_Main.Dock = System.Windows.Forms.DockStyle.Top;
@@ -61,14 +64,6 @@
             this.ExContain_Main.Name = "ExContain_Main";
             this.ExContain_Main.Size = new System.Drawing.Size(411, 100);
             this.ExContain_Main.TabIndex = 3;
-            // 
-            // ExContain_Index
-            // 
-            this.ExContain_Index.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.ExContain_Index.Location = new System.Drawing.Point(100, 29);
-            this.ExContain_Index.Name = "ExContain_Index";
-            this.ExContain_Index.Size = new System.Drawing.Size(311, 71);
-            this.ExContain_Index.TabIndex = 3;
             // 
             // ExContain_MapName
             // 
@@ -79,6 +74,27 @@
             this.ExContain_MapName.Size = new System.Drawing.Size(222, 26);
             this.ExContain_MapName.TabIndex = 0;
             this.ExContain_MapName.Text = "地名地名地名地名地名";
+            // 
+            // ExContain_Index
+            // 
+            this.ExContain_Index.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ExContain_Index.Location = new System.Drawing.Point(0, 0);
+            this.ExContain_Index.Name = "ExContain_Index";
+            this.ExContain_Index.Size = new System.Drawing.Size(210, 71);
+            this.ExContain_Index.TabIndex = 3;
+            // 
+            // OculusCount
+            // 
+            this.OculusCount.AutoSize = true;
+            this.OculusCount.Dock = System.Windows.Forms.DockStyle.Right;
+            this.OculusCount.Font = new System.Drawing.Font("Meiryo UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.OculusCount.Location = new System.Drawing.Point(210, 0);
+            this.OculusCount.MinimumSize = new System.Drawing.Size(0, 71);
+            this.OculusCount.Name = "OculusCount";
+            this.OculusCount.Size = new System.Drawing.Size(101, 71);
+            this.OculusCount.TabIndex = 10;
+            this.OculusCount.Text = "神の瞳 : 999";
+            this.OculusCount.TextAlign = System.Drawing.ContentAlignment.BottomRight;
             // 
             // ExContain_MapIcon
             // 
@@ -111,6 +127,16 @@
             this.ExContain_ProgressPanel.Size = new System.Drawing.Size(411, 0);
             this.ExContain_ProgressPanel.TabIndex = 9;
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.ExContain_Index);
+            this.panel1.Controls.Add(this.OculusCount);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel1.Location = new System.Drawing.Point(100, 29);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(311, 71);
+            this.panel1.TabIndex = 11;
+            // 
             // Exploration
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -125,6 +151,8 @@
             this.ExContain_Main.ResumeLayout(false);
             this.ExContain_Main.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ExContain_MapIcon)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -139,5 +167,7 @@
         private PictureBox ExContain_MapIcon;
         private Button ExContain_ShowDetailButton;
         private Panel ExContain_ProgressPanel;
+        private Label OculusCount;
+        private Panel panel1;
     }
 }

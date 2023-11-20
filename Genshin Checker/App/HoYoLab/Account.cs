@@ -219,12 +219,13 @@ namespace Genshin_Checker.App.HoYoLab
             }
             public readonly int uid;
         }
-         /// <summary>
-         /// アカウント情報を取得
-         /// </summary>
-         /// <param name="server">ゲームアカウントが所在しているサーバー</param>
-         /// <returns></returns>
-         /// <exception cref="InvalidDataException"></exception>
+        #region APIリクエスト関数
+        /// <summary>
+        /// アカウント情報を取得
+        /// </summary>
+        /// <param name="server">ゲームアカウントが所在しているサーバー</param>
+        /// <returns></returns>
+        /// <exception cref="InvalidDataException"></exception>
         public async Task<Model.HoYoLab.Account.Data> GetServerAccounts(Servers server)
         {
             var url = $"https://api-account-os.hoyolab.com/binding/api/getUserGameRolesByLtoken?game_biz=hk4e_global&region={server}";
@@ -338,8 +339,36 @@ namespace Genshin_Checker.App.HoYoLab
             if (root.Data == null) throw new HoYoLabAPIException(root.Retcode, root.Message);
             return root.Data;
         }
-
-
+        /// <summary>
+        /// キャラクター詳細情報
+        /// </summary>
+        /// <param name="characterID">キャラクター番号<br/>例 :10000089 = フリーナ</param>
+        /// <returns></returns>
+        /// <exception cref="InvalidDataException"></exception>
+        public async Task<Model.HoYoLab.CharacterDetail.Root> GetCharacterDetail(int characterID)
+        {
+            var url = $"https://sg-public-api.hoyolab.com/event/calculateos/sync/avatar/detail?avatar_id={characterID}&uid={UID}&region={Server}&lang={Culture.Name.ToLower()}";
+            var json = await WebRequest.HoYoGetRequest(url,Cookie);
+            var root = JsonConvert.DeserializeObject<Model.HoYoLab.CharacterDetail.Root>(json);
+            if (root == null) throw new InvalidDataException($"json形式に変換できません。\n\n--- Request URL ---\n{url}\n\n--- Received Data ---\n{json}\n--- Data End ---");
+            if (root.Data == null) throw new HoYoLabAPIException(root.Retcode, root.Message);
+            return root;
+        }
+        /// <summary>
+        /// 旅の振り返りAPI
+        /// </summary>
+        /// <param name="since">該当DateTimeから今日までの差分を取得<br/>最大90日前まで利用可能</param>
+        /// <returns></returns>
+        /// <exception cref="InvalidDataException"></exception>
+        public async Task<Model.HoYoLab.StellarJourney.Root> GetActiveQuery(DateTime since)
+        {
+            var url = $"https://bbs-api-os.hoyolab.com/game_record/genshin/wapi/query_tool?server={Server}&role_id={UID}&year={since.Year}&month={since.Month:00}&day={since.Day:00}";
+            var json = await WebRequest.HoYoGetRequest(url, Cookie);
+            var root = JsonConvert.DeserializeObject<Model.HoYoLab.StellarJourney.Root>(json);
+            if (root == null) throw new InvalidDataException($"json形式に変換できません。\n\n--- Request URL ---\n{url}\n\n--- Received Data ---\n{json}\n--- Data End ---");
+            if (root.Data == null) throw new HoYoLabAPIException(root.Retcode, root.Message);
+            return root;
+        }
         /// <summary>
         /// EnkaNetwork
         /// </summary>
@@ -353,33 +382,6 @@ namespace Genshin_Checker.App.HoYoLab
             if (root == null) throw new InvalidDataException($"json形式に変換できません。\n\n--- Request URL ---\n{url}\n\n--- Received Data ---\n{json}\n--- Data End ---");
             return root;
         }
-        /// <summary>
-        /// キャラクター詳細情報
-        /// </summary>
-        /// <returns></returns>
-        /// <exception cref="InvalidDataException"></exception>
-        public async Task<Model.HoYoLab.CharacterDetail.Root> GetCharacterDetail(int characterID)
-        {
-            var url = $"https://sg-public-api.hoyolab.com/event/calculateos/sync/avatar/detail?avatar_id={characterID}&uid={UID}&region={Server}&lang={Culture.Name.ToLower()}";
-            var json = await WebRequest.HoYoGetRequest(url,Cookie);
-            var root = JsonConvert.DeserializeObject<Model.HoYoLab.CharacterDetail.Root>(json);
-            if (root == null) throw new InvalidDataException($"json形式に変換できません。\n\n--- Request URL ---\n{url}\n\n--- Received Data ---\n{json}\n--- Data End ---");
-            return root;
-        }
-
-
-        /// <summary>
-        /// キャラクター詳細情報
-        /// </summary>
-        /// <returns></returns>
-        /// <exception cref="InvalidDataException"></exception>
-        public async Task<Model.HoYoLab.StellarJourney.Root> GetActiveQuery(DateTime since)
-        {
-            var url = $"https://bbs-api-os.hoyolab.com/game_record/genshin/wapi/query_tool?server={Server}&role_id={UID}&year={since.Year}&month={since.Month:00}&day={since.Day:00}";
-            var json = await WebRequest.HoYoGetRequest(url, Cookie);
-            var root = JsonConvert.DeserializeObject<Model.HoYoLab.StellarJourney.Root>(json);
-            if (root == null) throw new InvalidDataException($"json形式に変換できません。\n\n--- Request URL ---\n{url}\n\n--- Received Data ---\n{json}\n--- Data End ---");
-            return root;
-        }
+        #endregion
     }
 }

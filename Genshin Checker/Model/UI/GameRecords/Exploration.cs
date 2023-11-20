@@ -13,6 +13,7 @@ namespace Genshin_Checker.Model.UI.GameRecords.Exploration
         public List<OfferingLevel> Levels { get; set; } = new();
         public Images Images { get; set; } = new();
         public List<Progress> Progress { get; set; } = new();
+        public Oculus? Oculus { get; set; } = null;
 
     }
     public class Images
@@ -29,5 +30,10 @@ namespace Genshin_Checker.Model.UI.GameRecords.Exploration
     {
         public string Name { get; set; } = string.Empty;
         public double Value { get; set; } = 0;
+    }
+    public class Oculus
+    {
+        public string Name { get; set; } = string.Empty;
+        public int Count { get; set; } = 0;
     }
 }

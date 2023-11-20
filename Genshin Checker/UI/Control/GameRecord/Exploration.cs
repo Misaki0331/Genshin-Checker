@@ -83,6 +83,11 @@ namespace Genshin_Checker.Window.Contains
                 ExContain_ProgressPanel.Controls.Add(control);
                 ProgressBar.Add(control);
             }
+            if (Area.Oculus != null)
+            {
+                OculusCount.Text = $"{Area.Oculus.Name} : {Area.Oculus.Count}";
+            }
+            else OculusCount.Visible = false;
 
 
             for (int i = Area.Levels.Count - 1; i >= 0; i--)
