@@ -272,28 +272,7 @@ namespace Genshin_Checker
             //var a = new Window.ProgressWindow.LoadTravelersDiaryDetail(Accounts.Data[0], Window.ProgressWindow.LoadTravelersDiaryDetail.Mode.All, Accounts.Data[0].TravelersDiary.Data.Data?.optional_month);
             //a.ShowDialog();
 
-            try
-            {
-                if (GameRecords == null || GameRecords.IsDisposed)
-                {
-                    GameRecords = new(Accounts.Data[0]);
-                    GameRecords.WindowState = FormWindowState.Normal;
-                    GameRecords.Show();
-                    GameRecords.Activate();
-                }
-                else
-                {
-                    GameRecords.Show();
-                    if (GameRecords.WindowState == FormWindowState.Minimized) GameRecords.WindowState = FormWindowState.Normal;
-                    GameRecords.Activate();
-                }
-
-            }
-            catch (Exception ex)
-            {
-                var n = new ErrorMessage(ex.GetType().ToString(), ex.Message);
-                n.ShowDialog(this);
-            }
+            
         }
 
         private void 旅人手帳ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -422,6 +401,38 @@ namespace Genshin_Checker
                     WebGameAnnounce.Show();
                     if (WebGameAnnounce.WindowState == FormWindowState.Minimized) WebGameAnnounce.WindowState = FormWindowState.Normal;
                     WebGameAnnounce.Activate();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                var n = new ErrorMessage(ex.GetType().ToString(), ex.Message);
+                n.ShowDialog(this);
+            }
+        }
+
+        private void 戦績情報ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (GameRecords == null || GameRecords.IsDisposed)
+                {
+                    if (Accounts.Data.Count == 0)
+                    {
+                        var n = new ErrorMessage("連携しているアカウントはまだ無いようです。", "お手数ですが、以下の操作を行って認証してください。\n設定⇒アプリ連携⇒HoYoLabとの連携");
+                        n.ShowDialog(this);
+                        return;
+                    }
+                    GameRecords = new(Accounts.Data[0]);
+                    GameRecords.WindowState = FormWindowState.Normal;
+                    GameRecords.Show();
+                    GameRecords.Activate();
+                }
+                else
+                {
+                    GameRecords.Show();
+                    if (GameRecords.WindowState == FormWindowState.Minimized) GameRecords.WindowState = FormWindowState.Normal;
+                    GameRecords.Activate();
                 }
 
             }
