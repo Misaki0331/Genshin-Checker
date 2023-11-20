@@ -7,6 +7,7 @@ using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -16,13 +17,17 @@ namespace Genshin_Checker.Window
 {
     public partial class GameLog : Form
     {
+        List<string> LogData = new();
+        int LogCount = 0;
         public GameLog(List<string> old)
         {
             InitializeComponent();
             Log.Font = new Font("ＭＳ ゴシック", (float)numeric_FontSize.Value);
             foreach (var item in old)
             {
-                Log.AppendText(item.Replace("\r\n","\n").Replace("\n", Environment.NewLine)+Environment.NewLine);
+                LogData.Add(item.ToString());
+                Log.AppendText(item.Replace("\r\n", "\n").Replace("\n", Environment.NewLine) + Environment.NewLine);
+                LogCount++;
             }
             App.Game.GameLogWatcher.Instance.LogUpdated += LogUpdated;
 
@@ -116,7 +121,20 @@ namespace Genshin_Checker.Window
         {
             foreach (var item in e)
             {
+                LogData.Add(item);
+                if (LogData.Count > 100) LogData.RemoveAt(0);
                 Log.AppendText(item.Replace("\r\n", "\n").Replace("\n", Environment.NewLine) + Environment.NewLine);
+                LogCount++;
+                if (LogCount > 1000)
+                {
+                    Log.Clear();
+                    LogCount = 0;
+                    foreach (var item2 in LogData)
+                    {
+                        Log.AppendText(item2.Replace("\r\n", "\n").Replace("\n", Environment.NewLine) + Environment.NewLine);
+                        LogCount++;
+                    }
+                }
             }
         }
 
