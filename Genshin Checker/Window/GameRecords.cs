@@ -107,6 +107,7 @@ namespace Genshin_Checker.Window
                     }
                     var control = new Window.Contains.Exploration(ex);
                     control.Dock = DockStyle.Top;
+                    control.BorderStyle= BorderStyle.FixedSingle;
                     tabPage2.Controls.Add(control);
                     ExplorationControls.Add(control);
                 }
