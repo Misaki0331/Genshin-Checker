@@ -2,12 +2,15 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
+using System.IO;
+using System.IO.Compression;
 using System.Linq;
 using System.Net;
 using System.Security.Cryptography;
 using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TaskbarClock;
 
 namespace Genshin_Checker.App
 {
@@ -19,8 +22,21 @@ namespace Genshin_Checker.App
             string result = "";
             Random random = new((int)DateTime.UtcNow.Ticks);
             for (int i = 0; i < n; i++)
-                result+=chars[random.Next(0, chars.Length)];
+                result += chars[random.Next(0, chars.Length)];
             return result;
+        }
+        static private string MD5Hash(string input)
+        {
+            using var md5 = MD5.Create();
+            var hashBytes = md5.ComputeHash(Encoding.UTF8.GetBytes(input));
+            var builder = new StringBuilder();
+            foreach (var b in hashBytes)
+                builder.Append(b.ToString("x2"));
+            return builder.ToString();
+        }
+        public static string GetCachePath(string filename)
+        {
+            return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Genshin Checker", "CacheFiles", filename); //水咲原神チェッカー
         }
         static private string DS()
         {
@@ -29,15 +45,9 @@ namespace Genshin_Checker.App
 
             var time = (long)(DateTime.UtcNow - new DateTime(1970, 1, 1)).TotalSeconds;
             var input = $"salt={salt}&t={time}&r={r}";
-            using var md5 = MD5.Create();
-            var hashBytes = md5.ComputeHash(Encoding.UTF8.GetBytes(input));
-            var builder = new StringBuilder();
-            foreach (var b in hashBytes)
-                builder.Append(b.ToString("x2"));
-            var result = $"{time},{r},{builder}";
-            return $"{time},{r},{builder}";
+            return $"{time},{r},{MD5Hash(input)}";
         }
-        public static async Task<string> HoYoGetRequest(string url, string cookie,CultureInfo? culture=null)
+        public static async Task<string> HoYoGetRequest(string url, string cookie, CultureInfo? culture = null)
         {
             if (culture == null) culture = CultureInfo.CurrentCulture;
             //culture = new("us-en");
@@ -122,7 +132,26 @@ namespace Genshin_Checker.App
         {
             var uri = new Uri(url);
             bool IsQuery = url.Contains('?');
-            //Todo:キャッシュ処理を入れる
+            var filename = GetCachePath(MD5Hash(url));
+            var directory = Path.GetDirectoryName(filename);
+            if (directory != null && !Directory.Exists(directory)) Directory.CreateDirectory(directory);
+            if (!IsQuery && File.Exists(filename))
+            {
+                try
+                {
+                    using FileStream fs = new(filename, FileMode.Open);
+                    using GZipStream zipStream = new(fs, CompressionMode.Decompress);
+                    using MemoryStream cacheout = new();
+                    zipStream.CopyTo(cacheout);
+                    Trace.WriteLine($"Cache ({fs.Length}->{cacheout.Length}) : {url}");
+                    var cache = new Bitmap(cacheout);
+                    return cache;
+                }
+                catch (Exception ex)
+                {
+                    Trace.WriteLine(ex.Message);
+                }
+            }
             var root = $"{uri.Scheme}://{uri.Host}";
             Dictionary<string, string> headers = new()
                 {
@@ -140,10 +169,29 @@ namespace Genshin_Checker.App
             client.DefaultRequestHeaders.Clear();
             foreach (KeyValuePair<string, string> header in headers)
                 client.DefaultRequestHeaders.Add(header.Key, header.Value);
-            HttpResponseMessage response = await client.GetAsync(url);
-            Trace.WriteLine(url);
+            HttpResponseMessage response=new();
+            for (int i = 0; i < 10; i++)
+            {
+                try
+                {
+                    response = await client.GetAsync(url);
+                }catch(Exception ex)
+                {
+                    if (i == 9) throw;
+                    Trace.WriteLine(ex.Message);
+                    continue;
+                }
+            }
             response.EnsureSuccessStatusCode();
             var stream = await response.Content.ReadAsStreamAsync();
+            if (!IsQuery)
+            {
+                using FileStream stream2 = new(filename, FileMode.Create);
+                using GZipStream zipStream = new(stream2, CompressionMode.Compress);
+                stream.CopyTo(zipStream);
+                zipStream.Close();
+            }
+            Trace.WriteLine($"Downloaded ({stream.Length}Bytes) : {url}");
             var bitmap = new Bitmap(stream);
             return bitmap;
         }
