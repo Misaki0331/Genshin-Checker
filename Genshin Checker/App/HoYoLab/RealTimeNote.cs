@@ -14,6 +14,7 @@ using System.Net;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using static Genshin_Checker.App.HoYoLab.Account;
 using static System.Windows.Forms.AxHost;
 
 namespace Genshin_Checker.App
@@ -160,6 +161,12 @@ namespace Genshin_Checker.App
                     Data.Meta.IsAPIError = false;
                     Data.Meta.Message = "OK";
 
+            }
+            catch(HoYoLabAPIException ex)
+            {
+                Data.Meta.IsAPIError = true;
+                Data.Meta.Message = ex.APIMessage;
+                Data.Meta.Retcode = ex.Retcode;
             }
             catch(Exception ex)
             {
