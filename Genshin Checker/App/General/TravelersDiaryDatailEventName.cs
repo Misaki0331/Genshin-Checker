@@ -32,7 +32,10 @@ namespace Genshin_Checker.App.General
             {
                 case 2:
                     return EventType.Quest;
-                case 12: 
+                case 4:
+                case 12:
+                case 101:
+                case 102:
                     return EventType.Mail;
                 case 17:
                 case 19:
@@ -45,6 +48,7 @@ namespace Genshin_Checker.App.General
                 case 116:
                     return EventType.Daily;
                 case 28:
+                case 32:
                     return EventType.RandomQuest;
                 case 37:
                 case 52:
@@ -54,8 +58,8 @@ namespace Genshin_Checker.App.General
                     return EventType.SpirialAbyss;
                 case 54:
                 case 67:
-                case 101:
                 case 1046:
+                case 1073:
                 case 1074:
                 case 1082:
                 case 1143:
@@ -96,7 +100,7 @@ namespace Genshin_Checker.App.General
                         case 32: return "ランダムクエスト(マルチ任務)";
                         case 33: return "デイリー(マルチ任務)";
                         case 37: return "魔物討伐";
-                        case 39: return "宝箱";
+                        case 39: return "宝箱獲得報酬";
                         case 43: return "チュートリアル閲覧";
                         case 48: return "深境螺旋(星の秘宝)";
                         case 49: return "深境螺旋(初回クリア)";
@@ -113,6 +117,7 @@ namespace Genshin_Checker.App.General
                         case 1049: return "アチーブメント";
                         case 1052: return "低ランク聖遺物処理";
                         case 1054: return "評判任務(討伐懸賞)";
+                        case 1073: return "写真イベント(フレンド協力可)";
                         case 1074: return "参量物質変化器変換報酬";
                         case 1100: return "塵歌壺ギフトセット報酬";
 
