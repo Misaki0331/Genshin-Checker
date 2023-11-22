@@ -11,6 +11,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using Genshin_Checker.Model.UI.GameRecords.Exploration;
+using System.Runtime.InteropServices;
+
 namespace Genshin_Checker.Window
 {
     public partial class GameRecords : Form
@@ -25,6 +27,7 @@ namespace Genshin_Checker.Window
             this.account = account;
         }
         List<Window.Contains.Exploration> ExplorationControls = new();
+        List<UI.Control.GameRecord.CharacterInfo> characterInfos= new();
         private void GameRecords_Load(object sender, EventArgs e)
         {
             try
@@ -68,7 +71,7 @@ namespace Genshin_Checker.Window
                     Summary_NumExpanding.Text = $"{(per / cnt):0.00}%";
                 }
                 #endregion
-                #region テスト部分(探索)
+                #region 探索
                 if (account.GameRecords.Data != null)
                 {
                     var data = account.GameRecords.Data;
@@ -118,11 +121,23 @@ namespace Genshin_Checker.Window
                         ExplorationControls.Add(control);
                     }
                 }
-
-
+                #endregion
+                #region キャラクター
+                if (account.GameRecords.Data != null)
+                {
+                    var data = account.GameRecords.Data;
+                    foreach (var character in data.avatars)
+                    {
+                        var control = new UI.Control.GameRecord.CharacterInfo(character.rarity, character.image, $"Lv.{character.level}", character.actived_constellation_num == 0 ? "": $"{character.actived_constellation_num}");
+                        control.Margin=new(2,2,2,2);
+                        CharactersCollection.Controls.Add(control);
+                        characterInfos.Add(control);
+                    }
+                }
                 #endregion
 
-            }catch(Exception ex)
+                }
+            catch (Exception ex)
             {
                 new ErrorMessage("データ読込中にエラーが発生しました。", $"{ex}").ShowDialog();
                 Close();
@@ -135,6 +150,12 @@ namespace Genshin_Checker.Window
             {
                 ex.Release();
             }
+            CharactersCollection.SuspendLayout();
+            foreach (var ex in characterInfos)
+            {
+                ex.Dispose();
+            }
+            CharactersCollection.ResumeLayout(true);
         }
     }
 }

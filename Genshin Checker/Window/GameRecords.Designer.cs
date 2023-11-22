@@ -70,6 +70,8 @@
             this.Summary_AdventureRankState = new System.Windows.Forms.Label();
             this.Text_AdventureRank = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.CharactersCollection = new System.Windows.Forms.FlowLayoutPanel();
             this.panel11 = new System.Windows.Forms.Panel();
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
@@ -91,6 +93,7 @@
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Summary_UserIcon)).BeginInit();
             this.panel4.SuspendLayout();
+            this.tabPage1.SuspendLayout();
             this.panel11.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -133,6 +136,7 @@
             // 
             this.tabControl1.Controls.Add(this.PageSummary);
             this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 16);
             this.tabControl1.Margin = new System.Windows.Forms.Padding(0);
@@ -603,6 +607,26 @@
             this.tabPage2.Text = "探索";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.CharactersCollection);
+            this.tabPage1.Location = new System.Drawing.Point(4, 24);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(616, 397);
+            this.tabPage1.TabIndex = 2;
+            this.tabPage1.Text = "キャラクター";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // CharactersCollection
+            // 
+            this.CharactersCollection.AutoScroll = true;
+            this.CharactersCollection.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.CharactersCollection.Location = new System.Drawing.Point(3, 3);
+            this.CharactersCollection.Name = "CharactersCollection";
+            this.CharactersCollection.Size = new System.Drawing.Size(610, 391);
+            this.CharactersCollection.TabIndex = 0;
+            // 
             // panel11
             // 
             this.panel11.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -678,6 +702,7 @@
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Summary_UserIcon)).EndInit();
             this.panel4.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
             this.panel11.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -731,5 +756,7 @@
         private Label label3;
         private TableLayoutPanel tableLayoutPanel1;
         private TabPage tabPage2;
+        private TabPage tabPage1;
+        private FlowLayoutPanel CharactersCollection;
     }
 }
