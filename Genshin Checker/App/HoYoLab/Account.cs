@@ -47,7 +47,27 @@ namespace Genshin_Checker.App.HoYoLab
             GameRecords = new(this);
             Culture = CultureInfo.CurrentCulture;
         }
-
+        /// <summary>
+        /// Cookieの上書き検証<br/>
+        /// 新しいクッキーで認証できない場合は元のクッキーに戻して例外をスローする。
+        /// </summary>
+        /// <param name="cookie">設定するHoYoLabクッキー</param>
+        /// <returns>なし</returns>
+        public async Task Rewrite(string cookie)
+        {
+            string old = RawCookie;
+            Cookie = cookie;
+            try
+            {
+                await CheckUID(_uid);
+                return;
+            }
+            catch
+            {
+                Cookie = old;
+                throw;
+            }
+        }
         /// <summary>
         /// UIDからサーバー名取得
         /// </summary>
@@ -134,7 +154,7 @@ namespace Genshin_Checker.App.HoYoLab
                 }
                 return String.Join("; ", split);
             }
-            set { RawCookie = value; }
+            private set { RawCookie = value; }
         }
         /// <summary>
         /// サーバー名
@@ -152,7 +172,7 @@ namespace Genshin_Checker.App.HoYoLab
         /// <summary>
         /// ユーザーのゲーム内アカウントID(UID)
         /// </summary>
-        public int UID { get => _uid; set => CheckUID(value); }
+        public int UID { get => _uid; private set => _uid=value; }
         /// <summary>
         /// ユーザーのゲーム内アカウント名
         /// </summary>
@@ -165,7 +185,7 @@ namespace Genshin_Checker.App.HoYoLab
         /// アカウント整合性の確認
         /// </summary>
         /// <param name="uid"></param>
-        private async Task<bool> CheckUID(int uid)
+        private async Task CheckUID(int uid)
         {
             var res = await GetServerAccounts(GetServer(uid));
             foreach (var user in res.list)
@@ -176,7 +196,7 @@ namespace Genshin_Checker.App.HoYoLab
                     Level = user.level;
                     _uid = uid;
                     IsAuthed = true;
-                    return true;
+                    return;
                 }
             }
             throw new UserNotFoundException(uid);

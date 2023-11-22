@@ -75,8 +75,11 @@ namespace Genshin_Checker.BrowserApp
                             {
                                 throw;
                             }
-                            account.Cookie = cookieString;
-                            account.UID = uid;
+                            if (account.UID != uid)
+                            {
+                                throw new ArgumentException("再認証を要求しているアカウントと異なっています。");
+                            }
+                            await account.Rewrite(cookieString);
                         }
                         else
                         {
@@ -93,7 +96,7 @@ namespace Genshin_Checker.BrowserApp
                             }
                             else
                             {
-                                a.Cookie = cookieString;
+                                await a.Rewrite(cookieString);
                             }
 
                         };
