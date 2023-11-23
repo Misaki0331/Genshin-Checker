@@ -145,6 +145,7 @@ namespace Genshin_Checker.App.HoYoLab
         /// <exception cref="InvalidDataException"></exception>
         public async Task<Model.HoYoLab.CharacterDetail.Root> GetCharacterDetail(int characterID)
         {
+            if (!Account.IsAuthed) throw new UserNotAuthenticatedException(Account.UID);
             var url = $"https://sg-public-api.hoyolab.com/event/calculateos/sync/avatar/detail?avatar_id={characterID}&uid={Account.UID}&region={Account.Server}&lang={Account.Culture.Name.ToLower()}";
             var json = await WebRequest.HoYoGetRequest(url, Account.Cookie);
             var root = JsonConvert.DeserializeObject<Model.HoYoLab.CharacterDetail.Root>(json);
@@ -160,6 +161,7 @@ namespace Genshin_Checker.App.HoYoLab
         /// <exception cref="InvalidDataException"></exception>
         public async Task<Model.HoYoLab.StellarJourney.Root> GetActiveQuery(DateTime since)
         {
+            if (!Account.IsAuthed) throw new UserNotAuthenticatedException(Account.UID);
             var url = $"https://bbs-api-os.hoyolab.com/game_record/genshin/wapi/query_tool?server={Account.Server}&role_id={Account.UID}&year={since.Year}&month={since.Month:00}&day={since.Day:00}";
             var json = await WebRequest.HoYoGetRequest(url, Account.Cookie);
             var root = JsonConvert.DeserializeObject<Model.HoYoLab.StellarJourney.Root>(json);
