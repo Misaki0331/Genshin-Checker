@@ -15,7 +15,7 @@ namespace Genshin_Checker.App.HoYoLab
 {
     public class TravelersDiaryDetail : Base
     {
-        const int MAXPAGE = 10000; //取得ページ数上限
+        const int MAXPAGE = 5000000; //取得ページ数上限
         public class ProgressState
         {
             internal ProgressState(double progress, int current, int total, string mode, int month)
@@ -222,6 +222,7 @@ namespace Genshin_Checker.App.HoYoLab
         {
             if (IsDisposed) return;
             ServerUpdate.Stop();
+            //ここに定期的な処理を書く。でも必要ないかも？
             ServerUpdate.Start();
         }
 
