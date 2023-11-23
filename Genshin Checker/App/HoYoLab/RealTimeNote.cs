@@ -193,7 +193,7 @@ namespace Genshin_Checker.App
 
         private async Task<Model.HoYoLab.RealTimeNote.Data> getNote()
         {
-            return (await account.GetRealTimeNote());
+            return (await account.Endpoint.GetRealTimeNote());
         }
 
 

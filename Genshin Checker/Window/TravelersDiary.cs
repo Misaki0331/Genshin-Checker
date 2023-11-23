@@ -108,7 +108,7 @@ namespace Genshin_Checker.Window
             try
             {
                 //グラフ内は文字化けしているのでus-enにしておく
-                var data = await account.GetTravelersDiaryInfo(month_index[comboBox1.SelectedIndex],new("us-en"));
+                var data = await account.Endpoint.GetTravelersDiaryInfo(month_index[comboBox1.SelectedIndex],new("us-en"));
                 Month_Primogem.Text = $"{data.month_data.current_primogems}";
                 Month_Mora.Text = $"{data.month_data.current_mora}";
                 Month_Primogem.Text = $"{data.month_data.current_primogems}";

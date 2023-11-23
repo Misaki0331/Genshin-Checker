@@ -675,6 +675,7 @@
             this.Text = "戦績情報";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.GameRecords_FormClosed);
             this.Load += new System.EventHandler(this.GameRecords_Load);
+            this.ResizeEnd += new System.EventHandler(this.GameRecords_ResizeEnd);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.tabControl1.ResumeLayout(false);

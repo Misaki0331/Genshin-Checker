@@ -157,5 +157,14 @@ namespace Genshin_Checker.Window
             }
             CharactersCollection.ResumeLayout(true);
         }
+        protected override void OnResize(EventArgs e)
+        {
+        }
+
+        private void GameRecords_ResizeEnd(object sender, EventArgs e)
+        {
+            this.Invalidate();
+            this.PerformLayout();
+        }
     }
 }

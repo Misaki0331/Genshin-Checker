@@ -57,7 +57,7 @@ namespace Genshin_Checker.App.EnkaNetwork
 
         private async Task<Model.EnkaNetwork.ShowCase.Root> getNote()
         {
-            return await account.GetEnkaNetwork();
+            return await account.Endpoint.GetEnkaNetwork();
         }
     }
 }

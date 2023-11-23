@@ -40,6 +40,7 @@ namespace Genshin_Checker.App
         }
         static private string DS()
         {
+            //Todo: saltはstatic APIに投げて動的に変更させる
             const string salt = "6s25p5ox5y14umn1p61aqyyvbvvl3lrt";
             string r = RandomString(6);
 

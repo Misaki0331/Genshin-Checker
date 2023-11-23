@@ -125,7 +125,7 @@ namespace Genshin_Checker.App.HoYoLab
             for (int i = 1; i <= MAXPAGE; i++)
             {
                 //HoYoLab API呼び出し
-                var data = await account.GetTravelersDiaryDetail((int)mode, i, month);
+                var data = await account.Endpoint.GetTravelersDiaryDetail((int)mode, i, month);
                 if (i == 1) //最初の場合のみの処理、ここで詳細な日付の解析をする。
                 {
                     if (data.List.Count != 0)

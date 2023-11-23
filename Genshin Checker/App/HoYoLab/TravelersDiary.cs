@@ -72,7 +72,7 @@ namespace Genshin_Checker.App
 
         private async Task<Model.HoYoLab.TravelersDiary.Infomation.Data> getNote()
         {
-            return (await account.GetTravelersDiaryInfo());
+            return (await account.Endpoint.GetTravelersDiaryInfo());
         }
 
 

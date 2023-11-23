@@ -122,24 +122,28 @@ namespace Genshin_Checker.Window
             foreach (var item in e)
             {
                 LogData.Add(item);
-                if (LogData.Count > 100) LogData.RemoveAt(0);
+                if (LogData.Count > 500) LogData.RemoveAt(0);
                 Log.AppendText(item.Replace("\r\n", "\n").Replace("\n", Environment.NewLine) + Environment.NewLine);
                 LogCount++;
-                if (LogCount > 1000)
+                if (LogCount > 2000)
                 {
                     Log.Clear();
                     LogCount = 0;
+                    StringBuilder str = new();
                     foreach (var item2 in LogData)
                     {
-                        Log.AppendText(item2.Replace("\r\n", "\n").Replace("\n", Environment.NewLine) + Environment.NewLine);
+                        str.Append(item2.Replace("\r\n", "\n").Replace("\n", Environment.NewLine) + Environment.NewLine);
                         LogCount++;
                     }
+                    Log.AppendText(str.ToString());
                 }
             }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
+
+            LogCount = 0;
             Log.Clear();
         }
 

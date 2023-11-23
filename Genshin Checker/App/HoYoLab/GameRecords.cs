@@ -23,7 +23,7 @@ namespace Genshin_Checker.App.HoYoLab
         {
             try
             {
-                var a = await account.GetGameRecords();
+                var a = await account.Endpoint.GetGameRecords();
                 Data = a;
                 ServerUpdate.Interval = 300000;
             }
