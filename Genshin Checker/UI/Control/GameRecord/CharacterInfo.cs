@@ -14,7 +14,11 @@ namespace Genshin_Checker.UI.Control.GameRecord
     {
         int Rare = 4;
         string CharacterIcon = "";
-        public CharacterInfo(int rarity,string characterIcon,string label,string alphalabel)
+        public readonly int characterID;
+
+        public delegate void CharacterEventHandler<T>(T args);
+        public event CharacterEventHandler<int>? ClickHandler;
+        public CharacterInfo(int rarity,string characterIcon,string label,string alphalabel,int id)
         {
             InitializeComponent();
             panel2.Parent = pictureBox1;
@@ -24,7 +28,17 @@ namespace Genshin_Checker.UI.Control.GameRecord
             if (string.IsNullOrEmpty(alphalabel)) label2.Visible = false;
             Rare = rarity;
             CharacterIcon= characterIcon;
-            
+            characterID = id;
+
+            pictureBox1.Click += ClickEvent;
+            label1.Click += ClickEvent;
+            label2.Click+= ClickEvent;
+            panel2.Click += ClickEvent;
+        }
+
+        private void ClickEvent(object? obj, object send)
+        {
+            ClickHandler?.Invoke(characterID);
         }
 
         private void pictureBox1_Paint(object sender, PaintEventArgs e)

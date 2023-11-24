@@ -12,6 +12,7 @@ using System.Windows.Forms;
 
 using Genshin_Checker.Model.UI.GameRecords.Exploration;
 using System.Runtime.InteropServices;
+using Genshin_Checker.UI.Control.GameRecord;
 
 namespace Genshin_Checker.Window
 {
@@ -128,8 +129,9 @@ namespace Genshin_Checker.Window
                     var data = account.GameRecords.Data;
                     foreach (var character in data.avatars)
                     {
-                        var control = new UI.Control.GameRecord.CharacterInfo(character.rarity, character.image, $"Lv.{character.level}", character.actived_constellation_num == 0 ? "": $"{character.actived_constellation_num}");
+                        var control = new UI.Control.GameRecord.CharacterInfo(character.rarity, character.image, $"Lv.{character.level}", character.actived_constellation_num == 0 ? "": $"{character.actived_constellation_num}",character.id);
                         control.Margin=new(2,2,2,2);
+                        control.ClickHandler += GameRecords_Character_Click;
                         CharactersCollection.Controls.Add(control);
                         characterInfos.Add(control);
                     }
@@ -143,7 +145,18 @@ namespace Genshin_Checker.Window
                 Close();
             }
         }
-
+        ExWindow.GameRecords.CharacterDetail? CharacterForm=null;
+        private void GameRecords_Character_Click(int id)
+        {
+            if (CharacterForm == null || CharacterForm.IsDisposed)
+            {
+                CharacterForm = new();
+            }
+            CharacterForm.DataUpdate(id);
+            CharacterForm.Show();
+            CharacterForm.Activate();
+            
+        }
         private void GameRecords_FormClosed(object sender, FormClosedEventArgs e)
         {
             foreach(var ex in ExplorationControls)
