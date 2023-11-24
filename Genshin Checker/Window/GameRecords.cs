@@ -57,7 +57,7 @@ namespace Genshin_Checker.Window
                     Summary_NumAchievement.Text = $"{data.Achievement}";
                     var cnt = data.ChestLuxurious + data.ChestCommon + data.ChestExquisite + data.ChestMagic + data.ChestPrecious;
                     Summary_NumUnlockChest.Text = $"{cnt}";
-                    cnt = data.OculusAnemo + data.OculusGeo + data.OculusElectro + data.OculusDendro + data.OculusHydro + data.OculusPyro + data.OculusCyro;
+                    cnt = data.OculusAnemo + data.OculusGeo + data.OculusElectro + data.OculusDendro + data.OculusHydro + data.OculusPyro + data.OculusCryo;
                     Summary_NumOculus.Text = $"{cnt}";
                     Summary_NumCharacters.Text = $"{data.Characters}";
                     NumWaypoints.Text = $"{data.WayPoint}";
@@ -103,7 +103,7 @@ namespace Genshin_Checker.Window
                         areas.Progress.Add(new() { Name = ex.Name, Value = ex.Exploration_percentage / 10.0 });
                     }
                     var OculusName = new string[] { "風神の瞳", "岩神の瞳", "雷神の瞳", "草神の瞳", "水神の瞳", "炎神の瞳", "氷神の瞳" };
-                    var OculusValue = new int[] { data.stats.OculusAnemo, data.stats.OculusGeo, data.stats.OculusElectro, data.stats.OculusDendro, data.stats.OculusHydro, data.stats.OculusPyro, data.stats.OculusCyro };
+                    var OculusValue = new int[] { data.stats.OculusAnemo, data.stats.OculusGeo, data.stats.OculusElectro, data.stats.OculusDendro, data.stats.OculusHydro, data.stats.OculusPyro, data.stats.OculusCryo };
                     int OculusAreaCount = 0;
                     Area.Sort((a, b) => b.ID - a.ID);
                     for (int i = Area.Count - 1; i >= 0; i--)
@@ -152,7 +152,11 @@ namespace Genshin_Checker.Window
             {
                 CharacterForm = new();
             }
-            CharacterForm.DataUpdate(id);
+            var Data = account.GameRecords.Data;
+            if (Data == null) return;
+            var character = Data.avatars.Find(a => a.id == id);
+            if(character == null) return;
+            CharacterForm.DataUpdate(account,id, character.name);
             CharacterForm.Show();
             CharacterForm.Activate();
             
@@ -169,6 +173,7 @@ namespace Genshin_Checker.Window
                 ex.Dispose();
             }
             CharactersCollection.ResumeLayout(true);
+            if (CharacterForm != null && !CharacterForm.IsDisposed) CharacterForm.Close();
         }
         protected override void OnResize(EventArgs e)
         {
@@ -179,5 +184,6 @@ namespace Genshin_Checker.Window
             this.Invalidate();
             this.PerformLayout();
         }
+
     }
 }

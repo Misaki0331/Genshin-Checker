@@ -48,6 +48,7 @@ namespace Genshin_Checker.UI.Control.GameRecord
 
         private async void CharacterInfo_Load(object sender, EventArgs e)
         {
+            this.SuspendLayout();
             switch (Rare)
             {
                 case 4:
@@ -58,6 +59,7 @@ namespace Genshin_Checker.UI.Control.GameRecord
                     break;
             }
             pictureBox1.Image = new Bitmap(await App.WebRequest.ImageGetRequest(CharacterIcon),pictureBox1.Width,pictureBox1.Height);
+            this.ResumeLayout(false);
         }
     }
 }

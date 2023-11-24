@@ -143,7 +143,7 @@ namespace Genshin_Checker.App.HoYoLab
         /// <param name="characterID">キャラクター番号<br/>例 :10000089 = フリーナ</param>
         /// <returns></returns>
         /// <exception cref="InvalidDataException"></exception>
-        public async Task<Model.HoYoLab.CharacterDetail.Root> GetCharacterDetail(int characterID)
+        public async Task<Model.HoYoLab.CharacterDetail.Data> GetCharacterDetail(int characterID)
         {
             if (!Account.IsAuthed) throw new UserNotAuthenticatedException(Account.UID);
             var url = $"https://sg-public-api.hoyolab.com/event/calculateos/sync/avatar/detail?avatar_id={characterID}&uid={Account.UID}&region={Account.Server}&lang={Account.Culture.Name.ToLower()}";
@@ -151,7 +151,7 @@ namespace Genshin_Checker.App.HoYoLab
             var root = JsonConvert.DeserializeObject<Model.HoYoLab.CharacterDetail.Root>(json);
             if (root == null) throw new InvalidDataException($"json形式に変換できません。\n\n--- Request URL ---\n{url}\n\n--- Received Data ---\n{json}\n--- Data End ---");
             if (root.Data == null) throw new HoYoLabAPIException(root.Retcode, root.Message);
-            return root;
+            return root.Data;
         }
         /// <summary>
         /// 旅の振り返りAPI

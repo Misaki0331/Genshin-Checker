@@ -226,8 +226,8 @@ namespace Genshin_Checker.Model.HoYoLab.GameRecords
         public int OculusPyro { get; set; }
 
         /// <summary> 氷神の瞳 </summary>
-        [JsonProperty("cyroculus_number")]
-        public int OculusCyro { get; set; }
+        [JsonProperty("cryoculus_number")]
+        public int OculusCryo { get; set; }
 
 
         [JsonProperty("field_ext_map")]

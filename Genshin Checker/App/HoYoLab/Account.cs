@@ -20,6 +20,7 @@ namespace Genshin_Checker.App.HoYoLab
         public EnkaNetwork.EnkaNetwork EnkaNetwork;
         public TravelersDiaryDetail TravelersDiaryDetail;
         public GameRecords GameRecords;
+        public Characters Characters;
         public static async Task<Account> GetInstance(string cookie, int UID)
         {
             var account = new Account();
@@ -45,6 +46,7 @@ namespace Genshin_Checker.App.HoYoLab
             EnkaNetwork = new(this);
             TravelersDiaryDetail = new(this);
             GameRecords = new(this);
+            Characters = new(this);
             Culture = CultureInfo.CurrentCulture;
             Endpoint= new(this);
         }
@@ -210,6 +212,7 @@ namespace Genshin_Checker.App.HoYoLab
             EnkaNetwork.Dispose();
             TravelersDiaryDetail.Dispose();
             GameRecords.Dispose();
+            Characters.Dispose();
         }
         public class HoYoLabAPIException : Exception
         {
