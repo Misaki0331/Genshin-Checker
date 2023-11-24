@@ -138,7 +138,7 @@ namespace Genshin_Checker.App.HoYoLab
             return root.Data;
         }
         /// <summary>
-        /// キャラクター詳細情報
+        /// キャラクター詳細情報<br/>ユーザーの天賦レベルも記載されている。
         /// </summary>
         /// <param name="characterID">キャラクター番号<br/>例 :10000089 = フリーナ</param>
         /// <returns></returns>

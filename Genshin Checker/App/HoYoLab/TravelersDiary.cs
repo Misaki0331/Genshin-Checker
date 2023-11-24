@@ -37,7 +37,6 @@ namespace Genshin_Checker.App
 
             if (!account.IsAuthed)
             {
-                Trace.WriteLine("未認証です。");
                 ServerUpdate.Interval = 1000;
                 ServerUpdate.Start();
                 return;
