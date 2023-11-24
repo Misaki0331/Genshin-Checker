@@ -153,6 +153,8 @@ namespace Genshin_Checker.App
                     Trace.WriteLine(ex.Message);
                 }
             }
+            Stopwatch stopwatch = new();
+            stopwatch.Start();
             var root = $"{uri.Scheme}://{uri.Host}";
             Dictionary<string, string> headers = new()
                 {
@@ -192,7 +194,7 @@ namespace Genshin_Checker.App
                 stream.CopyTo(zipStream);
                 zipStream.Close();
             }
-            Trace.WriteLine($"Downloaded ({stream.Length}Bytes) : {url}");
+            Trace.WriteLine($"Downloaded ({stream.Length:#,##0} Bytes / {stopwatch.ElapsedMilliseconds/1000.0:0.00} sec) : {url}");
             var bitmap = new Bitmap(stream);
             return bitmap;
         }
