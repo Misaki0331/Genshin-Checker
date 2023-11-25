@@ -129,7 +129,7 @@ namespace Genshin_Checker.App
             response.EnsureSuccessStatusCode();
             return await response.Content.ReadAsStringAsync();
         }
-        public static async Task<Image> ImageGetRequest(string url)
+        public static async Task<Image> ImageGetRequest(string url,CancellationToken? token=null)
         {
             var uri = new Uri(url);
             bool IsQuery = url.Contains('?');
@@ -177,7 +177,10 @@ namespace Genshin_Checker.App
             {
                 try
                 {
-                    response = await client.GetAsync(url);
+                    if (token == null) response = await client.GetAsync(url);
+                    else response = await client.GetAsync(url, (CancellationToken) token);
+                    response.EnsureSuccessStatusCode();
+                    break;
                 }catch(Exception ex)
                 {
                     if (i == 9) throw;
@@ -185,7 +188,6 @@ namespace Genshin_Checker.App
                     continue;
                 }
             }
-            response.EnsureSuccessStatusCode();
             var stream = await response.Content.ReadAsStreamAsync();
             if (!IsQuery)
             {
