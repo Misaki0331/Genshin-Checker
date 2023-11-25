@@ -52,9 +52,18 @@ namespace Genshin_Checker.Window
                 else if (r.Commission.Current == r.Commission.Max) label4.Text = $"{r.Commission.Current} / {r.Commission.Max} 未受取";
                 else label4.Text = $"{r.Commission.Current} / {r.Commission.Max}";
 
-                label5.Text = $"{r.RealmCoin.Current}";
-                label6.Text = $"/{r.RealmCoin.Max}";
-                if (DateTime.Now > r.RealmCoin.RecoveryTime) label7.Text = "最大まで回復済";
+                if (r.RealmCoin.Max == 0)
+                {
+                    label5.Text = $"未開放";
+                    label6.Text = $"/---";
+                }
+                else
+                {
+                    label5.Text = $"{r.RealmCoin.Current}";
+                    label6.Text = $"/{r.RealmCoin.Max}";
+                }
+                if (r.RealmCoin.Max==0) label7.Text = "開放後利用可能";
+                else if (DateTime.Now > r.RealmCoin.RecoveryTime) label7.Text = "最大まで回復済";
                 else
                 {
                     var time = (int)(r.RealmCoin.RecoveryTime - DateTime.Now).TotalSeconds;
