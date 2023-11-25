@@ -60,7 +60,7 @@ namespace Genshin_Checker.App
                     { "Referer", root },
                     { "Accept", "application/json, text/plain, */*" },
                     { "Accept-Encoding", "None" },
-                    { "Accept-Language", $"{culture.Name.ToLower()};q=0.5" },
+                    { "Accept-Language", $"{culture.Name};q=0.5" },
                     { "x-rpc-app_version", "1.5.0" },
                     { "x-rpc-client_type", "5" },
                     { "x-rpc-language", culture.Name.ToLower() },
@@ -76,8 +76,9 @@ namespace Genshin_Checker.App
             response.EnsureSuccessStatusCode();
             return await response.Content.ReadAsStringAsync();
         }
-        public static async Task<string> HoYoPostRequest(string url, string cookie, string data)
+        public static async Task<string> HoYoPostRequest(string url, string cookie, string data, CultureInfo? culture = null)
         {
+            if (culture == null) culture = CultureInfo.CurrentCulture;
             var uri = new Uri(url);
             var root = $"{uri.Scheme}://{uri.Host}";
             Dictionary<string, string> headers = new()
@@ -86,10 +87,10 @@ namespace Genshin_Checker.App
                     { "Referer", root },
                     { "Accept", "application/json, text/plain, */*" },
                     { "Accept-Encoding", "None" },
-                    { "Accept-Language", "en-US;q=0.5" },
+                    { "Accept-Language", $"{culture.Name};q=0.5" },
                     { "x-rpc-app_version", "1.5.0" },
                     { "x-rpc-client_type", "5" },
-                    { "x-rpc-language", "en-us" },
+                    { "x-rpc-language", culture.Name.ToLower() },
                     { "User-Agent", "Mozilla/5.0 (X11; Linux x86_64; rv:100.0) Gecko/20100101 Firefox/100.0" },
                     { "Cookie", cookie },
                     { "DS", DS() }
