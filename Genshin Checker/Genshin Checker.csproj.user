@@ -10,6 +10,9 @@
     <Compile Update="UI\Control\GameRecord\CharacterDetail\TalentInfo.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Update="UI\Control\GameRecord\CharacterDetail\WeaponDetail.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="UI\Control\GameRecord\CharacterInfo.cs">
       <SubType>UserControl</SubType>
     </Compile>

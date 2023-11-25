@@ -20,6 +20,8 @@ namespace Genshin_Checker.Window.ExWindow.GameRecords
         PictureBox picture;
         List<TalentInfo> MainTalent;
         List<TalentInfo> SubTalent;
+        WeaponDetail WeaponDetail;
+        Image? CharacterBanner;
         public CharacterDetail()
         {
             InitializeComponent();
@@ -30,8 +32,9 @@ namespace Genshin_Checker.Window.ExWindow.GameRecords
             picture.SizeMode = PictureBoxSizeMode.AutoSize;
             MainTalent = new();
             SubTalent = new();
+            WeaponDetail = new WeaponDetail() { Dock=DockStyle.Top};
+            groupBox2.Controls.Add(WeaponDetail);
         }
-        Image CharacterBanner;
         public async void DataUpdate(Account account,int characterID,string name)
         {
             if (Store.EnkaData.Data.Characters == null) return;
@@ -41,9 +44,10 @@ namespace Genshin_Checker.Window.ExWindow.GameRecords
             var CharacterInfo = Detail.avatars.Find(a => a.id == characterID);
             if (CharacterInfo == null) throw new ArgumentNullException("キャラクターが所持されていません。");
             label1.Text = $"{name}";
-            label2.Text = $"{CharacterInfo.name}  Lv.{CharacterInfo.level}";
+            label2.Text = $"Lv.{CharacterInfo.level}";
             pictureBox1.Image = await App.WebRequest.ImageGetRequest($"https://static-api.misaki-chan.world/genshin-checker/asset/element/type-1/{CharacterInfo.element.ToLower()}.png");
-
+            var weapon = CharacterInfo.weapon;
+            WeaponDetail.UpdateData(weapon.rarity, weapon.icon, weapon.name, weapon.level, weapon.affix_level);
 
             Panel_MainTalent.SuspendLayout();
             Panel_SubTalent.SuspendLayout();
@@ -93,14 +97,14 @@ namespace Genshin_Checker.Window.ExWindow.GameRecords
                         hint = "このエラーはゲーム内アクセスが許可されていない場合に発生します。\n一度HoYoLabモバイルアプリを開き、「育成計算機」の許可設定からゲーム内のキャラクターデータのアクセスを許可してください。";
                         break;
                 }
-                label4.Text = $"エラーコード : {ex.Retcode}\nメッセージ : {ex.APIMessage}\n{hint}";
+                textBox1.Lines = $"エラーコード : {ex.Retcode}\nメッセージ : {ex.APIMessage}\n{hint}".Split('\n');
                 Error_TalentPanel.Visible = true;
                 Button_TalentHideShow.Visible = false;
                 
             }catch(Exception ex)
             {
 
-                label4.Text = $"{ex.GetType()}\n{ex.Message}";
+                textBox1.Lines = $"{ex.GetType()}\n{ex.Message}".Split('\n');
                 Error_TalentPanel.Visible = true;
                 Button_TalentHideShow.Visible = false;
                 new ErrorMessage("天賦情報取得時にエラーが発生しました。", ex.ToString()).ShowDialog();
@@ -120,7 +124,7 @@ namespace Genshin_Checker.Window.ExWindow.GameRecords
         }
         void ImageReload(bool reload = false)
         {
-            if (panel1.Height != picture.Height||reload)
+            if (CharacterBanner != null&&(panel1.Height != picture.Height||reload))
             {
                 var old = picture.Image;
                 double zoom = (double) panel1.Height/ CharacterBanner.Height;
