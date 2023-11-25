@@ -21,6 +21,7 @@ namespace Genshin_Checker.App.HoYoLab
         public TravelersDiaryDetail TravelersDiaryDetail;
         public GameRecords GameRecords;
         public Characters Characters;
+        public CharacterDetail CharacterDetail;
         public static async Task<Account> GetInstance(string cookie, int UID)
         {
             var account = new Account();
@@ -47,6 +48,7 @@ namespace Genshin_Checker.App.HoYoLab
             TravelersDiaryDetail = new(this);
             GameRecords = new(this);
             Characters = new(this);
+            CharacterDetail = new(this);
             Culture = CultureInfo.CurrentCulture;
             Endpoint= new(this);
         }

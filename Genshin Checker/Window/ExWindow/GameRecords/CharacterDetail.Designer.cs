@@ -35,6 +35,9 @@
             this.Button_TalentHideShow = new System.Windows.Forms.Button();
             this.Panel_SubTalent = new System.Windows.Forms.Panel();
             this.Panel_MainTalent = new System.Windows.Forms.Panel();
+            this.Error_TalentPanel = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
@@ -43,6 +46,7 @@
             this.tableLayoutPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel5.SuspendLayout();
+            this.Error_TalentPanel.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -88,16 +92,17 @@
             this.panel5.Controls.Add(this.Button_TalentHideShow);
             this.panel5.Controls.Add(this.Panel_SubTalent);
             this.panel5.Controls.Add(this.Panel_MainTalent);
+            this.panel5.Controls.Add(this.Error_TalentPanel);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel5.Location = new System.Drawing.Point(0, 52);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(396, 23);
+            this.panel5.Size = new System.Drawing.Size(396, 164);
             this.panel5.TabIndex = 2;
             // 
             // Button_TalentHideShow
             // 
             this.Button_TalentHideShow.Dock = System.Windows.Forms.DockStyle.Top;
-            this.Button_TalentHideShow.Location = new System.Drawing.Point(0, 0);
+            this.Button_TalentHideShow.Location = new System.Drawing.Point(0, 141);
             this.Button_TalentHideShow.Name = "Button_TalentHideShow";
             this.Button_TalentHideShow.Size = new System.Drawing.Size(396, 23);
             this.Button_TalentHideShow.TabIndex = 2;
@@ -109,7 +114,7 @@
             // 
             this.Panel_SubTalent.AutoSize = true;
             this.Panel_SubTalent.Dock = System.Windows.Forms.DockStyle.Top;
-            this.Panel_SubTalent.Location = new System.Drawing.Point(0, 0);
+            this.Panel_SubTalent.Location = new System.Drawing.Point(0, 141);
             this.Panel_SubTalent.Name = "Panel_SubTalent";
             this.Panel_SubTalent.Size = new System.Drawing.Size(396, 0);
             this.Panel_SubTalent.TabIndex = 1;
@@ -119,10 +124,43 @@
             // 
             this.Panel_MainTalent.AutoSize = true;
             this.Panel_MainTalent.Dock = System.Windows.Forms.DockStyle.Top;
-            this.Panel_MainTalent.Location = new System.Drawing.Point(0, 0);
+            this.Panel_MainTalent.Location = new System.Drawing.Point(0, 141);
             this.Panel_MainTalent.Name = "Panel_MainTalent";
             this.Panel_MainTalent.Size = new System.Drawing.Size(396, 0);
             this.Panel_MainTalent.TabIndex = 0;
+            // 
+            // Error_TalentPanel
+            // 
+            this.Error_TalentPanel.AutoSize = true;
+            this.Error_TalentPanel.Controls.Add(this.label4);
+            this.Error_TalentPanel.Controls.Add(this.label3);
+            this.Error_TalentPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.Error_TalentPanel.Location = new System.Drawing.Point(0, 0);
+            this.Error_TalentPanel.Name = "Error_TalentPanel";
+            this.Error_TalentPanel.Size = new System.Drawing.Size(396, 141);
+            this.Error_TalentPanel.TabIndex = 3;
+            this.Error_TalentPanel.Visible = false;
+            // 
+            // label4
+            // 
+            this.label4.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label4.Font = new System.Drawing.Font("Meiryo UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label4.Location = new System.Drawing.Point(0, 25);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(396, 116);
+            this.label4.TabIndex = 1;
+            this.label4.Text = "エラー内容 :";
+            // 
+            // label3
+            // 
+            this.label3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label3.Font = new System.Drawing.Font("Meiryo UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label3.Location = new System.Drawing.Point(0, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(396, 25);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "天賦情報の取得に失敗しました。";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // panel4
             // 
@@ -194,6 +232,7 @@
             this.panel2.PerformLayout();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
+            this.Error_TalentPanel.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -215,5 +254,8 @@
         private Panel Panel_SubTalent;
         private Panel Panel_MainTalent;
         private Panel panel4;
+        private Panel Error_TalentPanel;
+        private Label label4;
+        private Label label3;
     }
 }
