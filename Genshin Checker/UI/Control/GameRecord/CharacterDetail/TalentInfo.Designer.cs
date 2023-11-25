@@ -38,6 +38,8 @@
             // 
             // pictureBox1
             // 
+            this.pictureBox1.BackgroundImage = global::Genshin_Checker.resource.GenshinAsset.talent_background;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Left;
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Name = "pictureBox1";

@@ -124,5 +124,15 @@ namespace Genshin_Checker.resource {
                 return ResourceManager.GetString("SeasonName", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap talent_background {
+            get {
+                object obj = ResourceManager.GetObject("talent_background", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }
