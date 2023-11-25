@@ -54,8 +54,8 @@ namespace Genshin_Checker.Window
 
                 if (r.RealmCoin.Max == 0)
                 {
-                    label5.Text = $"未開放";
-                    label6.Text = $"/---";
+                    label5.Text = $"----";
+                    label6.Text = $"/----";
                 }
                 else
                 {
