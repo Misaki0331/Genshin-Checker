@@ -159,7 +159,7 @@ namespace Genshin_Checker.App.HoYoLab
         /// <param name="since">該当DateTimeから今日までの差分を取得<br/>最大90日前まで利用可能</param>
         /// <returns></returns>
         /// <exception cref="InvalidDataException"></exception>
-        public async Task<Model.HoYoLab.StellarJourney.Root> GetActiveQuery(DateTime since)
+        public async Task<Model.HoYoLab.StellarJourney.Data> GetActiveQuery(DateTime since)
         {
             if (!Account.IsAuthed) throw new UserNotAuthenticatedException(Account.UID);
             var url = $"https://bbs-api-os.hoyolab.com/game_record/genshin/wapi/query_tool?server={Account.Server}&role_id={Account.UID}&year={since.Year}&month={since.Month:00}&day={since.Day:00}";
@@ -167,7 +167,7 @@ namespace Genshin_Checker.App.HoYoLab
             var root = JsonConvert.DeserializeObject<Model.HoYoLab.StellarJourney.Root>(json);
             if (root == null) throw new InvalidDataException($"json形式に変換できません。\n\n--- Request URL ---\n{url}\n\n--- Received Data ---\n{json}\n--- Data End ---");
             if (root.Data == null) throw new HoYoLabAPIException(root.Retcode, root.Message);
-            return root;
+            return root.Data;
         }
         /// <summary>
         /// EnkaNetwork

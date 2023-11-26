@@ -31,25 +31,31 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.ConstellationPanel = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panel5 = new System.Windows.Forms.Panel();
             this.Button_TalentHideShow = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.Panel_SubTalent = new System.Windows.Forms.Panel();
             this.Panel_MainTalent = new System.Windows.Forms.Panel();
             this.Error_TalentPanel = new System.Windows.Forms.Panel();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panel5.SuspendLayout();
             this.Error_TalentPanel.SuspendLayout();
+            this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -80,6 +86,7 @@
             // panel2
             // 
             this.panel2.AutoScroll = true;
+            this.panel2.Controls.Add(this.groupBox3);
             this.panel2.Controls.Add(this.groupBox1);
             this.panel2.Controls.Add(this.groupBox2);
             this.panel2.Controls.Add(this.panel4);
@@ -90,13 +97,34 @@
             this.panel2.Size = new System.Drawing.Size(396, 491);
             this.panel2.TabIndex = 1;
             // 
+            // groupBox3
+            // 
+            this.groupBox3.AutoSize = true;
+            this.groupBox3.Controls.Add(this.ConstellationPanel);
+            this.groupBox3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupBox3.Location = new System.Drawing.Point(0, 187);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(396, 22);
+            this.groupBox3.TabIndex = 0;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "命ノ星座";
+            // 
+            // ConstellationPanel
+            // 
+            this.ConstellationPanel.AutoSize = true;
+            this.ConstellationPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.ConstellationPanel.Location = new System.Drawing.Point(3, 19);
+            this.ConstellationPanel.Name = "ConstellationPanel";
+            this.ConstellationPanel.Size = new System.Drawing.Size(390, 0);
+            this.ConstellationPanel.TabIndex = 0;
+            // 
             // groupBox1
             // 
             this.groupBox1.AutoSize = true;
             this.groupBox1.Controls.Add(this.panel5);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox1.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.groupBox1.Location = new System.Drawing.Point(0, 74);
+            this.groupBox1.Location = new System.Drawing.Point(0, 57);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(396, 130);
             this.groupBox1.TabIndex = 1;
@@ -126,18 +154,6 @@
             this.Button_TalentHideShow.Text = "もっと見る ▼";
             this.Button_TalentHideShow.UseVisualStyleBackColor = true;
             this.Button_TalentHideShow.Click += new System.EventHandler(this.Button_TalentHideShow_Click);
-            // 
-            // textBox1
-            // 
-            this.textBox1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.textBox1.Font = new System.Drawing.Font("Meiryo UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox1.Location = new System.Drawing.Point(0, 25);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBox1.Size = new System.Drawing.Size(390, 60);
-            this.textBox1.TabIndex = 1;
             // 
             // Panel_SubTalent
             // 
@@ -170,6 +186,18 @@
             this.Error_TalentPanel.TabIndex = 3;
             this.Error_TalentPanel.Visible = false;
             // 
+            // textBox1
+            // 
+            this.textBox1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.textBox1.Font = new System.Drawing.Font("Meiryo UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBox1.Location = new System.Drawing.Point(0, 25);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.textBox1.Size = new System.Drawing.Size(390, 60);
+            this.textBox1.TabIndex = 1;
+            // 
             // label3
             // 
             this.label3.Dock = System.Windows.Forms.DockStyle.Top;
@@ -187,21 +215,34 @@
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox2.Location = new System.Drawing.Point(0, 52);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(396, 22);
+            this.groupBox2.Size = new System.Drawing.Size(396, 5);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "武器";
             // 
             // panel4
             // 
+            this.panel4.Controls.Add(this.label4);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel4.Location = new System.Drawing.Point(0, 30);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(396, 22);
             this.panel4.TabIndex = 1;
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Dock = System.Windows.Forms.DockStyle.Left;
+            this.label4.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label4.Location = new System.Drawing.Point(0, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(77, 15);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "好感度Lv. 10";
+            // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.label5);
             this.panel3.Controls.Add(this.label2);
             this.panel3.Controls.Add(this.label1);
             this.panel3.Controls.Add(this.pictureBox1);
@@ -210,6 +251,20 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(396, 30);
             this.panel3.TabIndex = 0;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Dock = System.Windows.Forms.DockStyle.Left;
+            this.label5.Font = new System.Drawing.Font("Meiryo UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label5.ForeColor = System.Drawing.Color.Gray;
+            this.label5.Location = new System.Drawing.Point(209, 0);
+            this.label5.MinimumSize = new System.Drawing.Size(0, 30);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(48, 30);
+            this.label5.TabIndex = 3;
+            this.label5.Text = "【完凸】";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
             // label2
             // 
@@ -220,9 +275,9 @@
             this.label2.Location = new System.Drawing.Point(168, 0);
             this.label2.MinimumSize = new System.Drawing.Size(0, 30);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(122, 30);
+            this.label2.Size = new System.Drawing.Size(41, 30);
             this.label2.TabIndex = 2;
-            this.label2.Text = "NameNameName";
+            this.label2.Text = "Lv.99";
             this.label2.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
             // label1
@@ -260,12 +315,16 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             this.Error_TalentPanel.ResumeLayout(false);
             this.Error_TalentPanel.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -292,5 +351,9 @@
         private GroupBox groupBox1;
         private TextBox textBox1;
         private GroupBox groupBox2;
+        private GroupBox groupBox3;
+        private Panel ConstellationPanel;
+        private Label label4;
+        private Label label5;
     }
 }

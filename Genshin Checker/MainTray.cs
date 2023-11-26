@@ -250,28 +250,17 @@ namespace Genshin_Checker
                 n.ShowDialog(this);
             }
         }
-
+        //ここはテスト用
         private async void testToolStripMenuItem_ClickAsync(object sender, EventArgs e)
         {
-            /*Account account;
-            if (Store.Accounts.Data.Count == 0) return;
-            account = Store.Accounts.Data[0];
-            var user = await account.GetServerAccounts(Account.Servers.os_asia);
-            var nowabyss = await account.GetSpiralAbyss(true);
-            var oldabyss = await account.GetSpiralAbyss(false);
-            var index = await account.GetGameRecords();
-            var realtime = await account.GetRealTimeNote();
-            var character = await account.GetCharacters();
-            var diaryinfo = await account.GetTravelersDiaryInfo();*/
-            //var data = await Accounts.Data[0].GetEnkaNetwork();
-            //var a=new Window.TravelersDiary(Store.Accounts.Data[0]);
-            //a.Show();
-            //a.Activate();
-            //var data = await Accounts.Data[0].GetTravelersDiaryDetail(1, 1, 0);
-
-            //var a = new Window.ProgressWindow.LoadTravelersDiaryDetail(Accounts.Data[0], Window.ProgressWindow.LoadTravelersDiaryDetail.Mode.All, Accounts.Data[0].TravelersDiary.Data.Data?.optional_month);
-            //a.ShowDialog();
-
+            try
+            {
+                var a = await Accounts.Data[0].Endpoint.GetActiveQuery(DateTime.Now.AddDays(-2));
+                Trace.WriteLine("テスト");
+            }catch(Exception ex )
+            {
+                new ErrorMessage(ex.GetType().ToString(), ex.ToString()).ShowDialog();
+            }
             
         }
 

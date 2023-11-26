@@ -24,6 +24,7 @@ namespace Genshin_Checker.UI.Control.GameRecord.CharacterDetail
             label3.Text = $"精錬ランク : {refinement}";
             pictureBox2.BackgroundImage = new Bitmap(await App.WebRequest.ImageGetRequest($"https://static-api.misaki-chan.world/genshin-checker/asset/weapon-base/rarity-{star}.png"),pictureBox2.Width,pictureBox2.Height);
             pictureBox2.Image = await App.WebRequest.ImageGetRequest(weaponImageUrl);
+            pictureBox3.Image = await App.WebRequest.ImageGetRequest($"https://static-api.misaki-chan.world/genshin-checker/asset/star/{star}.png");
         }
     }
 }

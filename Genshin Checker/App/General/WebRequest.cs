@@ -50,8 +50,7 @@ namespace Genshin_Checker.App
         }
         public static async Task<string> HoYoGetRequest(string url, string cookie, CultureInfo? culture = null)
         {
-            if (culture == null) culture = CultureInfo.CurrentCulture;
-            //culture = new("us-en");
+            culture ??= CultureInfo.CurrentCulture;
             var uri = new Uri(url);
             var root = $"{uri.Scheme}://{uri.Host}";
             Dictionary<string, string> headers = new()
@@ -68,7 +67,7 @@ namespace Genshin_Checker.App
                     { "Cookie", cookie },
                     { "Ds", DS() }
                 };
-            HttpClient client = new HttpClient();
+            HttpClient client = new();
             client.DefaultRequestHeaders.Clear();
             foreach (KeyValuePair<string, string> header in headers)
                 client.DefaultRequestHeaders.Add(header.Key, header.Value);
@@ -78,7 +77,7 @@ namespace Genshin_Checker.App
         }
         public static async Task<string> HoYoPostRequest(string url, string cookie, string data, CultureInfo? culture = null)
         {
-            if (culture == null) culture = CultureInfo.CurrentCulture;
+            culture ??= CultureInfo.CurrentCulture;
             var uri = new Uri(url);
             var root = $"{uri.Scheme}://{uri.Host}";
             Dictionary<string, string> headers = new()
@@ -122,7 +121,7 @@ namespace Genshin_Checker.App
                     { "x-rpc-language", "en-us" },
                     { "User-Agent", $"Genshin Checker/{System.Reflection.Assembly.GetExecutingAssembly().GetName().Version}" },
                 };
-            HttpClient client = new HttpClient();
+            HttpClient client = new();
             client.DefaultRequestHeaders.Clear();
             foreach (KeyValuePair<string, string> header in headers)
                 client.DefaultRequestHeaders.Add(header.Key, header.Value);
@@ -169,7 +168,7 @@ namespace Genshin_Checker.App
                     { "x-rpc-language", "en-us" },
                     { "User-Agent", $"Genshin Checker/{System.Reflection.Assembly.GetExecutingAssembly().GetName().Version}" },
                 };
-            HttpClient client = new HttpClient();
+            HttpClient client = new();
             client.DefaultRequestHeaders.Clear();
             foreach (KeyValuePair<string, string> header in headers)
                 client.DefaultRequestHeaders.Add(header.Key, header.Value);

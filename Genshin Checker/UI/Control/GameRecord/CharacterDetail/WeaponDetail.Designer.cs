@@ -145,9 +145,10 @@
             // 
             this.pictureBox3.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pictureBox3.Location = new System.Drawing.Point(0, 60);
+            this.pictureBox3.Location = new System.Drawing.Point(0, 65);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(80, 20);
+            this.pictureBox3.Padding = new System.Windows.Forms.Padding(0, 0, 0, 5);
+            this.pictureBox3.Size = new System.Drawing.Size(80, 15);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox3.TabIndex = 1;
             this.pictureBox3.TabStop = false;

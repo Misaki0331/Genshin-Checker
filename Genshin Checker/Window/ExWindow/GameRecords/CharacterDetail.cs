@@ -21,6 +21,7 @@ namespace Genshin_Checker.Window.ExWindow.GameRecords
         List<TalentInfo> MainTalent;
         List<TalentInfo> SubTalent;
         WeaponDetail WeaponDetail;
+        List<ConstellationInfo> Constellation;
         Image? CharacterBanner;
         public CharacterDetail()
         {
@@ -32,6 +33,7 @@ namespace Genshin_Checker.Window.ExWindow.GameRecords
             picture.SizeMode = PictureBoxSizeMode.AutoSize;
             MainTalent = new();
             SubTalent = new();
+            Constellation = new();
             WeaponDetail = new WeaponDetail() { Dock=DockStyle.Top};
             groupBox2.Controls.Add(WeaponDetail);
         }
@@ -40,15 +42,27 @@ namespace Genshin_Checker.Window.ExWindow.GameRecords
             if (Store.EnkaData.Data.Characters == null) return;
             var character = Store.EnkaData.Data.Characters[$"{characterID}"];
             var gacha = character.SideIconName.Replace("UI_AvatarIcon_Side_", "UI_Gacha_AvatarImg_");
+
+            //キャラクター情報の取得
             var Detail = await account.Characters.GetData();
             var CharacterInfo = Detail.avatars.Find(a => a.id == characterID);
             if (CharacterInfo == null) throw new ArgumentNullException("キャラクターが所持されていません。");
+
+            //概要
             label1.Text = $"{name}";
             label2.Text = $"Lv.{CharacterInfo.level}";
+            label4.Text = $"好感度Lv.{CharacterInfo.fetter}";
+            int constellation = CharacterInfo.constellations.FindAll(a => a.is_actived).Count;
+            if (constellation == 0) label5.Text = "";
+            else if (constellation == 6) label5.Text = "【完凸】";
+            else label5.Text = $"【{constellation}凸】";
             pictureBox1.Image = await App.WebRequest.ImageGetRequest($"https://static-api.misaki-chan.world/genshin-checker/asset/element/type-1/{CharacterInfo.element.ToLower()}.png");
+            
+            //武器
             var weapon = CharacterInfo.weapon;
             WeaponDetail.UpdateData(weapon.rarity, weapon.icon, weapon.name, weapon.level, weapon.affix_level);
 
+            //天賦
             Panel_MainTalent.SuspendLayout();
             Panel_SubTalent.SuspendLayout();
             foreach(var control in MainTalent)
@@ -112,6 +126,25 @@ namespace Genshin_Checker.Window.ExWindow.GameRecords
 
             Panel_MainTalent.ResumeLayout();
             Panel_SubTalent.ResumeLayout();
+            //命ノ星座
+            ConstellationPanel.SuspendLayout();
+            foreach (var control in Constellation)
+            {
+                ConstellationPanel.Controls.Remove(control);
+                control.Dispose();
+            }
+            Constellation.Clear();
+            for (int i= 6;i>=1;i--)
+            {
+                var data = CharacterInfo.constellations.Find(a=>a.pos==i);
+                if (data == null) continue;
+                var info = new ConstellationInfo(data.name,data.icon,data.is_actived);
+                info.Dock = DockStyle.Top;
+                ConstellationPanel.Controls.Add(info);
+                Constellation.Add(info);
+            }
+            ConstellationPanel.ResumeLayout();
+
 
             CharacterBanner = await App.WebRequest.ImageGetRequest($"https://enka.network/ui/{gacha}.png");
             ImageReload(true);
@@ -129,7 +162,7 @@ namespace Genshin_Checker.Window.ExWindow.GameRecords
                 var old = picture.Image;
                 double zoom = (double) panel1.Height/ CharacterBanner.Height;
                 picture.Image = new Bitmap(CharacterBanner,new((int)(CharacterBanner.Width * zoom), (int)(CharacterBanner.Height * zoom)));
-                if(old!=null)old.Dispose();
+                old?.Dispose();
             }
             picture.Location=new(-picture.Width /2 + panel1.Width / 2,0);
         }

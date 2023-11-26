@@ -7,6 +7,9 @@
     <Compile Update="MainTray.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="UI\Control\GameRecord\CharacterDetail\ConstellationInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="UI\Control\GameRecord\CharacterDetail\TalentInfo.cs">
       <SubType>UserControl</SubType>
     </Compile>
