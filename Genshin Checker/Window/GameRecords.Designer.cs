@@ -602,7 +602,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 24);
             this.tabPage2.Margin = new System.Windows.Forms.Padding(0);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Size = new System.Drawing.Size(616, 397);
+            this.tabPage2.Size = new System.Drawing.Size(656, 397);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "探索";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -613,7 +613,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 24);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(616, 397);
+            this.tabPage1.Size = new System.Drawing.Size(656, 397);
             this.tabPage1.TabIndex = 2;
             this.tabPage1.Text = "キャラクター";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -624,7 +624,7 @@
             this.CharactersCollection.Dock = System.Windows.Forms.DockStyle.Fill;
             this.CharactersCollection.Location = new System.Drawing.Point(3, 3);
             this.CharactersCollection.Name = "CharactersCollection";
-            this.CharactersCollection.Size = new System.Drawing.Size(610, 391);
+            this.CharactersCollection.Size = new System.Drawing.Size(650, 391);
             this.CharactersCollection.TabIndex = 0;
             // 
             // panel11
