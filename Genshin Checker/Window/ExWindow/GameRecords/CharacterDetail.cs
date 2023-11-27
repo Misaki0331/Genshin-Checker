@@ -138,8 +138,10 @@ namespace Genshin_Checker.Window.ExWindow.GameRecords
             {
                 var data = CharacterInfo.constellations.Find(a=>a.pos==i);
                 if (data == null) continue;
-                var info = new ConstellationInfo(data.name,data.icon,data.is_actived);
-                info.Dock = DockStyle.Top;
+                var info = new ConstellationInfo(data.name, data.icon, data.is_actived)
+                {
+                    Dock = DockStyle.Top
+                };
                 ConstellationPanel.Controls.Add(info);
                 Constellation.Add(info);
             }
@@ -161,6 +163,8 @@ namespace Genshin_Checker.Window.ExWindow.GameRecords
             {
                 var old = picture.Image;
                 double zoom = (double) panel1.Height/ CharacterBanner.Height;
+                Size size = new((int)(CharacterBanner.Width * zoom), (int)(CharacterBanner.Height * zoom));
+                if (size.Width <= 0 || size.Height <= 0) return;
                 picture.Image = new Bitmap(CharacterBanner,new((int)(CharacterBanner.Width * zoom), (int)(CharacterBanner.Height * zoom)));
                 old?.Dispose();
             }
