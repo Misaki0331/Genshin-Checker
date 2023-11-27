@@ -179,7 +179,11 @@ namespace Genshin_Checker.App
                 {
                     if (token == null) response = await client.GetAsync(url);
                     else response = await client.GetAsync(url, (CancellationToken) token);
-                    response.EnsureSuccessStatusCode();
+                    if (!response.IsSuccessStatusCode)
+                    {
+                        Trace.WriteLine($"Error: {response.StatusCode} - {url}");
+                        throw new ArgumentException($"Error: {response.StatusCode} - {url}");
+                    }
                     break;
                 }catch(Exception ex)
                 {

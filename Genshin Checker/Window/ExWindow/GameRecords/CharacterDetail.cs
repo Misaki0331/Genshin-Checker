@@ -22,7 +22,9 @@ namespace Genshin_Checker.Window.ExWindow.GameRecords
         List<TalentInfo> SubTalent;
         WeaponDetail WeaponDetail;
         List<ConstellationInfo> Constellation;
+        List<ArtifactInfo> ArtifactInfos;
         Image? CharacterBanner;
+        private CancellationTokenSource? cts;
         public CharacterDetail()
         {
             InitializeComponent();
@@ -34,11 +36,14 @@ namespace Genshin_Checker.Window.ExWindow.GameRecords
             MainTalent = new();
             SubTalent = new();
             Constellation = new();
+            ArtifactInfos = new();
             WeaponDetail = new WeaponDetail() { Dock=DockStyle.Top};
             groupBox2.Controls.Add(WeaponDetail);
         }
         public async void DataUpdate(Account account,int characterID,string name)
         {
+            if (cts != null) cts.Cancel(true);
+            cts = new();
             if (Store.EnkaData.Data.Characters == null) return;
             var character = Store.EnkaData.Data.Characters[$"{characterID}"];
             var gacha = character.SideIconName.Replace("UI_AvatarIcon_Side_", "UI_Gacha_AvatarImg_");
@@ -146,9 +151,32 @@ namespace Genshin_Checker.Window.ExWindow.GameRecords
                 Constellation.Add(info);
             }
             ConstellationPanel.ResumeLayout();
+            //聖遺物
+            ArtifactLayout.SuspendLayout();
+            foreach(var control in ArtifactInfos)
+            {
+                ArtifactLayout.Controls.Remove(control);
+                control.Dispose();
+            }
+            ArtifactInfos.Clear();
+            for(int i = 1; i <= 5; i++)
+            {
+                var data = CharacterInfo.reliquaries.Find(a => a.pos == i);
+                ArtifactInfo? control=null;
+                if (data == null)
+                {
+                    control = new(i, null, 0, "未装備");
+                }
+                else
+                {
+                    control = new(i, data.icon, data.rarity, $"+{data.level}");
+                }
+                ArtifactLayout.Controls.Add(control);
+                ArtifactInfos.Add(control);
+            }
+            ArtifactLayout.ResumeLayout();
 
-
-            CharacterBanner = await App.WebRequest.ImageGetRequest($"https://enka.network/ui/{gacha}.png");
+            CharacterBanner = await App.WebRequest.ImageGetRequest($"https://enka.network/ui/{gacha}.png",cts.Token);
             ImageReload(true);
 
         }
