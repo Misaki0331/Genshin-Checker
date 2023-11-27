@@ -72,6 +72,7 @@ namespace Genshin_Checker.App
             foreach (KeyValuePair<string, string> header in headers)
                 client.DefaultRequestHeaders.Add(header.Key, header.Value);
             HttpResponseMessage response = await client.GetAsync(url);
+            Trace.WriteLine($"HoYoGet - {url}");
             response.EnsureSuccessStatusCode();
             return await response.Content.ReadAsStringAsync();
         }
@@ -101,7 +102,7 @@ namespace Genshin_Checker.App
             var content = new StringContent(data, Encoding.UTF8, @"application/json");
 
             HttpResponseMessage response = await client.PostAsync(url, content);
-            Trace.WriteLine($"{url}\n{response.StatusCode}");
+            Trace.WriteLine($"HoYoPost - {url}");
             response.EnsureSuccessStatusCode();
             return await response.Content.ReadAsStringAsync();
         }
@@ -127,6 +128,7 @@ namespace Genshin_Checker.App
                 client.DefaultRequestHeaders.Add(header.Key, header.Value);
             HttpResponseMessage response = await client.GetAsync(url);
             response.EnsureSuccessStatusCode();
+            Trace.WriteLine($"GeneralGet - {url}");
             return await response.Content.ReadAsStringAsync();
         }
         public static async Task<Image> ImageGetRequest(string url,CancellationToken? token=null)

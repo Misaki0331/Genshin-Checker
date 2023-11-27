@@ -31,7 +31,7 @@ namespace Genshin_Checker.Window
             StringBuilder ErrorMessage = new();
             ErrorMessage.Append($"【エラーの定義名】\n{ex.GetType()}\n\n");
             ErrorMessage.Append($"【エラーの内容】\n{ex.Message}\n\n");
-            ErrorMessage.Append($"【ソース情報】\n{(ex.Source == null ? "不明" : ex.Source)}\n\n");
+            ErrorMessage.Append($"【ソース情報】\n{(ex.Source ?? "不明")}\n\n");
             ErrorMessage.Append($"【エラーの情報】\n{ex}\n\n");
             var name = System.Reflection.Assembly.GetExecutingAssembly().GetName();
             ErrorMessage.Append($"【バージョン】\n{name.Name} {name.Version}\n\n");
@@ -97,7 +97,7 @@ namespace Genshin_Checker.Window
             mc = new("Win32_Processor");
             moc = mc.GetInstances();
             cnt = 1;
-            foreach (ManagementObject mo in moc)
+            foreach (ManagementObject mo in moc.Cast<ManagementObject>())
             {
                 SpecText += $"- CPU情報 No.{cnt} -\n"
                     + $"デバイスID : {mo["DeviceID"]}\n"
@@ -168,12 +168,10 @@ namespace Genshin_Checker.Window
 
         private void button3_Click(object sender, EventArgs e)
         {
-            using (var ps1 = new Process())
-            {
-                ps1.StartInfo.UseShellExecute = true;
-                ps1.StartInfo.FileName = crashreportpath;
-                ps1.Start();
-            }
+            using var ps1 = new Process();
+            ps1.StartInfo.UseShellExecute = true;
+            ps1.StartInfo.FileName = crashreportpath;
+            ps1.Start();
         }
     }
 }

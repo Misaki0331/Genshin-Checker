@@ -26,9 +26,12 @@ namespace Genshin_Checker.Window.ExWindow.GameRecords
         Image? CharacterBanner;
         private CancellationTokenSource? cts;
         private SemaphoreSlim _semaphore;
+        bool IsLoading = false;
+        int TempCharacterID = 0;
         public CharacterDetail()
         {
             InitializeComponent();
+            Icon = Icon.FromHandle(resource.icon.Battle_Chronicle.GetHicon());
             picture = new();
             panel1.Resize += pictureBox1_Resize;
             panel1.Controls.Add(picture);
@@ -48,6 +51,8 @@ namespace Genshin_Checker.Window.ExWindow.GameRecords
             await _semaphore.WaitAsync(); // ロックを取得する
             try
             {
+                if (TempCharacterID == characterID) return;
+                TempCharacterID = characterID;
                 if (cts != null) cts.Cancel(true);
                 cts = new();
                 if (Store.EnkaData.Data.Characters == null) return;
@@ -59,6 +64,9 @@ namespace Genshin_Checker.Window.ExWindow.GameRecords
                 var CharacterInfo = Detail.avatars.Find(a => a.id == characterID);
                 if (CharacterInfo == null) throw new ArgumentNullException("キャラクターが所持されていません。");
 
+                Text = $"キャラクター詳細 - {CharacterInfo.name} (UID:{account.UID})";
+                IsLoading = true;
+                ImageReload(true);
                 //概要
                 label1.Text = $"{name}";
                 label2.Text = $"Lv.{CharacterInfo.level}";
@@ -184,6 +192,8 @@ namespace Genshin_Checker.Window.ExWindow.GameRecords
                 ArtifactLayout.ResumeLayout();
 
                 CharacterBanner = await App.WebRequest.ImageGetRequest($"https://enka.network/ui/{gacha}.png", cts.Token);
+
+                IsLoading = false;
                 ImageReload(true);
             }
             finally
@@ -198,16 +208,29 @@ namespace Genshin_Checker.Window.ExWindow.GameRecords
         }
         void ImageReload(bool reload = false)
         {
-            if (CharacterBanner != null&&(panel1.Height != picture.Height||reload))
+            if (IsLoading)
             {
                 var old = picture.Image;
-                double zoom = (double) panel1.Height/ CharacterBanner.Height;
-                Size size = new((int)(CharacterBanner.Width * zoom), (int)(CharacterBanner.Height * zoom));
-                if (size.Width <= 0 || size.Height <= 0) return;
-                picture.Image = new Bitmap(CharacterBanner,new((int)(CharacterBanner.Width * zoom), (int)(CharacterBanner.Height * zoom)));
+                picture.Image = resource.GenshinAsset.loading;
+                picture.Dock = DockStyle.Fill;
+                picture.SizeMode = PictureBoxSizeMode.CenterImage;
                 old?.Dispose();
             }
-            picture.Location=new(-picture.Width /2 + panel1.Width / 2,0);
+            else
+            {
+                if (CharacterBanner != null && (panel1.Height != picture.Height || reload))
+                {
+                    var old = picture.Image;
+                    double zoom = (double)panel1.Height / CharacterBanner.Height;
+                    Size size = new((int)(CharacterBanner.Width * zoom), (int)(CharacterBanner.Height * zoom));
+                    if (size.Width <= 0 || size.Height <= 0) return;
+                    picture.Dock = DockStyle.None;
+                    picture.SizeMode = PictureBoxSizeMode.AutoSize;
+                    picture.Image = new Bitmap(CharacterBanner, new((int)(CharacterBanner.Width * zoom), (int)(CharacterBanner.Height * zoom)));
+                    old?.Dispose();
+                }
+                picture.Location = new(-picture.Width / 2 + panel1.Width / 2, 0);
+            }
         }
 
         private void Button_TalentHideShow_Click(object sender, EventArgs e)

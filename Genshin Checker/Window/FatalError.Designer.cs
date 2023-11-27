@@ -167,6 +167,7 @@
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "FatalError";
+            this.ShowIcon = false;
             this.Text = "エラー";
             this.TopMost = true;
             this.panel1.ResumeLayout(false);

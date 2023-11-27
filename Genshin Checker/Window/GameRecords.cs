@@ -159,6 +159,7 @@ namespace Genshin_Checker.Window
             CharacterForm.DataUpdate(account,id, character.name);
             CharacterForm.Show();
             CharacterForm.Activate();
+            if(WindowState!=FormWindowState.Maximized) Activate();
             
         }
         private void GameRecords_FormClosed(object sender, FormClosedEventArgs e)
@@ -185,5 +186,13 @@ namespace Genshin_Checker.Window
             this.PerformLayout();
         }
 
+        private void GameRecords_SizeChanged(object sender, EventArgs e)
+        {
+            if (WindowState==FormWindowState.Maximized)
+            {
+                this.Invalidate();
+                this.PerformLayout();
+            }
+        }
     }
 }

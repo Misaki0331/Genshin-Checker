@@ -261,9 +261,8 @@
             this.label4.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label4.Location = new System.Drawing.Point(0, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(77, 15);
+            this.label4.Size = new System.Drawing.Size(0, 15);
             this.label4.TabIndex = 0;
-            this.label4.Text = "好感度Lv. 10";
             // 
             // panel3
             // 
@@ -282,13 +281,12 @@
             this.label5.AutoSize = true;
             this.label5.Dock = System.Windows.Forms.DockStyle.Left;
             this.label5.Font = new System.Drawing.Font("Meiryo UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label5.ForeColor = System.Drawing.Color.Gray;
-            this.label5.Location = new System.Drawing.Point(209, 0);
+            this.label5.ForeColor = System.Drawing.Color.Black;
+            this.label5.Location = new System.Drawing.Point(30, 0);
             this.label5.MinimumSize = new System.Drawing.Size(0, 30);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(48, 30);
+            this.label5.Size = new System.Drawing.Size(0, 30);
             this.label5.TabIndex = 3;
-            this.label5.Text = "【完凸】";
             this.label5.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
             // label2
@@ -297,12 +295,11 @@
             this.label2.Dock = System.Windows.Forms.DockStyle.Left;
             this.label2.Font = new System.Drawing.Font("Meiryo UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label2.ForeColor = System.Drawing.Color.Gray;
-            this.label2.Location = new System.Drawing.Point(168, 0);
+            this.label2.Location = new System.Drawing.Point(30, 0);
             this.label2.MinimumSize = new System.Drawing.Size(0, 30);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(41, 30);
+            this.label2.Size = new System.Drawing.Size(0, 30);
             this.label2.TabIndex = 2;
-            this.label2.Text = "Lv.99";
             this.label2.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
             // label1
@@ -313,9 +310,8 @@
             this.label1.Location = new System.Drawing.Point(30, 0);
             this.label1.MinimumSize = new System.Drawing.Size(0, 30);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(138, 30);
+            this.label1.Size = new System.Drawing.Size(0, 30);
             this.label1.TabIndex = 1;
-            this.label1.Text = "名前名前名前";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // pictureBox1
