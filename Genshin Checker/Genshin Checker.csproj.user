@@ -43,6 +43,9 @@
     <Compile Update="Window\ExWindow\GameRecords\CharacterDetail.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Window\FatalError.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Window\GameLog.cs">
       <SubType>Form</SubType>
     </Compile>

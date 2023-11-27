@@ -25,6 +25,7 @@ namespace Genshin_Checker.Window.ExWindow.GameRecords
         List<ArtifactInfo> ArtifactInfos;
         Image? CharacterBanner;
         private CancellationTokenSource? cts;
+        private SemaphoreSlim _semaphore;
         public CharacterDetail()
         {
             InitializeComponent();
@@ -37,148 +38,158 @@ namespace Genshin_Checker.Window.ExWindow.GameRecords
             SubTalent = new();
             Constellation = new();
             ArtifactInfos = new();
+            _semaphore= new SemaphoreSlim(1,1);
             WeaponDetail = new WeaponDetail() { Dock=DockStyle.Top};
             groupBox2.Controls.Add(WeaponDetail);
         }
         public async void DataUpdate(Account account,int characterID,string name)
         {
-            if (cts != null) cts.Cancel(true);
-            cts = new();
-            if (Store.EnkaData.Data.Characters == null) return;
-            var character = Store.EnkaData.Data.Characters[$"{characterID}"];
-            var gacha = character.SideIconName.Replace("UI_AvatarIcon_Side_", "UI_Gacha_AvatarImg_");
 
-            //キャラクター情報の取得
-            var Detail = await account.Characters.GetData();
-            var CharacterInfo = Detail.avatars.Find(a => a.id == characterID);
-            if (CharacterInfo == null) throw new ArgumentNullException("キャラクターが所持されていません。");
-
-            //概要
-            label1.Text = $"{name}";
-            label2.Text = $"Lv.{CharacterInfo.level}";
-            label4.Text = $"好感度Lv.{CharacterInfo.fetter}";
-            int constellation = CharacterInfo.constellations.FindAll(a => a.is_actived).Count;
-            if (constellation == 0) label5.Text = "";
-            else if (constellation == 6) label5.Text = "【完凸】";
-            else label5.Text = $"【{constellation}凸】";
-            pictureBox1.Image = await App.WebRequest.ImageGetRequest($"https://static-api.misaki-chan.world/genshin-checker/asset/element/type-1/{CharacterInfo.element.ToLower()}.png");
-            
-            //武器
-            var weapon = CharacterInfo.weapon;
-            WeaponDetail.UpdateData(weapon.rarity, weapon.icon, weapon.name, weapon.level, weapon.affix_level);
-
-            //天賦
-            Panel_MainTalent.SuspendLayout();
-            Panel_SubTalent.SuspendLayout();
-            foreach(var control in MainTalent)
-            {
-                Panel_MainTalent.Controls.Remove(control);
-                control.Dispose();
-            }
-            MainTalent.Clear();
-            foreach (var control in SubTalent)
-            {
-                Panel_SubTalent.Controls.Remove(control);
-                control.Dispose();
-            }
-            SubTalent.Clear();
-            panel5.Visible = true;
+            await _semaphore.WaitAsync(); // ロックを取得する
             try
             {
-                var data = await account.CharacterDetail.GetData(characterID);
-                var list = data.skill_list.FindAll(a => a.max_level != 1);
-                list.Reverse();
-                foreach (var main in list)
-                {
-                    var info = new TalentInfo(main.icon, main.name, $"Lv. {main.level_current}", "ここに概要");
-                    info.Dock = DockStyle.Top;
-                    Panel_MainTalent.Controls.Add(info);
-                    MainTalent.Add(info);
-                }
-                list = data.skill_list.FindAll(a => a.max_level == 1);
-                list.Reverse();
-                foreach (var sub in list)
-                {
-                    var info = new TalentInfo(sub.icon, sub.name, $"", "ここに概要");
-                    info.Dock = DockStyle.Top;
-                    Panel_SubTalent.Controls.Add(info);
-                    SubTalent.Add(info);
-                }
-                Error_TalentPanel.Visible = false;
-                Button_TalentHideShow.Visible = true;
-            }
-            catch (HoYoLabAPIException ex)
-            {
-                string hint = "";
-                switch (ex.Retcode)
-                {
-                    case -502002:
-                        hint = "このエラーはゲーム内アクセスが許可されていない場合に発生します。\n一度HoYoLabモバイルアプリを開き、「育成計算機」の許可設定からゲーム内のキャラクターデータのアクセスを許可してください。";
-                        break;
-                }
-                textBox1.Lines = $"エラーコード : {ex.Retcode}\nメッセージ : {ex.APIMessage}\n{hint}".Split('\n');
-                Error_TalentPanel.Visible = true;
-                Button_TalentHideShow.Visible = false;
-                
-            }catch(Exception ex)
-            {
+                if (cts != null) cts.Cancel(true);
+                cts = new();
+                if (Store.EnkaData.Data.Characters == null) return;
+                var character = Store.EnkaData.Data.Characters[$"{characterID}"];
+                var gacha = character.SideIconName.Replace("UI_AvatarIcon_Side_", "UI_Gacha_AvatarImg_");
 
-                textBox1.Lines = $"{ex.GetType()}\n{ex.Message}".Split('\n');
-                Error_TalentPanel.Visible = true;
-                Button_TalentHideShow.Visible = false;
-                new ErrorMessage("天賦情報取得時にエラーが発生しました。", ex.ToString()).ShowDialog();
-            }
+                //キャラクター情報の取得
+                var Detail = await account.Characters.GetData();
+                var CharacterInfo = Detail.avatars.Find(a => a.id == characterID);
+                if (CharacterInfo == null) throw new ArgumentNullException("キャラクターが所持されていません。");
 
-            Panel_MainTalent.ResumeLayout();
-            Panel_SubTalent.ResumeLayout();
-            //命ノ星座
-            ConstellationPanel.SuspendLayout();
-            foreach (var control in Constellation)
-            {
-                ConstellationPanel.Controls.Remove(control);
-                control.Dispose();
-            }
-            Constellation.Clear();
-            for (int i= 6;i>=1;i--)
-            {
-                var data = CharacterInfo.constellations.Find(a=>a.pos==i);
-                if (data == null) continue;
-                var info = new ConstellationInfo(data.name, data.icon, data.is_actived)
+                //概要
+                label1.Text = $"{name}";
+                label2.Text = $"Lv.{CharacterInfo.level}";
+                label4.Text = $"好感度Lv.{CharacterInfo.fetter}";
+                int constellation = CharacterInfo.constellations.FindAll(a => a.is_actived).Count;
+                if (constellation == 0) label5.Text = "";
+                else if (constellation == 6) label5.Text = "【完凸】";
+                else label5.Text = $"【{constellation}凸】";
+                pictureBox1.Image = await App.WebRequest.ImageGetRequest($"https://static-api.misaki-chan.world/genshin-checker/asset/element/type-1/{CharacterInfo.element.ToLower()}.png");
+
+                //武器
+                var weapon = CharacterInfo.weapon;
+                WeaponDetail.UpdateData(weapon.rarity, weapon.icon, weapon.name, weapon.level, weapon.affix_level);
+
+                //天賦
+                Panel_MainTalent.SuspendLayout();
+                Panel_SubTalent.SuspendLayout();
+                foreach (var control in MainTalent)
                 {
-                    Dock = DockStyle.Top
-                };
-                ConstellationPanel.Controls.Add(info);
-                Constellation.Add(info);
-            }
-            ConstellationPanel.ResumeLayout();
-            //聖遺物
-            ArtifactLayout.SuspendLayout();
-            foreach(var control in ArtifactInfos)
-            {
-                ArtifactLayout.Controls.Remove(control);
-                control.Dispose();
-            }
-            ArtifactInfos.Clear();
-            for(int i = 1; i <= 5; i++)
-            {
-                var data = CharacterInfo.reliquaries.Find(a => a.pos == i);
-                ArtifactInfo? control=null;
-                if (data == null)
-                {
-                    control = new(i, null, 0, "未装備");
+                    Panel_MainTalent.Controls.Remove(control);
+                    control.Dispose();
                 }
-                else
+                MainTalent.Clear();
+                foreach (var control in SubTalent)
                 {
-                    control = new(i, data.icon, data.rarity, $"+{data.level}");
+                    Panel_SubTalent.Controls.Remove(control);
+                    control.Dispose();
                 }
-                ArtifactLayout.Controls.Add(control);
-                ArtifactInfos.Add(control);
+                SubTalent.Clear();
+                panel5.Visible = true;
+                try
+                {
+                    var data = await account.CharacterDetail.GetData(characterID);
+                    var list = data.skill_list.FindAll(a => a.max_level != 1);
+                    list.Reverse();
+                    foreach (var main in list)
+                    {
+                        var info = new TalentInfo(main.icon, main.name, $"Lv. {main.level_current}", "ここに概要");
+                        info.Dock = DockStyle.Top;
+                        Panel_MainTalent.Controls.Add(info);
+                        MainTalent.Add(info);
+                    }
+                    list = data.skill_list.FindAll(a => a.max_level == 1);
+                    list.Reverse();
+                    foreach (var sub in list)
+                    {
+                        var info = new TalentInfo(sub.icon, sub.name, $"", "ここに概要");
+                        info.Dock = DockStyle.Top;
+                        Panel_SubTalent.Controls.Add(info);
+                        SubTalent.Add(info);
+                    }
+                    Error_TalentPanel.Visible = false;
+                    Button_TalentHideShow.Visible = true;
+                }
+                catch (HoYoLabAPIException ex)
+                {
+                    string hint = "";
+                    switch (ex.Retcode)
+                    {
+                        case -502002:
+                            hint = "このエラーはゲーム内アクセスが許可されていない場合に発生します。\n一度HoYoLabモバイルアプリを開き、「育成計算機」の許可設定からゲーム内のキャラクターデータのアクセスを許可してください。";
+                            break;
+                    }
+                    textBox1.Lines = $"エラーコード : {ex.Retcode}\nメッセージ : {ex.APIMessage}\n{hint}".Split('\n');
+                    Error_TalentPanel.Visible = true;
+                    Button_TalentHideShow.Visible = false;
+
+                }
+                catch (Exception ex)
+                {
+
+                    textBox1.Lines = $"{ex.GetType()}\n{ex.Message}".Split('\n');
+                    Error_TalentPanel.Visible = true;
+                    Button_TalentHideShow.Visible = false;
+                    new ErrorMessage("天賦情報取得時にエラーが発生しました。", ex.ToString()).ShowDialog();
+                }
+
+                Panel_MainTalent.ResumeLayout();
+                Panel_SubTalent.ResumeLayout();
+                //命ノ星座
+                ConstellationPanel.SuspendLayout();
+                foreach (var control in Constellation)
+                {
+                    ConstellationPanel.Controls.Remove(control);
+                    control.Dispose();
+                }
+                Constellation.Clear();
+                for (int i = 6; i >= 1; i--)
+                {
+                    var data = CharacterInfo.constellations.Find(a => a.pos == i);
+                    if (data == null) continue;
+                    var info = new ConstellationInfo(data.name, data.icon, data.is_actived)
+                    {
+                        Dock = DockStyle.Top
+                    };
+                    ConstellationPanel.Controls.Add(info);
+                    Constellation.Add(info);
+                }
+                ConstellationPanel.ResumeLayout();
+                //聖遺物
+                ArtifactLayout.SuspendLayout();
+                foreach (var control in ArtifactInfos)
+                {
+                    ArtifactLayout.Controls.Remove(control);
+                    control.Dispose();
+                }
+                ArtifactInfos.Clear();
+                for (int i = 1; i <= 5; i++)
+                {
+                    var data = CharacterInfo.reliquaries.Find(a => a.pos == i);
+                    ArtifactInfo? control = null;
+                    if (data == null)
+                    {
+                        control = new(i, null, 0, "未装備");
+                    }
+                    else
+                    {
+                        control = new(i, data.icon, data.rarity, $"+{data.level}");
+                    }
+                    ArtifactLayout.Controls.Add(control);
+                    ArtifactInfos.Add(control);
+                }
+                ArtifactLayout.ResumeLayout();
+
+                CharacterBanner = await App.WebRequest.ImageGetRequest($"https://enka.network/ui/{gacha}.png", cts.Token);
+                ImageReload(true);
             }
-            ArtifactLayout.ResumeLayout();
-
-            CharacterBanner = await App.WebRequest.ImageGetRequest($"https://enka.network/ui/{gacha}.png",cts.Token);
-            ImageReload(true);
-
+            finally
+            {
+                _semaphore.Release();
+            }
         }
 
         private void pictureBox1_Resize(object? sender, EventArgs e)

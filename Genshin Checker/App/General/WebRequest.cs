@@ -187,8 +187,11 @@ namespace Genshin_Checker.App
                     break;
                 }catch(Exception ex)
                 {
-                    if (i == 9) throw;
                     Trace.WriteLine(ex.Message);
+                    if (i == 9)
+                    {
+                        return resource.icon.fail;
+                    }
                     continue;
                 }
             }

@@ -151,4 +151,7 @@
   <data name="Battle_Chronicle" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>icon\battle chronicle.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="fail" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>icon\fail.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

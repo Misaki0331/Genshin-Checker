@@ -1,7 +1,12 @@
+using Genshin_Checker.Window;
+using System.Linq.Expressions;
+
 namespace Genshin_Checker
 {
     internal static class Program
     {
+        static System.Threading.Mutex? mutex = null;
+        static bool HasHandle = false;
         /// <summary>
         ///  The main entry point for the application.
         /// </summary>
@@ -21,27 +26,27 @@ namespace Genshin_Checker
             //Mutex名を決める（必ずアプリケーション固有の文字列に変更すること！）
             string mutexName = "Genshin Checker";
             //Mutexオブジェクトを作成する
-            System.Threading.Mutex mutex = new System.Threading.Mutex(false, mutexName);
-            bool hasHandle = false;
+            mutex = new System.Threading.Mutex(false, mutexName);
+            HasHandle = false;
             try
             {
                 try
                 {
                     //ミューテックスの所有権を要求する
-                    hasHandle = mutex.WaitOne(0, false);
+                    HasHandle = mutex.WaitOne(0, false);
                 }
                 //.NET Framework 2.0以降の場合
                 catch (System.Threading.AbandonedMutexException)
                 {
                     //別のアプリケーションがミューテックスを解放しないで終了した時
-                    hasHandle = true;
+                    HasHandle = true;
                 }
 #if !DEBUG
                 //ミューテックスを得られたか調べる
-                if (!hasHandle)
+                if (!HasHandle)
                 {
                     //得られなかった場合は、すでに起動していると判断して終了
-                    MessageBox.Show("多重起動はできません。","Genshin Checker",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                    MessageBox.Show("多重起動はできません。", "Genshin Checker", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 #endif
@@ -49,27 +54,41 @@ namespace Genshin_Checker
                 //はじめからMainメソッドにあったコードを実行
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
-                
-                Application.Run(new MainTray(safemode:!hasHandle));
+
+                Application.Run(new MainTray(safemode: !HasHandle));
             }
             finally
             {
-                if (hasHandle)
+                try
                 {
-                    //ミューテックスを解放する
-                    mutex.ReleaseMutex();
+                    if (HasHandle)
+                    {
+                        //ミューテックスを解放する
+                        mutex.ReleaseMutex();
+                    }
+                    mutex.Close();
                 }
-                mutex.Close();
+                catch { }
             }
         }
         //ThreadExceptionイベントハンドラ
         private static void Application_ThreadException(object sender,
-            System.Threading.ThreadExceptionEventArgs e)
+            ThreadExceptionEventArgs e)
         {
             try
             {
+                if (HasHandle) mutex?.ReleaseMutex();
+                mutex?.Close();
+            }
+            catch{}
+            try
+            {
+                new FatalError(e.Exception).ShowDialog();
+            }
+            catch
+            {
                 //エラーメッセージを表示する
-                var res=MessageBox.Show($"アプリケーションエラーが発生しました。\n再起動しますか？\n\n--- デバッグ情報 ---\n{e.Exception.GetType()}\n{e.Exception.Message}\n--- StackTrace ---\n{e.Exception.StackTrace}\n--- StackTrace 終わり ---", "Genshin Checker アプリケーションエラー",MessageBoxButtons.YesNo,MessageBoxIcon.Stop);
+                var res = MessageBox.Show($"アプリケーションエラーが発生しました。\n再起動しますか？\n\n--- デバッグ情報 ---\n{e.Exception.GetType()}\n{e.Exception.Message}\n--- StackTrace ---\n{e.Exception.StackTrace}\n--- StackTrace 終わり ---", "Genshin Checker アプリケーションエラー", MessageBoxButtons.YesNo, MessageBoxIcon.Stop);
                 if (res == DialogResult.Yes)
                 {
                     Application.Restart();

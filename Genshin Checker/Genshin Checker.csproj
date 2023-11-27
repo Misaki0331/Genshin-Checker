@@ -49,6 +49,7 @@
     <PackageReference Include="LiveChartsCore.SkiaSharpView.WinForms" Version="2.0.0-rc2" />
     <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.2194-prerelease" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="System.Management" Version="8.0.0" />
   </ItemGroup>
 
   <ItemGroup>
