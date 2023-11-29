@@ -25,6 +25,7 @@ namespace Genshin_Checker
         Window.TravelersDiaryDetailList? DetailList = null; 
         Window.GameRecords? GameRecords = null;
         Window.GameLog? GameLog = null;
+        Window.CharacterCalculator? CharacterCalculator = null;
         BrowserApp.WebGameAnnounce? WebGameAnnounce = null;
         List<string> GameLogTemp;
         public MainTray(bool safemode=false)
@@ -255,12 +256,43 @@ namespace Genshin_Checker
         {
             try
             {
+                if (CharacterCalculator == null || CharacterCalculator.IsDisposed)
+                {
+                    if (Accounts.Data.Count == 0)
+                    {
+                        var n = new ErrorMessage("連携しているアカウントはまだ無いようです。", "お手数ですが、以下の操作を行って認証してください。\n設定⇒アプリ連携⇒HoYoLabとの連携");
+                        n.ShowDialog(this);
+                        return;
+                    }
+                    CharacterCalculator = new(Accounts.Data[0])
+                    {
+                        WindowState = FormWindowState.Normal
+                    };
+                    CharacterCalculator.Show();
+                    CharacterCalculator.Activate();
+                }
+                else
+                {
+                    CharacterCalculator.Show();
+                    if (CharacterCalculator.WindowState == FormWindowState.Minimized) CharacterCalculator.WindowState = FormWindowState.Normal;
+                    CharacterCalculator.Activate();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                var n = new ErrorMessage(ex.GetType().ToString(), ex.Message);
+                n.ShowDialog(this);
+            }
+            /*
+            try
+            {
                 var a = await Accounts.Data[0].Endpoint.GetActiveQuery(DateTime.Now.AddDays(-2));
                 Trace.WriteLine("テスト");
             }catch(Exception ex )
             {
                 new ErrorMessage(ex.GetType().ToString(), ex.ToString()).ShowDialog();
-            }
+            }*/
             
         }
 
