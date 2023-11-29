@@ -5,6 +5,7 @@ using System.Globalization;
 using System.Linq;
 using System.Net;
 using System.Security.Cryptography;
+using System.Security.Policy;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -18,6 +19,24 @@ namespace Genshin_Checker.App.HoYoLab
         internal ApiEndpoint(Account account) {
             Account = account;
         }
+        class JsonChecker<T>
+        {
+            public static T Check(string json)
+            {
+                try
+                {
+                    var root = JsonConvert.DeserializeObject<T>(json);
+                    if (root == null) throw new ArgumentNullException($"rootがnullです。");
+                    return root;
+                }
+                catch(Exception ex)
+                {
+                    throw new InvalidDataException($"jsonパース中にエラーが発生しました。\n--- Received Data ---\n{json}\n--- Data End ---",ex);
+                }
+            }
+        }
+
+
         /// <summary>
         /// アカウント情報を取得
         /// </summary>
@@ -28,8 +47,7 @@ namespace Genshin_Checker.App.HoYoLab
         {
             var url = $"https://api-account-os.hoyolab.com/binding/api/getUserGameRolesByLtoken?game_biz=hk4e_global&region={Account.Server}";
             var json = await WebRequest.HoYoGetRequest(url, Account.Cookie);
-            var root = JsonConvert.DeserializeObject<Model.HoYoLab.Account.Root>(json);
-            if (root == null) throw new InvalidDataException($"json形式に変換できません。\n\n--- Request URL ---\n{url}\n\n--- Received Data ---\n{json}\n--- Data End ---");
+            var root = JsonChecker<Model.HoYoLab.Account.Root>.Check(json);
             if (root.Data == null) throw new HoYoLabAPIException(root.Retcode, root.Message);
             return root.Data;
         }
@@ -44,8 +62,7 @@ namespace Genshin_Checker.App.HoYoLab
             if (!Account.IsAuthed) throw new UserNotAuthenticatedException(Account.UID);
             var url = $"https://bbs-api-os.hoyolab.com/game_record/genshin/api/index?server={Account.Server}&role_id={Account.UID}";
             var json = await WebRequest.HoYoGetRequest(url, Account.Cookie);
-            var root = JsonConvert.DeserializeObject<Model.HoYoLab.GameRecords.Root>(json);
-            if (root == null) throw new InvalidDataException($"json形式に変換できません。\n\n--- Request URL ---\n{url}\n\n--- Received Data ---\n{json}\n--- Data End ---");
+            var root = JsonChecker<Model.HoYoLab.GameRecords.Root>.Check(json);
             if (root.Data == null) throw new HoYoLabAPIException(root.Retcode, root.Message);
             return root.Data;
         }
@@ -61,8 +78,7 @@ namespace Genshin_Checker.App.HoYoLab
             var url = $"https://bbs-api-os.hoyolab.com/game_record/genshin/api/character";
             string content = $"{{\"server\":\"{Account.Server}\",\"role_id\":\"{Account.UID}\"}}";
             var json = await WebRequest.HoYoPostRequest(url, Account.Cookie, content);
-            var root = JsonConvert.DeserializeObject<Model.HoYoLab.Characters.Root>(json);
-            if (root == null) throw new InvalidDataException($"json形式に変換できません。\n\n--- Request URL ---\n{url}\n\n--- Received Data ---\n{json}\n--- Data End ---");
+            var root = JsonChecker<Model.HoYoLab.Characters.Root>.Check(json);
             if (root.Data == null) throw new HoYoLabAPIException(root.Retcode, root.Message);
             return root.Data;
         }
@@ -78,8 +94,7 @@ namespace Genshin_Checker.App.HoYoLab
             if (!Account.IsAuthed) throw new UserNotAuthenticatedException(Account.UID);
             var url = $"https://bbs-api-os.hoyolab.com/game_record/genshin/api/spiralAbyss?server={Account.Server}&role_id={Account.UID}&lang={Account.Culture.Name.ToLower()}&schedule_type={(current ? 1 : 2)}";
             var json = await WebRequest.HoYoGetRequest(url, Account.Cookie);
-            var root = JsonConvert.DeserializeObject<Model.HoYoLab.SpiralAbyss.Root>(json);
-            if (root == null) throw new InvalidDataException($"json形式に変換できません。\n\n--- Request URL ---\n{url}\n\n--- Received Data ---\n{json}\n--- Data End ---");
+            var root = JsonChecker<Model.HoYoLab.SpiralAbyss.Root>.Check(json);
             if (root.Data == null) throw new HoYoLabAPIException(root.Retcode, root.Message);
             return root.Data;
         }
@@ -94,8 +109,7 @@ namespace Genshin_Checker.App.HoYoLab
             if (!Account.IsAuthed) throw new UserNotAuthenticatedException(Account.UID);
             var url = $"https://bbs-api-os.hoyolab.com/game_record/genshin/api/dailyNote?server={Account.Server}&role_id={Account.UID}";
             var json = await WebRequest.HoYoGetRequest(url, Account.Cookie);
-            var root = JsonConvert.DeserializeObject<Model.HoYoLab.RealTimeNote.Root>(json);
-            if (root == null) throw new InvalidDataException($"json形式に変換できません。\n\n--- Request URL ---\n{url}\n\n--- Received Data ---\n{json}\n--- Data End ---");
+            var root = JsonChecker<Model.HoYoLab.RealTimeNote.Root>.Check(json);
             if (root.Data == null) throw new HoYoLabAPIException(root.Retcode, root.Message);
             return root.Data;
         }
@@ -113,8 +127,7 @@ namespace Genshin_Checker.App.HoYoLab
             if (culture != null) cul = culture.Name.ToLower();
             var url = $"https://sg-hk4e-api.hoyolab.com/event/ysledgeros/month_info?region={Account.Server}&uid={Account.UID}&lang={cul}&month={month}";
             var json = await WebRequest.HoYoGetRequest(url, Account.Cookie);
-            var root = JsonConvert.DeserializeObject<Model.HoYoLab.TravelersDiary.Infomation.Root>(json);
-            if (root == null) throw new InvalidDataException($"json形式に変換できません。\n\n--- Request URL ---\n{url}\n\n--- Received Data ---\n{json}\n--- Data End ---");
+            var root = JsonChecker<Model.HoYoLab.TravelersDiary.Infomation.Root>.Check(json);
             if (root.Data == null) throw new HoYoLabAPIException(root.Retcode, root.Message);
             return root.Data;
         }
@@ -132,8 +145,7 @@ namespace Genshin_Checker.App.HoYoLab
             if (!Account.IsAuthed) throw new UserNotAuthenticatedException(Account.UID);
             var url = $"https://sg-hk4e-api.hoyolab.com/event/ysledgeros/month_detail?region={Account.Server}&uid={Account.UID}&lang={Account.Culture.Name.ToLower()}&month={month}&type={type}&current_page={page}";
             var json = await WebRequest.HoYoGetRequest(url, Account.Cookie);
-            var root = JsonConvert.DeserializeObject<Model.HoYoLab.TravelersDiary.Detail.Root>(json);
-            if (root == null) throw new InvalidDataException($"json形式に変換できません。\n\n--- Request URL ---\n{url}\n\n--- Received Data ---\n{json}\n--- Data End ---");
+            var root = JsonChecker<Model.HoYoLab.TravelersDiary.Detail.Root>.Check(json);
             if (root.Data == null) throw new HoYoLabAPIException(root.Retcode, root.Message);
             return root.Data;
         }
@@ -148,8 +160,7 @@ namespace Genshin_Checker.App.HoYoLab
             if (!Account.IsAuthed) throw new UserNotAuthenticatedException(Account.UID);
             var url = $"https://sg-public-api.hoyolab.com/event/calculateos/sync/avatar/detail?avatar_id={characterID}&uid={Account.UID}&region={Account.Server}&lang={Account.Culture.Name.ToLower()}";
             var json = await WebRequest.HoYoGetRequest(url, Account.Cookie);
-            var root = JsonConvert.DeserializeObject<Model.HoYoLab.CharacterDetail.Root>(json);
-            if (root == null) throw new InvalidDataException($"json形式に変換できません。\n\n--- Request URL ---\n{url}\n\n--- Received Data ---\n{json}\n--- Data End ---");
+            var root = JsonChecker<Model.HoYoLab.CharacterDetail.Root>.Check(json);
             if (root.Data == null) throw new HoYoLabAPIException(root.Retcode, root.Message);
             return root.Data;
         }
@@ -164,8 +175,7 @@ namespace Genshin_Checker.App.HoYoLab
             if (!Account.IsAuthed) throw new UserNotAuthenticatedException(Account.UID);
             var url = $"https://bbs-api-os.hoyolab.com/game_record/genshin/wapi/query_tool?server={Account.Server}&role_id={Account.UID}&year={since.Year}&month={since.Month:00}&day={since.Day:00}";
             var json = await WebRequest.HoYoGetRequest(url, Account.Cookie);
-            var root = JsonConvert.DeserializeObject<Model.HoYoLab.StellarJourney.Root>(json);
-            if (root == null) throw new InvalidDataException($"json形式に変換できません。\n\n--- Request URL ---\n{url}\n\n--- Received Data ---\n{json}\n--- Data End ---");
+            var root = JsonChecker<Model.HoYoLab.StellarJourney.Root>.Check(json);
             if (root.Data == null) throw new HoYoLabAPIException(root.Retcode, root.Message);
             return root.Data;
         }
@@ -178,8 +188,7 @@ namespace Genshin_Checker.App.HoYoLab
         {
             var url = $"https://enka.network/api/uid/{Account.UID}";
             var json = await WebRequest.GeneralGetRequest(url);
-            var root = JsonConvert.DeserializeObject<Model.EnkaNetwork.ShowCase.Root>(json);
-            if (root == null) throw new InvalidDataException($"json形式に変換できません。\n\n--- Request URL ---\n{url}\n\n--- Received Data ---\n{json}\n--- Data End ---");
+            var root = JsonChecker<Model.EnkaNetwork.ShowCase.Root>.Check(json);
             return root;
         }
     }
