@@ -114,6 +114,8 @@ namespace Genshin_Checker.App.General
                         case 102: return "紀行終了告知メール";
                         case 116: return "デイリー(冒険修練)";
                         case 1016: return "秘境クリア";
+                        case 1032: return "冒険の証・見聞(章制覇報酬)";
+                        case 1033: return "冒険の証・見聞(単体報酬)";
                         case 1049: return "アチーブメント";
                         case 1052: return "低ランク聖遺物処理";
                         case 1054: return "評判任務(討伐懸賞)";
