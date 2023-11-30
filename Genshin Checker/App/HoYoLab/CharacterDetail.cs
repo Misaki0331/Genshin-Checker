@@ -11,22 +11,69 @@ namespace Genshin_Checker.App.HoYoLab
     {
         //キャッシュ時間
         const int CacheSecond = 3600;
-        public CharacterDetail(Account account) : base(account, 1000)
+        public CharacterDetail(Account account) : base(account, 5000)
         {
             ServerUpdate.Tick += Timeout_Tick;
             Cache = new();
         }
         private class DataList{
-            public DateTime ExpairTime;
+            public DateTime UpdateTime;
             public int CharacterID;
             public Model.HoYoLab.CharacterDetail.Data Data=new();
         }
         List<DataList> Cache;
+        public DateTime LatestUpdateTime = DateTime.MinValue;
+        /// <summary>
+        /// 定期実行関数
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void Timeout_Tick(object? sender, EventArgs e)
         {
             Trace.WriteLine($"天賦レベル取得");
             ServerUpdate.Stop();
-            ServerUpdate.Interval = 3600000;
+            ServerUpdate.Interval = 3600000*6;
+            if (await UpdateGameData(false)) Trace.WriteLine("キャラクターの更新に成功");
+            else Trace.WriteLine("キャラクターの更新に失敗");
+            ServerUpdate.Start();
+        }
+        /// <summary>
+        /// HoYoLabのサーバーからキャラクターの天賦情報を取得。<br/>
+        /// 1分間以内に60回以上リクエストすると429エラーが返ってくる。
+        /// </summary>
+        /// <param name="characterID">キャラクター番号</param>
+        /// <param name="Force">強制的にサーバーから取得</param>
+        /// <returns></returns>
+        public async Task<Model.HoYoLab.CharacterDetail.Data> GetData(int characterID, bool Force=false)
+        {
+            var CacheData = Cache.Find(a => a.CharacterID == characterID);
+            Model.HoYoLab.CharacterDetail.Data Result;
+            if (CacheData==null)
+            {
+                var data = await account.Endpoint.GetCharacterDetail(characterID);
+                Cache.Add(new() { CharacterID= characterID, Data = data,UpdateTime=DateTime.UtcNow });
+                Result = data;
+            }
+            else
+            {
+                if (Force||CacheData.UpdateTime.AddSeconds(CacheSecond)<DateTime.UtcNow)
+                {
+                    var data = await account.Endpoint.GetCharacterDetail(characterID);
+                    CacheData.Data = data;
+                    CacheData.UpdateTime = DateTime.UtcNow;
+
+                }
+                Result = CacheData.Data;
+            }
+            return Result;
+        }
+        /// <summary>
+        /// キャッシュの生成
+        /// </summary>
+        /// <param name="Force">キャッシュの再生成</param>
+        /// <returns>成功したかどうか</returns>
+        public async Task<bool> UpdateGameData(bool Force=false)
+        {
             try
             {
                 var characters = await account.Characters.GetData();
@@ -35,20 +82,30 @@ namespace Genshin_Checker.App.HoYoLab
                     for (int i = 0; i < 10; i++)
                         try
                         {
-                            var data = await GetData(character.id);
+                            var data = await GetData(character.id, Force);
                             Trace.WriteLine($"OK CharacterID:{character.id}");
                             break;
-                        }catch (Account.HoYoLabAPIException){
+                        }
+                        catch (Account.HoYoLabAPIException ex)
+                        {
+                            if (ex.Retcode == 2000000429)
+                            {
+                                if (i == 9) throw;
+                                Trace.WriteLine($"Ratelimit exceeded. please wait... {i}");
+                                await Task.Delay(10000);
+                            }else
                             throw;
                         }
-                        catch(Exception)
+                        catch (Exception)
                         {
-                            await Task.Delay(1000);
+                            await Task.Delay(500);
                             if (i == 9) throw;
                             continue;
                         }
-                    await Task.Delay(1000);
+                    await Task.Delay(500);
                 }
+                LatestUpdateTime = DateTime.UtcNow;
+                return true;
             }
             catch (Account.HoYoLabAPIException ex)
             {
@@ -58,25 +115,16 @@ namespace Genshin_Checker.App.HoYoLab
             {
                 Trace.WriteLine(ex.ToString());
             }
-            ServerUpdate.Start();
+            return false;
         }
-        public async Task<Model.HoYoLab.CharacterDetail.Data> GetData(int characterID)
+        public async Task<bool> IsReadyCacheData()
         {
-            var CacheData = Cache.Find(a => a.CharacterID == characterID);
-            Model.HoYoLab.CharacterDetail.Data Result;
-            if (CacheData==null)
+            var data = await account.Characters.GetData();
+            foreach(var character in data.avatars)
             {
-                var data = await account.Endpoint.GetCharacterDetail(characterID);
-                Cache.Add(new() { CharacterID= characterID, Data = data,ExpairTime=DateTime.UtcNow.AddSeconds(CacheSecond) });
-                ServerUpdate.Start();
-                Result = data;
+                if (Cache.Find(a => a.CharacterID == character.id) == null) return false;
             }
-            else
-            {
-                Result = CacheData.Data;
-            }
-            foreach (var data in Cache.FindAll(A => A.ExpairTime < DateTime.UtcNow)) Cache.Remove(data);
-            return Result;
+            return true;
         }
     }
 }

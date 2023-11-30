@@ -73,7 +73,19 @@ namespace Genshin_Checker.App
                 client.DefaultRequestHeaders.Add(header.Key, header.Value);
             HttpResponseMessage response = await client.GetAsync(url);
             Trace.WriteLine($"HoYoGet - {url}");
-            response.EnsureSuccessStatusCode();
+            if (!response.IsSuccessStatusCode)
+            {
+                var data = await response.Content.ReadAsStringAsync();
+                try
+                {
+                    var json = Newtonsoft.Json.JsonConvert.DeserializeObject<Model.HoYoLab.Root<object>>(data);
+                    return data;
+                }
+                catch
+                {
+                    return $"{{\"retcode\":{(int)response.StatusCode + 2000000000},\"message\":\"This error is generated from Genshin Checker.\\nHTTP status code is failure.\\nStatus Code : {(int)response.StatusCode} - {response.StatusCode}\\nMessage : {data}\"}}";
+                }
+            }
             return await response.Content.ReadAsStringAsync();
         }
         public static async Task<string> HoYoPostRequest(string url, string cookie, string data, CultureInfo? culture = null)
@@ -103,7 +115,19 @@ namespace Genshin_Checker.App
 
             HttpResponseMessage response = await client.PostAsync(url, content);
             Trace.WriteLine($"HoYoPost - {url}");
-            response.EnsureSuccessStatusCode();
+            if (!response.IsSuccessStatusCode)
+            {
+                var data2 = await response.Content.ReadAsStringAsync();
+                try
+                {
+                    var json = Newtonsoft.Json.JsonConvert.DeserializeObject<Model.HoYoLab.Root<object>>(data2);
+                    return data2;
+                }
+                catch
+                {
+                    return $"{{\"retcode\":{(int)response.StatusCode + 2000000000},\"message\":\"This error is generated from Genshin Checker.\\nHTTP status code is failure.\\nStatus Code : {(int)response.StatusCode} - {response.StatusCode}\\nMessage : {data}\"}}";
+                }
+            }
             return await response.Content.ReadAsStringAsync();
         }
         public static async Task<string> GeneralGetRequest(string url)
