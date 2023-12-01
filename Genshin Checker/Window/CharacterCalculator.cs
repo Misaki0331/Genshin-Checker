@@ -37,6 +37,12 @@ namespace Genshin_Checker.Window
 
         private async void CharacterCalculator_Load(object sender, EventArgs e)
         {
+            if (!await account.CharacterDetail.IsReadyCacheData())
+            {
+                new ErrorMessage("キャラクターの天賦情報を取得中です。", "しばらく経ってからもう一度開いてください。").ShowDialog(); ;
+                Close();
+                return;
+            }
             Text = "取得中...";
             var Data= await account.Characters.GetData();
             var characters = Data.avatars.FindAll(a=>true);

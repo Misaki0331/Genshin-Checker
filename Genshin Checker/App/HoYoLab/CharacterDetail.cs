@@ -10,7 +10,7 @@ namespace Genshin_Checker.App.HoYoLab
     public class CharacterDetail:Base
     {
         //キャッシュ時間
-        const int CacheSecond = 3600;
+        const int CacheSecond = 3600*8;
         public CharacterDetail(Account account) : base(account, 5000)
         {
             ServerUpdate.Tick += Timeout_Tick;
@@ -33,8 +33,12 @@ namespace Genshin_Checker.App.HoYoLab
             Trace.WriteLine($"天賦レベル取得");
             ServerUpdate.Stop();
             ServerUpdate.Interval = 3600000*6;
-            if (await UpdateGameData(false)) Trace.WriteLine("キャラクターの更新に成功");
-            else Trace.WriteLine("キャラクターの更新に失敗");
+            if (await UpdateGameData(true)) Trace.WriteLine("キャラクターの更新に成功");
+            else
+            {
+                ServerUpdate.Interval = 60000 * 5;
+                Trace.WriteLine("キャラクターの更新に失敗");
+            }
             ServerUpdate.Start();
         }
         /// <summary>
@@ -44,7 +48,7 @@ namespace Genshin_Checker.App.HoYoLab
         /// <param name="characterID">キャラクター番号</param>
         /// <param name="Force">強制的にサーバーから取得</param>
         /// <returns></returns>
-        public async Task<Model.HoYoLab.CharacterDetail.Data> GetData(int characterID, bool Force=false)
+        public async Task<Model.HoYoLab.CharacterDetail.Data> GetData(int characterID, bool Force=false, int Timeout=-1)
         {
             var CacheData = Cache.Find(a => a.CharacterID == characterID);
             Model.HoYoLab.CharacterDetail.Data Result;
@@ -56,7 +60,7 @@ namespace Genshin_Checker.App.HoYoLab
             }
             else
             {
-                if (Force||CacheData.UpdateTime.AddSeconds(CacheSecond)<DateTime.UtcNow)
+                if (Force || CacheData.UpdateTime.AddSeconds(Timeout < 0 ? CacheSecond : Timeout) < DateTime.UtcNow)
                 {
                     var data = await account.Endpoint.GetCharacterDetail(characterID);
                     CacheData.Data = data;
