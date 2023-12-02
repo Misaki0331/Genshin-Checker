@@ -83,7 +83,7 @@ namespace Genshin_Checker.App.HoYoLab
                 var characters = await account.Characters.GetData();
                 foreach (var character in characters.avatars)
                 {
-                    for (int i = 0; i < 10; i++)
+                    for (int i = 0; i < 30; i++)
                         try
                         {
                             var data = await GetData(character.id, Force);
@@ -94,7 +94,7 @@ namespace Genshin_Checker.App.HoYoLab
                         {
                             if (ex.Retcode == 2000000429)
                             {
-                                if (i == 9) throw;
+                                if (i == 29) throw;
                                 Trace.WriteLine($"Ratelimit exceeded. please wait... {i}");
                                 await Task.Delay(10000);
                             }else
@@ -102,11 +102,9 @@ namespace Genshin_Checker.App.HoYoLab
                         }
                         catch (Exception)
                         {
-                            await Task.Delay(500);
                             if (i == 9) throw;
                             continue;
                         }
-                    await Task.Delay(500);
                 }
                 LatestUpdateTime = DateTime.UtcNow;
                 return true;
