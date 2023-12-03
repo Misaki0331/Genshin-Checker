@@ -1,7 +1,10 @@
 ﻿using Genshin_Checker.App.HoYoLab;
+using Genshin_Checker.Model.HoYoLab.CharacterDetail;
+using Genshin_Checker.Window.ExWindow.CharacterCalculator;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Data;
 using System.Data.Common;
 using System.Diagnostics;
@@ -81,7 +84,7 @@ namespace Genshin_Checker.Window
 
             return type switch
             {
-                ElementType.Anemo => Color.FromArgb(0xBB, 0xFF, 0xCC),
+                ElementType.Anemo => Color.FromArgb(0xDD, 0xFF, 0xDD),
                 ElementType.Geo => Color.FromArgb(0xFF, 0xDD, 0xAA),
                 ElementType.Electro => Color.FromArgb(0xCC, 0xAA, 0xFF),
                 ElementType.Dendro => Color.FromArgb(0xAA, 0xFF, 0xAA),
@@ -110,7 +113,7 @@ namespace Genshin_Checker.Window
                 var talent = charainfo.skill_list.FindAll(a=>a.max_level!=1);
                 if(talent.Count!=3)throw new InvalidDataException("天賦レベルが不整合です。");
                 CharacterView.Rows.Add(true,character.id, character.rarity, character.element, character.name, character.weapon.type_name, character.fetter, character.level,
-                    talent[0].level_current, talent[1].level_current, talent[2].level_current, "⇒", "90","9","9","9");
+                    talent[0].level_current, talent[1].level_current, talent[2].level_current, "⇒",90,9,9,9);
             }
             Text = "育成計算機＋";
         }
@@ -139,6 +142,7 @@ namespace Genshin_Checker.Window
             {
                 StringBuilder ErrorDetail = new();
                 string ErrorTitle = $"データエラーが {ExceptionCount:#,##0} 件発生しました。";
+                Exceptions.Reverse();
                 foreach (var ex in Exceptions)
                 {
                     ErrorDetail.Append($"{ex}\n--------------------\n");
@@ -179,6 +183,72 @@ namespace Genshin_Checker.Window
                     else if ($"{e.Value}" == "4") e.CellStyle.BackColor = Color.FromArgb(0xCC, 0xAA, 0xFF);
                     break;
             }
+        }
+
+        private async void ButtonBatch_Click(object sender, EventArgs e)
+        {
+            var select = CharacterView.SelectedRows;
+            if (select.Count == 1)
+            {
+                var info = await account.CharacterDetail.GetData((int)select[0].Cells["ID"].Value);
+                var skills = info.skill_list.FindAll(a => a.max_level != 1);
+                if (skills.Count != 3) return;
+                var form = new BatchWindow(new()
+                {
+                    IsMultiSelect = false,
+                    CharacterName = (string)select[0].Cells["CharacterName"].Value,
+                    Talent1Name = skills[0].name,
+                    Talent2Name = skills[1].name,
+                    Talent3Name = skills[2].name,
+                    MinLevel = (int)select[0].Cells["CurrentLevel"].Value,
+                    MinTalent1 = (int)select[0].Cells["CurrentTalentLevel1"].Value,
+                    MinTalent2 = (int)select[0].Cells["CurrentTalentLevel2"].Value,
+                    MinTalent3 = (int)select[0].Cells["CurrentTalentLevel3"].Value,
+                    CurrentLevel = (int)select[0].Cells["ToLevel"].Value,
+                    CurrentTalent1 = (int)select[0].Cells["ToTalentLevel1"].Value,
+                    CurrentTalent2 = (int)select[0].Cells["ToTalentLevel2"].Value,
+                    CurrentTalent3 = (int)select[0].Cells["ToTalentLevel3"].Value,
+                });
+                form.ShowDialog();
+                var change = form.Output;
+                if (change.IsApplied)
+                {
+                    select[0].Cells["ToLevel"].Value = change.Level;
+                    select[0].Cells["ToTalentLevel1"].Value = change.Talent1;
+                    select[0].Cells["ToTalentLevel2"].Value = change.Talent2;
+                    select[0].Cells["ToTalentLevel3"].Value = change.Talent3;
+                }
+            }else if(CharacterView.SelectedRows.Count > 1) {
+                var form = new BatchWindow(new()
+                {
+                    IsMultiSelect = true,
+                });
+                form.ShowDialog();
+                var change = form.Output;
+                if(change.IsApplied)
+                {
+                    foreach(DataGridViewRow row in select)
+                    {
+                        if (change.Level >= (int)row.Cells["CurrentLevel"].Value)
+                            row.Cells["ToLevel"].Value = change.Level;
+                        else row.Cells["ToLevel"].Value = (int)row.Cells["CurrentLevel"].Value;
+                        if (change.Talent1 >= (int)row.Cells["CurrentTalentLevel1"].Value)
+                            row.Cells["ToTalentLevel1"].Value = change.Talent1;
+                        else row.Cells["ToTalentLevel1"].Value = (int)row.Cells["CurrentTalentLevel1"].Value;
+                        if (change.Talent2 >= (int)row.Cells["CurrentTalentLevel2"].Value)
+                            row.Cells["ToTalentLevel2"].Value = change.Talent2;
+                        else row.Cells["ToTalentLevel2"].Value = (int)row.Cells["CurrentTalentLevel2"].Value;
+                        if (change.Talent3 >= (int)row.Cells["CurrentTalentLevel3"].Value)
+                            row.Cells["ToTalentLevel3"].Value = change.Talent3;
+                        else row.Cells["ToTalentLevel3"].Value = (int)row.Cells["CurrentTalentLevel3"].Value;
+                    }
+                }
+            }
+        }
+
+        private void ButtonSelectAll_Click(object sender, EventArgs e)
+        {
+            CharacterView.SelectAll();
         }
     }
 }

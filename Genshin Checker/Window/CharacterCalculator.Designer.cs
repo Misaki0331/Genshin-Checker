@@ -31,6 +31,8 @@
             this.components = new System.ComponentModel.Container();
             this.button1 = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.ButtonSelectAll = new System.Windows.Forms.Button();
+            this.ButtonBatch = new System.Windows.Forms.Button();
             this.CharacterView = new System.Windows.Forms.DataGridView();
             this.CalculateStatus = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -49,8 +51,6 @@
             this.ToTalentLevel2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ToTalentLevel3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ErrorHandling = new System.Windows.Forms.Timer(this.components);
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CharacterView)).BeginInit();
             this.SuspendLayout();
@@ -68,14 +68,36 @@
             // 
             // panel4
             // 
-            this.panel4.Controls.Add(this.button3);
+            this.panel4.Controls.Add(this.ButtonSelectAll);
             this.panel4.Controls.Add(this.button1);
-            this.panel4.Controls.Add(this.button2);
+            this.panel4.Controls.Add(this.ButtonBatch);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel4.Location = new System.Drawing.Point(0, 0);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(646, 24);
             this.panel4.TabIndex = 1;
+            // 
+            // ButtonSelectAll
+            // 
+            this.ButtonSelectAll.Dock = System.Windows.Forms.DockStyle.Left;
+            this.ButtonSelectAll.Location = new System.Drawing.Point(75, 0);
+            this.ButtonSelectAll.Name = "ButtonSelectAll";
+            this.ButtonSelectAll.Size = new System.Drawing.Size(75, 24);
+            this.ButtonSelectAll.TabIndex = 4;
+            this.ButtonSelectAll.Text = "すべて選択";
+            this.ButtonSelectAll.UseVisualStyleBackColor = true;
+            this.ButtonSelectAll.Click += new System.EventHandler(this.ButtonSelectAll_Click);
+            // 
+            // ButtonBatch
+            // 
+            this.ButtonBatch.Dock = System.Windows.Forms.DockStyle.Left;
+            this.ButtonBatch.Location = new System.Drawing.Point(0, 0);
+            this.ButtonBatch.Name = "ButtonBatch";
+            this.ButtonBatch.Size = new System.Drawing.Size(75, 24);
+            this.ButtonBatch.TabIndex = 3;
+            this.ButtonBatch.Text = "一括変更";
+            this.ButtonBatch.UseVisualStyleBackColor = true;
+            this.ButtonBatch.Click += new System.EventHandler(this.ButtonBatch_Click);
             // 
             // CharacterView
             // 
@@ -150,7 +172,6 @@
             this.Element.Name = "Element";
             this.Element.ReadOnly = true;
             this.Element.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Element.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.Element.Width = 40;
             // 
             // CharacterName
@@ -295,26 +316,6 @@
             this.ErrorHandling.Interval = 500;
             this.ErrorHandling.Tick += new System.EventHandler(this.ErrorHandling_Tick);
             // 
-            // button2
-            // 
-            this.button2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.button2.Location = new System.Drawing.Point(0, 0);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 24);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "一括変更";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // button3
-            // 
-            this.button3.Dock = System.Windows.Forms.DockStyle.Left;
-            this.button3.Location = new System.Drawing.Point(75, 0);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 24);
-            this.button3.TabIndex = 4;
-            this.button3.Text = "すべて選択";
-            this.button3.UseVisualStyleBackColor = true;
-            // 
             // CharacterCalculator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -339,6 +340,8 @@
         private Panel panel4;
         private System.Windows.Forms.Timer ErrorHandling;
         private Button button1;
+        private Button ButtonSelectAll;
+        private Button ButtonBatch;
         private DataGridViewCheckBoxColumn CalculateStatus;
         private DataGridViewTextBoxColumn ID;
         private DataGridViewTextBoxColumn Rarelity;
@@ -355,7 +358,5 @@
         private DataGridViewTextBoxColumn ToTalentLevel1;
         private DataGridViewTextBoxColumn ToTalentLevel2;
         private DataGridViewTextBoxColumn ToTalentLevel3;
-        private Button button3;
-        private Button button2;
     }
 }

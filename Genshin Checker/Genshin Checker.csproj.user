@@ -43,6 +43,9 @@
     <Compile Update="Window\ErrorMessage.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Window\ExWindow\CharacterCalculator\BatchWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Window\ExWindow\GameRecords\CharacterDetail.cs">
       <SubType>Form</SubType>
     </Compile>
