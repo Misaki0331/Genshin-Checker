@@ -1,6 +1,8 @@
-﻿using Genshin_Checker.App.HoYoLab;
+﻿using Genshin_Checker.App;
+using Genshin_Checker.App.HoYoLab;
 using Genshin_Checker.Model.HoYoLab.CharacterDetail;
 using Genshin_Checker.Window.ExWindow.CharacterCalculator;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -105,15 +107,23 @@ namespace Genshin_Checker.Window
             Text = "取得中...";
             var Data= await account.Characters.GetData();
             var characters = Data.avatars.FindAll(a=>true);
+            var userdata = DataLoad();
             for(int i=0; i<characters.Count; i++)
             {
                 Text = $"{i}/{characters.Count}";
                 var character = characters[i];
                 var charainfo = await account.CharacterDetail.GetData(character.id);
                 var talent = charainfo.skill_list.FindAll(a=>a.max_level!=1);
+                var set = userdata.Datas.FirstOrDefault(a=>a.Key==character.id);
+                var setdata = set.Value;
+                if (setdata == null) setdata = new();
                 if(talent.Count!=3)throw new InvalidDataException("天賦レベルが不整合です。");
-                CharacterView.Rows.Add(true,character.id, character.rarity, character.element, character.name, character.weapon.type_name, character.fetter, character.level,
-                    talent[0].level_current, talent[1].level_current, talent[2].level_current, "⇒",90,9,9,9);
+                CharacterView.Rows.Add(setdata.Enabled, character.id, character.rarity, character.element, character.name, character.weapon.type_name, character.fetter, character.level,
+                    talent[0].level_current, talent[1].level_current, talent[2].level_current, "",
+                    character.level > setdata.SetLevel ? character.level : setdata.SetLevel,
+                    talent[0].level_current > setdata.SetTalent1 ? talent[0].level_current : setdata.SetTalent1,
+                    talent[1].level_current > setdata.SetTalent2 ? talent[1].level_current : setdata.SetTalent2,
+                    talent[2].level_current > setdata.SetTalent3 ? talent[2].level_current : setdata.SetTalent3);
             }
             Text = "育成計算機＋";
         }
@@ -228,6 +238,7 @@ namespace Genshin_Checker.Window
                     CurrentTalent1 = (int)select[0].Cells["ToTalentLevel1"].Value,
                     CurrentTalent2 = (int)select[0].Cells["ToTalentLevel2"].Value,
                     CurrentTalent3 = (int)select[0].Cells["ToTalentLevel3"].Value,
+                    StatusEnabled = (bool)select[0].Cells["CalculateStatus"].Value,
                 });
                 form.ShowDialog();
                 var change = form.Output;
@@ -237,6 +248,9 @@ namespace Genshin_Checker.Window
                     select[0].Cells["ToTalentLevel1"].Value = change.Talent1;
                     select[0].Cells["ToTalentLevel2"].Value = change.Talent2;
                     select[0].Cells["ToTalentLevel3"].Value = change.Talent3;
+                    if (change.StatusEnabled != null) 
+                        select[0].Cells["CalculateStatus"].Value = change.StatusEnabled;
+                    DataSave();
                 }
             }else if(CharacterView.SelectedRows.Count > 1) {
                 var form = new BatchWindow(new()
@@ -261,7 +275,10 @@ namespace Genshin_Checker.Window
                         if (change.Talent3 >= (int)row.Cells["CurrentTalentLevel3"].Value)
                             row.Cells["ToTalentLevel3"].Value = change.Talent3;
                         else row.Cells["ToTalentLevel3"].Value = (int)row.Cells["CurrentTalentLevel3"].Value;
+                        if (change.StatusEnabled != null) 
+                            row.Cells["CalculateStatus"].Value = change.StatusEnabled;
                     }
+                    DataSave();
                 }
             }
         }
@@ -276,6 +293,7 @@ namespace Genshin_Checker.Window
             if(e.ColumnIndex == CharacterView.Columns["CalculateStatus"].Index)
             {
                 CharacterView.InvalidateRow(e.RowIndex);
+                DataSave();
             }
         }
 
@@ -285,6 +303,42 @@ namespace Genshin_Checker.Window
             {
                 CharacterView.CommitEdit(DataGridViewDataErrorContexts.Commit);
             }
+        }
+
+        private void DataSave()
+        {
+            Model.UserData.CharacterCalculator.CharacterObjective.Root data = new();
+            foreach(DataGridViewRow row in CharacterView.Rows)
+            {
+                data.Datas.Add((int)row.Cells["ID"].Value, new()
+                {
+                    Enabled = (bool)row.Cells["CalculateStatus"].Value,
+                    SetLevel = (int)row.Cells["ToLevel"].Value,
+                    SetTalent1 = (int)row.Cells["ToTalentLevel1"].Value,
+                    SetTalent2 = (int)row.Cells["ToTalentLevel2"].Value,
+                    SetTalent3 = (int)row.Cells["ToTalentLevel3"].Value,
+                });
+            }
+            var regPath = $"UserData\\{account.UID}\\Character\\";
+            Registry.SetValue(regPath, "Objective", JsonConvert.SerializeObject(data), true);
+        }
+        private Model.UserData.CharacterCalculator.CharacterObjective.Root DataLoad()
+        {
+            try
+            {
+                var regPath = $"UserData\\{account.UID}\\Character\\";
+                string? str = Registry.GetValue(regPath, "Objective", true);
+                if (str == null) return new();
+                var data = JsonConvert.DeserializeObject<Model.UserData.CharacterCalculator.CharacterObjective.Root>(str);
+                if(data == null) return new();
+                return data;
+            }
+            catch(Exception ex)
+            {
+                new ErrorMessage("アカウントセーブデータに異常があります。", ex.ToString());
+                return new();
+            }
+
         }
     }
 }

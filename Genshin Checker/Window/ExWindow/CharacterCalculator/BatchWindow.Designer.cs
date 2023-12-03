@@ -61,6 +61,9 @@
             this.ButtonSetToTalent9 = new System.Windows.Forms.Button();
             this.ButtonSetToLv90 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.RadioDisable = new System.Windows.Forms.RadioButton();
+            this.RadioEnable = new System.Windows.Forms.RadioButton();
             this.GroupLevel.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TrackLevel)).BeginInit();
@@ -79,6 +82,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.TrackTalent1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NumericTalent1)).BeginInit();
             this.panel6.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // LabelCharacterName
@@ -97,7 +101,7 @@
             this.GroupLevel.AutoSize = true;
             this.GroupLevel.Controls.Add(this.panel1);
             this.GroupLevel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.GroupLevel.Location = new System.Drawing.Point(0, 46);
+            this.GroupLevel.Location = new System.Drawing.Point(0, 94);
             this.GroupLevel.Name = "GroupLevel";
             this.GroupLevel.Size = new System.Drawing.Size(275, 47);
             this.GroupLevel.TabIndex = 1;
@@ -183,7 +187,7 @@
             this.panel5.Controls.Add(this.ButtonCancel);
             this.panel5.Controls.Add(this.ButtonAppry);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel5.Location = new System.Drawing.Point(0, 234);
+            this.panel5.Location = new System.Drawing.Point(0, 282);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(275, 25);
             this.panel5.TabIndex = 5;
@@ -215,7 +219,7 @@
             this.GroupTalent3.AutoSize = true;
             this.GroupTalent3.Controls.Add(this.panel4);
             this.GroupTalent3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.GroupTalent3.Location = new System.Drawing.Point(0, 187);
+            this.GroupTalent3.Location = new System.Drawing.Point(0, 235);
             this.GroupTalent3.Name = "GroupTalent3";
             this.GroupTalent3.Size = new System.Drawing.Size(275, 47);
             this.GroupTalent3.TabIndex = 8;
@@ -299,7 +303,7 @@
             this.GroupTalent2.AutoSize = true;
             this.GroupTalent2.Controls.Add(this.panel3);
             this.GroupTalent2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.GroupTalent2.Location = new System.Drawing.Point(0, 140);
+            this.GroupTalent2.Location = new System.Drawing.Point(0, 188);
             this.GroupTalent2.Name = "GroupTalent2";
             this.GroupTalent2.Size = new System.Drawing.Size(275, 47);
             this.GroupTalent2.TabIndex = 7;
@@ -383,7 +387,7 @@
             this.GroupTalent1.AutoSize = true;
             this.GroupTalent1.Controls.Add(this.panel2);
             this.GroupTalent1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.GroupTalent1.Location = new System.Drawing.Point(0, 93);
+            this.GroupTalent1.Location = new System.Drawing.Point(0, 141);
             this.GroupTalent1.Name = "GroupTalent1";
             this.GroupTalent1.Size = new System.Drawing.Size(275, 47);
             this.GroupTalent1.TabIndex = 6;
@@ -528,6 +532,44 @@
             this.label1.Text = "クイック調整 :";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.RadioDisable);
+            this.groupBox1.Controls.Add(this.RadioEnable);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupBox1.Location = new System.Drawing.Point(0, 46);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(275, 48);
+            this.groupBox1.TabIndex = 10;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "育成ステータス";
+            // 
+            // RadioDisable
+            // 
+            this.RadioDisable.Appearance = System.Windows.Forms.Appearance.Button;
+            this.RadioDisable.AutoSize = true;
+            this.RadioDisable.Dock = System.Windows.Forms.DockStyle.Right;
+            this.RadioDisable.Location = new System.Drawing.Point(190, 19);
+            this.RadioDisable.Name = "RadioDisable";
+            this.RadioDisable.Size = new System.Drawing.Size(41, 26);
+            this.RadioDisable.TabIndex = 1;
+            this.RadioDisable.TabStop = true;
+            this.RadioDisable.Text = "無効";
+            this.RadioDisable.UseVisualStyleBackColor = true;
+            // 
+            // RadioEnable
+            // 
+            this.RadioEnable.Appearance = System.Windows.Forms.Appearance.Button;
+            this.RadioEnable.AutoSize = true;
+            this.RadioEnable.Dock = System.Windows.Forms.DockStyle.Right;
+            this.RadioEnable.Location = new System.Drawing.Point(231, 19);
+            this.RadioEnable.Name = "RadioEnable";
+            this.RadioEnable.Size = new System.Drawing.Size(41, 26);
+            this.RadioEnable.TabIndex = 0;
+            this.RadioEnable.TabStop = true;
+            this.RadioEnable.Text = "有効";
+            this.RadioEnable.UseVisualStyleBackColor = true;
+            // 
             // BatchWindow
             // 
             this.AcceptButton = this.ButtonAppry;
@@ -542,6 +584,7 @@
             this.Controls.Add(this.GroupTalent2);
             this.Controls.Add(this.GroupTalent1);
             this.Controls.Add(this.GroupLevel);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.panel6);
             this.Controls.Add(this.LabelCharacterName);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
@@ -573,6 +616,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.NumericTalent1)).EndInit();
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -613,5 +658,8 @@
         private Button ButtonSetToTalent9;
         private Button ButtonSetToLv90;
         private Label label1;
+        private GroupBox groupBox1;
+        private RadioButton RadioDisable;
+        private RadioButton RadioEnable;
     }
 }

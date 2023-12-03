@@ -76,6 +76,9 @@ namespace Genshin_Checker.Window.ExWindow.CharacterCalculator
             TrackTalent2.Value = data.CurrentTalent2;
             NumericTalent3.Value = data.CurrentTalent3;
             TrackTalent3.Value = data.CurrentTalent3;
+
+            if (data.StatusEnabled == true) RadioEnable.Checked = true;
+            else if(data.StatusEnabled == false) RadioDisable.Checked = true;
             Output = new() { IsApplied = false };
         }
         private void Track_ValueChanged(object sender, EventArgs e)
@@ -111,6 +114,7 @@ namespace Genshin_Checker.Window.ExWindow.CharacterCalculator
             public int MinTalent1 { get; set; } = 1;
             public int MinTalent2 { get; set; } = 1;
             public int MinTalent3 { get; set; } = 1;
+            public bool? StatusEnabled { get; set; } = null;
         }
         public class OutData
         {
@@ -119,10 +123,14 @@ namespace Genshin_Checker.Window.ExWindow.CharacterCalculator
             public int Talent1 { get; set; } = 1;
             public int Talent2 { get; set; } = 1;
             public int Talent3 { get; set; } = 1;
+            public bool? StatusEnabled { get; set; } = null;
         }
 
         private void ButtonAppry_Click(object sender, EventArgs e)
         {
+            bool? enabled = null;
+            if (RadioEnable.Checked) enabled = true;
+            else if (RadioDisable.Checked) enabled = false;
             Output = new()
             {
                 IsApplied = true,
@@ -130,6 +138,7 @@ namespace Genshin_Checker.Window.ExWindow.CharacterCalculator
                 Talent1 = (int)NumericTalent1.Value,
                 Talent2 = (int)NumericTalent2.Value,
                 Talent3 = (int)NumericTalent3.Value,
+                StatusEnabled = enabled,
             };
             Close();
         }
