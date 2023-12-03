@@ -133,6 +133,8 @@
             this.CharacterView.TabIndex = 2;
             this.CharacterView.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.CharacterView_CellEnter);
             this.CharacterView.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.CharacterView_CellFormatting);
+            this.CharacterView.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.CharacterView_CellValueChanged);
+            this.CharacterView.CurrentCellDirtyStateChanged += new System.EventHandler(this.CharacterView_CurrentCellDirtyStateChanged);
             this.CharacterView.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.CharacterView_DataError);
             // 
             // CalculateStatus
@@ -141,7 +143,7 @@
             this.CalculateStatus.Frozen = true;
             this.CalculateStatus.HeaderText = "";
             this.CalculateStatus.Name = "CalculateStatus";
-            this.CalculateStatus.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.CalculateStatus.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.CalculateStatus.Width = 5;
             // 
             // ID
@@ -204,7 +206,7 @@
             this.Fetter.MinimumWidth = 25;
             this.Fetter.Name = "Fetter";
             this.Fetter.ReadOnly = true;
-            this.Fetter.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Fetter.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.Fetter.Width = 25;
             // 
             // CurrentLevel
@@ -215,7 +217,7 @@
             this.CurrentLevel.MinimumWidth = 25;
             this.CurrentLevel.Name = "CurrentLevel";
             this.CurrentLevel.ReadOnly = true;
-            this.CurrentLevel.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.CurrentLevel.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.CurrentLevel.Width = 25;
             // 
             // CurrentTalentLevel1
@@ -226,7 +228,7 @@
             this.CurrentTalentLevel1.MinimumWidth = 45;
             this.CurrentTalentLevel1.Name = "CurrentTalentLevel1";
             this.CurrentTalentLevel1.ReadOnly = true;
-            this.CurrentTalentLevel1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.CurrentTalentLevel1.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.CurrentTalentLevel1.Width = 45;
             // 
             // CurrentTalentLevel2
@@ -237,7 +239,7 @@
             this.CurrentTalentLevel2.MinimumWidth = 45;
             this.CurrentTalentLevel2.Name = "CurrentTalentLevel2";
             this.CurrentTalentLevel2.ReadOnly = true;
-            this.CurrentTalentLevel2.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.CurrentTalentLevel2.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.CurrentTalentLevel2.Width = 45;
             // 
             // CurrentTalentLevel3
@@ -248,7 +250,7 @@
             this.CurrentTalentLevel3.MinimumWidth = 45;
             this.CurrentTalentLevel3.Name = "CurrentTalentLevel3";
             this.CurrentTalentLevel3.ReadOnly = true;
-            this.CurrentTalentLevel3.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.CurrentTalentLevel3.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.CurrentTalentLevel3.Width = 45;
             // 
             // ToArrow

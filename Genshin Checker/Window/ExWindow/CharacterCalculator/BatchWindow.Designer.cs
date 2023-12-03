@@ -57,10 +57,10 @@
             this.NumericTalent1 = new System.Windows.Forms.NumericUpDown();
             this.CurrentTalent1 = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
-            this.ButtonSetToLv90 = new System.Windows.Forms.Button();
-            this.ButtonSetToTalent9 = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
             this.ButtonSetToTalent10 = new System.Windows.Forms.Button();
+            this.ButtonSetToTalent9 = new System.Windows.Forms.Button();
+            this.ButtonSetToLv90 = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.GroupLevel.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TrackLevel)).BeginInit();
@@ -474,19 +474,19 @@
             this.panel6.Size = new System.Drawing.Size(275, 25);
             this.panel6.TabIndex = 9;
             // 
-            // ButtonSetToLv90
+            // ButtonSetToTalent10
             // 
-            this.ButtonSetToLv90.AutoSize = true;
-            this.ButtonSetToLv90.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ButtonSetToLv90.Dock = System.Windows.Forms.DockStyle.Left;
-            this.ButtonSetToLv90.Location = new System.Drawing.Point(72, 0);
-            this.ButtonSetToLv90.Name = "ButtonSetToLv90";
-            this.ButtonSetToLv90.Size = new System.Drawing.Size(43, 25);
-            this.ButtonSetToLv90.TabIndex = 3;
-            this.ButtonSetToLv90.Text = "Lv.90";
-            this.ButtonSetToLv90.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
-            this.ButtonSetToLv90.UseVisualStyleBackColor = true;
-            this.ButtonSetToLv90.Click += new System.EventHandler(this.ButtonSetToLv90_Click);
+            this.ButtonSetToTalent10.AutoSize = true;
+            this.ButtonSetToTalent10.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.ButtonSetToTalent10.Dock = System.Windows.Forms.DockStyle.Left;
+            this.ButtonSetToTalent10.Location = new System.Drawing.Point(162, 0);
+            this.ButtonSetToTalent10.Name = "ButtonSetToTalent10";
+            this.ButtonSetToTalent10.Size = new System.Drawing.Size(53, 25);
+            this.ButtonSetToTalent10.TabIndex = 6;
+            this.ButtonSetToTalent10.Text = "天賦10";
+            this.ButtonSetToTalent10.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.ButtonSetToTalent10.UseVisualStyleBackColor = true;
+            this.ButtonSetToTalent10.Click += new System.EventHandler(this.ButtonSetToTalent10_Click);
             // 
             // ButtonSetToTalent9
             // 
@@ -502,6 +502,20 @@
             this.ButtonSetToTalent9.UseVisualStyleBackColor = true;
             this.ButtonSetToTalent9.Click += new System.EventHandler(this.ButtonSetToTalent9_Click);
             // 
+            // ButtonSetToLv90
+            // 
+            this.ButtonSetToLv90.AutoSize = true;
+            this.ButtonSetToLv90.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.ButtonSetToLv90.Dock = System.Windows.Forms.DockStyle.Left;
+            this.ButtonSetToLv90.Location = new System.Drawing.Point(72, 0);
+            this.ButtonSetToLv90.Name = "ButtonSetToLv90";
+            this.ButtonSetToLv90.Size = new System.Drawing.Size(43, 25);
+            this.ButtonSetToLv90.TabIndex = 3;
+            this.ButtonSetToLv90.Text = "Lv.90";
+            this.ButtonSetToLv90.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.ButtonSetToLv90.UseVisualStyleBackColor = true;
+            this.ButtonSetToLv90.Click += new System.EventHandler(this.ButtonSetToLv90_Click);
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -513,20 +527,6 @@
             this.label1.TabIndex = 5;
             this.label1.Text = "クイック調整 :";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // ButtonSetToTalent10
-            // 
-            this.ButtonSetToTalent10.AutoSize = true;
-            this.ButtonSetToTalent10.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ButtonSetToTalent10.Dock = System.Windows.Forms.DockStyle.Left;
-            this.ButtonSetToTalent10.Location = new System.Drawing.Point(162, 0);
-            this.ButtonSetToTalent10.Name = "ButtonSetToTalent10";
-            this.ButtonSetToTalent10.Size = new System.Drawing.Size(53, 25);
-            this.ButtonSetToTalent10.TabIndex = 6;
-            this.ButtonSetToTalent10.Text = "天賦10";
-            this.ButtonSetToTalent10.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
-            this.ButtonSetToTalent10.UseVisualStyleBackColor = true;
-            this.ButtonSetToTalent10.Click += new System.EventHandler(this.ButtonSetToTalent10_Click);
             // 
             // BatchWindow
             // 

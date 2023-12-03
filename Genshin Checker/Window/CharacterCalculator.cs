@@ -182,6 +182,26 @@ namespace Genshin_Checker.Window
                     if($"{e.Value}"=="5") e.CellStyle.BackColor = Color.FromArgb(0xFF,0xEE,0xAA);
                     else if ($"{e.Value}" == "4") e.CellStyle.BackColor = Color.FromArgb(0xCC, 0xAA, 0xFF);
                     break;
+                case "ToArrow":
+                case "ToLevel":
+                case "ToTalentLevel1":
+                case "ToTalentLevel2":
+                case "ToTalentLevel3":
+                    if ((bool)CharacterView[CharacterView.Columns["CalculateStatus"].Index, e.RowIndex].Value)
+                    {
+                        switch (CharacterView.Columns[e.ColumnIndex].Name)
+                        {
+                            case "ToArrow":
+                                e.Value = "⇒";
+                                break;
+                        }
+                    }
+                    else
+                    {
+                        e.CellStyle.BackColor = Color.LightGray;
+                        e.Value = "";
+                    }
+                    break;
             }
         }
 
@@ -249,6 +269,22 @@ namespace Genshin_Checker.Window
         private void ButtonSelectAll_Click(object sender, EventArgs e)
         {
             CharacterView.SelectAll();
+        }
+
+        private void CharacterView_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            if(e.ColumnIndex == CharacterView.Columns["CalculateStatus"].Index)
+            {
+                CharacterView.InvalidateRow(e.RowIndex);
+            }
+        }
+
+        private void CharacterView_CurrentCellDirtyStateChanged(object sender, EventArgs e)
+        {
+            if (CharacterView.IsCurrentCellDirty)
+            {
+                CharacterView.CommitEdit(DataGridViewDataErrorContexts.Commit);
+            }
         }
     }
 }
