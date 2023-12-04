@@ -166,10 +166,20 @@ namespace Genshin_Checker.Window
 
         private void button1_Click(object sender, EventArgs e)
         {
-            foreach(DataGridViewColumn column in CharacterView.Columns)
+            List<CalculateResult.Input> inputs = new();
+            foreach(DataGridViewRow row in CharacterView.Rows)
             {
-                Trace.WriteLine($"{column.Name} - {column.Width}px");
+                if (!(bool)row.Cells["CalculateStatus"].Value) continue;
+                inputs.Add(new() { 
+                    characterID = (int)row.Cells["ID"].Value,
+                    Level = new((int)row.Cells["CurrentLevel"].Value, (int)row.Cells["ToLevel"].Value),
+                    Talent1 = new((int)row.Cells["CurrentTalentLevel1"].Value, (int)row.Cells["ToTalentLevel1"].Value),
+                    Talent2 = new((int)row.Cells["CurrentTalentLevel2"].Value, (int)row.Cells["ToTalentLevel2"].Value),
+                    Talent3 = new((int)row.Cells["CurrentTalentLevel3"].Value, (int)row.Cells["ToTalentLevel3"].Value),
+                });
             }
+
+            new CalculateResult(account, inputs).ShowDialog();
         }
 
         private void CharacterView_CellEnter(object sender, DataGridViewCellEventArgs e)
@@ -335,7 +345,7 @@ namespace Genshin_Checker.Window
             }
             catch(Exception ex)
             {
-                new ErrorMessage("アカウントセーブデータに異常があります。", ex.ToString());
+                new ErrorMessage("アカウントセーブデータに異常があります。", ex.ToString()).ShowDialog();
                 return new();
             }
 

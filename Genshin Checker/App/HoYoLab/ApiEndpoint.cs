@@ -179,6 +179,22 @@ namespace Genshin_Checker.App.HoYoLab
             if (root.Data == null) throw new HoYoLabAPIException(root.Retcode, root.Message);
             return root.Data;
         }
+
+        /// <summary>
+        /// 育成計算機
+        /// </summary>
+        /// <param name="data">キャラクターの計算変数</param>
+        /// <returns></returns>
+        /// <exception cref="InvalidDataException"></exception>
+        public async Task<Model.HoYoLab.CalculatorComputeGet.Data> ComputeCalculate(Model.HoYoLab.CalculatorComputePost.Root data)
+        {
+            if (!Account.IsAuthed) throw new UserNotAuthenticatedException(Account.UID);
+            var url = $"https://sg-public-api.hoyolab.com/event/calculateos/compute";
+            var json = await WebRequest.HoYoPostRequest(url, Account.Cookie,JsonConvert.SerializeObject(data));
+            var root = JsonChecker<Model.HoYoLab.CalculatorComputeGet.Root>.Check(json);
+            if (root.Data == null) throw new HoYoLabAPIException(root.Retcode, root.Message);
+            return root.Data;
+        }
         /// <summary>
         /// EnkaNetwork
         /// </summary>
