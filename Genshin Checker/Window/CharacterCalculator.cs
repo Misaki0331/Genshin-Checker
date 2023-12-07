@@ -15,6 +15,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Genshin_Checker.App.General.Convert;
 
 namespace Genshin_Checker.Window
 {
@@ -25,76 +26,6 @@ namespace Genshin_Checker.Window
         {
             InitializeComponent();
             this.account = account;
-        }
-        string ElementLocalize(string? str)
-        {
-            if (str == null) return "？";
-            return str.ToLower() switch
-            {
-                "anemo" => "風",
-                "geo" => "岩",
-                "electro" => "雷",
-                "dendro" => "草",
-                "hydro" => "水",
-                "pyro" => "炎",
-                "cryo" => "氷",
-                _ => "？",
-            };
-        }
-        enum ElementType
-        {
-            Anemo,
-            Geo,
-            Electro,
-            Dendro,
-            Hydro,
-            Pyro,
-            Cryo,
-            Unknown,
-        }
-        ElementType GetElementEnum(string? str)
-        {
-            if (str == null) return ElementType.Unknown; return 
-                str.ToLower() switch
-            {
-                "anemo" => ElementType.Anemo,
-                "geo" => ElementType.Geo,
-                "electro" => ElementType.Electro,
-                "dendro" => ElementType.Dendro,
-                "hydro" => ElementType.Hydro,
-                "pyro" => ElementType.Pyro,
-                "cryo" => ElementType.Cryo,
-                _ => ElementType.Unknown,
-            };
-        }
-        string ElementLocalize(ElementType type)
-        {
-            return type switch
-            {
-                ElementType.Anemo => "風",
-                ElementType.Geo => "岩",
-                ElementType.Electro => "雷",
-                ElementType.Dendro => "草",
-                ElementType.Hydro => "水",
-                ElementType.Pyro => "炎",
-                ElementType.Cryo => "氷",
-                _ => "？",
-            };
-        }
-        Color GetElementBackgroundColor(ElementType type)
-        {
-
-            return type switch
-            {
-                ElementType.Anemo => Color.FromArgb(0xDD, 0xFF, 0xDD),
-                ElementType.Geo => Color.FromArgb(0xFF, 0xDD, 0xAA),
-                ElementType.Electro => Color.FromArgb(0xCC, 0xAA, 0xFF),
-                ElementType.Dendro => Color.FromArgb(0xAA, 0xFF, 0xAA),
-                ElementType.Hydro => Color.FromArgb(0xAA, 0xCC, 0xFF),
-                ElementType.Pyro => Color.FromArgb(0xFF, 0xAA, 0xAA),
-                ElementType.Cryo => Color.FromArgb(0xBB,0xFF,0xFF),
-                _ => Color.White,
-            };
         }
         private async void CharacterCalculator_Load(object sender, EventArgs e)
         {
@@ -170,12 +101,18 @@ namespace Genshin_Checker.Window
             foreach(DataGridViewRow row in CharacterView.Rows)
             {
                 if (!(bool)row.Cells["CalculateStatus"].Value) continue;
+                if ((int)row.Cells["CurrentLevel"].Value == (int)row.Cells["ToLevel"].Value &&
+                    (int)row.Cells["CurrentTalentLevel1"].Value == (int)row.Cells["ToTalentLevel1"].Value &&
+                    (int)row.Cells["CurrentTalentLevel2"].Value == (int)row.Cells["ToTalentLevel2"].Value &&
+                    (int)row.Cells["CurrentTalentLevel3"].Value == (int)row.Cells["ToTalentLevel3"].Value) continue;
                 inputs.Add(new() { 
                     characterID = (int)row.Cells["ID"].Value,
                     Level = new((int)row.Cells["CurrentLevel"].Value, (int)row.Cells["ToLevel"].Value),
-                    Talent1 = new((int)row.Cells["CurrentTalentLevel1"].Value, (int)row.Cells["ToTalentLevel1"].Value),
-                    Talent2 = new((int)row.Cells["CurrentTalentLevel2"].Value, (int)row.Cells["ToTalentLevel2"].Value),
-                    Talent3 = new((int)row.Cells["CurrentTalentLevel3"].Value, (int)row.Cells["ToTalentLevel3"].Value),
+                    Talent = new(){
+                        new((int)row.Cells["CurrentTalentLevel1"].Value, (int)row.Cells["ToTalentLevel1"].Value),
+                        new((int)row.Cells["CurrentTalentLevel2"].Value, (int)row.Cells["ToTalentLevel2"].Value),
+                        new((int)row.Cells["CurrentTalentLevel3"].Value, (int)row.Cells["ToTalentLevel3"].Value),
+                    }
                 });
             }
 
@@ -191,12 +128,12 @@ namespace Genshin_Checker.Window
             switch (CharacterView.Columns[e.ColumnIndex].Name)
             {
                 case "Element":
-                    e.Value = ElementLocalize(GetElementEnum((string?)e.Value));
-                    e.CellStyle.BackColor = GetElementBackgroundColor(GetElementEnum((string?)CharacterView[e.ColumnIndex,e.RowIndex].Value));
+                    e.Value = Element.GetLocalizeName(Element.GetElementEnum((string?)e.Value));
+                    e.CellStyle.BackColor = Element.GetBackgroundColor(Element.GetElementEnum((string?)CharacterView[e.ColumnIndex,e.RowIndex].Value));
                     break;
                 case "CharacterName":
-                    var element = GetElementEnum((string?)CharacterView[CharacterView.Columns["CharacterName"].Index-1,e.RowIndex].Value);
-                    e.CellStyle.BackColor = GetElementBackgroundColor(element);
+                    var element = Element.GetElementEnum((string?)CharacterView[CharacterView.Columns["CharacterName"].Index-1,e.RowIndex].Value);
+                    e.CellStyle.BackColor = Element.GetBackgroundColor(element);
                     break;
                 case "Rarelity":
                     if($"{e.Value}"=="5") e.CellStyle.BackColor = Color.FromArgb(0xFF,0xEE,0xAA);

@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Genshin_Checker.App.General.Convert;
 
 namespace Genshin_Checker.Window.ExWindow.CharacterCalculator
 {
@@ -23,39 +24,11 @@ namespace Genshin_Checker.Window.ExWindow.CharacterCalculator
             Inputs = inputs;
             Account = account;
         }
-        enum ElementType
-        {
-            Anemo = 2,
-            Geo = 3,
-            Electro = 5,
-            Dendro = 4,
-            Hydro = 6,
-            Pyro = 1,
-            Cryo = 7,
-            Unknown = 0,
-        }
-        ElementType GetElementEnum(string? str)
-        {
-            if (str == null) return ElementType.Unknown; return
-                str.ToLower() switch
-                {
-                    "anemo" => ElementType.Anemo,
-                    "geo" => ElementType.Geo,
-                    "electro" => ElementType.Electro,
-                    "dendro" => ElementType.Dendro,
-                    "hydro" => ElementType.Hydro,
-                    "pyro" => ElementType.Pyro,
-                    "cryo" => ElementType.Cryo,
-                    _ => ElementType.Unknown,
-                };
-        }
         public class Input
         {
             public int characterID { get; set; }
             public Range Level { get; set; } = new(1,90);
-            public Range Talent1 { get; set; } = new(1, 10);
-            public Range Talent2 { get; set; } = new(1, 10);
-            public Range Talent3 { get; set; } = new(1, 10);
+            public List<Range> Talent { get; set; } = new();
         }
         public class Range
         {
@@ -85,9 +58,10 @@ namespace Genshin_Checker.Window.ExWindow.CharacterCalculator
                     var character = characters.avatars.Find(a => a.id == input.characterID);
                     if(character==null)throw new ArgumentNullException(nameof(character),$"{input.characterID}が見つかりません。");
                     var skilllist = new List<Model.HoYoLab.CalculatorComputePost.SkillList>();
-                    skilllist.Add(new() { id = skill[0].group_id, level_current = input.Talent1.Current, level_target = input.Talent1.To });
-                    skilllist.Add(new() { id = skill[1].group_id, level_current = input.Talent2.Current, level_target = input.Talent2.To });
-                    skilllist.Add(new() { id = skill[2].group_id, level_current = input.Talent3.Current, level_target = input.Talent3.To });
+                    for (int i=0;i<skill.Count;i++)
+                    {
+                        skilllist.Add(new() { id = skill[i].group_id, level_current = input.Talent[i].Current, level_target = input.Talent[i].To });
+                    }
                     foreach(var data in detail.skill_list.FindAll(a => a.max_level == 1))
                     {
                         skilllist.Add(new() { id = data.group_id, level_current = 1, level_target = 1 });
@@ -97,7 +71,7 @@ namespace Genshin_Checker.Window.ExWindow.CharacterCalculator
                         avatar_id = input.characterID,
                         avatar_level_current = input.Level.Current,
                         avatar_level_target = input.Level.To,
-                        element_attr_id = (int)GetElementEnum(character.element),
+                        element_attr_id = (int)Element.GetElementEnum(character.element),
                         skill_list= skilllist
                     };
                     var result = await Account.Endpoint.ComputeCalculate(post);
@@ -269,7 +243,15 @@ namespace Genshin_Checker.Window.ExWindow.CharacterCalculator
                         }
                     }
                 }
-            }catch(Exception ex)
+
+                ViewAscensionMaterial.Sort(ViewAscensionMaterial.Columns["AscensionTypeID"], ListSortDirection.Ascending);
+                ViewBossItem.Sort(ViewBossItem.Columns["BossItemID"], ListSortDirection.Ascending);
+                ViewLocalSpecialtyItem.Sort(ViewLocalSpecialtyItem.Columns["LocalSpecialtyID"], ListSortDirection.Ascending);
+                ViewTalentItems.Sort(ViewTalentItems.Columns["TalentItemID"], ListSortDirection.Ascending);
+                ViewWeeklyBossItems.Sort(ViewWeeklyBossItems.Columns["WeeklyBossItemID"], ListSortDirection.Ascending);
+                ViewEnemyItems.Sort(ViewEnemyItems.Columns["EnemyItemID"], ListSortDirection.Ascending);
+            }
+            catch(Exception ex)
             {
                 new ErrorMessage("データの読み込みに失敗しました。", ex.ToString()).ShowDialog();
             }

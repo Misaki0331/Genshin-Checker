@@ -34,10 +34,11 @@
             this.ButtonSelectAll = new System.Windows.Forms.Button();
             this.ButtonBatch = new System.Windows.Forms.Button();
             this.CharacterView = new System.Windows.Forms.DataGridView();
+            this.ErrorHandling = new System.Windows.Forms.Timer(this.components);
             this.CalculateStatus = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Rarelity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Element = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ElementType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CharacterName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Weapon = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Fetter = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -50,7 +51,6 @@
             this.ToTalentLevel1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ToTalentLevel2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ToTalentLevel3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ErrorHandling = new System.Windows.Forms.Timer(this.components);
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CharacterView)).BeginInit();
             this.SuspendLayout();
@@ -110,7 +110,7 @@
             this.CalculateStatus,
             this.ID,
             this.Rarelity,
-            this.Element,
+            this.ElementType,
             this.CharacterName,
             this.Weapon,
             this.Fetter,
@@ -137,6 +137,11 @@
             this.CharacterView.CurrentCellDirtyStateChanged += new System.EventHandler(this.CharacterView_CurrentCellDirtyStateChanged);
             this.CharacterView.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.CharacterView_DataError);
             // 
+            // ErrorHandling
+            // 
+            this.ErrorHandling.Interval = 500;
+            this.ErrorHandling.Tick += new System.EventHandler(this.ErrorHandling_Tick);
+            // 
             // CalculateStatus
             // 
             this.CalculateStatus.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
@@ -144,7 +149,8 @@
             this.CalculateStatus.HeaderText = "";
             this.CalculateStatus.Name = "CalculateStatus";
             this.CalculateStatus.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.CalculateStatus.Width = 5;
+            this.CalculateStatus.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.CalculateStatus.Width = 19;
             // 
             // ID
             // 
@@ -165,16 +171,16 @@
             this.Rarelity.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.Rarelity.Width = 20;
             // 
-            // Element
+            // ElementType
             // 
-            this.Element.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.Element.Frozen = true;
-            this.Element.HeaderText = "元素";
-            this.Element.MinimumWidth = 40;
-            this.Element.Name = "Element";
-            this.Element.ReadOnly = true;
-            this.Element.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Element.Width = 40;
+            this.ElementType.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.ElementType.Frozen = true;
+            this.ElementType.HeaderText = "元素";
+            this.ElementType.MinimumWidth = 40;
+            this.ElementType.Name = "ElementType";
+            this.ElementType.ReadOnly = true;
+            this.ElementType.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.ElementType.Width = 40;
             // 
             // CharacterName
             // 
@@ -313,11 +319,6 @@
             this.ToTalentLevel3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.ToTalentLevel3.Width = 45;
             // 
-            // ErrorHandling
-            // 
-            this.ErrorHandling.Interval = 500;
-            this.ErrorHandling.Tick += new System.EventHandler(this.ErrorHandling_Tick);
-            // 
             // CharacterCalculator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -347,7 +348,7 @@
         private DataGridViewCheckBoxColumn CalculateStatus;
         private DataGridViewTextBoxColumn ID;
         private DataGridViewTextBoxColumn Rarelity;
-        private DataGridViewTextBoxColumn Element;
+        private DataGridViewTextBoxColumn ElementType;
         private DataGridViewTextBoxColumn CharacterName;
         private DataGridViewTextBoxColumn Weapon;
         private DataGridViewTextBoxColumn Fetter;
