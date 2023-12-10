@@ -11,7 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Genshin_Checker.Window
+namespace Genshin_Checker.Window.Popup
 {
     public partial class FatalError : Form
     {

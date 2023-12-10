@@ -12,6 +12,7 @@ using System.Windows.Forms;
 using Genshin_Checker.UI.Control.GameRecord.CharacterDetail;
 using LiveChartsCore.Drawing;
 using static Genshin_Checker.App.HoYoLab.Account;
+using Genshin_Checker.Window.Popup;
 
 namespace Genshin_Checker.Window.ExWindow.GameRecords
 {

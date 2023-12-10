@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TimeGraph));
             this.GraphTab = new System.Windows.Forms.TabControl();
             this.Day = new System.Windows.Forms.TabPage();
             this.Week = new System.Windows.Forms.TabPage();
@@ -182,7 +181,6 @@
             this.ClientSize = new System.Drawing.Size(627, 463);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.GraphTab);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "TimeGraph";
             this.Text = "詳細プレイ時間";
             this.GraphTab.ResumeLayout(false);

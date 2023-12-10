@@ -165,7 +165,7 @@
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(388, 220);
             this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "月のデータ";
+            this.tabPage1.Text = "月間のデータ";
             // 
             // Month_Mora_Diff
             // 

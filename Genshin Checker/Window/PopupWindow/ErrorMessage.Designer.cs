@@ -1,4 +1,4 @@
-﻿namespace Genshin_Checker.Window
+﻿namespace Genshin_Checker.Window.Popup
 {
     partial class ErrorMessage
     {

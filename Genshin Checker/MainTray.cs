@@ -1,16 +1,11 @@
-using System;
-using System.Text;
-using System.Windows.Forms;
-using System.Runtime.InteropServices;
 using System.Diagnostics;
 using Genshin_Checker.App;
 using Genshin_Checker.Window;
-using Newtonsoft.Json;
-using Genshin_Checker.Model.HoYoLab;
 using Genshin_Checker.App.HoYoLab;
 using Genshin_Checker.App.Game;
 using Genshin_Checker.App.General;
 using Genshin_Checker.Store;
+using Genshin_Checker.Window.Popup;
 
 namespace Genshin_Checker
 {

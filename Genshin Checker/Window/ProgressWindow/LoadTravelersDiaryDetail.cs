@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Genshin_Checker.Window.Popup;
 
 namespace Genshin_Checker.Window.ProgressWindow
 {

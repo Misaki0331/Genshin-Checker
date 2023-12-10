@@ -1,26 +1,10 @@
 ﻿using LiveChartsCore;
-using LiveChartsCore.Defaults;
-using LiveChartsCore.SkiaSharpView.Painting;
 using LiveChartsCore.SkiaSharpView;
 using LiveChartsCore.SkiaSharpView.WinForms;
-using SkiaSharp;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Newtonsoft.Json.Linq;
 using System.Runtime.InteropServices;
-using System.Windows.Forms.VisualStyles;
-using LiveChartsCore.Kernel.Sketches;
-using System.Globalization;
 using Genshin_Checker.App.HoYoLab;
 using System.Diagnostics;
+using Genshin_Checker.Window.Popup;
 
 namespace Genshin_Checker.Window
 {

@@ -82,6 +82,9 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Window\BrowserApp\HoYoApp.cs" />
+    <Compile Update="Window\PopupWindow\ChooseMessage.cs">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>

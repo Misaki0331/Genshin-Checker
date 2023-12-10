@@ -15,6 +15,7 @@ namespace Genshin_Checker.App.HoYoLab
         {
             ServerUpdate.Tick += Timeout_Tick;
             Cache = new();
+            ServerUpdate.Start();
         }
         private class DataList{
             public DateTime UpdateTime;
@@ -23,6 +24,7 @@ namespace Genshin_Checker.App.HoYoLab
         }
         List<DataList> Cache;
         public DateTime LatestUpdateTime = DateTime.MinValue;
+        readonly SemaphoreSlim UpdateSemaphore = new(1, 1);
         /// <summary>
         /// 定期実行関数
         /// </summary>
@@ -78,6 +80,8 @@ namespace Genshin_Checker.App.HoYoLab
         /// <returns>成功したかどうか</returns>
         public async Task<bool> UpdateGameData(bool Force=false)
         {
+            await UpdateSemaphore.WaitAsync();
+            bool IsSuccessed = false;
             try
             {
                 var characters = await account.Characters.GetData();
@@ -87,18 +91,19 @@ namespace Genshin_Checker.App.HoYoLab
                         try
                         {
                             var data = await GetData(character.id, Force);
-                            Trace.WriteLine($"OK CharacterID:{character.id}");
                             break;
                         }
                         catch (Account.HoYoLabAPIException ex)
                         {
+                            //TooManyRequestsが返ってきたら時間を空けて再リクエストを送る
                             if (ex.Retcode == 2000000429)
                             {
-                                if (i == 29) throw;
+                                if (i == 29) throw new ArgumentException("試行回数を超えました。",ex);
                                 Trace.WriteLine($"Ratelimit exceeded. please wait... {i}");
                                 await Task.Delay(10000);
-                            }else
-                            throw;
+                            }
+                            else
+                                throw;
                         }
                         catch (Exception)
                         {
@@ -107,7 +112,7 @@ namespace Genshin_Checker.App.HoYoLab
                         }
                 }
                 LatestUpdateTime = DateTime.UtcNow;
-                return true;
+                IsSuccessed = true;
             }
             catch (Account.HoYoLabAPIException ex)
             {
@@ -117,14 +122,21 @@ namespace Genshin_Checker.App.HoYoLab
             {
                 Trace.WriteLine(ex.ToString());
             }
-            return false;
+            finally
+            {
+                UpdateSemaphore.Release();
+            }
+            return IsSuccessed;
         }
-        public async Task<bool> IsReadyCacheData()
+        public async Task<bool> IsReadyCacheData(int Timeout = -1)
         {
             var data = await account.Characters.GetData();
             foreach(var character in data.avatars)
             {
-                if (Cache.Find(a => a.CharacterID == character.id) == null) return false;
+                var cache = Cache.Find(a => a.CharacterID == character.id &&
+                a.UpdateTime.AddSeconds(Timeout < 0 ? CacheSecond : Timeout) > DateTime.UtcNow);
+                if (cache==null)
+                    return false;
             }
             return true;
         }

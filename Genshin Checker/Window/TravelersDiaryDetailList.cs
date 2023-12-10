@@ -3,20 +3,10 @@ using Genshin_Checker.App.HoYoLab;
 using Genshin_Checker.App.General;
 using Genshin_Checker.Model.UserData.TravelersDiary.EventName;
 using Genshin_Checker.Model.UserData.TravelersDiary.EventLists;
-using HarfBuzzSharp;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.IO;
-using System.Linq;
-using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using static Genshin_Checker.Window.ProgressWindow.LoadTravelersDiaryDetail;
+using Genshin_Checker.Window.Popup;
 
 namespace Genshin_Checker.Window
 {

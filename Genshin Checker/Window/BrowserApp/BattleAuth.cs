@@ -1,19 +1,9 @@
 ﻿using Genshin_Checker.App.HoYoLab;
 using Genshin_Checker.Window;
-using Microsoft.Web.WebView2.Core;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
-using System.Drawing;
-using System.Linq;
-using System.Net;
 using System.Text;
-using System.Threading.Tasks;
-using System.Web;
-using System.Windows.Forms;
+using Genshin_Checker.Window.Popup;
 
 namespace Genshin_Checker.BrowserApp
 {

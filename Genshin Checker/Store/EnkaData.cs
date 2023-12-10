@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using Genshin_Checker.Model.EnkaNetwork.Store;
 using Genshin_Checker.Window;
 using Microsoft.VisualBasic;
+using Genshin_Checker.Window.Popup;
 
 namespace Genshin_Checker.Store
 {

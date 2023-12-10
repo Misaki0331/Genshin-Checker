@@ -3,19 +3,9 @@ using Genshin_Checker.App.HoYoLab;
 using Genshin_Checker.Model.HoYoLab.CharacterDetail;
 using Genshin_Checker.Window.ExWindow.CharacterCalculator;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
-using System.Data;
-using System.Data.Common;
-using System.Diagnostics;
-using System.Drawing;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using Genshin_Checker.App.General.Convert;
+using Genshin_Checker.Window.Popup;
 
 namespace Genshin_Checker.Window
 {
@@ -100,18 +90,18 @@ namespace Genshin_Checker.Window
             List<CalculateResult.Input> inputs = new();
             foreach(DataGridViewRow row in CharacterView.Rows)
             {
-                if (!(bool)row.Cells["CalculateStatus"].Value) continue;
-                if ((int)row.Cells["CurrentLevel"].Value == (int)row.Cells["ToLevel"].Value &&
-                    (int)row.Cells["CurrentTalentLevel1"].Value == (int)row.Cells["ToTalentLevel1"].Value &&
-                    (int)row.Cells["CurrentTalentLevel2"].Value == (int)row.Cells["ToTalentLevel2"].Value &&
-                    (int)row.Cells["CurrentTalentLevel3"].Value == (int)row.Cells["ToTalentLevel3"].Value) continue;
+                if (!(bool)row.Cells[nameof(CalculateStatus)].Value) continue;
+                if ((int)row.Cells[nameof(CurrentLevel)].Value == (int)row.Cells[nameof(ToLevel)].Value &&
+                    (int)row.Cells[nameof(CurrentTalentLevel1)].Value == (int)row.Cells[nameof(ToTalentLevel1)].Value &&
+                    (int)row.Cells[nameof(CurrentTalentLevel2)].Value == (int)row.Cells[nameof(ToTalentLevel2)].Value &&
+                    (int)row.Cells[nameof(CurrentTalentLevel3)].Value == (int)row.Cells[nameof(ToTalentLevel3)].Value) continue;
                 inputs.Add(new() { 
-                    characterID = (int)row.Cells["ID"].Value,
-                    Level = new((int)row.Cells["CurrentLevel"].Value, (int)row.Cells["ToLevel"].Value),
+                    characterID = (int)row.Cells[nameof(ID)].Value,
+                    Level = new((int)row.Cells[nameof(CurrentLevel)].Value, (int)row.Cells[nameof(ToLevel)].Value),
                     Talent = new(){
-                        new((int)row.Cells["CurrentTalentLevel1"].Value, (int)row.Cells["ToTalentLevel1"].Value),
-                        new((int)row.Cells["CurrentTalentLevel2"].Value, (int)row.Cells["ToTalentLevel2"].Value),
-                        new((int)row.Cells["CurrentTalentLevel3"].Value, (int)row.Cells["ToTalentLevel3"].Value),
+                        new((int)row.Cells[nameof(CurrentTalentLevel1)].Value, (int)row.Cells[nameof(ToTalentLevel1)].Value),
+                        new((int)row.Cells[nameof(CurrentTalentLevel2)].Value, (int)row.Cells[nameof(ToTalentLevel2)].Value),
+                        new((int)row.Cells[nameof(CurrentTalentLevel3)].Value, (int)row.Cells[nameof(ToTalentLevel3)].Value),
                     }
                 });
             }
@@ -127,28 +117,28 @@ namespace Genshin_Checker.Window
         {
             switch (CharacterView.Columns[e.ColumnIndex].Name)
             {
-                case "Element":
+                case nameof(ElementType):
                     e.Value = Element.GetLocalizeName(Element.GetElementEnum((string?)e.Value));
                     e.CellStyle.BackColor = Element.GetBackgroundColor(Element.GetElementEnum((string?)CharacterView[e.ColumnIndex,e.RowIndex].Value));
                     break;
-                case "CharacterName":
-                    var element = Element.GetElementEnum((string?)CharacterView[CharacterView.Columns["CharacterName"].Index-1,e.RowIndex].Value);
+                case nameof(CharacterName):
+                    var element = Element.GetElementEnum((string?)CharacterView[CharacterView.Columns[nameof(CharacterName)].Index-1,e.RowIndex].Value);
                     e.CellStyle.BackColor = Element.GetBackgroundColor(element);
                     break;
-                case "Rarelity":
+                case nameof(Rarelity):
                     if($"{e.Value}"=="5") e.CellStyle.BackColor = Color.FromArgb(0xFF,0xEE,0xAA);
                     else if ($"{e.Value}" == "4") e.CellStyle.BackColor = Color.FromArgb(0xCC, 0xAA, 0xFF);
                     break;
-                case "ToArrow":
-                case "ToLevel":
-                case "ToTalentLevel1":
-                case "ToTalentLevel2":
-                case "ToTalentLevel3":
-                    if ((bool)CharacterView[CharacterView.Columns["CalculateStatus"].Index, e.RowIndex].Value)
+                case nameof(ToArrow):
+                case nameof(ToLevel):
+                case nameof(ToTalentLevel1):
+                case nameof(ToTalentLevel2):
+                case nameof(ToTalentLevel3):
+                    if ((bool)CharacterView[CharacterView.Columns[nameof(CalculateStatus)].Index, e.RowIndex].Value)
                     {
                         switch (CharacterView.Columns[e.ColumnIndex].Name)
                         {
-                            case "ToArrow":
+                            case nameof(ToArrow):
                                 e.Value = "⇒";
                                 break;
                         }
@@ -173,30 +163,30 @@ namespace Genshin_Checker.Window
                 var form = new BatchWindow(new()
                 {
                     IsMultiSelect = false,
-                    CharacterName = (string)select[0].Cells["CharacterName"].Value,
+                    CharacterName = (string)select[0].Cells[nameof(CharacterName)].Value,
                     Talent1Name = skills[0].name,
                     Talent2Name = skills[1].name,
                     Talent3Name = skills[2].name,
-                    MinLevel = (int)select[0].Cells["CurrentLevel"].Value,
-                    MinTalent1 = (int)select[0].Cells["CurrentTalentLevel1"].Value,
-                    MinTalent2 = (int)select[0].Cells["CurrentTalentLevel2"].Value,
-                    MinTalent3 = (int)select[0].Cells["CurrentTalentLevel3"].Value,
-                    CurrentLevel = (int)select[0].Cells["ToLevel"].Value,
-                    CurrentTalent1 = (int)select[0].Cells["ToTalentLevel1"].Value,
-                    CurrentTalent2 = (int)select[0].Cells["ToTalentLevel2"].Value,
-                    CurrentTalent3 = (int)select[0].Cells["ToTalentLevel3"].Value,
-                    StatusEnabled = (bool)select[0].Cells["CalculateStatus"].Value,
+                    MinLevel = (int)select[0].Cells[nameof(CurrentLevel)].Value,
+                    MinTalent1 = (int)select[0].Cells[nameof(CurrentTalentLevel1)].Value,
+                    MinTalent2 = (int)select[0].Cells[nameof(CurrentTalentLevel2)].Value,
+                    MinTalent3 = (int)select[0].Cells[nameof(CurrentTalentLevel3)].Value,
+                    CurrentLevel = (int)select[0].Cells[nameof(ToLevel)].Value,
+                    CurrentTalent1 = (int)select[0].Cells[nameof(ToTalentLevel1)].Value,
+                    CurrentTalent2 = (int)select[0].Cells[nameof(ToTalentLevel2)].Value,
+                    CurrentTalent3 = (int)select[0].Cells[nameof(ToTalentLevel3)].Value,
+                    StatusEnabled = (bool)select[0].Cells[nameof(CalculateStatus)].Value,
                 });
                 form.ShowDialog();
                 var change = form.Output;
                 if (change.IsApplied)
                 {
-                    select[0].Cells["ToLevel"].Value = change.Level;
-                    select[0].Cells["ToTalentLevel1"].Value = change.Talent1;
-                    select[0].Cells["ToTalentLevel2"].Value = change.Talent2;
-                    select[0].Cells["ToTalentLevel3"].Value = change.Talent3;
+                    select[0].Cells[nameof(ToLevel)].Value = change.Level;
+                    select[0].Cells[nameof(ToTalentLevel1)].Value = change.Talent1;
+                    select[0].Cells[nameof(ToTalentLevel2)].Value = change.Talent2;
+                    select[0].Cells[nameof(ToTalentLevel3)].Value = change.Talent3;
                     if (change.StatusEnabled != null) 
-                        select[0].Cells["CalculateStatus"].Value = change.StatusEnabled;
+                        select[0].Cells[nameof(CalculateStatus)].Value = change.StatusEnabled;
                     DataSave();
                 }
             }else if(CharacterView.SelectedRows.Count > 1) {
@@ -210,20 +200,20 @@ namespace Genshin_Checker.Window
                 {
                     foreach(DataGridViewRow row in select)
                     {
-                        if (change.Level >= (int)row.Cells["CurrentLevel"].Value)
-                            row.Cells["ToLevel"].Value = change.Level;
-                        else row.Cells["ToLevel"].Value = (int)row.Cells["CurrentLevel"].Value;
-                        if (change.Talent1 >= (int)row.Cells["CurrentTalentLevel1"].Value)
-                            row.Cells["ToTalentLevel1"].Value = change.Talent1;
-                        else row.Cells["ToTalentLevel1"].Value = (int)row.Cells["CurrentTalentLevel1"].Value;
-                        if (change.Talent2 >= (int)row.Cells["CurrentTalentLevel2"].Value)
-                            row.Cells["ToTalentLevel2"].Value = change.Talent2;
-                        else row.Cells["ToTalentLevel2"].Value = (int)row.Cells["CurrentTalentLevel2"].Value;
-                        if (change.Talent3 >= (int)row.Cells["CurrentTalentLevel3"].Value)
-                            row.Cells["ToTalentLevel3"].Value = change.Talent3;
-                        else row.Cells["ToTalentLevel3"].Value = (int)row.Cells["CurrentTalentLevel3"].Value;
+                        if (change.Level >= (int)row.Cells[nameof(CurrentLevel)].Value)
+                            row.Cells[nameof(ToLevel)].Value = change.Level;
+                        else row.Cells[nameof(ToLevel)].Value = (int)row.Cells[nameof(CurrentLevel)].Value;
+                        if (change.Talent1 >= (int)row.Cells[nameof(CurrentTalentLevel1)].Value)
+                            row.Cells[nameof(ToTalentLevel1)].Value = change.Talent1;
+                        else row.Cells[nameof(ToTalentLevel1)].Value = (int)row.Cells[nameof(CurrentTalentLevel1)].Value;
+                        if (change.Talent2 >= (int)row.Cells[nameof(CurrentTalentLevel2)].Value)
+                            row.Cells[nameof(ToTalentLevel2)].Value = change.Talent2;
+                        else row.Cells[nameof(ToTalentLevel2)].Value = (int)row.Cells[nameof(CurrentTalentLevel2)].Value;
+                        if (change.Talent3 >= (int)row.Cells[nameof(CurrentTalentLevel3)].Value)
+                            row.Cells[nameof(ToTalentLevel3)].Value = change.Talent3;
+                        else row.Cells[nameof(ToTalentLevel3)].Value = (int)row.Cells[nameof(CurrentTalentLevel3)].Value;
                         if (change.StatusEnabled != null) 
-                            row.Cells["CalculateStatus"].Value = change.StatusEnabled;
+                            row.Cells[nameof(CalculateStatus)].Value = change.StatusEnabled;
                     }
                     DataSave();
                 }
@@ -237,7 +227,7 @@ namespace Genshin_Checker.Window
 
         private void CharacterView_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-            if(e.ColumnIndex == CharacterView.Columns["CalculateStatus"].Index)
+            if(e.ColumnIndex == CharacterView.Columns[nameof(CalculateStatus)].Index)
             {
                 CharacterView.InvalidateRow(e.RowIndex);
                 DataSave();
@@ -257,13 +247,13 @@ namespace Genshin_Checker.Window
             Model.UserData.CharacterCalculator.CharacterObjective.Root data = new();
             foreach(DataGridViewRow row in CharacterView.Rows)
             {
-                data.Datas.Add((int)row.Cells["ID"].Value, new()
+                data.Datas.Add((int)row.Cells[nameof(ID)].Value, new()
                 {
-                    Enabled = (bool)row.Cells["CalculateStatus"].Value,
-                    SetLevel = (int)row.Cells["ToLevel"].Value,
-                    SetTalent1 = (int)row.Cells["ToTalentLevel1"].Value,
-                    SetTalent2 = (int)row.Cells["ToTalentLevel2"].Value,
-                    SetTalent3 = (int)row.Cells["ToTalentLevel3"].Value,
+                    Enabled = (bool)row.Cells[nameof(CalculateStatus)].Value,
+                    SetLevel = (int)row.Cells[nameof(ToLevel)].Value,
+                    SetTalent1 = (int)row.Cells[nameof(ToTalentLevel1)].Value,
+                    SetTalent2 = (int)row.Cells[nameof(ToTalentLevel2)].Value,
+                    SetTalent3 = (int)row.Cells[nameof(ToTalentLevel3)].Value,
                 });
             }
             var regPath = $"UserData\\{account.UID}\\Character\\";

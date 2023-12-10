@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Genshin_Checker.App.General.Convert;
+using Genshin_Checker.Window.Popup;
 
 namespace Genshin_Checker.Window.ExWindow.CharacterCalculator
 {
@@ -53,10 +54,11 @@ namespace Genshin_Checker.Window.ExWindow.CharacterCalculator
                 foreach(Input input in Inputs)
                 {
                     var detail = await Account.CharacterDetail.GetData(input.characterID);
+                    //キャラクターのスキルを取得
                     var skill = detail.skill_list.FindAll(a => a.max_level != 1);
                     if (skill.Count != 3) throw new ArgumentException($"天賦は3つしか対応していません。キャラクターの天賦は {skill.Count} つあります");
                     var character = characters.avatars.Find(a => a.id == input.characterID);
-                    if(character==null)throw new ArgumentNullException(nameof(character),$"{input.characterID}が見つかりません。");
+                    if (character == null) throw new ArgumentNullException(nameof(character), $"{input.characterID}が見つかりません。");
                     var skilllist = new List<Model.HoYoLab.CalculatorComputePost.SkillList>();
                     for (int i=0;i<skill.Count;i++)
                     {
@@ -78,24 +80,24 @@ namespace Genshin_Checker.Window.ExWindow.CharacterCalculator
 
                     foreach(var data in result.avatar_consume)
                     {
-                        if (data.id == 202)
+                        if (data.id == 202) //モラ
                         {
                             CharacterMora += data.num;
                             CharacterMoraResult.Text = $"{CharacterMora:#,##0}";
                             TotalMoraResult.Text = $"{(TalentMora + CharacterMora):#,##0}";
                         }
-                        else if (data.id == 104003)
+                        else if (data.id == 104003) //大英雄の経験
                         {
                             CharacterExp += data.num;
                             CharacterExpResult.Text = $"{CharacterExp:#,##0}";
                         }
                         else if (data.id > 104100 && data.id < 104200)
                         {
-                            int id = (data.id - 104100) / 10;
+                            int id = (data.id - 104100) / 10; 
                             string str = "";
                             string type = "";
                             //Todo:ローカライズ忘れないように
-                            switch (id)
+                            switch (id) //アイテムidの10の位
                             {
                                 case 0: str = "輝くダイヤ"; break;
                                 case 1: str = "炎願のアゲート"; break;
@@ -106,50 +108,50 @@ namespace Genshin_Checker.Window.ExWindow.CharacterCalculator
                                 case 6: str = "哀切なアイスクリスタル"; break;
                                 case 7: str = "堅牢なトパーズ"; break;
                             }
-                            switch (data.id % 10)
+                            switch (data.id % 10) //アイテムIDの1の位
                             {
-                                case 1: type = "AscensionNumSliver"; break;
-                                case 2: type = "AscensionNumFragment"; break;
-                                case 3: type = "AscensionNumChunk"; break;
-                                case 4: type = "AscensionNumGemstone"; break;
+                                case 1: type = nameof(AscensionNumSliver); break;
+                                case 2: type = nameof(AscensionNumFragment); break;
+                                case 3: type = nameof(AscensionNumChunk); break;
+                                case 4: type = nameof(AscensionNumGemstone); break;
                                 default: throw new ArgumentException($"{data.id} - {data.name} は不正な値です。");
                             }
-                            var row = ViewAscensionMaterial.Rows.Cast<DataGridViewRow>().ToList().Find(a => (int)a.Cells["AscensionTypeID"].Value == id);
+                            var row = ViewAscensionMaterial.Rows.Cast<DataGridViewRow>().ToList().Find(a => (int)a.Cells[nameof(AscensionTypeID)].Value == id);
                             if (row == null)
                             {
                                 ViewAscensionMaterial.Rows.Add(id, str, 0, 0, 0, 0);
-                                row = ViewAscensionMaterial.Rows.Cast<DataGridViewRow>().ToList().Find(a => (int)a.Cells["AscensionTypeID"].Value == id);
+                                row = ViewAscensionMaterial.Rows.Cast<DataGridViewRow>().ToList().Find(a => (int)a.Cells[nameof(AscensionTypeID)].Value == id);
                             }
                             if (row != null) row.Cells[type].Value = (int)row.Cells[type].Value + data.num;
                         }
                         else if (data.id > 113000 && data.id < 114000)
                         {
-                            var row = ViewBossItem.Rows.Cast<DataGridViewRow>().ToList().Find(a => (int)a.Cells["BossItemID"].Value == data.id);
+                            var row = ViewBossItem.Rows.Cast<DataGridViewRow>().ToList().Find(a => (int)a.Cells[nameof(BossItemID)].Value == data.id);
                             if (row == null)
                             {
                                 ViewBossItem.Rows.Add(data.id, await App.WebRequest.ImageGetRequest(data.icon_url), data.name, data.num);
                             }
-                            else row.Cells["BossItemNum"].Value = (int)row.Cells["BossItemNum"].Value + data.num;
+                            else row.Cells[nameof(BossItemNum)].Value = (int)row.Cells[nameof(BossItemNum)].Value + data.num;
                         }
                         else if ((data.id > 100000 && data.id <= 100099) || (data.id > 101200 && data.id <= 101299))
                         {
-                            var row = ViewLocalSpecialtyItem.Rows.Cast<DataGridViewRow>().ToList().Find(a => (int)a.Cells["LocalSpecialtyID"].Value == data.id);
+                            var row = ViewLocalSpecialtyItem.Rows.Cast<DataGridViewRow>().ToList().Find(a => (int)a.Cells[nameof(LocalSpecialtyID)].Value == data.id);
                             if (row == null)
                             {
                                 ViewLocalSpecialtyItem.Rows.Add(data.id, await App.WebRequest.ImageGetRequest(data.icon_url), data.name, data.num);
                             }
-                            else row.Cells["LocalSpecialtyItemNum"].Value = (int)row.Cells["LocalSpecialtyItemNum"].Value + data.num;
+                            else row.Cells[nameof(LocalSpecialtyItemNum)].Value = (int)row.Cells[nameof(LocalSpecialtyItemNum)].Value + data.num;
                         }else if ((data.id >= 112002 && data.id < 113000))
                         {
-                            var row = ViewEnemyItems.Rows.Cast<DataGridViewRow>().ToList().Find(a => (int)a.Cells["EnemyItemID"].Value == data.id);
+                            var row = ViewEnemyItems.Rows.Cast<DataGridViewRow>().ToList().Find(a => (int)a.Cells[nameof(EnemyItemID)].Value == data.id);
                             if (row == null)
                             {
                                 ViewEnemyItems.Rows.Add(data.id, await App.WebRequest.ImageGetRequest(data.icon_url), data.name, data.num, 0, data.num);
                             }
                             else
                             {
-                                row.Cells["EnemyItemCharacterNum"].Value = (int)row.Cells["EnemyItemCharacterNum"].Value + data.num;
-                                row.Cells["EnemyItemTotalNum"].Value = (int)row.Cells["EnemyItemCharacterNum"].Value + (int)row.Cells["EnemyItemTalentNum"].Value;
+                                row.Cells[nameof(EnemyItemCharacterNum)].Value = (int)row.Cells[nameof(EnemyItemCharacterNum)].Value + data.num;
+                                row.Cells[nameof(EnemyItemTotalNum)].Value = (int)row.Cells[nameof(EnemyItemCharacterNum)].Value + (int)row.Cells[nameof(EnemyItemTalentNum)].Value;
                             }
                         }
                     }
@@ -206,50 +208,50 @@ namespace Genshin_Checker.Window.ExWindow.CharacterCalculator
                             };
                             string pos = (id % 3) switch
                             {
-                                0 => "TalentItemNumTeachings",
-                                1 => "TalentItemNumGuide",
-                                2 => "TalentItemNumPhilosophies",
+                                0 => nameof(TalentItemNumTeachings),
+                                1 => nameof(TalentItemNumGuide),
+                                2 => nameof(TalentItemNumPhilosophies),
                                 _ => throw new ArgumentException("idが不正です")
                             };
-                            var row = ViewTalentItems.Rows.Cast<DataGridViewRow>().ToList().Find(a => (int)a.Cells["TalentItemID"].Value == id/3);
+                            var row = ViewTalentItems.Rows.Cast<DataGridViewRow>().ToList().Find(a => (int)a.Cells[nameof(TalentItemID)].Value == id/3);
                             if (row == null)
                             {
                                 ViewTalentItems.Rows.Add((int)id/3, name,day, 0, 0, 0);
-                                row = ViewTalentItems.Rows.Cast<DataGridViewRow>().ToList().Find(a => (int)a.Cells["TalentItemID"].Value == id/3);
+                                row = ViewTalentItems.Rows.Cast<DataGridViewRow>().ToList().Find(a => (int)a.Cells[nameof(TalentItemID)].Value == id/3);
                             }
                             if (row != null) row.Cells[pos].Value = (int)row.Cells[pos].Value + data.num;
                         }
                         else if (data.id > 113000 && data.id < 114000)
                         {
-                            var row = ViewWeeklyBossItems.Rows.Cast<DataGridViewRow>().ToList().Find(a => (int)a.Cells["WeeklyBossItemID"].Value == data.id);
+                            var row = ViewWeeklyBossItems.Rows.Cast<DataGridViewRow>().ToList().Find(a => (int)a.Cells[nameof(WeeklyBossItemID)].Value == data.id);
                             if (row == null)
                             {
                                 ViewWeeklyBossItems.Rows.Add(data.id, await App.WebRequest.ImageGetRequest(data.icon_url), data.name, data.num);
                             }
-                            else row.Cells["WeeklyBossItemNum"].Value = (int)row.Cells["WeeklyBossItemNum"].Value + data.num;
+                            else row.Cells[nameof(WeeklyBossItemNum)].Value = (int)row.Cells[nameof(WeeklyBossItemNum)].Value + data.num;
                         }
                         else if ((data.id >= 112002 && data.id < 113000))
                         {
-                            var row = ViewEnemyItems.Rows.Cast<DataGridViewRow>().ToList().Find(a => (int)a.Cells["EnemyItemID"].Value == data.id);
+                            var row = ViewEnemyItems.Rows.Cast<DataGridViewRow>().ToList().Find(a => (int)a.Cells[nameof(EnemyItemID)].Value == data.id);
                             if (row == null)
                             {
                                 ViewEnemyItems.Rows.Add(data.id, await App.WebRequest.ImageGetRequest(data.icon_url), data.name, 0, data.num, data.num);
                             }
                             else
                             {
-                                row.Cells["EnemyItemTalentNum"].Value = (int)row.Cells["EnemyItemTalentNum"].Value + data.num;
-                                row.Cells["EnemyItemTotalNum"].Value = (int)row.Cells["EnemyItemCharacterNum"].Value + (int)row.Cells["EnemyItemTalentNum"].Value;
+                                row.Cells[nameof(EnemyItemTalentNum)].Value = (int)row.Cells[nameof(EnemyItemTalentNum)].Value + data.num;
+                                row.Cells[nameof(EnemyItemTotalNum)].Value = (int)row.Cells[nameof(EnemyItemCharacterNum)].Value + (int)row.Cells[nameof(EnemyItemTalentNum)].Value;
                             }
                         }
                     }
                 }
 
-                ViewAscensionMaterial.Sort(ViewAscensionMaterial.Columns["AscensionTypeID"], ListSortDirection.Ascending);
-                ViewBossItem.Sort(ViewBossItem.Columns["BossItemID"], ListSortDirection.Ascending);
-                ViewLocalSpecialtyItem.Sort(ViewLocalSpecialtyItem.Columns["LocalSpecialtyID"], ListSortDirection.Ascending);
-                ViewTalentItems.Sort(ViewTalentItems.Columns["TalentItemID"], ListSortDirection.Ascending);
-                ViewWeeklyBossItems.Sort(ViewWeeklyBossItems.Columns["WeeklyBossItemID"], ListSortDirection.Ascending);
-                ViewEnemyItems.Sort(ViewEnemyItems.Columns["EnemyItemID"], ListSortDirection.Ascending);
+                ViewAscensionMaterial.Sort(ViewAscensionMaterial.Columns[nameof(AscensionTypeID)], ListSortDirection.Ascending);
+                ViewBossItem.Sort(ViewBossItem.Columns[nameof(BossItemID)], ListSortDirection.Ascending);
+                ViewLocalSpecialtyItem.Sort(ViewLocalSpecialtyItem.Columns[nameof(LocalSpecialtyID)], ListSortDirection.Ascending);
+                ViewTalentItems.Sort(ViewTalentItems.Columns[nameof(TalentItemID)], ListSortDirection.Ascending);
+                ViewWeeklyBossItems.Sort(ViewWeeklyBossItems.Columns[nameof(WeeklyBossItemID)], ListSortDirection.Ascending);
+                ViewEnemyItems.Sort(ViewEnemyItems.Columns[nameof(EnemyItemID)], ListSortDirection.Ascending);
             }
             catch(Exception ex)
             {

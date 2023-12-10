@@ -9,6 +9,7 @@ using System.Net;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using Genshin_Checker.Window.Popup;
 
 namespace Genshin_Checker.Store
 {

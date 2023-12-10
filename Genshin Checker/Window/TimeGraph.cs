@@ -1,26 +1,12 @@
 ﻿using LiveChartsCore.SkiaSharpView.WinForms;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Diagnostics;
-using System.Drawing;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.TrackBar;
 using LiveChartsCore;
-using LiveChartsCore.Measure;
 using LiveChartsCore.SkiaSharpView.Painting;
 using LiveChartsCore.SkiaSharpView;
 using SkiaSharp;
 using LiveChartsCore.Defaults;
 using System.Collections.ObjectModel;
-using LiveChartsCore.Drawing;
-using HarfBuzzSharp;
 using Genshin_Checker.resource;
+using Genshin_Checker.Window.Popup;
 
 namespace Genshin_Checker.Window
 {

@@ -1,18 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-namespace Genshin_Checker.Window
+﻿namespace Genshin_Checker.Window.Popup
 {
-    public partial class ErrorMessage : Form
+    public partial class ChooseMessage : Form
     {
-        public ErrorMessage(string title,string message,string windowtitle="エラーメッセージ")
+        public ChooseMessage(string title,string message,string windowtitle="エラーメッセージ")
         {
             InitializeComponent();
             Text = windowtitle;
