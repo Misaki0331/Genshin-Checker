@@ -250,48 +250,6 @@ namespace Genshin_Checker
         //ここはテスト用
         private async void testToolStripMenuItem_ClickAsync(object sender, EventArgs e)
         {
-            Trace.WriteLine($"Weekly : {ServerTime.GameWeeklyReset(Account.Servers.os_asia)}");
-            Trace.WriteLine($"Daily : {ServerTime.GameDailyReset(Account.Servers.os_asia)}");
-            Trace.WriteLine($"Region : {ServerTime.GetRegionTime(Account.Servers.os_asia)}");
-            try
-            {
-                if (CharacterCalculator == null || CharacterCalculator.IsDisposed)
-                {
-                    if (Accounts.Data.Count == 0)
-                    {
-                        var n = new ErrorMessage("連携しているアカウントはまだ無いようです。", "お手数ですが、以下の操作を行って認証してください。\n設定⇒アプリ連携⇒HoYoLabとの連携");
-                        n.ShowDialog(this);
-                        return;
-                    }
-                    CharacterCalculator = new(Accounts.Data[0])
-                    {
-                        WindowState = FormWindowState.Normal
-                    };
-                    CharacterCalculator.Show();
-                    CharacterCalculator.Activate();
-                }
-                else
-                {
-                    CharacterCalculator.Show();
-                    if (CharacterCalculator.WindowState == FormWindowState.Minimized) CharacterCalculator.WindowState = FormWindowState.Normal;
-                    CharacterCalculator.Activate();
-                }
-
-            }
-            catch (Exception ex)
-            {
-                var n = new ErrorMessage(ex.GetType().ToString(), ex.Message);
-                n.ShowDialog(this);
-            }
-            /*
-            try
-            {
-                var a = await Accounts.Data[0].Endpoint.GetActiveQuery(DateTime.Now.AddDays(-2));
-                Trace.WriteLine("テスト");
-            }catch(Exception ex )
-            {
-                new ErrorMessage(ex.GetType().ToString(), ex.ToString()).ShowDialog();
-            }*/
             
         }
 
@@ -453,6 +411,40 @@ namespace Genshin_Checker
                     GameRecords.Show();
                     if (GameRecords.WindowState == FormWindowState.Minimized) GameRecords.WindowState = FormWindowState.Normal;
                     GameRecords.Activate();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                var n = new ErrorMessage(ex.GetType().ToString(), ex.Message);
+                n.ShowDialog(this);
+            }
+        }
+
+        private void 育成計算機ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (CharacterCalculator == null || CharacterCalculator.IsDisposed)
+                {
+                    if (Accounts.Data.Count == 0)
+                    {
+                        var n = new ErrorMessage("連携しているアカウントはまだ無いようです。", "お手数ですが、以下の操作を行って認証してください。\n設定⇒アプリ連携⇒HoYoLabとの連携");
+                        n.ShowDialog(this);
+                        return;
+                    }
+                    CharacterCalculator = new(Accounts.Data[0])
+                    {
+                        WindowState = FormWindowState.Normal
+                    };
+                    CharacterCalculator.Show();
+                    CharacterCalculator.Activate();
+                }
+                else
+                {
+                    CharacterCalculator.Show();
+                    if (CharacterCalculator.WindowState == FormWindowState.Minimized) CharacterCalculator.WindowState = FormWindowState.Normal;
+                    CharacterCalculator.Activate();
                 }
 
             }

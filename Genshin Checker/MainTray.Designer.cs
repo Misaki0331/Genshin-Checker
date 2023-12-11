@@ -34,6 +34,7 @@
             this.versionNameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.詳細プレイデータToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.戦績情報ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.リアルタイムデータToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.旅人手帳ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.旅人通帳ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -45,7 +46,7 @@
             this.終了ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.testToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Delay = new System.Windows.Forms.Timer(this.components);
-            this.戦績情報ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.育成計算機ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.NotificationMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -65,6 +66,7 @@
             this.リアルタイムデータToolStripMenuItem,
             this.旅人手帳ToolStripMenuItem,
             this.旅人通帳ToolStripMenuItem,
+            this.育成計算機ToolStripMenuItem,
             this.公式アナウンスToolStripMenuItem,
             this.ゲームログ開発者向けToolStripMenuItem,
             this.toolStripSeparator2,
@@ -73,7 +75,7 @@
             this.終了ToolStripMenuItem,
             this.testToolStripMenuItem});
             this.NotificationMenu.Name = "contextMenuStrip1";
-            this.NotificationMenu.Size = new System.Drawing.Size(185, 286);
+            this.NotificationMenu.Size = new System.Drawing.Size(185, 308);
             // 
             // versionNameToolStripMenuItem
             // 
@@ -93,6 +95,13 @@
             this.詳細プレイデータToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
             this.詳細プレイデータToolStripMenuItem.Text = "詳細プレイデータ";
             this.詳細プレイデータToolStripMenuItem.Click += new System.EventHandler(this.詳細プレイデータToolStripMenuItem_Click);
+            // 
+            // 戦績情報ToolStripMenuItem
+            // 
+            this.戦績情報ToolStripMenuItem.Name = "戦績情報ToolStripMenuItem";
+            this.戦績情報ToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.戦績情報ToolStripMenuItem.Text = "戦績情報";
+            this.戦績情報ToolStripMenuItem.Click += new System.EventHandler(this.戦績情報ToolStripMenuItem_Click);
             // 
             // リアルタイムデータToolStripMenuItem
             // 
@@ -165,12 +174,12 @@
             this.Delay.Enabled = true;
             this.Delay.Tick += new System.EventHandler(this.Delay_Tick);
             // 
-            // 戦績情報ToolStripMenuItem
+            // 育成計算機ToolStripMenuItem
             // 
-            this.戦績情報ToolStripMenuItem.Name = "戦績情報ToolStripMenuItem";
-            this.戦績情報ToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
-            this.戦績情報ToolStripMenuItem.Text = "戦績情報";
-            this.戦績情報ToolStripMenuItem.Click += new System.EventHandler(this.戦績情報ToolStripMenuItem_Click);
+            this.育成計算機ToolStripMenuItem.Name = "育成計算機ToolStripMenuItem";
+            this.育成計算機ToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.育成計算機ToolStripMenuItem.Text = "育成計算機＋";
+            this.育成計算機ToolStripMenuItem.Click += new System.EventHandler(this.育成計算機ToolStripMenuItem_Click);
             // 
             // MainTray
             // 
@@ -212,5 +221,6 @@
         private ToolStripMenuItem ゲームログ開発者向けToolStripMenuItem;
         private ToolStripMenuItem 公式アナウンスToolStripMenuItem;
         private ToolStripMenuItem 戦績情報ToolStripMenuItem;
+        private ToolStripMenuItem 育成計算機ToolStripMenuItem;
     }
 }
