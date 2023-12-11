@@ -9,6 +9,7 @@ using System.Net;
 using System.Security.Cryptography;
 using System.Security.Policy;
 using System.Text;
+using System.Text.Json.Nodes;
 using System.Threading.Tasks;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TaskbarClock;
 
@@ -83,7 +84,7 @@ namespace Genshin_Checker.App
                 }
                 catch
                 {
-                    return $"{{\"retcode\":{(int)response.StatusCode + 2000000000},\"message\":\"This error is generated from Genshin Checker.\\nHTTP status code is failure.\\nStatus Code : {(int)response.StatusCode} - {response.StatusCode}\\nMessage : {data}\"}}";
+                    return $"{{\"retcode\":{(int)response.StatusCode + 2000000000},\"message\":{Newtonsoft.Json.JsonConvert.SerializeObject($"This error is generated from Genshin Checker.\nHTTP status code is failure.\nStatus Code : {(int)response.StatusCode} - {response.StatusCode}\nMessage : {data}")}}}";
                 }
             }
             return await response.Content.ReadAsStringAsync();
@@ -125,7 +126,7 @@ namespace Genshin_Checker.App
                 }
                 catch
                 {
-                    return $"{{\"retcode\":{(int)response.StatusCode + 2000000000},\"message\":\"This error is generated from Genshin Checker.\\nHTTP status code is failure.\\nStatus Code : {(int)response.StatusCode} - {response.StatusCode}\\nMessage : {data}\"}}";
+                    return $"{{\"retcode\":{(int)response.StatusCode + 2000000000},\"message\":{Newtonsoft.Json.JsonConvert.SerializeObject($"This error is generated from Genshin Checker.\nHTTP status code is failure.\nStatus Code : {(int)response.StatusCode} - {response.StatusCode}\nMessage : {data}")}}}";
                 }
             }
             return await response.Content.ReadAsStringAsync();
