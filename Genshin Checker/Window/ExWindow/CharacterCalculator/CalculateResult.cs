@@ -41,7 +41,10 @@ namespace Genshin_Checker.Window.ExWindow.CharacterCalculator
             public int Current { get; set;}
             public int To { get; set; }
         }
-
+        DataGridViewRow? GetRow(DataGridView data, Predicate<DataGridViewRow> predicate)
+        {
+            return data.Rows.Cast<DataGridViewRow>().ToList().Find(predicate);
+        }
         private async void CalculateResult_Load(object sender, EventArgs e)
         {
             int CharacterMora = 0;
@@ -94,20 +97,7 @@ namespace Genshin_Checker.Window.ExWindow.CharacterCalculator
                         else if (data.id > 104100 && data.id < 104200)
                         {
                             int id = (data.id - 104100) / 10; 
-                            string str = "";
                             string type = "";
-                            //Todo:ローカライズ忘れないように
-                            switch (id) //アイテムidの10の位
-                            {
-                                case 0: str = "輝くダイヤ"; break;
-                                case 1: str = "炎願のアゲート"; break;
-                                case 2: str = "澄明なラピスラズリ"; break;
-                                case 3: str = "成長のエメラルド"; break;
-                                case 4: str = "最勝のアメシスト"; break;
-                                case 5: str = "自由のターコイズ"; break;
-                                case 6: str = "哀切なアイスクリスタル"; break;
-                                case 7: str = "堅牢なトパーズ"; break;
-                            }
                             switch (data.id % 10) //アイテムIDの1の位
                             {
                                 case 1: type = nameof(AscensionNumSliver); break;
@@ -116,17 +106,17 @@ namespace Genshin_Checker.Window.ExWindow.CharacterCalculator
                                 case 4: type = nameof(AscensionNumGemstone); break;
                                 default: throw new ArgumentException($"{data.id} - {data.name} は不正な値です。");
                             }
-                            var row = ViewAscensionMaterial.Rows.Cast<DataGridViewRow>().ToList().Find(a => (int)a.Cells[nameof(AscensionTypeID)].Value == id);
+                            var row = GetRow(ViewAscensionMaterial, a => (int)a.Cells[nameof(AscensionTypeID)].Value == id);
                             if (row == null)
                             {
-                                ViewAscensionMaterial.Rows.Add(id, str, 0, 0, 0, 0);
-                                row = ViewAscensionMaterial.Rows.Cast<DataGridViewRow>().ToList().Find(a => (int)a.Cells[nameof(AscensionTypeID)].Value == id);
+                                ViewAscensionMaterial.Rows.Add(id, "", 0, 0, 0, 0);
+                                row = GetRow(ViewAscensionMaterial, a => (int)a.Cells[nameof(AscensionTypeID)].Value == id);
                             }
                             if (row != null) row.Cells[type].Value = (int)row.Cells[type].Value + data.num;
                         }
                         else if (data.id > 113000 && data.id < 114000)
                         {
-                            var row = ViewBossItem.Rows.Cast<DataGridViewRow>().ToList().Find(a => (int)a.Cells[nameof(BossItemID)].Value == data.id);
+                            var row = GetRow(ViewBossItem, a => (int)a.Cells[nameof(BossItemID)].Value == data.id);
                             if (row == null)
                             {
                                 ViewBossItem.Rows.Add(data.id, await App.WebRequest.ImageGetRequest(data.icon_url), data.name, data.num);
@@ -135,7 +125,7 @@ namespace Genshin_Checker.Window.ExWindow.CharacterCalculator
                         }
                         else if ((data.id > 100000 && data.id <= 100099) || (data.id > 101200 && data.id <= 101299))
                         {
-                            var row = ViewLocalSpecialtyItem.Rows.Cast<DataGridViewRow>().ToList().Find(a => (int)a.Cells[nameof(LocalSpecialtyID)].Value == data.id);
+                            var row = GetRow(ViewLocalSpecialtyItem, a => (int)a.Cells[nameof(LocalSpecialtyID)].Value == data.id);
                             if (row == null)
                             {
                                 ViewLocalSpecialtyItem.Rows.Add(data.id, await App.WebRequest.ImageGetRequest(data.icon_url), data.name, data.num);
@@ -143,7 +133,7 @@ namespace Genshin_Checker.Window.ExWindow.CharacterCalculator
                             else row.Cells[nameof(LocalSpecialtyItemNum)].Value = (int)row.Cells[nameof(LocalSpecialtyItemNum)].Value + data.num;
                         }else if ((data.id >= 112002 && data.id < 113000))
                         {
-                            var row = ViewEnemyItems.Rows.Cast<DataGridViewRow>().ToList().Find(a => (int)a.Cells[nameof(EnemyItemID)].Value == data.id);
+                            var row = GetRow(ViewEnemyItems, a => (int)a.Cells[nameof(EnemyItemID)].Value == data.id);
                             if (row == null)
                             {
                                 ViewEnemyItems.Rows.Add(data.id, await App.WebRequest.ImageGetRequest(data.icon_url), data.name, data.num, 0, data.num);
@@ -173,39 +163,6 @@ namespace Genshin_Checker.Window.ExWindow.CharacterCalculator
                         {
                             var id = data.id - 104301;
                             if (id >= 19) id -= 1;
-                            //Todo:ここをAPI使うなり可変にする
-                            string name = (id / 3) switch
-                            {
-                                0 => "自由",
-                                1 => "抗争",
-                                2 => "詩文",
-                                3 => "繁栄",
-                                4 => "勤労",
-                                5 => "黄金",
-                                6 => "浮世",
-                                7 => "風雅",
-                                8 => "天光",
-                                9 => "忠言",
-                                10 => "創意",
-                                11 => "篤行",
-                                12 => "公平",
-                                13 => "正義",
-                                14 => "秩序",
-                                15 => "ナタ1",
-                                16 => "ナタ2",
-                                17 => "ナタ3",
-                                18 => "スネージナヤ1",
-                                19 => "スネージナヤ2",
-                                20 => "スネージナヤ3",
-                                _ => $"？？{id % 3 + 1}",
-                            };
-                            string day = (id / 3 % 3) switch
-                            {
-                                0 => "月・木",
-                                1 => "火・金",
-                                2 => "水・土",
-                                _ => "？"
-                            };
                             string pos = (id % 3) switch
                             {
                                 0 => nameof(TalentItemNumTeachings),
@@ -213,17 +170,17 @@ namespace Genshin_Checker.Window.ExWindow.CharacterCalculator
                                 2 => nameof(TalentItemNumPhilosophies),
                                 _ => throw new ArgumentException("idが不正です")
                             };
-                            var row = ViewTalentItems.Rows.Cast<DataGridViewRow>().ToList().Find(a => (int)a.Cells[nameof(TalentItemID)].Value == id/3);
+                            var row = GetRow(ViewTalentItems, a => (int)a.Cells[nameof(TalentItemID)].Value == id / 3);
                             if (row == null)
                             {
-                                ViewTalentItems.Rows.Add((int)id/3, name,day, 0, 0, 0);
-                                row = ViewTalentItems.Rows.Cast<DataGridViewRow>().ToList().Find(a => (int)a.Cells[nameof(TalentItemID)].Value == id/3);
+                                ViewTalentItems.Rows.Add((int)id / 3, null, (int)id / 3 % 3, 0, 0, 0);
+                                row = GetRow(ViewTalentItems, a => (int)a.Cells[nameof(TalentItemID)].Value == id / 3);
                             }
                             if (row != null) row.Cells[pos].Value = (int)row.Cells[pos].Value + data.num;
                         }
                         else if (data.id > 113000 && data.id < 114000)
                         {
-                            var row = ViewWeeklyBossItems.Rows.Cast<DataGridViewRow>().ToList().Find(a => (int)a.Cells[nameof(WeeklyBossItemID)].Value == data.id);
+                            var row = GetRow(ViewWeeklyBossItems, a => (int)a.Cells[nameof(WeeklyBossItemID)].Value == data.id);
                             if (row == null)
                             {
                                 ViewWeeklyBossItems.Rows.Add(data.id, await App.WebRequest.ImageGetRequest(data.icon_url), data.name, data.num);
@@ -232,7 +189,7 @@ namespace Genshin_Checker.Window.ExWindow.CharacterCalculator
                         }
                         else if ((data.id >= 112002 && data.id < 113000))
                         {
-                            var row = ViewEnemyItems.Rows.Cast<DataGridViewRow>().ToList().Find(a => (int)a.Cells[nameof(EnemyItemID)].Value == data.id);
+                            var row = GetRow(ViewEnemyItems, a => (int)a.Cells[nameof(EnemyItemID)].Value == data.id);
                             if (row == null)
                             {
                                 ViewEnemyItems.Rows.Add(data.id, await App.WebRequest.ImageGetRequest(data.icon_url), data.name, 0, data.num, data.num);
@@ -256,6 +213,113 @@ namespace Genshin_Checker.Window.ExWindow.CharacterCalculator
             catch(Exception ex)
             {
                 new ErrorMessage("データの読み込みに失敗しました。", ex.ToString()).ShowDialog();
+            }
+        }
+
+        private void TableFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (sender is not DataGridView) return;
+            var Table = (DataGridView)sender;
+            var row = Table.Rows[e.RowIndex];
+            switch (Table.Name)
+            {
+                // 元素宝石
+                case nameof(ViewAscensionMaterial):
+                    switch (Table.Columns[e.ColumnIndex].Name)
+                    {
+                        case nameof(AscensionType):
+                            e.Value = (int)row.Cells[nameof(AscensionTypeID)].Value switch
+                            {
+                                0 => "輝くダイヤ",
+                                1 => "炎願のアゲート",
+                                2 => "澄明なラピスラズリ",
+                                3 => "成長のエメラルド",
+                                4 => "最勝のアメシスト",
+                                5 => "自由のターコイズ",
+                                6 => "哀切なアイスクリスタル",
+                                7 => "堅牢なトパーズ",
+                                _ => $"不明な宝石"
+                            };
+                            break;
+                    }
+                    e.CellStyle.BackColor = (int)row.Cells[nameof(AscensionTypeID)].Value switch
+                    {
+                        1 => Element.GetBackgroundColor(Element.ElementType.Pyro),
+                        2 => Element.GetBackgroundColor(Element.ElementType.Hydro),
+                        3 => Element.GetBackgroundColor(Element.ElementType.Dendro),
+                        4 => Element.GetBackgroundColor(Element.ElementType.Electro),
+                        5 => Element.GetBackgroundColor(Element.ElementType.Anemo),
+                        6 => Element.GetBackgroundColor(Element.ElementType.Cryo),
+                        7 => Element.GetBackgroundColor(Element.ElementType.Geo),
+                        _ => Element.GetBackgroundColor(Element.ElementType.Unknown)
+                    };
+                    break;
+                // 精鋭ボス
+                case nameof(ViewBossItem):
+                    break;
+                // 精鋭ドロップ素材
+                case nameof(ViewEnemyItems):
+                    break;
+                // 特産素材
+                case nameof(ViewLocalSpecialtyItem):
+                    break;
+                // 天賦素材
+                case nameof(ViewTalentItems):
+                    switch (Table.Columns[e.ColumnIndex].Name)
+                    {
+                        case nameof(TalentItemName):
+                            e.CellStyle.BackColor = ((int)row.Cells[nameof(TalentItemID)].Value / 3) switch
+                            {
+                                0 => World.GetBackgroundColor(World.Country.Mondstadt),
+                                1 => World.GetBackgroundColor(World.Country.Liyue),
+                                2 => World.GetBackgroundColor(World.Country.Inazuma),
+                                3 => World.GetBackgroundColor(World.Country.Sumeru),
+                                4 => World.GetBackgroundColor(World.Country.Fontaine),
+                                5 => World.GetBackgroundColor(World.Country.Natlan),
+                                6 => World.GetBackgroundColor(World.Country.Snezhnaya),
+                                _ => World.GetBackgroundColor(World.Country.Unknown)
+                            };
+                            e.Value = (int)row.Cells[nameof(TalentItemID)].Value switch
+                            {
+                                0 => "自由",
+                                1 => "抗争",
+                                2 => "詩文",
+                                3 => "繁栄",
+                                4 => "勤労",
+                                5 => "黄金",
+                                6 => "浮世",
+                                7 => "風雅",
+                                8 => "天光",
+                                9 => "忠言",
+                                10 => "創意",
+                                11 => "篤行",
+                                12 => "公平",
+                                13 => "正義",
+                                14 => "秩序",
+                                15 => "ナタ1",
+                                16 => "ナタ2",
+                                17 => "ナタ3",
+                                18 => "スネージナヤ1",
+                                19 => "スネージナヤ2",
+                                20 => "スネージナヤ3",
+                                _ => $"？？",
+                            };
+                            break;
+                        case nameof(TalentItemOpenDays):
+                            if (e.Value == null) return;
+                            e.Value = (int)e.Value switch
+                            {
+                                0 => "月・木",
+                                1 => "火・金",
+                                2 => "水・土",
+                                _ => "？"
+                            };
+                            break;
+                    }
+                    break;
+                // 週ボスドロップ素材
+                case nameof(ViewWeeklyBossItems):
+                    break;
             }
         }
     }

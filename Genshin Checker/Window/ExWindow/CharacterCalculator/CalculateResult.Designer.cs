@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.panel8 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.TotalMoraResult = new System.Windows.Forms.Label();
@@ -106,10 +105,13 @@
             this.EnemyItemCharacterNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EnemyItemTalentNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EnemyItemTotalNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
-            this.splitContainer1.Panel2.SuspendLayout();
-            this.splitContainer1.SuspendLayout();
             this.panel8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -141,29 +143,19 @@
             this.tableLayoutPanel3.SuspendLayout();
             this.groupBox6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ViewEnemyItems)).BeginInit();
+            this.tableLayoutPanel4.SuspendLayout();
+            this.panel9.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.splitContainer1);
+            this.panel1.Controls.Add(this.tableLayoutPanel4);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel1.Location = new System.Drawing.Point(0, 500);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(810, 34);
             this.panel1.TabIndex = 1;
-            // 
-            // splitContainer1
-            // 
-            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer1.Name = "splitContainer1";
-            // 
-            // splitContainer1.Panel2
-            // 
-            this.splitContainer1.Panel2.Controls.Add(this.panel8);
-            this.splitContainer1.Size = new System.Drawing.Size(810, 34);
-            this.splitContainer1.SplitterDistance = 421;
-            this.splitContainer1.TabIndex = 3;
             // 
             // panel8
             // 
@@ -173,10 +165,10 @@
             this.panel8.Controls.Add(this.label8);
             this.panel8.Controls.Add(this.pictureBox5);
             this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel8.Location = new System.Drawing.Point(0, 0);
+            this.panel8.Location = new System.Drawing.Point(408, 3);
             this.panel8.MinimumSize = new System.Drawing.Size(0, 29);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(385, 34);
+            this.panel8.Size = new System.Drawing.Size(399, 29);
             this.panel8.TabIndex = 2;
             // 
             // label3
@@ -184,7 +176,7 @@
             this.label3.AutoSize = true;
             this.label3.Dock = System.Windows.Forms.DockStyle.Right;
             this.label3.Font = new System.Drawing.Font("Meiryo UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(330, 0);
+            this.label3.Location = new System.Drawing.Point(344, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(26, 30);
             this.label3.TabIndex = 1;
@@ -195,7 +187,7 @@
             this.TotalMoraResult.AutoSize = true;
             this.TotalMoraResult.Dock = System.Windows.Forms.DockStyle.Right;
             this.TotalMoraResult.Font = new System.Drawing.Font("Meiryo UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.TotalMoraResult.Location = new System.Drawing.Point(356, 0);
+            this.TotalMoraResult.Location = new System.Drawing.Point(370, 0);
             this.TotalMoraResult.Name = "TotalMoraResult";
             this.TotalMoraResult.Size = new System.Drawing.Size(29, 30);
             this.TotalMoraResult.TabIndex = 3;
@@ -217,7 +209,7 @@
             this.pictureBox5.Dock = System.Windows.Forms.DockStyle.Left;
             this.pictureBox5.Location = new System.Drawing.Point(0, 0);
             this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(29, 34);
+            this.pictureBox5.Size = new System.Drawing.Size(29, 29);
             this.pictureBox5.TabIndex = 2;
             this.pictureBox5.TabStop = false;
             // 
@@ -298,6 +290,7 @@
             this.ViewLocalSpecialtyItem.RowTemplate.Height = 25;
             this.ViewLocalSpecialtyItem.Size = new System.Drawing.Size(187, 438);
             this.ViewLocalSpecialtyItem.TabIndex = 0;
+            this.ViewLocalSpecialtyItem.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.TableFormatting);
             // 
             // LocalSpecialtyID
             // 
@@ -373,6 +366,7 @@
             this.ViewAscensionMaterial.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.ViewAscensionMaterial.Size = new System.Drawing.Size(386, 378);
             this.ViewAscensionMaterial.TabIndex = 0;
+            this.ViewAscensionMaterial.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.TableFormatting);
             // 
             // AscensionTypeID
             // 
@@ -459,6 +453,7 @@
             this.ViewBossItem.RowTemplate.Height = 25;
             this.ViewBossItem.Size = new System.Drawing.Size(187, 438);
             this.ViewBossItem.TabIndex = 0;
+            this.ViewBossItem.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.TableFormatting);
             // 
             // BossItemID
             // 
@@ -636,16 +631,15 @@
             this.tableLayoutPanel2.ColumnCount = 2;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Controls.Add(this.panel5, 0, 1);
+            this.tableLayoutPanel2.Controls.Add(this.panel5, 1, 1);
+            this.tableLayoutPanel2.Controls.Add(this.groupBox4, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.groupBox5, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.groupBox4, 0, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(796, 466);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
@@ -776,9 +770,10 @@
             this.groupBox5.AutoSize = true;
             this.groupBox5.Controls.Add(this.ViewWeeklyBossItems);
             this.groupBox5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox5.Location = new System.Drawing.Point(401, 3);
+            this.groupBox5.Location = new System.Drawing.Point(3, 3);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(392, 400);
+            this.tableLayoutPanel2.SetRowSpan(this.groupBox5, 2);
+            this.groupBox5.Size = new System.Drawing.Size(392, 460);
             this.groupBox5.TabIndex = 6;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "週ボス素材";
@@ -803,8 +798,9 @@
             this.ViewWeeklyBossItems.ReadOnly = true;
             this.ViewWeeklyBossItems.RowHeadersVisible = false;
             this.ViewWeeklyBossItems.RowTemplate.Height = 25;
-            this.ViewWeeklyBossItems.Size = new System.Drawing.Size(386, 378);
+            this.ViewWeeklyBossItems.Size = new System.Drawing.Size(386, 438);
             this.ViewWeeklyBossItems.TabIndex = 0;
+            this.ViewWeeklyBossItems.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.TableFormatting);
             // 
             // WeeklyBossItemID
             // 
@@ -855,10 +851,9 @@
             this.groupBox4.AutoSize = true;
             this.groupBox4.Controls.Add(this.ViewTalentItems);
             this.groupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox4.Location = new System.Drawing.Point(3, 3);
+            this.groupBox4.Location = new System.Drawing.Point(401, 3);
             this.groupBox4.Name = "groupBox4";
-            this.tableLayoutPanel2.SetRowSpan(this.groupBox4, 2);
-            this.groupBox4.Size = new System.Drawing.Size(392, 460);
+            this.groupBox4.Size = new System.Drawing.Size(392, 400);
             this.groupBox4.TabIndex = 4;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "天賦素材";
@@ -885,8 +880,9 @@
             this.ViewTalentItems.ReadOnly = true;
             this.ViewTalentItems.RowHeadersVisible = false;
             this.ViewTalentItems.RowTemplate.Height = 25;
-            this.ViewTalentItems.Size = new System.Drawing.Size(386, 438);
+            this.ViewTalentItems.Size = new System.Drawing.Size(386, 378);
             this.ViewTalentItems.TabIndex = 0;
+            this.ViewTalentItems.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.TableFormatting);
             // 
             // TalentItemID
             // 
@@ -999,6 +995,7 @@
             this.ViewEnemyItems.RowTemplate.Height = 25;
             this.ViewEnemyItems.Size = new System.Drawing.Size(389, 444);
             this.ViewEnemyItems.TabIndex = 0;
+            this.ViewEnemyItems.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.TableFormatting);
             // 
             // EnemyItemID
             // 
@@ -1054,6 +1051,77 @@
             this.EnemyItemTotalNum.ReadOnly = true;
             this.EnemyItemTotalNum.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
+            // tableLayoutPanel4
+            // 
+            this.tableLayoutPanel4.ColumnCount = 2;
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.Controls.Add(this.panel9, 0, 0);
+            this.tableLayoutPanel4.Controls.Add(this.panel8, 1, 0);
+            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
+            this.tableLayoutPanel4.RowCount = 1;
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(810, 34);
+            this.tableLayoutPanel4.TabIndex = 0;
+            // 
+            // panel9
+            // 
+            this.panel9.AutoSize = true;
+            this.panel9.Controls.Add(this.label5);
+            this.panel9.Controls.Add(this.label11);
+            this.panel9.Controls.Add(this.label13);
+            this.panel9.Controls.Add(this.pictureBox6);
+            this.panel9.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel9.Location = new System.Drawing.Point(3, 3);
+            this.panel9.MinimumSize = new System.Drawing.Size(0, 29);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(399, 29);
+            this.panel9.TabIndex = 3;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Dock = System.Windows.Forms.DockStyle.Right;
+            this.label5.Font = new System.Drawing.Font("Meiryo UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label5.Location = new System.Drawing.Point(344, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(26, 30);
+            this.label5.TabIndex = 1;
+            this.label5.Text = "x";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Dock = System.Windows.Forms.DockStyle.Right;
+            this.label11.Font = new System.Drawing.Font("Meiryo UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label11.Location = new System.Drawing.Point(370, 0);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(29, 30);
+            this.label11.TabIndex = 3;
+            this.label11.Text = "0";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Dock = System.Windows.Forms.DockStyle.Left;
+            this.label13.Font = new System.Drawing.Font("Meiryo UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label13.Location = new System.Drawing.Point(29, 0);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(157, 30);
+            this.label13.TabIndex = 0;
+            this.label13.Text = "推定消費樹脂";
+            // 
+            // pictureBox6
+            // 
+            this.pictureBox6.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pictureBox6.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox6.Name = "pictureBox6";
+            this.pictureBox6.Size = new System.Drawing.Size(29, 29);
+            this.pictureBox6.TabIndex = 2;
+            this.pictureBox6.TabStop = false;
+            // 
             // CalculateResult
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -1065,10 +1133,6 @@
             this.Text = "CalculateResult";
             this.Load += new System.EventHandler(this.CalculateResult_Load);
             this.panel1.ResumeLayout(false);
-            this.splitContainer1.Panel2.ResumeLayout(false);
-            this.splitContainer1.Panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
-            this.splitContainer1.ResumeLayout(false);
             this.panel8.ResumeLayout(false);
             this.panel8.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
@@ -1110,6 +1174,11 @@
             this.tableLayoutPanel3.PerformLayout();
             this.groupBox6.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ViewEnemyItems)).EndInit();
+            this.tableLayoutPanel4.ResumeLayout(false);
+            this.tableLayoutPanel4.PerformLayout();
+            this.panel9.ResumeLayout(false);
+            this.panel9.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1187,11 +1256,16 @@
         private DataGridViewTextBoxColumn AscensionNumFragment;
         private DataGridViewTextBoxColumn AscensionNumChunk;
         private DataGridViewTextBoxColumn AscensionNumGemstone;
-        private SplitContainer splitContainer1;
         private Panel panel8;
         private Label label3;
         private Label TotalMoraResult;
         private Label label8;
         private PictureBox pictureBox5;
+        private TableLayoutPanel tableLayoutPanel4;
+        private Panel panel9;
+        private Label label5;
+        private Label label11;
+        private Label label13;
+        private PictureBox pictureBox6;
     }
 }

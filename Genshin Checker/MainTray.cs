@@ -6,6 +6,7 @@ using Genshin_Checker.App.Game;
 using Genshin_Checker.App.General;
 using Genshin_Checker.Store;
 using Genshin_Checker.Window.Popup;
+using Genshin_Checker.App.General.Convert;
 
 namespace Genshin_Checker
 {
@@ -249,6 +250,9 @@ namespace Genshin_Checker
         //ここはテスト用
         private async void testToolStripMenuItem_ClickAsync(object sender, EventArgs e)
         {
+            Trace.WriteLine($"Weekly : {ServerTime.GameWeeklyReset(Account.Servers.os_asia)}");
+            Trace.WriteLine($"Daily : {ServerTime.GameDailyReset(Account.Servers.os_asia)}");
+            Trace.WriteLine($"Region : {ServerTime.GetRegionTime(Account.Servers.os_asia)}");
             try
             {
                 if (CharacterCalculator == null || CharacterCalculator.IsDisposed)

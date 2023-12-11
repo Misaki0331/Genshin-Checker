@@ -6,6 +6,7 @@ using Newtonsoft.Json;
 using System.Text;
 using Genshin_Checker.App.General.Convert;
 using Genshin_Checker.Window.Popup;
+using System.Security.Policy;
 
 namespace Genshin_Checker.Window
 {
@@ -39,7 +40,7 @@ namespace Genshin_Checker.Window
                 var setdata = set.Value;
                 if (setdata == null) setdata = new();
                 if(talent.Count!=3)throw new InvalidDataException("天賦レベルが不整合です。");
-                CharacterView.Rows.Add(setdata.Enabled, character.id, character.rarity, character.element, character.name, character.weapon.type_name, character.fetter, character.level,
+                CharacterView.Rows.Add(setdata.Enabled, character.id, character.rarity, Element.GetElementEnum(character.element), character.name, character.weapon.type_name, character.fetter, character.level,
                     talent[0].level_current, talent[1].level_current, talent[2].level_current, "",
                     character.level > setdata.SetLevel ? character.level : setdata.SetLevel,
                     talent[0].level_current > setdata.SetTalent1 ? talent[0].level_current : setdata.SetTalent1,
@@ -118,11 +119,12 @@ namespace Genshin_Checker.Window
             switch (CharacterView.Columns[e.ColumnIndex].Name)
             {
                 case nameof(ElementType):
-                    e.Value = Element.GetLocalizeName(Element.GetElementEnum((string?)e.Value));
-                    e.CellStyle.BackColor = Element.GetBackgroundColor(Element.GetElementEnum((string?)CharacterView[e.ColumnIndex,e.RowIndex].Value));
+                    if (e.Value == null) return;
+                    e.Value = Element.GetLocalizeName(Element.GetElementEnum(e.Value.ToString()));
+                    e.CellStyle.BackColor = Element.GetBackgroundColor(Element.GetElementEnum((string?)CharacterView[e.ColumnIndex,e.RowIndex].Value.ToString()));
                     break;
                 case nameof(CharacterName):
-                    var element = Element.GetElementEnum((string?)CharacterView[CharacterView.Columns[nameof(CharacterName)].Index-1,e.RowIndex].Value);
+                    var element = Element.GetElementEnum((string?)CharacterView[CharacterView.Columns[nameof(CharacterName)].Index-1,e.RowIndex].Value.ToString());
                     e.CellStyle.BackColor = Element.GetBackgroundColor(element);
                     break;
                 case nameof(Rarelity):

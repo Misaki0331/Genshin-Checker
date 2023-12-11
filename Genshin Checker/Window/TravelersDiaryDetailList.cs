@@ -7,6 +7,7 @@ using Newtonsoft.Json;
 using System.Data;
 using System.Text;
 using Genshin_Checker.Window.Popup;
+using Genshin_Checker.App.General.Convert;
 
 namespace Genshin_Checker.Window
 {
@@ -133,13 +134,11 @@ namespace Genshin_Checker.Window
                 lists.Details.Sort((a, b) => b.EventTime.CompareTo(a.EventTime));
                 dataGridView1.SuspendLayout();
                 CurrentView.Rows.Clear();
-                //API元がCSTで返しているのでUTCに変換する。
-                TimeZoneInfo cstZone = TimeZoneInfo.FindSystemTimeZoneById("China Standard Time");
+                //API元がサーバー時間で返しているのでUTCに変換する。
                 foreach (var a in lists.Details)
                 {
                     var typename = App.General.TravelersDiaryDatailEventConverter.GetEventName(a.EventType, eventlists);
-                    CurrentView.Rows.Add(new object[] { TimeZoneInfo.ConvertTimeToUtc(a.EventTime, cstZone), a.EventType, typename, a.Count });
-                    //dataGridView1.Rows.Add($"{a.EventTime:yyyy/MM/dd(ddd) HH:mm:ss}", $"{a.EventType}",typename,$"{a.Count}");
+                    CurrentView.Rows.Add(new object[] { ServerTime.ConvertUTCTime(account.Server,a.EventTime), a.EventType, typename, a.Count });
                 }
                 lists.Details.Clear();
                 dataGridView1.ResumeLayout(true);
