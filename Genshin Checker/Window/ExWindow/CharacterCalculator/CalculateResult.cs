@@ -24,6 +24,8 @@ namespace Genshin_Checker.Window.ExWindow.CharacterCalculator
             InitializeComponent();
             Inputs = inputs;
             Account = account;
+            Icon = Icon.FromHandle(resource.icon.calculator_new.GetHicon());
+            Text = $"育成計算結果";
         }
         public class Input
         {
@@ -45,17 +47,76 @@ namespace Genshin_Checker.Window.ExWindow.CharacterCalculator
         {
             return data.Rows.Cast<DataGridViewRow>().ToList().Find(predicate);
         }
+        void CalcurateResin(int CharaExp, int CharaMora,int BossItem,int TalentMora, int TalentBooks)
+        {
+            int world = Account.EnkaNetwork.Data.playerInfo.worldLevel;
+            bool reached = Account.EnkaNetwork.Data.playerInfo.level == 60;
+            double Drop = world switch
+            {
+                0 => 1.6185,
+                1 => 1.6185,
+                2 => 1.7037,
+                3 => 1.8741,
+                4 => 2.0445,
+                5 => 2.2149,
+                6 => 2.3852,
+                7 => 2.5556,
+                _ => 2.5556
+            };
+            double bossresin = BossItem / Drop * 40.0;
+            double talentresin = TalentBooks / 9.0 * 20.0;
+            int per = world switch
+            {
+                0 => 12000,
+                1 => 20000,
+                2 => 28000,
+                3 => 36000,
+                4 => 44000,
+                5 => 52000,
+                _ => 60000
+            };
+            per += reached ? 100 : 0;
+            double chararesin = CharaMora / per * 20;
+            double talentmoraresin = TalentMora / per * 20;
+
+            per = world switch
+            {
+                0 => 25000,
+                1 => 38500,
+                2 => 52500,
+                3 => 67500,
+                4 => 82500,
+                5 => 102500,
+                _ => 122500
+            };
+            double charaexpresin = CharaExp / per * 20;
+            ResinCharaExp.Text = $"{charaexpresin:#,##0.00}";
+            ResinBossItem.Text = $"{bossresin:#,##0.00}";
+            ResinCharacterMora.Text = $"{chararesin:#,##0.00}";
+            ResinTalentBooks.Text = $"{talentresin:#,##0.00}";
+            ResinTalentMora.Text = $"{talentmoraresin:#,##0.00}";
+            double total = bossresin + talentresin + chararesin + talentmoraresin + charaexpresin;
+            ResinTotal.Text = $"{total:#,##0.00}";
+
+
+        }
         private async void CalculateResult_Load(object sender, EventArgs e)
         {
             int CharacterMora = 0;
             int CharacterExp = 0;
             int TalentMora = 0;
             int TalentCrown = 0;
+            int BossItemCount = 0;
+            int TalentBooksCount = 0;
+            int cnt = 0;
             try
             {
                 var characters = await Account.Characters.GetData();
                 foreach(Input input in Inputs)
                 {
+                    cnt++;
+                    ProgressState.Text = $"取得中... ({cnt}/{Inputs.Count})";
+                    progressBar.Value = 100*cnt/Inputs.Count;
                     var detail = await Account.CharacterDetail.GetData(input.characterID);
                     //キャラクターのスキルを取得
                     var skill = detail.skill_list.FindAll(a => a.max_level != 1);
@@ -109,7 +170,7 @@ namespace Genshin_Checker.Window.ExWindow.CharacterCalculator
                             var row = GetRow(ViewAscensionMaterial, a => (int)a.Cells[nameof(AscensionTypeID)].Value == id);
                             if (row == null)
                             {
-                                ViewAscensionMaterial.Rows.Add(id, "", 0, 0, 0, 0);
+                                ViewAscensionMaterial.Rows.Add(id, id, 0, 0, 0, 0);
                                 row = GetRow(ViewAscensionMaterial, a => (int)a.Cells[nameof(AscensionTypeID)].Value == id);
                             }
                             if (row != null) row.Cells[type].Value = (int)row.Cells[type].Value + data.num;
@@ -122,6 +183,7 @@ namespace Genshin_Checker.Window.ExWindow.CharacterCalculator
                                 ViewBossItem.Rows.Add(data.id, await App.WebRequest.ImageGetRequest(data.icon_url), data.name, data.num);
                             }
                             else row.Cells[nameof(BossItemNum)].Value = (int)row.Cells[nameof(BossItemNum)].Value + data.num;
+                            BossItemCount += data.num;
                         }
                         else if ((data.id > 100000 && data.id <= 100099) || (data.id > 101200 && data.id <= 101299))
                         {
@@ -173,10 +235,14 @@ namespace Genshin_Checker.Window.ExWindow.CharacterCalculator
                             var row = GetRow(ViewTalentItems, a => (int)a.Cells[nameof(TalentItemID)].Value == id / 3);
                             if (row == null)
                             {
-                                ViewTalentItems.Rows.Add((int)id / 3, null, (int)id / 3 % 3, 0, 0, 0);
+                                ViewTalentItems.Rows.Add((int)id / 3, (int)id / 3, (int)id / 3 % 3, 0, 0, 0);
                                 row = GetRow(ViewTalentItems, a => (int)a.Cells[nameof(TalentItemID)].Value == id / 3);
                             }
                             if (row != null) row.Cells[pos].Value = (int)row.Cells[pos].Value + data.num;
+                            int x = 1;
+                            if (id % 3 == 1) x = 3;
+                            if (id % 3 == 2) x = 9;
+                            TalentBooksCount += data.num * x;
                         }
                         else if (data.id > 113000 && data.id < 114000)
                         {
@@ -201,14 +267,22 @@ namespace Genshin_Checker.Window.ExWindow.CharacterCalculator
                             }
                         }
                     }
+                    CalcurateResin(CharacterExp*20000,CharacterMora, BossItemCount, TalentMora, TalentBooksCount);
                 }
 
                 ViewAscensionMaterial.Sort(ViewAscensionMaterial.Columns[nameof(AscensionTypeID)], ListSortDirection.Ascending);
+                ViewAscensionMaterial.ClearSelection();
                 ViewBossItem.Sort(ViewBossItem.Columns[nameof(BossItemID)], ListSortDirection.Ascending);
+                ViewBossItem.ClearSelection();
                 ViewLocalSpecialtyItem.Sort(ViewLocalSpecialtyItem.Columns[nameof(LocalSpecialtyID)], ListSortDirection.Ascending);
+                ViewLocalSpecialtyItem.ClearSelection();
                 ViewTalentItems.Sort(ViewTalentItems.Columns[nameof(TalentItemID)], ListSortDirection.Ascending);
-                ViewWeeklyBossItems.Sort(ViewWeeklyBossItems.Columns[nameof(WeeklyBossItemID)], ListSortDirection.Ascending);
+                ViewTalentItems.ClearSelection();
+                ViewWeeklyBossItems.Sort(ViewWeeklyBossItems.Columns[nameof(WeeklyBossItemID)], ListSortDirection.Ascending);   
+                ViewWeeklyBossItems.ClearSelection();
                 ViewEnemyItems.Sort(ViewEnemyItems.Columns[nameof(EnemyItemID)], ListSortDirection.Ascending);
+                ViewEnemyItems.ClearSelection();
+                ProgressPanel.Visible = false;
             }
             catch(Exception ex)
             {
@@ -259,6 +333,21 @@ namespace Genshin_Checker.Window.ExWindow.CharacterCalculator
                     break;
                 // 精鋭ドロップ素材
                 case nameof(ViewEnemyItems):
+                    switch (Table.Columns[e.ColumnIndex].Name)
+                    {
+                        case nameof(EnemyItemCharacterNum):
+                        case nameof(EnemyItemTalentNum):
+                            if (e.Value == null || (int)e.Value == 0) e.Value = "";
+                            break;
+                    }
+                    var id = (int)row.Cells[nameof(EnemyItemID)].Value - 112002;
+                    e.CellStyle.BackColor = (id % 3) switch
+                    {
+                        0 => Rarity.GetBackgroundColor(Rarity.RarityType.Common),
+                        1 => Rarity.GetBackgroundColor(Rarity.RarityType.Uncommon),
+                        2 => Rarity.GetBackgroundColor(Rarity.RarityType.Rare),
+                        _ => Rarity.GetBackgroundColor(Rarity.RarityType.Unknown)
+                    };
                     break;
                 // 特産素材
                 case nameof(ViewLocalSpecialtyItem):
@@ -307,6 +396,24 @@ namespace Genshin_Checker.Window.ExWindow.CharacterCalculator
                             break;
                         case nameof(TalentItemOpenDays):
                             if (e.Value == null) return;
+                            var color = Color.FromArgb(0xFF, 0xFF, 0xCC, 0xCC);
+                            var today = -1;
+                            switch (ServerTime.GameServerDate(Account.Server).DayOfWeek)
+                            {
+                                case DayOfWeek.Monday:
+                                case DayOfWeek.Thursday:
+                                    today = 0;
+                                    break;
+                                case DayOfWeek.Tuesday:
+                                case DayOfWeek.Friday:
+                                    today = 1;
+                                    break;
+                                case DayOfWeek.Wednesday:
+                                case DayOfWeek.Saturday:
+                                    today = 2;
+                                    break;
+                            }
+                            if ((int)e.Value == today || today < 0) e.CellStyle.BackColor = color;
                             e.Value = (int)e.Value switch
                             {
                                 0 => "月・木",
@@ -320,6 +427,14 @@ namespace Genshin_Checker.Window.ExWindow.CharacterCalculator
                 // 週ボスドロップ素材
                 case nameof(ViewWeeklyBossItems):
                     break;
+            }
+        }
+
+        private void ViewLeave(object sender, EventArgs e)
+        {
+            if (sender is DataGridView view)
+            {
+                view.ClearSelection();
             }
         }
     }

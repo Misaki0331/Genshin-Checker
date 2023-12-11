@@ -16,23 +16,44 @@ namespace Genshin_Checker.Window
         public CharacterCalculator(Account account)
         {
             InitializeComponent();
+            Icon = Icon.FromHandle(resource.icon.calculator_new.GetHicon());
             this.account = account;
         }
         private async void CharacterCalculator_Load(object sender, EventArgs e)
         {
             if (!await account.CharacterDetail.IsReadyCacheData())
             {
-                new ErrorMessage("キャラクターの天賦情報を取得中です。", "しばらく経ってからもう一度開いてください。").ShowDialog() ;
-                Close();
-                return;
+                if (!account.CharacterDetail.IsAvailableUpdate)
+                {
+                    new ErrorMessage("キャラクターの天賦情報を取得中です。", "しばらく経ってからもう一度開いてください。").ShowDialog();
+                    Close();
+                    return;
+                }else
+                {
+
+                    var dialog = new ChooseMessage("新しいキャラクターが見つかりました。", "天賦情報を更新しますがよろしいでしょうか？", "確認",2,"はい","後にする");
+                    dialog.ShowDialog();
+                    if (dialog.Result == 0)
+                    {
+                        if (account.CharacterDetail.IsAvailableUpdate)
+                        {
+                            Close();
+                            await account.CharacterDetail.UpdateGameData(false);
+                        }
+                        else
+                        {
+                            new ErrorMessage("天賦情報の更新に失敗", "現在別のスレッドで更新しています。\nしばらく経ってからもう一度お試しください。").ShowDialog();
+                            Close();
+                        }
+                    }
+                    return;
+                }
             }
-            Text = "取得中...";
             var Data= await account.Characters.GetData();
             var characters = Data.avatars.FindAll(a=>true);
             var userdata = DataLoad();
             for(int i=0; i<characters.Count; i++)
             {
-                Text = $"{i}/{characters.Count}";
                 var character = characters[i];
                 var charainfo = await account.CharacterDetail.GetData(character.id);
                 var talent = charainfo.skill_list.FindAll(a=>a.max_level!=1);
@@ -47,7 +68,7 @@ namespace Genshin_Checker.Window
                     talent[1].level_current > setdata.SetTalent2 ? talent[1].level_current : setdata.SetTalent2,
                     talent[2].level_current > setdata.SetTalent3 ? talent[2].level_current : setdata.SetTalent3);
             }
-            Text = "育成計算機＋";
+            Text = $"育成計算機＋ (UID:{account.UID})";
         }
 
         private void CharacterView_DataError(object sender, DataGridViewDataErrorEventArgs e)
@@ -278,6 +299,48 @@ namespace Genshin_Checker.Window
                 return new();
             }
 
+        }
+
+        private void CharacterView_SelectionChanged(object sender, EventArgs e)
+        {
+            switch (CharacterView.SelectedRows.Count)
+            {
+                case 0:
+                    ButtonBatch.Enabled = false;
+                    ButtonBatch.Text = "変更";
+                    break;
+                case 1:
+                    ButtonBatch.Enabled = true;
+                    ButtonBatch.Text = "変更";
+                    break;
+                default:
+                    ButtonBatch.Enabled = true;
+                    ButtonBatch.Text = "一括変更";
+                    break;
+            }
+        }
+
+        private void CharacterView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            ButtonBatch_Click(CharacterView, EventArgs.Empty);
+        }
+
+        private async void button2_Click(object sender, EventArgs e)
+        {
+            var dialog = new ChooseMessage("天賦情報の更新", "天賦情報を一括で再取得しますか？\nキャラクターの数によって時間がかかる可能性があります。\n\n※更新する場合は自動的に育成計算機が閉じられます。", "確認");
+            dialog.ShowDialog();
+            if (dialog.Result == 0)
+            {
+                if (account.CharacterDetail.IsAvailableUpdate)
+                {
+                    Close();
+                    await account.CharacterDetail.UpdateGameData(true);
+                }
+                else
+                {
+                    new ErrorMessage("天賦情報の更新に失敗", "現在別のスレッドが使用されています。").ShowDialog();
+                }
+            }
         }
     }
 }

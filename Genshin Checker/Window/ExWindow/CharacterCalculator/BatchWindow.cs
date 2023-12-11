@@ -7,6 +7,7 @@
         public BatchWindow(InData data)
         {
             InitializeComponent();
+            Icon = Icon.FromHandle(resource.icon.calculator_new.GetHicon());
             ValuePairs = new()
             {
                 {NumericLevel,TrackLevel },
