@@ -154,4 +154,13 @@
   <data name="fail" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>icon\fail.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="calculator_new" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>icon\calculator_new.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Item_Crown_of_Insight" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>item\item_crown_of_insight.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Item_Heros_Wit" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>item\item_heros_wit.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

@@ -73,6 +73,16 @@ namespace Genshin_Checker.resource {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
+        internal static System.Drawing.Bitmap calculator_new {
+            get {
+                object obj = ResourceManager.GetObject("calculator_new", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
         internal static System.Drawing.Bitmap fail {
             get {
                 object obj = ResourceManager.GetObject("fail", resourceCulture);
@@ -113,9 +123,29 @@ namespace Genshin_Checker.resource {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
+        internal static System.Drawing.Bitmap Item_Crown_of_Insight {
+            get {
+                object obj = ResourceManager.GetObject("Item_Crown_of_Insight", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
         internal static System.Drawing.Bitmap Item_Fragile_Resin {
             get {
                 object obj = ResourceManager.GetObject("Item_Fragile_Resin", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap Item_Heros_Wit {
+            get {
+                object obj = ResourceManager.GetObject("Item_Heros_Wit", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

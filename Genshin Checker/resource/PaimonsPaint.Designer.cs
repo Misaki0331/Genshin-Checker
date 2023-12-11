@@ -63,6 +63,16 @@ namespace Genshin_Checker.resource {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
+        internal static System.Drawing.Bitmap Furina_1 {
+            get {
+                object obj = ResourceManager.GetObject("Furina_1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
         internal static System.Drawing.Bitmap Furina_2 {
             get {
                 object obj = ResourceManager.GetObject("Furina_2", resourceCulture);
