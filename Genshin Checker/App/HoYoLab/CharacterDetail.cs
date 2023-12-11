@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Genshin_Checker.App.HoYoLab
@@ -25,6 +26,9 @@ namespace Genshin_Checker.App.HoYoLab
         List<DataList> Cache;
         public DateTime LatestUpdateTime = DateTime.MinValue;
         readonly SemaphoreSlim UpdateSemaphore = new(1, 1);
+
+        public bool IsAvailableUpdate { get => UpdateSemaphore.CurrentCount == 1; }
+
         /// <summary>
         /// 定期実行関数
         /// </summary>
