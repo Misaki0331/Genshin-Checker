@@ -31,10 +31,19 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.page_general = new System.Windows.Forms.TabPage();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.IsScreenShotAfterDelete = new System.Windows.Forms.CheckBox();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.ScreenShotTransferFileFormat = new System.Windows.Forms.TextBox();
+            this.ScreenShotTransferImageType = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.ScreenShotTransferDirectry = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.IsScreenShotRaise = new System.Windows.Forms.CheckBox();
             this.ScreenshotPath = new System.Windows.Forms.TextBox();
             this.ButtonScreenShotPathAuto = new System.Windows.Forms.Button();
+            this.IsScreenShotRaise = new System.Windows.Forms.CheckBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.IsCountBackground = new System.Windows.Forms.CheckBox();
             this.page_notification = new System.Windows.Forms.TabPage();
@@ -69,6 +78,8 @@
             this.tabControl1.SuspendLayout();
             this.page_general.SuspendLayout();
             this.groupBox7.SuspendLayout();
+            this.panel6.SuspendLayout();
+            this.panel5.SuspendLayout();
             this.panel4.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.page_notification.SuspendLayout();
@@ -113,14 +124,115 @@
             // 
             // groupBox7
             // 
+            this.groupBox7.AutoSize = true;
+            this.groupBox7.Controls.Add(this.IsScreenShotAfterDelete);
+            this.groupBox7.Controls.Add(this.panel6);
+            this.groupBox7.Controls.Add(this.label5);
+            this.groupBox7.Controls.Add(this.panel5);
+            this.groupBox7.Controls.Add(this.label2);
             this.groupBox7.Controls.Add(this.panel4);
             this.groupBox7.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox7.Location = new System.Drawing.Point(3, 44);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(587, 100);
+            this.groupBox7.Size = new System.Drawing.Size(587, 143);
             this.groupBox7.TabIndex = 3;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "スクリーンショット";
+            // 
+            // IsScreenShotAfterDelete
+            // 
+            this.IsScreenShotAfterDelete.AutoSize = true;
+            this.IsScreenShotAfterDelete.Dock = System.Windows.Forms.DockStyle.Top;
+            this.IsScreenShotAfterDelete.Location = new System.Drawing.Point(3, 121);
+            this.IsScreenShotAfterDelete.Name = "IsScreenShotAfterDelete";
+            this.IsScreenShotAfterDelete.Size = new System.Drawing.Size(581, 19);
+            this.IsScreenShotAfterDelete.TabIndex = 5;
+            this.IsScreenShotAfterDelete.Text = "元のゲームフォルダのスクリーンショットを削除する";
+            this.IsScreenShotAfterDelete.UseVisualStyleBackColor = true;
+            this.IsScreenShotAfterDelete.CheckedChanged += new System.EventHandler(this.CheckedChanged);
+            // 
+            // panel6
+            // 
+            this.panel6.Controls.Add(this.ScreenShotTransferFileFormat);
+            this.panel6.Controls.Add(this.ScreenShotTransferImageType);
+            this.panel6.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel6.Location = new System.Drawing.Point(3, 97);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(581, 24);
+            this.panel6.TabIndex = 4;
+            // 
+            // ScreenShotTransferFileFormat
+            // 
+            this.ScreenShotTransferFileFormat.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ScreenShotTransferFileFormat.Location = new System.Drawing.Point(0, 0);
+            this.ScreenShotTransferFileFormat.Name = "ScreenShotTransferFileFormat";
+            this.ScreenShotTransferFileFormat.Size = new System.Drawing.Size(506, 23);
+            this.ScreenShotTransferFileFormat.TabIndex = 1;
+            this.ScreenShotTransferFileFormat.TextChanged += new System.EventHandler(this.ScreenShotTransferFileFormat_TextChanged);
+            // 
+            // ScreenShotTransferImageType
+            // 
+            this.ScreenShotTransferImageType.Dock = System.Windows.Forms.DockStyle.Right;
+            this.ScreenShotTransferImageType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ScreenShotTransferImageType.FormattingEnabled = true;
+            this.ScreenShotTransferImageType.Items.AddRange(new object[] {
+            ".png",
+            ".jpg"});
+            this.ScreenShotTransferImageType.Location = new System.Drawing.Point(506, 0);
+            this.ScreenShotTransferImageType.Name = "ScreenShotTransferImageType";
+            this.ScreenShotTransferImageType.Size = new System.Drawing.Size(75, 23);
+            this.ScreenShotTransferImageType.TabIndex = 2;
+            this.ScreenShotTransferImageType.SelectedIndexChanged += new System.EventHandler(this.ScreenShotTransferImageType_SelectedIndexChanged);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label5.Location = new System.Drawing.Point(3, 82);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(136, 15);
+            this.label5.TabIndex = 3;
+            this.label5.Text = "転送先のファイルフォーマット";
+            // 
+            // panel5
+            // 
+            this.panel5.Controls.Add(this.ScreenShotTransferDirectry);
+            this.panel5.Controls.Add(this.button1);
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel5.Location = new System.Drawing.Point(3, 58);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(581, 24);
+            this.panel5.TabIndex = 1;
+            // 
+            // ScreenShotTransferDirectry
+            // 
+            this.ScreenShotTransferDirectry.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ScreenShotTransferDirectry.Location = new System.Drawing.Point(0, 0);
+            this.ScreenShotTransferDirectry.Name = "ScreenShotTransferDirectry";
+            this.ScreenShotTransferDirectry.ReadOnly = true;
+            this.ScreenShotTransferDirectry.Size = new System.Drawing.Size(506, 23);
+            this.ScreenShotTransferDirectry.TabIndex = 1;
+            // 
+            // button1
+            // 
+            this.button1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.button1.Location = new System.Drawing.Point(506, 0);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 24);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "参照";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label2.Location = new System.Drawing.Point(3, 43);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(106, 15);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "転送先のフォルダパス";
             // 
             // panel4
             // 
@@ -130,20 +242,8 @@
             this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel4.Location = new System.Drawing.Point(3, 19);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(581, 27);
+            this.panel4.Size = new System.Drawing.Size(581, 24);
             this.panel4.TabIndex = 0;
-            // 
-            // IsScreenShotRaise
-            // 
-            this.IsScreenShotRaise.AutoSize = true;
-            this.IsScreenShotRaise.Dock = System.Windows.Forms.DockStyle.Left;
-            this.IsScreenShotRaise.Location = new System.Drawing.Point(0, 0);
-            this.IsScreenShotRaise.Name = "IsScreenShotRaise";
-            this.IsScreenShotRaise.Size = new System.Drawing.Size(86, 27);
-            this.IsScreenShotRaise.TabIndex = 0;
-            this.IsScreenShotRaise.Text = "検知有効化";
-            this.IsScreenShotRaise.UseVisualStyleBackColor = true;
-            this.IsScreenShotRaise.CheckedChanged += new System.EventHandler(this.CheckedChanged);
             // 
             // ScreenshotPath
             // 
@@ -159,11 +259,23 @@
             this.ButtonScreenShotPathAuto.Dock = System.Windows.Forms.DockStyle.Right;
             this.ButtonScreenShotPathAuto.Location = new System.Drawing.Point(506, 0);
             this.ButtonScreenShotPathAuto.Name = "ButtonScreenShotPathAuto";
-            this.ButtonScreenShotPathAuto.Size = new System.Drawing.Size(75, 27);
+            this.ButtonScreenShotPathAuto.Size = new System.Drawing.Size(75, 24);
             this.ButtonScreenShotPathAuto.TabIndex = 2;
             this.ButtonScreenShotPathAuto.Text = "自動設定";
             this.ButtonScreenShotPathAuto.UseVisualStyleBackColor = true;
             this.ButtonScreenShotPathAuto.Click += new System.EventHandler(this.ButtonScreenShotPathAuto_Click);
+            // 
+            // IsScreenShotRaise
+            // 
+            this.IsScreenShotRaise.AutoSize = true;
+            this.IsScreenShotRaise.Dock = System.Windows.Forms.DockStyle.Left;
+            this.IsScreenShotRaise.Location = new System.Drawing.Point(0, 0);
+            this.IsScreenShotRaise.Name = "IsScreenShotRaise";
+            this.IsScreenShotRaise.Size = new System.Drawing.Size(86, 24);
+            this.IsScreenShotRaise.TabIndex = 0;
+            this.IsScreenShotRaise.Text = "転送有効化";
+            this.IsScreenShotRaise.UseVisualStyleBackColor = true;
+            this.IsScreenShotRaise.CheckedChanged += new System.EventHandler(this.CheckedChanged);
             // 
             // groupBox6
             // 
@@ -544,6 +656,11 @@
             this.page_general.ResumeLayout(false);
             this.page_general.PerformLayout();
             this.groupBox7.ResumeLayout(false);
+            this.groupBox7.PerformLayout();
+            this.panel6.ResumeLayout(false);
+            this.panel6.PerformLayout();
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             this.groupBox6.ResumeLayout(false);
@@ -614,5 +731,14 @@
         private CheckBox IsScreenShotRaise;
         private TextBox ScreenshotPath;
         private Button ButtonScreenShotPathAuto;
+        private CheckBox IsScreenShotAfterDelete;
+        private Panel panel6;
+        private TextBox ScreenShotTransferFileFormat;
+        private ComboBox ScreenShotTransferImageType;
+        private Label label5;
+        private Panel panel5;
+        private TextBox ScreenShotTransferDirectry;
+        private Button button1;
+        private Label label2;
     }
 }

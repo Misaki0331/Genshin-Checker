@@ -19,7 +19,11 @@ namespace Genshin_Checker.App.General
             Notification.RealTimeNote.ExpeditionAllCompleted = Registry.GetValue("Config\\Setting", "IsNotificationRealTimeNoteExpeditionAllCompleted") == "True";
             Notification.RealTimeNote.TransformerReached = Registry.GetValue("Config\\Setting", "IsNotificationRealTimeNoteTransformerReached") == "True";
             ScreenShot.IsRaise = Registry.GetValue("Config\\Setting", "IsScreenShotRaise") == "True";
+            ScreenShot.IsSaveAfterDelete = Registry.GetValue("Config\\Setting", "IsScreenShotAfterDelete") == "True";
             ScreenShot.RaisePath = Registry.GetValue("Config\\Setting", "ScreenShotRaisePath") ?? "";
+            ScreenShot.SaveFileFormat = Registry.GetValue("Config\\Setting", "ScreenShotSaveFileFormat") ?? "<UID>\\<DATE>-<TIME>";
+            ScreenShot.SaveFileFormatType = Registry.GetValue("Config\\Setting", "ScreenShotSaveFileFormatType") ?? ".png";
+            ScreenShot.SaveFilePath = Registry.GetValue("Config\\Setting", "ScreenShotSaveFilePath") ?? $"{System.Environment.GetFolderPath(Environment.SpecialFolder.MyPictures)}\\Genshin Checker";
         }
         static Option? instance = null;
         public static Option Instance { get => instance ??= new Option(); }
@@ -46,5 +50,9 @@ namespace Genshin_Checker.App.General
     {
         public bool IsRaise = false;
         public string RaisePath = "";
+        public string SaveFileFormat = "";
+        public string SaveFileFormatType = "";
+        public string SaveFilePath = "";
+        public bool IsSaveAfterDelete = false;
     }
 }

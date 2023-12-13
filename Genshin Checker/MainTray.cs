@@ -15,7 +15,6 @@ namespace Genshin_Checker
 {
     public partial class MainTray : Form
     {
-        long sessionTime = 0;
         Window.TimerDisplay? TimerDisplay= null;
         Window.TimeGraph? TimeGraph= null;
         Window.RealTimeData? RealTimeData = null;
@@ -59,7 +58,6 @@ namespace Genshin_Checker
             Store.Accounts.Data.AccountAdded += AccountAdded;
             Store.Accounts.Data.Load();
             var name = System.Reflection.Assembly.GetExecutingAssembly().GetName();
-            Console.WriteLine("{0} {1}", name.Name, name.Version);
 
             versionNameToolStripMenuItem.Text = $"{name.Name} {name.Version}";
 #if DEBUG
@@ -85,7 +83,7 @@ namespace Genshin_Checker
         }
         void TargetStart(object? sender, EventArgs e)
         {
-            sessionTime = App.SessionCheck.Instance.Load();
+            App.SessionCheck.Instance.Load();
             if (Option.Instance.Notification.IsGameStart)
             {
                 notification.BalloonTipTitle = "原神チェッカー";
@@ -460,10 +458,37 @@ namespace Genshin_Checker
         }
         private void ScreenshotEvent(object? s, string e)
         {
-            var toast = new ToastContentBuilder()
-    .AddText("新しいスクリーンショットが保存されました！")
-    .AddHeroImage(new Uri(e));
-            toast.Show();
+            try
+            {
+                var savepath = Option.Instance.ScreenShot.SaveFilePath;
+                var format = Option.Instance.ScreenShot.SaveFileFormat;
+                format = format.Replace("<UID>", "TestUID").Replace("<DATE>", $"{DateTime.Now:yyyy-MM-dd}").Replace("<TIME>", $"{DateTime.Now:HH-mm-ss}");
+                var path = Path.GetFullPath(Path.Combine(savepath, format + Option.Instance.ScreenShot.SaveFileFormatType));
+                if (!Directory.Exists(Path.GetDirectoryName(path)))
+                {
+                    var path2 = Path.GetDirectoryName(path);
+                    if (path2 != null) Directory.CreateDirectory(path2);
+                }
+                switch (Option.Instance.ScreenShot.SaveFileFormatType)
+                {
+                    case ".png":
+                        File.Copy(e, path);
+                        break;
+                    case ".jpg":
+                        Bitmap image = new Bitmap(e);
+                        image.Save(path);
+                        image.Dispose();
+                        break;
+                }
+                if (Option.Instance.ScreenShot.IsSaveAfterDelete) File.Delete(e);
+                var toast = new ToastContentBuilder()
+        .AddText("新しいスクリーンショットが保存されました！")
+        .AddHeroImage(new Uri(path));
+                toast.Show();
+            }catch(Exception ex)
+            {
+                Trace.WriteLine(ex);
+            }
         }
     }
 }

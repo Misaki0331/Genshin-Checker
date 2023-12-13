@@ -15,6 +15,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
+using static System.Windows.Forms.DataFormats;
 
 namespace Genshin_Checker.Window
 {
@@ -47,6 +48,13 @@ namespace Genshin_Checker.Window
             IsNotificationRealTimeNoteRealmCoinMax.Checked = Option.Instance.Notification.RealTimeNote.RealmCoinMax;
             IsNotificationRealTimeNoteExpeditionAllCompleted.Checked = Option.Instance.Notification.RealTimeNote.ExpeditionAllCompleted;
             IsNotificationRealTimeNoteTransformerReached.Checked = Option.Instance.Notification.RealTimeNote.TransformerReached;
+            IsScreenShotRaise.Checked = Option.Instance.ScreenShot.IsRaise;
+            ScreenshotPath.Text = Option.Instance.ScreenShot.RaisePath;
+            ScreenShotTransferFileFormat.Text = Option.Instance.ScreenShot.SaveFileFormat;
+            ScreenShotTransferDirectry.Text = Option.Instance.ScreenShot.SaveFilePath;
+            IsScreenShotAfterDelete.Checked = Option.Instance.ScreenShot.IsSaveAfterDelete;
+            ScreenShotTransferImageType.Text = Option.Instance.ScreenShot.SaveFileFormatType;
+            if (ScreenShotTransferImageType.SelectedIndex < 0) ScreenShotTransferImageType.SelectedIndex = 0;
         }
 
         private void Tab_DrawItem(object? sender, DrawItemEventArgs e)
@@ -112,6 +120,7 @@ namespace Genshin_Checker.Window
             else if(name == IsNotificationRealTimeNoteExpeditionAllCompleted) Option.Instance.Notification.RealTimeNote.ExpeditionAllCompleted = name.Checked;
             else if(name == IsNotificationRealTimeNoteTransformerReached) Option.Instance.Notification.RealTimeNote.TransformerReached = name.Checked;
             else if (name == IsScreenShotRaise) Option.Instance.ScreenShot.IsRaise = name.Checked;
+            else if (name == IsScreenShotAfterDelete) Option.Instance.ScreenShot.IsSaveAfterDelete = name.Checked;
         }
 
         private void OpenLink(object sender, EventArgs e)
@@ -155,7 +164,46 @@ namespace Genshin_Checker.Window
             }
             ScreenshotPath.Text = str;
             App.Game.ScreenshotWatcher.Instance.Path = str;
+            Option.Instance.ScreenShot.RaisePath = str;
             Registry.SetValue("Config\\Setting", "ScreenShotRaisePath", $"{str}");
+        }
+
+        private void ScreenShotTransferFileFormat_TextChanged(object sender, EventArgs e)
+        {
+            var format = ScreenShotTransferFileFormat.Text;
+            var invalid = Path.GetInvalidFileNameChars();
+            if(format.Contains("\\/")|| format.Contains("/\\") || format.Contains("//") || format.Contains("\\\\")
+                || format.Contains("\\ ")|| format.Contains("/ ") || format.Contains(" \\") || format.Contains(" /") 
+                || format.StartsWith(" ") || format.EndsWith("/")|| format.EndsWith("\\") ||
+                format.Replace("<UID>","800000000").Replace("<DATE>",$"{DateTime.Now:yyyy-MM-dd}").Replace("<TIME>",$"{DateTime.Now:HH-mm-ss}").Replace("\\","_").Replace("/","_").IndexOfAny(invalid) >= 0)
+            {
+                ScreenShotTransferFileFormat.BackColor = Color.Pink;
+            }
+            else
+            {
+                ScreenShotTransferFileFormat.BackColor= Color.White;
+                Option.Instance.ScreenShot.SaveFileFormat = format;
+                Registry.SetValue("Config\\Setting", "ScreenShotSaveFileFormat", $"{format}");
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            using var fbd = new FolderBrowserDialog()
+            {
+                Description = "スクリーンショットを転送するフォルダを選択してください",
+            };
+            if (fbd.ShowDialog() != System.Windows.Forms.DialogResult.OK)
+                return;
+            Option.Instance.ScreenShot.SaveFilePath = fbd.SelectedPath;
+            ScreenShotTransferDirectry.Text = fbd.SelectedPath;
+            Registry.SetValue("Config\\Setting", "ScreenShotSaveFilePath", $"{fbd.SelectedPath}");
+        }
+
+        private void ScreenShotTransferImageType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Option.Instance.ScreenShot.SaveFileFormatType = ScreenShotTransferImageType.Text;
+            Registry.SetValue("Config\\Setting", "ScreenShotSaveFileFormatType", $"{ScreenShotTransferImageType.Text}");
         }
     }
 }

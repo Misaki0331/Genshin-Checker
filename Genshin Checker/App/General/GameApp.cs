@@ -15,9 +15,10 @@ namespace Genshin_Checker.App.General
         {
             string PATH = $"{Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)}\\AppData\\LocalLow\\miHoYo\\Genshin Impact";
             const string FILENAME = "output_log.txt";
-            FileStream fs = new($"{PATH}/{FILENAME}", FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
+            FileStream? fs=null;
             try
             {
+                fs = new($"{PATH}/{FILENAME}", FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
                 byte[] bytes = new byte[65536];
                 await fs.ReadAsync(bytes, 0, bytes.Length);
                 var res = Encoding.UTF8.GetString(bytes, 0, bytes.Length);
@@ -36,7 +37,7 @@ namespace Genshin_Checker.App.General
             }
             finally
             {
-                fs.Close();
+                if(fs!=null)fs.Dispose();
             }
             return null;
         }
