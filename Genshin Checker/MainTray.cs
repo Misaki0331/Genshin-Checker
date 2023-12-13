@@ -76,7 +76,7 @@ namespace Genshin_Checker
             }
             App.Game.GameLogWatcher.Instance.LogUpdated += LogUpdated;
             App.Game.GameLogWatcher.Instance.Init();
-            App.Game.ScreenshotWacher.Instance.NewImageEvent += ScreenshotEvent;
+            App.Game.ScreenshotWatcher.Instance.NewImageEvent += ScreenshotEvent;
         }
 
         void AccountAdded(object? sender, Account e)

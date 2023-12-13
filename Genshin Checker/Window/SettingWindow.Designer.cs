@@ -124,9 +124,9 @@
             // 
             // panel4
             // 
-            this.panel4.Controls.Add(this.IsScreenShotRaise);
             this.panel4.Controls.Add(this.ScreenshotPath);
             this.panel4.Controls.Add(this.ButtonScreenShotPathAuto);
+            this.panel4.Controls.Add(this.IsScreenShotRaise);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel4.Location = new System.Drawing.Point(3, 19);
             this.panel4.Name = "panel4";
@@ -148,10 +148,10 @@
             // ScreenshotPath
             // 
             this.ScreenshotPath.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ScreenshotPath.Location = new System.Drawing.Point(0, 0);
+            this.ScreenshotPath.Location = new System.Drawing.Point(86, 0);
             this.ScreenshotPath.Name = "ScreenshotPath";
             this.ScreenshotPath.ReadOnly = true;
-            this.ScreenshotPath.Size = new System.Drawing.Size(506, 23);
+            this.ScreenshotPath.Size = new System.Drawing.Size(420, 23);
             this.ScreenshotPath.TabIndex = 1;
             // 
             // ButtonScreenShotPathAuto

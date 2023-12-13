@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Genshin_Checker.App.General;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -9,10 +10,10 @@ using System.Threading.Tasks;
 
 namespace Genshin_Checker.App.Game
 {
-    internal class ScreenshotWacher
+    internal class ScreenshotWatcher
     {
-        static ScreenshotWacher? instance = null;
-        public static ScreenshotWacher Instance { get => instance ??= new ScreenshotWacher(); }
+        static ScreenshotWatcher? instance = null;
+        public static ScreenshotWatcher Instance { get => instance ??= new ScreenshotWatcher(); }
         public string Path { get => watcher.Path; set => watcher.Path = value; }
         public bool IsRaise { get => watcher.EnableRaisingEvents; 
             set
@@ -23,10 +24,17 @@ namespace Genshin_Checker.App.Game
         }
         FileSystemWatcher watcher;
 
-        private ScreenshotWacher()
+        private ScreenshotWatcher()
         {
             watcher = new();
             watcher.Created += new FileSystemEventHandler(OnCreated);
+            watcher.Filter = "*.png";
+            var path = Option.Instance.ScreenShot.RaisePath;
+            if (Directory.Exists(path))
+            {
+                watcher.Path = path;
+                watcher.EnableRaisingEvents = Option.Instance.ScreenShot.IsRaise;
+            }
         }
         public void Start()
         {

@@ -89,7 +89,7 @@ namespace Genshin_Checker.Window
                 switch (obj.Name)
                 {
                     case nameof(IsScreenShotRaise):
-                        App.Game.ScreenshotWacher.Instance.IsRaise = obj.Checked;
+                        App.Game.ScreenshotWatcher.Instance.IsRaise = obj.Checked;
                         break;
                 }
             }catch(Exception ex)
@@ -154,7 +154,7 @@ namespace Genshin_Checker.Window
                 return;
             }
             ScreenshotPath.Text = str;
-            App.Game.ScreenshotWacher.Instance.Path = str;
+            App.Game.ScreenshotWatcher.Instance.Path = str;
             Registry.SetValue("Config\\Setting", "ScreenShotRaisePath", $"{str}");
         }
     }
