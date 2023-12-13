@@ -7,6 +7,9 @@ using Genshin_Checker.App.General;
 using Genshin_Checker.Store;
 using Genshin_Checker.Window.Popup;
 using Genshin_Checker.App.General.Convert;
+using System.Text;
+using System.Security.Cryptography;
+using Microsoft.Toolkit.Uwp.Notifications;
 
 namespace Genshin_Checker
 {
@@ -73,6 +76,7 @@ namespace Genshin_Checker
             }
             App.Game.GameLogWatcher.Instance.LogUpdated += LogUpdated;
             App.Game.GameLogWatcher.Instance.Init();
+            App.Game.ScreenshotWacher.Instance.NewImageEvent += ScreenshotEvent;
         }
 
         void AccountAdded(object? sender, Account e)
@@ -250,7 +254,7 @@ namespace Genshin_Checker
         //ここはテスト用
         private async void testToolStripMenuItem_ClickAsync(object sender, EventArgs e)
         {
-            
+            Trace.WriteLine(await App.General.GameApp.WhereScreenShotPath());
         }
 
         private void 旅人手帳ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -453,6 +457,13 @@ namespace Genshin_Checker
                 var n = new ErrorMessage(ex.GetType().ToString(), ex.Message);
                 n.ShowDialog(this);
             }
+        }
+        private void ScreenshotEvent(object? s, string e)
+        {
+            var toast = new ToastContentBuilder()
+    .AddText("新しいスクリーンショットが保存されました！")
+    .AddHeroImage(new Uri(e));
+            toast.Show();
         }
     }
 }

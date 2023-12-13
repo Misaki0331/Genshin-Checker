@@ -18,10 +18,13 @@ namespace Genshin_Checker.App.General
             Notification.RealTimeNote.RealmCoinMax = Registry.GetValue("Config\\Setting", "IsNotificationRealTimeNoteRealmCoinMax") == "True";
             Notification.RealTimeNote.ExpeditionAllCompleted = Registry.GetValue("Config\\Setting", "IsNotificationRealTimeNoteExpeditionAllCompleted") == "True";
             Notification.RealTimeNote.TransformerReached = Registry.GetValue("Config\\Setting", "IsNotificationRealTimeNoteTransformerReached") == "True";
+            ScreenShot.IsRaise = Registry.GetValue("Config\\Setting", "IsScreenShotRaise") == "True";
+            ScreenShot.RaisePath = Registry.GetValue("Config\\Setting", "ScreenShotRaisePath") ?? "";
         }
         static Option? instance = null;
         public static Option Instance { get => instance ??= new Option(); }
         public Notification Notification { get; set; } = new();
+        public ScreenShot ScreenShot { get; set; } = new();
     }
     public class Notification
     {
@@ -38,5 +41,10 @@ namespace Genshin_Checker.App.General
             public bool TransformerReached = false;
         }
 
+    }
+    public class ScreenShot
+    {
+        public bool IsRaise = false;
+        public string RaisePath = "";
     }
 }

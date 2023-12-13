@@ -28,7 +28,7 @@ namespace Genshin_Checker.App.HoYoLab
         readonly SemaphoreSlim UpdateSemaphore = new(1, 1);
 
         public bool IsAvailableUpdate { get => UpdateSemaphore.CurrentCount == 1; }
-
+        public Exception? LatestException { get; private set; } = null;
         /// <summary>
         /// 定期実行関数
         /// </summary>
@@ -116,14 +116,17 @@ namespace Genshin_Checker.App.HoYoLab
                         }
                 }
                 LatestUpdateTime = DateTime.UtcNow;
+                LatestException = null;
                 IsSuccessed = true;
             }
             catch (Account.HoYoLabAPIException ex)
             {
+                LatestException= ex;
                 Trace.WriteLine($"アカウント検証エラー : {ex.Retcode} - {ex.APIMessage}");
             }
             catch (Exception ex)
             {
+                LatestException = ex;
                 Trace.WriteLine(ex.ToString());
             }
             finally

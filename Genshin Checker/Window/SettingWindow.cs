@@ -1,6 +1,7 @@
 ﻿using Genshin_Checker.App;
 using Genshin_Checker.App.Game;
 using Genshin_Checker.App.General;
+using Genshin_Checker.Window.Popup;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -83,6 +84,19 @@ namespace Genshin_Checker.Window
         {
             var obj = (CheckBox)sender;
             if(obj == null) return;
+            try
+            {
+                switch (obj.Name)
+                {
+                    case nameof(IsScreenShotRaise):
+                        App.Game.ScreenshotWacher.Instance.IsRaise = obj.Checked;
+                        break;
+                }
+            }catch(Exception ex)
+            {
+                obj.Checked = !obj.Checked;
+                new ErrorMessage("設定の変更に失敗しました。", $"{ex.Message}").ShowDialog();
+            }
             Registry.SetValue("Config\\Setting", obj.Name, $"{obj.Checked}");
             changeValue(obj);
         }
@@ -97,6 +111,7 @@ namespace Genshin_Checker.Window
             else if(name == IsNotificationRealTimeNoteRealmCoinMax) Option.Instance.Notification.RealTimeNote.RealmCoinMax = name.Checked;
             else if(name == IsNotificationRealTimeNoteExpeditionAllCompleted) Option.Instance.Notification.RealTimeNote.ExpeditionAllCompleted = name.Checked;
             else if(name == IsNotificationRealTimeNoteTransformerReached) Option.Instance.Notification.RealTimeNote.TransformerReached = name.Checked;
+            else if (name == IsScreenShotRaise) Option.Instance.ScreenShot.IsRaise = name.Checked;
         }
 
         private void OpenLink(object sender, EventArgs e)
@@ -128,6 +143,19 @@ namespace Genshin_Checker.Window
             else
                 LabelConnectedUID.Text = "未連携";
             Open_HoYoLabAuth.Enabled = true;
+        }
+
+        private async void ButtonScreenShotPathAuto_Click(object sender, EventArgs e)
+        {
+            var str = await GameApp.WhereScreenShotPath();
+            if(str == null)
+            {
+                new ErrorMessage("スクリーンショットのパスの取得に失敗", "ゲームを起動してもう一度お試しください。").ShowDialog();
+                return;
+            }
+            ScreenshotPath.Text = str;
+            App.Game.ScreenshotWacher.Instance.Path = str;
+            Registry.SetValue("Config\\Setting", "ScreenShotRaisePath", $"{str}");
         }
     }
 }

@@ -30,6 +30,11 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.page_general = new System.Windows.Forms.TabPage();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.IsScreenShotRaise = new System.Windows.Forms.CheckBox();
+            this.ScreenshotPath = new System.Windows.Forms.TextBox();
+            this.ButtonScreenShotPathAuto = new System.Windows.Forms.Button();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.IsCountBackground = new System.Windows.Forms.CheckBox();
             this.page_notification = new System.Windows.Forms.TabPage();
@@ -63,6 +68,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.page_general.SuspendLayout();
+            this.groupBox7.SuspendLayout();
+            this.panel4.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.page_notification.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -94,6 +101,7 @@
             // 
             // page_general
             // 
+            this.page_general.Controls.Add(this.groupBox7);
             this.page_general.Controls.Add(this.groupBox6);
             this.page_general.Location = new System.Drawing.Point(27, 4);
             this.page_general.Name = "page_general";
@@ -102,6 +110,60 @@
             this.page_general.TabIndex = 0;
             this.page_general.Text = "全般";
             this.page_general.UseVisualStyleBackColor = true;
+            // 
+            // groupBox7
+            // 
+            this.groupBox7.Controls.Add(this.panel4);
+            this.groupBox7.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupBox7.Location = new System.Drawing.Point(3, 44);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(587, 100);
+            this.groupBox7.TabIndex = 3;
+            this.groupBox7.TabStop = false;
+            this.groupBox7.Text = "スクリーンショット";
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.IsScreenShotRaise);
+            this.panel4.Controls.Add(this.ScreenshotPath);
+            this.panel4.Controls.Add(this.ButtonScreenShotPathAuto);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel4.Location = new System.Drawing.Point(3, 19);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(581, 27);
+            this.panel4.TabIndex = 0;
+            // 
+            // IsScreenShotRaise
+            // 
+            this.IsScreenShotRaise.AutoSize = true;
+            this.IsScreenShotRaise.Dock = System.Windows.Forms.DockStyle.Left;
+            this.IsScreenShotRaise.Location = new System.Drawing.Point(0, 0);
+            this.IsScreenShotRaise.Name = "IsScreenShotRaise";
+            this.IsScreenShotRaise.Size = new System.Drawing.Size(86, 27);
+            this.IsScreenShotRaise.TabIndex = 0;
+            this.IsScreenShotRaise.Text = "検知有効化";
+            this.IsScreenShotRaise.UseVisualStyleBackColor = true;
+            this.IsScreenShotRaise.CheckedChanged += new System.EventHandler(this.CheckedChanged);
+            // 
+            // ScreenshotPath
+            // 
+            this.ScreenshotPath.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ScreenshotPath.Location = new System.Drawing.Point(0, 0);
+            this.ScreenshotPath.Name = "ScreenshotPath";
+            this.ScreenshotPath.ReadOnly = true;
+            this.ScreenshotPath.Size = new System.Drawing.Size(506, 23);
+            this.ScreenshotPath.TabIndex = 1;
+            // 
+            // ButtonScreenShotPathAuto
+            // 
+            this.ButtonScreenShotPathAuto.Dock = System.Windows.Forms.DockStyle.Right;
+            this.ButtonScreenShotPathAuto.Location = new System.Drawing.Point(506, 0);
+            this.ButtonScreenShotPathAuto.Name = "ButtonScreenShotPathAuto";
+            this.ButtonScreenShotPathAuto.Size = new System.Drawing.Size(75, 27);
+            this.ButtonScreenShotPathAuto.TabIndex = 2;
+            this.ButtonScreenShotPathAuto.Text = "自動設定";
+            this.ButtonScreenShotPathAuto.UseVisualStyleBackColor = true;
+            this.ButtonScreenShotPathAuto.Click += new System.EventHandler(this.ButtonScreenShotPathAuto_Click);
             // 
             // groupBox6
             // 
@@ -481,6 +543,9 @@
             this.tabControl1.ResumeLayout(false);
             this.page_general.ResumeLayout(false);
             this.page_general.PerformLayout();
+            this.groupBox7.ResumeLayout(false);
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
             this.page_notification.ResumeLayout(false);
@@ -544,5 +609,10 @@
         private Label label3;
         private GroupBox groupBox6;
         private CheckBox IsCountBackground;
+        private GroupBox groupBox7;
+        private Panel panel4;
+        private CheckBox IsScreenShotRaise;
+        private TextBox ScreenshotPath;
+        private Button ButtonScreenShotPathAuto;
     }
 }
