@@ -38,7 +38,11 @@ namespace Genshin_Checker.Window
                         if (account.CharacterDetail.IsAvailableUpdate)
                         {
                             Close();
-                            await account.CharacterDetail.UpdateGameData(false);
+                            var a=await account.CharacterDetail.UpdateGameData(false);
+                            if (!a)
+                            {
+                                new ErrorMessage("天賦情報の更新に失敗", $"天賦情報の取得に失敗しました。\nエラーログ\n{account.CharacterDetail.LatestException}").ShowDialog();
+                            }
                         }
                         else
                         {
