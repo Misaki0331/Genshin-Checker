@@ -10,6 +10,7 @@ using Genshin_Checker.App.General.Convert;
 using System.Text;
 using System.Security.Cryptography;
 using Microsoft.Toolkit.Uwp.Notifications;
+using System.Drawing.Imaging;
 
 namespace Genshin_Checker
 {
@@ -456,13 +457,16 @@ namespace Genshin_Checker
                 n.ShowDialog(this);
             }
         }
-        private void ScreenshotEvent(object? s, string e)
+        private async void ScreenshotEvent(object? s, string e)
         {
             try
             {
                 var savepath = Option.Instance.ScreenShot.SaveFilePath;
                 var format = Option.Instance.ScreenShot.SaveFileFormat;
-                format = format.Replace("<UID>", "TestUID").Replace("<DATE>", $"{DateTime.Now:yyyy-MM-dd}").Replace("<TIME>", $"{DateTime.Now:HH-mm-ss}");
+                var uid = await GameApp.CurrentUID();
+                format = format.Replace("<UID>", uid).Replace("<DATE>", $"{DateTime.Now:yyyy-MM-dd}").Replace("<TIME>", $"{DateTime.Now:HH-mm-ss}");
+                Trace.WriteLine(uid);
+                Trace.WriteLine(format);
                 var path = Path.GetFullPath(Path.Combine(savepath, format + Option.Instance.ScreenShot.SaveFileFormatType));
                 if (!Directory.Exists(Path.GetDirectoryName(path)))
                 {
@@ -476,7 +480,12 @@ namespace Genshin_Checker
                         break;
                     case ".jpg":
                         Bitmap image = new Bitmap(e);
-                        image.Save(path);
+                        image.Save(path,ImageFormat.Jpeg);
+                        image.Dispose();
+                        break;
+                    case ".tiff":
+                        image = new Bitmap(e);
+                        image.Save(path, ImageFormat.Tiff);
                         image.Dispose();
                         break;
                 }
@@ -487,7 +496,7 @@ namespace Genshin_Checker
                 toast.Show();
             }catch(Exception ex)
             {
-                Trace.WriteLine(ex);
+                new ErrorMessage("スクリーンショット保存中にエラー", $"{ex}").ShowDialog();
             }
         }
     }

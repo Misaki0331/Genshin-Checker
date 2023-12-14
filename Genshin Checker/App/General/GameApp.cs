@@ -50,5 +50,27 @@ namespace Genshin_Checker.App.General
             if (Directory.Exists(path)) return path;
             else return null;
         }
+        public static async Task<string?> CurrentUID()
+        {
+            string PATH = $"{Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)}\\AppData\\LocalLow\\miHoYo\\Genshin Impact";
+            const string FILENAME = "UidInfo.txt";
+            StreamReader? fs = null;
+            try
+            {
+                fs = new($"{PATH}/{FILENAME}", new FileStreamOptions() { Mode = FileMode.Open, Access = FileAccess.Read, Share = FileShare.ReadWrite });
+                var uid = await fs.ReadToEndAsync();
+                uid = uid.Trim();
+                return uid;
+            }
+            catch (Exception ex)
+            {
+                Trace.WriteLine($"Error! {ex.Message}");
+            }
+            finally
+            {
+                fs?.Dispose();
+            }
+            return null;
+        }
     }
 }

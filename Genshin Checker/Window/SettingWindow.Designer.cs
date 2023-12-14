@@ -177,7 +177,8 @@
             this.ScreenShotTransferImageType.FormattingEnabled = true;
             this.ScreenShotTransferImageType.Items.AddRange(new object[] {
             ".png",
-            ".jpg"});
+            ".jpg",
+            ".tiff"});
             this.ScreenShotTransferImageType.Location = new System.Drawing.Point(506, 0);
             this.ScreenShotTransferImageType.Name = "ScreenShotTransferImageType";
             this.ScreenShotTransferImageType.Size = new System.Drawing.Size(75, 23);
