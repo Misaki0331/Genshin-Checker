@@ -461,35 +461,7 @@ namespace Genshin_Checker
         {
             try
             {
-                var savepath = Option.Instance.ScreenShot.SaveFilePath;
-                var format = Option.Instance.ScreenShot.SaveFileFormat;
-                var uid = await GameApp.CurrentUID();
-                format = format.Replace("<UID>", uid).Replace("<DATE>", $"{DateTime.Now:yyyy-MM-dd}").Replace("<TIME>", $"{DateTime.Now:HH-mm-ss}");
-                Trace.WriteLine(uid);
-                Trace.WriteLine(format);
-                var path = Path.GetFullPath(Path.Combine(savepath, format + Option.Instance.ScreenShot.SaveFileFormatType));
-                if (!Directory.Exists(Path.GetDirectoryName(path)))
-                {
-                    var path2 = Path.GetDirectoryName(path);
-                    if (path2 != null) Directory.CreateDirectory(path2);
-                }
-                switch (Option.Instance.ScreenShot.SaveFileFormatType)
-                {
-                    case ".png":
-                        File.Copy(e, path);
-                        break;
-                    case ".jpg":
-                        Bitmap image = new Bitmap(e);
-                        image.Save(path,ImageFormat.Jpeg);
-                        image.Dispose();
-                        break;
-                    case ".tiff":
-                        image = new Bitmap(e);
-                        image.Save(path, ImageFormat.Tiff);
-                        image.Dispose();
-                        break;
-                }
-                if (Option.Instance.ScreenShot.IsSaveAfterDelete) File.Delete(e);
+                var path = await App.General.ScreenShot.SaveToLocation(e);
                 var toast = new ToastContentBuilder()
         .AddText("新しいスクリーンショットが保存されました！")
         .AddHeroImage(new Uri(path));

@@ -57,4 +57,18 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="label8.Text" xml:space="preserve">
+    <value>フォーマットの仕様 : 転送先のフォーマットに「/」を使用することでフォルダも指定できます。
+例 : 「&lt;UID&gt;/&lt;DATE&gt;-&lt;TIME&gt;」⇒UIDフォルダ配下にスクリーンショット生成
+使用可能なコマンドは以下の通りです。
+&lt;UID&gt; ゲームアカウントUID (ゲームを再起動するまで変わりません)
+&lt;DATE&gt; 「20XX-XX-XX」表示方式の日付
+&lt;TIME&gt; 「XX-XX-XX」表示方式の時刻
+&lt;YEAR&gt; &lt;MONTH&gt; &lt;DAY&gt; : 年月日
+&lt;APM&gt; AM/PM 
+&lt;12H&gt; &lt;24H&gt; 12/24時間
+&lt;MIN&gt; &lt;SEC&gt; 分秒
+&lt;UNIX&gt; UNIX時間
+&lt;F&gt; &lt;FF&gt; &lt;FFF&gt;... 1～7桁までの小数点以下の秒数</value>
+  </data>
 </root>

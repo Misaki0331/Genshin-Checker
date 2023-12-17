@@ -27,9 +27,13 @@ namespace Genshin_Checker.App.General
         }
         static Option? instance = null;
         public static Option Instance { get => instance ??= new Option(); }
-        public Notification Notification { get; set; } = new();
-        public ScreenShot ScreenShot { get; set; } = new();
+        public OptionClass.Notification Notification { get; set; } = new();
+        public OptionClass.ScreenShot ScreenShot { get; set; } = new();
     }
+    
+}
+namespace Genshin_Checker.App.General.OptionClass
+{
     public class Notification
     {
         public bool IsGameStart = false;

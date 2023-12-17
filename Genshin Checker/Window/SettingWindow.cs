@@ -168,22 +168,17 @@ namespace Genshin_Checker.Window
             Registry.SetValue("Config\\Setting", "ScreenShotRaisePath", $"{str}");
         }
 
-        private void ScreenShotTransferFileFormat_TextChanged(object sender, EventArgs e)
+        private async void ScreenShotTransferFileFormat_TextChanged(object sender, EventArgs e)
         {
             var format = ScreenShotTransferFileFormat.Text;
-            var invalid = Path.GetInvalidFileNameChars();
-            if(format.Contains("\\/")|| format.Contains("/\\") || format.Contains("//") || format.Contains("\\\\")
-                || format.Contains("\\ ")|| format.Contains("/ ") || format.Contains(" \\") || format.Contains(" /") 
-                || format.StartsWith(" ") || format.EndsWith("/")|| format.EndsWith("\\") ||
-                format.Replace("<UID>","800000000").Replace("<DATE>",$"{DateTime.Now:yyyy-MM-dd}").Replace("<TIME>",$"{DateTime.Now:HH-mm-ss}").Replace("\\","_").Replace("/","_").IndexOfAny(invalid) >= 0)
+            var result = await App.General.ScreenShot.SetFileFormat(format);
+            if (string.IsNullOrEmpty(result))
             {
-                ScreenShotTransferFileFormat.BackColor = Color.Pink;
+                ScreenShotTransferFileFormat.BackColor = Color.White;
             }
             else
             {
-                ScreenShotTransferFileFormat.BackColor= Color.White;
-                Option.Instance.ScreenShot.SaveFileFormat = format;
-                Registry.SetValue("Config\\Setting", "ScreenShotSaveFileFormat", $"{format}");
+                ScreenShotTransferFileFormat.BackColor = Color.Pink;
             }
         }
 
