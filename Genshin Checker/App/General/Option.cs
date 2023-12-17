@@ -24,6 +24,7 @@ namespace Genshin_Checker.App.General
             ScreenShot.SaveFileFormat = Registry.GetValue("Config\\Setting", "ScreenShotSaveFileFormat") ?? "<UID>\\<DATE>-<TIME>";
             ScreenShot.SaveFileFormatType = Registry.GetValue("Config\\Setting", "ScreenShotSaveFileFormatType") ?? ".png";
             ScreenShot.SaveFilePath = Registry.GetValue("Config\\Setting", "ScreenShotSaveFilePath") ?? $"{System.Environment.GetFolderPath(Environment.SpecialFolder.MyPictures)}\\Genshin Checker";
+            ScreenShot.IsNotify = Registry.GetValue("Config\\Setting", "IsScreenShotNotify") == "True";
         }
         static Option? instance = null;
         public static Option Instance { get => instance ??= new Option(); }
@@ -58,5 +59,6 @@ namespace Genshin_Checker.App.General.OptionClass
         public string SaveFileFormatType = "";
         public string SaveFilePath = "";
         public bool IsSaveAfterDelete = false;
+        public bool IsNotify = false;
     }
 }

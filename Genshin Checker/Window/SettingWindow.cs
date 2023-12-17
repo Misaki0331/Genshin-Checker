@@ -49,6 +49,7 @@ namespace Genshin_Checker.Window
             IsNotificationRealTimeNoteExpeditionAllCompleted.Checked = Option.Instance.Notification.RealTimeNote.ExpeditionAllCompleted;
             IsNotificationRealTimeNoteTransformerReached.Checked = Option.Instance.Notification.RealTimeNote.TransformerReached;
             IsScreenShotRaise.Checked = Option.Instance.ScreenShot.IsRaise;
+            IsScreenShotNotify.Checked = Option.Instance.ScreenShot.IsNotify;
             ScreenshotPath.Text = Option.Instance.ScreenShot.RaisePath;
             ScreenShotTransferFileFormat.Text = Option.Instance.ScreenShot.SaveFileFormat;
             ScreenShotTransferDirectry.Text = Option.Instance.ScreenShot.SaveFilePath;
@@ -121,6 +122,7 @@ namespace Genshin_Checker.Window
             else if(name == IsNotificationRealTimeNoteTransformerReached) Option.Instance.Notification.RealTimeNote.TransformerReached = name.Checked;
             else if (name == IsScreenShotRaise) Option.Instance.ScreenShot.IsRaise = name.Checked;
             else if (name == IsScreenShotAfterDelete) Option.Instance.ScreenShot.IsSaveAfterDelete = name.Checked;
+            else if (name == IsScreenShotNotify) Option.Instance.ScreenShot.IsNotify = name.Checked;
         }
 
         private void OpenLink(object sender, EventArgs e)

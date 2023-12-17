@@ -69,6 +69,6 @@
 &lt;12H&gt; &lt;24H&gt; 12/24時間
 &lt;MIN&gt; &lt;SEC&gt; 分秒
 &lt;UNIX&gt; UNIX時間
-&lt;F&gt; &lt;FF&gt; &lt;FFF&gt;... 1～7桁までの小数点以下の秒数</value>
+&lt;FF&gt; &lt;FFF&gt; &lt;FFFF&gt;... 2～7桁までの小数点以下の秒数</value>
   </data>
 </root>

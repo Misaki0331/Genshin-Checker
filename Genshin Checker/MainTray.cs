@@ -11,6 +11,7 @@ using System.Text;
 using System.Security.Cryptography;
 using Microsoft.Toolkit.Uwp.Notifications;
 using System.Drawing.Imaging;
+using System.Security.Policy;
 
 namespace Genshin_Checker
 {
@@ -462,11 +463,31 @@ namespace Genshin_Checker
             try
             {
                 var path = await App.General.ScreenShot.SaveToLocation(e);
-                var toast = new ToastContentBuilder()
-        .AddText("新しいスクリーンショットが保存されました！")
-        .AddHeroImage(new Uri(path));
-                toast.Show();
-            }catch(Exception ex)
+                if (Option.Instance.ScreenShot.IsNotify)
+                {
+                    var toastContent = new ToastContentBuilder()
+            .AddText("新しいスクリーンショットが保存されました！")
+            .AddAttributionText($"UID: {await App.General.GameApp.CurrentUID()}")
+            .AddHeroImage(new Uri(path));
+                    toastContent.Show(toast =>
+                    {
+                        toast.Activated += (s, e) =>
+                        {
+                            try
+                            {
+                                var process = new ProcessStartInfo()
+                                {
+                                    FileName = path,
+                                    UseShellExecute = true,
+                                };
+                                Process.Start(process);
+                            }
+                            catch (Exception) { }
+                        };
+                    });
+                }
+            }
+            catch(Exception ex)
             {
                 new ErrorMessage("スクリーンショット保存中にエラー", $"{ex}").ShowDialog();
             }

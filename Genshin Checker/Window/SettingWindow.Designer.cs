@@ -32,6 +32,8 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.page_general = new System.Windows.Forms.TabPage();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.IsScreenShotNotify = new System.Windows.Forms.CheckBox();
             this.IsScreenShotAfterDelete = new System.Windows.Forms.CheckBox();
             this.panel6 = new System.Windows.Forms.Panel();
             this.ScreenShotTransferFileFormat = new System.Windows.Forms.TextBox();
@@ -76,7 +78,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.page_general.SuspendLayout();
             this.groupBox7.SuspendLayout();
@@ -114,6 +115,7 @@
             // 
             // page_general
             // 
+            this.page_general.AutoScroll = true;
             this.page_general.Controls.Add(this.groupBox7);
             this.page_general.Controls.Add(this.groupBox6);
             this.page_general.Location = new System.Drawing.Point(27, 4);
@@ -128,6 +130,7 @@
             // 
             this.groupBox7.AutoSize = true;
             this.groupBox7.Controls.Add(this.label8);
+            this.groupBox7.Controls.Add(this.IsScreenShotNotify);
             this.groupBox7.Controls.Add(this.IsScreenShotAfterDelete);
             this.groupBox7.Controls.Add(this.panel6);
             this.groupBox7.Controls.Add(this.label5);
@@ -137,10 +140,32 @@
             this.groupBox7.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox7.Location = new System.Drawing.Point(3, 44);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(587, 323);
+            this.groupBox7.Size = new System.Drawing.Size(587, 342);
             this.groupBox7.TabIndex = 3;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "スクリーンショット";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label8.Location = new System.Drawing.Point(3, 159);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(413, 180);
+            this.label8.TabIndex = 6;
+            this.label8.Text = resources.GetString("label8.Text");
+            // 
+            // IsScreenShotNotify
+            // 
+            this.IsScreenShotNotify.AutoSize = true;
+            this.IsScreenShotNotify.Dock = System.Windows.Forms.DockStyle.Top;
+            this.IsScreenShotNotify.Location = new System.Drawing.Point(3, 140);
+            this.IsScreenShotNotify.Name = "IsScreenShotNotify";
+            this.IsScreenShotNotify.Size = new System.Drawing.Size(581, 19);
+            this.IsScreenShotNotify.TabIndex = 7;
+            this.IsScreenShotNotify.Text = "スクリーンショット保存した時に通知する";
+            this.IsScreenShotNotify.UseVisualStyleBackColor = true;
+            this.IsScreenShotNotify.CheckedChanged += new System.EventHandler(this.CheckedChanged);
             // 
             // IsScreenShotAfterDelete
             // 
@@ -647,16 +672,6 @@
             this.label3.TabIndex = 0;
             this.label3.Text = "Genshin Checker ";
             // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label8.Location = new System.Drawing.Point(3, 140);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(413, 180);
-            this.label8.TabIndex = 6;
-            this.label8.Text = resources.GetString("label8.Text");
-            // 
             // SettingWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -755,5 +770,6 @@
         private Button button1;
         private Label label2;
         private Label label8;
+        private CheckBox IsScreenShotNotify;
     }
 }
