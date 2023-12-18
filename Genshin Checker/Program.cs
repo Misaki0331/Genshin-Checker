@@ -1,6 +1,8 @@
 using Genshin_Checker.Window;
 using System.Linq.Expressions;
 using Genshin_Checker.Window.Popup;
+using Microsoft.Toolkit.Uwp.Notifications;
+
 namespace Genshin_Checker
 {
     internal static class Program
@@ -22,7 +24,21 @@ namespace Genshin_Checker
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-
+            bool ToastActivated = false;
+            foreach (string cmd in System.Environment.GetCommandLineArgs())
+            {
+                switch (cmd)
+                {
+                    case "-ToastActivated":
+                        ToastActivated= true;
+                        break;
+                }
+            }
+            if (ToastActivated)
+            {
+                ToastNotificationManagerCompat.History.Clear();
+                return;
+            }
             //Mutex名を決める（必ずアプリケーション固有の文字列に変更すること！）
             string mutexName = "Genshin Checker";
             //Mutexオブジェクトを作成する
@@ -46,7 +62,9 @@ namespace Genshin_Checker
                 if (!HasHandle)
                 {
                     //得られなかった場合は、すでに起動していると判断して終了
-                    MessageBox.Show("多重起動はできません。", "Genshin Checker", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    var args = "";
+                    foreach (var a in System.Environment.GetCommandLineArgs()) args += $"{a} ";
+                    MessageBox.Show($"多重起動はできません。\n起動した引数\n{args}", "Genshin Checker", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 #endif

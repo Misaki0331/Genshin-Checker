@@ -477,13 +477,14 @@ namespace Genshin_Checker
                             {
                                 var process = new ProcessStartInfo()
                                 {
-                                    FileName = path,
-                                    UseShellExecute = true,
+                                    Arguments = $"/select,{path}",
+                                    FileName = "EXPLORER.EXE",
                                 };
                                 Process.Start(process);
                             }
                             catch (Exception) { }
                         };
+                        toast.ExpirationTime = DateTime.Now.AddDays(1);
                     });
                 }
             }
