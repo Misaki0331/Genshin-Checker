@@ -23,9 +23,11 @@ namespace Genshin_Checker
 #endif
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
+            Application.EnableVisualStyles();
             ApplicationConfiguration.Initialize();
             bool ToastActivated = false;
-            foreach (string cmd in System.Environment.GetCommandLineArgs())
+            //トースト通知の引数が含まれる場合は通知を削除
+            foreach (string cmd in Environment.GetCommandLineArgs())
             {
                 switch (cmd)
                 {

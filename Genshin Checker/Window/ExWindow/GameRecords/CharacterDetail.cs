@@ -70,7 +70,7 @@ namespace Genshin_Checker.Window.ExWindow.GameRecords
                     gacha = character.SideIconName.Replace("UI_AvatarIcon_Side_", "UI_Gacha_AvatarImg_");
                 }catch(Exception ex)
                 {
-                    new ErrorMessage("データ不足", $"{CharacterInfo.name}はまだ有志のデータベース上にありません。").ShowDialog();
+                    new ErrorMessage("このキャラクターはデータ不足です。", $"{CharacterInfo.name}はまだ有志のデータベース上にデータがありません。\nしばらく経ってからまた開き直してください。").ShowDialog();
                 }
 
                 Text = $"キャラクター詳細 - {CharacterInfo.name} (UID:{account.UID})";

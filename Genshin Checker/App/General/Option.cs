@@ -10,6 +10,7 @@ namespace Genshin_Checker.App.General
     {
         public Option()
         {
+            //Todo: json化する
             Notification.IsGameStart = Registry.GetValue("Config\\Setting", "IsNotificationGameStart") == "True";
             Notification.IsGameEnd = Registry.GetValue("Config\\Setting", "IsNotificationGameClosed") == "True";
             Notification.RealTimeNote.Resin120 = Registry.GetValue("Config\\Setting", "IsNotificationRealTimeNoteResin120") == "True";
@@ -55,9 +56,9 @@ namespace Genshin_Checker.App.General.OptionClass
     {
         public bool IsRaise = false;
         public string RaisePath = "";
-        public string SaveFileFormat = "";
-        public string SaveFileFormatType = "";
-        public string SaveFilePath = "";
+        public string SaveFileFormat = "<UID>\\<DATE>-<TIME>";
+        public string SaveFileFormatType = ".png";
+        public string SaveFilePath = $"{System.Environment.GetFolderPath(Environment.SpecialFolder.MyPictures)}\\Genshin Checker";
         public bool IsSaveAfterDelete = false;
         public bool IsNotify = false;
     }
