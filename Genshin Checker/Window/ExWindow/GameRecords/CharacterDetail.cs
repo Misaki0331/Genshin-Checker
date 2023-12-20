@@ -57,13 +57,21 @@ namespace Genshin_Checker.Window.ExWindow.GameRecords
                 if (cts != null) cts.Cancel(true);
                 cts = new();
                 if (Store.EnkaData.Data.Characters == null) return;
-                var character = Store.EnkaData.Data.Characters[$"{characterID}"];
-                var gacha = character.SideIconName.Replace("UI_AvatarIcon_Side_", "UI_Gacha_AvatarImg_");
 
                 //キャラクター情報の取得
                 var Detail = await account.Characters.GetData();
                 var CharacterInfo = Detail.avatars.Find(a => a.id == characterID);
                 if (CharacterInfo == null) throw new ArgumentNullException("キャラクターが所持されていません。");
+
+                string gacha = "";
+                try
+                {
+                    var character = Store.EnkaData.Data.Characters[$"{characterID}"];
+                    gacha = character.SideIconName.Replace("UI_AvatarIcon_Side_", "UI_Gacha_AvatarImg_");
+                }catch(Exception ex)
+                {
+                    new ErrorMessage("データ不足", $"{CharacterInfo.name}はまだ有志のデータベース上にありません。").ShowDialog();
+                }
 
                 Text = $"キャラクター詳細 - {CharacterInfo.name} (UID:{account.UID})";
                 IsLoading = true;
@@ -192,9 +200,11 @@ namespace Genshin_Checker.Window.ExWindow.GameRecords
                 }
                 ArtifactLayout.ResumeLayout();
 
-                CharacterBanner = await App.WebRequest.ImageGetRequest($"https://enka.network/ui/{gacha}.png", cts.Token);
-
-                IsLoading = false;
+                if (!string.IsNullOrEmpty(gacha))
+                {
+                    CharacterBanner = await App.WebRequest.ImageGetRequest($"https://enka.network/ui/{gacha}.png", cts.Token);
+                    IsLoading = false;
+                }
                 ImageReload(true);
             }
             finally
