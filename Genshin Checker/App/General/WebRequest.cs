@@ -156,8 +156,9 @@ namespace Genshin_Checker.App
             Trace.WriteLine($"GeneralGet - {url}");
             return await response.Content.ReadAsStringAsync();
         }
-        public static async Task<Image> ImageGetRequest(string url,CancellationToken? token=null)
+        public static async Task<Image> ImageGetRequest(string? url,CancellationToken? token=null)
         {
+            if (url == null) return resource.icon.fail;
             var uri = new Uri(url);
             bool IsQuery = url.Contains('?');
             var filename = GetCachePath(MD5Hash(url));

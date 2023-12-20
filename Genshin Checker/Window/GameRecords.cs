@@ -18,27 +18,58 @@ namespace Genshin_Checker.Window
         }
         List<Window.Contains.Exploration> ExplorationControls = new();
         List<UI.Control.GameRecord.CharacterInfo> characterInfos= new();
-        private void GameRecords_Load(object sender, EventArgs e)
+        private async void GameRecords_Load(object sender, EventArgs e)
         {
             try
             {
                 #region ヘッダー部分
-                var str = "-";
-                if (account.GameRecords.Data != null) str = account.GameRecords.Data.stats.SpiralAbyss;
-                label2.Text = $"{account.Name} AR.{account.EnkaNetwork.Data.playerInfo.level} | 解放済実績 : {account.EnkaNetwork.Data.playerInfo.finishAchievementNum}件 | 深境螺旋 : {(str == "-" ? "未踏破" : str)}";
+                var spiralAbyssProgress = "-";
+                if (account.GameRecords.Data != null) spiralAbyssProgress = account.GameRecords.Data.stats.SpiralAbyss;
+                int? ar = null;
+                int? achieve = null;
+                if (!account.EnkaNetwork.HasError)
+                {
+                    ar = account.EnkaNetwork.Data.playerInfo.level;
+                    achieve = account.EnkaNetwork.Data.playerInfo.finishAchievementNum;
+                }
+                else if (account.GameRecords.Data != null)
+                {
+                    ar = account.GameRecords.Data.role.Level;
+                    achieve = account.GameRecords.Data.stats.Achievement;
+                }
+                label2.Text = $"{account.Name} AR.{(ar!=null?ar:"不明")} | 解放済実績 : {(achieve!=null?achieve:"不明")}件 | 深境螺旋 : {(spiralAbyssProgress == "-" ? "未踏破" : spiralAbyssProgress)}";
                 label1.Text = $"UID : {account.UID}";
                 #endregion
                 #region 概要
-                Summary_UserIcon.ImageLocation = EnkaData.Convert.AvaterIcon.GetIconURL(account.EnkaNetwork.Data.playerInfo.profilePicture.avatarId);
-                Summary_UserName.Text = account.EnkaNetwork.Data.playerInfo.nickname;
-                if (string.IsNullOrEmpty(account.EnkaNetwork.Data.playerInfo.signature))
+                if (account.EnkaNetwork.HasError)
                 {
-                    Summary_StatusMessage.Text = "ステータスメッセージが設定されていません。";
-                    Summary_StatusMessage.ForeColor = Color.Gray;
+                    Summary_UserName.Text = account.Name;
+                    if (account.GameRecords.Data != null) {
+                        Summary_AdventureRank.Text = $"{account.GameRecords.Data.role.Level}";
+                        Summary_UserIcon.Image = await App.WebRequest.ImageGetRequest(account.GameRecords.Data.role.game_head_icon);
+                    }
+                    else
+                    {
+                        Summary_AdventureRank.Text = $"??";
+                    }
+                    Summary_StatusMessage.Text = account.EnkaNetwork.LatestErrorMessage;
+                    Summary_StatusMessage.ForeColor = Color.Red;
+                    Summary_AdventureRankState.Text = "世界ランク : 不明";
                 }
-                else Summary_StatusMessage.Text = account.EnkaNetwork.Data.playerInfo.signature;
-                Summary_AdventureRank.Text = $"{account.EnkaNetwork.Data.playerInfo.level}";
-                Summary_AdventureRankState.Text = $"世界ランク : {account.EnkaNetwork.Data.playerInfo.worldLevel}";
+                else
+                {
+                    Summary_UserIcon.Image = await App.WebRequest.ImageGetRequest(EnkaData.Convert.AvaterIcon.GetIconURL(account.EnkaNetwork.Data.playerInfo.profilePicture.avatarId));
+                    Summary_UserName.Text = account.EnkaNetwork.Data.playerInfo.nickname;
+                    if (string.IsNullOrEmpty(account.EnkaNetwork.Data.playerInfo.signature))
+                    {
+                        Summary_StatusMessage.Text = "ステータスメッセージが設定されていません。";
+                        Summary_StatusMessage.ForeColor = Color.Gray;
+                    }
+                    else Summary_StatusMessage.Text = account.EnkaNetwork.Data.playerInfo.signature;
+                    Summary_AdventureRank.Text = $"{account.EnkaNetwork.Data.playerInfo.level}";
+                    Summary_AdventureRankState.Text = $"世界ランク : {account.EnkaNetwork.Data.playerInfo.worldLevel}";
+                }
+                
                 if (account.GameRecords.Data != null)
                 {
                     var data = account.GameRecords.Data.stats;

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using Genshin_Checker.App.HoYoLab;
@@ -13,6 +14,8 @@ namespace Genshin_Checker.App.EnkaNetwork
         private Account account;
 
         public bool IsDisposed { get; private set; } = false;
+        public bool HasError { get => !string.IsNullOrEmpty(LatestErrorMessage); }
+        public string LatestErrorMessage { get; private set; } = "";
         public void Dispose()
         {
             IsDisposed = true;
@@ -40,10 +43,31 @@ namespace Genshin_Checker.App.EnkaNetwork
             try
             {
                 Data = await getNote();
+                LatestErrorMessage = "";
+            }
+            catch (HttpRequestException ex) when (ex.StatusCode == HttpStatusCode.BadRequest)
+            {
+                LatestErrorMessage = "UIDフォーマットが合っていません。";
+            }
+            catch (HttpRequestException ex) when (ex.StatusCode == HttpStatusCode.NotFound)
+            {
+                LatestErrorMessage = "対象のプレイヤーが見つかりません。";
+            }
+            catch (HttpRequestException ex) when (ex.StatusCode == HttpStatusCode.FailedDependency)
+            {
+                LatestErrorMessage = "アップデートによる破壊的変更が行われた為、この情報は現在利用できません。";
+            }
+            catch (HttpRequestException ex) when (ex.StatusCode == HttpStatusCode.InternalServerError)
+            {
+                LatestErrorMessage = "サーバー内のエラーである為、現在利用できません。";
+            }
+            catch (HttpRequestException ex) when (ex.StatusCode == HttpStatusCode.ServiceUnavailable)
+            {
+                LatestErrorMessage = "対象の情報はサービスが一時停止中である為、現在利用できません。";
             }
             catch (Exception ex)
             {
-                Trace.WriteLine(ex);
+                LatestErrorMessage = $"{ex.Message}\n{ex.GetType()}";
             }
 
             ServerUpdate.Interval = 300000;
