@@ -25,7 +25,7 @@ namespace Genshin_Checker.Window
                 #region ヘッダー部分
                 var spiralAbyssProgress = "-";
                 if (account.GameRecords.Data != null) spiralAbyssProgress = account.GameRecords.Data.stats.SpiralAbyss;
-                int? ar = null;
+                int ar = account.Level;
                 int? achieve = null;
                 if (!account.EnkaNetwork.HasError)
                 {
@@ -33,11 +33,8 @@ namespace Genshin_Checker.Window
                     achieve = account.EnkaNetwork.Data.playerInfo.finishAchievementNum;
                 }
                 else if (account.GameRecords.Data != null)
-                {
-                    ar = account.GameRecords.Data.role.Level;
                     achieve = account.GameRecords.Data.stats.Achievement;
-                }
-                label2.Text = $"{account.Name} AR.{(ar!=null?ar:"不明")} | 解放済実績 : {(achieve!=null?achieve:"不明")}件 | 深境螺旋 : {(spiralAbyssProgress == "-" ? "未踏破" : spiralAbyssProgress)}";
+                label2.Text = $"{account.Name} AR.{ar} | 解放済実績 : {(achieve!=null?achieve:"-")}件 | 深境螺旋 : {(spiralAbyssProgress == "-" ? "未踏破" : spiralAbyssProgress)}";
                 label1.Text = $"UID : {account.UID}";
                 #endregion
                 #region 概要

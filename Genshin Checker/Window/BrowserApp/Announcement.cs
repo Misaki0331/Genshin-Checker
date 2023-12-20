@@ -22,7 +22,7 @@ namespace Genshin_Checker.BrowserApp
     {
         Account account;
         const string URLBase = "https://webstatic-sea.hoyoverse.com/hk4e/announcement/index.html?bundle_id=hk4e_global&channel_id=1&game=hk4e&game_biz=hk4e_global";
-        public WebGameAnnounce(Account account) : base(new($"{URLBase}&lang={CultureInfo.CurrentCulture.Name[..2]}&level={account.EnkaNetwork.Data.playerInfo.level}&platform=pc&region={account.Server}&uid={account.UID}"), autoshow: false)
+        public WebGameAnnounce(Account account) : base(new($"{URLBase}&lang={CultureInfo.CurrentCulture.Name[..2]}&level={account.Level}&platform=pc&region={account.Server}&uid={account.UID}"), autoshow: false)
         {
             this.account = account;
             UrlBox.Visible = false;
