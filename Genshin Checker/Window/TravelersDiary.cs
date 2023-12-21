@@ -16,6 +16,8 @@ namespace Genshin_Checker.Window
 
         private readonly PieChart PrimogemsType;
 
+        [System.Runtime.InteropServices.DllImport("gdi32.dll", ExactSpelling = true)]
+        private static extern IntPtr AddFontMemResourceEx(byte[] pbFont, int cbFont, IntPtr pdv, out uint pcFonts);
         System.Drawing.Text.PrivateFontCollection pfc = new();
         public TravelersDiary(Account account)
         {
@@ -39,6 +41,9 @@ namespace Genshin_Checker.Window
                 byte[] fontBuf = resource.font.DSEG7Classic_BoldItalic;
                 IntPtr fontBufPtr = Marshal.AllocCoTaskMem(fontBuf.Length);
                 Marshal.Copy(fontBuf, 0, fontBufPtr, fontBuf.Length);
+                uint cFonts;
+                AddFontMemResourceEx(fontBuf, fontBuf.Length, IntPtr.Zero, out cFonts);
+
                 pfc.AddMemoryFont(fontBufPtr, fontBuf.Length);
                 Marshal.FreeCoTaskMem(fontBufPtr);
                 Today_Primogem.Font = new(pfc.Families[0], 32, FontStyle.Bold | FontStyle.Italic);
