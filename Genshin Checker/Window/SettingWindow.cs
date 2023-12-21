@@ -106,7 +106,7 @@ namespace Genshin_Checker.Window
                 obj.Checked = !obj.Checked;
                 new ErrorMessage("設定の変更に失敗しました。", $"{ex.Message}").ShowDialog();
             }
-            Registry.SetValue("Config\\Setting", obj.Name, $"{obj.Checked}");
+            Option.Save();
             changeValue(obj);
         }
         void changeValue(CheckBox name)
@@ -167,7 +167,7 @@ namespace Genshin_Checker.Window
             ScreenshotPath.Text = str;
             App.Game.ScreenshotWatcher.Instance.Path = str;
             Option.Instance.ScreenShot.RaisePath = str;
-            Registry.SetValue("Config\\Setting", "ScreenShotRaisePath", $"{str}");
+            Option.Save();
         }
 
         private async void ScreenShotTransferFileFormat_TextChanged(object sender, EventArgs e)
@@ -194,13 +194,13 @@ namespace Genshin_Checker.Window
                 return;
             Option.Instance.ScreenShot.SaveFilePath = fbd.SelectedPath;
             ScreenShotTransferDirectry.Text = fbd.SelectedPath;
-            Registry.SetValue("Config\\Setting", "ScreenShotSaveFilePath", $"{fbd.SelectedPath}");
+            Option.Save();
         }
 
         private void ScreenShotTransferImageType_SelectedIndexChanged(object sender, EventArgs e)
         {
             Option.Instance.ScreenShot.SaveFileFormatType = ScreenShotTransferImageType.Text;
-            Registry.SetValue("Config\\Setting", "ScreenShotSaveFileFormatType", $"{ScreenShotTransferImageType.Text}");
+            Option.Save();
         }
     }
 }

@@ -37,9 +37,9 @@ namespace Genshin_Checker.App
             return val.ToString();
         }
 
-        public static void SetValue(string Subkey, string key, string value, bool compress=false)
+        public static void SetValue(string Subkey, string key, string value, bool compress=false,bool force=false)
         {
-            if(IsReadOnly) return;
+            if(IsReadOnly&&!force) return;
             if (compress) value = Base64FromStringComp(value);
             var regkey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey($"Software\\Genshin_Checker\\{Subkey}");
             if (regkey == null) throw new IOException("レジストリが開けませんでした。");
