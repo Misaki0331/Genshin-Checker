@@ -47,7 +47,7 @@ namespace Genshin_Checker.Window
                     }
                     else
                     {
-                        Summary_AdventureRank.Text = $"??";
+                        Summary_AdventureRank.Text = $"{account.Level}";
                     }
                     Summary_StatusMessage.Text = account.EnkaNetwork.LatestErrorMessage;
                     Summary_StatusMessage.ForeColor = Color.Red;
