@@ -271,7 +271,8 @@ namespace Genshin_Checker.Model.HoYoLab.RealTimeNote
         /// <para>ステータス</para>
         /// <para><c>AttendanceRewardStatusForbid</c> : 利用不可(禁止マーク)<br/>
         /// <c>AttendanceRewardStatusTakenAward</c> : 受取済み(チェックマーク)<br/>
-        /// <c>検証完了次第追加</c> : 未受取</para>
+        /// <c>AttendanceRewardStatusWaitTaken</c> : 達成済み(受取可)<br/>
+        /// <c>AttendanceRewardStatusFinishedNonReward</c> : 達成済み(受取不可)</para>
         /// </summary>
         public string status { get; set; } = string.Empty;
         /// <summary>
