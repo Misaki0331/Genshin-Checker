@@ -272,7 +272,8 @@ namespace Genshin_Checker.Model.HoYoLab.RealTimeNote
         /// <para><c>AttendanceRewardStatusForbid</c> : 利用不可(禁止マーク)<br/>
         /// <c>AttendanceRewardStatusTakenAward</c> : 受取済み(チェックマーク)<br/>
         /// <c>AttendanceRewardStatusWaitTaken</c> : 達成済み(受取可)<br/>
-        /// <c>AttendanceRewardStatusFinishedNonReward</c> : 達成済み(受取不可)</para>
+        /// <c>AttendanceRewardStatusFinishedNonReward</c> : 達成済み(受取不可)<br/>
+        /// <c>AttendanceRewardStatusUnfinished</c> : 未達成</para>
         /// </summary>
         public string status { get; set; } = string.Empty;
         /// <summary>
@@ -299,7 +300,7 @@ namespace Genshin_Checker.Model.HoYoLab.RealTimeNote
         public int finished_num { get; set; }
         /// <summary>
         /// <para>【デイリー任務】</para>
-        /// <para>全任務達成時の報酬受取済であるか</para>
+        /// <para>全任務達成時の追加報酬受取済であるか</para>
         /// </summary>
         public bool is_extra_task_reward_received { get; set; }
         /// <summary>
