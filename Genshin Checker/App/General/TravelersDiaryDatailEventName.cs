@@ -116,11 +116,13 @@ namespace Genshin_Checker.App.General
                         case 1016: return "秘境クリア";
                         case 1032: return "冒険の証・見聞(章制覇報酬)";
                         case 1033: return "冒険の証・見聞(単体報酬)";
+                        case 1046: return "キャラクターお試し報酬";
                         case 1049: return "アチーブメント";
                         case 1052: return "低ランク聖遺物処理";
                         case 1054: return "評判任務(討伐懸賞)";
                         case 1073: return "写真イベント(フレンド協力可)";
                         case 1074: return "参量物質変化器変換報酬";
+                        case 1084: return "イベントマルチミニゲーム報酬";
                         case 1100: return "塵歌壺ギフトセット報酬";
 
                         default:
