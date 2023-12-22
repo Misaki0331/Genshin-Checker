@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Genshin_Checker.App.General.Convert
 {
-    public static class ServerTime
+    public static class Server
     {
         /// <summary>
         /// 毎朝4時にデイリーリセット
@@ -92,6 +92,17 @@ namespace Genshin_Checker.App.General.Convert
                 Account.Servers.os_asia => new TimeSpan(-8, 0, 0),
                 Account.Servers.os_cht => new TimeSpan(-8, 0, 0),
                 _ => new TimeSpan(0, 0, 0)
+            };
+        }
+        public static string ServerName(Account.Servers server)
+        {
+            return server switch
+            {
+                Account.Servers.os_usa => "America",
+                Account.Servers.os_euro => "Europe",
+                Account.Servers.os_asia => "Asia",
+                Account.Servers.os_cht => "TW HK MO",
+                _ => "Unknown"
             };
         }
     }

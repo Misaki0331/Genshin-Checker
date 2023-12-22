@@ -138,7 +138,7 @@ namespace Genshin_Checker.Window
                 foreach (var a in lists.Details)
                 {
                     var typename = App.General.TravelersDiaryDatailEventConverter.GetEventName(a.EventType, eventlists);
-                    CurrentView.Rows.Add(new object[] { ServerTime.ConvertUTCTime(account.Server,a.EventTime), a.EventType, typename, a.Count });
+                    CurrentView.Rows.Add(new object[] { Server.ConvertUTCTime(account.Server,a.EventTime), a.EventType, typename, a.Count });
                 }
                 lists.Details.Clear();
                 dataGridView1.ResumeLayout(true);

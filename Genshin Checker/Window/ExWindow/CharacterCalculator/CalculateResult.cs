@@ -398,7 +398,7 @@ namespace Genshin_Checker.Window.ExWindow.CharacterCalculator
                             if (e.Value == null) return;
                             var color = Color.FromArgb(0xFF, 0xFF, 0xCC, 0xCC);
                             var today = -1;
-                            switch (ServerTime.GameServerDate(Account.Server).DayOfWeek)
+                            switch (Server.GameServerDate(Account.Server).DayOfWeek)
                             {
                                 case DayOfWeek.Monday:
                                 case DayOfWeek.Thursday:
