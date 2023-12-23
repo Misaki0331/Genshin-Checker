@@ -35,9 +35,12 @@
             this.button1 = new System.Windows.Forms.Button();
             this.UserName = new System.Windows.Forms.Label();
             this.Infomation = new System.Windows.Forms.Label();
+            this.UID = new System.Windows.Forms.Label();
+            this.Background = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Background)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -69,12 +72,13 @@
             this.tableLayoutPanel1.Controls.Add(this.button1, 2, 2);
             this.tableLayoutPanel1.Controls.Add(this.UserName, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.Infomation, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.UID, 2, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 75F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 60F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(410, 83);
             this.tableLayoutPanel1.TabIndex = 1;
@@ -104,6 +108,7 @@
             this.button1.TabIndex = 0;
             this.button1.Text = "連携解除";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // UserName
             // 
@@ -115,7 +120,7 @@
             this.UserName.Margin = new System.Windows.Forms.Padding(0);
             this.UserName.Name = "UserName";
             this.UserName.Padding = new System.Windows.Forms.Padding(0, 0, 0, 3);
-            this.UserName.Size = new System.Drawing.Size(310, 43);
+            this.UserName.Size = new System.Drawing.Size(310, 34);
             this.UserName.TabIndex = 0;
             this.UserName.Text = "水咲(みさき)";
             this.UserName.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
@@ -124,16 +129,38 @@
             // Infomation
             // 
             this.Infomation.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Infomation.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Infomation.Font = new System.Drawing.Font("Meiryo UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.Infomation.ForeColor = System.Drawing.Color.White;
-            this.Infomation.Location = new System.Drawing.Point(100, 48);
+            this.Infomation.Location = new System.Drawing.Point(100, 39);
             this.Infomation.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
             this.Infomation.Name = "Infomation";
             this.tableLayoutPanel1.SetRowSpan(this.Infomation, 2);
-            this.Infomation.Size = new System.Drawing.Size(210, 35);
+            this.Infomation.Size = new System.Drawing.Size(210, 44);
             this.Infomation.TabIndex = 1;
             this.Infomation.Text = "実績:1234件 螺旋:12-3\r\nログイン日数:1234日";
             this.Infomation.Paint += new System.Windows.Forms.PaintEventHandler(this.DrawPaint);
+            // 
+            // UID
+            // 
+            this.UID.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.UID.Font = new System.Drawing.Font("Meiryo UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.UID.ForeColor = System.Drawing.Color.White;
+            this.UID.Location = new System.Drawing.Point(313, 34);
+            this.UID.Name = "UID";
+            this.UID.Size = new System.Drawing.Size(94, 23);
+            this.UID.TabIndex = 2;
+            this.UID.Text = "8XXXXXXXX";
+            this.UID.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.UID.Paint += new System.Windows.Forms.PaintEventHandler(this.DrawPaint);
+            // 
+            // Background
+            // 
+            this.Background.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Background.Location = new System.Drawing.Point(0, 0);
+            this.Background.Name = "Background";
+            this.Background.Size = new System.Drawing.Size(410, 83);
+            this.Background.TabIndex = 2;
+            this.Background.TabStop = false;
             // 
             // AccountInfo
             // 
@@ -141,6 +168,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.Background);
             this.MinimumSize = new System.Drawing.Size(410, 83);
             this.Name = "AccountInfo";
             this.Size = new System.Drawing.Size(410, 83);
@@ -149,6 +177,7 @@
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.Background)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -163,5 +192,7 @@
         private Button button1;
         private Label UserName;
         private Label Infomation;
+        private PictureBox Background;
+        private Label UID;
     }
 }

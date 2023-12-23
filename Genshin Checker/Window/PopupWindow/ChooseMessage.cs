@@ -2,7 +2,7 @@
 {
     public partial class ChooseMessage : Form
     {
-        public ChooseMessage(string title,string message,string windowtitle="情報",int selectcount=2,string select1="はい",string select2="いいえ",string select3="キャンセル",string select4="",string select5="")
+        public ChooseMessage(string title,string message,string windowtitle="情報",int selectcount=2,string select1="いいえ",string select2="はい",string select3="キャンセル",string select4="",string select5="")
         {
             InitializeComponent();
             Text = windowtitle;

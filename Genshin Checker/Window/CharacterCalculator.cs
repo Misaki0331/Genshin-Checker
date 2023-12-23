@@ -333,7 +333,7 @@ namespace Genshin_Checker.Window
         {
             var dialog = new ChooseMessage("天賦情報の更新", "天賦情報を一括で再取得しますか？\nキャラクターの数によって時間がかかる可能性があります。\n\n※更新する場合は自動的に育成計算機が閉じられます。", "確認");
             dialog.ShowDialog();
-            if (dialog.Result == 0)
+            if (dialog.Result == 1)
             {
                 if (account.CharacterDetail.IsAvailableUpdate)
                 {

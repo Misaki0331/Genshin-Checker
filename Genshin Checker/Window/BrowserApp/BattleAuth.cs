@@ -77,11 +77,6 @@ namespace Genshin_Checker.BrowserApp
                             var a = instance.Find(account => account.UID == uid);
                             if (a == null)
                             {
-                                if (instance.Count > 0)
-                                {
-                                    foreach (var a3 in instance) a3.Dispose();
-                                    instance.Clear();
-                                }
                                 instance.Add(await Account.GetInstance(cookieString, uid));
                             }
                             else

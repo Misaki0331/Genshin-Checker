@@ -1,5 +1,6 @@
 ﻿using Genshin_Checker.App.HoYoLab;
 using Genshin_Checker.Store;
+using Genshin_Checker.Window.Popup;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -21,6 +22,12 @@ namespace Genshin_Checker.UI.Control.SettingWindow
             this.account = account;
             AdventureRank.Text = $"{account.Level}";
             UserName.Text = account.Name;
+            UID.Text = $"{account.UID}";
+            var data = account.GameRecords.Data;
+            if (data != null)
+                Infomation.Text = $"ログイン日数: {data.stats.ActiveDay}日 実績: {data.stats.Achievement}\n深境螺旋: {data.stats.SpiralAbyss}";
+            else Infomation.Text = "データが取得できませんでした。";
+            
 
         }
         Image? RawImage = null;
@@ -47,19 +54,14 @@ namespace Genshin_Checker.UI.Control.SettingWindow
             {
                 var old = BackgroundImage;
                 var Raw = RawImage.Size;
-                var form = this.Size;
+                var form = this;
                 double w = (double)form.Width / Raw.Width;
                 double h = (double)form.Height / Raw.Height;
                 Bitmap img = new(form.Width, form.Height);
                 var g = Graphics.FromImage(img);
                 if (Raw.Height * w >= form.Height)
-                {
-                    g.DrawImage(RawImage, -(int)(Raw.Width * w - form.Width), 0, (int)(Raw.Width * w), (int)(Raw.Height * w));
-                }
-                else
-                {
-                    g.DrawImage(RawImage, 0,-(int)(Raw.Height * h - form.Height),(int)(Raw.Width * h), (int)(Raw.Height * h));
-                }
+                    g.DrawImage(RawImage, 0, -(int)(Raw.Height * w - form.Height) / 2, (int)(Raw.Width * w), (int)(Raw.Height * w));
+                else g.DrawImage(RawImage, -(int)(Raw.Width * h - form.Width) / 2, 0, (int)(Raw.Width * h), (int)(Raw.Height * h));
                 g.Dispose();
                 BackgroundImage = img;
                 old?.Dispose();
@@ -71,6 +73,17 @@ namespace Genshin_Checker.UI.Control.SettingWindow
         {
 
             DrawBackground();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var choose = new ChooseMessage($"{account.Name} (UID:{account.UID})の連携を解除しますか？", "", "ログアウト確認");
+            choose.ShowDialog();
+            if (choose.Result == 1)
+            {
+                account.Dispose(); 
+                Store.Accounts.Data.Remove(account);
+            }
         }
     }
 }
