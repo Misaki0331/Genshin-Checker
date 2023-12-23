@@ -76,7 +76,7 @@ namespace Genshin_Checker.App.General.UI
         {
             Point window = pictureControl.PointToClient(Point.Empty);
             Point location = OverrideControl.PointToClient(pictureControl.PointToClient(new(-window.X * 2, -window.Y * 2)));
-            graphics.DrawImage(image, location);
+                              graphics.DrawImage(image, location);
         }
     }
 }

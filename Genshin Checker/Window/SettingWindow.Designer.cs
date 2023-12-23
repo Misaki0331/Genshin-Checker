@@ -61,6 +61,7 @@
             this.IsNotificationGameClosed = new System.Windows.Forms.CheckBox();
             this.IsNotificationGameStart = new System.Windows.Forms.CheckBox();
             this.page_auth = new System.Windows.Forms.TabPage();
+            this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -470,6 +471,7 @@
             // 
             // page_auth
             // 
+            this.page_auth.Controls.Add(this.groupBox8);
             this.page_auth.Controls.Add(this.groupBox1);
             this.page_auth.Location = new System.Drawing.Point(27, 4);
             this.page_auth.Name = "page_auth";
@@ -478,6 +480,17 @@
             this.page_auth.TabIndex = 1;
             this.page_auth.Text = "アプリ連携";
             this.page_auth.UseVisualStyleBackColor = true;
+            // 
+            // groupBox8
+            // 
+            this.groupBox8.AutoSize = true;
+            this.groupBox8.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupBox8.Location = new System.Drawing.Point(3, 80);
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.Size = new System.Drawing.Size(587, 5);
+            this.groupBox8.TabIndex = 0;
+            this.groupBox8.TabStop = false;
+            this.groupBox8.Text = "連携中のアカウント一覧";
             // 
             // groupBox1
             // 
@@ -771,5 +784,7 @@
         private Label label2;
         private Label label8;
         private CheckBox IsScreenShotNotify;
+        private GroupBox groupBox8;
+        private FlowLayoutPanel PanelAccountList;
     }
 }

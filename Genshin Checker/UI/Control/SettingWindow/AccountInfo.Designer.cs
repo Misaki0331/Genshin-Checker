@@ -28,30 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.UserName = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.AdventureRank = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.AdventureRank = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+            this.UserName = new System.Windows.Forms.Label();
             this.Infomation = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(410, 83);
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Resize += new System.EventHandler(this.pictureBox1_Resize);
             // 
             // panel1
             // 
@@ -63,20 +50,6 @@
             this.panel1.Size = new System.Drawing.Size(410, 83);
             this.panel1.TabIndex = 1;
             // 
-            // UserName
-            // 
-            this.tableLayoutPanel1.SetColumnSpan(this.UserName, 2);
-            this.UserName.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.UserName.Font = new System.Drawing.Font("Meiryo UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.UserName.Location = new System.Drawing.Point(100, 0);
-            this.UserName.Margin = new System.Windows.Forms.Padding(0);
-            this.UserName.Name = "UserName";
-            this.UserName.Padding = new System.Windows.Forms.Padding(0, 0, 0, 3);
-            this.UserName.Size = new System.Drawing.Size(310, 43);
-            this.UserName.TabIndex = 0;
-            this.UserName.Text = "水咲(みさき)";
-            this.UserName.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
-            // 
             // panel2
             // 
             this.panel2.Controls.Add(this.tableLayoutPanel1);
@@ -85,19 +58,6 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(410, 83);
             this.panel2.TabIndex = 1;
-            // 
-            // AdventureRank
-            // 
-            this.AdventureRank.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.AdventureRank.Font = new System.Drawing.Font("Meiryo UI", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.AdventureRank.Location = new System.Drawing.Point(0, 0);
-            this.AdventureRank.Margin = new System.Windows.Forms.Padding(0);
-            this.AdventureRank.Name = "AdventureRank";
-            this.tableLayoutPanel1.SetRowSpan(this.AdventureRank, 3);
-            this.AdventureRank.Size = new System.Drawing.Size(100, 83);
-            this.AdventureRank.TabIndex = 0;
-            this.AdventureRank.Text = "60";
-            this.AdventureRank.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // tableLayoutPanel1
             // 
@@ -119,6 +79,21 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(410, 83);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
+            // AdventureRank
+            // 
+            this.AdventureRank.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.AdventureRank.Font = new System.Drawing.Font("Meiryo UI", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.AdventureRank.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.AdventureRank.Location = new System.Drawing.Point(0, 0);
+            this.AdventureRank.Margin = new System.Windows.Forms.Padding(0);
+            this.AdventureRank.Name = "AdventureRank";
+            this.tableLayoutPanel1.SetRowSpan(this.AdventureRank, 3);
+            this.AdventureRank.Size = new System.Drawing.Size(100, 83);
+            this.AdventureRank.TabIndex = 0;
+            this.AdventureRank.Text = "60";
+            this.AdventureRank.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.AdventureRank.Paint += new System.Windows.Forms.PaintEventHandler(this.DrawPaint);
+            // 
             // button1
             // 
             this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -130,10 +105,27 @@
             this.button1.Text = "連携解除";
             this.button1.UseVisualStyleBackColor = true;
             // 
+            // UserName
+            // 
+            this.tableLayoutPanel1.SetColumnSpan(this.UserName, 2);
+            this.UserName.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.UserName.Font = new System.Drawing.Font("Meiryo UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.UserName.ForeColor = System.Drawing.Color.White;
+            this.UserName.Location = new System.Drawing.Point(100, 0);
+            this.UserName.Margin = new System.Windows.Forms.Padding(0);
+            this.UserName.Name = "UserName";
+            this.UserName.Padding = new System.Windows.Forms.Padding(0, 0, 0, 3);
+            this.UserName.Size = new System.Drawing.Size(310, 43);
+            this.UserName.TabIndex = 0;
+            this.UserName.Text = "水咲(みさき)";
+            this.UserName.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.UserName.Paint += new System.Windows.Forms.PaintEventHandler(this.DrawPaint);
+            // 
             // Infomation
             // 
             this.Infomation.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Infomation.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Infomation.ForeColor = System.Drawing.Color.White;
             this.Infomation.Location = new System.Drawing.Point(100, 48);
             this.Infomation.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
             this.Infomation.Name = "Infomation";
@@ -141,16 +133,19 @@
             this.Infomation.Size = new System.Drawing.Size(210, 35);
             this.Infomation.TabIndex = 1;
             this.Infomation.Text = "実績:1234件 螺旋:12-3\r\nログイン日数:1234日";
+            this.Infomation.Paint += new System.Windows.Forms.PaintEventHandler(this.DrawPaint);
             // 
             // AccountInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.pictureBox1);
+            this.MinimumSize = new System.Drawing.Size(410, 83);
             this.Name = "AccountInfo";
             this.Size = new System.Drawing.Size(410, 83);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.Load += new System.EventHandler(this.ControlLoad);
+            this.SizeChanged += new System.EventHandler(this.AccountInfo_SizeChanged);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);

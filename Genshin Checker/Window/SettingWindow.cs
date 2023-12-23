@@ -56,6 +56,10 @@ namespace Genshin_Checker.Window
             IsScreenShotAfterDelete.Checked = Option.Instance.ScreenShot.IsSaveAfterDelete;
             ScreenShotTransferImageType.Text = Option.Instance.ScreenShot.SaveFileFormatType;
             if (ScreenShotTransferImageType.SelectedIndex < 0) ScreenShotTransferImageType.SelectedIndex = 0;
+            foreach(var account in Store.Accounts.Data)
+            {
+                groupBox8.Controls.Add(new UI.Control.SettingWindow.AccountInfo(account) { Dock = DockStyle.Top });
+            }
         }
 
         private void Tab_DrawItem(object? sender, DrawItemEventArgs e)
@@ -202,5 +206,6 @@ namespace Genshin_Checker.Window
             Option.Instance.ScreenShot.SaveFileFormatType = ScreenShotTransferImageType.Text;
             Option.Save();
         }
+
     }
 }
