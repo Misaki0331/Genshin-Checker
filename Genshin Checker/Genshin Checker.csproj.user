@@ -28,6 +28,9 @@
     <Compile Update="UI\Control\GameRecord\ExplorationProgressBar.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Update="UI\Control\SettingWindow\AccountInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="Window\BrowserApp\BattleAuth.cs">
       <SubType>Form</SubType>
     </Compile>
