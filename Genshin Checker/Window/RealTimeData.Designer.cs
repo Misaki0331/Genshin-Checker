@@ -118,7 +118,7 @@
             // 
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.label1.Font = new System.Drawing.Font("Meiryo UI", 10036F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label1.Font = new System.Drawing.Font("Meiryo UI", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label1.ForeColor = System.Drawing.Color.Transparent;
             this.label1.Location = new System.Drawing.Point(60, 0);
             this.label1.Name = "label1";
@@ -134,7 +134,7 @@
             // 
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.label2.Font = new System.Drawing.Font("Meiryo UI", 10018F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label2.Font = new System.Drawing.Font("Meiryo UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label2.ForeColor = System.Drawing.Color.Transparent;
             this.label2.Location = new System.Drawing.Point(193, 26);
             this.label2.Name = "label2";
@@ -148,7 +148,7 @@
             // 
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label3.Font = new System.Drawing.Font("Meiryo UI", 10012F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label3.Font = new System.Drawing.Font("Meiryo UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label3.ForeColor = System.Drawing.Color.Transparent;
             this.label3.Location = new System.Drawing.Point(193, 0);
             this.label3.Margin = new System.Windows.Forms.Padding(5, 0, 3, 0);
@@ -175,7 +175,7 @@
             // 
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label4.Font = new System.Drawing.Font("Meiryo UI", 10024F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label4.Font = new System.Drawing.Font("Meiryo UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label4.ForeColor = System.Drawing.Color.Transparent;
             this.label4.Location = new System.Drawing.Point(40, 0);
             this.label4.Name = "label4";
@@ -256,7 +256,7 @@
             // 
             this.label_expendition_5.BackColor = System.Drawing.Color.Transparent;
             this.label_expendition_5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label_expendition_5.Font = new System.Drawing.Font("Meiryo UI", 10024F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label_expendition_5.Font = new System.Drawing.Font("Meiryo UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label_expendition_5.ForeColor = System.Drawing.Color.Transparent;
             this.label_expendition_5.Location = new System.Drawing.Point(40, 0);
             this.label_expendition_5.Name = "label_expendition_5";
@@ -291,7 +291,7 @@
             // 
             this.label_expendition_4.BackColor = System.Drawing.Color.Transparent;
             this.label_expendition_4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label_expendition_4.Font = new System.Drawing.Font("Meiryo UI", 10024F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label_expendition_4.Font = new System.Drawing.Font("Meiryo UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label_expendition_4.ForeColor = System.Drawing.Color.Transparent;
             this.label_expendition_4.Location = new System.Drawing.Point(40, 0);
             this.label_expendition_4.Name = "label_expendition_4";
@@ -326,7 +326,7 @@
             // 
             this.label_expendition_3.BackColor = System.Drawing.Color.Transparent;
             this.label_expendition_3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label_expendition_3.Font = new System.Drawing.Font("Meiryo UI", 10024F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label_expendition_3.Font = new System.Drawing.Font("Meiryo UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label_expendition_3.ForeColor = System.Drawing.Color.Transparent;
             this.label_expendition_3.Location = new System.Drawing.Point(40, 0);
             this.label_expendition_3.Name = "label_expendition_3";
@@ -361,7 +361,7 @@
             // 
             this.label_expendition_2.BackColor = System.Drawing.Color.Transparent;
             this.label_expendition_2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label_expendition_2.Font = new System.Drawing.Font("Meiryo UI", 10024F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label_expendition_2.Font = new System.Drawing.Font("Meiryo UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label_expendition_2.ForeColor = System.Drawing.Color.Transparent;
             this.label_expendition_2.Location = new System.Drawing.Point(40, 0);
             this.label_expendition_2.Name = "label_expendition_2";
@@ -396,7 +396,7 @@
             // 
             this.label_expendition_1.BackColor = System.Drawing.Color.Transparent;
             this.label_expendition_1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label_expendition_1.Font = new System.Drawing.Font("Meiryo UI", 10024F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label_expendition_1.Font = new System.Drawing.Font("Meiryo UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label_expendition_1.ForeColor = System.Drawing.Color.Transparent;
             this.label_expendition_1.Location = new System.Drawing.Point(40, 0);
             this.label_expendition_1.Name = "label_expendition_1";
@@ -430,7 +430,7 @@
             // 
             this.label11.BackColor = System.Drawing.Color.Transparent;
             this.label11.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label11.Font = new System.Drawing.Font("Meiryo UI", 10016F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label11.Font = new System.Drawing.Font("Meiryo UI", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label11.ForeColor = System.Drawing.Color.Transparent;
             this.label11.Location = new System.Drawing.Point(0, 0);
             this.label11.Name = "label11";
@@ -444,7 +444,7 @@
             // 
             this.label_expendition_num.BackColor = System.Drawing.Color.Transparent;
             this.label_expendition_num.Dock = System.Windows.Forms.DockStyle.Right;
-            this.label_expendition_num.Font = new System.Drawing.Font("Meiryo UI", 10016F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label_expendition_num.Font = new System.Drawing.Font("Meiryo UI", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label_expendition_num.ForeColor = System.Drawing.Color.Transparent;
             this.label_expendition_num.Location = new System.Drawing.Point(127, 0);
             this.label_expendition_num.Name = "label_expendition_num";
@@ -482,7 +482,7 @@
             // 
             this.label9.BackColor = System.Drawing.Color.Transparent;
             this.label9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label9.Font = new System.Drawing.Font("Meiryo UI", 10024F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label9.Font = new System.Drawing.Font("Meiryo UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label9.ForeColor = System.Drawing.Color.Transparent;
             this.label9.Location = new System.Drawing.Point(40, 0);
             this.label9.Name = "label9";
@@ -519,7 +519,7 @@
             // 
             this.label8.BackColor = System.Drawing.Color.Transparent;
             this.label8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label8.Font = new System.Drawing.Font("Meiryo UI", 10024F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label8.Font = new System.Drawing.Font("Meiryo UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label8.ForeColor = System.Drawing.Color.Transparent;
             this.label8.Location = new System.Drawing.Point(40, 0);
             this.label8.Name = "label8";
@@ -558,7 +558,7 @@
             // 
             this.label7.BackColor = System.Drawing.Color.Transparent;
             this.label7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label7.Font = new System.Drawing.Font("Meiryo UI", 10012F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label7.Font = new System.Drawing.Font("Meiryo UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label7.ForeColor = System.Drawing.Color.Transparent;
             this.label7.Location = new System.Drawing.Point(193, 0);
             this.label7.Margin = new System.Windows.Forms.Padding(5, 0, 3, 0);
@@ -573,7 +573,7 @@
             // 
             this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.label6.Font = new System.Drawing.Font("Meiryo UI", 10014.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label6.Font = new System.Drawing.Font("Meiryo UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label6.ForeColor = System.Drawing.Color.Transparent;
             this.label6.Location = new System.Drawing.Point(193, 28);
             this.label6.Name = "label6";
@@ -587,7 +587,7 @@
             // 
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Dock = System.Windows.Forms.DockStyle.Left;
-            this.label5.Font = new System.Drawing.Font("Meiryo UI", 10032.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label5.Font = new System.Drawing.Font("Meiryo UI", 32.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label5.ForeColor = System.Drawing.Color.Transparent;
             this.label5.Location = new System.Drawing.Point(50, 0);
             this.label5.Name = "label5";
@@ -636,7 +636,7 @@
             // label_ErrorMessage
             // 
             this.label_ErrorMessage.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label_ErrorMessage.Font = new System.Drawing.Font("Meiryo UI", 10018F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label_ErrorMessage.Font = new System.Drawing.Font("Meiryo UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label_ErrorMessage.ForeColor = System.Drawing.Color.Transparent;
             this.label_ErrorMessage.Location = new System.Drawing.Point(0, 57);
             this.label_ErrorMessage.Name = "label_ErrorMessage";
@@ -648,7 +648,7 @@
             // label10
             // 
             this.label10.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label10.Font = new System.Drawing.Font("Meiryo UI", 10026.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label10.Font = new System.Drawing.Font("Meiryo UI", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label10.ForeColor = System.Drawing.Color.Transparent;
             this.label10.Location = new System.Drawing.Point(0, 0);
             this.label10.Margin = new System.Windows.Forms.Padding(999, 999, 0, 0);

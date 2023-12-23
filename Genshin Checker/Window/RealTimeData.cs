@@ -147,7 +147,7 @@ namespace Genshin_Checker.Window
         {
             var url = EnkaData.Convert.Namecard.GetNameCardURL(account.EnkaNetwork.Data.playerInfo.nameCardId);
             var image = url == null ? null : await App.WebRequest.ImageGetRequest(url);
-            if (image != null) BackgroundImage = image;
+            if (image != null) BackgroundImage = new Bitmap(image,ClientSize);
         }
 
         private void DrawOutlineString(Graphics g, Label label, Color outlineColor, int outlineWidth)
@@ -194,7 +194,7 @@ namespace Genshin_Checker.Window
                         format.LineAlignment = StringAlignment.Far;
                         break;
                 }
-                path.AddString(label.Text, label.Font.FontFamily, (int)label.Font.Style, (label.Font.Size - 10000) * 1.25f, label.ClientRectangle, StringFormat.GenericTypographic);
+                path.AddString(label.Text, label.Font.FontFamily, (int)label.Font.Style, (label.Font.Size) * 1.25f, label.ClientRectangle, StringFormat.GenericTypographic);
                 g.SmoothingMode = SmoothingMode.AntiAlias;
                 g.DrawPath(pen, path);
                 g.FillPath(brush, path);
@@ -205,8 +205,12 @@ namespace Genshin_Checker.Window
             var label = sender as Label;
             if (label != null)
             {
+                // 既存のテキストを描画しないようにする
+                Point form = PointToClient(Point.Empty);
+                Point location = label.PointToClient(PointToClient(new(-form.X * 2, -form.Y * 2)));
+                e.Graphics.DrawImage(BackgroundImage, location);
                 label.Enabled = false;
-                DrawOutlineString(e.Graphics, label, Color.Black, label.Font.Size < 10018 ? 2 : 3);
+                DrawOutlineString(e.Graphics, label, Color.Black, label.Font.Size < 18 ? 2 : 3);
             }
         }
         private void ReloadNote(object sender, EventArgs e)
