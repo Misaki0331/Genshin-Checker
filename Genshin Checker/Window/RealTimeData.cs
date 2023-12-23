@@ -149,68 +149,12 @@ namespace Genshin_Checker.Window
             var image = url == null ? null : await App.WebRequest.ImageGetRequest(url);
             if (image != null) BackgroundImage = new Bitmap(image,ClientSize);
         }
-
-        private void DrawOutlineString(Graphics g, Label label, Color outlineColor, int outlineWidth)
-        {
-            ///Todo: LabelからPictureBoxに変更
-            using (GraphicsPath path = new())
-            using (Pen pen = new(outlineColor, outlineWidth) { LineJoin = LineJoin.Round })
-            using (SolidBrush brush = new(Color.White))
-            {
-                StringFormat format = StringFormat.GenericTypographic;
-                switch (label.TextAlign)
-                {
-                    case ContentAlignment.TopLeft:
-                    case ContentAlignment.MiddleLeft:
-                    case ContentAlignment.BottomLeft:
-                        format.Alignment = StringAlignment.Near;
-                        break;
-                    case ContentAlignment.TopCenter:
-                    case ContentAlignment.MiddleCenter:
-                    case ContentAlignment.BottomCenter:
-                        format.Alignment = StringAlignment.Center;
-                        break;
-                    case ContentAlignment.TopRight:
-                    case ContentAlignment.MiddleRight:
-                    case ContentAlignment.BottomRight:
-                        format.Alignment = StringAlignment.Far;
-                        break;
-                }
-                switch (label.TextAlign)
-                {
-                    case ContentAlignment.TopLeft:
-                    case ContentAlignment.TopCenter:
-                    case ContentAlignment.TopRight:
-                        format.LineAlignment = StringAlignment.Near;
-                        break;
-                    case ContentAlignment.MiddleLeft:
-                    case ContentAlignment.MiddleCenter:
-                    case ContentAlignment.MiddleRight:
-                        format.LineAlignment = StringAlignment.Center;
-                        break;
-                    case ContentAlignment.BottomLeft:
-                    case ContentAlignment.BottomCenter:
-                    case ContentAlignment.BottomRight:
-                        format.LineAlignment = StringAlignment.Far;
-                        break;
-                }
-                path.AddString(label.Text, label.Font.FontFamily, (int)label.Font.Style, (label.Font.Size) * 1.25f, label.ClientRectangle, StringFormat.GenericTypographic);
-                g.SmoothingMode = SmoothingMode.AntiAlias;
-                g.DrawPath(pen, path);
-                g.FillPath(brush, path);
-            }
-        }
         private void Label_Paint(object sender, PaintEventArgs e)
         {
-            var label = sender as Label;
-            if (label != null)
+            if (sender is Label label)
             {
-                // 既存のテキストを描画しないようにする
-                Point form = PointToClient(Point.Empty);
-                Point location = label.PointToClient(PointToClient(new(-form.X * 2, -form.Y * 2)));
-                e.Graphics.DrawImage(BackgroundImage, location);
-                label.Enabled = false;
-                DrawOutlineString(e.Graphics, label, Color.Black, label.Font.Size < 18 ? 2 : 3);
+                App.General.UI.DrawControl.DrawBackground(e.Graphics, BackgroundImage, this, label);
+                App.General.UI.DrawControl.DrawOutlineString(e.Graphics, label, Color.White, Color.Black, label.Font.Size < 18 ? 2 : 3);
             }
         }
         private void ReloadNote(object sender, EventArgs e)
