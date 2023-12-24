@@ -33,7 +33,7 @@ namespace Genshin_Checker.App.General
 #endif
                 if (json == null) return;
                 instance = JsonConvert.DeserializeObject<Option>(json);
-            }
+            }　　　　　　　　　　　　　　　
             catch (Exception ex)
             {
                 new ErrorMessage("設定ファイルロード時にエラーが発生しました。", $"{ex}").ShowDialog();
@@ -49,6 +49,7 @@ namespace Genshin_Checker.App.General
         }
         public OptionClass.Notification Notification { get; set; } = new();
         public OptionClass.ScreenShot ScreenShot { get; set; } = new();
+        public Dictionary<int,OptionClass.AccountConfig> Accounts { get; set; } = new();
     }
     
 }
@@ -58,16 +59,7 @@ namespace Genshin_Checker.App.General.OptionClass
     {
         public bool IsGameStart { get; set; } = false;
         public bool IsGameEnd { get; set; } = false;
-        public RealTime RealTimeNote = new();
-        public class RealTime
-        {
-            public bool Resin120 { get; set; } = false;
-            public bool ResinMax { get; set; } = false;
-            public bool RealmCoin1800 { get; set; } = false;
-            public bool RealmCoinMax { get; set; } = false;
-            public bool ExpeditionAllCompleted { get; set; } = false;
-            public bool TransformerReached { get; set; } = false;
-        }
+        
 
     }
     public class ScreenShot
@@ -79,5 +71,39 @@ namespace Genshin_Checker.App.General.OptionClass
         public string SaveFilePath { get; set; } = $"{System.Environment.GetFolderPath(Environment.SpecialFolder.MyPictures)}\\Genshin Checker";
         public bool IsSaveAfterDelete { get; set; } = false;
         public bool IsNotify { get; set; } = false;
+    }
+    public class AccountConfig
+    {
+        /// <summary>
+        /// 通知関係
+        /// </summary>
+        public Notification Notify = new();
+        public class Notification
+        {
+            /// <summary>
+            /// リアルタイムノート
+            /// </summary>
+            public RealTime RealTimeNotes = new();
+            public class RealTime
+            {
+                /// <summary>
+                /// 樹脂の通知閾値
+                /// </summary>
+                public List<Threshold> ResinThreshold { get; set; } = new();
+                /// <summary>
+                /// 樹脂最大時の通知
+                /// </summary>
+                public bool ResinMax { get; set; } = false;
+                public List<Threshold> RealmCoinThreshold { get; set; } = new();
+                public bool RealmCoinMax { get; set; } = false;
+                public bool ExpeditionAllCompleted { get; set; } = false;
+                public bool TransformerReached { get; set; } = false;
+                public class Threshold
+                {
+                    public int Value { get; set; } = 0;
+                    public bool Enabled { get; set; } = false;
+                }
+            }
+        }
     }
 }

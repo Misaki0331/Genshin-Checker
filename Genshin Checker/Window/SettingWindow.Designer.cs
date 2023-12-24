@@ -51,12 +51,7 @@
             this.IsCountBackground = new System.Windows.Forms.CheckBox();
             this.page_notification = new System.Windows.Forms.TabPage();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.IsNotificationRealTimeNoteTransformerReached = new System.Windows.Forms.CheckBox();
-            this.IsNotificationRealTimeNoteExpeditionAllCompleted = new System.Windows.Forms.CheckBox();
-            this.IsNotificationRealTimeNoteRealmCoinMax = new System.Windows.Forms.CheckBox();
-            this.IsNotificationRealTimeNoteRealmCoin1800 = new System.Windows.Forms.CheckBox();
-            this.IsNotificationRealTimeNoteResinMax = new System.Windows.Forms.CheckBox();
-            this.IsNotificationRealTimeNoteResin120 = new System.Windows.Forms.CheckBox();
+            this.TabAccountNotify = new System.Windows.Forms.TabControl();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.IsNotificationGameClosed = new System.Windows.Forms.CheckBox();
             this.IsNotificationGameStart = new System.Windows.Forms.CheckBox();
@@ -346,91 +341,24 @@
             // groupBox3
             // 
             this.groupBox3.AutoSize = true;
-            this.groupBox3.Controls.Add(this.IsNotificationRealTimeNoteTransformerReached);
-            this.groupBox3.Controls.Add(this.IsNotificationRealTimeNoteExpeditionAllCompleted);
-            this.groupBox3.Controls.Add(this.IsNotificationRealTimeNoteRealmCoinMax);
-            this.groupBox3.Controls.Add(this.IsNotificationRealTimeNoteRealmCoin1800);
-            this.groupBox3.Controls.Add(this.IsNotificationRealTimeNoteResinMax);
-            this.groupBox3.Controls.Add(this.IsNotificationRealTimeNoteResin120);
+            this.groupBox3.Controls.Add(this.TabAccountNotify);
             this.groupBox3.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox3.Location = new System.Drawing.Point(3, 63);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(587, 136);
+            this.groupBox3.Size = new System.Drawing.Size(587, 193);
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "リアルタイムノートの通知 (HoYoLab連携必須)";
             // 
-            // IsNotificationRealTimeNoteTransformerReached
+            // TabAccountNotify
             // 
-            this.IsNotificationRealTimeNoteTransformerReached.AutoSize = true;
-            this.IsNotificationRealTimeNoteTransformerReached.Dock = System.Windows.Forms.DockStyle.Top;
-            this.IsNotificationRealTimeNoteTransformerReached.Location = new System.Drawing.Point(3, 114);
-            this.IsNotificationRealTimeNoteTransformerReached.Name = "IsNotificationRealTimeNoteTransformerReached";
-            this.IsNotificationRealTimeNoteTransformerReached.Size = new System.Drawing.Size(581, 19);
-            this.IsNotificationRealTimeNoteTransformerReached.TabIndex = 5;
-            this.IsNotificationRealTimeNoteTransformerReached.Text = "参量物質変化器が使用可能";
-            this.IsNotificationRealTimeNoteTransformerReached.UseVisualStyleBackColor = true;
-            this.IsNotificationRealTimeNoteTransformerReached.CheckedChanged += new System.EventHandler(this.CheckedChanged);
-            // 
-            // IsNotificationRealTimeNoteExpeditionAllCompleted
-            // 
-            this.IsNotificationRealTimeNoteExpeditionAllCompleted.AutoSize = true;
-            this.IsNotificationRealTimeNoteExpeditionAllCompleted.Dock = System.Windows.Forms.DockStyle.Top;
-            this.IsNotificationRealTimeNoteExpeditionAllCompleted.Location = new System.Drawing.Point(3, 95);
-            this.IsNotificationRealTimeNoteExpeditionAllCompleted.Name = "IsNotificationRealTimeNoteExpeditionAllCompleted";
-            this.IsNotificationRealTimeNoteExpeditionAllCompleted.Size = new System.Drawing.Size(581, 19);
-            this.IsNotificationRealTimeNoteExpeditionAllCompleted.TabIndex = 4;
-            this.IsNotificationRealTimeNoteExpeditionAllCompleted.Text = "探索派遣が全員完了";
-            this.IsNotificationRealTimeNoteExpeditionAllCompleted.UseVisualStyleBackColor = true;
-            this.IsNotificationRealTimeNoteExpeditionAllCompleted.CheckedChanged += new System.EventHandler(this.CheckedChanged);
-            // 
-            // IsNotificationRealTimeNoteRealmCoinMax
-            // 
-            this.IsNotificationRealTimeNoteRealmCoinMax.AutoSize = true;
-            this.IsNotificationRealTimeNoteRealmCoinMax.Dock = System.Windows.Forms.DockStyle.Top;
-            this.IsNotificationRealTimeNoteRealmCoinMax.Location = new System.Drawing.Point(3, 76);
-            this.IsNotificationRealTimeNoteRealmCoinMax.Name = "IsNotificationRealTimeNoteRealmCoinMax";
-            this.IsNotificationRealTimeNoteRealmCoinMax.Size = new System.Drawing.Size(581, 19);
-            this.IsNotificationRealTimeNoteRealmCoinMax.TabIndex = 3;
-            this.IsNotificationRealTimeNoteRealmCoinMax.Text = "塵歌壺の洞天宝銭が最大まで回復";
-            this.IsNotificationRealTimeNoteRealmCoinMax.UseVisualStyleBackColor = true;
-            this.IsNotificationRealTimeNoteRealmCoinMax.CheckedChanged += new System.EventHandler(this.CheckedChanged);
-            // 
-            // IsNotificationRealTimeNoteRealmCoin1800
-            // 
-            this.IsNotificationRealTimeNoteRealmCoin1800.AutoSize = true;
-            this.IsNotificationRealTimeNoteRealmCoin1800.Dock = System.Windows.Forms.DockStyle.Top;
-            this.IsNotificationRealTimeNoteRealmCoin1800.Location = new System.Drawing.Point(3, 57);
-            this.IsNotificationRealTimeNoteRealmCoin1800.Name = "IsNotificationRealTimeNoteRealmCoin1800";
-            this.IsNotificationRealTimeNoteRealmCoin1800.Size = new System.Drawing.Size(581, 19);
-            this.IsNotificationRealTimeNoteRealmCoin1800.TabIndex = 2;
-            this.IsNotificationRealTimeNoteRealmCoin1800.Text = "塵歌壺の洞天宝銭が1800以上";
-            this.IsNotificationRealTimeNoteRealmCoin1800.UseVisualStyleBackColor = true;
-            this.IsNotificationRealTimeNoteRealmCoin1800.CheckedChanged += new System.EventHandler(this.CheckedChanged);
-            // 
-            // IsNotificationRealTimeNoteResinMax
-            // 
-            this.IsNotificationRealTimeNoteResinMax.AutoSize = true;
-            this.IsNotificationRealTimeNoteResinMax.Dock = System.Windows.Forms.DockStyle.Top;
-            this.IsNotificationRealTimeNoteResinMax.Location = new System.Drawing.Point(3, 38);
-            this.IsNotificationRealTimeNoteResinMax.Name = "IsNotificationRealTimeNoteResinMax";
-            this.IsNotificationRealTimeNoteResinMax.Size = new System.Drawing.Size(581, 19);
-            this.IsNotificationRealTimeNoteResinMax.TabIndex = 1;
-            this.IsNotificationRealTimeNoteResinMax.Text = "樹脂の所持が最大まで回復";
-            this.IsNotificationRealTimeNoteResinMax.UseVisualStyleBackColor = true;
-            this.IsNotificationRealTimeNoteResinMax.CheckedChanged += new System.EventHandler(this.CheckedChanged);
-            // 
-            // IsNotificationRealTimeNoteResin120
-            // 
-            this.IsNotificationRealTimeNoteResin120.AutoSize = true;
-            this.IsNotificationRealTimeNoteResin120.Dock = System.Windows.Forms.DockStyle.Top;
-            this.IsNotificationRealTimeNoteResin120.Location = new System.Drawing.Point(3, 19);
-            this.IsNotificationRealTimeNoteResin120.Name = "IsNotificationRealTimeNoteResin120";
-            this.IsNotificationRealTimeNoteResin120.Size = new System.Drawing.Size(581, 19);
-            this.IsNotificationRealTimeNoteResin120.TabIndex = 0;
-            this.IsNotificationRealTimeNoteResin120.Text = "樹脂の所持が120以上";
-            this.IsNotificationRealTimeNoteResin120.UseVisualStyleBackColor = true;
-            this.IsNotificationRealTimeNoteResin120.CheckedChanged += new System.EventHandler(this.CheckedChanged);
+            this.TabAccountNotify.Dock = System.Windows.Forms.DockStyle.Top;
+            this.TabAccountNotify.Location = new System.Drawing.Point(3, 19);
+            this.TabAccountNotify.Multiline = true;
+            this.TabAccountNotify.Name = "TabAccountNotify";
+            this.TabAccountNotify.SelectedIndex = 0;
+            this.TabAccountNotify.Size = new System.Drawing.Size(581, 171);
+            this.TabAccountNotify.TabIndex = 3;
             // 
             // groupBox2
             // 
@@ -486,8 +414,9 @@
             this.groupBox8.AutoSize = true;
             this.groupBox8.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox8.Location = new System.Drawing.Point(3, 80);
+            this.groupBox8.MinimumSize = new System.Drawing.Size(0, 20);
             this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(587, 5);
+            this.groupBox8.Size = new System.Drawing.Size(587, 20);
             this.groupBox8.TabIndex = 0;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "連携中のアカウント一覧";
@@ -710,7 +639,6 @@
             this.page_notification.ResumeLayout(false);
             this.page_notification.PerformLayout();
             this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.page_auth.ResumeLayout(false);
@@ -746,12 +674,6 @@
         private Button Open_HoYoLabAuth;
         private Label LabelConnectedUID;
         private GroupBox groupBox3;
-        private CheckBox IsNotificationRealTimeNoteTransformerReached;
-        private CheckBox IsNotificationRealTimeNoteExpeditionAllCompleted;
-        private CheckBox IsNotificationRealTimeNoteRealmCoinMax;
-        private CheckBox IsNotificationRealTimeNoteRealmCoin1800;
-        private CheckBox IsNotificationRealTimeNoteResinMax;
-        private CheckBox IsNotificationRealTimeNoteResin120;
         private GroupBox groupBox2;
         private CheckBox IsNotificationGameClosed;
         private CheckBox IsNotificationGameStart;
@@ -786,5 +708,7 @@
         private CheckBox IsScreenShotNotify;
         private GroupBox groupBox8;
         private FlowLayoutPanel PanelAccountList;
+        private TabControl TabAccountNotify;
+        private TabPage tabPage1;
     }
 }

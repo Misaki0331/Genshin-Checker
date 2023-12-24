@@ -30,6 +30,8 @@ namespace Genshin_Checker.UI.Control.SettingWindow
             
 
         }
+
+        public event EventHandler<EventArgs> AccountRemoveRequest = null;
         Image? RawImage = null;
 
         private void DrawPaint(object sender, PaintEventArgs e)
@@ -77,12 +79,13 @@ namespace Genshin_Checker.UI.Control.SettingWindow
 
         private void button1_Click(object sender, EventArgs e)
         {
-            var choose = new ChooseMessage($"{account.Name} (UID:{account.UID})の連携を解除しますか？", "", "ログアウト確認");
+            var choose = new ChooseMessage($"連携を解除しますか？", $"{account.Name} (UID:{account.UID})はアカウント一覧から削除されます。", "ログアウト確認");
             choose.ShowDialog();
             if (choose.Result == 1)
             {
                 account.Dispose(); 
                 Store.Accounts.Data.Remove(account);
+                AccountRemoveRequest?.Invoke(account, EventArgs.Empty);
             }
         }
     }

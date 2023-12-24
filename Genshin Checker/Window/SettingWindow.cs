@@ -21,6 +21,8 @@ namespace Genshin_Checker.Window
 {
     public partial class SettingWindow : Form
     {
+        List<TabPage> AccountNotify=new();
+        List<UI.Control.SettingWindow.AccountInfo> AccountBannar = new();
         public SettingWindow()
         {
             InitializeComponent();
@@ -42,12 +44,6 @@ namespace Genshin_Checker.Window
             IsCountBackground.Checked = !ProcessTime.Instance.option.OnlyActiveWindow;
             IsNotificationGameStart.Checked = Option.Instance.Notification.IsGameStart;
             IsNotificationGameClosed.Checked = Option.Instance.Notification.IsGameEnd;
-            IsNotificationRealTimeNoteResin120.Checked = Option.Instance.Notification.RealTimeNote.Resin120;
-            IsNotificationRealTimeNoteResinMax.Checked = Option.Instance.Notification.RealTimeNote.ResinMax;
-            IsNotificationRealTimeNoteRealmCoin1800.Checked = Option.Instance.Notification.RealTimeNote.RealmCoin1800;
-            IsNotificationRealTimeNoteRealmCoinMax.Checked = Option.Instance.Notification.RealTimeNote.RealmCoinMax;
-            IsNotificationRealTimeNoteExpeditionAllCompleted.Checked = Option.Instance.Notification.RealTimeNote.ExpeditionAllCompleted;
-            IsNotificationRealTimeNoteTransformerReached.Checked = Option.Instance.Notification.RealTimeNote.TransformerReached;
             IsScreenShotRaise.Checked = Option.Instance.ScreenShot.IsRaise;
             IsScreenShotNotify.Checked = Option.Instance.ScreenShot.IsNotify;
             ScreenshotPath.Text = Option.Instance.ScreenShot.RaisePath;
@@ -56,12 +52,44 @@ namespace Genshin_Checker.Window
             IsScreenShotAfterDelete.Checked = Option.Instance.ScreenShot.IsSaveAfterDelete;
             ScreenShotTransferImageType.Text = Option.Instance.ScreenShot.SaveFileFormatType;
             if (ScreenShotTransferImageType.SelectedIndex < 0) ScreenShotTransferImageType.SelectedIndex = 0;
-            foreach(var account in Store.Accounts.Data)
+            AccountReload();
+
+        }
+        private void AccountReload()
+        {
+            lock (Store.Accounts.Data)
             {
-                groupBox8.Controls.Add(new UI.Control.SettingWindow.AccountInfo(account) { Dock = DockStyle.Top });
+                groupBox8.SuspendLayout();
+                TabAccountNotify.SuspendLayout();
+                for (int i = AccountBannar.Count - 1; i >= 0; i--)
+                {
+                    var bannar = AccountBannar[i];
+                    groupBox8.Controls.Remove(bannar);
+                    AccountBannar.Remove(bannar);
+                    bannar.Dispose();
+                }
+                for (int i = AccountNotify.Count - 1; i >= 0; i--)
+                {
+                    var notify = AccountNotify[i];
+                    TabAccountNotify.Controls.Remove(notify);
+                    AccountNotify.Remove(notify);
+                    notify.Dispose();
+                }
+                foreach (var account in Store.Accounts.Data)
+                {
+                    var bannar = new UI.Control.SettingWindow.AccountInfo(account) { Dock = DockStyle.Top };
+                    bannar.AccountRemoveRequest += (s, e) => { AccountReload(); };
+                    AccountBannar.Add(bannar);
+                    groupBox8.Controls.Add(bannar);
+                    var notify = new TabPage() { UseVisualStyleBackColor = true, Text = $"{account.Name} (AR.{account.Level})", Name = $"{account.UID}" };
+                    notify.Controls.Add(new UI.Control.SettingWindow.AccountNotify(account) { Dock = DockStyle.Top });
+                    AccountNotify.Add(notify);
+                    TabAccountNotify.Controls.Add(notify);
+                }
+                groupBox8.ResumeLayout(true);
+                TabAccountNotify.ResumeLayout(true);
             }
         }
-
         private void Tab_DrawItem(object? sender, DrawItemEventArgs e)
         {
             if (sender == null) return;
@@ -118,12 +146,6 @@ namespace Genshin_Checker.Window
             if (name == IsCountBackground) ProcessTime.Instance.option.OnlyActiveWindow = !name.Checked;
             else if(name == IsNotificationGameStart) Option.Instance.Notification.IsGameStart = name.Checked;
             else if(name == IsNotificationGameClosed) Option.Instance.Notification.IsGameEnd = name.Checked;
-            else if(name == IsNotificationRealTimeNoteResin120) Option.Instance.Notification.RealTimeNote.Resin120 = name.Checked;
-            else if(name == IsNotificationRealTimeNoteResinMax) Option.Instance.Notification.RealTimeNote.ResinMax = name.Checked;
-            else if(name == IsNotificationRealTimeNoteRealmCoin1800) Option.Instance.Notification.RealTimeNote.RealmCoin1800 = name.Checked;
-            else if(name == IsNotificationRealTimeNoteRealmCoinMax) Option.Instance.Notification.RealTimeNote.RealmCoinMax = name.Checked;
-            else if(name == IsNotificationRealTimeNoteExpeditionAllCompleted) Option.Instance.Notification.RealTimeNote.ExpeditionAllCompleted = name.Checked;
-            else if(name == IsNotificationRealTimeNoteTransformerReached) Option.Instance.Notification.RealTimeNote.TransformerReached = name.Checked;
             else if (name == IsScreenShotRaise) Option.Instance.ScreenShot.IsRaise = name.Checked;
             else if (name == IsScreenShotAfterDelete) Option.Instance.ScreenShot.IsSaveAfterDelete = name.Checked;
             else if (name == IsScreenShotNotify) Option.Instance.ScreenShot.IsNotify = name.Checked;
@@ -158,6 +180,7 @@ namespace Genshin_Checker.Window
             else
                 LabelConnectedUID.Text = "未連携";
             Open_HoYoLabAuth.Enabled = true;
+            AccountReload();
         }
 
         private async void ButtonScreenShotPathAuto_Click(object sender, EventArgs e)
