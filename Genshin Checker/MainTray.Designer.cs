@@ -34,11 +34,8 @@
             this.versionNameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.詳細プレイデータToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.戦績情報ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.リアルタイムデータToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.旅人手帳ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.旅人通帳ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.公式アナウンスToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.AccountToolStrip = new System.Windows.Forms.ToolStripMenuItem();
+            this.emptyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ゲームログ開発者向けToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.設定ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -46,7 +43,6 @@
             this.終了ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.testToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Delay = new System.Windows.Forms.Timer(this.components);
-            this.育成計算機ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.NotificationMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -62,12 +58,7 @@
             this.versionNameToolStripMenuItem,
             this.toolStripSeparator3,
             this.詳細プレイデータToolStripMenuItem,
-            this.戦績情報ToolStripMenuItem,
-            this.リアルタイムデータToolStripMenuItem,
-            this.旅人手帳ToolStripMenuItem,
-            this.旅人通帳ToolStripMenuItem,
-            this.育成計算機ToolStripMenuItem,
-            this.公式アナウンスToolStripMenuItem,
+            this.AccountToolStrip,
             this.ゲームログ開発者向けToolStripMenuItem,
             this.toolStripSeparator2,
             this.設定ToolStripMenuItem,
@@ -75,7 +66,7 @@
             this.終了ToolStripMenuItem,
             this.testToolStripMenuItem});
             this.NotificationMenu.Name = "contextMenuStrip1";
-            this.NotificationMenu.Size = new System.Drawing.Size(185, 308);
+            this.NotificationMenu.Size = new System.Drawing.Size(185, 176);
             // 
             // versionNameToolStripMenuItem
             // 
@@ -96,40 +87,20 @@
             this.詳細プレイデータToolStripMenuItem.Text = "詳細プレイデータ";
             this.詳細プレイデータToolStripMenuItem.Click += new System.EventHandler(this.詳細プレイデータToolStripMenuItem_Click);
             // 
-            // 戦績情報ToolStripMenuItem
+            // AccountToolStrip
             // 
-            this.戦績情報ToolStripMenuItem.Name = "戦績情報ToolStripMenuItem";
-            this.戦績情報ToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
-            this.戦績情報ToolStripMenuItem.Text = "戦績情報";
-            this.戦績情報ToolStripMenuItem.Click += new System.EventHandler(this.戦績情報ToolStripMenuItem_Click);
+            this.AccountToolStrip.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.emptyToolStripMenuItem});
+            this.AccountToolStrip.Name = "AccountToolStrip";
+            this.AccountToolStrip.Size = new System.Drawing.Size(184, 22);
+            this.AccountToolStrip.Text = "アカウント";
             // 
-            // リアルタイムデータToolStripMenuItem
+            // emptyToolStripMenuItem
             // 
-            this.リアルタイムデータToolStripMenuItem.Name = "リアルタイムデータToolStripMenuItem";
-            this.リアルタイムデータToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
-            this.リアルタイムデータToolStripMenuItem.Text = "リアルタイムノート";
-            this.リアルタイムデータToolStripMenuItem.Click += new System.EventHandler(this.リアルタイムデータToolStripMenuItem_Click);
-            // 
-            // 旅人手帳ToolStripMenuItem
-            // 
-            this.旅人手帳ToolStripMenuItem.Name = "旅人手帳ToolStripMenuItem";
-            this.旅人手帳ToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
-            this.旅人手帳ToolStripMenuItem.Text = "旅人手帳";
-            this.旅人手帳ToolStripMenuItem.Click += new System.EventHandler(this.旅人手帳ToolStripMenuItem_Click);
-            // 
-            // 旅人通帳ToolStripMenuItem
-            // 
-            this.旅人通帳ToolStripMenuItem.Name = "旅人通帳ToolStripMenuItem";
-            this.旅人通帳ToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
-            this.旅人通帳ToolStripMenuItem.Text = "旅人通帳";
-            this.旅人通帳ToolStripMenuItem.Click += new System.EventHandler(this.旅人通帳ToolStripMenuItem_Click);
-            // 
-            // 公式アナウンスToolStripMenuItem
-            // 
-            this.公式アナウンスToolStripMenuItem.Name = "公式アナウンスToolStripMenuItem";
-            this.公式アナウンスToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
-            this.公式アナウンスToolStripMenuItem.Text = "公式アナウンス";
-            this.公式アナウンスToolStripMenuItem.Click += new System.EventHandler(this.公式アナウンスToolStripMenuItem_Click);
+            this.emptyToolStripMenuItem.Enabled = false;
+            this.emptyToolStripMenuItem.Name = "emptyToolStripMenuItem";
+            this.emptyToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.emptyToolStripMenuItem.Text = "(Empty)";
             // 
             // ゲームログ開発者向けToolStripMenuItem
             // 
@@ -174,13 +145,6 @@
             this.Delay.Enabled = true;
             this.Delay.Tick += new System.EventHandler(this.Delay_Tick);
             // 
-            // 育成計算機ToolStripMenuItem
-            // 
-            this.育成計算機ToolStripMenuItem.Name = "育成計算機ToolStripMenuItem";
-            this.育成計算機ToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
-            this.育成計算機ToolStripMenuItem.Text = "育成計算機＋";
-            this.育成計算機ToolStripMenuItem.Click += new System.EventHandler(this.育成計算機ToolStripMenuItem_Click);
-            // 
             // MainTray
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -210,17 +174,13 @@
         private ToolStripMenuItem 終了ToolStripMenuItem;
         private System.Windows.Forms.Timer Delay;
         private ToolStripMenuItem 詳細プレイデータToolStripMenuItem;
-        private ToolStripMenuItem リアルタイムデータToolStripMenuItem;
         private ToolStripSeparator toolStripSeparator2;
         private ToolStripSeparator toolStripSeparator1;
         private ToolStripMenuItem testToolStripMenuItem;
         private ToolStripMenuItem versionNameToolStripMenuItem;
         private ToolStripSeparator toolStripSeparator3;
-        private ToolStripMenuItem 旅人手帳ToolStripMenuItem;
-        private ToolStripMenuItem 旅人通帳ToolStripMenuItem;
         private ToolStripMenuItem ゲームログ開発者向けToolStripMenuItem;
-        private ToolStripMenuItem 公式アナウンスToolStripMenuItem;
-        private ToolStripMenuItem 戦績情報ToolStripMenuItem;
-        private ToolStripMenuItem 育成計算機ToolStripMenuItem;
+        private ToolStripMenuItem AccountToolStrip;
+        private ToolStripMenuItem emptyToolStripMenuItem;
     }
 }

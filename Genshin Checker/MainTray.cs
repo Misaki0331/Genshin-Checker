@@ -57,6 +57,7 @@ namespace Genshin_Checker
             notification.Visible = true;
             //new Window.WebMiniBrowser(new("https://google.com"));
             //new BrowserApp.HoYoApp();
+            Store.Accounts.Data.AccountChanges += (s, e) => { ToolStripGenerate(); };
             Store.Accounts.Data.AccountAdded += AccountAdded;
             Store.Accounts.Data.Load();
             var name = System.Reflection.Assembly.GetExecutingAssembly().GetName();
@@ -167,37 +168,6 @@ namespace Genshin_Checker
             }
         }
 
-        private void リアルタイムデータToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            try { 
-            if (RealTimeData == null || RealTimeData.IsDisposed)
-            {
-                    if (Store.Accounts.Data.Count == 0)
-                    {
-                        var n = new ErrorMessage("連携しているアカウントはまだ無いようです。", "お手数ですが、以下の操作を行って認証してください。\n設定⇒アプリ連携⇒HoYoLabとの連携");
-                        n.ShowDialog(this);
-                        return;
-                    }
-                    RealTimeData = new(Store.Accounts.Data[0]);
-                RealTimeData.WindowState = FormWindowState.Normal;
-                RealTimeData.Show();
-                RealTimeData.Activate();
-            }
-            else
-            {
-                RealTimeData.Show();
-                if (RealTimeData.WindowState == FormWindowState.Minimized) RealTimeData.WindowState = FormWindowState.Normal;
-                RealTimeData.Activate();
-            }
-
-            }
-            catch (Exception ex)
-            {
-                var n = new ErrorMessage(ex.GetType().ToString(), ex.Message);
-                n.ShowDialog(this);
-            }
-        }
-
         private void 設定ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try { 
@@ -257,73 +227,6 @@ namespace Genshin_Checker
             Trace.WriteLine(await App.General.GameApp.WhereScreenShotPath());
         }
 
-        private void 旅人手帳ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (TravelersDiary == null || TravelersDiary.IsDisposed)
-                {
-                    if (Accounts.Data.Count == 0)
-                    {
-                        var n = new ErrorMessage("連携しているアカウントはまだ無いようです。", "お手数ですが、以下の操作を行って認証してください。\n設定⇒アプリ連携⇒HoYoLabとの連携");
-                        n.ShowDialog(this);
-                        return;
-                    }
-                    TravelersDiary = new(Accounts.Data[0])
-                    {
-                        WindowState = FormWindowState.Normal
-                    };
-                    TravelersDiary.Show();
-                    TravelersDiary.Activate();
-                }
-                else
-                {
-                    TravelersDiary.Show();
-                    if (TravelersDiary.WindowState == FormWindowState.Minimized) TravelersDiary.WindowState = FormWindowState.Normal;
-                    TravelersDiary.Activate();
-                }
-
-            }
-            catch (Exception ex)
-            {
-                var n = new ErrorMessage(ex.GetType().ToString(), ex.Message);
-                n.ShowDialog(this);
-            }
-        }
-
-        private void 旅人通帳ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (DetailList == null || DetailList.IsDisposed)
-                {
-                    if (Accounts.Data.Count == 0)
-                    {
-                        var n = new ErrorMessage("連携しているアカウントはまだ無いようです。", "お手数ですが、以下の操作を行って認証してください。\n設定⇒アプリ連携⇒HoYoLabとの連携");
-                        n.ShowDialog(this);
-                        return;
-                    }
-                    DetailList = new(Accounts.Data[0])
-                    {
-                        WindowState = FormWindowState.Normal
-                    };
-                    DetailList.Show();
-                    DetailList.Activate();
-                }
-                else
-                {
-                    DetailList.Show();
-                    if (DetailList.WindowState == FormWindowState.Minimized) DetailList.WindowState = FormWindowState.Normal;
-                    DetailList.Activate();
-                }
-
-            }
-            catch (Exception ex)
-            {
-                var n = new ErrorMessage(ex.GetType().ToString(), ex.Message);
-                n.ShowDialog(this);
-            }
-        }
         private void LogUpdated(object? sender, string[] e)
         {
             foreach (var item in e)
@@ -360,70 +263,6 @@ namespace Genshin_Checker
             }
         }
 
-        private void 公式アナウンスToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            try
-            {
-
-                if (WebGameAnnounce == null || WebGameAnnounce.IsDisposed)
-                {
-                    if (Accounts.Data.Count == 0)
-                    {
-                        var n = new ErrorMessage("連携しているアカウントはまだ無いようです。", "お手数ですが、以下の操作を行って認証してください。\n設定⇒アプリ連携⇒HoYoLabとの連携");
-                        n.ShowDialog(this);
-                        return;
-                    }
-                    WebGameAnnounce = new(Accounts.Data[0]);
-                    WebGameAnnounce.WindowState = FormWindowState.Normal;
-                    WebGameAnnounce.Show();
-                    WebGameAnnounce.Activate();
-                }
-                else
-                {
-                    WebGameAnnounce.Show();
-                    if (WebGameAnnounce.WindowState == FormWindowState.Minimized) WebGameAnnounce.WindowState = FormWindowState.Normal;
-                    WebGameAnnounce.Activate();
-                }
-
-            }
-            catch (Exception ex)
-            {
-                var n = new ErrorMessage(ex.GetType().ToString(), ex.Message);
-                n.ShowDialog(this);
-            }
-        }
-
-        private void 戦績情報ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (GameRecords == null || GameRecords.IsDisposed)
-                {
-                    if (Accounts.Data.Count == 0)
-                    {
-                        var n = new ErrorMessage("連携しているアカウントはまだ無いようです。", "お手数ですが、以下の操作を行って認証してください。\n設定⇒アプリ連携⇒HoYoLabとの連携");
-                        n.ShowDialog(this);
-                        return;
-                    }
-                    GameRecords = new(Accounts.Data[0]);
-                    GameRecords.WindowState = FormWindowState.Normal;
-                    GameRecords.Show();
-                    GameRecords.Activate();
-                }
-                else
-                {
-                    GameRecords.Show();
-                    if (GameRecords.WindowState == FormWindowState.Minimized) GameRecords.WindowState = FormWindowState.Normal;
-                    GameRecords.Activate();
-                }
-
-            }
-            catch (Exception ex)
-            {
-                var n = new ErrorMessage(ex.GetType().ToString(), ex.Message);
-                n.ShowDialog(this);
-            }
-        }
 
         private void 育成計算機ToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -493,5 +332,97 @@ namespace Genshin_Checker
                 new ErrorMessage("スクリーンショット保存中にエラー", $"{ex}").ShowDialog();
             }
         }
+        List<Form> FormList = new();
+        private void OpenWindow(Account? account,string name)
+        {
+            string Name = $"{(account != null ? account.UID : "null")},{name}";
+            var delete = FormList.Find(a => a.Name == Name&&a.IsDisposed);
+            if(delete!=null)FormList.Remove(delete);
+            var find = FormList.Find(a => a.Name == Name);
+            bool IsAdd = find == null;
+            if (account == null)
+            {
+                switch (name)
+                {
+                    case nameof(Window.GameLog):
+                        if (find == null || find.IsDisposed) find = new Window.GameLog(GameLogTemp) { Name = Name };
+                        break;
+                    case nameof(Window.TimerDisplay):
+                        if (find == null || find.IsDisposed) find = new Window.TimerDisplay() { Name = Name };
+                        break;
+                    case nameof(Window.TimeGraph):
+                        if (find == null || find.IsDisposed) find = new Window.TimeGraph() { Name = Name };
+                        break;
+                    case nameof(Window.SettingWindow):
+                        if(find==null || find.IsDisposed) find= new Window.SettingWindow() { Name = Name };
+                        break;
+                }
+            }
+            else
+            {
+                switch (name)
+                {
+                    case nameof(Window.GameRecords):
+                        if (find == null || find.IsDisposed) find = new Window.GameRecords(account) { Name = Name };
+                        break;
+                    case nameof(Window.RealTimeData):
+                        if (find == null || find.IsDisposed) find = new Window.RealTimeData(account) { Name = Name };
+                        break;
+                    case nameof(Window.TravelersDiary):
+                        if (find == null || find.IsDisposed) find = new Window.TravelersDiary(account) { Name = Name };
+                        break;
+                    case nameof(Window.TravelersDiaryDetailList):
+                        if (find == null || find.IsDisposed) find = new Window.TravelersDiaryDetailList(account) { Name = Name };
+                        break;
+                    case nameof(Window.CharacterCalculator):
+                        if (find == null || find.IsDisposed) find = new Window.CharacterCalculator(account) { Name = Name };
+                        break;
+                    case nameof(BrowserApp.WebGameAnnounce):
+                        if (find == null || find.IsDisposed) find = new BrowserApp.WebGameAnnounce(account) { Name = Name };
+                        break;
+                }
+            }
+            if (find == null) return;
+            if (IsAdd) FormList.Add(find);
+            find.Show();
+            if (find.WindowState == FormWindowState.Minimized) find.WindowState = FormWindowState.Normal;
+            find.Activate();
+        }
+        private void ToolStripGenerate()
+        {
+            AccountToolStrip.DropDownItems.Clear();
+            if (Accounts.Data.Count > 0)
+            {
+                foreach(var account in Accounts.Data)
+                {
+                    var GameRecord = new ToolStripMenuItem() { Text = "戦績情報" };
+                    GameRecord.Click += (s, e) => { OpenWindow(account, nameof(Window.GameRecords)); };
+                    var RealTimeNote = new ToolStripMenuItem() { Text = "リアルタイムノート" };
+                    RealTimeNote.Click += (s, e) => { OpenWindow(account, nameof(Window.RealTimeData)); };
+                    var TravelersDiary = new ToolStripMenuItem() { Text = "旅人手帳" };
+                    TravelersDiary.Click += (s, e) => { OpenWindow(account, nameof(Window.TravelersDiary)); };
+                    var TravelersDiaryDetailList = new ToolStripMenuItem() { Text = "旅人通帳" };
+                    TravelersDiaryDetailList.Click += (s, e) => { OpenWindow(account, nameof(Window.TravelersDiaryDetailList)); };
+                    var CharacterCalculator = new ToolStripMenuItem() { Text = "育成計算機＋" };
+                    CharacterCalculator.Click += (s, e) => { OpenWindow(account, nameof(Window.CharacterCalculator)); };
+                    var OfficialAnnounce = new ToolStripMenuItem() { Text = "ゲームアナウンス" };
+                    OfficialAnnounce.Click += (s, e) => { OpenWindow(account, nameof(BrowserApp.WebGameAnnounce)); };
+                    var tools = new ToolStripMenuItem() { Text = $"{account.Name} (AR.{account.Level})" };
+                    tools.DropDownItems.AddRange(new ToolStripItem[]
+                    {
+                        GameRecord,RealTimeNote,TravelersDiary,TravelersDiaryDetailList,CharacterCalculator,OfficialAnnounce,
+                        new ToolStripSeparator(),new ToolStripMenuItem(){Enabled=false,Text=$"UID: {account.UID}"}
+                    });
+                    AccountToolStrip.DropDownItems.Add(tools);
+                }
+            }
+            else
+            {
+                AccountToolStrip.DropDownItems.AddRange(new ToolStripItem[] {
+            emptyToolStripMenuItem});
+            }
+        }
+
     }
+    
 }

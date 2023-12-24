@@ -10,6 +10,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using Genshin_Checker.Window.Popup;
+using Genshin_Checker.App.HoYoLab;
 
 namespace Genshin_Checker.Store
 {
@@ -50,6 +51,7 @@ namespace Genshin_Checker.Store
                 var a=new ErrorMessage("アカウントセーブデータに異常があります。", $"{ex.GetType()}\n{ex.Message}");
                 a.Show();
             }
+            AccountChanges?.Invoke(null, EventArgs.Empty);
         }
         public void Save()
         {
@@ -62,6 +64,7 @@ namespace Genshin_Checker.Store
             Registry.SetValue("Config\\UserData", "PlayerData",obj,true);
 
         }
+        public event EventHandler<EventArgs>? AccountChanges;
         static Accounts? _instance = null;
         public static Accounts Data { get => _instance ??= new Accounts(); }
         public int Count { get=>AccountDatas.Count; }
@@ -78,17 +81,20 @@ namespace Genshin_Checker.Store
             AccountAdded?.Invoke(this, account);
             AccountDatas.Add(account);
             Save();
+            AccountChanges?.Invoke(account, EventArgs.Empty);
         }
         public void Clear()
         {
             foreach(var a in AccountDatas)
                 a.Dispose();
             AccountDatas.Clear();
+            AccountChanges?.Invoke(null, EventArgs.Empty);
         }
         public bool Remove(App.HoYoLab.Account account)
         {
             var b = AccountDatas.Remove(account);
             Save();
+            AccountChanges?.Invoke(account, EventArgs.Empty);
             return b;
         }
         private List<App.HoYoLab.Account> AccountDatas { get; set; }
