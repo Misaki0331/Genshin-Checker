@@ -20,6 +20,7 @@ namespace Genshin_Checker.Window.Popup
             InitializeComponent();
             textBox1.Lines = CrashLog(ex).Split('\n');
             label2.Text = ex.GetType().ToString();
+            if (ex.GetType() == typeof(System.NullReferenceException)) label2.Text = "∧＿∧\r\n(　´∀｀)＜ぬるぽ";
             if (string.IsNullOrEmpty(crashreportpath)) button3.Enabled = false;
             TopMost= true;
             StartPosition= FormStartPosition.CenterScreen;
@@ -29,8 +30,10 @@ namespace Genshin_Checker.Window.Popup
         {
             if(!string.IsNullOrEmpty(crashreportpath))return errormessage;
             StringBuilder ErrorMessage = new();
+            string message = ex.Message;
+            if (ex.GetType() == typeof(System.NullReferenceException)) message = "　　 （　・∀・）　　　|　|　ｶﾞｯ\r\n　　と　　　　）　 　 |　|\r\n　　　 Ｙ　/ノ　　　 人\r\n　　　　 /　）　 　 < 　>__Λ∩\r\n　　 ＿/し'　／／. Ｖ｀Д´）/ \r\n　　（＿フ彡　　　　　 　　/";
             ErrorMessage.Append($"【エラーの定義名】\n{ex.GetType()}\n\n");
-            ErrorMessage.Append($"【エラーの内容】\n{ex.Message}\n\n");
+            ErrorMessage.Append($"【エラーの内容】\n{message}\n\n");
             ErrorMessage.Append($"【ソース情報】\n{(ex.Source ?? "不明")}\n\n");
             ErrorMessage.Append($"【エラーの情報】\n{ex}\n\n");
             var name = System.Reflection.Assembly.GetExecutingAssembly().GetName();
