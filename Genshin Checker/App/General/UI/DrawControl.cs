@@ -21,6 +21,7 @@ namespace Genshin_Checker.App.General.UI
         {
             ///Todo: LabelからPictureBoxに変更
             using GraphicsPath path = new();
+            double dpi = label.DeviceDpi / 96.0;
             using Pen pen = new(outlineColor, outlineWidth) { LineJoin = LineJoin.Round };
             using SolidBrush brush = new(fontColor);
             StringFormat format = StringFormat.GenericTypographic;
@@ -60,7 +61,7 @@ namespace Genshin_Checker.App.General.UI
                     format.LineAlignment = StringAlignment.Far;
                     break;
             }
-            path.AddString(label.Text, label.Font.FontFamily, (int)label.Font.Style, (label.Font.Size) * 1.25f, label.ClientRectangle, StringFormat.GenericTypographic);
+            path.AddString(label.Text, label.Font.FontFamily, (int)label.Font.Style, (label.Font.Size) * 1.25f*(float)dpi, label.ClientRectangle, StringFormat.GenericTypographic);
             g.SmoothingMode = SmoothingMode.AntiAlias;
             g.DrawPath(pen, path);
             g.FillPath(brush, path);
