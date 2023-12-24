@@ -71,10 +71,10 @@
             this.label5 = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.panel_Error = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.button_Auth = new System.Windows.Forms.Button();
             this.label_ErrorMessage = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel_resin.SuspendLayout();
@@ -127,8 +127,7 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "---";
             this.label1.TextAlign = System.Drawing.ContentAlignment.BottomRight;
-            this.label1.Click += label1_Click;
-            this.label1.Paint += Label_Paint;
+            this.label1.Paint += new System.Windows.Forms.PaintEventHandler(this.Label_Paint);
             // 
             // label2
             // 
@@ -142,7 +141,7 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "/---";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label2.Paint += Label_Paint;
+            this.label2.Paint += new System.Windows.Forms.PaintEventHandler(this.Label_Paint);
             // 
             // label3
             // 
@@ -157,7 +156,7 @@
             this.label3.TabIndex = 3;
             this.label3.Text = "残り --:--:--";
             this.label3.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
-            this.label3.Paint += Label_Paint;
+            this.label3.Paint += new System.Windows.Forms.PaintEventHandler(this.Label_Paint);
             // 
             // pictureBox2
             // 
@@ -183,13 +182,11 @@
             this.label4.TabIndex = 5;
             this.label4.Text = "-/-";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label4.Click += label4_Click;
-            this.label4.Paint += Label_Paint;
+            this.label4.Paint += new System.Windows.Forms.PaintEventHandler(this.Label_Paint);
             // 
             // UiUpdate
             // 
             this.UiUpdate.Enabled = true;
-            UiUpdate.Tick += UiUpdate_Tick;
             // 
             // panel_resin
             // 
@@ -264,7 +261,7 @@
             this.label_expendition_5.TabIndex = 6;
             this.label_expendition_5.Text = "--:--:--";
             this.label_expendition_5.TextAlign = System.Drawing.ContentAlignment.BottomRight;
-            this.label_expendition_5.Paint += Label_Paint;
+            this.label_expendition_5.Paint += new System.Windows.Forms.PaintEventHandler(this.Label_Paint);
             // 
             // icon_expendition_5
             // 
@@ -299,7 +296,7 @@
             this.label_expendition_4.TabIndex = 6;
             this.label_expendition_4.Text = "--:--:--";
             this.label_expendition_4.TextAlign = System.Drawing.ContentAlignment.BottomRight;
-            this.label_expendition_4.Paint += Label_Paint;
+            this.label_expendition_4.Paint += new System.Windows.Forms.PaintEventHandler(this.Label_Paint);
             // 
             // icon_expendition_4
             // 
@@ -334,7 +331,7 @@
             this.label_expendition_3.TabIndex = 6;
             this.label_expendition_3.Text = "--:--:--";
             this.label_expendition_3.TextAlign = System.Drawing.ContentAlignment.BottomRight;
-            this.label_expendition_3.Paint += Label_Paint;
+            this.label_expendition_3.Paint += new System.Windows.Forms.PaintEventHandler(this.Label_Paint);
             // 
             // icon_expendition_3
             // 
@@ -369,7 +366,7 @@
             this.label_expendition_2.TabIndex = 6;
             this.label_expendition_2.Text = "--:--:--";
             this.label_expendition_2.TextAlign = System.Drawing.ContentAlignment.BottomRight;
-            this.label_expendition_2.Paint += Label_Paint;
+            this.label_expendition_2.Paint += new System.Windows.Forms.PaintEventHandler(this.Label_Paint);
             // 
             // icon_expendition_2
             // 
@@ -404,7 +401,7 @@
             this.label_expendition_1.TabIndex = 6;
             this.label_expendition_1.Text = "--:--:--";
             this.label_expendition_1.TextAlign = System.Drawing.ContentAlignment.BottomRight;
-            this.label_expendition_1.Paint += Label_Paint;
+            this.label_expendition_1.Paint += new System.Windows.Forms.PaintEventHandler(this.Label_Paint);
             // 
             // icon_expendition_1
             // 
@@ -438,7 +435,7 @@
             this.label11.TabIndex = 4;
             this.label11.Text = "探索派遣";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label11.Paint += Label_Paint;
+            this.label11.Paint += new System.Windows.Forms.PaintEventHandler(this.Label_Paint);
             // 
             // label_expendition_num
             // 
@@ -452,7 +449,7 @@
             this.label_expendition_num.TabIndex = 5;
             this.label_expendition_num.Text = "- / -";
             this.label_expendition_num.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.label_expendition_num.Paint += Label_Paint;
+            this.label_expendition_num.Paint += new System.Windows.Forms.PaintEventHandler(this.Label_Paint);
             // 
             // panel2
             // 
@@ -490,7 +487,7 @@
             this.label9.TabIndex = 5;
             this.label9.Text = "あと ---:--:--";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label9.Paint += Label_Paint;
+            this.label9.Paint += new System.Windows.Forms.PaintEventHandler(this.Label_Paint);
             // 
             // pictureBox5
             // 
@@ -527,7 +524,7 @@
             this.label8.TabIndex = 5;
             this.label8.Text = "-/-";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label8.Paint += Label_Paint;
+            this.label8.Paint += new System.Windows.Forms.PaintEventHandler(this.Label_Paint);
             // 
             // pictureBox4
             // 
@@ -567,7 +564,7 @@
             this.label7.TabIndex = 7;
             this.label7.Text = "残り --:--:--";
             this.label7.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
-            this.label7.Paint += Label_Paint;
+            this.label7.Paint += new System.Windows.Forms.PaintEventHandler(this.Label_Paint);
             // 
             // label6
             // 
@@ -581,7 +578,7 @@
             this.label6.TabIndex = 6;
             this.label6.Text = "/----";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label6.Paint += Label_Paint;
+            this.label6.Paint += new System.Windows.Forms.PaintEventHandler(this.Label_Paint);
             // 
             // label5
             // 
@@ -596,7 +593,7 @@
             this.label5.TabIndex = 5;
             this.label5.Text = "----";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.label5.Paint += Label_Paint;
+            this.label5.Paint += new System.Windows.Forms.PaintEventHandler(this.Label_Paint);
             // 
             // pictureBox3
             // 
@@ -623,6 +620,17 @@
             this.panel_Error.Size = new System.Drawing.Size(499, 238);
             this.panel_Error.TabIndex = 9;
             // 
+            // button1
+            // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.Location = new System.Drawing.Point(331, 201);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "再読込";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.ReloadNote);
+            // 
             // button_Auth
             // 
             this.button_Auth.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -632,6 +640,7 @@
             this.button_Auth.TabIndex = 2;
             this.button_Auth.Text = "再連携";
             this.button_Auth.UseVisualStyleBackColor = true;
+            this.button_Auth.Click += new System.EventHandler(this.button_Auth_Click);
             // 
             // label_ErrorMessage
             // 
@@ -643,7 +652,7 @@
             this.label_ErrorMessage.Size = new System.Drawing.Size(499, 128);
             this.label_ErrorMessage.TabIndex = 1;
             this.label_ErrorMessage.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label_ErrorMessage.Paint += Label_Paint;
+            this.label_ErrorMessage.Paint += new System.Windows.Forms.PaintEventHandler(this.Label_Paint);
             // 
             // label10
             // 
@@ -657,22 +666,12 @@
             this.label10.TabIndex = 0;
             this.label10.Text = "データを取得中です...";
             this.label10.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.label10.Paint += Label_Paint;
-            // button1
-            // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(331, 201);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "再読込";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.ReloadNote);
+            this.label10.Paint += new System.Windows.Forms.PaintEventHandler(this.Label_Paint);
             // 
             // RealTimeData
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackgroundImage = global::Genshin_Checker.resource.namecard.Genshin_Impact_A_New_World;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(499, 238);
@@ -682,9 +681,9 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "RealTimeData";
             this.Text = "リアルタイムノート";
-            Load += RealTimeData_Load;
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
+            this.Load += new System.EventHandler(this.WindowLoad);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panel_resin.ResumeLayout(false);
             this.panel_comission.ResumeLayout(false);
             this.panel_main.ResumeLayout(false);

@@ -143,7 +143,7 @@ namespace Genshin_Checker.Window
             browser.ShowDialog(this);
         }
 
-        private async void RealTimeData_Load(object sender, EventArgs e)
+        private async void WindowLoad(object sender, EventArgs e)
         {
             var url = EnkaData.Convert.Namecard.GetNameCardURL(account.EnkaNetwork.Data.playerInfo.nameCardId);
             var image = url == null ? null : await App.WebRequest.ImageGetRequest(url);
