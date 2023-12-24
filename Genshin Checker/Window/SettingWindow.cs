@@ -36,10 +36,6 @@ namespace Genshin_Checker.Window
             tabControl1.DrawMode = TabDrawMode.OwnerDrawFixed;
             //DrawItemイベントハンドラを追加
             tabControl1.DrawItem += Tab_DrawItem;
-            if (Store.Accounts.Data.Count > 0)
-                LabelConnectedUID.Text = $"連携済み : {Store.Accounts.Data[0].Name} AR.{Store.Accounts.Data[0].Level} (UID:{Store.Accounts.Data[0].UID})";
-            else
-                LabelConnectedUID.Text = "未連携";
             label4.Text = $"Version : {System.Reflection.Assembly.GetExecutingAssembly().GetName().Version}";
             IsCountBackground.Checked = !ProcessTime.Instance.option.OnlyActiveWindow;
             IsNotificationGameStart.Checked = Option.Instance.Notification.IsGameStart;
@@ -175,10 +171,6 @@ namespace Genshin_Checker.Window
 
             }
             await Task.Delay(1000);
-            if (Store.Accounts.Data.Count > 0)
-                LabelConnectedUID.Text = $"連携済み : {Store.Accounts.Data[0].Name} AR.{Store.Accounts.Data[0].Level} (UID:{Store.Accounts.Data[0].UID})";
-            else
-                LabelConnectedUID.Text = "未連携";
             Open_HoYoLabAuth.Enabled = true;
             AccountReload();
         }

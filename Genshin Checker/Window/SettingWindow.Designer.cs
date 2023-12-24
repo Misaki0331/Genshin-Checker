@@ -60,7 +60,6 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.LabelConnectedUID = new System.Windows.Forms.Label();
             this.Open_HoYoLabAuth = new System.Windows.Forms.Button();
             this.page_about = new System.Windows.Forms.TabPage();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
@@ -446,23 +445,12 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.LabelConnectedUID);
             this.panel1.Controls.Add(this.Open_HoYoLabAuth);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(3, 19);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(581, 25);
             this.panel1.TabIndex = 0;
-            // 
-            // LabelConnectedUID
-            // 
-            this.LabelConnectedUID.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.LabelConnectedUID.Location = new System.Drawing.Point(142, 0);
-            this.LabelConnectedUID.Name = "LabelConnectedUID";
-            this.LabelConnectedUID.Size = new System.Drawing.Size(439, 25);
-            this.LabelConnectedUID.TabIndex = 2;
-            this.LabelConnectedUID.Text = "連携済みのUID : 0";
-            this.LabelConnectedUID.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // Open_HoYoLabAuth
             // 
@@ -674,7 +662,6 @@
         private Label label1;
         private Panel panel1;
         private Button Open_HoYoLabAuth;
-        private Label LabelConnectedUID;
         private GroupBox groupBox3;
         private GroupBox groupBox2;
         private CheckBox IsNotificationGameClosed;
