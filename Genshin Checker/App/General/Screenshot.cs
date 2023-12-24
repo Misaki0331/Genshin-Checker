@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OpenTK.Graphics.OpenGL;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing.Imaging;
@@ -51,6 +52,11 @@ namespace Genshin_Checker.App.General
                     break;
                 }
                 catch (IOException ex2) when ((ex2.HResult & 0x0000FFFF) == 32)
+                {
+                    ex = ex2;
+                    await Task.Delay(100);
+                }
+                catch (Exception ex2)
                 {
                     ex = ex2;
                     await Task.Delay(100);
