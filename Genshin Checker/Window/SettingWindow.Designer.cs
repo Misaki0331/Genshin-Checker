@@ -103,11 +103,10 @@
             this.tabControl1.Controls.Add(this.page_about);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
-            this.tabControl1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabControl1.Multiline = true;
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(713, 588);
+            this.tabControl1.Size = new System.Drawing.Size(624, 441);
             this.tabControl1.TabIndex = 0;
             // 
             // page_general
@@ -115,11 +114,10 @@
             this.page_general.AutoScroll = true;
             this.page_general.Controls.Add(this.groupBox7);
             this.page_general.Controls.Add(this.groupBox6);
-            this.page_general.Location = new System.Drawing.Point(30, 4);
-            this.page_general.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.page_general.Location = new System.Drawing.Point(27, 4);
             this.page_general.Name = "page_general";
-            this.page_general.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.page_general.Size = new System.Drawing.Size(679, 580);
+            this.page_general.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.page_general.Size = new System.Drawing.Size(593, 433);
             this.page_general.TabIndex = 0;
             this.page_general.Text = "全般";
             this.page_general.UseVisualStyleBackColor = true;
@@ -136,11 +134,9 @@
             this.groupBox7.Controls.Add(this.label2);
             this.groupBox7.Controls.Add(this.panel4);
             this.groupBox7.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox7.Location = new System.Drawing.Point(3, 56);
-            this.groupBox7.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox7.Location = new System.Drawing.Point(3, 44);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox7.Size = new System.Drawing.Size(673, 452);
+            this.groupBox7.Size = new System.Drawing.Size(587, 342);
             this.groupBox7.TabIndex = 3;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "スクリーンショット";
@@ -149,9 +145,9 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label8.Location = new System.Drawing.Point(3, 208);
+            this.label8.Location = new System.Drawing.Point(3, 159);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(513, 240);
+            this.label8.Size = new System.Drawing.Size(413, 180);
             this.label8.TabIndex = 6;
             this.label8.Text = resources.GetString("label8.Text");
             // 
@@ -159,10 +155,9 @@
             // 
             this.IsScreenShotNotify.AutoSize = true;
             this.IsScreenShotNotify.Dock = System.Windows.Forms.DockStyle.Top;
-            this.IsScreenShotNotify.Location = new System.Drawing.Point(3, 184);
-            this.IsScreenShotNotify.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.IsScreenShotNotify.Location = new System.Drawing.Point(3, 140);
             this.IsScreenShotNotify.Name = "IsScreenShotNotify";
-            this.IsScreenShotNotify.Size = new System.Drawing.Size(667, 24);
+            this.IsScreenShotNotify.Size = new System.Drawing.Size(581, 19);
             this.IsScreenShotNotify.TabIndex = 7;
             this.IsScreenShotNotify.Text = "スクリーンショット保存した時に通知する";
             this.IsScreenShotNotify.UseVisualStyleBackColor = true;
@@ -172,10 +167,9 @@
             // 
             this.IsScreenShotAfterDelete.AutoSize = true;
             this.IsScreenShotAfterDelete.Dock = System.Windows.Forms.DockStyle.Top;
-            this.IsScreenShotAfterDelete.Location = new System.Drawing.Point(3, 160);
-            this.IsScreenShotAfterDelete.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.IsScreenShotAfterDelete.Location = new System.Drawing.Point(3, 121);
             this.IsScreenShotAfterDelete.Name = "IsScreenShotAfterDelete";
-            this.IsScreenShotAfterDelete.Size = new System.Drawing.Size(667, 24);
+            this.IsScreenShotAfterDelete.Size = new System.Drawing.Size(581, 19);
             this.IsScreenShotAfterDelete.TabIndex = 5;
             this.IsScreenShotAfterDelete.Text = "元のゲームフォルダのスクリーンショットを削除する";
             this.IsScreenShotAfterDelete.UseVisualStyleBackColor = true;
@@ -186,19 +180,17 @@
             this.panel6.Controls.Add(this.ScreenShotTransferFileFormat);
             this.panel6.Controls.Add(this.ScreenShotTransferImageType);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel6.Location = new System.Drawing.Point(3, 128);
-            this.panel6.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.panel6.Location = new System.Drawing.Point(3, 97);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(667, 32);
+            this.panel6.Size = new System.Drawing.Size(581, 24);
             this.panel6.TabIndex = 4;
             // 
             // ScreenShotTransferFileFormat
             // 
             this.ScreenShotTransferFileFormat.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ScreenShotTransferFileFormat.Location = new System.Drawing.Point(0, 0);
-            this.ScreenShotTransferFileFormat.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ScreenShotTransferFileFormat.Name = "ScreenShotTransferFileFormat";
-            this.ScreenShotTransferFileFormat.Size = new System.Drawing.Size(582, 27);
+            this.ScreenShotTransferFileFormat.Size = new System.Drawing.Size(506, 23);
             this.ScreenShotTransferFileFormat.TabIndex = 1;
             this.ScreenShotTransferFileFormat.TextChanged += new System.EventHandler(this.ScreenShotTransferFileFormat_TextChanged);
             // 
@@ -211,10 +203,9 @@
             ".png",
             ".jpg",
             ".tiff"});
-            this.ScreenShotTransferImageType.Location = new System.Drawing.Point(582, 0);
-            this.ScreenShotTransferImageType.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ScreenShotTransferImageType.Location = new System.Drawing.Point(506, 0);
             this.ScreenShotTransferImageType.Name = "ScreenShotTransferImageType";
-            this.ScreenShotTransferImageType.Size = new System.Drawing.Size(85, 28);
+            this.ScreenShotTransferImageType.Size = new System.Drawing.Size(75, 23);
             this.ScreenShotTransferImageType.TabIndex = 2;
             this.ScreenShotTransferImageType.SelectedIndexChanged += new System.EventHandler(this.ScreenShotTransferImageType_SelectedIndexChanged);
             // 
@@ -222,9 +213,9 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label5.Location = new System.Drawing.Point(3, 108);
+            this.label5.Location = new System.Drawing.Point(3, 82);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(169, 20);
+            this.label5.Size = new System.Drawing.Size(136, 15);
             this.label5.TabIndex = 3;
             this.label5.Text = "転送先のファイルフォーマット";
             // 
@@ -233,29 +224,26 @@
             this.panel5.Controls.Add(this.ScreenShotTransferDirectry);
             this.panel5.Controls.Add(this.button1);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel5.Location = new System.Drawing.Point(3, 76);
-            this.panel5.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.panel5.Location = new System.Drawing.Point(3, 58);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(667, 32);
+            this.panel5.Size = new System.Drawing.Size(581, 24);
             this.panel5.TabIndex = 1;
             // 
             // ScreenShotTransferDirectry
             // 
             this.ScreenShotTransferDirectry.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ScreenShotTransferDirectry.Location = new System.Drawing.Point(0, 0);
-            this.ScreenShotTransferDirectry.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ScreenShotTransferDirectry.Name = "ScreenShotTransferDirectry";
             this.ScreenShotTransferDirectry.ReadOnly = true;
-            this.ScreenShotTransferDirectry.Size = new System.Drawing.Size(581, 27);
+            this.ScreenShotTransferDirectry.Size = new System.Drawing.Size(506, 23);
             this.ScreenShotTransferDirectry.TabIndex = 1;
             // 
             // button1
             // 
             this.button1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.button1.Location = new System.Drawing.Point(581, 0);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.button1.Location = new System.Drawing.Point(506, 0);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(86, 32);
+            this.button1.Size = new System.Drawing.Size(75, 24);
             this.button1.TabIndex = 2;
             this.button1.Text = "参照";
             this.button1.UseVisualStyleBackColor = true;
@@ -265,9 +253,9 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label2.Location = new System.Drawing.Point(3, 56);
+            this.label2.Location = new System.Drawing.Point(3, 43);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(132, 20);
+            this.label2.Size = new System.Drawing.Size(106, 15);
             this.label2.TabIndex = 2;
             this.label2.Text = "転送先のフォルダパス";
             // 
@@ -277,29 +265,26 @@
             this.panel4.Controls.Add(this.ButtonScreenShotPathAuto);
             this.panel4.Controls.Add(this.IsScreenShotRaise);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel4.Location = new System.Drawing.Point(3, 24);
-            this.panel4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.panel4.Location = new System.Drawing.Point(3, 19);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(667, 32);
+            this.panel4.Size = new System.Drawing.Size(581, 24);
             this.panel4.TabIndex = 0;
             // 
             // ScreenshotPath
             // 
             this.ScreenshotPath.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ScreenshotPath.Location = new System.Drawing.Point(106, 0);
-            this.ScreenshotPath.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ScreenshotPath.Location = new System.Drawing.Point(86, 0);
             this.ScreenshotPath.Name = "ScreenshotPath";
             this.ScreenshotPath.ReadOnly = true;
-            this.ScreenshotPath.Size = new System.Drawing.Size(475, 27);
+            this.ScreenshotPath.Size = new System.Drawing.Size(420, 23);
             this.ScreenshotPath.TabIndex = 1;
             // 
             // ButtonScreenShotPathAuto
             // 
             this.ButtonScreenShotPathAuto.Dock = System.Windows.Forms.DockStyle.Right;
-            this.ButtonScreenShotPathAuto.Location = new System.Drawing.Point(581, 0);
-            this.ButtonScreenShotPathAuto.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ButtonScreenShotPathAuto.Location = new System.Drawing.Point(506, 0);
             this.ButtonScreenShotPathAuto.Name = "ButtonScreenShotPathAuto";
-            this.ButtonScreenShotPathAuto.Size = new System.Drawing.Size(86, 32);
+            this.ButtonScreenShotPathAuto.Size = new System.Drawing.Size(75, 24);
             this.ButtonScreenShotPathAuto.TabIndex = 2;
             this.ButtonScreenShotPathAuto.Text = "自動設定";
             this.ButtonScreenShotPathAuto.UseVisualStyleBackColor = true;
@@ -310,9 +295,8 @@
             this.IsScreenShotRaise.AutoSize = true;
             this.IsScreenShotRaise.Dock = System.Windows.Forms.DockStyle.Left;
             this.IsScreenShotRaise.Location = new System.Drawing.Point(0, 0);
-            this.IsScreenShotRaise.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.IsScreenShotRaise.Name = "IsScreenShotRaise";
-            this.IsScreenShotRaise.Size = new System.Drawing.Size(106, 32);
+            this.IsScreenShotRaise.Size = new System.Drawing.Size(86, 24);
             this.IsScreenShotRaise.TabIndex = 0;
             this.IsScreenShotRaise.Text = "転送有効化";
             this.IsScreenShotRaise.UseVisualStyleBackColor = true;
@@ -323,11 +307,9 @@
             this.groupBox6.AutoSize = true;
             this.groupBox6.Controls.Add(this.IsCountBackground);
             this.groupBox6.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox6.Location = new System.Drawing.Point(3, 4);
-            this.groupBox6.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox6.Location = new System.Drawing.Point(3, 3);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox6.Size = new System.Drawing.Size(673, 52);
+            this.groupBox6.Size = new System.Drawing.Size(587, 41);
             this.groupBox6.TabIndex = 2;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "ゲーム時間のカウント";
@@ -336,10 +318,9 @@
             // 
             this.IsCountBackground.AutoSize = true;
             this.IsCountBackground.Dock = System.Windows.Forms.DockStyle.Top;
-            this.IsCountBackground.Location = new System.Drawing.Point(3, 24);
-            this.IsCountBackground.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.IsCountBackground.Location = new System.Drawing.Point(3, 19);
             this.IsCountBackground.Name = "IsCountBackground";
-            this.IsCountBackground.Size = new System.Drawing.Size(667, 24);
+            this.IsCountBackground.Size = new System.Drawing.Size(581, 19);
             this.IsCountBackground.TabIndex = 1;
             this.IsCountBackground.Text = "バックグラウンド時もプレイ時間にカウントする";
             this.IsCountBackground.UseVisualStyleBackColor = true;
@@ -349,11 +330,10 @@
             // 
             this.page_notification.Controls.Add(this.groupBox3);
             this.page_notification.Controls.Add(this.groupBox2);
-            this.page_notification.Location = new System.Drawing.Point(30, 4);
-            this.page_notification.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.page_notification.Location = new System.Drawing.Point(27, 4);
             this.page_notification.Name = "page_notification";
-            this.page_notification.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.page_notification.Size = new System.Drawing.Size(679, 580);
+            this.page_notification.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.page_notification.Size = new System.Drawing.Size(593, 433);
             this.page_notification.TabIndex = 4;
             this.page_notification.Text = "通知";
             this.page_notification.UseVisualStyleBackColor = true;
@@ -363,11 +343,9 @@
             this.groupBox3.AutoSize = true;
             this.groupBox3.Controls.Add(this.TabAccountNotify);
             this.groupBox3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox3.Location = new System.Drawing.Point(3, 80);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox3.Location = new System.Drawing.Point(3, 63);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox3.Size = new System.Drawing.Size(673, 256);
+            this.groupBox3.Size = new System.Drawing.Size(587, 193);
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "リアルタイムノートの通知 (HoYoLab連携必須)";
@@ -375,12 +353,11 @@
             // TabAccountNotify
             // 
             this.TabAccountNotify.Dock = System.Windows.Forms.DockStyle.Top;
-            this.TabAccountNotify.Location = new System.Drawing.Point(3, 24);
-            this.TabAccountNotify.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.TabAccountNotify.Location = new System.Drawing.Point(3, 19);
             this.TabAccountNotify.Multiline = true;
             this.TabAccountNotify.Name = "TabAccountNotify";
             this.TabAccountNotify.SelectedIndex = 0;
-            this.TabAccountNotify.Size = new System.Drawing.Size(667, 228);
+            this.TabAccountNotify.Size = new System.Drawing.Size(581, 171);
             this.TabAccountNotify.TabIndex = 3;
             // 
             // groupBox2
@@ -389,11 +366,9 @@
             this.groupBox2.Controls.Add(this.IsNotificationGameClosed);
             this.groupBox2.Controls.Add(this.IsNotificationGameStart);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox2.Location = new System.Drawing.Point(3, 4);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox2.Location = new System.Drawing.Point(3, 3);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox2.Size = new System.Drawing.Size(673, 76);
+            this.groupBox2.Size = new System.Drawing.Size(587, 60);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "ゲーム通知";
@@ -402,10 +377,9 @@
             // 
             this.IsNotificationGameClosed.AutoSize = true;
             this.IsNotificationGameClosed.Dock = System.Windows.Forms.DockStyle.Top;
-            this.IsNotificationGameClosed.Location = new System.Drawing.Point(3, 48);
-            this.IsNotificationGameClosed.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.IsNotificationGameClosed.Location = new System.Drawing.Point(3, 38);
             this.IsNotificationGameClosed.Name = "IsNotificationGameClosed";
-            this.IsNotificationGameClosed.Size = new System.Drawing.Size(667, 24);
+            this.IsNotificationGameClosed.Size = new System.Drawing.Size(581, 19);
             this.IsNotificationGameClosed.TabIndex = 1;
             this.IsNotificationGameClosed.Text = "ゲーム終了時の通知";
             this.IsNotificationGameClosed.UseVisualStyleBackColor = true;
@@ -415,10 +389,9 @@
             // 
             this.IsNotificationGameStart.AutoSize = true;
             this.IsNotificationGameStart.Dock = System.Windows.Forms.DockStyle.Top;
-            this.IsNotificationGameStart.Location = new System.Drawing.Point(3, 24);
-            this.IsNotificationGameStart.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.IsNotificationGameStart.Location = new System.Drawing.Point(3, 19);
             this.IsNotificationGameStart.Name = "IsNotificationGameStart";
-            this.IsNotificationGameStart.Size = new System.Drawing.Size(667, 24);
+            this.IsNotificationGameStart.Size = new System.Drawing.Size(581, 19);
             this.IsNotificationGameStart.TabIndex = 0;
             this.IsNotificationGameStart.Text = "ゲーム起動時の通知";
             this.IsNotificationGameStart.UseVisualStyleBackColor = true;
@@ -428,11 +401,10 @@
             // 
             this.page_auth.Controls.Add(this.groupBox8);
             this.page_auth.Controls.Add(this.groupBox1);
-            this.page_auth.Location = new System.Drawing.Point(30, 4);
-            this.page_auth.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.page_auth.Location = new System.Drawing.Point(27, 4);
             this.page_auth.Name = "page_auth";
-            this.page_auth.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.page_auth.Size = new System.Drawing.Size(679, 580);
+            this.page_auth.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.page_auth.Size = new System.Drawing.Size(593, 433);
             this.page_auth.TabIndex = 1;
             this.page_auth.Text = "アプリ連携";
             this.page_auth.UseVisualStyleBackColor = true;
@@ -441,12 +413,10 @@
             // 
             this.groupBox8.AutoSize = true;
             this.groupBox8.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox8.Location = new System.Drawing.Point(3, 105);
-            this.groupBox8.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox8.MinimumSize = new System.Drawing.Size(0, 27);
+            this.groupBox8.Location = new System.Drawing.Point(3, 80);
+            this.groupBox8.MinimumSize = new System.Drawing.Size(0, 20);
             this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox8.Size = new System.Drawing.Size(673, 27);
+            this.groupBox8.Size = new System.Drawing.Size(587, 20);
             this.groupBox8.TabIndex = 0;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "連携中のアカウント一覧";
@@ -457,11 +427,9 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.panel1);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox1.Location = new System.Drawing.Point(3, 4);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox1.Location = new System.Drawing.Point(3, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox1.Size = new System.Drawing.Size(673, 101);
+            this.groupBox1.Size = new System.Drawing.Size(587, 77);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "HoYoLabとの連携";
@@ -470,9 +438,9 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label1.Location = new System.Drawing.Point(3, 57);
+            this.label1.Location = new System.Drawing.Point(3, 44);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(459, 40);
+            this.label1.Size = new System.Drawing.Size(370, 30);
             this.label1.TabIndex = 1;
             this.label1.Text = "連携すると現在のアカウントステータスをリアルタイムで表示することができます。\r\n利用できる情報の例 : 樹脂、探索派遣、デイリー情報、旅人手帳等";
             // 
@@ -481,18 +449,17 @@
             this.panel1.Controls.Add(this.LabelConnectedUID);
             this.panel1.Controls.Add(this.Open_HoYoLabAuth);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(3, 24);
-            this.panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.panel1.Location = new System.Drawing.Point(3, 19);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(667, 33);
+            this.panel1.Size = new System.Drawing.Size(581, 25);
             this.panel1.TabIndex = 0;
             // 
             // LabelConnectedUID
             // 
             this.LabelConnectedUID.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.LabelConnectedUID.Location = new System.Drawing.Point(162, 0);
+            this.LabelConnectedUID.Location = new System.Drawing.Point(142, 0);
             this.LabelConnectedUID.Name = "LabelConnectedUID";
-            this.LabelConnectedUID.Size = new System.Drawing.Size(505, 33);
+            this.LabelConnectedUID.Size = new System.Drawing.Size(439, 25);
             this.LabelConnectedUID.TabIndex = 2;
             this.LabelConnectedUID.Text = "連携済みのUID : 0";
             this.LabelConnectedUID.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -502,9 +469,8 @@
             this.Open_HoYoLabAuth.AutoSize = true;
             this.Open_HoYoLabAuth.Dock = System.Windows.Forms.DockStyle.Left;
             this.Open_HoYoLabAuth.Location = new System.Drawing.Point(0, 0);
-            this.Open_HoYoLabAuth.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Open_HoYoLabAuth.Name = "Open_HoYoLabAuth";
-            this.Open_HoYoLabAuth.Size = new System.Drawing.Size(162, 33);
+            this.Open_HoYoLabAuth.Size = new System.Drawing.Size(142, 25);
             this.Open_HoYoLabAuth.TabIndex = 0;
             this.Open_HoYoLabAuth.Text = "ブラウザを開いて連携";
             this.Open_HoYoLabAuth.UseVisualStyleBackColor = true;
@@ -514,11 +480,10 @@
             // 
             this.page_about.Controls.Add(this.groupBox5);
             this.page_about.Controls.Add(this.groupBox4);
-            this.page_about.Location = new System.Drawing.Point(30, 4);
-            this.page_about.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.page_about.Location = new System.Drawing.Point(27, 4);
             this.page_about.Name = "page_about";
-            this.page_about.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.page_about.Size = new System.Drawing.Size(679, 580);
+            this.page_about.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.page_about.Size = new System.Drawing.Size(593, 433);
             this.page_about.TabIndex = 3;
             this.page_about.Text = "バージョン情報";
             this.page_about.UseVisualStyleBackColor = true;
@@ -529,11 +494,9 @@
             this.groupBox5.Controls.Add(this.panel3);
             this.groupBox5.Controls.Add(this.label6);
             this.groupBox5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox5.Location = new System.Drawing.Point(3, 123);
-            this.groupBox5.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox5.Location = new System.Drawing.Point(3, 93);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox5.Size = new System.Drawing.Size(673, 79);
+            this.groupBox5.Size = new System.Drawing.Size(587, 60);
             this.groupBox5.TabIndex = 1;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "作者の情報";
@@ -543,20 +506,18 @@
             this.panel3.Controls.Add(this.OpenAuthorGitHub);
             this.panel3.Controls.Add(this.OpenAuthorMisskey);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel3.Location = new System.Drawing.Point(3, 44);
-            this.panel3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.panel3.Location = new System.Drawing.Point(3, 34);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(667, 31);
+            this.panel3.Size = new System.Drawing.Size(581, 23);
             this.panel3.TabIndex = 4;
             // 
             // OpenAuthorGitHub
             // 
             this.OpenAuthorGitHub.AutoSize = true;
             this.OpenAuthorGitHub.Dock = System.Windows.Forms.DockStyle.Left;
-            this.OpenAuthorGitHub.Location = new System.Drawing.Point(82, 0);
-            this.OpenAuthorGitHub.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.OpenAuthorGitHub.Location = new System.Drawing.Point(72, 0);
             this.OpenAuthorGitHub.Name = "OpenAuthorGitHub";
-            this.OpenAuthorGitHub.Size = new System.Drawing.Size(82, 31);
+            this.OpenAuthorGitHub.Size = new System.Drawing.Size(72, 23);
             this.OpenAuthorGitHub.TabIndex = 3;
             this.OpenAuthorGitHub.Tag = "https://github.com/Misaki0331/";
             this.OpenAuthorGitHub.Text = "GitHub";
@@ -568,9 +529,8 @@
             this.OpenAuthorMisskey.AutoSize = true;
             this.OpenAuthorMisskey.Dock = System.Windows.Forms.DockStyle.Left;
             this.OpenAuthorMisskey.Location = new System.Drawing.Point(0, 0);
-            this.OpenAuthorMisskey.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.OpenAuthorMisskey.Name = "OpenAuthorMisskey";
-            this.OpenAuthorMisskey.Size = new System.Drawing.Size(82, 31);
+            this.OpenAuthorMisskey.Size = new System.Drawing.Size(72, 23);
             this.OpenAuthorMisskey.TabIndex = 2;
             this.OpenAuthorMisskey.Tag = "https://misskey.io/@ms";
             this.OpenAuthorMisskey.Text = "Misskey";
@@ -581,9 +541,9 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label6.Location = new System.Drawing.Point(3, 24);
+            this.label6.Location = new System.Drawing.Point(3, 19);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(191, 20);
+            this.label6.Size = new System.Drawing.Size(154, 15);
             this.label6.TabIndex = 0;
             this.label6.Text = "このアプリの作者 : 水咲(みさき)";
             // 
@@ -595,11 +555,9 @@
             this.groupBox4.Controls.Add(this.label4);
             this.groupBox4.Controls.Add(this.label3);
             this.groupBox4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox4.Location = new System.Drawing.Point(3, 4);
-            this.groupBox4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox4.Location = new System.Drawing.Point(3, 3);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox4.Size = new System.Drawing.Size(673, 119);
+            this.groupBox4.Size = new System.Drawing.Size(587, 90);
             this.groupBox4.TabIndex = 0;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "バージョン情報";
@@ -608,10 +566,9 @@
             // 
             this.panel2.Controls.Add(this.OpenGitHubReleases);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(3, 84);
-            this.panel2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.panel2.Location = new System.Drawing.Point(3, 64);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(667, 31);
+            this.panel2.Size = new System.Drawing.Size(581, 23);
             this.panel2.TabIndex = 3;
             // 
             // OpenGitHubReleases
@@ -619,9 +576,8 @@
             this.OpenGitHubReleases.AutoSize = true;
             this.OpenGitHubReleases.Dock = System.Windows.Forms.DockStyle.Left;
             this.OpenGitHubReleases.Location = new System.Drawing.Point(0, 0);
-            this.OpenGitHubReleases.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.OpenGitHubReleases.Name = "OpenGitHubReleases";
-            this.OpenGitHubReleases.Size = new System.Drawing.Size(169, 31);
+            this.OpenGitHubReleases.Size = new System.Drawing.Size(148, 23);
             this.OpenGitHubReleases.TabIndex = 2;
             this.OpenGitHubReleases.Tag = "https://github.com/Misaki0331/Genshin-Checker/releases/latest";
             this.OpenGitHubReleases.Text = "最新バージョンはこちら";
@@ -632,9 +588,9 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label7.Location = new System.Drawing.Point(3, 64);
+            this.label7.Location = new System.Drawing.Point(3, 49);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(386, 20);
+            this.label7.Size = new System.Drawing.Size(313, 15);
             this.label7.TabIndex = 4;
             this.label7.Text = "GitHub : https://github.com/Misaki0331/Genshin-Checker";
             // 
@@ -642,9 +598,9 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label4.Location = new System.Drawing.Point(3, 44);
+            this.label4.Location = new System.Drawing.Point(3, 34);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(91, 20);
+            this.label4.Size = new System.Drawing.Size(72, 15);
             this.label4.TabIndex = 1;
             this.label4.Text = "Version 0.2.1";
             // 
@@ -652,19 +608,18 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label3.Location = new System.Drawing.Point(3, 24);
+            this.label3.Location = new System.Drawing.Point(3, 19);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(121, 20);
+            this.label3.Size = new System.Drawing.Size(98, 15);
             this.label3.TabIndex = 0;
             this.label3.Text = "Genshin Checker ";
             // 
             // SettingWindow
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(713, 588);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            this.ClientSize = new System.Drawing.Size(624, 441);
             this.Controls.Add(this.tabControl1);
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "SettingWindow";
             this.Text = "設定";
             this.Load += new System.EventHandler(this.SettingWindow_Load);

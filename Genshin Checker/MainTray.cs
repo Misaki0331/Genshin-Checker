@@ -224,7 +224,7 @@ namespace Genshin_Checker
         //ここはテスト用
         private async void testToolStripMenuItem_ClickAsync(object sender, EventArgs e)
         {
-            Trace.WriteLine(await App.General.GameApp.WhereScreenShotPath());
+            Trace.WriteLine(this.DeviceDpi);
         }
 
         private void LogUpdated(object? sender, string[] e)
@@ -263,40 +263,6 @@ namespace Genshin_Checker
             }
         }
 
-
-        private void 育成計算機ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (CharacterCalculator == null || CharacterCalculator.IsDisposed)
-                {
-                    if (Accounts.Data.Count == 0)
-                    {
-                        var n = new ErrorMessage("連携しているアカウントはまだ無いようです。", "お手数ですが、以下の操作を行って認証してください。\n設定⇒アプリ連携⇒HoYoLabとの連携");
-                        n.ShowDialog(this);
-                        return;
-                    }
-                    CharacterCalculator = new(Accounts.Data[0])
-                    {
-                        WindowState = FormWindowState.Normal
-                    };
-                    CharacterCalculator.Show();
-                    CharacterCalculator.Activate();
-                }
-                else
-                {
-                    CharacterCalculator.Show();
-                    if (CharacterCalculator.WindowState == FormWindowState.Minimized) CharacterCalculator.WindowState = FormWindowState.Normal;
-                    CharacterCalculator.Activate();
-                }
-
-            }
-            catch (Exception ex)
-            {
-                var n = new ErrorMessage(ex.GetType().ToString(), ex.Message);
-                n.ShowDialog(this);
-            }
-        }
         private async void ScreenshotEvent(object? s, string e)
         {
             try

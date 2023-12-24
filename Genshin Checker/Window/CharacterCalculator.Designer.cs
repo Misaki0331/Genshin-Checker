@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.button1 = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.button2 = new System.Windows.Forms.Button();
             this.ButtonSelectAll = new System.Windows.Forms.Button();
             this.ButtonBatch = new System.Windows.Forms.Button();
             this.CharacterView = new System.Windows.Forms.DataGridView();
@@ -51,7 +52,6 @@
             this.ToTalentLevel2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ToTalentLevel3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ErrorHandling = new System.Windows.Forms.Timer(this.components);
-            this.button2 = new System.Windows.Forms.Button();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CharacterView)).BeginInit();
             this.SuspendLayout();
@@ -78,6 +78,17 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(646, 24);
             this.panel4.TabIndex = 1;
+            // 
+            // button2
+            // 
+            this.button2.Dock = System.Windows.Forms.DockStyle.Left;
+            this.button2.Location = new System.Drawing.Point(150, 0);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 24);
+            this.button2.TabIndex = 5;
+            this.button2.Text = "データ更新";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // ButtonSelectAll
             // 
@@ -313,21 +324,10 @@
             this.ErrorHandling.Interval = 500;
             this.ErrorHandling.Tick += new System.EventHandler(this.ErrorHandling_Tick);
             // 
-            // button2
-            // 
-            this.button2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.button2.Location = new System.Drawing.Point(150, 0);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 24);
-            this.button2.TabIndex = 5;
-            this.button2.Text = "データ更新";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
             // CharacterCalculator
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(646, 461);
             this.Controls.Add(this.CharacterView);
             this.Controls.Add(this.panel4);
