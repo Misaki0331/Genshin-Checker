@@ -17,16 +17,6 @@ namespace Genshin_Checker
 {
     public partial class MainTray : Form
     {
-        Window.TimerDisplay? TimerDisplay= null;
-        Window.TimeGraph? TimeGraph= null;
-        Window.RealTimeData? RealTimeData = null;
-        Window.SettingWindow? SettingWindow= null;
-        Window.TravelersDiary? TravelersDiary = null;
-        Window.TravelersDiaryDetailList? DetailList = null; 
-        Window.GameRecords? GameRecords = null;
-        Window.GameLog? GameLog = null;
-        Window.CharacterCalculator? CharacterCalculator = null;
-        BrowserApp.WebGameAnnounce? WebGameAnnounce = null;
         List<string> GameLogTemp;
         public MainTray(bool safemode=false)
         {
@@ -59,6 +49,7 @@ namespace Genshin_Checker
             //new BrowserApp.HoYoApp();
             Store.Accounts.Data.AccountChanges += (s, e) => { ToolStripGenerate(); };
             Store.Accounts.Data.AccountAdded += AccountAdded;
+            Store.Accounts.Data.AccountRemoved += AccountRemoved;
             Store.Accounts.Data.Load();
             var name = System.Reflection.Assembly.GetExecutingAssembly().GetName();
 
@@ -145,81 +136,18 @@ namespace Genshin_Checker
 
         private void 詳細プレイデータToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            try { 
-            if (TimeGraph == null || TimeGraph.IsDisposed)
-            {
-                TimeGraph = new();
-                TimeGraph.WindowState = FormWindowState.Normal;
-                TimeGraph.Show();
-                TimeGraph.Activate();
-            }
-            else
-            {
-                TimeGraph.Show();
-                if (TimeGraph.WindowState == FormWindowState.Minimized) TimeGraph.WindowState = FormWindowState.Normal;
-                TimeGraph.Activate();
-            }
-
-            }
-            catch (Exception ex)
-            {
-                var n = new ErrorMessage(ex.GetType().ToString(), ex.Message);
-                n.ShowDialog(this);
-            }
+            OpenWindow(null, nameof(TimeGraph));
         }
 
         private void 設定ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            try { 
-            if (SettingWindow == null || SettingWindow.IsDisposed)
-            {
-                SettingWindow = new();
-                SettingWindow.WindowState = FormWindowState.Normal;
-                SettingWindow.Show();
-                SettingWindow.Activate();
-            }
-            else
-            {
-                SettingWindow.Show();
-                if (SettingWindow.WindowState == FormWindowState.Minimized) SettingWindow.WindowState = FormWindowState.Normal;
-                SettingWindow.Activate();
-            }
-
-            }
-            catch (Exception ex)
-            {
-                var n = new ErrorMessage(ex.GetType().ToString(), ex.Message);
-                n.ShowDialog(this);
-            }
+            OpenWindow(null, nameof(SettingWindow));
         }
 
         private void notification_Click(object sender, MouseEventArgs e)
         {
-            try
-            {
-                if (e.Button == MouseButtons.Left)
-                {
-                    if (TimerDisplay == null || TimerDisplay.IsDisposed)
-                    {
-                        TimerDisplay = new()
-                        {
-                            WindowState = FormWindowState.Normal
-                        };
-                        TimerDisplay.Show();
-                        TimerDisplay.Activate();
-                    }
-                    else
-                    {
-                        TimerDisplay.Show();
-                        if (TimerDisplay.WindowState == FormWindowState.Minimized) TimerDisplay.WindowState = FormWindowState.Normal;
-                        TimerDisplay.Activate();
-                    }
-                }
-            }catch(Exception ex)
-            {
-                var n = new ErrorMessage(ex.GetType().ToString(), ex.Message);
-                n.ShowDialog(this);
-            }
+            if (e.Button == MouseButtons.Left)
+                OpenWindow(null, nameof(TimerDisplay));
         }
         //ここはテスト用
         private async void testToolStripMenuItem_ClickAsync(object sender, EventArgs e)
@@ -239,28 +167,7 @@ namespace Genshin_Checker
 
         private void ゲームログ開発者向けToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            try
-            {
-                if (GameLog == null || GameLog.IsDisposed)
-                {
-                    GameLog = new(GameLogTemp);
-                    GameLog.WindowState = FormWindowState.Normal;
-                    GameLog.Show();
-                    GameLog.Activate();
-                }
-                else
-                {
-                    GameLog.Show();
-                    if (GameLog.WindowState == FormWindowState.Minimized) GameLog.WindowState = FormWindowState.Normal;
-                    GameLog.Activate();
-                }
-
-            }
-            catch (Exception ex)
-            {
-                var n = new ErrorMessage(ex.GetType().ToString(), ex.Message);
-                n.ShowDialog(this);
-            }
+            OpenWindow(null, nameof(GameLog));
         }
 
         private async void ScreenshotEvent(object? s, string e)
@@ -299,6 +206,20 @@ namespace Genshin_Checker
             }
         }
         List<Form> FormList = new();
+
+        void AccountRemoved(object? sender, Account account)
+        {
+                var find = FormList.FindAll(a => a.Name.StartsWith($"{account.UID}"));
+            foreach (var window in find)
+            {
+                try
+                {
+                    if (!window.IsDisposed) window.Close();
+                    FormList.Remove(window);
+                }
+                catch { }
+            }
+        }
         private void OpenWindow(Account? account,string name)
         {
             string Name = $"{(account != null ? account.UID : "null")},{name}";

@@ -64,7 +64,6 @@ namespace Genshin_Checker.Store
             Registry.SetValue("Config\\UserData", "PlayerData",obj,true);
 
         }
-        public event EventHandler<EventArgs>? AccountChanges;
         static Accounts? _instance = null;
         public static Accounts Data { get => _instance ??= new Accounts(); }
         public int Count { get=>AccountDatas.Count; }
@@ -94,6 +93,7 @@ namespace Genshin_Checker.Store
         {
             var b = AccountDatas.Remove(account);
             Save();
+            AccountRemoved?.Invoke(this, account);
             AccountChanges?.Invoke(account, EventArgs.Empty);
             return b;
         }
@@ -103,6 +103,8 @@ namespace Genshin_Checker.Store
             return AccountDatas.GetEnumerator();
         }
         public event EventHandler<App.HoYoLab.Account>? AccountAdded;
+        public event EventHandler<App.HoYoLab.Account>? AccountRemoved;
+        public event EventHandler<EventArgs>? AccountChanges;
     }
 }
 namespace Genshin_Checker.Store.Account.JSON
