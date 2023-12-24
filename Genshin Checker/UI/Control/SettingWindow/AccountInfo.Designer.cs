@@ -174,6 +174,7 @@
             this.Size = new System.Drawing.Size(410, 83);
             this.Load += new System.EventHandler(this.ControlLoad);
             this.SizeChanged += new System.EventHandler(this.AccountInfo_SizeChanged);
+            this.Resize += new System.EventHandler(this.AccountInfo_Resize);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);

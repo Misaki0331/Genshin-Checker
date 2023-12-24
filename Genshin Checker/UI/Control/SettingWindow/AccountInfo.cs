@@ -31,7 +31,7 @@ namespace Genshin_Checker.UI.Control.SettingWindow
 
         }
 
-        public event EventHandler<EventArgs> AccountRemoveRequest = null;
+        public event EventHandler<EventArgs>? AccountRemoveRequest = null;
         Image? RawImage = null;
 
         private void DrawPaint(object sender, PaintEventArgs e)
@@ -73,8 +73,9 @@ namespace Genshin_Checker.UI.Control.SettingWindow
 
         private void AccountInfo_SizeChanged(object sender, EventArgs e)
         {
-
+            this.SuspendLayout();
             DrawBackground();
+            this.ResumeLayout(true);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -87,6 +88,11 @@ namespace Genshin_Checker.UI.Control.SettingWindow
                 Store.Accounts.Data.Remove(account);
                 AccountRemoveRequest?.Invoke(account, EventArgs.Empty);
             }
+        }
+
+        private void AccountInfo_Resize(object sender, EventArgs e)
+        {
+
         }
     }
 }

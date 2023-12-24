@@ -116,7 +116,7 @@
             this.page_general.Controls.Add(this.groupBox6);
             this.page_general.Location = new System.Drawing.Point(27, 4);
             this.page_general.Name = "page_general";
-            this.page_general.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.page_general.Padding = new System.Windows.Forms.Padding(3);
             this.page_general.Size = new System.Drawing.Size(593, 433);
             this.page_general.TabIndex = 0;
             this.page_general.Text = "全般";
@@ -332,7 +332,7 @@
             this.page_notification.Controls.Add(this.groupBox2);
             this.page_notification.Location = new System.Drawing.Point(27, 4);
             this.page_notification.Name = "page_notification";
-            this.page_notification.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.page_notification.Padding = new System.Windows.Forms.Padding(3);
             this.page_notification.Size = new System.Drawing.Size(593, 433);
             this.page_notification.TabIndex = 4;
             this.page_notification.Text = "通知";
@@ -403,7 +403,7 @@
             this.page_auth.Controls.Add(this.groupBox1);
             this.page_auth.Location = new System.Drawing.Point(27, 4);
             this.page_auth.Name = "page_auth";
-            this.page_auth.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.page_auth.Padding = new System.Windows.Forms.Padding(3);
             this.page_auth.Size = new System.Drawing.Size(593, 433);
             this.page_auth.TabIndex = 1;
             this.page_auth.Text = "アプリ連携";
@@ -482,7 +482,7 @@
             this.page_about.Controls.Add(this.groupBox4);
             this.page_about.Location = new System.Drawing.Point(27, 4);
             this.page_about.Name = "page_about";
-            this.page_about.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.page_about.Padding = new System.Windows.Forms.Padding(3);
             this.page_about.Size = new System.Drawing.Size(593, 433);
             this.page_about.TabIndex = 3;
             this.page_about.Text = "バージョン情報";
@@ -623,6 +623,8 @@
             this.Name = "SettingWindow";
             this.Text = "設定";
             this.Load += new System.EventHandler(this.SettingWindow_Load);
+            this.ResizeEnd += new System.EventHandler(this.SettingResizeEnd);
+            this.SizeChanged += new System.EventHandler(this.SettingSizeChanged);
             this.tabControl1.ResumeLayout(false);
             this.page_general.ResumeLayout(false);
             this.page_general.PerformLayout();

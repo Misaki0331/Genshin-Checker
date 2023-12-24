@@ -230,5 +230,21 @@ namespace Genshin_Checker.Window
             Option.Save();
         }
 
+        private void SettingSizeChanged(object sender, EventArgs e)
+        {
+
+            if (WindowState == FormWindowState.Maximized)
+            {
+                this.Invalidate();
+                this.PerformLayout();
+            }
+        }
+
+        private void SettingResizeEnd(object sender, EventArgs e)
+        {
+
+            this.Invalidate();
+            this.PerformLayout();
+        }
     }
 }
