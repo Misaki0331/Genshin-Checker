@@ -62,6 +62,7 @@ namespace Genshin_Checker.App.General
                 case 1073:
                 case 1074:
                 case 1082:
+                case 1084:
                 case 1143:
                 case 1159:
                     return EventType.Event;
