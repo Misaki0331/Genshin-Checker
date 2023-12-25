@@ -150,9 +150,9 @@ namespace Genshin_Checker
                 OpenWindow(null, nameof(TimerDisplay));
         }
         //ここはテスト用
-        private async void testToolStripMenuItem_ClickAsync(object sender, EventArgs e)
+        private void testToolStripMenuItem_ClickAsync(object sender, EventArgs e)
         {
-            Trace.WriteLine(this.DeviceDpi);
+            OpenWindow(null, nameof(Window.Debug.APIChecker));
         }
 
         private void LogUpdated(object? sender, string[] e)
@@ -242,6 +242,9 @@ namespace Genshin_Checker
                         break;
                     case nameof(Window.SettingWindow):
                         if(find==null || find.IsDisposed) find= new Window.SettingWindow() { Name = Name };
+                        break;
+                    case nameof(Window.Debug.APIChecker):
+                        if (find == null || find.IsDisposed) find = new Window.Debug.APIChecker() { Name = Name };
                         break;
                 }
             }
