@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
             this.Accounts = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.OutputBox = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.NumCharacterDetailCharacterID = new System.Windows.Forms.NumericUpDown();
@@ -75,6 +75,16 @@
             this.panel1.Size = new System.Drawing.Size(542, 28);
             this.panel1.TabIndex = 0;
             // 
+            // Accounts
+            // 
+            this.Accounts.Dock = System.Windows.Forms.DockStyle.Left;
+            this.Accounts.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Accounts.FormattingEnabled = true;
+            this.Accounts.Location = new System.Drawing.Point(114, 0);
+            this.Accounts.Name = "Accounts";
+            this.Accounts.Size = new System.Drawing.Size(157, 23);
+            this.Accounts.TabIndex = 1;
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -86,16 +96,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "連携済みのアカウント :";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // Accounts
-            // 
-            this.Accounts.Dock = System.Windows.Forms.DockStyle.Left;
-            this.Accounts.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.Accounts.FormattingEnabled = true;
-            this.Accounts.Location = new System.Drawing.Point(114, 0);
-            this.Accounts.Name = "Accounts";
-            this.Accounts.Size = new System.Drawing.Size(157, 23);
-            this.Accounts.TabIndex = 1;
             // 
             // OutputBox
             // 
