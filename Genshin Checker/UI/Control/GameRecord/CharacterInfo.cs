@@ -34,6 +34,12 @@ namespace Genshin_Checker.UI.Control.GameRecord
             label1.Click += ClickEvent;
             label2.Click+= ClickEvent;
             panel2.Click += ClickEvent;
+            Disposed += CharacterInfo_Disposed;
+        }
+
+        private void CharacterInfo_Disposed(object? sender, EventArgs e)
+        {
+            pictureBox1.Dispose();
         }
 
         private void ClickEvent(object? obj, object send)
