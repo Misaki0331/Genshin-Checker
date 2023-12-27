@@ -221,6 +221,7 @@ namespace Genshin_Checker.Model.HoYoLab.RealTimeNote
         /// <para>【魔神任務】</para>
         /// <para>ステータス</para>
         /// <para><c>StatusNotOpen</c> : まだ任務を始めていない
+        /// <para><c>StatusOngoing</c> : 任務中
         /// 他にもあるがToDo</para>
         /// </summary>
         public string status { get; set; } = string.Empty;
@@ -245,6 +246,10 @@ namespace Genshin_Checker.Model.HoYoLab.RealTimeNote
     }
     public class ArchonQuestProgress
     {
+        /// <summary>
+        /// 【魔神任務】
+        /// 現在進行中のストーリー
+        /// </summary>
         public List<ArchonQuestData> list { get; set; } = new();
         /// <summary>
         /// 【魔神任務】
@@ -258,7 +263,7 @@ namespace Genshin_Checker.Model.HoYoLab.RealTimeNote
         public bool is_finish_all_mainline { get; set; }
         /// <summary>
         /// 【魔神任務】
-        /// 該当の任務が完了しているかどうか
+        /// 現在の解放済み魔神任務・間章の任務が完了しているかどうか
         /// </summary>
         public bool is_finish_all_interchapter { get; set; }
         public string wiki_url { get; set; } = string.Empty;
