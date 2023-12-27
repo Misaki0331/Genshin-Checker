@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO.Compression;
 using System.Linq;
 using System.Text;
@@ -39,6 +40,7 @@ namespace Genshin_Checker.App
 
         public static void SetValue(string Subkey, string key, string value, bool compress=false,bool force=false)
         {
+            Trace.WriteLine($"{Subkey}:{key} (Compress:{compress}) Value:\"{value}\"");
             if(IsReadOnly&&!force) return;
             if (compress) value = Base64FromStringComp(value);
             var regkey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey($"Software\\Genshin_Checker\\{Subkey}");
