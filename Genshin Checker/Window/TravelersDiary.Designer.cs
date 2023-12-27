@@ -172,21 +172,21 @@
             this.Month_Mora_Diff.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Month_Mora_Diff.Font = new System.Drawing.Font("Meiryo UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.Month_Mora_Diff.ForeColor = System.Drawing.Color.White;
-            this.Month_Mora_Diff.Location = new System.Drawing.Point(118, 163);
+            this.Month_Mora_Diff.Location = new System.Drawing.Point(8, 163);
             this.Month_Mora_Diff.Name = "Month_Mora_Diff";
-            this.Month_Mora_Diff.Size = new System.Drawing.Size(201, 26);
+            this.Month_Mora_Diff.Size = new System.Drawing.Size(311, 54);
             this.Month_Mora_Diff.TabIndex = 8;
             this.Month_Mora_Diff.Text = "+0";
-            this.Month_Mora_Diff.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.Month_Mora_Diff.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // Month_Primogem_Diff
             // 
             this.Month_Primogem_Diff.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Month_Primogem_Diff.Font = new System.Drawing.Font("Meiryo UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.Month_Primogem_Diff.ForeColor = System.Drawing.Color.White;
-            this.Month_Primogem_Diff.Location = new System.Drawing.Point(143, 70);
+            this.Month_Primogem_Diff.Location = new System.Drawing.Point(6, 70);
             this.Month_Primogem_Diff.Name = "Month_Primogem_Diff";
-            this.Month_Primogem_Diff.Size = new System.Drawing.Size(176, 26);
+            this.Month_Primogem_Diff.Size = new System.Drawing.Size(313, 26);
             this.Month_Primogem_Diff.TabIndex = 7;
             this.Month_Primogem_Diff.Text = "+0";
             this.Month_Primogem_Diff.TextAlign = System.Drawing.ContentAlignment.MiddleRight;

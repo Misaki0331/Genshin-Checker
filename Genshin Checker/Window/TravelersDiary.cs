@@ -81,6 +81,14 @@ namespace Genshin_Checker.Window
             if (account.IsDisposed) Close();
             if (account.TravelersDiary.Data.Data == null)
             {
+                var str = account.TravelersDiary.Data.Message.Split('\n');
+                Today_Primogem.Text = $"Error";
+                Today_Mora.Text = $"Error";
+
+                Month_Primogem.Text = $"Error";
+                Month_Mora.Text = $"Error";
+                Month_Primogem_Diff.Text = $"{str[0]}";
+                if(str.Length>=2)Month_Mora_Diff.Text = $"{str[1]}";
 
             }
             else
@@ -98,8 +106,6 @@ namespace Genshin_Checker.Window
             {
                 //グラフ内は文字化けしているのでus-enにしておく
                 var data = await account.Endpoint.GetTravelersDiaryInfo(month_index[comboBox1.SelectedIndex],new("us-en"));
-                Month_Primogem.Text = $"{data.month_data.current_primogems}";
-                Month_Mora.Text = $"{data.month_data.current_mora}";
                 Month_Primogem.Text = $"{data.month_data.current_primogems}";
                 Month_Mora.Text = $"{data.month_data.current_mora}";
                 var primodiff = data.month_data.current_primogems - data.month_data.last_primogems;
