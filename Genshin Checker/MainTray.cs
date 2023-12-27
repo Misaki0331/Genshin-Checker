@@ -152,7 +152,8 @@ namespace Genshin_Checker
         //ここはテスト用
         private void testToolStripMenuItem_ClickAsync(object sender, EventArgs e)
         {
-            OpenWindow(null, nameof(Window.Debug.APIChecker));
+            //OpenWindow(null, nameof(Window.Debug.APIChecker));
+            OpenWindow(Store.Accounts.Data[0], nameof(Window.SpiralAbyss));
         }
 
         private void LogUpdated(object? sender, string[] e)
@@ -269,6 +270,9 @@ namespace Genshin_Checker
                         break;
                     case nameof(BrowserApp.WebGameAnnounce):
                         if (find == null || find.IsDisposed) find = new BrowserApp.WebGameAnnounce(account) { Name = Name };
+                        break;
+                    case nameof(Window.SpiralAbyss):
+                        if (find == null || find.IsDisposed) find = new Window.SpiralAbyss(account) { Name = Name };
                         break;
                 }
             }

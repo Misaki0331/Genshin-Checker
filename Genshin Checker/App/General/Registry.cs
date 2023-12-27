@@ -40,7 +40,11 @@ namespace Genshin_Checker.App
 
         public static void SetValue(string Subkey, string key, string value, bool compress=false,bool force=false)
         {
-            Trace.WriteLine($"{Subkey}:{key} (Compress:{compress}) Value:\"{value}\"");
+#if DEBUG
+            var data = value;
+            if (value.Length > 100) data = value[..100]+$"...({value.Length})";
+            Trace.WriteLine($"{Subkey}:{key} (Compress:{compress}) Value:\"{data}\"");
+#endif
             if(IsReadOnly&&!force) return;
             if (compress) value = Base64FromStringComp(value);
             var regkey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey($"Software\\Genshin_Checker\\{Subkey}");

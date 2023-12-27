@@ -22,6 +22,7 @@ namespace Genshin_Checker.App.HoYoLab
         public GameRecords GameRecords;
         public Characters Characters;
         public CharacterDetail CharacterDetail;
+        public SpiralAbyss SpiralAbyss;
         public static async Task<Account> GetInstance(string cookie, int UID)
         {
             var account = new Account();
@@ -49,6 +50,7 @@ namespace Genshin_Checker.App.HoYoLab
             GameRecords = new(this);
             Characters = new(this);
             CharacterDetail = new(this);
+            SpiralAbyss = new(this);
             Culture = CultureInfo.CurrentCulture;
             Endpoint= new(this);
         }
@@ -219,6 +221,7 @@ namespace Genshin_Checker.App.HoYoLab
             TravelersDiaryDetail.Dispose();
             GameRecords.Dispose();
             Characters.Dispose();
+            
         }
         public class HoYoLabAPIException : Exception
         {

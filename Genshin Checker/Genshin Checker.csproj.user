@@ -34,6 +34,9 @@
     <Compile Update="UI\Control\SettingWindow\AccountNotify.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Update="UI\Control\SpiralAbyss\CharacterFrame.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="Window\BrowserApp\BattleAuth.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -77,6 +80,9 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Window\SettingWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Window\SpiralAbyss.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Window\TimeGraph.cs">

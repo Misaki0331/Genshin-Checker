@@ -39,21 +39,6 @@ namespace Genshin_Checker.Model.HoYoLab.SpiralAbyss
         public SettleDateTime settle_date_time { get; set; } = new();
     }
 
-    public class BottomHalfFloorMonster
-    {
-        public string name { get; set; } = string.Empty;
-        public string icon { get; set; } = string.Empty;
-        public int level { get; set; }
-    }
-
-    public class DamageRank
-    {
-        public int avatar_id { get; set; }
-        public string avatar_icon { get; set; } = string.Empty;
-        public int value { get; set; }
-        public int rarity { get; set; }
-    }
-
     public class Data
     {
         public int schedule_id { get; set; }
@@ -62,26 +47,27 @@ namespace Genshin_Checker.Model.HoYoLab.SpiralAbyss
         public int total_battle_times { get; set; }
         public int total_win_times { get; set; }
         public string max_floor { get; set; } = string.Empty;
-        public List<RevealRank> reveal_rank { get; set; } = new();
-        public List<DefeatRank> defeat_rank { get; set; } = new();
-        public List<DamageRank> damage_rank { get; set; } = new();
-        public List<TakeDamageRank> take_damage_rank { get; set; } = new();
-        public List<NormalSkillRank> normal_skill_rank { get; set; } = new();
-        public List<EnergySkillRank> energy_skill_rank { get; set; } = new();
+        public List<CharacterData> reveal_rank { get; set; } = new();
+        public List<CharacterData> defeat_rank { get; set; } = new();
+        public List<CharacterData> damage_rank { get; set; } = new();
+        public List<CharacterData> take_damage_rank { get; set; } = new();
+        /// <summary>
+        /// 元素スキルの回数
+        /// </summary>
+        public List<CharacterData> normal_skill_rank { get; set; } = new();
+        /// <summary>
+        /// 元素爆発の回数
+        /// </summary>
+        public List<CharacterData> energy_skill_rank { get; set; } = new();
         public List<Floor> floors { get; set; } = new();
         public int total_star { get; set; }
+        /// <summary>
+        /// 深境螺旋が解放済みかどうか
+        /// </summary>
         public bool is_unlock { get; set; }
     }
 
-    public class DefeatRank
-    {
-        public int avatar_id { get; set; }
-        public string avatar_icon { get; set; } = string.Empty;
-        public int value { get; set; }
-        public int rarity { get; set; }
-    }
-
-    public class EnergySkillRank
+    public class CharacterData
     {
         public int avatar_id { get; set; }
         public string avatar_icon { get; set; } = string.Empty;
@@ -104,28 +90,21 @@ namespace Genshin_Checker.Model.HoYoLab.SpiralAbyss
 
     public class Level
     {
+        /// <summary>
+        /// 螺旋n層
+        /// </summary>
         public int index { get; set; }
         public int star { get; set; }
         public int max_star { get; set; }
         public List<Battle> battles { get; set; } = new();
-        public List<TopHalfFloorMonster> top_half_floor_monster { get; set; } = new();
-        public List<BottomHalfFloorMonster> bottom_half_floor_monster { get; set; } = new();
-    }
-
-    public class NormalSkillRank
-    {
-        public int avatar_id { get; set; }
-        public string avatar_icon { get; set; } = string.Empty;
-        public int value { get; set; }
-        public int rarity { get; set; }
-    }
-
-    public class RevealRank
-    {
-        public int avatar_id { get; set; }
-        public string avatar_icon { get; set; } = string.Empty;
-        public int value { get; set; }
-        public int rarity { get; set; }
+        /// <summary>
+        /// 前半の出現敵
+        /// </summary>
+        public List<HalfFloorMonster> top_half_floor_monster { get; set; } = new();
+        /// <summary>
+        /// 後半の出現敵
+        /// </summary>
+        public List<HalfFloorMonster> bottom_half_floor_monster { get; set; } = new();
     }
 
     public class SettleDateTime
@@ -138,20 +117,13 @@ namespace Genshin_Checker.Model.HoYoLab.SpiralAbyss
         public int second { get; set; }
     }
 
-    public class TakeDamageRank
-    {
-        public int avatar_id { get; set; }
-        public string avatar_icon { get; set; } = string.Empty;
-        public int value { get; set; }
-        public int rarity { get; set; }
-    }
-
-    public class TopHalfFloorMonster
+    public class HalfFloorMonster
     {
         public string name { get; set; } = string.Empty;
         public string icon { get; set; } = string.Empty;
         public int level { get; set; }
     }
+
 
 
 }

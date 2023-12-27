@@ -57,6 +57,9 @@ namespace Genshin_Checker.UI.Control.GameRecord
             this.SuspendLayout();
             switch (Rare)
             {
+                case -1:
+                    pictureBox1.BackgroundImage = new Bitmap(await App.WebRequest.ImageGetRequest("https://static-api.misaki-chan.world/genshin-checker/asset/enemy-base/base.png"), pictureBox1.Width, pictureBox1.Height);
+                    break;
                 case 4:
                     pictureBox1.BackgroundImage = new Bitmap(await App.WebRequest.ImageGetRequest("https://static-api.misaki-chan.world/genshin-checker/asset/character-base/roleStarBg4.png"), pictureBox1.Width, pictureBox1.Height);
                     break;
