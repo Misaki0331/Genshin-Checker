@@ -81,14 +81,18 @@ namespace Genshin_Checker.App.HoYoLab
         /// <exception cref="InvalidDataException"></exception>
         private static Servers GetServer(int uid)
         {
-            return uid.ToString()[..1] switch
+            return (uid / 100000000) switch
             {
-                "6" => Servers.os_usa,
-                "7" => Servers.os_euro,
-                "8" => Servers.os_asia,
-                "9" => Servers.os_cht,
-                _ => throw new InvalidDataException("unknown uid"),
-            };
+                0 => throw new InvalidDataException($"UID({uid}) is not supported. (used within company of miHoYo)"),
+                1 => throw new InvalidDataException($"This app is only supported international version. UID({uid}) is seems like 天空岛 (Celestia) Server."),
+                2 => throw new InvalidDataException($"This app is only supported international version. UID({uid}) is seems like 天空岛 (Celestia) Server."),
+                5 => throw new InvalidDataException($"This app is only supported international version. UID({uid}) is seems like 世界树 (Irminsul) Server."),
+                6 => Servers.os_usa,
+                7 => Servers.os_euro,
+                8 => Servers.os_asia,
+                9 => Servers.os_cht,
+                _ => throw new InvalidDataException($"unknown uid({uid})"),
+            }; ;
         }
         /// <summary>
         /// サーバー所在名称
