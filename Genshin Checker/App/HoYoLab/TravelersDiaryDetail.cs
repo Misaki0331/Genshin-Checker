@@ -10,6 +10,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.Devices.Geolocation;
 
 namespace Genshin_Checker.App.HoYoLab
 {
@@ -107,9 +108,11 @@ namespace Genshin_Checker.App.HoYoLab
             var FirstData = DateTime.MaxValue;      //最初のイベントの日時
             if (eventpath == null) //ローカライズデータが無い場合はパスの設定をする。
             {
-                eventpath = AppData.GetRandomPath();
+                eventpath = Path.GetFileName(AppData.GetRandomPath());
                 Registry.SetValue(localeEventPath, $"EventName", eventpath, true);
             }
+            //相対パスに設定
+            else if (Path.IsPathRooted(eventpath)) Registry.SetValue(localeEventPath, $"EventName", Path.GetFileName(eventpath), true);
             try
             {
                 eventNames = JsonConvert.DeserializeObject<EventName>(await AppData.LoadFileData(eventpath));
@@ -135,9 +138,10 @@ namespace Genshin_Checker.App.HoYoLab
                         path = Registry.GetValue(regPath, $"Latest{mode}Path", true); //レジストリからデータの所在地の呼び出し
                         if (path == null) //無いなら新しく作成
                         {
-                            path = AppData.GetRandomPath();
+                            path = Path.GetFileName(AppData.GetRandomPath());
                             Registry.SetValue(regPath, $"Latest{mode}Path", path, true);
                         }
+                        else if (Path.IsPathRooted(path)) Registry.SetValue(regPath, $"Latest{mode}Path", Path.GetFileName(path), true);
                         try
                         {
                             eventLists = JsonConvert.DeserializeObject<EventLists>(await App.General.AppData.LoadFileData(path));

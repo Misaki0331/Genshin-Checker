@@ -18,6 +18,7 @@ namespace Genshin_Checker.App.General
         {
             try
             {
+                if (!Path.IsPathRooted(path)) Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Genshin Checker", "UserData", path);
                 if (!File.Exists(path)) throw new FileNotFoundException(path);
                 if (compress)
                 {
@@ -44,6 +45,7 @@ namespace Genshin_Checker.App.General
         {
             try
             {
+                if (!Path.IsPathRooted(path)) Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Genshin Checker", "UserData", path);
                 var directory = Path.GetDirectoryName(path);
                 if(directory!=null&&!Directory.Exists(directory))Directory.CreateDirectory(directory);
                 if (compress)
