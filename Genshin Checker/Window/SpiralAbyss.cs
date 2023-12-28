@@ -17,11 +17,13 @@ namespace Genshin_Checker.Window
         Account account;
         UI.Control.SpiralAbyss.CharacterFrame? CharacterCount;
         List<UI.Control.SpiralAbyss.CharacterFrame> GeneralList;
+        List<UI.Control.SpiralAbyss.FloorInfo> FloorList;
         public SpiralAbyss(Account account)
         {
             InitializeComponent();
             this.account = account;
             GeneralList = new();
+            FloorList = new();
             LoadDataCurrent();
         }
 
@@ -55,7 +57,7 @@ namespace Genshin_Checker.Window
             foreach(var control in GeneralList)
             {
                 if (control.IsDisposed) continue;
-                FlowGeneralData.Dispose();
+                control.Dispose();
                 FlowGeneralData.Controls.Remove(control);
             }
             GeneralList.Clear();
@@ -91,6 +93,27 @@ namespace Genshin_Checker.Window
             GeneralList.Add(con);
 
 
-        }
+            foreach (var control in FloorList)
+            {
+                if (control.IsDisposed) continue;
+                control.Dispose();
+                panel1.Controls.Remove(control);
+            }
+            FloorList.Clear();
+            var floor = data.floors.FindAll(a=>true);
+            foreach(var f in floor)
+            {
+                var str = f.is_unlock ? $"{f.star} / {f.max_star}" : "未開放";
+                DateTime latest = DateTime.MinValue;
+                foreach(var a in f.levels)
+                {
+                    var t = DateTimeOffset.FromUnixTimeSeconds(a.timestamp).ToLocalTime();
+                    if (latest < t.DateTime) latest = t.DateTime;
+                }
+                var controls = new UI.Control.SpiralAbyss.FloorInfo(f.index, str, !f.is_unlock, string.Join("\n", string.Join("\n", f.ley_line_disorder)), f.levels.Count > 0 ? latest : null) { Dock=DockStyle.Top}; 
+                panel1.Controls.Add(controls);
+                FloorList.Add(controls);
+            }
+        } 
     }
 }

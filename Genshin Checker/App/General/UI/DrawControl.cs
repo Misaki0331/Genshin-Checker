@@ -73,11 +73,12 @@ namespace Genshin_Checker.App.General.UI
         /// <param name="image">背景にする画像</param>
         /// <param name="pictureControl">背景にされている基準のコントロール</param>
         /// <param name="OverrideControl">背景に再描画させるコントロール</param>
-        public static void DrawBackground(Graphics graphics, Image image, Control pictureControl, Control OverrideControl)
+        public static void DrawBackground(Graphics graphics, Image? image, Control pictureControl, Control OverrideControl)
         {
+            graphics.Clear(OverrideControl.BackColor);
             Point window = pictureControl.PointToClient(Point.Empty);
             Point location = OverrideControl.PointToClient(pictureControl.PointToClient(new(-window.X * 2, -window.Y * 2)));
-                              graphics.DrawImage(image, location);
+            if(image!=null)graphics.DrawImage(image, location);
         }
     }
 }

@@ -37,6 +37,9 @@
     <Compile Update="UI\Control\SpiralAbyss\CharacterFrame.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Update="UI\Control\SpiralAbyss\FloorInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="Window\BrowserApp\BattleAuth.cs">
       <SubType>Form</SubType>
     </Compile>
