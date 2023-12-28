@@ -28,11 +28,17 @@ namespace Genshin_Checker.UI.Control.SpiralAbyss
                 ErrorMessage.Text = "戦績情報を読み込むことができませんでした。";
                 return;
             }
+            if(values.Count == 0)
+            {
+                ErrorMessage.Visible = true;
+                ErrorMessage.Text = "キャラクターはありません。";
+                return;
+            }
             foreach (var argment in values)
             {
                 var character = records.avatars.Find(a => a.id == argment.CharacterID);
                 var icon = character==null?"":character.image;
-                var control = new CharacterInfo(argment.Rarity, icon, argment.Value, "", argment.CharacterID) { Dock = DockStyle.Left, Margin = new(3) };
+                var control = new CharacterInfo(character==null?-1:character.rarity, icon, argment.Value, "", argment.CharacterID) { Dock = DockStyle.Left, Padding=new(2,0,2,0) };
                 groupBox1.Controls.Add(control);
                 characters.Add(control);
             }
@@ -48,12 +54,10 @@ namespace Genshin_Checker.UI.Control.SpiralAbyss
         public class CharacterArgment {
             public int CharacterID;
             public string Value;
-            public int Rarity;
-            public CharacterArgment(int characterID, string value,int rarity)
+            public CharacterArgment(int characterID, string value)
             {
                 CharacterID = characterID;
                 Value = value;
-                Rarity = rarity;
             }
         }
 
