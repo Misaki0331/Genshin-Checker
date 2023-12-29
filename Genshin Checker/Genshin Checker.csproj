@@ -13,12 +13,22 @@
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
     <ApplicationIcon>resource\Icon\nahida.ico</ApplicationIcon>
-    <Version></Version>
     <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
-    <AssemblyVersion>0.11.0.0</AssemblyVersion>
-    <FileVersion>0.11.0.0</FileVersion>
+    <AssemblyVersion></AssemblyVersion>
+    <FileVersion></FileVersion>
     <RunPostBuildEvent>OnOutputUpdated</RunPostBuildEvent>
     <AssemblyName>GenshinChecker</AssemblyName>
+    <Copyright>水咲(みさき) (https://github.com/Misaki0331)</Copyright>
+    <Title>Genshin Checker</Title>
+    <Company>水咲(みさき)</Company>
+    <Authors>水咲(みさき)</Authors>
+    <Description>This Project : https://github.com/Misaki0331/Genshin-Checker/
+Fediverse : ms@misskey.io (https://misskey.io/@ms)
+GitHub : https://github.com/Misaki0331</Description>
+    <PackageProjectUrl>https://github.com/Misaki0331/Genshin-Checker/</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/Misaki0331/Genshin-Checker/</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <Version>0.11.0</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
