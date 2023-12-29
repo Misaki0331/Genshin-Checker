@@ -1,5 +1,7 @@
-﻿using Genshin_Checker.Model.UserData.SpiralAbyss.v1;
+﻿using Genshin_Checker.App.General;
+using Genshin_Checker.Model.UserData.SpiralAbyss.v1;
 using HarfBuzzSharp;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,9 +24,20 @@ namespace Genshin_Checker.App.HoYoLab
             Cache = new();
             ServerUpdate.Start();
         }
-        void Timeout_Tick(object? sender, EventArgs e)
+        async void Timeout_Tick(object? sender, EventArgs e)
         {
-
+            ServerUpdate.Stop();
+            try
+            {
+                Save(Convert(await account.Endpoint.GetSpiralAbyss(false)));
+                await GetCurrent();
+                ServerUpdate.Interval = 3600 * 6 * 1000;
+            }
+            catch (Exception)
+            {
+                ServerUpdate.Interval = 300000;
+            }
+            ServerUpdate.Start();
         }
         public static V1 Convert(Model.HoYoLab.SpiralAbyss.Data data)
         {
@@ -105,8 +118,25 @@ namespace Genshin_Checker.App.HoYoLab
         public async Task<V1> GetCurrent()
         {
             if (Cache.Latest.AddMinutes(30) < DateTime.UtcNow)
-                Cache = new() { Latest = DateTime.UtcNow, Data = await account.Endpoint.GetSpiralAbyss(true) };
+            {
+                var data = await account.Endpoint.GetSpiralAbyss(true);
+                Cache = new() { Latest = DateTime.UtcNow, Data = data };
+                Save(Convert(data));
+            }
             return Convert(Cache.Data);
+        }
+
+        void Save(V1 v1)
+        {
+            string? path = Registry.GetValue($"UserData\\{account.UID}\\SpiralAbyss", $"{v1.Data.schedule_id}",true);
+            if (path == null)
+            {
+                path = AppData.GetRandomPath();
+                Registry.SetValue($"UserData\\{account.UID}\\SpiralAbyss", $"{v1.Data.schedule_id}", path, true);
+
+            }
+            AppData.SaveUserData(path, JsonConvert.SerializeObject(v1));
+
         }
     }
 }
