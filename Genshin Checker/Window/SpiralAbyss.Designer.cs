@@ -520,8 +520,12 @@
             this.Controls.Add(this.panel2);
             this.MinimumSize = new System.Drawing.Size(815, 375);
             this.Name = "SpiralAbyss";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SpiralAbyss";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.SpiralAbyss_FormClosed);
             this.Load += new System.EventHandler(this.SpiralAbyss_Load);
+            this.ResizeEnd += new System.EventHandler(this.SpiralAbyss_ResizeEnd);
+            this.Resize += new System.EventHandler(this.SpiralAbyss_Resize);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();

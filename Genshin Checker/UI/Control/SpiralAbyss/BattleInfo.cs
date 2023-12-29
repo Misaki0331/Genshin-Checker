@@ -17,6 +17,8 @@ namespace Genshin_Checker.UI.Control.SpiralAbyss
     {
         CharacterFrame frame;
         List<EnemyInfo> EnemyControls;
+        public delegate void CharacterEventHandler<T>(T args);
+        public event CharacterEventHandler<int>? CharacterClickHandler;
         public BattleInfo(Account account, Model.UserData.SpiralAbyss.v1.Battle battle, string battleName, bool IsVisibleDateTime = true)
         {
             InitializeComponent();
@@ -30,6 +32,7 @@ namespace Genshin_Checker.UI.Control.SpiralAbyss
                 argment.Add(new(character.id, $"Lv.{character.level}"));
             }
             frame = new(account, string.Empty, argment, false) { Dock = DockStyle.Left, AutoSize = true, AutoSizeMode = AutoSizeMode.GrowAndShrink};
+            frame.ClickHandler += (a) => CharacterClickHandler?.Invoke(a);
             PanelCharactersInfo.Controls.Add(frame);
             var enemy = battle.enemies.FindAll(a => true);
             enemy.Reverse();

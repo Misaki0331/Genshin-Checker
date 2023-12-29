@@ -16,6 +16,8 @@ namespace Genshin_Checker.UI.Control.SpiralAbyss
     public partial class CharacterFrame : UserControl
     {
         List<CharacterInfo> characters = new();
+        public delegate void CharacterEventHandler<T>(T args);
+        public event CharacterEventHandler<int>? ClickHandler;
         public CharacterFrame(Account account,string groupname, List<CharacterArgment> values,bool IsShowGroupBox=true)
         {
             InitializeComponent();
@@ -41,6 +43,7 @@ namespace Genshin_Checker.UI.Control.SpiralAbyss
                 var character = records.avatars.Find(a => a.id == argment.CharacterID);
                 var icon = character==null?"":character.image;
                 var control = new CharacterInfo(character==null?-1:character.rarity, icon, argment.Value, "", argment.CharacterID) { Dock = DockStyle.Left, Padding=new(2,0,2,0) };
+                control.ClickHandler += a => ClickHandler?.Invoke(a);
                 if (IsShowGroupBox) groupBox1.Controls.Add(control);
                 else Controls.Add(control);
                 characters.Add(control);

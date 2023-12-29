@@ -93,35 +93,41 @@ namespace Genshin_Checker.Window
                 characters.Add(new(character.id, $"{character.value:#,##0}"));
             }
             CharacterCount = new(account, "出撃回数", characters);
+            CharacterCount.ClickHandler += a => GameRecords_Character_Click(a);
             PanelCharacterCount.Controls.Add(CharacterCount);
             ///最多撃破数
             characters = new();
             foreach (var character in data.Ranks.Defeat) characters.Add(new(character.id, $"{character.value:#,##0}"));
             var con = new UI.Control.SpiralAbyss.CharacterFrame(account, "最多撃破数", characters);
+            con.ClickHandler+= a => GameRecords_Character_Click(a);
             FlowGeneralData.Controls.Add(con);
             GeneralList.Add(con);
             ///最大ダメージ
             characters = new();
             foreach (var character in data.Ranks.Damage) characters.Add(new(character.id, $"{character.value:#,##0}"));
             con = new UI.Control.SpiralAbyss.CharacterFrame(account, "最大ダメージ", characters);
+            con.ClickHandler += a => GameRecords_Character_Click(a);
             FlowGeneralData.Controls.Add(con);
             GeneralList.Add(con);
             ///受けた最大ダメージ
             characters = new();
             foreach (var character in data.Ranks.TakeDamage) characters.Add(new(character.id, $"{character.value:#,##0}"));
             con = new UI.Control.SpiralAbyss.CharacterFrame(account, "最大被ダメージ", characters);
+            con.ClickHandler += a => GameRecords_Character_Click(a);
             FlowGeneralData.Controls.Add(con);
             GeneralList.Add(con);
             ///元素爆発使用回数
             characters = new();
             foreach (var character in data.Ranks.EnergySkill) characters.Add(new(character.id, $"{character.value:#,##0}"));
             con = new UI.Control.SpiralAbyss.CharacterFrame(account, "元素爆発回数", characters);
+            con.ClickHandler += a => GameRecords_Character_Click(a);
             FlowGeneralData.Controls.Add(con);
             GeneralList.Add(con);
             ///元素スキル使用回数
             characters = new();
             foreach (var character in data.Ranks.NormalSkill) characters.Add(new(character.id, $"{character.value:#,##0}"));
             con = new UI.Control.SpiralAbyss.CharacterFrame(account, "元素スキル回数", characters);
+            con.ClickHandler += a => GameRecords_Character_Click(a);
             FlowGeneralData.Controls.Add(con);
             GeneralList.Add(con);
 
@@ -187,6 +193,7 @@ namespace Genshin_Checker.Window
             foreach(var level in levels)
             {
                 var control = new UI.Control.SpiralAbyss.LevelInfo(account, level) { Dock=DockStyle.Top,BorderStyle=BorderStyle.FixedSingle};
+                control.CharacterClickHandler += a => GameRecords_Character_Click(a);
                 PanelFloorsInfo.Controls.Add(control);
                 LevelInfo.Add(control);
             }
@@ -195,9 +202,6 @@ namespace Genshin_Checker.Window
             PanelFloorsInfo.Visible = true;
         }
         
-        protected override void OnResize(EventArgs e)
-        {
-        }
 
         private async void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -212,6 +216,46 @@ namespace Genshin_Checker.Window
             PanelLoad(GameData);
             this.ResumeLayout(true);
 
+        }
+
+        ExWindow.GameRecords.CharacterDetail? CharacterForm = null;
+        private void GameRecords_Character_Click(int id)
+        {
+            if (CharacterForm == null || CharacterForm.IsDisposed)
+            {
+                CharacterForm = new();
+            }
+            var Data = account.GameRecords.Data;
+            if (Data == null) return;
+            var character = Data.avatars.Find(a => a.id == id);
+            if (character == null) return;
+            CharacterForm.DataUpdate(account, id, character.name);
+            CharacterForm.Show();
+            CharacterForm.Activate();
+
+        }
+
+        protected override void OnResize(EventArgs e)
+        {
+        }
+        private void SpiralAbyss_ResizeEnd(object sender, EventArgs e)
+        {
+            this.Invalidate();
+            this.PerformLayout();
+        }
+
+        private void SpiralAbyss_Resize(object sender, EventArgs e)
+        {
+            if (WindowState == FormWindowState.Maximized)
+            {
+                this.Invalidate();
+                this.PerformLayout();
+            }
+        }
+
+        private void SpiralAbyss_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (CharacterForm != null && !CharacterForm.IsDisposed)CharacterForm.Dispose();
         }
     }
 }

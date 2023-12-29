@@ -153,8 +153,8 @@ namespace Genshin_Checker.Window.ExWindow.GameRecords
                     new ErrorMessage("天賦情報取得時にエラーが発生しました。", ex.ToString()).ShowDialog();
                 }
 
-                Panel_MainTalent.ResumeLayout();
-                Panel_SubTalent.ResumeLayout();
+                Panel_MainTalent.ResumeLayout(true);
+                Panel_SubTalent.ResumeLayout(true);
                 //命ノ星座
                 ConstellationPanel.SuspendLayout();
                 foreach (var control in Constellation)
@@ -174,7 +174,7 @@ namespace Genshin_Checker.Window.ExWindow.GameRecords
                     ConstellationPanel.Controls.Add(info);
                     Constellation.Add(info);
                 }
-                ConstellationPanel.ResumeLayout();
+                ConstellationPanel.ResumeLayout(true);
                 //聖遺物
                 ArtifactLayout.SuspendLayout();
                 foreach (var control in ArtifactInfos)
@@ -198,7 +198,7 @@ namespace Genshin_Checker.Window.ExWindow.GameRecords
                     ArtifactLayout.Controls.Add(control);
                     ArtifactInfos.Add(control);
                 }
-                ArtifactLayout.ResumeLayout();
+                ArtifactLayout.ResumeLayout(true);
 
                 if (!string.IsNullOrEmpty(gacha))
                 {
@@ -206,6 +206,8 @@ namespace Genshin_Checker.Window.ExWindow.GameRecords
                     IsLoading = false;
                 }
                 ImageReload(true);
+                Application.DoEvents();
+                AutoScrollPosition = new(0, -100000);
             }
             finally
             {

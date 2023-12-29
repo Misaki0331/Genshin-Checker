@@ -15,6 +15,8 @@ namespace Genshin_Checker.UI.Control.SpiralAbyss
     {
         List<BattleInfo> Battles;
         List<PictureBox> StarPictures;
+        public delegate void CharacterEventHandler<T>(T args);
+        public event CharacterEventHandler<int>? CharacterClickHandler;
         public LevelInfo(Account account, Model.UserData.SpiralAbyss.v1.Level level)
         {
             InitializeComponent();
@@ -47,6 +49,7 @@ namespace Genshin_Checker.UI.Control.SpiralAbyss
                     }
                 } else if (battles.Count > 2) name = $"第 {battle.index} 戦";
                 var control = new BattleInfo(account, battle, name, battles.Count > 1) { Dock = DockStyle.Top, BorderStyle = BorderStyle.FixedSingle };
+                control.CharacterClickHandler += a => CharacterClickHandler?.Invoke(a);
                 Battles.Add(control);
                 PanelBattleInfo.Controls.Add(control);
             }

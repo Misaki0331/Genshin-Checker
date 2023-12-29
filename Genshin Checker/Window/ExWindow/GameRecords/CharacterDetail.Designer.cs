@@ -75,7 +75,7 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(784, 501);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(784, 511);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // panel1
@@ -83,7 +83,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(307, 495);
+            this.panel1.Size = new System.Drawing.Size(307, 505);
             this.panel1.TabIndex = 0;
             // 
             // panel2
@@ -98,7 +98,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(316, 3);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(465, 495);
+            this.panel2.Size = new System.Drawing.Size(465, 505);
             this.panel2.TabIndex = 1;
             // 
             // groupBox4
@@ -328,7 +328,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(784, 501);
+            this.ClientSize = new System.Drawing.Size(784, 511);
             this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.MinimumSize = new System.Drawing.Size(800, 240);
