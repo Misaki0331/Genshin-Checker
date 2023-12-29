@@ -13,7 +13,7 @@ namespace Genshin_Checker.App.General
     {
         public static string GetRandomPath()
         {
-            return Path.Combine(GetUserDataDir(), $"{Path.GetRandomFileName().Replace(".", "")}.misaki_gsc"); //水咲原神チェッカー
+            return $"{Path.GetRandomFileName().Replace(".", "")}.misaki_gsc"; //水咲原神チェッカー
         }
         public static string GetUserDataDir()
         {
