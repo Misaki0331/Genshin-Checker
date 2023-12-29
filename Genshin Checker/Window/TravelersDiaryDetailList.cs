@@ -91,6 +91,9 @@ namespace Genshin_Checker.Window
                     {
                         PathList.Add(data);
                     }
+                    if (data.PrimogemsPath != null && Path.IsPathRooted(data.PrimogemsPath)) Registry.SetValue(regPath, $"Latest{Mode.Primogems}Path", Path.GetFileName(data.PrimogemsPath), true);
+
+                    if (data.MoraPath != null && Path.IsPathRooted(data.MoraPath)) Registry.SetValue(regPath, $"Latest{Mode.Mora}Path", Path.GetFileName(data.MoraPath), true);
                 }
             }
             monthlist.Items.Clear();
@@ -123,12 +126,19 @@ namespace Genshin_Checker.Window
                 if (path == null) throw new ArgumentException($"{monthlist.SelectedText}に対応する{(listtype.SelectedIndex==0?"原石":"モラ")}データが見つかりませんでした。");
                 try
                 {
-                    if(eventpath!=null)eventlists = JsonConvert.DeserializeObject<EventName>(await App.General.AppData.LoadFileData(eventpath));
+                    if (eventpath != null)
+                    {
+                        if (Path.IsPathRooted(eventpath))
+                        {
+                            Registry.SetValue(localeEventPath, $"EventName", Path.GetFileName(eventpath), true);
+                        }
+                        eventlists = JsonConvert.DeserializeObject<EventName>(await App.General.AppData.LoadUserData(eventpath));
+                    }
                 }
                 catch {}
                 try
                 {
-                    lists = JsonConvert.DeserializeObject<EventLists>(await App.General.AppData.LoadFileData(path));
+                    lists = JsonConvert.DeserializeObject<EventLists>(await App.General.AppData.LoadUserData(path));
                 }
                 catch (FileNotFoundException) { }
                 catch (Exception)
