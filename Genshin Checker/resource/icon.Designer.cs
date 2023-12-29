@@ -209,5 +209,25 @@ namespace Genshin_Checker.resource {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap UI_Icon_Tower_Star {
+            get {
+                object obj = ResourceManager.GetObject("UI_Icon_Tower_Star", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap UI_Icon_Tower_Star_Disabled {
+            get {
+                object obj = ResourceManager.GetObject("UI_Icon_Tower_Star_Disabled", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

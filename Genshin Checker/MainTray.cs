@@ -230,51 +230,53 @@ namespace Genshin_Checker
             bool IsAdd = find == null;
             if (account == null)
             {
-                switch (name)
-                {
-                    case nameof(Window.GameLog):
-                        if (find == null || find.IsDisposed) find = new Window.GameLog(GameLogTemp) { Name = Name };
-                        break;
-                    case nameof(Window.TimerDisplay):
-                        if (find == null || find.IsDisposed) find = new Window.TimerDisplay() { Name = Name };
-                        break;
-                    case nameof(Window.TimeGraph):
-                        if (find == null || find.IsDisposed) find = new Window.TimeGraph() { Name = Name };
-                        break;
-                    case nameof(Window.SettingWindow):
-                        if(find==null || find.IsDisposed) find= new Window.SettingWindow() { Name = Name };
-                        break;
-                    case nameof(Window.Debug.APIChecker):
-                        if (find == null || find.IsDisposed) find = new Window.Debug.APIChecker() { Name = Name };
-                        break;
-                }
+                if (find == null || find.IsDisposed)
+                    switch (name)
+                    {
+                        case nameof(Window.GameLog):
+                            find = new Window.GameLog(GameLogTemp) { Name = Name };
+                            break;
+                        case nameof(Window.TimerDisplay):
+                            find = new Window.TimerDisplay() { Name = Name };
+                            break;
+                        case nameof(Window.TimeGraph):
+                            find = new Window.TimeGraph() { Name = Name };
+                            break;
+                        case nameof(Window.SettingWindow):
+                            find = new Window.SettingWindow() { Name = Name };
+                            break;
+                        case nameof(Window.Debug.APIChecker):
+                            find = new Window.Debug.APIChecker() { Name = Name };
+                            break;
+                    }
             }
             else
             {
-                switch (name)
-                {
-                    case nameof(Window.GameRecords):
-                        if (find == null || find.IsDisposed) find = new Window.GameRecords(account) { Name = Name };
-                        break;
-                    case nameof(Window.RealTimeData):
-                        if (find == null || find.IsDisposed) find = new Window.RealTimeData(account) { Name = Name };
-                        break;
-                    case nameof(Window.TravelersDiary):
-                        if (find == null || find.IsDisposed) find = new Window.TravelersDiary(account) { Name = Name };
-                        break;
-                    case nameof(Window.TravelersDiaryDetailList):
-                        if (find == null || find.IsDisposed) find = new Window.TravelersDiaryDetailList(account) { Name = Name };
-                        break;
-                    case nameof(Window.CharacterCalculator):
-                        if (find == null || find.IsDisposed) find = new Window.CharacterCalculator(account) { Name = Name };
-                        break;
-                    case nameof(BrowserApp.WebGameAnnounce):
-                        if (find == null || find.IsDisposed) find = new BrowserApp.WebGameAnnounce(account) { Name = Name };
-                        break;
-                    case nameof(Window.SpiralAbyss):
-                        if (find == null || find.IsDisposed) find = new Window.SpiralAbyss(account) { Name = Name };
-                        break;
-                }
+                if (find == null || find.IsDisposed)
+                    switch (name)
+                    {
+                        case nameof(Window.GameRecords):
+                            find = new Window.GameRecords(account) { Name = Name };
+                            break;
+                        case nameof(Window.RealTimeData):
+                            find = new Window.RealTimeData(account) { Name = Name };
+                            break;
+                        case nameof(Window.TravelersDiary):
+                            find = new Window.TravelersDiary(account) { Name = Name };
+                            break;
+                        case nameof(Window.TravelersDiaryDetailList):
+                            find = new Window.TravelersDiaryDetailList(account) { Name = Name };
+                            break;
+                        case nameof(Window.CharacterCalculator):
+                            find = new Window.CharacterCalculator(account) { Name = Name };
+                            break;
+                        case nameof(BrowserApp.WebGameAnnounce):
+                            find = new BrowserApp.WebGameAnnounce(account) { Name = Name };
+                            break;
+                        case nameof(Window.SpiralAbyss):
+                            find = new Window.SpiralAbyss(account) { Name = Name };
+                            break;
+                    }
             }
             if (find == null) return;
             if (IsAdd) FormList.Add(find);

@@ -46,7 +46,7 @@
             this.label9 = new System.Windows.Forms.Label();
             this.LabelPlayCount = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.panel3 = new System.Windows.Forms.Panel();
+            this.PanelFloorsInfo = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.LabelScheduleName = new System.Windows.Forms.Label();
             this.LabelTimestamp = new System.Windows.Forms.Label();
@@ -297,7 +297,7 @@
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.panel3);
+            this.tabPage2.Controls.Add(this.PanelFloorsInfo);
             this.tabPage2.Controls.Add(this.panel1);
             this.tabPage2.Location = new System.Drawing.Point(4, 24);
             this.tabPage2.Name = "tabPage2";
@@ -307,13 +307,14 @@
             this.tabPage2.Text = "フロア情報";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // panel3
+            // PanelFloorsInfo
             // 
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(368, 3);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(235, 390);
-            this.panel3.TabIndex = 1;
+            this.PanelFloorsInfo.AutoScroll = true;
+            this.PanelFloorsInfo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PanelFloorsInfo.Location = new System.Drawing.Point(368, 3);
+            this.PanelFloorsInfo.Name = "PanelFloorsInfo";
+            this.PanelFloorsInfo.Size = new System.Drawing.Size(235, 390);
+            this.PanelFloorsInfo.TabIndex = 1;
             // 
             // panel1
             // 
@@ -450,7 +451,7 @@
         private Label label3;
         private Label label4;
         private FlowLayoutPanel FlowGeneralData;
-        private Panel panel3;
+        private Panel PanelFloorsInfo;
         private Panel panel1;
     }
 }

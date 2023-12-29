@@ -84,12 +84,12 @@ namespace Genshin_Checker.App.HoYoLab
                             b.avatars.Add(new() { id = avater.id, level = avater.level });
                         }
                         //螺旋の敵情報
-                        switch (l.battles.Count)
+                        switch (battle.index)
                         {
-                            case 0:
+                            case 1: //前半
                                 foreach (var enemy in top) b.enemies.Add(new() { name = enemy.name, level = enemy.level, RemoteIconPath = enemy.icon });
                                 break;
-                            case 1:
+                            case 2: //後半
                                 foreach (var enemy in bottom) b.enemies.Add(new() { name = enemy.name, level = enemy.level, RemoteIconPath = enemy.icon });
                                 break;
                         }

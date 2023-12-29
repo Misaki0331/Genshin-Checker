@@ -1,4 +1,5 @@
 ﻿using Genshin_Checker.App.HoYoLab;
+using Genshin_Checker.Model.UserData.SpiralAbyss.v1;
 using OpenTK.Graphics.ES20;
 using System;
 using System.Collections.Generic;
@@ -15,6 +16,8 @@ namespace Genshin_Checker.Window
     public partial class SpiralAbyss : Form
     {
         Account account;
+        V1? CurrentDisplayData = null;
+        List<UI.Control.SpiralAbyss.LevelInfo> LevelInfo;
         UI.Control.SpiralAbyss.CharacterFrame? CharacterCount;
         List<UI.Control.SpiralAbyss.CharacterFrame> GeneralList;
         List<UI.Control.SpiralAbyss.FloorInfo> FloorList;
@@ -24,16 +27,18 @@ namespace Genshin_Checker.Window
             this.account = account;
             GeneralList = new();
             FloorList = new();
+            LevelInfo = new();
             LoadDataCurrent();
         }
 
         private void SpiralAbyss_Load(object sender, EventArgs e)
         {
-
+            LoadFloorData(12);
         }
         async void LoadDataCurrent()
         {
             var GameData = await account.SpiralAbyss.GetCurrent();
+            CurrentDisplayData= GameData;
             var data = GameData.Data;
             LabelScheduleName.Text = $"第 {data.schedule_id} 回 深境螺旋結果";
             LabelTimestamp.Text = $"{DateTimeOffset.FromUnixTimeSeconds(data.ScheduleTime.start).ToLocalTime():yyyy/MM/dd HH:mm:ss} ～ {DateTimeOffset.FromUnixTimeSeconds(data.ScheduleTime.end).ToLocalTime():yyyy/MM/dd HH:mm:ss}";
@@ -115,5 +120,28 @@ namespace Genshin_Checker.Window
                 FloorList.Add(controls);
             }
         } 
+
+        void LoadFloorData(int index)
+        {
+            if(CurrentDisplayData== null) return;
+            var floors = CurrentDisplayData.Data.floors.Find(a=>a.index==index);
+            if(floors==null) return;
+            PanelFloorsInfo.SuspendLayout();
+            foreach(var f in LevelInfo)
+            {
+                PanelFloorsInfo.Controls.Remove(f);
+                f.Dispose();
+            }
+            LevelInfo.Clear();
+            var levels = floors.levels.FindAll(A => true);
+            levels.Reverse();
+            foreach(var level in levels)
+            {
+                var control = new UI.Control.SpiralAbyss.LevelInfo(account, level) { Dock=DockStyle.Top,BorderStyle=BorderStyle.FixedSingle};
+                PanelFloorsInfo.Controls.Add(control);
+                LevelInfo.Add(control);
+            }
+            PanelFloorsInfo.ResumeLayout(true);
+        }
     }
 }

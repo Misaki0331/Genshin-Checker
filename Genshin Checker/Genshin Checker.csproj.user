@@ -34,10 +34,19 @@
     <Compile Update="UI\Control\SettingWindow\AccountNotify.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Update="UI\Control\SpiralAbyss\BattleInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="UI\Control\SpiralAbyss\CharacterFrame.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Update="UI\Control\SpiralAbyss\EnemyInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="UI\Control\SpiralAbyss\FloorInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="UI\Control\SpiralAbyss\LevelInfo.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="Window\BrowserApp\BattleAuth.cs">
