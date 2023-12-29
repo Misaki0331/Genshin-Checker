@@ -238,5 +238,9 @@ namespace Genshin_Checker.Window
             this.Invalidate();
             this.PerformLayout();
         }
+
+        protected override void OnResize(EventArgs e)
+        {
+        }
     }
 }
