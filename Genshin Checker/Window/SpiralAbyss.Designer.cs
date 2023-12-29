@@ -47,6 +47,12 @@
             this.LabelPlayCount = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.PanelFloorsInfo = new System.Windows.Forms.Panel();
+            this.PanelFloor = new System.Windows.Forms.Panel();
+            this.LabelFloorInfomation = new System.Windows.Forms.Label();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.LabelFloorStars = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.LabelFloorName = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.LabelScheduleName = new System.Windows.Forms.Label();
             this.LabelTimestamp = new System.Windows.Forms.Label();
@@ -62,6 +68,9 @@
             this.tableLayoutPanel4.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            this.PanelFloor.SuspendLayout();
+            this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
@@ -74,22 +83,23 @@
             this.tabControl1.Location = new System.Drawing.Point(0, 26);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(614, 424);
+            this.tabControl1.Size = new System.Drawing.Size(1264, 655);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage1
             // 
             this.tabPage1.AutoScroll = true;
+            this.tabPage1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(27)))), ((int)(((byte)(52)))));
             this.tabPage1.Controls.Add(this.FlowGeneralData);
             this.tabPage1.Controls.Add(this.PanelCharacterCount);
             this.tabPage1.Controls.Add(this.flowLayoutPanel2);
+            this.tabPage1.ForeColor = System.Drawing.Color.White;
             this.tabPage1.Location = new System.Drawing.Point(4, 24);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(606, 396);
+            this.tabPage1.Size = new System.Drawing.Size(1256, 627);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "概要";
-            this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // FlowGeneralData
             // 
@@ -98,7 +108,7 @@
             this.FlowGeneralData.Dock = System.Windows.Forms.DockStyle.Top;
             this.FlowGeneralData.Location = new System.Drawing.Point(3, 74);
             this.FlowGeneralData.Name = "FlowGeneralData";
-            this.FlowGeneralData.Size = new System.Drawing.Size(600, 0);
+            this.FlowGeneralData.Size = new System.Drawing.Size(1250, 0);
             this.FlowGeneralData.TabIndex = 4;
             // 
             // PanelCharacterCount
@@ -107,7 +117,7 @@
             this.PanelCharacterCount.Dock = System.Windows.Forms.DockStyle.Top;
             this.PanelCharacterCount.Location = new System.Drawing.Point(3, 74);
             this.PanelCharacterCount.Name = "PanelCharacterCount";
-            this.PanelCharacterCount.Size = new System.Drawing.Size(600, 0);
+            this.PanelCharacterCount.Size = new System.Drawing.Size(1250, 0);
             this.PanelCharacterCount.TabIndex = 2;
             // 
             // flowLayoutPanel2
@@ -121,7 +131,7 @@
             this.flowLayoutPanel2.Location = new System.Drawing.Point(3, 3);
             this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(600, 71);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(1250, 71);
             this.flowLayoutPanel2.TabIndex = 3;
             // 
             // tableLayoutPanel1
@@ -297,32 +307,110 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(27)))), ((int)(((byte)(52)))));
             this.tabPage2.Controls.Add(this.PanelFloorsInfo);
+            this.tabPage2.Controls.Add(this.PanelFloor);
             this.tabPage2.Controls.Add(this.panel1);
             this.tabPage2.Location = new System.Drawing.Point(4, 24);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(606, 396);
+            this.tabPage2.Size = new System.Drawing.Size(1256, 627);
             this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "フロア情報";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.tabPage2.Text = "詳細情報";
             // 
             // PanelFloorsInfo
             // 
             this.PanelFloorsInfo.AutoScroll = true;
+            this.PanelFloorsInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(27)))), ((int)(((byte)(52)))));
             this.PanelFloorsInfo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PanelFloorsInfo.Location = new System.Drawing.Point(368, 3);
+            this.PanelFloorsInfo.ForeColor = System.Drawing.Color.White;
+            this.PanelFloorsInfo.Location = new System.Drawing.Point(368, 67);
             this.PanelFloorsInfo.Name = "PanelFloorsInfo";
-            this.PanelFloorsInfo.Size = new System.Drawing.Size(235, 390);
+            this.PanelFloorsInfo.Size = new System.Drawing.Size(885, 557);
             this.PanelFloorsInfo.TabIndex = 1;
+            // 
+            // PanelFloor
+            // 
+            this.PanelFloor.AutoSize = true;
+            this.PanelFloor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(27)))), ((int)(((byte)(52)))));
+            this.PanelFloor.Controls.Add(this.LabelFloorInfomation);
+            this.PanelFloor.Controls.Add(this.panel4);
+            this.PanelFloor.Dock = System.Windows.Forms.DockStyle.Top;
+            this.PanelFloor.ForeColor = System.Drawing.Color.White;
+            this.PanelFloor.Location = new System.Drawing.Point(368, 3);
+            this.PanelFloor.Name = "PanelFloor";
+            this.PanelFloor.Size = new System.Drawing.Size(885, 64);
+            this.PanelFloor.TabIndex = 0;
+            this.PanelFloor.Visible = false;
+            // 
+            // LabelFloorInfomation
+            // 
+            this.LabelFloorInfomation.AutoSize = true;
+            this.LabelFloorInfomation.Dock = System.Windows.Forms.DockStyle.Top;
+            this.LabelFloorInfomation.Font = new System.Drawing.Font("Meiryo UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.LabelFloorInfomation.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.LabelFloorInfomation.Location = new System.Drawing.Point(0, 44);
+            this.LabelFloorInfomation.Name = "LabelFloorInfomation";
+            this.LabelFloorInfomation.Size = new System.Drawing.Size(73, 20);
+            this.LabelFloorInfomation.TabIndex = 1;
+            this.LabelFloorInfomation.Text = "地脈異常";
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.LabelFloorStars);
+            this.panel4.Controls.Add(this.pictureBox1);
+            this.panel4.Controls.Add(this.LabelFloorName);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel4.Location = new System.Drawing.Point(0, 0);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(885, 44);
+            this.panel4.TabIndex = 0;
+            // 
+            // LabelFloorStars
+            // 
+            this.LabelFloorStars.AutoSize = true;
+            this.LabelFloorStars.Dock = System.Windows.Forms.DockStyle.Left;
+            this.LabelFloorStars.Font = new System.Drawing.Font("Meiryo UI", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.LabelFloorStars.Location = new System.Drawing.Point(207, 0);
+            this.LabelFloorStars.MinimumSize = new System.Drawing.Size(0, 44);
+            this.LabelFloorStars.Name = "LabelFloorStars";
+            this.LabelFloorStars.Size = new System.Drawing.Size(112, 44);
+            this.LabelFloorStars.TabIndex = 2;
+            this.LabelFloorStars.Text = "9 / 9";
+            this.LabelFloorStars.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pictureBox1.Image = global::Genshin_Checker.resource.icon.UI_Icon_Tower_Star;
+            this.pictureBox1.Location = new System.Drawing.Point(163, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(44, 44);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
+            // 
+            // LabelFloorName
+            // 
+            this.LabelFloorName.AutoSize = true;
+            this.LabelFloorName.Dock = System.Windows.Forms.DockStyle.Left;
+            this.LabelFloorName.Font = new System.Drawing.Font("Meiryo UI", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.LabelFloorName.Location = new System.Drawing.Point(0, 0);
+            this.LabelFloorName.MinimumSize = new System.Drawing.Size(0, 44);
+            this.LabelFloorName.Name = "LabelFloorName";
+            this.LabelFloorName.Size = new System.Drawing.Size(163, 44);
+            this.LabelFloorName.TabIndex = 0;
+            this.LabelFloorName.Text = "第 XX 層";
+            this.LabelFloorName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel1
             // 
             this.panel1.AutoScroll = true;
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(365, 390);
+            this.panel1.Size = new System.Drawing.Size(365, 621);
             this.panel1.TabIndex = 0;
             // 
             // LabelScheduleName
@@ -356,7 +444,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(614, 26);
+            this.panel2.Size = new System.Drawing.Size(1264, 26);
             this.panel2.TabIndex = 1;
             // 
             // tableLayoutPanel2
@@ -403,9 +491,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(614, 450);
+            this.ClientSize = new System.Drawing.Size(1264, 681);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.panel2);
+            this.MinimumSize = new System.Drawing.Size(810, 375);
             this.Name = "SpiralAbyss";
             this.Text = "SpiralAbyss";
             this.Load += new System.EventHandler(this.SpiralAbyss_Load);
@@ -418,6 +507,12 @@
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel5.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
+            this.PanelFloor.ResumeLayout(false);
+            this.PanelFloor.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
@@ -453,5 +548,11 @@
         private FlowLayoutPanel FlowGeneralData;
         private Panel PanelFloorsInfo;
         private Panel panel1;
+        private Panel PanelFloor;
+        private Label LabelFloorInfomation;
+        private Panel panel4;
+        private Label LabelFloorStars;
+        private PictureBox pictureBox1;
+        private Label LabelFloorName;
     }
 }

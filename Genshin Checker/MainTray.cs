@@ -293,6 +293,8 @@ namespace Genshin_Checker
                 {
                     var GameRecord = new ToolStripMenuItem() { Text = "戦績情報" };
                     GameRecord.Click += (s, e) => { OpenWindow(account, nameof(Window.GameRecords)); };
+                    var SpiralAbyss = new ToolStripMenuItem() { Text = "深境螺旋" };
+                    SpiralAbyss.Click += (s, e) => { OpenWindow(account, nameof(Window.SpiralAbyss)); };
                     var RealTimeNote = new ToolStripMenuItem() { Text = "リアルタイムノート" };
                     RealTimeNote.Click += (s, e) => { OpenWindow(account, nameof(Window.RealTimeData)); };
                     var TravelersDiary = new ToolStripMenuItem() { Text = "旅人手帳" };
@@ -306,7 +308,7 @@ namespace Genshin_Checker
                     var tools = new ToolStripMenuItem() { Text = $"{account.Name} (AR.{account.Level})" };
                     tools.DropDownItems.AddRange(new ToolStripItem[]
                     {
-                        GameRecord,RealTimeNote,TravelersDiary,TravelersDiaryDetailList,CharacterCalculator,OfficialAnnounce,
+                        GameRecord,SpiralAbyss,RealTimeNote,TravelersDiary,TravelersDiaryDetailList,CharacterCalculator,OfficialAnnounce,
                         new ToolStripSeparator(),new ToolStripMenuItem(){Enabled=false,Text=$"UID: {account.UID}"}
                     });
                     AccountToolStrip.DropDownItems.Add(tools);

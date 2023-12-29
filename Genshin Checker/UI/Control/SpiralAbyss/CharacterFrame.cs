@@ -35,6 +35,7 @@ namespace Genshin_Checker.UI.Control.SpiralAbyss
                 return;
             }
             groupBox1.Visible = IsShowGroupBox;
+            this.SuspendLayout();
             foreach (var argment in values)
             {
                 var character = records.avatars.Find(a => a.id == argment.CharacterID);
@@ -44,6 +45,7 @@ namespace Genshin_Checker.UI.Control.SpiralAbyss
                 else Controls.Add(control);
                 characters.Add(control);
             }
+            ResumeLayout(true);
             Disposed += (s, e) =>
             {
                 foreach (var argment in characters)

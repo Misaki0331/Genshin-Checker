@@ -30,9 +30,9 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.PanelStar = new System.Windows.Forms.Panel();
             this.PanelBattleInfo = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
-            this.PanelStar = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -60,14 +60,24 @@
             this.panel1.Size = new System.Drawing.Size(348, 38);
             this.panel1.TabIndex = 1;
             // 
+            // PanelStar
+            // 
+            this.PanelStar.AutoSize = true;
+            this.PanelStar.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.PanelStar.Dock = System.Windows.Forms.DockStyle.Left;
+            this.PanelStar.Location = new System.Drawing.Point(105, 0);
+            this.PanelStar.Name = "PanelStar";
+            this.PanelStar.Size = new System.Drawing.Size(0, 38);
+            this.PanelStar.TabIndex = 1;
+            // 
             // PanelBattleInfo
             // 
             this.PanelBattleInfo.AutoSize = true;
-            this.PanelBattleInfo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.PanelBattleInfo.BackColor = System.Drawing.Color.Transparent;
             this.PanelBattleInfo.Dock = System.Windows.Forms.DockStyle.Top;
             this.PanelBattleInfo.Location = new System.Drawing.Point(0, 62);
             this.PanelBattleInfo.Name = "PanelBattleInfo";
-            this.PanelBattleInfo.Size = new System.Drawing.Size(348, 2);
+            this.PanelBattleInfo.Size = new System.Drawing.Size(348, 0);
             this.PanelBattleInfo.TabIndex = 3;
             // 
             // label2
@@ -81,30 +91,20 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "踏破時間 : 20XX/XX/XX XX:XX:XX";
             // 
-            // PanelStar
-            // 
-            this.PanelStar.AutoSize = true;
-            this.PanelStar.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.PanelStar.Dock = System.Windows.Forms.DockStyle.Left;
-            this.PanelStar.Location = new System.Drawing.Point(105, 0);
-            this.PanelStar.Name = "PanelStar";
-            this.PanelStar.Size = new System.Drawing.Size(0, 38);
-            this.PanelStar.TabIndex = 1;
-            // 
             // LevelInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.BackColor = System.Drawing.Color.White;
+            this.BackColor = System.Drawing.Color.Transparent;
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Controls.Add(this.PanelBattleInfo);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.panel1);
             this.MinimumSize = new System.Drawing.Size(350, 0);
             this.Name = "LevelInfo";
-            this.Size = new System.Drawing.Size(348, 64);
+            this.Size = new System.Drawing.Size(348, 62);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);

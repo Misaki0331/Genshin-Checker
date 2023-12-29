@@ -24,7 +24,7 @@ namespace Genshin_Checker.UI.Control.SpiralAbyss
             for(int i = level.max_star; i > 0; i--)
             {
                 var picture = new PictureBox() { SizeMode = PictureBoxSizeMode.Zoom, Size = new(PanelStar.Height, PanelStar.Height), Dock = DockStyle.Left };
-                picture.Image = level.star >= level.max_star ? resource.icon.UI_Icon_Tower_Star : resource.icon.UI_Icon_Tower_Star_Disabled;
+                picture.Image = level.star >= i ? resource.icon.UI_Icon_Tower_Star : resource.icon.UI_Icon_Tower_Star_Disabled;
                 StarPictures.Add(picture);
                 PanelStar.Controls.Add(picture);
             }
@@ -60,7 +60,7 @@ namespace Genshin_Checker.UI.Control.SpiralAbyss
                 }
                 foreach(var p in StarPictures)
                 {
-                    StarPictures.Remove(p);
+                    PanelStar.Controls.Remove(p);
                     p.Dispose();
                 }
                 this.ResumeLayout(true);

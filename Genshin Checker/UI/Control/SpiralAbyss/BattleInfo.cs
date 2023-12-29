@@ -23,7 +23,7 @@ namespace Genshin_Checker.UI.Control.SpiralAbyss
             if (!IsVisibleDateTime) LabelTimestamp.Visible = false;
             LabelTimestamp.Text = $"踏破時間 : {DateTimeOffset.FromUnixTimeSeconds(battle.timestamp).ToLocalTime():yyyy/MM/dd HH:mm:ss}";
             LabelBattleName.Text = battleName;
-            if (string.IsNullOrEmpty(battleName)) LabelBattleName.Visible = false;
+            if (string.IsNullOrEmpty(battleName)) panel1.Visible = false;
             List<CharacterFrame.CharacterArgment> argment = new();
             foreach (var character in battle.avatars)
             {

@@ -51,6 +51,7 @@
             this.LabelArea.TabIndex = 0;
             this.LabelArea.Text = "12 層";
             this.LabelArea.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.LabelArea.Click += new System.EventHandler(this.ClickEvent);
             this.LabelArea.Paint += new System.Windows.Forms.PaintEventHandler(this.LabelPaint);
             // 
             // LabelInfomation
@@ -64,6 +65,7 @@
             this.LabelInfomation.TabIndex = 1;
             this.LabelInfomation.Text = "地脈異常の文字列";
             this.LabelInfomation.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.LabelInfomation.Click += new System.EventHandler(this.ClickEvent);
             this.LabelInfomation.Paint += new System.Windows.Forms.PaintEventHandler(this.LabelPaint);
             // 
             // panel1
@@ -78,6 +80,7 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(345, 38);
             this.panel1.TabIndex = 4;
+            this.panel1.Click += new System.EventHandler(this.ClickEvent);
             // 
             // pictureBox1
             // 
@@ -92,6 +95,7 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 4;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.ClickEvent);
             // 
             // LabelStars
             // 
@@ -105,6 +109,7 @@
             this.LabelStars.TabIndex = 5;
             this.LabelStars.Text = "99 / 99";
             this.LabelStars.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.LabelStars.Click += new System.EventHandler(this.ClickEvent);
             this.LabelStars.Paint += new System.Windows.Forms.PaintEventHandler(this.LabelPaint);
             // 
             // LabelLatestUpdate
@@ -118,6 +123,7 @@
             this.LabelLatestUpdate.Size = new System.Drawing.Size(254, 20);
             this.LabelLatestUpdate.TabIndex = 5;
             this.LabelLatestUpdate.Text = "最終更新 2023/12/25 12:34:56";
+            this.LabelLatestUpdate.Click += new System.EventHandler(this.ClickEvent);
             this.LabelLatestUpdate.Paint += new System.Windows.Forms.PaintEventHandler(this.LabelPaint);
             // 
             // FloorInfo
@@ -133,6 +139,7 @@
             this.Name = "FloorInfo";
             this.Size = new System.Drawing.Size(345, 141);
             this.Load += new System.EventHandler(this.FloorInfo_Load);
+            this.Click += new System.EventHandler(this.ClickEvent);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
