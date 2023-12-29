@@ -68,7 +68,7 @@ namespace Genshin_Checker.Window.ExWindow.GameRecords
                 {
                     var character = Store.EnkaData.Data.Characters[$"{characterID}"];
                     gacha = character.SideIconName.Replace("UI_AvatarIcon_Side_", "UI_Gacha_AvatarImg_");
-                }catch(Exception ex)
+                }catch(Exception)
                 {
                     new ErrorMessage("このキャラクターはデータ不足です。", $"{CharacterInfo.name}はまだ有志のデータベース上にデータがありません。\nしばらく経ってからまた開き直してください。").ShowDialog();
                 }

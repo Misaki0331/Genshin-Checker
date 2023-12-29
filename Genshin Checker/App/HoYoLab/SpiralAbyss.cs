@@ -5,6 +5,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -32,18 +33,22 @@ namespace Genshin_Checker.App.HoYoLab
                 Save(Convert(await account.Endpoint.GetSpiralAbyss(false)));
                 await GetCurrent();
                 ServerUpdate.Interval = 3600 * 6 * 1000;
+                ServerUpdate.Start();
+                return;
             }
             catch (Exception)
             {
-                ServerUpdate.Interval = 300000;
             }
+            ServerUpdate.Interval = 300000;
             ServerUpdate.Start();
         }
-        public static V1 Convert(Model.HoYoLab.SpiralAbyss.Data data)
+        public V1 Convert(Model.HoYoLab.SpiralAbyss.Data data)
         {
             var res = new V1()
             {
                 Version = 1,
+                UID = account.UID,
+                UpdateUTC = DateTime.UtcNow,
                 Data = new()
                 {
                     schedule_id = data.schedule_id,
@@ -121,12 +126,16 @@ namespace Genshin_Checker.App.HoYoLab
             {
                 var data = await account.Endpoint.GetSpiralAbyss(true);
                 Cache = new() { Latest = DateTime.UtcNow, Data = data };
-                Save(Convert(data));
+                try
+                {
+                    Save(Convert(data));
+                }
+                catch { }
             }
             return Convert(Cache.Data);
         }
 
-        void Save(V1 v1)
+        async void Save(V1 v1)
         {
             string? path = Registry.GetValue($"UserData\\{account.UID}\\SpiralAbyss", $"{v1.Data.schedule_id}",true);
             if (path == null)
@@ -135,8 +144,35 @@ namespace Genshin_Checker.App.HoYoLab
                 Registry.SetValue($"UserData\\{account.UID}\\SpiralAbyss", $"{v1.Data.schedule_id}", path, true);
 
             }
-            AppData.SaveUserData(path, JsonConvert.SerializeObject(v1));
+            await AppData.SaveUserData(path, JsonConvert.SerializeObject(v1));
 
+        }
+        public List<int> GetList()
+        {
+            var strs = Registry.GetKeyNames($"UserData\\{account.UID}\\SpiralAbyss");
+            var list = new List<int>();
+            foreach(string str in strs)
+            {
+                if (int.TryParse(str, out int b)) list.Add(b);
+            }
+            list.Sort((a, b) => a - b);
+            return list;
+        }
+        public async Task<V1> Load(int id)
+        {
+            var path = Registry.GetValue($"UserData\\{account.UID}\\SpiralAbyss", $"{id}", true);
+            if (path == null) throw new IOException($"螺旋情報保管場所のデータがありません。");
+            var data = await AppData.LoadUserData(path);
+            var ver = JsonConvert.DeserializeObject<Model.UserData.SpiralAbyss.Root>(data??"");
+            V1? v1 = (ver?.Version) switch
+            {
+                null => throw new InvalidDataException($"ファイルバージョン情報を解析できませんでした。"),
+                1 => JsonConvert.DeserializeObject<V1>(data??""),
+                _ => throw new InvalidDataException($"不明なファイルバージョン(Ver.{ver.Version})です。"),
+            };
+            if (v1 == null) throw new InvalidDataException($"ファイルの変換に失敗しました。");
+            if (v1.UID != account.UID) throw new InvalidDataException($"ユーザーデータが異なります。({v1.UID}→{account.UID})");
+            return v1;
         }
     }
 }

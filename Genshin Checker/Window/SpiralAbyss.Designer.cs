@@ -46,6 +46,7 @@
             this.label9 = new System.Windows.Forms.Label();
             this.LabelPlayCount = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.PanelFloorsInfo = new System.Windows.Forms.Panel();
             this.PanelFloor = new System.Windows.Forms.Panel();
             this.LabelFloorInfomation = new System.Windows.Forms.Label();
@@ -57,6 +58,7 @@
             this.LabelScheduleName = new System.Windows.Forms.Label();
             this.LabelTimestamp = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -68,6 +70,7 @@
             this.tableLayoutPanel4.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.PanelFloor.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -308,7 +311,7 @@
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(27)))), ((int)(((byte)(52)))));
-            this.tabPage2.Controls.Add(this.PanelFloorsInfo);
+            this.tabPage2.Controls.Add(this.panel3);
             this.tabPage2.Controls.Add(this.PanelFloor);
             this.tabPage2.Controls.Add(this.panel1);
             this.tabPage2.Location = new System.Drawing.Point(4, 24);
@@ -318,13 +321,22 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "詳細情報";
             // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.PanelFloorsInfo);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(368, 67);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(885, 557);
+            this.panel3.TabIndex = 2;
+            // 
             // PanelFloorsInfo
             // 
             this.PanelFloorsInfo.AutoScroll = true;
             this.PanelFloorsInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(27)))), ((int)(((byte)(52)))));
             this.PanelFloorsInfo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PanelFloorsInfo.ForeColor = System.Drawing.Color.White;
-            this.PanelFloorsInfo.Location = new System.Drawing.Point(368, 67);
+            this.PanelFloorsInfo.Location = new System.Drawing.Point(0, 0);
             this.PanelFloorsInfo.Name = "PanelFloorsInfo";
             this.PanelFloorsInfo.Size = new System.Drawing.Size(885, 557);
             this.PanelFloorsInfo.TabIndex = 1;
@@ -439,6 +451,7 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.comboBox1);
             this.panel2.Controls.Add(this.LabelTimestamp);
             this.panel2.Controls.Add(this.LabelScheduleName);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
@@ -446,6 +459,17 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1264, 26);
             this.panel2.TabIndex = 1;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(1143, 0);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 23);
+            this.comboBox1.TabIndex = 2;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // tableLayoutPanel2
             // 
@@ -494,7 +518,7 @@
             this.ClientSize = new System.Drawing.Size(1264, 681);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.panel2);
-            this.MinimumSize = new System.Drawing.Size(810, 375);
+            this.MinimumSize = new System.Drawing.Size(815, 375);
             this.Name = "SpiralAbyss";
             this.Text = "SpiralAbyss";
             this.Load += new System.EventHandler(this.SpiralAbyss_Load);
@@ -508,6 +532,7 @@
             this.tableLayoutPanel5.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            this.panel3.ResumeLayout(false);
             this.PanelFloor.ResumeLayout(false);
             this.PanelFloor.PerformLayout();
             this.panel4.ResumeLayout(false);
@@ -554,5 +579,7 @@
         private Label LabelFloorStars;
         private PictureBox pictureBox1;
         private Label LabelFloorName;
+        private ComboBox comboBox1;
+        private Panel panel3;
     }
 }

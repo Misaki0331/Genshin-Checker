@@ -132,13 +132,13 @@ namespace Genshin_Checker.Window
                         {
                             Registry.SetValue(localeEventPath, $"EventName", Path.GetFileName(eventpath), true);
                         }
-                        eventlists = JsonConvert.DeserializeObject<EventName>(await App.General.AppData.LoadUserData(eventpath));
+                        eventlists = JsonConvert.DeserializeObject<EventName>(await App.General.AppData.LoadUserData(eventpath)??"");
                     }
                 }
                 catch {}
                 try
                 {
-                    lists = JsonConvert.DeserializeObject<EventLists>(await App.General.AppData.LoadUserData(path));
+                    lists = JsonConvert.DeserializeObject<EventLists>(await App.General.AppData.LoadUserData(path)??"");
                 }
                 catch (FileNotFoundException) { }
                 catch (Exception)

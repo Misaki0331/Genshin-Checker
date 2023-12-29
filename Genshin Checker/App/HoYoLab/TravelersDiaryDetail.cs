@@ -116,7 +116,7 @@ namespace Genshin_Checker.App.HoYoLab
             else eventpath = Path.Combine(AppData.GetUserDataDir(),eventpath);
             try
             {
-                eventNames = JsonConvert.DeserializeObject<EventName>(await AppData.LoadUserData(eventpath));
+                eventNames = JsonConvert.DeserializeObject<EventName>(await AppData.LoadUserData(eventpath)??"");
             }
             catch (FileNotFoundException) { } //ファイルが無い場合は放置
             catch (Exception)
@@ -145,7 +145,7 @@ namespace Genshin_Checker.App.HoYoLab
                         else if (Path.IsPathRooted(path)) Registry.SetValue(regPath, $"Latest{mode}Path", Path.GetFileName(path), true);
                         try
                         {
-                            eventLists = JsonConvert.DeserializeObject<EventLists>(await App.General.AppData.LoadUserData(path));
+                            eventLists = JsonConvert.DeserializeObject<EventLists>(await App.General.AppData.LoadUserData(path)??"");
                         }
                         catch (FileNotFoundException) { }
                         catch (Exception)
@@ -208,9 +208,9 @@ namespace Genshin_Checker.App.HoYoLab
                     //重複があったものを削除
                     for (int r = 0; r < LatestCount && eventLists.Details.Count > 0; r++) eventLists.Details.RemoveAt(eventLists.Details.Count - 1);
                     eventLists.Details.Sort((a, b) => a.EventTime.CompareTo(b.EventTime));
-                    if (path != null) App.General.AppData.SaveUserData(path, JsonConvert.SerializeObject(eventLists));
+                    if (path != null) await App.General.AppData.SaveUserData(path, JsonConvert.SerializeObject(eventLists));
                     eventNames.Events.Sort((a, b) => a.ID.CompareTo(b.ID));
-                    if (eventpath != null) AppData.SaveUserData(eventpath, JsonConvert.SerializeObject(eventNames));
+                    if (eventpath != null) await AppData.SaveUserData(eventpath, JsonConvert.SerializeObject(eventNames));
                     break;
                 }
             }

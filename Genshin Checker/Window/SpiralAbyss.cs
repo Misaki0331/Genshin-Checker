@@ -21,6 +21,12 @@ namespace Genshin_Checker.Window
         UI.Control.SpiralAbyss.CharacterFrame? CharacterCount;
         List<UI.Control.SpiralAbyss.CharacterFrame> GeneralList;
         List<UI.Control.SpiralAbyss.FloorInfo> FloorList;
+        List<ComboBoxData> ComboData;
+        class ComboBoxData
+        {
+            public int id;
+            public string name="";
+        }
         public SpiralAbyss(Account account)
         {
             InitializeComponent();
@@ -30,13 +36,22 @@ namespace Genshin_Checker.Window
             GeneralList = new();
             FloorList = new();
             LevelInfo = new();
+            ComboData = new();
+            var data = account.SpiralAbyss.GetList();
+            data.Reverse();
+            foreach (var i in data)
+                ComboData.Add(new() { id = i, name = $"螺旋 {i} 期" });
+            foreach (var i in ComboData)
+                comboBox1.Items.Add(i.name);
+            if (ComboData.Count > 0) comboBox1.SelectedIndex = 0;
+            else comboBox1.Enabled = false;
             LoadDataCurrent();
         }
 
         private void SpiralAbyss_Load(object sender, EventArgs e)
         {
         }
-        async void LoadDataCurrent()
+        void PanelReset()
         {
             if (CharacterCount != null && !CharacterCount.IsDisposed)
             {
@@ -58,10 +73,12 @@ namespace Genshin_Checker.Window
             }
             FloorList.Clear();
 
-            var GameData = await account.SpiralAbyss.GetCurrent();
-
-            CurrentDisplayData= GameData;
-            var data = GameData.Data;
+            LoadFloorData(-1);
+        }
+        void PanelLoad(V1 v1)
+        {
+            CurrentDisplayData = v1;
+            var data = v1.Data;
             LabelScheduleName.Text = $"第 {data.schedule_id} 回 深境螺旋結果";
             LabelTimestamp.Text = $"{DateTimeOffset.FromUnixTimeSeconds(data.ScheduleTime.start).ToLocalTime():yyyy/MM/dd HH:mm:ss} ～ {DateTimeOffset.FromUnixTimeSeconds(data.ScheduleTime.end).ToLocalTime():yyyy/MM/dd HH:mm:ss}";
 
@@ -71,10 +88,11 @@ namespace Genshin_Checker.Window
             LabelWinCount.Text = $"{data.total_win_times:#,##0}";
 
             var characters = new List<UI.Control.SpiralAbyss.CharacterFrame.CharacterArgment>();
-            foreach(var character in data.Ranks.Reveal) {
-                characters.Add(new(character.id,$"{character.value:#,##0}"));
+            foreach (var character in data.Ranks.Reveal)
+            {
+                characters.Add(new(character.id, $"{character.value:#,##0}"));
             }
-            CharacterCount = new(account, "出撃回数",characters);
+            CharacterCount = new(account, "出撃回数", characters);
             PanelCharacterCount.Controls.Add(CharacterCount);
             ///最多撃破数
             characters = new();
@@ -108,33 +126,39 @@ namespace Genshin_Checker.Window
             GeneralList.Add(con);
 
 
-            var floor = data.floors.FindAll(a=>true);
-            foreach(var f in floor)
+            var floor = data.floors.FindAll(a => true);
+            foreach (var f in floor)
             {
                 var str = f.is_unlock ? $"{f.star} / {f.max_star}" : "未開放";
                 DateTime latest = DateTime.MinValue;
-                foreach(var a in f.levels)
+                foreach (var a in f.levels)
                 {
                     var t = DateTimeOffset.FromUnixTimeSeconds(a.timestamp).ToLocalTime();
                     if (latest < t.DateTime) latest = t.DateTime;
                 }
-                var controls = new UI.Control.SpiralAbyss.FloorInfo(f.index, str, !f.is_unlock,  string.Join("\n", f.ley_line_disorder), f.levels.Count > 0 ? latest : null) { Dock=DockStyle.Top};
+                var controls = new UI.Control.SpiralAbyss.FloorInfo(f.index, str, !f.is_unlock, string.Join("\n", f.ley_line_disorder), f.levels.Count > 0 ? latest : null) { Dock = DockStyle.Top };
                 controls.ClickHandler += Floors_ClickHandler;
                 panel1.Controls.Add(controls);
                 FloorList.Add(controls);
             }
+        }
+        async void LoadDataCurrent()
+        {
+            PanelReset();
+            var GameData = await account.SpiralAbyss.GetCurrent();
+            PanelLoad(GameData);
+            
         }
 
         private void Floors_ClickHandler(int args)
         {
             LoadFloorData(args);
         }
-
+        int CurrentFloorIndex;
         void LoadFloorData(int index)
         {
-            if (CurrentDisplayData == null) return;
-            var floors = CurrentDisplayData.Data.floors.Find(a=>a.index==index);
-            if(floors==null) return;
+            if (CurrentFloorIndex == index) return;
+            else CurrentFloorIndex = index;
             PanelFloorsInfo.Visible = false;
             PanelFloorsInfo.SuspendLayout();
             foreach(var f in LevelInfo)
@@ -145,7 +169,13 @@ namespace Genshin_Checker.Window
             PanelFloor.Visible = false;
             LevelInfo.Clear();
 
+            PanelFloorsInfo.ResumeLayout(true);
             if (CurrentDisplayData == null) return;
+            var floors = CurrentDisplayData.Data.floors.Find(a => a.index == index);
+            if (floors == null) return;
+            if (CurrentDisplayData == null) return;
+
+            PanelFloorsInfo.SuspendLayout();
             LabelFloorName.Text = $"第 {floors.index} 層";
             LabelFloorStars.Text = $"{floors.star} / {floors.max_star}";
             LabelFloorInfomation.Text = string.Join("\n", floors.ley_line_disorder);
@@ -163,6 +193,25 @@ namespace Genshin_Checker.Window
             PanelFloorsInfo.ResumeLayout(true);
 
             PanelFloorsInfo.Visible = true;
+        }
+        
+        protected override void OnResize(EventArgs e)
+        {
+        }
+
+        private async void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var find = ComboData.Find(a => a.name == comboBox1.Text);
+            this.SuspendLayout();
+            PanelReset();
+            this.ResumeLayout(true);
+            if (find == null) return;
+            var GameData = await account.SpiralAbyss.Load(find.id);
+
+            this.SuspendLayout();
+            PanelLoad(GameData);
+            this.ResumeLayout(true);
+
         }
     }
 }

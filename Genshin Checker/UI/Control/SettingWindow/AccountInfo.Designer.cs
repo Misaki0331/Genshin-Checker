@@ -185,7 +185,6 @@
 
         #endregion
 
-        private PictureBox pictureBox1;
         private Panel panel1;
         private Panel panel2;
         private TableLayoutPanel tableLayoutPanel1;

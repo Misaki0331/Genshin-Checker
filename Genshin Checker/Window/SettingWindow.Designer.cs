@@ -696,8 +696,6 @@
         private Label label8;
         private CheckBox IsScreenShotNotify;
         private GroupBox groupBox8;
-        private FlowLayoutPanel PanelAccountList;
         private TabControl TabAccountNotify;
-        private TabPage tabPage1;
     }
 }

@@ -19,7 +19,7 @@ namespace Genshin_Checker.App.General
         {
             return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Genshin Checker", "UserData");
         }
-        public static async Task<string> LoadUserData(string path, bool compress = true)
+        public static async Task<string?> LoadUserData(string path, bool compress = true)
         {
             try
             {
@@ -43,10 +43,10 @@ namespace Genshin_Checker.App.General
             }catch(Exception ex)
             {
                 Trace.WriteLine(ex);
-                throw;
+                return null;
             }
         }
-        public static async void SaveUserData(string path, string data, bool compress = true)
+        public static async Task<bool> SaveUserData(string path, string data, bool compress = true)
         {
             try
             {
@@ -70,11 +70,12 @@ namespace Genshin_Checker.App.General
                     await sr.WriteAsync(data);
                     sr.Close();
                 }
+                return true;
             }
             catch (Exception ex)
             {
                 Trace.WriteLine(ex);
-                throw;
+                return false;
             }
         }
 
