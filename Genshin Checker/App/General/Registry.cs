@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO.Compression;
@@ -53,6 +54,15 @@ namespace Genshin_Checker.App
             regkey.Close();
         }
 
+        public static List<string> GetKeyNames(string Subkey)
+        {
+            var reg = Microsoft.Win32.Registry.CurrentUser.CreateSubKey($"Software\\Genshin_Checker\\{Subkey}");
+
+            if (reg == null) throw new IOException("レジストリが開けませんでした。");
+            string[] arySubKeyNames = reg.GetValueNames();
+            reg.Close();
+            return new(arySubKeyNames);
+        }
 
         /// <summary>
         /// 文字列からBASE64に圧縮する
