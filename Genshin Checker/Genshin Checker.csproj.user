@@ -61,6 +61,9 @@
     <Compile Update="Window\CharacterCalculator.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Window\Debug\Console.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Window\Debug\APIChecker.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -43,6 +43,7 @@
             this.終了ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.testToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Delay = new System.Windows.Forms.Timer(this.components);
+            this.consoleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.NotificationMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -64,9 +65,10 @@
             this.設定ToolStripMenuItem,
             this.toolStripSeparator1,
             this.終了ToolStripMenuItem,
+            this.consoleToolStripMenuItem,
             this.testToolStripMenuItem});
             this.NotificationMenu.Name = "contextMenuStrip1";
-            this.NotificationMenu.Size = new System.Drawing.Size(185, 176);
+            this.NotificationMenu.Size = new System.Drawing.Size(185, 220);
             // 
             // versionNameToolStripMenuItem
             // 
@@ -99,7 +101,7 @@
             // 
             this.emptyToolStripMenuItem.Enabled = false;
             this.emptyToolStripMenuItem.Name = "emptyToolStripMenuItem";
-            this.emptyToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.emptyToolStripMenuItem.Size = new System.Drawing.Size(115, 22);
             this.emptyToolStripMenuItem.Text = "(Empty)";
             // 
             // ゲームログ開発者向けToolStripMenuItem
@@ -145,6 +147,13 @@
             this.Delay.Enabled = true;
             this.Delay.Tick += new System.EventHandler(this.Delay_Tick);
             // 
+            // consoleToolStripMenuItem
+            // 
+            this.consoleToolStripMenuItem.Name = "consoleToolStripMenuItem";
+            this.consoleToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.consoleToolStripMenuItem.Text = "Console";
+            this.consoleToolStripMenuItem.Click += new System.EventHandler(this.consoleToolStripMenuItem_Click);
+            // 
             // MainTray
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -182,5 +191,6 @@
         private ToolStripMenuItem ゲームログ開発者向けToolStripMenuItem;
         private ToolStripMenuItem AccountToolStrip;
         private ToolStripMenuItem emptyToolStripMenuItem;
+        private ToolStripMenuItem consoleToolStripMenuItem;
     }
 }

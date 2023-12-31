@@ -248,6 +248,9 @@ namespace Genshin_Checker
                         case nameof(Window.Debug.APIChecker):
                             find = new Window.Debug.APIChecker() { Name = Name };
                             break;
+                        case nameof(Window.Debug.Console):
+                            find = new Window.Debug.Console() { Name = Name };
+                            break;
                     }
             }
             else
@@ -321,6 +324,10 @@ namespace Genshin_Checker
             }
         }
 
+        private void consoleToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenWindow(null,nameof(Window.Debug.Console));
+        }
     }
     
 }
