@@ -85,10 +85,10 @@ namespace Genshin_Checker.App.HoYoLab
         /// <returns></returns>
         /// <exception cref="InvalidDataException"></exception>
         /// <exception cref="HoYoLabAPIException"></exception>
-        public async Task<Model.HoYoLab.SpiralAbyss.Data> GetSpiralAbyss(bool current)
+        public async Task<Model.HoYoLab.SpiralAbyss.Data> GetSpiralAbyss(bool current, CultureInfo? culture = null)
         {
             if (!Account.IsAuthed) throw new UserNotAuthenticatedException(Account.UID);
-            var json = await GetJson.GetSpiralAbyss(Account, current);
+            var json = await GetJson.GetSpiralAbyss(Account, current, culture);
             var root = JsonChecker<Model.HoYoLab.SpiralAbyss.Root>.Check(json);
             if (root.Data == null) throw new HoYoLabAPIException(root.Retcode, root.Message);
             return root.Data;
@@ -240,10 +240,12 @@ namespace Genshin_Checker.App.HoYoLab
         /// <returns></returns>
         /// <exception cref="InvalidDataException"></exception>
         /// <exception cref="HoYoLabAPIException"></exception>
-        public static async Task<string> GetSpiralAbyss(Account Account,bool current)
+        public static async Task<string> GetSpiralAbyss(Account Account,bool current, CultureInfo? culture = null)
         {
-            var url = $"https://bbs-api-os.hoyolab.com/game_record/genshin/api/spiralAbyss?server={Account.Server}&role_id={Account.UID}&lang={Account.Culture.Name.ToLower()}&schedule_type={(current ? 1 : 2)}";
-            var json = await WebRequest.HoYoGetRequest(url, Account.Cookie);
+            var cul = Account.Culture.Name.ToLower();
+            if (culture != null) cul = culture.Name.ToLower();
+            var url = $"https://bbs-api-os.hoyolab.com/game_record/genshin/api/spiralAbyss?server={Account.Server}&role_id={Account.UID}&lang={cul}&schedule_type={(current ? 1 : 2)}";
+            var json = await WebRequest.HoYoGetRequest(url, Account.Cookie,new(cul));
             return json ?? "";
         }
         /// <summary>
