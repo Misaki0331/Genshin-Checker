@@ -152,8 +152,8 @@ namespace Genshin_Checker
         //ここはテスト用
         private void testToolStripMenuItem_ClickAsync(object sender, EventArgs e)
         {
-            //OpenWindow(null, nameof(Window.Debug.APIChecker));
-            OpenWindow(Store.Accounts.Data[0], nameof(Window.SpiralAbyss));
+            OpenWindow(null, nameof(Window.Debug.APIChecker));
+            //OpenWindow(Store.Accounts.Data[0], nameof(Window.SpiralAbyss));
         }
 
         private void LogUpdated(object? sender, string[] e)

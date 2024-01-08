@@ -18,32 +18,40 @@ namespace Genshin_Checker.App.Command.CommandList
 {
     public class GetLocalize : Command
     {
-        public override string Name => GetType().ToString();
+        public override string Name => "get-localize";
+        public override string Description => "各言語のローカライズを取得します。";
 
-        public override async void Execute(Action<string> Output, params string[] parameters)
+        public override async Task<bool> Execute(params string[] parameters)
         {
             if(parameters.Length < 2)
             {
-                Output($"GetLocalize [SpiralAbyss]\n[SpiralAbyss] : 深境螺旋の敵情報を取得");
-                return;
+                Console($"GetLocalize [SpiralAbyss]\n[SpiralAbyss] : 深境螺旋の敵情報を取得");
+                return true;
             }
             switch(parameters[1].ToLower()) {
                 case "spiralabyss":
-                    await SpiralAbyss(Output);
+                    await SpiralAbyss(parameters);
                     break;
                 default:
-                    Output($"GetLocalize [SpiralAbyss]\n[SpiralAbyss] : 深境螺旋の敵情報を取得");
+                    Console($"GetLocalize [SpiralAbyss]\n[SpiralAbyss] : 深境螺旋の敵情報を取得");
                     break;
 
             }
+            return true;
         }
 
-        private async Task SpiralAbyss(Action<string> Output)
+        private async Task SpiralAbyss(params string[] parameters)
         {
+            bool IsOld = false;
+            if (parameters.Length >= 3 && parameters[2].ToLower() == "old")
+            {
+                IsOld = true;
+                Console($"過去データを取得します。");
+            }
             Account? ValidAccount = null;
             foreach(var account in Genshin_Checker.Store.Accounts.Data)
             {
-                var data = await account.SpiralAbyss.GetCurrent();
+                var data = IsOld?await account.SpiralAbyss.GetOld():await account.SpiralAbyss.GetCurrent();
                 bool IsValid = true;
                 if (data == null) continue;
                 var floor = data.Data.floors.FindAll(a => a.index >= 9);
@@ -58,7 +66,7 @@ namespace Genshin_Checker.App.Command.CommandList
                 }
             }
             if(ValidAccount == null) {
-                Output("条件に見合ったアカウントがありません。");
+                Console("条件に見合ったアカウントがありません。");
                 return;
             }
 
@@ -67,12 +75,12 @@ namespace Genshin_Checker.App.Command.CommandList
             var langs = JsonConvert.DeserializeObject<Model.HoYoLab.Languages>(await App.WebRequest.GeneralGetRequest("https://bbs-api-os.hoyolab.com/community/misc/wapi/langs"));
             if(langs == null || langs.Data == null)
             {
-                Output("サーバーから言語情報を読み込むことができませんでした。");
+                Console("サーバーから言語情報を読み込むことができませんでした。");
                 return;
             }
             foreach (var lan in langs.Data.langs) {
-                Datas.Add(lan.value,ValidAccount.SpiralAbyss.Convert(await ValidAccount.Endpoint.GetSpiralAbyss(true, new System.Globalization.CultureInfo(lan.value))));
-                Output($"Getting Localize : {Path.GetFileName(lan.value)}\r\n");
+                Datas.Add(lan.value,ValidAccount.SpiralAbyss.Convert(await ValidAccount.Endpoint.GetSpiralAbyss(!IsOld, new System.Globalization.CultureInfo(lan.value))));
+                Console($"Getting Localize : {Path.GetFileName(lan.value)}");
             }
             Model.Command.SpiralAbyssLocalize.Root result = new();
             var a = Datas.First().Value.Data.floors.FindAll(a => a.index >= 9);
@@ -103,7 +111,7 @@ namespace Genshin_Checker.App.Command.CommandList
                                 .enemies.Find(a=>a.RemoteIconPath==enemies.RemoteIconPath);
                                 if (b2 == null)
                                 {
-                                    Output("敵情報が読み込めませんでした。");
+                                    Console("敵情報が読み込めませんでした。");
                                     return;
                                 }
                                 e.LocalizeName.Add(s.Key, b2.name);
@@ -120,11 +128,11 @@ namespace Genshin_Checker.App.Command.CommandList
             foreach(var url in imageURL)
             {
 
-                string imagePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory),"SpiralAbyss","image",Path.GetFileName(url)); // 例: "C:\\Images\\myImage.png"
+                string imagePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory), "spiral-abyss", "image",Path.GetFileName(url)); // 例: "C:\\Images\\myImage.png"
                 var directry = Path.GetDirectoryName(imagePath);
                 if(directry== null)
                 {
-                    Output("ディレクトリが取得できませんでした。\r\n");
+                    Console("ディレクトリが取得できませんでした。");
                     return;
                 }
                 if (!Directory.Exists(directry)) Directory.CreateDirectory(directry);
@@ -132,13 +140,13 @@ namespace Genshin_Checker.App.Command.CommandList
                 // 画像を保存する
                 SaveImage(imagePath, await App.WebRequest.ImageGetRequest(url));
 
-                Output($"Saved to {Path.GetFileName(url)}\r\n");
+                Console($"Saved to {Path.GetFileName(url)}");
             }
-            var sr = new StreamWriter(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory), "SpiralAbyss",$"{result.ID}.json"));
+            var sr = new StreamWriter(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory), "spiral-abyss",$"{result.ID}.json"));
             await sr.WriteAsync(JsonConvert.SerializeObject(result));
             sr.Close();
             Clipboard.SetText(JsonConvert.SerializeObject(result));
-            Output($"Done!\r\n");
+            Console($"Done!\r\n");
             new ErrorMessage("クリップボードに取得しました。", $"{JsonConvert.SerializeObject(result)}","螺旋のローカライズ取得完了").ShowDialog();
         }
         static bool SaveImage(string path, Image image)

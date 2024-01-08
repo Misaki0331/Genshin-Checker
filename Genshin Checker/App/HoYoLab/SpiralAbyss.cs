@@ -135,6 +135,12 @@ namespace Genshin_Checker.App.HoYoLab
             return Convert(Cache.Data);
         }
 
+
+        public async Task<V1> GetOld()
+        {
+            return Convert(await account.Endpoint.GetSpiralAbyss(true));
+        }
+
         async void Save(V1 v1)
         {
             string? path = Registry.GetValue($"UserData\\{account.UID}\\SpiralAbyss", $"{v1.Data.schedule_id}",true);

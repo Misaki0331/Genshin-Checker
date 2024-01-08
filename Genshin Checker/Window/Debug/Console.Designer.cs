@@ -42,6 +42,7 @@
             this.InputText.Name = "InputText";
             this.InputText.Size = new System.Drawing.Size(606, 23);
             this.InputText.TabIndex = 0;
+            this.InputText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.InputText_KeyPress);
             // 
             // panel1
             // 

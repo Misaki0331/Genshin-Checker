@@ -41,6 +41,17 @@ namespace Genshin_Checker.App.General
             }
             return null;
         }
+
+        public static async Task<string?> WhereWebCacheFilePath()
+        {
+            var gamedir = await WhereGameDir();
+            if (gamedir == null) return null;
+            var webcaches = Path.Combine(gamedir, "webCaches");
+            var folders = new DirectoryInfo(webcaches).GetDirectories().OrderBy(f => f.LastWriteTime).Last();
+            var path = Path.Combine(folders.FullName, "Cache", "Cache_Data", "data_2");
+            if (!File.Exists(path)) return null;
+            return path;
+        }
         public static async Task<string?> WhereScreenShotPath()
         {
             var str = await WhereGameDir();

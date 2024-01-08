@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Genshin_Checker.Window;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -10,7 +11,7 @@ namespace Genshin_Checker.App.Command
 {
     public static class CommandManager
     {
-        private static readonly Dictionary<string, Command> commands =new ();
+        internal static readonly Dictionary<string, Command> commands =new ();
         private static void InitializeCommands()
         {
             // アプリケーション内の全てのコマンドクラスを取得
@@ -30,8 +31,8 @@ namespace Genshin_Checker.App.Command
 
         private static void RegisterCommand(Command command)
         {
-            commands[command.GetType().Name.ToLower().Split('.')[^1]] = command;
-            Trace.Write(command.GetType().Name.ToLower().Split('.')[^1]);
+            commands[command.Name] = command;
+            Trace.Write(command.Name);
         }
         public static event EventHandler<string>? ConsoleOut; 
         public static void RunCommand(string command)
@@ -42,17 +43,11 @@ namespace Genshin_Checker.App.Command
             string[] parts = command.Split(' ');
             if (parts.Length >= 1)
             {
-                ConsoleOut?.Invoke(command, $"> {command}{Environment.NewLine}");
+                ConsoleOut?.Invoke(command, $"> {command}");
                 string scriptName = parts[0].ToLower();
                 if (commands.ContainsKey(scriptName))
                 {
-                    try
-                    {
-                        commands[scriptName].Execute(output => ConsoleOut?.Invoke(command, output), parts);
-                    }catch(Exception ex)
-                    {
-                        ConsoleOut?.Invoke(command, $"コマンド実行中にエラーが発生しました。\n{ex}");
-                    }
+                    commands[scriptName].InnerRunning(output => ConsoleOut?.Invoke(command, output), parts);
                 }
                 else
                 {
@@ -65,12 +60,44 @@ namespace Genshin_Checker.App.Command
                 ConsoleOut?.Invoke(command, "エラー : 無効なコマンドです。");
             }
 
-            ConsoleOut?.Invoke(command, Environment.NewLine);
         }
     }
     public abstract class Command
     {
         public abstract string Name { get; }
-        public abstract void Execute(Action<string> outputCallback, params string[] parameters);
+        public abstract string Description { get; }
+        internal async void InnerRunning(Action<string> output, params string[] parameters)
+        {
+            Console = output;
+            try
+            {
+                if(!await Execute(parameters))Console("コマンド結果は成功しませんでした。");
+            }
+            catch (Exception ex)
+            {
+                Console($"コマンド実行中にエラーが発生しました。");
+                Console($"{ex}");
+            }
+        }
+        public abstract Task<bool> Execute(params string[] parameters);
+
+        public Action<string> Console=(e)=>{};
+    }
+
+    public class list : Command
+    {
+        public override string Name => "list";
+        public override string Description => "リストを取得します。";
+
+        public override Task<bool> Execute(params string[] parameters)
+        {
+            foreach(var command in CommandManager.commands)
+            {
+                Console($"{command.Key} : {command.Value.Description}");
+            }
+            Console($"");
+            Console($"コマンドは {CommandManager.commands.Count} 件あります。");
+            return Task.FromResult(true);
+        }
     }
 }
