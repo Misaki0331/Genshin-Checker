@@ -94,37 +94,37 @@ namespace Genshin_Checker.Store
 
         async void GetNameCard()
         {
-            var json = await App.WebRequest.GeneralGetRequest("https://raw.githubusercontent.com/EnkaNetwork/API-docs/master/store/namecards.json");
+            var json = await App.WebRequest.GeneralGetRequest("https://api.enka.network/store/namecards.json");
             var namecard = JsonConvert.DeserializeObject<Dictionary<int, Model.EnkaNetwork.Store.Namecard.Icon>>(json);
             if (namecard != null) Namecard = namecard;
         }
         async void GetLocale()
         {
-            var json = await App.WebRequest.GeneralGetRequest("https://raw.githubusercontent.com/EnkaNetwork/API-docs/master/store/loc.json");
+            var json = await App.WebRequest.GeneralGetRequest("https://api.enka.network/store/loc.json");
             var locale = JsonConvert.DeserializeObject<Dictionary<string, Dictionary<string, string>>>(json);
             if (locale != null) Locale = locale;
         }
         async void GetCharacters()
         {
-            var json = await App.WebRequest.GeneralGetRequest("https://raw.githubusercontent.com/EnkaNetwork/API-docs/master/store/characters.json");
+            var json = await App.WebRequest.GeneralGetRequest("https://api.enka.network/store/characters.json");
             var characters = JsonConvert.DeserializeObject<Dictionary<string, Model.EnkaNetwork.Store.Characters.Data>>(json);
             if (characters != null) Characters = characters;
         }
         async void GetPfps()
         {
-            var json = await App.WebRequest.GeneralGetRequest("https://raw.githubusercontent.com/EnkaNetwork/API-docs/master/store/pfps.json");
+            var json = await App.WebRequest.GeneralGetRequest("https://api.enka.network/store/pfps.json");
             var pfps = JsonConvert.DeserializeObject<Dictionary<int, Model.EnkaNetwork.Store.Pfps.Data>>(json);
             if (pfps != null) Pfps = pfps;
         }
         async void GetCostumes()
         {
-            var json = await App.WebRequest.GeneralGetRequest("https://raw.githubusercontent.com/EnkaNetwork/API-docs/master/store/costumes.json");
+            var json = await App.WebRequest.GeneralGetRequest("https://api.enka.network/store/costumes.json");
             var costumes = JsonConvert.DeserializeObject<Dictionary<int, Model.EnkaNetwork.Store.Costumes.Data>>(json);
             if (costumes != null) Costumes = costumes;
         }
         async void GetAffixes()
         {
-            var json = await App.WebRequest.GeneralGetRequest("https://raw.githubusercontent.com/EnkaNetwork/API-docs/master/store/affixes.json");
+            var json = await App.WebRequest.GeneralGetRequest("https://api.enka.network/store/affixes.json");
             var affixes = JsonConvert.DeserializeObject<Dictionary<int, Model.EnkaNetwork.Store.Affixes.Data>>(json);
             if (affixes != null) Affixes = affixes;
         }
