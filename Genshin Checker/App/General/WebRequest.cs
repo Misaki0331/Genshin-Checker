@@ -152,8 +152,8 @@ namespace Genshin_Checker.App
             foreach (KeyValuePair<string, string> header in headers)
                 client.DefaultRequestHeaders.Add(header.Key, header.Value);
             HttpResponseMessage response = await client.GetAsync(url);
+            Trace.WriteLine($"GeneralGet - {response.StatusCode} {url}");
             response.EnsureSuccessStatusCode();
-            Trace.WriteLine($"GeneralGet - {url}");
             return await response.Content.ReadAsStringAsync();
         }
         public static async Task<Image> ImageGetRequest(string? url,CancellationToken? token=null)
