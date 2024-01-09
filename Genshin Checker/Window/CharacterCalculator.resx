@@ -1,4 +1,5 @@
-﻿<root>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
   <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
@@ -125,9 +126,11 @@
   </data>
   <data name="ToArrow.HeaderText" xml:space="preserve">
     <value />
+    <comment>@Invariant</comment>
   </data>
   <data name="CalculateStatus.HeaderText" xml:space="preserve">
     <value />
+    <comment>@Invariant</comment>
   </data>
   <data name="&gt;&gt;Weapon.Name" xml:space="preserve">
     <value>Weapon</value>
@@ -172,7 +175,8 @@
     <value>646, 437</value>
   </data>
   <data name="ElementType.HeaderText" xml:space="preserve">
-    <value>元素</value>
+    <value>Elm</value>
+    <comment>@MutedRule(StringFormat)</comment>
   </data>
   <data name="button2.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -190,10 +194,10 @@
     <value>ElementType</value>
   </data>
   <data name="ButtonSelectAll.Text" xml:space="preserve">
-    <value>すべて選択</value>
+    <value>All Select</value>
   </data>
   <data name="button2.Text" xml:space="preserve">
-    <value>データ更新</value>
+    <value>Refresh</value>
   </data>
   <data name="&gt;&gt;CharacterName.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -283,7 +287,8 @@
     <value>96, 96</value>
   </data>
   <data name="ToTalentLevel2.HeaderText" xml:space="preserve">
-    <value>ｽｷﾙ</value>
+    <value>E.S</value>
+    <comment>@MutedRule(StringFormat)</comment>
   </data>
   <data name="ID.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -325,13 +330,13 @@
     <value>3</value>
   </data>
   <data name="Weapon.HeaderText" xml:space="preserve">
-    <value>武器種</value>
+    <value>Weapons</value>
   </data>
   <data name="&gt;&gt;CurrentTalentLevel1.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="CurrentTalentLevel2.HeaderText" xml:space="preserve">
-    <value>ｽｷﾙ</value>
+    <value>E.S</value>
   </data>
   <data name="&gt;&gt;ErrorHandling.Type" xml:space="preserve">
     <value>System.Windows.Forms.Timer, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -367,10 +372,10 @@
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>CharacterCalculator</value>
+    <value>Character Calculator+</value>
   </data>
   <data name="ToTalentLevel3.HeaderText" xml:space="preserve">
-    <value>爆発</value>
+    <value>B.S</value>
   </data>
   <data name="ToTalentLevel3.Width" type="System.Int32, mscorlib">
     <value>45</value>
@@ -379,7 +384,7 @@
     <value>20</value>
   </data>
   <data name="CurrentTalentLevel1.HeaderText" xml:space="preserve">
-    <value>通常</value>
+    <value>N.A</value>
   </data>
   <data name="&gt;&gt;ButtonSelectAll.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -400,13 +405,13 @@
     <value>75, 24</value>
   </data>
   <data name="CharacterName.HeaderText" xml:space="preserve">
-    <value>名前</value>
+    <value>Name</value>
   </data>
   <data name="ButtonSelectAll.Location" type="System.Drawing.Point, System.Drawing">
     <value>75, 0</value>
   </data>
   <data name="CurrentTalentLevel3.HeaderText" xml:space="preserve">
-    <value>爆発</value>
+    <value>B.S</value>
   </data>
   <data name="&gt;&gt;ToLevel.Name" xml:space="preserve">
     <value>ToLevel</value>
@@ -430,13 +435,13 @@
     <value>25</value>
   </data>
   <data name="ToTalentLevel1.HeaderText" xml:space="preserve">
-    <value>通常</value>
+    <value>N.A</value>
   </data>
   <data name="&gt;&gt;CharacterName.Name" xml:space="preserve">
     <value>CharacterName</value>
   </data>
   <data name="button1.Text" xml:space="preserve">
-    <value>計算開始</value>
+    <value>Calculate</value>
   </data>
   <data name="Rarelity.HeaderText" xml:space="preserve">
     <value>★</value>

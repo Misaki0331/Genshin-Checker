@@ -49,6 +49,10 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.ViewLocalSpecialtyItem = new System.Windows.Forms.DataGridView();
+            this.LocalSpecialtyID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LocalSpecialtyItemImage = new System.Windows.Forms.DataGridViewImageColumn();
+            this.LocalSpecialtyItemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LocalSpecialtyItemNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.ViewAscensionMaterial = new System.Windows.Forms.DataGridView();
             this.AscensionTypeID = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -59,6 +63,10 @@
             this.AscensionNumGemstone = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.ViewBossItem = new System.Windows.Forms.DataGridView();
+            this.BossItemID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BossItemImage = new System.Windows.Forms.DataGridViewImageColumn();
+            this.BossItemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BossItemNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
@@ -93,6 +101,10 @@
             this.TalentItemNumPhilosophies = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.ViewWeeklyBossItems = new System.Windows.Forms.DataGridView();
+            this.WeeklyBossItemID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.WeeklyBossItemImage = new System.Windows.Forms.DataGridViewImageColumn();
+            this.WeeklyBossItemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.WeeklyBossItemNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
@@ -120,18 +132,6 @@
             this.panel15 = new System.Windows.Forms.Panel();
             this.ResinCharaExp = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
-            this.BossItemID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BossItemImage = new System.Windows.Forms.DataGridViewImageColumn();
-            this.BossItemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BossItemNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LocalSpecialtyID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LocalSpecialtyItemImage = new System.Windows.Forms.DataGridViewImageColumn();
-            this.LocalSpecialtyItemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LocalSpecialtyItemNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.WeeklyBossItemID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.WeeklyBossItemImage = new System.Windows.Forms.DataGridViewImageColumn();
-            this.WeeklyBossItemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.WeeklyBossItemNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.ProgressPanel.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
@@ -179,16 +179,16 @@
             // 
             // panel1
             // 
-            resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Controls.Add(this.ProgressPanel);
             this.panel1.Controls.Add(this.tableLayoutPanel4);
+            resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Name = "panel1";
             // 
             // ProgressPanel
             // 
-            resources.ApplyResources(this.ProgressPanel, "ProgressPanel");
             this.ProgressPanel.Controls.Add(this.progressBar);
             this.ProgressPanel.Controls.Add(this.ProgressState);
+            resources.ApplyResources(this.ProgressPanel, "ProgressPanel");
             this.ProgressPanel.Name = "ProgressPanel";
             // 
             // progressBar
@@ -272,17 +272,17 @@
             // 
             // tabControl1
             // 
-            resources.ApplyResources(this.tabControl1, "tabControl1");
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
+            resources.ApplyResources(this.tabControl1, "tabControl1");
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             // 
             // tabPage1
             // 
-            resources.ApplyResources(this.tabPage1, "tabPage1");
             this.tabPage1.Controls.Add(this.tableLayoutPanel1);
+            resources.ApplyResources(this.tabPage1, "tabPage1");
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
@@ -305,7 +305,6 @@
             // 
             // ViewLocalSpecialtyItem
             // 
-            resources.ApplyResources(this.ViewLocalSpecialtyItem, "ViewLocalSpecialtyItem");
             this.ViewLocalSpecialtyItem.AllowUserToAddRows = false;
             this.ViewLocalSpecialtyItem.AllowUserToDeleteRows = false;
             this.ViewLocalSpecialtyItem.AllowUserToResizeColumns = false;
@@ -317,6 +316,7 @@
             this.LocalSpecialtyItemImage,
             this.LocalSpecialtyItemName,
             this.LocalSpecialtyItemNum});
+            resources.ApplyResources(this.ViewLocalSpecialtyItem, "ViewLocalSpecialtyItem");
             this.ViewLocalSpecialtyItem.EnableHeadersVisualStyles = false;
             this.ViewLocalSpecialtyItem.Name = "ViewLocalSpecialtyItem";
             this.ViewLocalSpecialtyItem.ReadOnly = true;
@@ -324,6 +324,40 @@
             this.ViewLocalSpecialtyItem.RowTemplate.Height = 25;
             this.ViewLocalSpecialtyItem.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.TableFormatting);
             this.ViewLocalSpecialtyItem.Leave += new System.EventHandler(this.ViewLeave);
+            // 
+            // LocalSpecialtyID
+            // 
+            resources.ApplyResources(this.LocalSpecialtyID, "LocalSpecialtyID");
+            this.LocalSpecialtyID.Name = "LocalSpecialtyID";
+            this.LocalSpecialtyID.ReadOnly = true;
+            // 
+            // LocalSpecialtyItemImage
+            // 
+            this.LocalSpecialtyItemImage.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            resources.ApplyResources(this.LocalSpecialtyItemImage, "LocalSpecialtyItemImage");
+            this.LocalSpecialtyItemImage.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.LocalSpecialtyItemImage.Name = "LocalSpecialtyItemImage";
+            this.LocalSpecialtyItemImage.ReadOnly = true;
+            this.LocalSpecialtyItemImage.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.LocalSpecialtyItemImage.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // LocalSpecialtyItemName
+            // 
+            this.LocalSpecialtyItemName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.LocalSpecialtyItemName.DividerWidth = 1;
+            this.LocalSpecialtyItemName.FillWeight = 4F;
+            resources.ApplyResources(this.LocalSpecialtyItemName, "LocalSpecialtyItemName");
+            this.LocalSpecialtyItemName.Name = "LocalSpecialtyItemName";
+            this.LocalSpecialtyItemName.ReadOnly = true;
+            this.LocalSpecialtyItemName.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // LocalSpecialtyItemNum
+            // 
+            this.LocalSpecialtyItemNum.FillWeight = 1F;
+            resources.ApplyResources(this.LocalSpecialtyItemNum, "LocalSpecialtyItemNum");
+            this.LocalSpecialtyItemNum.Name = "LocalSpecialtyItemNum";
+            this.LocalSpecialtyItemNum.ReadOnly = true;
+            this.LocalSpecialtyItemNum.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
             // groupBox1
             // 
@@ -334,7 +368,6 @@
             // 
             // ViewAscensionMaterial
             // 
-            resources.ApplyResources(this.ViewAscensionMaterial, "ViewAscensionMaterial");
             this.ViewAscensionMaterial.AllowUserToAddRows = false;
             this.ViewAscensionMaterial.AllowUserToDeleteRows = false;
             this.ViewAscensionMaterial.AllowUserToResizeColumns = false;
@@ -348,6 +381,7 @@
             this.AscensionNumFragment,
             this.AscensionNumChunk,
             this.AscensionNumGemstone});
+            resources.ApplyResources(this.ViewAscensionMaterial, "ViewAscensionMaterial");
             this.ViewAscensionMaterial.EnableHeadersVisualStyles = false;
             this.ViewAscensionMaterial.Name = "ViewAscensionMaterial";
             this.ViewAscensionMaterial.ReadOnly = true;
@@ -414,7 +448,6 @@
             // 
             // ViewBossItem
             // 
-            resources.ApplyResources(this.ViewBossItem, "ViewBossItem");
             this.ViewBossItem.AllowUserToAddRows = false;
             this.ViewBossItem.AllowUserToDeleteRows = false;
             this.ViewBossItem.AllowUserToResizeColumns = false;
@@ -426,6 +459,7 @@
             this.BossItemImage,
             this.BossItemName,
             this.BossItemNum});
+            resources.ApplyResources(this.ViewBossItem, "ViewBossItem");
             this.ViewBossItem.EnableHeadersVisualStyles = false;
             this.ViewBossItem.Name = "ViewBossItem";
             this.ViewBossItem.ReadOnly = true;
@@ -434,11 +468,46 @@
             this.ViewBossItem.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.TableFormatting);
             this.ViewBossItem.Leave += new System.EventHandler(this.ViewLeave);
             // 
+            // BossItemID
+            // 
+            resources.ApplyResources(this.BossItemID, "BossItemID");
+            this.BossItemID.Name = "BossItemID";
+            this.BossItemID.ReadOnly = true;
+            // 
+            // BossItemImage
+            // 
+            this.BossItemImage.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.BossItemImage.FillWeight = 22.31395F;
+            resources.ApplyResources(this.BossItemImage, "BossItemImage");
+            this.BossItemImage.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.BossItemImage.Name = "BossItemImage";
+            this.BossItemImage.ReadOnly = true;
+            this.BossItemImage.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.BossItemImage.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // BossItemName
+            // 
+            this.BossItemName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.BossItemName.DividerWidth = 1;
+            this.BossItemName.FillWeight = 4F;
+            resources.ApplyResources(this.BossItemName, "BossItemName");
+            this.BossItemName.Name = "BossItemName";
+            this.BossItemName.ReadOnly = true;
+            this.BossItemName.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // BossItemNum
+            // 
+            this.BossItemNum.FillWeight = 78.68605F;
+            resources.ApplyResources(this.BossItemNum, "BossItemNum");
+            this.BossItemNum.Name = "BossItemNum";
+            this.BossItemNum.ReadOnly = true;
+            this.BossItemNum.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
             // panel2
             // 
-            resources.ApplyResources(this.panel2, "panel2");
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Controls.Add(this.panel4);
+            resources.ApplyResources(this.panel2, "panel2");
             this.panel2.Name = "panel2";
             // 
             // panel3
@@ -505,8 +574,8 @@
             // 
             // tabPage2
             // 
-            resources.ApplyResources(this.tabPage2, "tabPage2");
             this.tabPage2.Controls.Add(this.tableLayoutPanel2);
+            resources.ApplyResources(this.tabPage2, "tabPage2");
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
@@ -520,9 +589,9 @@
             // 
             // panel5
             // 
-            resources.ApplyResources(this.panel5, "panel5");
             this.panel5.Controls.Add(this.panel6);
             this.panel5.Controls.Add(this.panel7);
+            resources.ApplyResources(this.panel5, "panel5");
             this.panel5.Name = "panel5";
             // 
             // panel6
@@ -596,7 +665,6 @@
             // 
             // ViewTalentItems
             // 
-            resources.ApplyResources(this.ViewTalentItems, "ViewTalentItems");
             this.ViewTalentItems.AllowUserToAddRows = false;
             this.ViewTalentItems.AllowUserToDeleteRows = false;
             this.ViewTalentItems.AllowUserToResizeColumns = false;
@@ -610,6 +678,7 @@
             this.TalentItemNumTeachings,
             this.TalentItemNumGuide,
             this.TalentItemNumPhilosophies});
+            resources.ApplyResources(this.ViewTalentItems, "ViewTalentItems");
             this.ViewTalentItems.EnableHeadersVisualStyles = false;
             this.ViewTalentItems.Name = "ViewTalentItems";
             this.ViewTalentItems.ReadOnly = true;
@@ -677,7 +746,6 @@
             // 
             // ViewWeeklyBossItems
             // 
-            resources.ApplyResources(this.ViewWeeklyBossItems, "ViewWeeklyBossItems");
             this.ViewWeeklyBossItems.AllowUserToAddRows = false;
             this.ViewWeeklyBossItems.AllowUserToDeleteRows = false;
             this.ViewWeeklyBossItems.AllowUserToResizeColumns = false;
@@ -689,6 +757,7 @@
             this.WeeklyBossItemImage,
             this.WeeklyBossItemName,
             this.WeeklyBossItemNum});
+            resources.ApplyResources(this.ViewWeeklyBossItems, "ViewWeeklyBossItems");
             this.ViewWeeklyBossItems.EnableHeadersVisualStyles = false;
             this.ViewWeeklyBossItems.Name = "ViewWeeklyBossItems";
             this.ViewWeeklyBossItems.ReadOnly = true;
@@ -697,10 +766,47 @@
             this.ViewWeeklyBossItems.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.TableFormatting);
             this.ViewWeeklyBossItems.Leave += new System.EventHandler(this.ViewLeave);
             // 
+            // WeeklyBossItemID
+            // 
+            this.WeeklyBossItemID.Frozen = true;
+            resources.ApplyResources(this.WeeklyBossItemID, "WeeklyBossItemID");
+            this.WeeklyBossItemID.Name = "WeeklyBossItemID";
+            this.WeeklyBossItemID.ReadOnly = true;
+            // 
+            // WeeklyBossItemImage
+            // 
+            this.WeeklyBossItemImage.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.WeeklyBossItemImage.FillWeight = 20F;
+            this.WeeklyBossItemImage.Frozen = true;
+            resources.ApplyResources(this.WeeklyBossItemImage, "WeeklyBossItemImage");
+            this.WeeklyBossItemImage.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.WeeklyBossItemImage.Name = "WeeklyBossItemImage";
+            this.WeeklyBossItemImage.ReadOnly = true;
+            this.WeeklyBossItemImage.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // WeeklyBossItemName
+            // 
+            this.WeeklyBossItemName.DividerWidth = 1;
+            this.WeeklyBossItemName.FillWeight = 5F;
+            resources.ApplyResources(this.WeeklyBossItemName, "WeeklyBossItemName");
+            this.WeeklyBossItemName.Name = "WeeklyBossItemName";
+            this.WeeklyBossItemName.ReadOnly = true;
+            this.WeeklyBossItemName.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // WeeklyBossItemNum
+            // 
+            this.WeeklyBossItemNum.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.WeeklyBossItemNum.DividerWidth = 1;
+            this.WeeklyBossItemNum.FillWeight = 1F;
+            resources.ApplyResources(this.WeeklyBossItemNum, "WeeklyBossItemNum");
+            this.WeeklyBossItemNum.Name = "WeeklyBossItemNum";
+            this.WeeklyBossItemNum.ReadOnly = true;
+            this.WeeklyBossItemNum.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
             // tabPage3
             // 
-            resources.ApplyResources(this.tabPage3, "tabPage3");
             this.tabPage3.Controls.Add(this.tableLayoutPanel3);
+            resources.ApplyResources(this.tabPage3, "tabPage3");
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
@@ -720,7 +826,6 @@
             // 
             // ViewEnemyItems
             // 
-            resources.ApplyResources(this.ViewEnemyItems, "ViewEnemyItems");
             this.ViewEnemyItems.AllowUserToAddRows = false;
             this.ViewEnemyItems.AllowUserToDeleteRows = false;
             this.ViewEnemyItems.AllowUserToResizeColumns = false;
@@ -734,6 +839,7 @@
             this.EnemyItemCharacterNum,
             this.EnemyItemTalentNum,
             this.EnemyItemTotalNum});
+            resources.ApplyResources(this.ViewEnemyItems, "ViewEnemyItems");
             this.ViewEnemyItems.EnableHeadersVisualStyles = false;
             this.ViewEnemyItems.Name = "ViewEnemyItems";
             this.ViewEnemyItems.ReadOnly = true;
@@ -795,26 +901,26 @@
             // 
             // groupBox7
             // 
-            resources.ApplyResources(this.groupBox7, "groupBox7");
             this.groupBox7.Controls.Add(this.panel10);
+            resources.ApplyResources(this.groupBox7, "groupBox7");
             this.groupBox7.Name = "groupBox7";
             this.groupBox7.TabStop = false;
             // 
             // panel10
             // 
-            resources.ApplyResources(this.panel10, "panel10");
             this.panel10.Controls.Add(this.panel14);
             this.panel10.Controls.Add(this.panel12);
             this.panel10.Controls.Add(this.panel13);
             this.panel10.Controls.Add(this.panel11);
             this.panel10.Controls.Add(this.panel15);
+            resources.ApplyResources(this.panel10, "panel10");
             this.panel10.Name = "panel10";
             // 
             // panel14
             // 
-            resources.ApplyResources(this.panel14, "panel14");
             this.panel14.Controls.Add(this.ResinTalentMora);
             this.panel14.Controls.Add(this.label21);
+            resources.ApplyResources(this.panel14, "panel14");
             this.panel14.Name = "panel14";
             // 
             // ResinTalentMora
@@ -829,9 +935,9 @@
             // 
             // panel12
             // 
-            resources.ApplyResources(this.panel12, "panel12");
             this.panel12.Controls.Add(this.ResinTalentBooks);
             this.panel12.Controls.Add(this.label17);
+            resources.ApplyResources(this.panel12, "panel12");
             this.panel12.Name = "panel12";
             // 
             // ResinTalentBooks
@@ -846,9 +952,9 @@
             // 
             // panel13
             // 
-            resources.ApplyResources(this.panel13, "panel13");
             this.panel13.Controls.Add(this.ResinCharacterMora);
             this.panel13.Controls.Add(this.label19);
+            resources.ApplyResources(this.panel13, "panel13");
             this.panel13.Name = "panel13";
             // 
             // ResinCharacterMora
@@ -863,9 +969,9 @@
             // 
             // panel11
             // 
-            resources.ApplyResources(this.panel11, "panel11");
             this.panel11.Controls.Add(this.ResinBossItem);
             this.panel11.Controls.Add(this.label14);
+            resources.ApplyResources(this.panel11, "panel11");
             this.panel11.Name = "panel11";
             // 
             // ResinBossItem
@@ -880,9 +986,9 @@
             // 
             // panel15
             // 
-            resources.ApplyResources(this.panel15, "panel15");
             this.panel15.Controls.Add(this.ResinCharaExp);
             this.panel15.Controls.Add(this.label15);
+            resources.ApplyResources(this.panel15, "panel15");
             this.panel15.Name = "panel15";
             // 
             // ResinCharaExp
@@ -894,112 +1000,6 @@
             // 
             resources.ApplyResources(this.label15, "label15");
             this.label15.Name = "label15";
-            // 
-            // BossItemID
-            // 
-            resources.ApplyResources(this.BossItemID, "BossItemID");
-            this.BossItemID.Name = "BossItemID";
-            this.BossItemID.ReadOnly = true;
-            // 
-            // BossItemImage
-            // 
-            this.BossItemImage.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.BossItemImage.FillWeight = 22.31395F;
-            resources.ApplyResources(this.BossItemImage, "BossItemImage");
-            this.BossItemImage.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.BossItemImage.Name = "BossItemImage";
-            this.BossItemImage.ReadOnly = true;
-            this.BossItemImage.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.BossItemImage.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // BossItemName
-            // 
-            this.BossItemName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.BossItemName.DividerWidth = 1;
-            this.BossItemName.FillWeight = 4F;
-            resources.ApplyResources(this.BossItemName, "BossItemName");
-            this.BossItemName.Name = "BossItemName";
-            this.BossItemName.ReadOnly = true;
-            this.BossItemName.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // BossItemNum
-            // 
-            this.BossItemNum.FillWeight = 78.68605F;
-            resources.ApplyResources(this.BossItemNum, "BossItemNum");
-            this.BossItemNum.Name = "BossItemNum";
-            this.BossItemNum.ReadOnly = true;
-            this.BossItemNum.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // LocalSpecialtyID
-            // 
-            resources.ApplyResources(this.LocalSpecialtyID, "LocalSpecialtyID");
-            this.LocalSpecialtyID.Name = "LocalSpecialtyID";
-            this.LocalSpecialtyID.ReadOnly = true;
-            // 
-            // LocalSpecialtyItemImage
-            // 
-            this.LocalSpecialtyItemImage.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            resources.ApplyResources(this.LocalSpecialtyItemImage, "LocalSpecialtyItemImage");
-            this.LocalSpecialtyItemImage.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.LocalSpecialtyItemImage.Name = "LocalSpecialtyItemImage";
-            this.LocalSpecialtyItemImage.ReadOnly = true;
-            this.LocalSpecialtyItemImage.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.LocalSpecialtyItemImage.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // LocalSpecialtyItemName
-            // 
-            this.LocalSpecialtyItemName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.LocalSpecialtyItemName.DividerWidth = 1;
-            this.LocalSpecialtyItemName.FillWeight = 4F;
-            resources.ApplyResources(this.LocalSpecialtyItemName, "LocalSpecialtyItemName");
-            this.LocalSpecialtyItemName.Name = "LocalSpecialtyItemName";
-            this.LocalSpecialtyItemName.ReadOnly = true;
-            this.LocalSpecialtyItemName.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // LocalSpecialtyItemNum
-            // 
-            this.LocalSpecialtyItemNum.FillWeight = 1F;
-            resources.ApplyResources(this.LocalSpecialtyItemNum, "LocalSpecialtyItemNum");
-            this.LocalSpecialtyItemNum.Name = "LocalSpecialtyItemNum";
-            this.LocalSpecialtyItemNum.ReadOnly = true;
-            this.LocalSpecialtyItemNum.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // WeeklyBossItemID
-            // 
-            this.WeeklyBossItemID.Frozen = true;
-            resources.ApplyResources(this.WeeklyBossItemID, "WeeklyBossItemID");
-            this.WeeklyBossItemID.Name = "WeeklyBossItemID";
-            this.WeeklyBossItemID.ReadOnly = true;
-            // 
-            // WeeklyBossItemImage
-            // 
-            this.WeeklyBossItemImage.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.WeeklyBossItemImage.FillWeight = 20F;
-            this.WeeklyBossItemImage.Frozen = true;
-            resources.ApplyResources(this.WeeklyBossItemImage, "WeeklyBossItemImage");
-            this.WeeklyBossItemImage.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.WeeklyBossItemImage.Name = "WeeklyBossItemImage";
-            this.WeeklyBossItemImage.ReadOnly = true;
-            this.WeeklyBossItemImage.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // WeeklyBossItemName
-            // 
-            this.WeeklyBossItemName.DividerWidth = 1;
-            this.WeeklyBossItemName.FillWeight = 5F;
-            resources.ApplyResources(this.WeeklyBossItemName, "WeeklyBossItemName");
-            this.WeeklyBossItemName.Name = "WeeklyBossItemName";
-            this.WeeklyBossItemName.ReadOnly = true;
-            this.WeeklyBossItemName.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // WeeklyBossItemNum
-            // 
-            this.WeeklyBossItemNum.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.WeeklyBossItemNum.DividerWidth = 1;
-            this.WeeklyBossItemNum.FillWeight = 1F;
-            resources.ApplyResources(this.WeeklyBossItemNum, "WeeklyBossItemNum");
-            this.WeeklyBossItemNum.Name = "WeeklyBossItemNum";
-            this.WeeklyBossItemNum.ReadOnly = true;
-            this.WeeklyBossItemNum.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
             // CalculateResult
             // 

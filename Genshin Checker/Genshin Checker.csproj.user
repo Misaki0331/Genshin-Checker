@@ -120,5 +120,8 @@
     <EmbeddedResource Update="resource\font.resx">
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Update="Window\PopupWindow\FatalError.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
 </Project>

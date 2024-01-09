@@ -117,23 +117,64 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="$this.Text" xml:space="preserve">
+    <value>リアルタイムノート</value>
+  </data>
   <data name="button1.Text" xml:space="preserve">
-    <value>連携解除</value>
+    <value>再読込</value>
   </data>
-  <data name="Infomation.Text" xml:space="preserve">
-    <value>実績:1234件 螺旋:12-3
-ログイン日数:1234日</value>
+  <data name="button_Auth.Text" xml:space="preserve">
+    <value>再連携</value>
   </data>
-  <data name="String" xml:space="preserve">
-    <value>ログイン日数:1234日</value>
+  <data name="label10.Text" xml:space="preserve">
+    <value>データを取得中です...</value>
   </data>
-  <data name="UserName.Text" xml:space="preserve">
-    <value>ユーザー名</value>
+  <data name="label11.Text" xml:space="preserve">
+    <value>探索派遣</value>
   </data>
-  <data name="AdventureRank.Text" xml:space="preserve">
-    <value>60</value>
+  <data name="label3.Text" xml:space="preserve">
+    <value>残り --:--:--</value>
   </data>
-  <data name="UID.Text" xml:space="preserve">
-    <value>8XXXXXXXX</value>
+  <data name="label7.Text" xml:space="preserve">
+    <value>残り --:--:--</value>
+  </data>
+  <data name="label9.Text" xml:space="preserve">
+    <value>あと ---:--:--</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>---</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>/---</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>-/-</value>
+  </data>
+  <data name="label_expendition_5.Text" xml:space="preserve">
+    <value>--:--:--</value>
+  </data>
+  <data name="label_expendition_4.Text" xml:space="preserve">
+    <value>--:--:--</value>
+  </data>
+  <data name="label_expendition_3.Text" xml:space="preserve">
+    <value>--:--:--</value>
+  </data>
+  <data name="label_expendition_1.Text" xml:space="preserve">
+    <value>--:--:--</value>
+  </data>
+  <data name="label_expendition_2.Text" xml:space="preserve">
+    <value>--:--:--</value>
+  </data>
+  <data name="label_expendition_num.Text" xml:space="preserve">
+    <value>- / -</value>
+  </data>
+  <data name="label8.Text" xml:space="preserve">
+    <value>-/-</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>/----</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>----</value>
   </data>
 </root>

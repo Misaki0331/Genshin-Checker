@@ -1,4 +1,5 @@
-﻿<root>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
   <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
@@ -126,5 +127,38 @@
   </data>
   <data name="groupBox1.Text" xml:space="preserve">
     <value>育成ステータス</value>
+  </data>
+  <data name="ButtonAppry.Text" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="ArrowTalent1.Text" xml:space="preserve">
+    <value>▶</value>
+  </data>
+  <data name="CurrentTalent1.Text" xml:space="preserve">
+    <value>Lv. 10</value>
+  </data>
+  <data name="ArrowLevel.Text" xml:space="preserve">
+    <value>▶</value>
+  </data>
+  <data name="ArrowTalent3.Text" xml:space="preserve">
+    <value>▶</value>
+  </data>
+  <data name="ArrowTalent2.Text" xml:space="preserve">
+    <value>▶</value>
+  </data>
+  <data name="ButtonSetToLv90.Text" xml:space="preserve">
+    <value>Lv.90</value>
+  </data>
+  <data name="CurrentTalent3.Text" xml:space="preserve">
+    <value>Lv. 10</value>
+  </data>
+  <data name="CurrentLevel.Text" xml:space="preserve">
+    <value>Lv. 10</value>
+  </data>
+  <data name="CurrentTalent2.Text" xml:space="preserve">
+    <value>Lv. 10</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>BatchWindow</value>
   </data>
 </root>

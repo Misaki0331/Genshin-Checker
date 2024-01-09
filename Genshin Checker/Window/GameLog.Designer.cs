@@ -42,13 +42,13 @@
             // 
             // panel1
             // 
-            resources.ApplyResources(this.panel1, "panel1");
             this.panel1.BackColor = System.Drawing.Color.Black;
             this.panel1.Controls.Add(this.numeric_FontSize);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.CheckBox_GameFullScreenSpecialized);
             this.panel1.Controls.Add(this.CheckBoxTopMost);
             this.panel1.Controls.Add(this.ClearConsole);
+            resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Name = "panel1";
             // 
             // numeric_FontSize
@@ -103,8 +103,8 @@
             // 
             // Log
             // 
-            resources.ApplyResources(this.Log, "Log");
             this.Log.BackColor = System.Drawing.Color.Black;
+            resources.ApplyResources(this.Log, "Log");
             this.Log.ForeColor = System.Drawing.Color.White;
             this.Log.Name = "Log";
             this.Log.ReadOnly = true;

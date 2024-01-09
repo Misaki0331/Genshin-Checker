@@ -1,4 +1,5 @@
-﻿<root>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
   <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
@@ -152,7 +153,7 @@
     <value>0</value>
   </data>
   <data name="UserName.Text" xml:space="preserve">
-    <value>水咲(みさき)</value>
+    <value>Username</value>
   </data>
   <data name="UserName.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>BottomLeft</value>
@@ -188,8 +189,8 @@
     <value>1</value>
   </data>
   <data name="Infomation.Text" xml:space="preserve">
-    <value>実績:1234件 螺旋:12-3
-ログイン日数:1234日</value>
+    <value>Achieve:1234 Spiral Abyss:12-3
+Active:1234 days</value>
   </data>
   <data name="&gt;&gt;Infomation.Name" xml:space="preserve">
     <value>Infomation</value>
@@ -358,5 +359,8 @@
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>System.Windows.Forms.UserControl, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="String" xml:space="preserve">
+    <value>Active days: 1234</value>
   </data>
 </root>

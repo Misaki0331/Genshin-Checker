@@ -1,4 +1,5 @@
-﻿<root>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
   <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
@@ -301,7 +302,7 @@
     <value>0, 100</value>
   </data>
   <data name="OculusCount.Text" xml:space="preserve">
-    <value>神の瞳 : 999</value>
+    <value>Oculus : 999</value>
   </data>
   <data name="&gt;&gt;ExContain_ShowDetailButton.Name" xml:space="preserve">
     <value>ExContain_ShowDetailButton</value>
@@ -331,7 +332,7 @@
     <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="ExContain_MapName.Text" xml:space="preserve">
-    <value>地名地名地名地名地名</value>
+    <value>Area Name</value>
   </data>
   <data name="&gt;&gt;OculusCount.ZOrder" xml:space="preserve">
     <value>1</value>

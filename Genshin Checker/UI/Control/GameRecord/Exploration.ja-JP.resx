@@ -1,4 +1,5 @@
-﻿<root>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
   <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
@@ -62,5 +63,11 @@
   </data>
   <data name="ExContain_HideDetailButton.Text" xml:space="preserve">
     <value>隠す ◀</value>
+  </data>
+  <data name="OculusCount.Text" xml:space="preserve">
+    <value>神の瞳 : 999</value>
+  </data>
+  <data name="ExContain_MapName.Text" xml:space="preserve">
+    <value>地名地名地名地名地名</value>
   </data>
 </root>

@@ -1,4 +1,5 @@
-﻿<root>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
   <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
@@ -58,42 +59,60 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="button1.Text" xml:space="preserve">
-    <value>Calculate</value>
+    <value>計算開始</value>
   </data>
   <data name="button2.Text" xml:space="preserve">
-    <value>Refresh</value>
+    <value>データ更新</value>
   </data>
   <data name="ButtonSelectAll.Text" xml:space="preserve">
-    <value>All Select</value>
+    <value>全て選択</value>
   </data>
   <data name="ButtonBatch.Text" xml:space="preserve">
     <value>Edit</value>
   </data>
-  <data name="ElementType.HeaderText" xml:space="preserve">
-    <value>Elm.</value>
-  </data>
   <data name="CharacterName.HeaderText" xml:space="preserve">
-    <value>Name</value>
+    <value>名前</value>
   </data>
   <data name="Weapon.HeaderText" xml:space="preserve">
-    <value>Weapons</value>
+    <value>武器種</value>
   </data>
   <data name="CurrentTalentLevel1.HeaderText" xml:space="preserve">
-    <value>N.A.</value>
+    <value>通常</value>
   </data>
   <data name="CurrentTalentLevel2.HeaderText" xml:space="preserve">
-    <value>E.S.</value>
+    <value>ｽｷﾙ</value>
   </data>
   <data name="CurrentTalentLevel3.HeaderText" xml:space="preserve">
-    <value>B.S</value>
+    <value>爆発</value>
   </data>
   <data name="ToTalentLevel1.HeaderText" xml:space="preserve">
-    <value>N.A.</value>
+    <value>通常</value>
   </data>
   <data name="ToTalentLevel2.HeaderText" xml:space="preserve">
-    <value>E.S.</value>
+    <value>ｽｷﾙ</value>
   </data>
   <data name="ToTalentLevel3.HeaderText" xml:space="preserve">
-    <value>B.S.</value>
+    <value>爆発</value>
+  </data>
+  <data name="CurrentLevel.HeaderText" xml:space="preserve">
+    <value>Lv</value>
+  </data>
+  <data name="Fetter.HeaderText" xml:space="preserve">
+    <value>♥</value>
+  </data>
+  <data name="ID.HeaderText" xml:space="preserve">
+    <value>Character ID</value>
+  </data>
+  <data name="ToLevel.HeaderText" xml:space="preserve">
+    <value>Lv</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>育成計算機＋</value>
+  </data>
+  <data name="Rarelity.HeaderText" xml:space="preserve">
+    <value>★</value>
+  </data>
+  <data name="ElementType.HeaderText" xml:space="preserve">
+    <value>元素</value>
   </data>
 </root>

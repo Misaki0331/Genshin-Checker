@@ -1,4 +1,5 @@
-﻿<root>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
   <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
@@ -112,7 +113,7 @@
     <value>1</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
-    <value>ＡＢＣＤＥＦＧ</value>
+    <value>8XXXXXXX</value>
   </data>
   <data name="label1.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleRight</value>
@@ -1469,7 +1470,7 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="label15.Size" type="System.Drawing.Size, System.Drawing">
-    <value>40, 77</value>
+    <value>38, 75</value>
   </data>
   <data name="label15.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -1502,7 +1503,7 @@
     <value>0, 0</value>
   </data>
   <data name="label16.Size" type="System.Drawing.Size, System.Drawing">
-    <value>40, 23</value>
+    <value>38, 23</value>
   </data>
   <data name="label16.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>

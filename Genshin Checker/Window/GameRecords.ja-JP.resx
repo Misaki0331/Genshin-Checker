@@ -1,4 +1,5 @@
-﻿<root>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
   <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
@@ -162,5 +163,56 @@
   </data>
   <data name="label16.Size" type="System.Drawing.Size, System.Drawing">
     <value>38, 23</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>UserName | AR.99 | Achievement : 1234 | Spiral Abyss : 12-3</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>8XXXXXXX</value>
+  </data>
+  <data name="Summary_NumOculus.Text" xml:space="preserve">
+    <value>9999</value>
+  </data>
+  <data name="Summary_NumUnlockChest.Text" xml:space="preserve">
+    <value>9999</value>
+  </data>
+  <data name="Summary_NumAchievement.Text" xml:space="preserve">
+    <value>9999</value>
+  </data>
+  <data name="Summary_NumLoginDays.Text" xml:space="preserve">
+    <value>9999</value>
+  </data>
+  <data name="Summary_NumExpanding.Text" xml:space="preserve">
+    <value>999.99%</value>
+  </data>
+  <data name="Summary_NumDomains.Text" xml:space="preserve">
+    <value>99</value>
+  </data>
+  <data name="NumWaypoints.Text" xml:space="preserve">
+    <value>999</value>
+  </data>
+  <data name="Summary_NumCharacters.Text" xml:space="preserve">
+    <value>999</value>
+  </data>
+  <data name="Summary_StatusMessage.Text" xml:space="preserve">
+    <value>ステータスメッセージ</value>
+  </data>
+  <data name="Summary_UserName.Text" xml:space="preserve">
+    <value>ユーザー名</value>
+  </data>
+  <data name="Summary_AdventureRank.Text" xml:space="preserve">
+    <value>99</value>
+  </data>
+  <data name="Summary_AdventureRankState.Text" xml:space="preserve">
+    <value>+ 1,234,567 Exp</value>
+  </data>
+  <data name="label15.Text" xml:space="preserve">
+    <value>🟌36</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>戦績情報</value>
+  </data>
+  <data name="label16.Text" xml:space="preserve">
+    <value>今期獲得淵星数</value>
   </data>
 </root>
