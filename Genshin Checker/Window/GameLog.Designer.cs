@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GameLog));
             this.panel1 = new System.Windows.Forms.Panel();
             this.numeric_FontSize = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
@@ -41,22 +42,18 @@
             // 
             // panel1
             // 
+            resources.ApplyResources(this.panel1, "panel1");
             this.panel1.BackColor = System.Drawing.Color.Black;
             this.panel1.Controls.Add(this.numeric_FontSize);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.CheckBox_GameFullScreenSpecialized);
             this.panel1.Controls.Add(this.CheckBoxTopMost);
             this.panel1.Controls.Add(this.ClearConsole);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(959, 24);
-            this.panel1.TabIndex = 0;
             // 
             // numeric_FontSize
             // 
-            this.numeric_FontSize.Dock = System.Windows.Forms.DockStyle.Left;
-            this.numeric_FontSize.Location = new System.Drawing.Point(320, 0);
+            resources.ApplyResources(this.numeric_FontSize, "numeric_FontSize");
             this.numeric_FontSize.Maximum = new decimal(new int[] {
             30,
             0,
@@ -68,8 +65,6 @@
             0,
             0});
             this.numeric_FontSize.Name = "numeric_FontSize";
-            this.numeric_FontSize.Size = new System.Drawing.Size(39, 23);
-            this.numeric_FontSize.TabIndex = 7;
             this.numeric_FontSize.Value = new decimal(new int[] {
             10,
             0,
@@ -79,78 +74,49 @@
             // 
             // label1
             // 
-            this.label1.Dock = System.Windows.Forms.DockStyle.Left;
+            resources.ApplyResources(this.label1, "label1");
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(242, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(78, 24);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "フォントサイズ :";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // CheckBox_GameFullScreenSpecialized
             // 
-            this.CheckBox_GameFullScreenSpecialized.AutoSize = true;
-            this.CheckBox_GameFullScreenSpecialized.Dock = System.Windows.Forms.DockStyle.Left;
+            resources.ApplyResources(this.CheckBox_GameFullScreenSpecialized, "CheckBox_GameFullScreenSpecialized");
             this.CheckBox_GameFullScreenSpecialized.ForeColor = System.Drawing.Color.White;
-            this.CheckBox_GameFullScreenSpecialized.Location = new System.Drawing.Point(104, 0);
             this.CheckBox_GameFullScreenSpecialized.Name = "CheckBox_GameFullScreenSpecialized";
-            this.CheckBox_GameFullScreenSpecialized.Size = new System.Drawing.Size(138, 24);
-            this.CheckBox_GameFullScreenSpecialized.TabIndex = 4;
-            this.CheckBox_GameFullScreenSpecialized.Text = "フルスクリーンゲーム特化";
             this.CheckBox_GameFullScreenSpecialized.UseVisualStyleBackColor = true;
             this.CheckBox_GameFullScreenSpecialized.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
             // 
             // CheckBoxTopMost
             // 
-            this.CheckBoxTopMost.AutoSize = true;
-            this.CheckBoxTopMost.Dock = System.Windows.Forms.DockStyle.Left;
+            resources.ApplyResources(this.CheckBoxTopMost, "CheckBoxTopMost");
             this.CheckBoxTopMost.ForeColor = System.Drawing.Color.White;
-            this.CheckBoxTopMost.Location = new System.Drawing.Point(0, 0);
             this.CheckBoxTopMost.Name = "CheckBoxTopMost";
-            this.CheckBoxTopMost.Size = new System.Drawing.Size(104, 24);
-            this.CheckBoxTopMost.TabIndex = 2;
-            this.CheckBoxTopMost.Text = "ウィンドウ最優先";
             this.CheckBoxTopMost.UseVisualStyleBackColor = true;
             this.CheckBoxTopMost.CheckedChanged += new System.EventHandler(this.CheckBoxTopMost_CheckedChanged);
             // 
             // ClearConsole
             // 
-            this.ClearConsole.Dock = System.Windows.Forms.DockStyle.Right;
-            this.ClearConsole.Location = new System.Drawing.Point(884, 0);
+            resources.ApplyResources(this.ClearConsole, "ClearConsole");
             this.ClearConsole.Name = "ClearConsole";
-            this.ClearConsole.Size = new System.Drawing.Size(75, 24);
-            this.ClearConsole.TabIndex = 0;
-            this.ClearConsole.Text = "クリア";
             this.ClearConsole.UseVisualStyleBackColor = true;
             this.ClearConsole.Click += new System.EventHandler(this.button1_Click);
             // 
             // Log
             // 
+            resources.ApplyResources(this.Log, "Log");
             this.Log.BackColor = System.Drawing.Color.Black;
-            this.Log.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Log.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Log.ForeColor = System.Drawing.Color.White;
-            this.Log.Location = new System.Drawing.Point(0, 24);
-            this.Log.MaxLength = 2147483647;
-            this.Log.Multiline = true;
             this.Log.Name = "Log";
             this.Log.ReadOnly = true;
-            this.Log.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.Log.Size = new System.Drawing.Size(959, 426);
-            this.Log.TabIndex = 1;
             // 
             // GameLog
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(959, 450);
             this.Controls.Add(this.Log);
             this.Controls.Add(this.panel1);
             this.Name = "GameLog";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
-            this.Text = "ゲームログ";
             this.Activated += new System.EventHandler(this.GameLog_Activated);
             this.Deactivate += new System.EventHandler(this.GameLog_Deactivate);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.GameLog_FormClosed);

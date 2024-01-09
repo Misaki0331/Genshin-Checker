@@ -22,7 +22,7 @@ namespace Genshin_Checker.Window.Debug
 
         private void CommandManager_ConsoleOut(object? sender, string e)
         {
-            OutputText.AppendText(e + Environment.NewLine);
+            OutputText.AppendText($"{e}{Environment.NewLine}");
         }
 
         private void Execution_Click(object sender, EventArgs e)

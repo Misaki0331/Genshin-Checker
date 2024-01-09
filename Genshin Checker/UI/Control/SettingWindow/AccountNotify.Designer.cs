@@ -49,10 +49,9 @@
             // 
             this.CheckTransformerReached.AutoSize = true;
             this.CheckTransformerReached.Dock = System.Windows.Forms.DockStyle.Top;
-            this.CheckTransformerReached.Location = new System.Drawing.Point(0, 130);
-            this.CheckTransformerReached.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.CheckTransformerReached.Location = new System.Drawing.Point(0, 99);
             this.CheckTransformerReached.Name = "CheckTransformerReached";
-            this.CheckTransformerReached.Size = new System.Drawing.Size(274, 24);
+            this.CheckTransformerReached.Size = new System.Drawing.Size(240, 19);
             this.CheckTransformerReached.TabIndex = 11;
             this.CheckTransformerReached.Text = "参量物質変化器が使用可能";
             this.CheckTransformerReached.UseVisualStyleBackColor = true;
@@ -62,10 +61,9 @@
             // 
             this.CheckExpeditionAllCompleted.AutoSize = true;
             this.CheckExpeditionAllCompleted.Dock = System.Windows.Forms.DockStyle.Top;
-            this.CheckExpeditionAllCompleted.Location = new System.Drawing.Point(0, 154);
-            this.CheckExpeditionAllCompleted.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.CheckExpeditionAllCompleted.Location = new System.Drawing.Point(0, 118);
             this.CheckExpeditionAllCompleted.Name = "CheckExpeditionAllCompleted";
-            this.CheckExpeditionAllCompleted.Size = new System.Drawing.Size(274, 24);
+            this.CheckExpeditionAllCompleted.Size = new System.Drawing.Size(240, 19);
             this.CheckExpeditionAllCompleted.TabIndex = 10;
             this.CheckExpeditionAllCompleted.Text = "探索派遣が全員完了";
             this.CheckExpeditionAllCompleted.UseVisualStyleBackColor = true;
@@ -75,10 +73,9 @@
             // 
             this.CheckRealmCoinMax.AutoSize = true;
             this.CheckRealmCoinMax.Dock = System.Windows.Forms.DockStyle.Top;
-            this.CheckRealmCoinMax.Location = new System.Drawing.Point(0, 106);
-            this.CheckRealmCoinMax.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.CheckRealmCoinMax.Location = new System.Drawing.Point(0, 80);
             this.CheckRealmCoinMax.Name = "CheckRealmCoinMax";
-            this.CheckRealmCoinMax.Size = new System.Drawing.Size(274, 24);
+            this.CheckRealmCoinMax.Size = new System.Drawing.Size(240, 19);
             this.CheckRealmCoinMax.TabIndex = 9;
             this.CheckRealmCoinMax.Text = "塵歌壺の洞天宝銭が最大まで回復";
             this.CheckRealmCoinMax.UseVisualStyleBackColor = true;
@@ -88,10 +85,9 @@
             // 
             this.CheckResinMax.AutoSize = true;
             this.CheckResinMax.Dock = System.Windows.Forms.DockStyle.Top;
-            this.CheckResinMax.Location = new System.Drawing.Point(0, 51);
-            this.CheckResinMax.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.CheckResinMax.Location = new System.Drawing.Point(0, 38);
             this.CheckResinMax.Name = "CheckResinMax";
-            this.CheckResinMax.Size = new System.Drawing.Size(274, 24);
+            this.CheckResinMax.Size = new System.Drawing.Size(240, 19);
             this.CheckResinMax.TabIndex = 7;
             this.CheckResinMax.Text = "樹脂の所持が最大まで回復";
             this.CheckResinMax.UseVisualStyleBackColor = true;
@@ -102,17 +98,15 @@
             this.panel1.Controls.Add(this.NumResinThreshold);
             this.panel1.Controls.Add(this.CheckResinThreshold);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 20);
-            this.panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.panel1.Location = new System.Drawing.Point(0, 15);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(274, 31);
+            this.panel1.Size = new System.Drawing.Size(240, 23);
             this.panel1.TabIndex = 12;
             // 
             // NumResinThreshold
             // 
             this.NumResinThreshold.Dock = System.Windows.Forms.DockStyle.Left;
-            this.NumResinThreshold.Location = new System.Drawing.Point(183, 0);
-            this.NumResinThreshold.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.NumResinThreshold.Location = new System.Drawing.Point(148, 0);
             this.NumResinThreshold.Maximum = new decimal(new int[] {
             2000,
             0,
@@ -124,7 +118,7 @@
             0,
             0});
             this.NumResinThreshold.Name = "NumResinThreshold";
-            this.NumResinThreshold.Size = new System.Drawing.Size(56, 27);
+            this.NumResinThreshold.Size = new System.Drawing.Size(49, 23);
             this.NumResinThreshold.TabIndex = 1;
             this.NumResinThreshold.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.NumResinThreshold.Value = new decimal(new int[] {
@@ -139,9 +133,8 @@
             this.CheckResinThreshold.AutoSize = true;
             this.CheckResinThreshold.Dock = System.Windows.Forms.DockStyle.Left;
             this.CheckResinThreshold.Location = new System.Drawing.Point(0, 0);
-            this.CheckResinThreshold.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.CheckResinThreshold.Name = "CheckResinThreshold";
-            this.CheckResinThreshold.Size = new System.Drawing.Size(183, 31);
+            this.CheckResinThreshold.Size = new System.Drawing.Size(148, 23);
             this.CheckResinThreshold.TabIndex = 0;
             this.CheckResinThreshold.Text = "樹脂の所持が閾値以上 :";
             this.CheckResinThreshold.UseVisualStyleBackColor = true;
@@ -152,17 +145,15 @@
             this.panel2.Controls.Add(this.NumRealmCoinThreshold);
             this.panel2.Controls.Add(this.CheckRealmCoinThreshold);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 75);
-            this.panel2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.panel2.Location = new System.Drawing.Point(0, 57);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(274, 31);
+            this.panel2.Size = new System.Drawing.Size(240, 23);
             this.panel2.TabIndex = 13;
             // 
             // NumRealmCoinThreshold
             // 
             this.NumRealmCoinThreshold.Dock = System.Windows.Forms.DockStyle.Left;
-            this.NumRealmCoinThreshold.Location = new System.Drawing.Point(228, 0);
-            this.NumRealmCoinThreshold.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.NumRealmCoinThreshold.Location = new System.Drawing.Point(184, 0);
             this.NumRealmCoinThreshold.Maximum = new decimal(new int[] {
             2400,
             0,
@@ -174,7 +165,7 @@
             0,
             0});
             this.NumRealmCoinThreshold.Name = "NumRealmCoinThreshold";
-            this.NumRealmCoinThreshold.Size = new System.Drawing.Size(56, 27);
+            this.NumRealmCoinThreshold.Size = new System.Drawing.Size(49, 23);
             this.NumRealmCoinThreshold.TabIndex = 1;
             this.NumRealmCoinThreshold.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.NumRealmCoinThreshold.Value = new decimal(new int[] {
@@ -189,9 +180,8 @@
             this.CheckRealmCoinThreshold.AutoSize = true;
             this.CheckRealmCoinThreshold.Dock = System.Windows.Forms.DockStyle.Left;
             this.CheckRealmCoinThreshold.Location = new System.Drawing.Point(0, 0);
-            this.CheckRealmCoinThreshold.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.CheckRealmCoinThreshold.Name = "CheckRealmCoinThreshold";
-            this.CheckRealmCoinThreshold.Size = new System.Drawing.Size(228, 31);
+            this.CheckRealmCoinThreshold.Size = new System.Drawing.Size(184, 23);
             this.CheckRealmCoinThreshold.TabIndex = 0;
             this.CheckRealmCoinThreshold.Text = "塵歌壺の洞天宝銭が閾値以上 :";
             this.CheckRealmCoinThreshold.UseVisualStyleBackColor = true;
@@ -203,13 +193,13 @@
             this.AccountInfomation.Dock = System.Windows.Forms.DockStyle.Top;
             this.AccountInfomation.Location = new System.Drawing.Point(0, 0);
             this.AccountInfomation.Name = "AccountInfomation";
-            this.AccountInfomation.Size = new System.Drawing.Size(82, 20);
+            this.AccountInfomation.Size = new System.Drawing.Size(65, 15);
             this.AccountInfomation.TabIndex = 2;
             this.AccountInfomation.Text = "Infomation";
             // 
             // AccountNotify
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.Controls.Add(this.CheckExpeditionAllCompleted);
@@ -219,9 +209,8 @@
             this.Controls.Add(this.CheckResinMax);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.AccountInfomation);
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "AccountNotify";
-            this.Size = new System.Drawing.Size(274, 196);
+            this.Size = new System.Drawing.Size(240, 147);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NumResinThreshold)).EndInit();
