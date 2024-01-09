@@ -80,6 +80,11 @@ GitHub : https://github.com/Misaki0331</Description>
       <AutoGen>True</AutoGen>
       <DependentUpon>icon.resx</DependentUpon>
     </Compile>
+    <Compile Update="resource\Languages\Localize.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Localize.resx</DependentUpon>
+    </Compile>
     <Compile Update="resource\namecard.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -112,6 +117,10 @@ GitHub : https://github.com/Misaki0331</Description>
     <EmbeddedResource Update="resource\icon.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>icon.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="resource\Languages\Localize.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Localize.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Update="resource\namecard.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -12,7 +12,7 @@ using System.Security.Cryptography;
 using Microsoft.Toolkit.Uwp.Notifications;
 using System.Drawing.Imaging;
 using System.Security.Policy;
-
+using Genshin_Checker.resource.Languages;
 namespace Genshin_Checker
 {
     public partial class MainTray : Form
@@ -61,7 +61,7 @@ namespace Genshin_Checker
 #endif
             if (safemode)
             {
-                Trace.WriteLine("【警告】現在セーフモードです。アプリは読み取り専用になっています。");
+                Trace.WriteLine(Localize.Warning_SafeMode);
 
                 versionNameToolStripMenuItem.Text += "[Readonly]";
                 Registry.IsReadOnly = true;
@@ -80,8 +80,8 @@ namespace Genshin_Checker
             App.SessionCheck.Instance.Load();
             if (Option.Instance.Notification.IsGameStart)
             {
-                notification.BalloonTipTitle = "原神チェッカー";
-                notification.BalloonTipText = $"原神の起動を検知しました。";
+                notification.BalloonTipTitle = Localize.AppName;
+                notification.BalloonTipText = Localize.GameApp_Notify_WakeUp;
                 notification.ShowBalloonTip(30000);
             }
         }
@@ -92,8 +92,8 @@ namespace Genshin_Checker
         {
             if (Option.Instance.Notification.IsGameEnd)
             {
-                notification.BalloonTipTitle = "原神チェッカー";
-                notification.BalloonTipText = $"遊んだ時間 : {(int)e.SessionTime.TotalHours} 時間 {e.SessionTime.Minutes:00} 分";
+                notification.BalloonTipTitle = Localize.AppName;
+                notification.BalloonTipText = string.Format(Localize.GameApp_Notify_PlayTime_Result, (int)e.SessionTime.TotalHours, $"{e.SessionTime.Minutes:00}");
                 notification.ShowBalloonTip(30000);
             }
 
@@ -124,8 +124,8 @@ namespace Genshin_Checker
         private void MainTray_Load(object sender, EventArgs e)
         {
             notification.Visible = true;
-            notification.BalloonTipTitle = $"原神チェッカー";
-            notification.BalloonTipText = $"起動しました。\nタスクトレイから開くことができます。";
+            notification.BalloonTipTitle = Localize.AppName;
+            notification.BalloonTipText = Localize.App_Notify_WakeUp;
             notification.ShowBalloonTip(30000);
         }
 
@@ -179,7 +179,7 @@ namespace Genshin_Checker
                 if (Option.Instance.ScreenShot.IsNotify)
                 {
                     var toastContent = new ToastContentBuilder()
-            .AddText("新しいスクリーンショットが保存されました！")
+            .AddText(Localize.App_Notify_Screenshot_Saved)
             .AddAttributionText($"UID: {await App.General.GameApp.CurrentUID()}")
             .AddHeroImage(new Uri(path));
                     toastContent.Show(toast =>
@@ -203,7 +203,7 @@ namespace Genshin_Checker
             }
             catch(Exception ex)
             {
-                new ErrorMessage("スクリーンショット保存中にエラー", $"{ex}").ShowDialog();
+                new ErrorMessage(Localize.App_Error_FailedSaveScreenshot, $"{ex}").ShowDialog();
             }
         }
         List<Form> FormList = new();
@@ -294,19 +294,19 @@ namespace Genshin_Checker
             {
                 foreach(var account in Accounts.Data)
                 {
-                    var GameRecord = new ToolStripMenuItem() { Text = "戦績情報" };
+                    var GameRecord = new ToolStripMenuItem() { Text = Localize.WindowName_GameRecord };
                     GameRecord.Click += (s, e) => { OpenWindow(account, nameof(Window.GameRecords)); };
-                    var SpiralAbyss = new ToolStripMenuItem() { Text = "深境螺旋" };
+                    var SpiralAbyss = new ToolStripMenuItem() { Text = Localize.WindowName_SpiralAbyss };
                     SpiralAbyss.Click += (s, e) => { OpenWindow(account, nameof(Window.SpiralAbyss)); };
-                    var RealTimeNote = new ToolStripMenuItem() { Text = "リアルタイムノート" };
+                    var RealTimeNote = new ToolStripMenuItem() { Text = Localize.WindowName_RealTimeNote };
                     RealTimeNote.Click += (s, e) => { OpenWindow(account, nameof(Window.RealTimeData)); };
-                    var TravelersDiary = new ToolStripMenuItem() { Text = "旅人手帳" };
+                    var TravelersDiary = new ToolStripMenuItem() { Text = Localize.WindowName_TravelersDiary };
                     TravelersDiary.Click += (s, e) => { OpenWindow(account, nameof(Window.TravelersDiary)); };
-                    var TravelersDiaryDetailList = new ToolStripMenuItem() { Text = "旅人通帳" };
+                    var TravelersDiaryDetailList = new ToolStripMenuItem() { Text = Localize.WindowName_TravelersDiaryDetail };
                     TravelersDiaryDetailList.Click += (s, e) => { OpenWindow(account, nameof(Window.TravelersDiaryDetailList)); };
-                    var CharacterCalculator = new ToolStripMenuItem() { Text = "育成計算機＋" };
+                    var CharacterCalculator = new ToolStripMenuItem() { Text = Localize.WindowName_EnhancementCalculator };
                     CharacterCalculator.Click += (s, e) => { OpenWindow(account, nameof(Window.CharacterCalculator)); };
-                    var OfficialAnnounce = new ToolStripMenuItem() { Text = "ゲームアナウンス" };
+                    var OfficialAnnounce = new ToolStripMenuItem() { Text = Localize.WindowName_GameAnnouncement };
                     OfficialAnnounce.Click += (s, e) => { OpenWindow(account, nameof(BrowserApp.WebGameAnnounce)); };
                     var tools = new ToolStripMenuItem() { Text = $"{account.Name} (AR.{account.Level})" };
                     tools.DropDownItems.AddRange(new ToolStripItem[]

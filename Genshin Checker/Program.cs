@@ -21,6 +21,8 @@ namespace Genshin_Checker
                 new System.Threading.ThreadExceptionEventHandler(
                     Application_ThreadException);
 #endif
+            Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("en-US");
+            Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-US");
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             Application.EnableVisualStyles();
