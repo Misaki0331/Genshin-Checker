@@ -194,6 +194,7 @@
             // progressBar
             // 
             resources.ApplyResources(this.progressBar, "progressBar");
+            this.progressBar.Maximum = 10000;
             this.progressBar.Name = "progressBar";
             // 
             // ProgressState

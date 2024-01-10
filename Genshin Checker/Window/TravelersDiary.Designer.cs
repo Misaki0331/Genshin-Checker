@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TravelersDiary));
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -66,90 +67,56 @@
             this.panel1.Controls.Add(this.Today_Primogem);
             this.panel1.Controls.Add(this.Today_Mora);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
+            resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(396, 202);
-            this.panel1.TabIndex = 1;
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.pictureBox2, "pictureBox2");
             this.pictureBox2.Image = global::Genshin_Checker.resource.icon.Item_Primogem;
-            this.pictureBox2.Location = new System.Drawing.Point(329, 40);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(64, 64);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 2;
             this.pictureBox2.TabStop = false;
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.pictureBox1, "pictureBox1");
             this.pictureBox1.Image = global::Genshin_Checker.resource.icon.Item_Mora;
-            this.pictureBox1.Location = new System.Drawing.Point(329, 104);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(64, 64);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
             // 
             // Today_Primogem
             // 
-            this.Today_Primogem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.Today_Primogem.Font = new System.Drawing.Font("Meiryo UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            resources.ApplyResources(this.Today_Primogem, "Today_Primogem");
             this.Today_Primogem.ForeColor = System.Drawing.Color.White;
-            this.Today_Primogem.Location = new System.Drawing.Point(-38, 40);
             this.Today_Primogem.Name = "Today_Primogem";
-            this.Today_Primogem.Size = new System.Drawing.Size(361, 64);
-            this.Today_Primogem.TabIndex = 1;
-            this.Today_Primogem.Text = "0";
-            this.Today_Primogem.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // Today_Mora
             // 
-            this.Today_Mora.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.Today_Mora.Font = new System.Drawing.Font("Meiryo UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            resources.ApplyResources(this.Today_Mora, "Today_Mora");
             this.Today_Mora.ForeColor = System.Drawing.Color.White;
-            this.Today_Mora.Location = new System.Drawing.Point(-38, 104);
             this.Today_Mora.Name = "Today_Mora";
-            this.Today_Mora.Size = new System.Drawing.Size(361, 64);
-            this.Today_Mora.TabIndex = 1;
-            this.Today_Mora.Text = "0";
-            this.Today_Mora.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Meiryo UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            resources.ApplyResources(this.label1, "label1");
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(3, 3);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(148, 35);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "今日の収穫";
             // 
             // panel2
             // 
             this.panel2.Controls.Add(this.tabControl1);
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Controls.Add(this.panel1);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
+            resources.ApplyResources(this.panel2, "panel2");
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(396, 474);
-            this.panel2.TabIndex = 3;
             // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Location = new System.Drawing.Point(0, 226);
+            resources.ApplyResources(this.tabControl1, "tabControl1");
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(396, 248);
-            this.tabControl1.TabIndex = 3;
             // 
             // tabPage1
             // 
@@ -160,112 +127,66 @@
             this.tabPage1.Controls.Add(this.pictureBox4);
             this.tabPage1.Controls.Add(this.Month_Primogem);
             this.tabPage1.Controls.Add(this.Month_Mora);
-            this.tabPage1.Location = new System.Drawing.Point(4, 24);
+            resources.ApplyResources(this.tabPage1, "tabPage1");
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(388, 220);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "月間のデータ";
             // 
             // Month_Mora_Diff
             // 
-            this.Month_Mora_Diff.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.Month_Mora_Diff.Font = new System.Drawing.Font("Meiryo UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            resources.ApplyResources(this.Month_Mora_Diff, "Month_Mora_Diff");
             this.Month_Mora_Diff.ForeColor = System.Drawing.Color.White;
-            this.Month_Mora_Diff.Location = new System.Drawing.Point(8, 163);
             this.Month_Mora_Diff.Name = "Month_Mora_Diff";
-            this.Month_Mora_Diff.Size = new System.Drawing.Size(311, 54);
-            this.Month_Mora_Diff.TabIndex = 8;
-            this.Month_Mora_Diff.Text = "+0";
-            this.Month_Mora_Diff.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // Month_Primogem_Diff
             // 
-            this.Month_Primogem_Diff.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.Month_Primogem_Diff.Font = new System.Drawing.Font("Meiryo UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            resources.ApplyResources(this.Month_Primogem_Diff, "Month_Primogem_Diff");
             this.Month_Primogem_Diff.ForeColor = System.Drawing.Color.White;
-            this.Month_Primogem_Diff.Location = new System.Drawing.Point(6, 70);
             this.Month_Primogem_Diff.Name = "Month_Primogem_Diff";
-            this.Month_Primogem_Diff.Size = new System.Drawing.Size(313, 26);
-            this.Month_Primogem_Diff.TabIndex = 7;
-            this.Month_Primogem_Diff.Text = "+0";
-            this.Month_Primogem_Diff.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // pictureBox3
             // 
-            this.pictureBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.pictureBox3, "pictureBox3");
             this.pictureBox3.Image = global::Genshin_Checker.resource.icon.Item_Primogem;
-            this.pictureBox3.Location = new System.Drawing.Point(325, 6);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(64, 64);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox3.TabIndex = 5;
             this.pictureBox3.TabStop = false;
             // 
             // pictureBox4
             // 
-            this.pictureBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.pictureBox4, "pictureBox4");
             this.pictureBox4.Image = global::Genshin_Checker.resource.icon.Item_Mora;
-            this.pictureBox4.Location = new System.Drawing.Point(325, 99);
             this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(64, 64);
-            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox4.TabIndex = 6;
             this.pictureBox4.TabStop = false;
             // 
             // Month_Primogem
             // 
-            this.Month_Primogem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.Month_Primogem.Font = new System.Drawing.Font("Meiryo UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            resources.ApplyResources(this.Month_Primogem, "Month_Primogem");
             this.Month_Primogem.ForeColor = System.Drawing.Color.White;
-            this.Month_Primogem.Location = new System.Drawing.Point(-42, 6);
             this.Month_Primogem.Name = "Month_Primogem";
-            this.Month_Primogem.Size = new System.Drawing.Size(361, 64);
-            this.Month_Primogem.TabIndex = 3;
-            this.Month_Primogem.Text = "0";
-            this.Month_Primogem.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // Month_Mora
             // 
-            this.Month_Mora.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.Month_Mora.Font = new System.Drawing.Font("Meiryo UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            resources.ApplyResources(this.Month_Mora, "Month_Mora");
             this.Month_Mora.ForeColor = System.Drawing.Color.White;
-            this.Month_Mora.Location = new System.Drawing.Point(-42, 99);
             this.Month_Mora.Name = "Month_Mora";
-            this.Month_Mora.Size = new System.Drawing.Size(361, 64);
-            this.Month_Mora.TabIndex = 4;
-            this.Month_Mora.Text = "0";
-            this.Month_Mora.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.tabPage2.Location = new System.Drawing.Point(4, 24);
+            resources.ApplyResources(this.tabPage2, "tabPage2");
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(388, 220);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "原石獲得比率";
             // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.Navy;
             this.panel3.Controls.Add(this.comboBox1);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel3.Location = new System.Drawing.Point(0, 202);
+            resources.ApplyResources(this.panel3, "panel3");
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(396, 24);
-            this.panel3.TabIndex = 2;
             // 
             // comboBox1
             // 
-            this.comboBox1.Dock = System.Windows.Forms.DockStyle.Right;
+            resources.ApplyResources(this.comboBox1, "comboBox1");
             this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(275, 0);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 23);
-            this.comboBox1.TabIndex = 0;
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // UIUpdate
@@ -276,15 +197,13 @@
             // 
             // TravelersDiary
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.ClientSize = new System.Drawing.Size(396, 474);
             this.Controls.Add(this.panel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "TravelersDiary";
-            this.Text = "旅人手帳";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();

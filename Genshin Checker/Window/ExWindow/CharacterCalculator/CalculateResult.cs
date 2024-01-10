@@ -116,7 +116,7 @@ namespace Genshin_Checker.Window.ExWindow.CharacterCalculator
                 {
                     cnt++;
                     ProgressState.Text = $"取得中... ({cnt}/{Inputs.Count})";
-                    progressBar.Value = 100*cnt/Inputs.Count;
+                    progressBar.Value = 10000*cnt/Inputs.Count;
                     var detail = await Account.CharacterDetail.GetData(input.characterID);
                     //キャラクターのスキルを取得
                     var skill = detail.skill_list.FindAll(a => a.max_level != 1);
