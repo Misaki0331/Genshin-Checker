@@ -260,7 +260,7 @@
     <value>0, 0</value>
   </data>
   <data name="ButtonBatch.Text" xml:space="preserve">
-    <value>一括変更</value>
+    <value>Edit</value>
   </data>
   <data name="CurrentLevel.MinimumWidth" type="System.Int32, mscorlib">
     <value>25</value>

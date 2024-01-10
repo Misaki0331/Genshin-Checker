@@ -68,7 +68,7 @@
     <value>全て選択</value>
   </data>
   <data name="ButtonBatch.Text" xml:space="preserve">
-    <value>Edit</value>
+    <value>一括変更</value>
   </data>
   <data name="CharacterName.HeaderText" xml:space="preserve">
     <value>名前</value>

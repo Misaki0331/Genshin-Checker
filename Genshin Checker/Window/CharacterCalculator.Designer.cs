@@ -36,7 +36,6 @@
             this.ButtonSelectAll = new System.Windows.Forms.Button();
             this.ButtonBatch = new System.Windows.Forms.Button();
             this.CharacterView = new System.Windows.Forms.DataGridView();
-            this.ErrorHandling = new System.Windows.Forms.Timer(this.components);
             this.CalculateStatus = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Rarelity = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -53,6 +52,7 @@
             this.ToTalentLevel1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ToTalentLevel2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ToTalentLevel3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ErrorHandling = new System.Windows.Forms.Timer(this.components);
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CharacterView)).BeginInit();
             this.SuspendLayout();
@@ -133,11 +133,6 @@
             this.CharacterView.CurrentCellDirtyStateChanged += new System.EventHandler(this.CharacterView_CurrentCellDirtyStateChanged);
             this.CharacterView.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.CharacterView_DataError);
             this.CharacterView.SelectionChanged += new System.EventHandler(this.CharacterView_SelectionChanged);
-            // 
-            // ErrorHandling
-            // 
-            this.ErrorHandling.Interval = 500;
-            this.ErrorHandling.Tick += new System.EventHandler(this.ErrorHandling_Tick);
             // 
             // CalculateStatus
             // 
@@ -273,6 +268,11 @@
             this.ToTalentLevel3.ReadOnly = true;
             this.ToTalentLevel3.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.ToTalentLevel3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // ErrorHandling
+            // 
+            this.ErrorHandling.Interval = 500;
+            this.ErrorHandling.Tick += new System.EventHandler(this.ErrorHandling_Tick);
             // 
             // CharacterCalculator
             // 
