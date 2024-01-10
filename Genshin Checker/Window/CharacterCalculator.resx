@@ -257,6 +257,7 @@
   </metadata>
   <data name="CalculateStatus.HeaderText" xml:space="preserve">
     <value />
+    <comment>@Invariant</comment>
   </data>
   <data name="CalculateStatus.Width" type="System.Int32, mscorlib">
     <value>19</value>
@@ -266,6 +267,7 @@
   </metadata>
   <data name="ID.HeaderText" xml:space="preserve">
     <value>Character ID</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="ID.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -275,6 +277,7 @@
   </metadata>
   <data name="Rarelity.HeaderText" xml:space="preserve">
     <value>★</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="Rarelity.MinimumWidth" type="System.Int32, mscorlib">
     <value>20</value>
@@ -320,6 +323,7 @@
   </metadata>
   <data name="Fetter.HeaderText" xml:space="preserve">
     <value>♥</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="Fetter.MinimumWidth" type="System.Int32, mscorlib">
     <value>25</value>
@@ -332,6 +336,7 @@
   </metadata>
   <data name="CurrentLevel.HeaderText" xml:space="preserve">
     <value>Lv</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="CurrentLevel.MinimumWidth" type="System.Int32, mscorlib">
     <value>25</value>
@@ -380,6 +385,7 @@
   </metadata>
   <data name="ToArrow.HeaderText" xml:space="preserve">
     <value>ToArrow</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="ToArrow.MinimumWidth" type="System.Int32, mscorlib">
     <value>20</value>
@@ -392,6 +398,7 @@
   </metadata>
   <data name="ToLevel.HeaderText" xml:space="preserve">
     <value>Lv</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="ToLevel.MinimumWidth" type="System.Int32, mscorlib">
     <value>25</value>

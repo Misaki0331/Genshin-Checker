@@ -1,4 +1,5 @@
 ﻿using Genshin_Checker.App.HoYoLab;
+using Genshin_Checker.resource.Languages;
 using Genshin_Checker.Store;
 using Genshin_Checker.Window.Popup;
 using System;
@@ -25,8 +26,8 @@ namespace Genshin_Checker.UI.Control.SettingWindow
             UID.Text = $"{account.UID}";
             var data = account.GameRecords.Data;
             if (data != null)
-                Infomation.Text = $"ログイン日数: {data.stats.ActiveDay}日 実績: {data.stats.Achievement}\n深境螺旋: {data.stats.SpiralAbyss}";
-            else Infomation.Text = "データが取得できませんでした。";
+                Infomation.Text = string.Format(Localize.UIName_AccountInfo_Infomation, data.stats.ActiveDay, data.stats.Achievement, data.stats.SpiralAbyss);
+            else Infomation.Text = Localize.UIName_AccountInfo_Infomation_Failed;
             
 
         }
@@ -80,7 +81,9 @@ namespace Genshin_Checker.UI.Control.SettingWindow
 
         private void button1_Click(object sender, EventArgs e)
         {
-            var choose = new ChooseMessage($"連携を解除しますか？", $"{account.Name} (UID:{account.UID})はアカウント一覧から削除されます。", "ログアウト確認");
+            var choose = new ChooseMessage(Localize.Message_AccountDisconnect_Title, 
+                string.Format(Localize.Message_AccountDisconnect_Message,account.Name,account.UID), 
+                Localize.Message_AccountDisconnect_WindowTitle);
             choose.ShowDialog();
             if (choose.Result == 1)
             {

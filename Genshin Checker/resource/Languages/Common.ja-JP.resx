@@ -97,96 +97,40 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.3500.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Warning_SafeMode" xml:space="preserve">
-    <value>【警告】現在セーフモードです。アプリは読み取り専用になっています。</value>
+  <data name="MonthShort_01" xml:space="preserve">
+    <value>1 月</value>
   </data>
-  <data name="AppName" xml:space="preserve">
-    <value>原神チェッカー</value>
+  <data name="MonthShort_02" xml:space="preserve">
+    <value>2 月</value>
   </data>
-  <data name="GameApp_Notify_WakeUp" xml:space="preserve">
-    <value>原神の起動を検知しました。</value>
+  <data name="MonthShort_03" xml:space="preserve">
+    <value>3 月</value>
   </data>
-  <data name="GameApp_Notify_PlayTime_Result" xml:space="preserve">
-    <value>遊んだ時間 : {0} 時間 {1} 分</value>
+  <data name="MonthShort_04" xml:space="preserve">
+    <value>4 月</value>
   </data>
-  <data name="App_Notify_WakeUp" xml:space="preserve">
-    <value>起動しました。
-タスクトレイから開くことができます。</value>
+  <data name="MonthShort_05" xml:space="preserve">
+    <value>5 月</value>
   </data>
-  <data name="App_Notify_Screenshot_Saved" xml:space="preserve">
-    <value>新しいスクリーンショットが保存されました！</value>
+  <data name="MonthShort_06" xml:space="preserve">
+    <value>6 月</value>
   </data>
-  <data name="App_Error_FailedSaveScreenshot" xml:space="preserve">
-    <value>スクリーンショットの保存に失敗しました。</value>
+  <data name="MonthShort_07" xml:space="preserve">
+    <value>7 月</value>
   </data>
-  <data name="WindowName_GameRecord" xml:space="preserve">
-    <value>戦績情報</value>
+  <data name="MonthShort_08" xml:space="preserve">
+    <value>8 月</value>
   </data>
-  <data name="WindowName_SpiralAbyss" xml:space="preserve">
-    <value>深境螺旋</value>
+  <data name="MonthShort_09" xml:space="preserve">
+    <value>9 月</value>
   </data>
-  <data name="WindowName_RealTimeNote" xml:space="preserve">
-    <value>リアルタイムノート</value>
+  <data name="MonthShort_10" xml:space="preserve">
+    <value>10 月</value>
   </data>
-  <data name="WindowName_TravelersDiary" xml:space="preserve">
-    <value>旅人手帳</value>
+  <data name="MonthShort_11" xml:space="preserve">
+    <value>11 月</value>
   </data>
-  <data name="WindowName_TravelersDiaryDetail" xml:space="preserve">
-    <value>旅人通帳</value>
-  </data>
-  <data name="WindowName_EnhancementCalculator" xml:space="preserve">
-    <value>育成計算機＋</value>
-  </data>
-  <data name="WindowName_GameAnnouncement" xml:space="preserve">
-    <value>ゲームアナウンス</value>
-  </data>
-  <data name="Error_API_EnkaNetwork_400" xml:space="preserve">
-    <value>UIDフォーマットが合っていません。</value>
-  </data>
-  <data name="Error_API_EnkaNetwork_404" xml:space="preserve">
-    <value>対象のプレイヤーが見つかりません。</value>
-  </data>
-  <data name="Error_API_EnkaNetwork_424" xml:space="preserve">
-    <value>アップデートによる破壊的変更が行われた為、この情報は現在利用できません。</value>
-  </data>
-  <data name="Error_API_EnkaNetwork_500" xml:space="preserve">
-    <value>サーバー内のエラーである為、現在利用できません。</value>
-  </data>
-  <data name="Error_API_EnkaNetwork_503" xml:space="preserve">
-    <value>対象の情報はサービスが一時停止中である為、現在利用できません。</value>
-  </data>
-  <data name="Error_API_EnkaNetwork_429" xml:space="preserve">
-    <value>リクエストのしすぎです。</value>
-  </data>
-  <data name="Error_Registry_FailedToOpen" xml:space="preserve">
-    <value>レジストリが開けませんでした。</value>
-  </data>
-  <data name="UI_Weapons_RefinementRank" xml:space="preserve">
-    <value>精錬ランク : {0}</value>
-  </data>
-  <data name="UI_Weapons_Level" xml:space="preserve">
-    <value>Lv. {0}</value>
-  </data>
-  <data name="Message_AccountDisconnect_Title" xml:space="preserve">
-    <value>連携を解除しますか？</value>
-  </data>
-  <data name="Message_AccountDisconnect_Message" xml:space="preserve">
-    <value>{0} (UID:{1})はアカウント一覧から削除されます。</value>
-  </data>
-  <data name="Message_AccountDisconnect_WindowTitle" xml:space="preserve">
-    <value>ログアウト確認</value>
-  </data>
-  <data name="UIName_AccountInfo_Infomation" xml:space="preserve">
-    <value>ログイン日数: {0}日 実績: {1}
-深境螺旋: {2}</value>
-  </data>
-  <data name="UIName_AccountInfo_Infomation_Failed" xml:space="preserve">
-    <value>データが取得できませんでした。</value>
-  </data>
-  <data name="UI_Character_Level" xml:space="preserve">
-    <value>Lv. {0}</value>
-  </data>
-  <data name="UIName_SpiralAbyss_Timestamp" xml:space="preserve">
-    <value>踏破時間 : {0}</value>
+  <data name="MonthShort_12" xml:space="preserve">
+    <value>12 月</value>
   </data>
 </root>

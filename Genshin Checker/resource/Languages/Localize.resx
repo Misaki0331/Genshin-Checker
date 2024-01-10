@@ -110,7 +110,7 @@
     <value>Play time : {0} hour(s) {1} minute(s)</value>
   </data>
   <data name="App_Notify_WakeUp" xml:space="preserve">
-    <value>App launched.
+    <value>App be launched.
 Can be opened from the task tray.</value>
   </data>
   <data name="App_Notify_Screenshot_Saved" xml:space="preserve">
@@ -139,5 +139,54 @@ Can be opened from the task tray.</value>
   </data>
   <data name="WindowName_GameAnnouncement" xml:space="preserve">
     <value>Game Announcement</value>
+  </data>
+  <data name="Error_API_EnkaNetwork_400" xml:space="preserve">
+    <value>Inconsistent UID format.</value>
+  </data>
+  <data name="Error_API_EnkaNetwork_404" xml:space="preserve">
+    <value>Target player not found.</value>
+  </data>
+  <data name="Error_API_EnkaNetwork_424" xml:space="preserve">
+    <value>This API is currently unavailable due to destructive changes made by an in-game update.</value>
+  </data>
+  <data name="Error_API_EnkaNetwork_500" xml:space="preserve">
+    <value>Internal server error.</value>
+  </data>
+  <data name="Error_API_EnkaNetwork_503" xml:space="preserve">
+    <value>This API is currently unavailable due to the service being temporarily suspended.</value>
+  </data>
+  <data name="Error_API_EnkaNetwork_429" xml:space="preserve">
+    <value>Too many requests.</value>
+  </data>
+  <data name="Error_Registry_FailedToOpen" xml:space="preserve">
+    <value>Failed to open registry.</value>
+  </data>
+  <data name="UI_Weapons_RefinementRank" xml:space="preserve">
+    <value>Refinement Rank {0}</value>
+  </data>
+  <data name="UI_Weapons_Level" xml:space="preserve">
+    <value>Lv. {0}</value>
+  </data>
+  <data name="Message_AccountDisconnect_Title" xml:space="preserve">
+    <value>Remove this account?</value>
+  </data>
+  <data name="Message_AccountDisconnect_Message" xml:space="preserve">
+    <value>{0} (UID:{1}) will remove from the account list.</value>
+  </data>
+  <data name="Message_AccountDisconnect_WindowTitle" xml:space="preserve">
+    <value>Logout</value>
+  </data>
+  <data name="UIName_AccountInfo_Infomation" xml:space="preserve">
+    <value>Active Days: {0} Achieve: {1}
+Spiral Abyss: {2}</value>
+  </data>
+  <data name="UIName_AccountInfo_Infomation_Failed" xml:space="preserve">
+    <value>Failed to load game data.</value>
+  </data>
+  <data name="UI_Character_Level" xml:space="preserve">
+    <value>Lv. {0}</value>
+  </data>
+  <data name="UIName_SpiralAbyss_Timestamp" xml:space="preserve">
+    <value>Update : {0}</value>
   </data>
 </root>

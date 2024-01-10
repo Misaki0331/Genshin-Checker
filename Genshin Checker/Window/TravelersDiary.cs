@@ -5,6 +5,7 @@ using System.Runtime.InteropServices;
 using Genshin_Checker.App.HoYoLab;
 using System.Diagnostics;
 using Genshin_Checker.Window.Popup;
+using Genshin_Checker.Model.Static.DiaryEventLocalize;
 
 namespace Genshin_Checker.Window
 {
@@ -23,7 +24,7 @@ namespace Genshin_Checker.Window
         {
             InitializeComponent();
             this.account = account;
-            this.Text = $"旅人手帳 (UID:{account.UID})";
+            this.Text = $"{resource.Languages.Localize.WindowName_TravelersDiary} (UID:{account.UID})";
             PrimogemsType = new PieChart
             {
                 Font = new Font("MS Gothic UI", 12, FontStyle.Regular),
@@ -57,7 +58,7 @@ namespace Genshin_Checker.Window
                     foreach (int i in account.TravelersDiary.Data.Data.optional_month)
                     {
                         month_index.Add(i);
-                        comboBox1.Items.Add($"{i} 月");
+                        comboBox1.Items.Add(App.General.Localize.Convert.MonthShort(i));
                     }
 
                     comboBox1.SelectedIndex =

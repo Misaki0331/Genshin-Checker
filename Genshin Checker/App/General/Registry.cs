@@ -1,4 +1,5 @@
-﻿using Microsoft.Win32;
+﻿using Genshin_Checker.resource.Languages;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -15,7 +16,7 @@ namespace Genshin_Checker.App
         public static string? GetValue(string Subkey, string key, bool compress = false)
         {
             var regkey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey($"Software\\Genshin_Checker\\{Subkey}");
-            if (regkey == null) throw new IOException("レジストリが開けませんでした。");
+            if (regkey == null) throw new IOException(Localize.Error_Registry_FailedToOpen);
             var val = regkey.GetValue(key);
             regkey.Close();
             if(val == null) return null;
@@ -28,7 +29,7 @@ namespace Genshin_Checker.App
         public static string? GetAppReg(string AppName ,string Subkey, string key)
         {
             var regkey = Microsoft.Win32.Registry.CurrentUser.OpenSubKey($"Software\\{AppName}\\{Subkey}");
-            if (regkey == null) throw new IOException("レジストリが開けませんでした。");
+            if (regkey == null) throw new IOException(Localize.Error_Registry_FailedToOpen);
             var val = regkey.GetValue(key);
             regkey.Close();
             if (val == null) return null;
@@ -49,7 +50,7 @@ namespace Genshin_Checker.App
             if(IsReadOnly&&!force) return;
             if (compress) value = Base64FromStringComp(value);
             var regkey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey($"Software\\Genshin_Checker\\{Subkey}");
-            if (regkey == null) throw new IOException("レジストリが開けませんでした。");
+            if (regkey == null) throw new IOException(Localize.Error_Registry_FailedToOpen);
             regkey.SetValue(key,value);
             regkey.Close();
         }
@@ -58,7 +59,7 @@ namespace Genshin_Checker.App
         {
             var reg = Microsoft.Win32.Registry.CurrentUser.CreateSubKey($"Software\\Genshin_Checker\\{Subkey}");
 
-            if (reg == null) throw new IOException("レジストリが開けませんでした。");
+            if (reg == null) throw new IOException(Localize.Error_Registry_FailedToOpen);
             string[] arySubKeyNames = reg.GetValueNames();
             reg.Close();
             return new(arySubKeyNames);

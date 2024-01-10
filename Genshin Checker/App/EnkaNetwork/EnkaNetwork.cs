@@ -6,6 +6,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using Genshin_Checker.App.HoYoLab;
+using Genshin_Checker.resource.Languages;
 
 namespace Genshin_Checker.App.EnkaNetwork
 {
@@ -47,23 +48,27 @@ namespace Genshin_Checker.App.EnkaNetwork
             }
             catch (HttpRequestException ex) when (ex.StatusCode == HttpStatusCode.BadRequest)
             {
-                LatestErrorMessage = "UIDフォーマットが合っていません。";
+                LatestErrorMessage = Localize.Error_API_EnkaNetwork_400;
             }
             catch (HttpRequestException ex) when (ex.StatusCode == HttpStatusCode.NotFound)
             {
-                LatestErrorMessage = "対象のプレイヤーが見つかりません。";
+                LatestErrorMessage = Localize.Error_API_EnkaNetwork_404;
             }
             catch (HttpRequestException ex) when (ex.StatusCode == HttpStatusCode.FailedDependency)
             {
-                LatestErrorMessage = "アップデートによる破壊的変更が行われた為、この情報は現在利用できません。";
+                LatestErrorMessage = Localize.Error_API_EnkaNetwork_424;
+            }
+            catch (HttpRequestException ex) when (ex.StatusCode == HttpStatusCode.TooManyRequests)
+            {
+                LatestErrorMessage = Localize.Error_API_EnkaNetwork_429;
             }
             catch (HttpRequestException ex) when (ex.StatusCode == HttpStatusCode.InternalServerError)
             {
-                LatestErrorMessage = "サーバー内のエラーである為、現在利用できません。";
+                LatestErrorMessage = Localize.Error_API_EnkaNetwork_500;
             }
             catch (HttpRequestException ex) when (ex.StatusCode == HttpStatusCode.ServiceUnavailable)
             {
-                LatestErrorMessage = "対象の情報はサービスが一時停止中である為、現在利用できません。";
+                LatestErrorMessage = Localize.Error_API_EnkaNetwork_503;
             }
             catch (Exception ex)
             {

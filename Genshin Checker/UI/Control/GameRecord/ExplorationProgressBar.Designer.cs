@@ -28,84 +28,83 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.ExContain_MapProgress1 = new System.Windows.Forms.Panel();
-            this.ExContain_ProgressPanel = new System.Windows.Forms.Panel();
-            this.ExContain_ProgressBar1 = new System.Windows.Forms.ProgressBar();
-            this.ExContain_ProgressLabel1 = new System.Windows.Forms.Label();
-            this.ExContain_HiddenableName1 = new System.Windows.Forms.Label();
-            this.ExContain_MapProgress1.SuspendLayout();
-            this.ExContain_ProgressPanel.SuspendLayout();
-            this.SuspendLayout();
+            ExContain_MapProgress1 = new Panel();
+            ExContain_ProgressPanel = new Panel();
+            ExContain_ProgressBar1 = new ProgressBar();
+            ExContain_ProgressLabel1 = new Label();
+            ExContain_HiddenableName1 = new Label();
+            ExContain_MapProgress1.SuspendLayout();
+            ExContain_ProgressPanel.SuspendLayout();
+            SuspendLayout();
             // 
             // ExContain_MapProgress1
             // 
-            this.ExContain_MapProgress1.AutoSize = true;
-            this.ExContain_MapProgress1.Controls.Add(this.ExContain_ProgressPanel);
-            this.ExContain_MapProgress1.Controls.Add(this.ExContain_HiddenableName1);
-            this.ExContain_MapProgress1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.ExContain_MapProgress1.Location = new System.Drawing.Point(0, 0);
-            this.ExContain_MapProgress1.Name = "ExContain_MapProgress1";
-            this.ExContain_MapProgress1.Size = new System.Drawing.Size(313, 47);
-            this.ExContain_MapProgress1.TabIndex = 6;
+            ExContain_MapProgress1.AutoSize = true;
+            ExContain_MapProgress1.Controls.Add(ExContain_ProgressPanel);
+            ExContain_MapProgress1.Controls.Add(ExContain_HiddenableName1);
+            ExContain_MapProgress1.Dock = DockStyle.Top;
+            ExContain_MapProgress1.Location = new Point(0, 0);
+            ExContain_MapProgress1.Name = "ExContain_MapProgress1";
+            ExContain_MapProgress1.Size = new Size(313, 47);
+            ExContain_MapProgress1.TabIndex = 6;
             // 
             // ExContain_ProgressPanel
             // 
-            this.ExContain_ProgressPanel.Controls.Add(this.ExContain_ProgressBar1);
-            this.ExContain_ProgressPanel.Controls.Add(this.ExContain_ProgressLabel1);
-            this.ExContain_ProgressPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.ExContain_ProgressPanel.Location = new System.Drawing.Point(0, 24);
-            this.ExContain_ProgressPanel.Name = "ExContain_ProgressPanel";
-            this.ExContain_ProgressPanel.Size = new System.Drawing.Size(313, 23);
-            this.ExContain_ProgressPanel.TabIndex = 1;
+            ExContain_ProgressPanel.Controls.Add(ExContain_ProgressBar1);
+            ExContain_ProgressPanel.Controls.Add(ExContain_ProgressLabel1);
+            ExContain_ProgressPanel.Dock = DockStyle.Top;
+            ExContain_ProgressPanel.Location = new Point(0, 24);
+            ExContain_ProgressPanel.Name = "ExContain_ProgressPanel";
+            ExContain_ProgressPanel.Size = new Size(313, 23);
+            ExContain_ProgressPanel.TabIndex = 1;
             // 
             // ExContain_ProgressBar1
             // 
-            this.ExContain_ProgressBar1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ExContain_ProgressBar1.Location = new System.Drawing.Point(0, 0);
-            this.ExContain_ProgressBar1.Maximum = 1000;
-            this.ExContain_ProgressBar1.Name = "ExContain_ProgressBar1";
-            this.ExContain_ProgressBar1.Size = new System.Drawing.Size(236, 23);
-            this.ExContain_ProgressBar1.TabIndex = 1;
-            this.ExContain_ProgressBar1.Value = 80;
+            ExContain_ProgressBar1.Dock = DockStyle.Fill;
+            ExContain_ProgressBar1.Location = new Point(0, 0);
+            ExContain_ProgressBar1.Maximum = 1000;
+            ExContain_ProgressBar1.Name = "ExContain_ProgressBar1";
+            ExContain_ProgressBar1.Size = new Size(236, 23);
+            ExContain_ProgressBar1.TabIndex = 1;
+            ExContain_ProgressBar1.Value = 80;
             // 
             // ExContain_ProgressLabel1
             // 
-            this.ExContain_ProgressLabel1.AutoSize = true;
-            this.ExContain_ProgressLabel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.ExContain_ProgressLabel1.Font = new System.Drawing.Font("Meiryo UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.ExContain_ProgressLabel1.Location = new System.Drawing.Point(236, 0);
-            this.ExContain_ProgressLabel1.Name = "ExContain_ProgressLabel1";
-            this.ExContain_ProgressLabel1.Size = new System.Drawing.Size(77, 20);
-            this.ExContain_ProgressLabel1.TabIndex = 2;
-            this.ExContain_ProgressLabel1.Text = "999.9%";
+            ExContain_ProgressLabel1.AutoSize = true;
+            ExContain_ProgressLabel1.Dock = DockStyle.Right;
+            ExContain_ProgressLabel1.Font = new Font("Meiryo UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            ExContain_ProgressLabel1.Location = new Point(236, 0);
+            ExContain_ProgressLabel1.Name = "ExContain_ProgressLabel1";
+            ExContain_ProgressLabel1.Size = new Size(77, 20);
+            ExContain_ProgressLabel1.TabIndex = 2;
+            ExContain_ProgressLabel1.Text = "999.9%";
             // 
             // ExContain_HiddenableName1
             // 
-            this.ExContain_HiddenableName1.AutoSize = true;
-            this.ExContain_HiddenableName1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.ExContain_HiddenableName1.Font = new System.Drawing.Font("Meiryo UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.ExContain_HiddenableName1.Location = new System.Drawing.Point(0, 0);
-            this.ExContain_HiddenableName1.Name = "ExContain_HiddenableName1";
-            this.ExContain_HiddenableName1.Size = new System.Drawing.Size(167, 24);
-            this.ExContain_HiddenableName1.TabIndex = 0;
-            this.ExContain_HiddenableName1.Text = "非表示にできる地名";
-            this.ExContain_HiddenableName1.Visible = false;
+            ExContain_HiddenableName1.AutoSize = true;
+            ExContain_HiddenableName1.Dock = DockStyle.Top;
+            ExContain_HiddenableName1.Font = new Font("Meiryo UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            ExContain_HiddenableName1.Location = new Point(0, 0);
+            ExContain_HiddenableName1.Name = "ExContain_HiddenableName1";
+            ExContain_HiddenableName1.Size = new Size(167, 24);
+            ExContain_HiddenableName1.TabIndex = 0;
+            ExContain_HiddenableName1.Text = "非表示にできる地名";
+            ExContain_HiddenableName1.Visible = false;
             // 
             // ExplorationProgressBar
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.AutoSize = true;
-            this.Controls.Add(this.ExContain_MapProgress1);
-            this.Name = "ExplorationProgressBar";
-            this.Size = new System.Drawing.Size(313, 47);
-            this.ExContain_MapProgress1.ResumeLayout(false);
-            this.ExContain_MapProgress1.PerformLayout();
-            this.ExContain_ProgressPanel.ResumeLayout(false);
-            this.ExContain_ProgressPanel.PerformLayout();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(96F, 96F);
+            AutoScaleMode = AutoScaleMode.Dpi;
+            AutoSize = true;
+            Controls.Add(ExContain_MapProgress1);
+            Name = "ExplorationProgressBar";
+            Size = new Size(313, 47);
+            ExContain_MapProgress1.ResumeLayout(false);
+            ExContain_MapProgress1.PerformLayout();
+            ExContain_ProgressPanel.ResumeLayout(false);
+            ExContain_ProgressPanel.PerformLayout();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion

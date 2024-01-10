@@ -135,6 +135,7 @@
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Importing Traveler's Diary detail...</value>
+    <comment>@MutedRule(PunctuationTail)</comment>
   </data>
   <data name="&gt;&gt;delay.Name" xml:space="preserve">
     <value>delay</value>

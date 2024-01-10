@@ -22,7 +22,7 @@ namespace Genshin_Checker.resource.Languages {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Localize {
+    public class Localize {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace Genshin_Checker.resource.Languages {
         ///   このクラスで使用されているキャッシュされた ResourceManager インスタンスを返します。
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Genshin_Checker.resource.Languages.Localize", typeof(Localize).Assembly);
@@ -51,7 +51,7 @@ namespace Genshin_Checker.resource.Languages {
         ///   現在のスレッドの CurrentUICulture プロパティをオーバーライドします。
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,7 +63,7 @@ namespace Genshin_Checker.resource.Languages {
         /// <summary>
         ///   Failed to save the screenshot. に類似しているローカライズされた文字列を検索します。
         /// </summary>
-        internal static string App_Error_FailedSaveScreenshot {
+        public static string App_Error_FailedSaveScreenshot {
             get {
                 return ResourceManager.GetString("App_Error_FailedSaveScreenshot", resourceCulture);
             }
@@ -72,17 +72,17 @@ namespace Genshin_Checker.resource.Languages {
         /// <summary>
         ///   New screenshot was saved! に類似しているローカライズされた文字列を検索します。
         /// </summary>
-        internal static string App_Notify_Screenshot_Saved {
+        public static string App_Notify_Screenshot_Saved {
             get {
                 return ResourceManager.GetString("App_Notify_Screenshot_Saved", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   App launched.
+        ///   App be launched.
         ///Can be opened from the task tray. に類似しているローカライズされた文字列を検索します。
         /// </summary>
-        internal static string App_Notify_WakeUp {
+        public static string App_Notify_WakeUp {
             get {
                 return ResourceManager.GetString("App_Notify_WakeUp", resourceCulture);
             }
@@ -91,16 +91,79 @@ namespace Genshin_Checker.resource.Languages {
         /// <summary>
         ///   Genshin Checker に類似しているローカライズされた文字列を検索します。
         /// </summary>
-        internal static string AppName {
+        public static string AppName {
             get {
                 return ResourceManager.GetString("AppName", resourceCulture);
             }
         }
         
         /// <summary>
+        ///   Inconsistent UID format. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Error_API_EnkaNetwork_400 {
+            get {
+                return ResourceManager.GetString("Error_API_EnkaNetwork_400", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Target player not found. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Error_API_EnkaNetwork_404 {
+            get {
+                return ResourceManager.GetString("Error_API_EnkaNetwork_404", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   This API is currently unavailable due to destructive changes made by an in-game update. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Error_API_EnkaNetwork_424 {
+            get {
+                return ResourceManager.GetString("Error_API_EnkaNetwork_424", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Too many requests. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Error_API_EnkaNetwork_429 {
+            get {
+                return ResourceManager.GetString("Error_API_EnkaNetwork_429", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Internal server error. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Error_API_EnkaNetwork_500 {
+            get {
+                return ResourceManager.GetString("Error_API_EnkaNetwork_500", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   This API is currently unavailable due to the service being temporarily suspended. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Error_API_EnkaNetwork_503 {
+            get {
+                return ResourceManager.GetString("Error_API_EnkaNetwork_503", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Failed to open registry. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Error_Registry_FailedToOpen {
+            get {
+                return ResourceManager.GetString("Error_Registry_FailedToOpen", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Play time : {0} hour(s) {1} minute(s) に類似しているローカライズされた文字列を検索します。
         /// </summary>
-        internal static string GameApp_Notify_PlayTime_Result {
+        public static string GameApp_Notify_PlayTime_Result {
             get {
                 return ResourceManager.GetString("GameApp_Notify_PlayTime_Result", resourceCulture);
             }
@@ -109,16 +172,98 @@ namespace Genshin_Checker.resource.Languages {
         /// <summary>
         ///   Genshin Impact launch detected. に類似しているローカライズされた文字列を検索します。
         /// </summary>
-        internal static string GameApp_Notify_WakeUp {
+        public static string GameApp_Notify_WakeUp {
             get {
                 return ResourceManager.GetString("GameApp_Notify_WakeUp", resourceCulture);
             }
         }
         
         /// <summary>
+        ///   {0} (UID:{1}) will remove from the account list. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Message_AccountDisconnect_Message {
+            get {
+                return ResourceManager.GetString("Message_AccountDisconnect_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Remove this account? に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Message_AccountDisconnect_Title {
+            get {
+                return ResourceManager.GetString("Message_AccountDisconnect_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Logout に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Message_AccountDisconnect_WindowTitle {
+            get {
+                return ResourceManager.GetString("Message_AccountDisconnect_WindowTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Lv. {0} に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string UI_Character_Level {
+            get {
+                return ResourceManager.GetString("UI_Character_Level", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Lv. {0} に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string UI_Weapons_Level {
+            get {
+                return ResourceManager.GetString("UI_Weapons_Level", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Refinement Rank {0} に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string UI_Weapons_RefinementRank {
+            get {
+                return ResourceManager.GetString("UI_Weapons_RefinementRank", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Active Days: {0} Achieve: {1}
+        ///Spiral Abyss: {2} に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string UIName_AccountInfo_Infomation {
+            get {
+                return ResourceManager.GetString("UIName_AccountInfo_Infomation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Failed to load game data. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string UIName_AccountInfo_Infomation_Failed {
+            get {
+                return ResourceManager.GetString("UIName_AccountInfo_Infomation_Failed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Update : {0} に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string UIName_SpiralAbyss_Timestamp {
+            get {
+                return ResourceManager.GetString("UIName_SpiralAbyss_Timestamp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   [Warning] The application is currently in safe mode and is read-only. に類似しているローカライズされた文字列を検索します。
         /// </summary>
-        internal static string Warning_SafeMode {
+        public static string Warning_SafeMode {
             get {
                 return ResourceManager.GetString("Warning_SafeMode", resourceCulture);
             }
@@ -127,7 +272,7 @@ namespace Genshin_Checker.resource.Languages {
         /// <summary>
         ///   Enhancement Calculator に類似しているローカライズされた文字列を検索します。
         /// </summary>
-        internal static string WindowName_EnhancementCalculator {
+        public static string WindowName_EnhancementCalculator {
             get {
                 return ResourceManager.GetString("WindowName_EnhancementCalculator", resourceCulture);
             }
@@ -136,7 +281,7 @@ namespace Genshin_Checker.resource.Languages {
         /// <summary>
         ///   Game Announcement に類似しているローカライズされた文字列を検索します。
         /// </summary>
-        internal static string WindowName_GameAnnouncement {
+        public static string WindowName_GameAnnouncement {
             get {
                 return ResourceManager.GetString("WindowName_GameAnnouncement", resourceCulture);
             }
@@ -145,7 +290,7 @@ namespace Genshin_Checker.resource.Languages {
         /// <summary>
         ///   Battle Chronicle に類似しているローカライズされた文字列を検索します。
         /// </summary>
-        internal static string WindowName_GameRecord {
+        public static string WindowName_GameRecord {
             get {
                 return ResourceManager.GetString("WindowName_GameRecord", resourceCulture);
             }
@@ -154,7 +299,7 @@ namespace Genshin_Checker.resource.Languages {
         /// <summary>
         ///   Real-Time Notes に類似しているローカライズされた文字列を検索します。
         /// </summary>
-        internal static string WindowName_RealTimeNote {
+        public static string WindowName_RealTimeNote {
             get {
                 return ResourceManager.GetString("WindowName_RealTimeNote", resourceCulture);
             }
@@ -163,7 +308,7 @@ namespace Genshin_Checker.resource.Languages {
         /// <summary>
         ///   Spiral Abyss に類似しているローカライズされた文字列を検索します。
         /// </summary>
-        internal static string WindowName_SpiralAbyss {
+        public static string WindowName_SpiralAbyss {
             get {
                 return ResourceManager.GetString("WindowName_SpiralAbyss", resourceCulture);
             }
@@ -172,7 +317,7 @@ namespace Genshin_Checker.resource.Languages {
         /// <summary>
         ///   Traveler&apos;s Diary に類似しているローカライズされた文字列を検索します。
         /// </summary>
-        internal static string WindowName_TravelersDiary {
+        public static string WindowName_TravelersDiary {
             get {
                 return ResourceManager.GetString("WindowName_TravelersDiary", resourceCulture);
             }
@@ -181,7 +326,7 @@ namespace Genshin_Checker.resource.Languages {
         /// <summary>
         ///   Traveler&apos;s Pathbook に類似しているローカライズされた文字列を検索します。
         /// </summary>
-        internal static string WindowName_TravelersDiaryDetail {
+        public static string WindowName_TravelersDiaryDetail {
             get {
                 return ResourceManager.GetString("WindowName_TravelersDiaryDetail", resourceCulture);
             }

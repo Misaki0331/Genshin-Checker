@@ -1,6 +1,7 @@
 ﻿using Genshin_Checker.App.HoYoLab;
 using Genshin_Checker.Model.HoYoLab.SpiralAbyss;
 using Genshin_Checker.Model.UserData.SpiralAbyss.v1;
+using Genshin_Checker.resource.Languages;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -23,13 +24,13 @@ namespace Genshin_Checker.UI.Control.SpiralAbyss
         {
             InitializeComponent();
             if (!IsVisibleDateTime) LabelTimestamp.Visible = false;
-            LabelTimestamp.Text = $"踏破時間 : {DateTimeOffset.FromUnixTimeSeconds(battle.timestamp).ToLocalTime():yyyy/MM/dd HH:mm:ss}";
+            LabelTimestamp.Text = string.Format(Localize.UIName_SpiralAbyss_Timestamp,DateTimeOffset.FromUnixTimeSeconds(battle.timestamp).ToLocalTime());
             LabelBattleName.Text = battleName;
             if (string.IsNullOrEmpty(battleName)) panel1.Visible = false;
             List<CharacterFrame.CharacterArgment> argment = new();
             foreach (var character in battle.avatars)
             {
-                argment.Add(new(character.id, $"Lv.{character.level}"));
+                argment.Add(new(character.id, string.Format(Localize.UI_Character_Level, character.level)));
             }
             frame = new(account, string.Empty, argment, false) { Dock = DockStyle.Left, AutoSize = true, AutoSizeMode = AutoSizeMode.GrowAndShrink};
             frame.ClickHandler += (a) => CharacterClickHandler?.Invoke(a);
@@ -39,7 +40,7 @@ namespace Genshin_Checker.UI.Control.SpiralAbyss
             EnemyControls = new();
             foreach (var e in enemy)
             {
-                var control = new EnemyInfo(e.RemoteIconPath, e.name, $"Lv.{e.level}") { Dock = DockStyle.Top, };
+                var control = new EnemyInfo(e.RemoteIconPath, e.name, string.Format(Localize.UI_Character_Level, e.level)) { Dock = DockStyle.Top, };
                 EnemyControls.Add(control);
                 PanelEnemyInfo.Controls.Add(control);
             }

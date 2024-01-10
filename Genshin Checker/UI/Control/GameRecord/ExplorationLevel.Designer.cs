@@ -28,58 +28,57 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.ExContain_LevelPanel1 = new System.Windows.Forms.Panel();
-            this.ExContain_LevelName1 = new System.Windows.Forms.Label();
-            this.ExContain_LevelIcon1 = new System.Windows.Forms.PictureBox();
-            this.ExContain_LevelPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ExContain_LevelIcon1)).BeginInit();
-            this.SuspendLayout();
+            ExContain_LevelPanel1 = new Panel();
+            ExContain_LevelName1 = new Label();
+            ExContain_LevelIcon1 = new PictureBox();
+            ExContain_LevelPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)ExContain_LevelIcon1).BeginInit();
+            SuspendLayout();
             // 
             // ExContain_LevelPanel1
             // 
-            this.ExContain_LevelPanel1.Controls.Add(this.ExContain_LevelName1);
-            this.ExContain_LevelPanel1.Controls.Add(this.ExContain_LevelIcon1);
-            this.ExContain_LevelPanel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.ExContain_LevelPanel1.Location = new System.Drawing.Point(0, 0);
-            this.ExContain_LevelPanel1.Name = "ExContain_LevelPanel1";
-            this.ExContain_LevelPanel1.Size = new System.Drawing.Size(24, 24);
-            this.ExContain_LevelPanel1.TabIndex = 5;
+            ExContain_LevelPanel1.Controls.Add(ExContain_LevelName1);
+            ExContain_LevelPanel1.Controls.Add(ExContain_LevelIcon1);
+            ExContain_LevelPanel1.Dock = DockStyle.Top;
+            ExContain_LevelPanel1.Location = new Point(0, 0);
+            ExContain_LevelPanel1.Name = "ExContain_LevelPanel1";
+            ExContain_LevelPanel1.Size = new Size(24, 24);
+            ExContain_LevelPanel1.TabIndex = 5;
             // 
             // ExContain_LevelName1
             // 
-            this.ExContain_LevelName1.AutoSize = true;
-            this.ExContain_LevelName1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.ExContain_LevelName1.Font = new System.Drawing.Font("Meiryo UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.ExContain_LevelName1.Location = new System.Drawing.Point(24, 0);
-            this.ExContain_LevelName1.Name = "ExContain_LevelName1";
-            this.ExContain_LevelName1.Size = new System.Drawing.Size(149, 20);
-            this.ExContain_LevelName1.TabIndex = 1;
-            this.ExContain_LevelName1.Text = "何かしらのレベル : 99";
+            ExContain_LevelName1.AutoSize = true;
+            ExContain_LevelName1.Dock = DockStyle.Left;
+            ExContain_LevelName1.Font = new Font("Meiryo UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            ExContain_LevelName1.Location = new Point(24, 0);
+            ExContain_LevelName1.Name = "ExContain_LevelName1";
+            ExContain_LevelName1.Size = new Size(149, 20);
+            ExContain_LevelName1.TabIndex = 1;
+            ExContain_LevelName1.Text = "何かしらのレベル : 99";
             // 
             // ExContain_LevelIcon1
             // 
-            this.ExContain_LevelIcon1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.ExContain_LevelIcon1.Location = new System.Drawing.Point(0, 0);
-            this.ExContain_LevelIcon1.Name = "ExContain_LevelIcon1";
-            this.ExContain_LevelIcon1.Size = new System.Drawing.Size(24, 24);
-            this.ExContain_LevelIcon1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.ExContain_LevelIcon1.TabIndex = 0;
-            this.ExContain_LevelIcon1.TabStop = false;
+            ExContain_LevelIcon1.Dock = DockStyle.Left;
+            ExContain_LevelIcon1.Location = new Point(0, 0);
+            ExContain_LevelIcon1.Name = "ExContain_LevelIcon1";
+            ExContain_LevelIcon1.Size = new Size(24, 24);
+            ExContain_LevelIcon1.SizeMode = PictureBoxSizeMode.StretchImage;
+            ExContain_LevelIcon1.TabIndex = 0;
+            ExContain_LevelIcon1.TabStop = false;
             // 
             // ExplorationLevel
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.AutoSize = true;
-            this.Controls.Add(this.ExContain_LevelPanel1);
-            this.MinimumSize = new System.Drawing.Size(24, 24);
-            this.Name = "ExplorationLevel";
-            this.Size = new System.Drawing.Size(24, 24);
-            this.ExContain_LevelPanel1.ResumeLayout(false);
-            this.ExContain_LevelPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ExContain_LevelIcon1)).EndInit();
-            this.ResumeLayout(false);
-
+            AutoScaleDimensions = new SizeF(96F, 96F);
+            AutoScaleMode = AutoScaleMode.Dpi;
+            AutoSize = true;
+            Controls.Add(ExContain_LevelPanel1);
+            MinimumSize = new Size(24, 24);
+            Name = "ExplorationLevel";
+            Size = new Size(24, 24);
+            ExContain_LevelPanel1.ResumeLayout(false);
+            ExContain_LevelPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)ExContain_LevelIcon1).EndInit();
+            ResumeLayout(false);
         }
 
         #endregion

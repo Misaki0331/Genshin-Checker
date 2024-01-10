@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Genshin_Checker.resource.Languages;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -20,8 +21,8 @@ namespace Genshin_Checker.UI.Control.GameRecord.CharacterDetail
         public async void UpdateData(int star,string weaponImageUrl,string Name,int level,int refinement, string description="")
         {
             label1.Text = Name;
-            label2.Text = $"Lv.{level}";
-            label3.Text = $"精錬ランク : {refinement}";
+            label2.Text = string.Format(Localize.UI_Weapons_Level, level);
+            label3.Text = string.Format(Localize.UI_Weapons_RefinementRank,refinement);
             pictureBox2.BackgroundImage = new Bitmap(await App.WebRequest.ImageGetRequest($"https://static-api.misaki-chan.world/genshin-checker/asset/rarelity-frame/rarity-{star}.png"),pictureBox2.Width,pictureBox2.Height);
             pictureBox2.Image = await App.WebRequest.ImageGetRequest(weaponImageUrl);
             pictureBox3.Image = await App.WebRequest.ImageGetRequest($"https://static-api.misaki-chan.world/genshin-checker/asset/star/{star}.png");
