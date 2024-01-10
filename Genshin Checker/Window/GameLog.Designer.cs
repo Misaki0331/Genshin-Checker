@@ -29,107 +29,94 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GameLog));
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.numeric_FontSize = new System.Windows.Forms.NumericUpDown();
-            this.label1 = new System.Windows.Forms.Label();
-            this.CheckBox_GameFullScreenSpecialized = new System.Windows.Forms.CheckBox();
-            this.CheckBoxTopMost = new System.Windows.Forms.CheckBox();
-            this.ClearConsole = new System.Windows.Forms.Button();
-            this.Log = new System.Windows.Forms.TextBox();
-            this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numeric_FontSize)).BeginInit();
-            this.SuspendLayout();
+            panel1 = new Panel();
+            numeric_FontSize = new NumericUpDown();
+            label1 = new Label();
+            CheckBox_GameFullScreenSpecialized = new CheckBox();
+            CheckBoxTopMost = new CheckBox();
+            ClearConsole = new Button();
+            Log = new TextBox();
+            panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)numeric_FontSize).BeginInit();
+            SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.Black;
-            this.panel1.Controls.Add(this.numeric_FontSize);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.CheckBox_GameFullScreenSpecialized);
-            this.panel1.Controls.Add(this.CheckBoxTopMost);
-            this.panel1.Controls.Add(this.ClearConsole);
-            resources.ApplyResources(this.panel1, "panel1");
-            this.panel1.Name = "panel1";
+            panel1.BackColor = Color.Black;
+            panel1.Controls.Add(numeric_FontSize);
+            panel1.Controls.Add(label1);
+            panel1.Controls.Add(CheckBox_GameFullScreenSpecialized);
+            panel1.Controls.Add(CheckBoxTopMost);
+            panel1.Controls.Add(ClearConsole);
+            resources.ApplyResources(panel1, "panel1");
+            panel1.Name = "panel1";
             // 
             // numeric_FontSize
             // 
-            resources.ApplyResources(this.numeric_FontSize, "numeric_FontSize");
-            this.numeric_FontSize.Maximum = new decimal(new int[] {
-            30,
-            0,
-            0,
-            0});
-            this.numeric_FontSize.Minimum = new decimal(new int[] {
-            6,
-            0,
-            0,
-            0});
-            this.numeric_FontSize.Name = "numeric_FontSize";
-            this.numeric_FontSize.Value = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.numeric_FontSize.ValueChanged += new System.EventHandler(this.numericUpDown2_ValueChanged);
+            resources.ApplyResources(numeric_FontSize, "numeric_FontSize");
+            numeric_FontSize.Maximum = new decimal(new int[] { 30, 0, 0, 0 });
+            numeric_FontSize.Minimum = new decimal(new int[] { 6, 0, 0, 0 });
+            numeric_FontSize.Name = "numeric_FontSize";
+            numeric_FontSize.Value = new decimal(new int[] { 10, 0, 0, 0 });
+            numeric_FontSize.ValueChanged += numericUpDown2_ValueChanged;
             // 
             // label1
             // 
-            resources.ApplyResources(this.label1, "label1");
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Name = "label1";
+            resources.ApplyResources(label1, "label1");
+            label1.ForeColor = Color.White;
+            label1.Name = "label1";
             // 
             // CheckBox_GameFullScreenSpecialized
             // 
-            resources.ApplyResources(this.CheckBox_GameFullScreenSpecialized, "CheckBox_GameFullScreenSpecialized");
-            this.CheckBox_GameFullScreenSpecialized.ForeColor = System.Drawing.Color.White;
-            this.CheckBox_GameFullScreenSpecialized.Name = "CheckBox_GameFullScreenSpecialized";
-            this.CheckBox_GameFullScreenSpecialized.UseVisualStyleBackColor = true;
-            this.CheckBox_GameFullScreenSpecialized.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
+            resources.ApplyResources(CheckBox_GameFullScreenSpecialized, "CheckBox_GameFullScreenSpecialized");
+            CheckBox_GameFullScreenSpecialized.ForeColor = Color.White;
+            CheckBox_GameFullScreenSpecialized.Name = "CheckBox_GameFullScreenSpecialized";
+            CheckBox_GameFullScreenSpecialized.UseVisualStyleBackColor = true;
+            CheckBox_GameFullScreenSpecialized.CheckedChanged += checkBox2_CheckedChanged;
             // 
             // CheckBoxTopMost
             // 
-            resources.ApplyResources(this.CheckBoxTopMost, "CheckBoxTopMost");
-            this.CheckBoxTopMost.ForeColor = System.Drawing.Color.White;
-            this.CheckBoxTopMost.Name = "CheckBoxTopMost";
-            this.CheckBoxTopMost.UseVisualStyleBackColor = true;
-            this.CheckBoxTopMost.CheckedChanged += new System.EventHandler(this.CheckBoxTopMost_CheckedChanged);
+            resources.ApplyResources(CheckBoxTopMost, "CheckBoxTopMost");
+            CheckBoxTopMost.ForeColor = Color.White;
+            CheckBoxTopMost.Name = "CheckBoxTopMost";
+            CheckBoxTopMost.UseVisualStyleBackColor = true;
+            CheckBoxTopMost.CheckedChanged += CheckBoxTopMost_CheckedChanged;
             // 
             // ClearConsole
             // 
-            resources.ApplyResources(this.ClearConsole, "ClearConsole");
-            this.ClearConsole.Name = "ClearConsole";
-            this.ClearConsole.UseVisualStyleBackColor = true;
-            this.ClearConsole.Click += new System.EventHandler(this.button1_Click);
+            resources.ApplyResources(ClearConsole, "ClearConsole");
+            ClearConsole.Name = "ClearConsole";
+            ClearConsole.UseVisualStyleBackColor = true;
+            ClearConsole.Click += button1_Click;
             // 
             // Log
             // 
-            this.Log.BackColor = System.Drawing.Color.Black;
-            resources.ApplyResources(this.Log, "Log");
-            this.Log.ForeColor = System.Drawing.Color.White;
-            this.Log.Name = "Log";
-            this.Log.ReadOnly = true;
+            Log.BackColor = Color.Black;
+            resources.ApplyResources(Log, "Log");
+            Log.ForeColor = Color.White;
+            Log.Name = "Log";
+            Log.ReadOnly = true;
             // 
             // GameLog
             // 
             resources.ApplyResources(this, "$this");
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.BackColor = System.Drawing.Color.Black;
-            this.Controls.Add(this.Log);
-            this.Controls.Add(this.panel1);
-            this.Name = "GameLog";
-            this.Activated += new System.EventHandler(this.GameLog_Activated);
-            this.Deactivate += new System.EventHandler(this.GameLog_Deactivate);
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.GameLog_FormClosed);
-            this.Load += new System.EventHandler(this.GameLog_Load);
-            this.LocationChanged += new System.EventHandler(this.GameLog_LocationChanged);
-            this.SizeChanged += new System.EventHandler(this.GameLog_SizeChanged);
-            this.Leave += new System.EventHandler(this.GameLog_Leave);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numeric_FontSize)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleMode = AutoScaleMode.Dpi;
+            BackColor = Color.Black;
+            Controls.Add(Log);
+            Controls.Add(panel1);
+            Name = "GameLog";
+            Activated += GameLog_Activated;
+            Deactivate += GameLog_Deactivate;
+            FormClosed += GameLog_FormClosed;
+            Load += GameLog_Load;
+            LocationChanged += GameLog_LocationChanged;
+            SizeChanged += GameLog_SizeChanged;
+            Leave += GameLog_Leave;
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)numeric_FontSize).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
