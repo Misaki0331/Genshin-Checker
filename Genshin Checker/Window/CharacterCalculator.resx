@@ -1,5 +1,64 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
+  <!--
+    Microsoft ResX Schema 
+
+    Version 2.0
+
+    The primary goals of this format is to allow a simple XML format
+    that is mostly human readable. The generation and parsing of the
+    various data types are done through the TypeConverter classes
+    associated with the data types.
+
+    Example:
+
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+
+    There are any number of "resheader" rows that contain simple
+    name/value pairs.
+
+    Each data row contains a name, and value. The row also contains a
+    type or mimetype. Type corresponds to a .NET class that support
+    text/value conversion through the TypeConverter architecture.
+    Classes that don't support this are serialized and stored with the
+    mimetype set.
+
+    The mimetype is used for serialized objects, and tells the
+    ResXResourceReader how to depersist the object. This is currently not
+    extensible. For a given mimetype the value must be set accordingly:
+
+    Note - application/x-microsoft.net.object.binary.base64 is the format
+    that the ResXResourceWriter will generate, however the reader can
+    read any of the formats listed below.
+
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
   <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
@@ -58,65 +117,371 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="&gt;&gt;button1.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;Fetter.Name" xml:space="preserve">
-    <value>Fetter</value>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="button1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Right</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="button2.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="button1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>571, 0</value>
+  </data>
+  <data name="button1.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 24</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="ButtonBatch.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Left</value>
-  </data>
-  <data name="CharacterView.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 24</value>
-  </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="ButtonBatch.TabIndex" type="System.Int32, mscorlib">
+  <data name="button1.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
-  <data name="&gt;&gt;button2.Parent" xml:space="preserve">
-    <value>panel4</value>
-  </data>
-  <data name="CurrentTalentLevel2.MinimumWidth" type="System.Int32, mscorlib">
-    <value>45</value>
-  </data>
-  <data name="&gt;&gt;CurrentLevel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="Rarelity.Width" type="System.Int32, mscorlib">
-    <value>20</value>
+  <data name="button1.Text" xml:space="preserve">
+    <value>Calculate</value>
   </data>
   <data name="&gt;&gt;button1.Name" xml:space="preserve">
     <value>button1</value>
   </data>
-  <data name="&gt;&gt;ToTalentLevel3.Name" xml:space="preserve">
-    <value>ToTalentLevel3</value>
+  <data name="&gt;&gt;button1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Form, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>CharacterCalculator</value>
-  </data>
-  <data name="&gt;&gt;panel4.Name" xml:space="preserve">
+  <data name="&gt;&gt;button1.Parent" xml:space="preserve">
     <value>panel4</value>
+  </data>
+  <data name="&gt;&gt;button1.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="button2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="button2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>150, 0</value>
+  </data>
+  <data name="button2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 24</value>
+  </data>
+  <data name="button2.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="button2.Text" xml:space="preserve">
+    <value>Refresh</value>
+  </data>
+  <data name="&gt;&gt;button2.Name" xml:space="preserve">
+    <value>button2</value>
+  </data>
+  <data name="&gt;&gt;button2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;button2.Parent" xml:space="preserve">
+    <value>panel4</value>
+  </data>
+  <data name="&gt;&gt;button2.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="ButtonSelectAll.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="ButtonSelectAll.Location" type="System.Drawing.Point, System.Drawing">
+    <value>75, 0</value>
+  </data>
+  <data name="ButtonSelectAll.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 24</value>
+  </data>
+  <data name="ButtonSelectAll.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="ButtonSelectAll.Text" xml:space="preserve">
+    <value>All Select</value>
+  </data>
+  <data name="&gt;&gt;ButtonSelectAll.Name" xml:space="preserve">
+    <value>ButtonSelectAll</value>
+  </data>
+  <data name="&gt;&gt;ButtonSelectAll.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;ButtonSelectAll.Parent" xml:space="preserve">
     <value>panel4</value>
   </data>
+  <data name="&gt;&gt;ButtonSelectAll.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="ButtonBatch.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="ButtonBatch.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="ButtonBatch.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 24</value>
+  </data>
+  <data name="ButtonBatch.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="ButtonBatch.Text" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="&gt;&gt;ButtonBatch.Name" xml:space="preserve">
+    <value>ButtonBatch</value>
+  </data>
+  <data name="&gt;&gt;ButtonBatch.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ButtonBatch.Parent" xml:space="preserve">
+    <value>panel4</value>
+  </data>
+  <data name="&gt;&gt;ButtonBatch.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="panel4.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="panel4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="panel4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>646, 24</value>
+  </data>
+  <data name="panel4.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;panel4.Name" xml:space="preserve">
+    <value>panel4</value>
+  </data>
+  <data name="&gt;&gt;panel4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel4.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;panel4.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <metadata name="CalculateStatus.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="CalculateStatus.HeaderText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="CalculateStatus.Width" type="System.Int32, mscorlib">
+    <value>19</value>
+  </data>
+  <metadata name="ID.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="ID.HeaderText" xml:space="preserve">
+    <value>Character ID</value>
+  </data>
+  <data name="ID.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <metadata name="Rarelity.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="Rarelity.HeaderText" xml:space="preserve">
+    <value>★</value>
+  </data>
+  <data name="Rarelity.MinimumWidth" type="System.Int32, mscorlib">
+    <value>20</value>
+  </data>
+  <data name="Rarelity.Width" type="System.Int32, mscorlib">
+    <value>20</value>
+  </data>
+  <metadata name="ElementType.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="ElementType.HeaderText" xml:space="preserve">
+    <value>Elm</value>
+  </data>
+  <data name="ElementType.MinimumWidth" type="System.Int32, mscorlib">
+    <value>40</value>
+  </data>
   <data name="ElementType.Width" type="System.Int32, mscorlib">
     <value>40</value>
+  </data>
+  <metadata name="CharacterName.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="CharacterName.HeaderText" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="CharacterName.MinimumWidth" type="System.Int32, mscorlib">
+    <value>120</value>
+  </data>
+  <metadata name="Weapon.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="Weapon.HeaderText" xml:space="preserve">
+    <value>Weapons</value>
+  </data>
+  <data name="Weapon.MinimumWidth" type="System.Int32, mscorlib">
+    <value>60</value>
+  </data>
+  <data name="Weapon.Width" type="System.Int32, mscorlib">
+    <value>60</value>
+  </data>
+  <metadata name="Fetter.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="Fetter.HeaderText" xml:space="preserve">
+    <value>♥</value>
+  </data>
+  <data name="Fetter.MinimumWidth" type="System.Int32, mscorlib">
+    <value>25</value>
+  </data>
+  <data name="Fetter.Width" type="System.Int32, mscorlib">
+    <value>25</value>
+  </data>
+  <metadata name="CurrentLevel.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="CurrentLevel.HeaderText" xml:space="preserve">
+    <value>Lv</value>
+  </data>
+  <data name="CurrentLevel.MinimumWidth" type="System.Int32, mscorlib">
+    <value>25</value>
+  </data>
+  <data name="CurrentLevel.Width" type="System.Int32, mscorlib">
+    <value>25</value>
+  </data>
+  <metadata name="CurrentTalentLevel1.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="CurrentTalentLevel1.HeaderText" xml:space="preserve">
+    <value>N.A</value>
   </data>
   <data name="CurrentTalentLevel1.MinimumWidth" type="System.Int32, mscorlib">
     <value>45</value>
   </data>
-  <data name="&gt;&gt;ElementType.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="CurrentTalentLevel1.Width" type="System.Int32, mscorlib">
+    <value>45</value>
+  </data>
+  <metadata name="CurrentTalentLevel2.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="CurrentTalentLevel2.HeaderText" xml:space="preserve">
+    <value>E.S</value>
+  </data>
+  <data name="CurrentTalentLevel2.MinimumWidth" type="System.Int32, mscorlib">
+    <value>45</value>
+  </data>
+  <data name="CurrentTalentLevel2.Width" type="System.Int32, mscorlib">
+    <value>45</value>
+  </data>
+  <metadata name="CurrentTalentLevel3.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="CurrentTalentLevel3.HeaderText" xml:space="preserve">
+    <value>B.S</value>
+  </data>
+  <data name="CurrentTalentLevel3.MinimumWidth" type="System.Int32, mscorlib">
+    <value>45</value>
+  </data>
+  <data name="CurrentTalentLevel3.Width" type="System.Int32, mscorlib">
+    <value>45</value>
+  </data>
+  <metadata name="ToArrow.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="ToArrow.HeaderText" xml:space="preserve">
+    <value>ToArrow</value>
+  </data>
+  <data name="ToArrow.MinimumWidth" type="System.Int32, mscorlib">
+    <value>20</value>
+  </data>
+  <data name="ToArrow.Width" type="System.Int32, mscorlib">
+    <value>20</value>
+  </data>
+  <metadata name="ToLevel.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="ToLevel.HeaderText" xml:space="preserve">
+    <value>Lv</value>
+  </data>
+  <data name="ToLevel.MinimumWidth" type="System.Int32, mscorlib">
+    <value>25</value>
+  </data>
+  <data name="ToLevel.Width" type="System.Int32, mscorlib">
+    <value>25</value>
+  </data>
+  <metadata name="ToTalentLevel1.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="ToTalentLevel1.HeaderText" xml:space="preserve">
+    <value>N.A</value>
+  </data>
+  <data name="ToTalentLevel1.MinimumWidth" type="System.Int32, mscorlib">
+    <value>45</value>
+  </data>
+  <data name="ToTalentLevel1.Width" type="System.Int32, mscorlib">
+    <value>45</value>
+  </data>
+  <metadata name="ToTalentLevel2.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="ToTalentLevel2.HeaderText" xml:space="preserve">
+    <value>E.S</value>
+  </data>
+  <data name="ToTalentLevel2.MinimumWidth" type="System.Int32, mscorlib">
+    <value>45</value>
+  </data>
+  <data name="ToTalentLevel2.Width" type="System.Int32, mscorlib">
+    <value>45</value>
+  </data>
+  <metadata name="ToTalentLevel3.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="ToTalentLevel3.HeaderText" xml:space="preserve">
+    <value>B.S</value>
+  </data>
+  <data name="ToTalentLevel3.MinimumWidth" type="System.Int32, mscorlib">
+    <value>45</value>
+  </data>
+  <data name="ToTalentLevel3.Width" type="System.Int32, mscorlib">
+    <value>45</value>
+  </data>
+  <data name="CharacterView.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="CharacterView.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 24</value>
+  </data>
+  <data name="CharacterView.Size" type="System.Drawing.Size, System.Drawing">
+    <value>646, 437</value>
+  </data>
+  <data name="CharacterView.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;CharacterView.Name" xml:space="preserve">
+    <value>CharacterView</value>
+  </data>
+  <data name="&gt;&gt;CharacterView.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;CharacterView.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;CharacterView.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <metadata name="ErrorHandling.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>96, 96</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>646, 461</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Character Calculator</value>
+  </data>
+  <data name="&gt;&gt;ErrorHandling.Name" xml:space="preserve">
+    <value>ErrorHandling</value>
+  </data>
+  <data name="&gt;&gt;ErrorHandling.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Timer, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;CalculateStatus.Name" xml:space="preserve">
+    <value>CalculateStatus</value>
   </data>
   <data name="&gt;&gt;CalculateStatus.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewCheckBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -124,402 +489,97 @@
   <data name="&gt;&gt;ID.Name" xml:space="preserve">
     <value>ID</value>
   </data>
-  <data name="&gt;&gt;Weapon.Name" xml:space="preserve">
-    <value>Weapon</value>
-  </data>
-  <data name="button1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>571, 0</value>
-  </data>
-  <data name="&gt;&gt;panel4.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;ErrorHandling.Name" xml:space="preserve">
-    <value>ErrorHandling</value>
-  </data>
-  <data name="panel4.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;ButtonBatch.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="ToLevel.MinimumWidth" type="System.Int32, mscorlib">
-    <value>25</value>
-  </data>
-  <data name="button1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Right</value>
-  </data>
-  <data name="Fetter.Width" type="System.Int32, mscorlib">
-    <value>25</value>
-  </data>
-  <data name="&gt;&gt;CurrentTalentLevel1.Name" xml:space="preserve">
-    <value>CurrentTalentLevel1</value>
-  </data>
-  <data name="ElementType.MinimumWidth" type="System.Int32, mscorlib">
-    <value>40</value>
-  </data>
-  <data name="CalculateStatus.Width" type="System.Int32, mscorlib">
-    <value>19</value>
-  </data>
-  <data name="&gt;&gt;ToTalentLevel3.Type" xml:space="preserve">
+  <data name="&gt;&gt;ID.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="CharacterView.Size" type="System.Drawing.Size, System.Drawing">
-    <value>646, 437</value>
+  <data name="&gt;&gt;Rarelity.Name" xml:space="preserve">
+    <value>Rarelity</value>
   </data>
-  <data name="ElementType.HeaderText" xml:space="preserve">
-    <value>Elm</value>
-    <comment>@MutedRule(StringFormat)</comment>
-  </data>
-  <data name="button2.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="ButtonSelectAll.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="ToLevel.Width" type="System.Int32, mscorlib">
-    <value>25</value>
-  </data>
-  <data name="&gt;&gt;ButtonBatch.Parent" xml:space="preserve">
-    <value>panel4</value>
+  <data name="&gt;&gt;Rarelity.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;ElementType.Name" xml:space="preserve">
     <value>ElementType</value>
   </data>
-  <data name="ButtonSelectAll.Text" xml:space="preserve">
-    <value>All Select</value>
+  <data name="&gt;&gt;ElementType.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="button2.Text" xml:space="preserve">
-    <value>Refresh</value>
+  <data name="&gt;&gt;CharacterName.Name" xml:space="preserve">
+    <value>CharacterName</value>
   </data>
   <data name="&gt;&gt;CharacterName.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="CurrentLevel.HeaderText" xml:space="preserve">
-    <value>Lv</value>
+  <data name="&gt;&gt;Weapon.Name" xml:space="preserve">
+    <value>Weapon</value>
   </data>
-  <data name="&gt;&gt;ID.Type" xml:space="preserve">
+  <data name="&gt;&gt;Weapon.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="ButtonBatch.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 24</value>
+  <data name="&gt;&gt;Fetter.Name" xml:space="preserve">
+    <value>Fetter</value>
   </data>
-  <data name="&gt;&gt;button1.Parent" xml:space="preserve">
-    <value>panel4</value>
+  <data name="&gt;&gt;Fetter.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="CurrentTalentLevel3.MinimumWidth" type="System.Int32, mscorlib">
-    <value>45</value>
+  <data name="&gt;&gt;CurrentLevel.Name" xml:space="preserve">
+    <value>CurrentLevel</value>
   </data>
-  <data name="button2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>150, 0</value>
+  <data name="&gt;&gt;CurrentLevel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="Weapon.Width" type="System.Int32, mscorlib">
-    <value>60</value>
+  <data name="&gt;&gt;CurrentTalentLevel1.Name" xml:space="preserve">
+    <value>CurrentTalentLevel1</value>
   </data>
-  <data name="ToArrow.Width" type="System.Int32, mscorlib">
-    <value>20</value>
+  <data name="&gt;&gt;CurrentTalentLevel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;button1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;CurrentTalentLevel2.Name" xml:space="preserve">
+    <value>CurrentTalentLevel2</value>
+  </data>
+  <data name="&gt;&gt;CurrentTalentLevel2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;CurrentTalentLevel3.Name" xml:space="preserve">
+    <value>CurrentTalentLevel3</value>
   </data>
   <data name="&gt;&gt;CurrentTalentLevel3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ToArrow.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;ToArrow.Name" xml:space="preserve">
     <value>ToArrow</value>
   </data>
-  <data name="&gt;&gt;button2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ButtonSelectAll.Name" xml:space="preserve">
-    <value>ButtonSelectAll</value>
-  </data>
-  <data name="&gt;&gt;CurrentTalentLevel2.Name" xml:space="preserve">
-    <value>CurrentTalentLevel2</value>
-  </data>
-  <data name="ToTalentLevel2.MinimumWidth" type="System.Int32, mscorlib">
-    <value>45</value>
-  </data>
-  <data name="Weapon.MinimumWidth" type="System.Int32, mscorlib">
-    <value>60</value>
-  </data>
-  <data name="panel4.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="ButtonBatch.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="ButtonBatch.Text" xml:space="preserve">
-    <value>Edit</value>
-  </data>
-  <data name="CurrentLevel.MinimumWidth" type="System.Int32, mscorlib">
-    <value>25</value>
-  </data>
-  <data name="panel4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>646, 24</value>
-  </data>
-  <data name="Fetter.HeaderText" xml:space="preserve">
-    <value>♥</value>
-  </data>
-  <data name="CharacterName.MinimumWidth" type="System.Int32, mscorlib">
-    <value>120</value>
-  </data>
-  <data name="&gt;&gt;button2.Name" xml:space="preserve">
-    <value>button2</value>
-  </data>
-  <data name="CurrentTalentLevel1.Width" type="System.Int32, mscorlib">
-    <value>45</value>
-  </data>
-  <data name="&gt;&gt;CurrentLevel.Name" xml:space="preserve">
-    <value>CurrentLevel</value>
-  </data>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>96, 96</value>
-  </data>
-  <data name="ToTalentLevel2.HeaderText" xml:space="preserve">
-    <value>E.S</value>
-    <comment>@MutedRule(StringFormat)</comment>
-  </data>
-  <data name="ID.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="ToTalentLevel2.Width" type="System.Int32, mscorlib">
-    <value>45</value>
-  </data>
-  <data name="&gt;&gt;panel4.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="ID.HeaderText" xml:space="preserve">
-    <value>Character ID</value>
-  </data>
-  <data name="&gt;&gt;CharacterView.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;Fetter.Type" xml:space="preserve">
+  <data name="&gt;&gt;ToArrow.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="button2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Left</value>
-  </data>
-  <data name="&gt;&gt;ButtonBatch.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;ButtonBatch.Name" xml:space="preserve">
-    <value>ButtonBatch</value>
-  </data>
-  <data name="CurrentTalentLevel3.Width" type="System.Int32, mscorlib">
-    <value>45</value>
-  </data>
-  <data name="ToLevel.HeaderText" xml:space="preserve">
-    <value>Lv</value>
-  </data>
-  <data name="&gt;&gt;ButtonSelectAll.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="button1.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="Weapon.HeaderText" xml:space="preserve">
-    <value>Weapons</value>
-  </data>
-  <data name="&gt;&gt;CurrentTalentLevel1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="CurrentTalentLevel2.HeaderText" xml:space="preserve">
-    <value>E.S</value>
-  </data>
-  <data name="&gt;&gt;ErrorHandling.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Timer, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="ToTalentLevel1.MinimumWidth" type="System.Int32, mscorlib">
-    <value>45</value>
-  </data>
-  <data name="&gt;&gt;CurrentTalentLevel2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="ButtonSelectAll.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 24</value>
-  </data>
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>646, 461</value>
-  </data>
-  <data name="&gt;&gt;panel4.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ToLevel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="CurrentLevel.Width" type="System.Int32, mscorlib">
-    <value>25</value>
-  </data>
-  <data name="&gt;&gt;Rarelity.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ToTalentLevel1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Weapon.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>Character Calculator</value>
-  </data>
-  <data name="ToTalentLevel3.HeaderText" xml:space="preserve">
-    <value>B.S</value>
-  </data>
-  <data name="ToTalentLevel3.Width" type="System.Int32, mscorlib">
-    <value>45</value>
-  </data>
-  <data name="Rarelity.MinimumWidth" type="System.Int32, mscorlib">
-    <value>20</value>
-  </data>
-  <data name="CurrentTalentLevel1.HeaderText" xml:space="preserve">
-    <value>N.A</value>
-  </data>
-  <data name="&gt;&gt;ButtonSelectAll.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;CharacterView.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="ToArrow.MinimumWidth" type="System.Int32, mscorlib">
-    <value>20</value>
-  </data>
-  <data name="CharacterView.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="CharacterView.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="button1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 24</value>
-  </data>
-  <data name="CharacterName.HeaderText" xml:space="preserve">
-    <value>Name</value>
-  </data>
-  <data name="ButtonSelectAll.Location" type="System.Drawing.Point, System.Drawing">
-    <value>75, 0</value>
-  </data>
-  <data name="CurrentTalentLevel3.HeaderText" xml:space="preserve">
-    <value>B.S</value>
   </data>
   <data name="&gt;&gt;ToLevel.Name" xml:space="preserve">
     <value>ToLevel</value>
   </data>
-  <data name="&gt;&gt;ToTalentLevel2.Name" xml:space="preserve">
-    <value>ToTalentLevel2</value>
-  </data>
-  <data name="ToTalentLevel1.Width" type="System.Int32, mscorlib">
-    <value>45</value>
-  </data>
-  <data name="&gt;&gt;CharacterView.Name" xml:space="preserve">
-    <value>CharacterView</value>
-  </data>
-  <data name="panel4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="ButtonSelectAll.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Left</value>
-  </data>
-  <data name="Fetter.MinimumWidth" type="System.Int32, mscorlib">
-    <value>25</value>
-  </data>
-  <data name="ToTalentLevel1.HeaderText" xml:space="preserve">
-    <value>N.A</value>
-  </data>
-  <data name="&gt;&gt;CharacterName.Name" xml:space="preserve">
-    <value>CharacterName</value>
-  </data>
-  <data name="button1.Text" xml:space="preserve">
-    <value>Calculate</value>
-  </data>
-  <data name="Rarelity.HeaderText" xml:space="preserve">
-    <value>★</value>
-  </data>
-  <data name="CurrentTalentLevel2.Width" type="System.Int32, mscorlib">
-    <value>45</value>
-  </data>
-  <data name="ToTalentLevel3.MinimumWidth" type="System.Int32, mscorlib">
-    <value>45</value>
-  </data>
-  <data name="&gt;&gt;CharacterView.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Rarelity.Name" xml:space="preserve">
-    <value>Rarelity</value>
+  <data name="&gt;&gt;ToLevel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;ToTalentLevel1.Name" xml:space="preserve">
     <value>ToTalentLevel1</value>
   </data>
-  <data name="&gt;&gt;CurrentTalentLevel3.Name" xml:space="preserve">
-    <value>CurrentTalentLevel3</value>
+  <data name="&gt;&gt;ToTalentLevel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;CalculateStatus.Name" xml:space="preserve">
-    <value>CalculateStatus</value>
-  </data>
-  <data name="&gt;&gt;button2.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="&gt;&gt;ToTalentLevel2.Name" xml:space="preserve">
+    <value>ToTalentLevel2</value>
   </data>
   <data name="&gt;&gt;ToTalentLevel2.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <metadata name="ID.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="Rarelity.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="CurrentLevel.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="Weapon.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="ToTalentLevel2.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="ToArrow.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="CurrentTalentLevel3.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="CurrentTalentLevel2.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="ErrorHandling.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
-  <metadata name="CharacterName.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="Fetter.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="$this.Language" type="System.Globalization.CultureInfo, System.Private.CoreLib, Culture=neutral, PublicKeyToken=7cec85d7bea7798e">
-    <value>ja-JP</value>
-  </metadata>
-  <metadata name="ElementType.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="CalculateStatus.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="ToLevel.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="CurrentTalentLevel1.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="ToTalentLevel3.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="ToTalentLevel1.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
+  <data name="&gt;&gt;ToTalentLevel3.Name" xml:space="preserve">
+    <value>ToTalentLevel3</value>
+  </data>
+  <data name="&gt;&gt;ToTalentLevel3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>CharacterCalculator</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
 </root>

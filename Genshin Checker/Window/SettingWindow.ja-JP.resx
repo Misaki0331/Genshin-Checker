@@ -117,46 +117,104 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="page_general.Text" xml:space="preserve">
+    <value>全般</value>
+  </data>
+  <data name="page_notification.Text" xml:space="preserve">
+    <value>通知</value>
+  </data>
+  <data name="page_auth.Text" xml:space="preserve">
+    <value>アプリ連携</value>
+  </data>
+  <data name="page_about.Text" xml:space="preserve">
+    <value>バージョン情報</value>
+  </data>
+  <data name="groupBox7.Text" xml:space="preserve">
+    <value>スクリーンショット</value>
+  </data>
+  <data name="label8.Text" xml:space="preserve">
+    <value>フォーマットの仕様 : 転送先のフォーマットに「/」を使用することでフォルダも指定できます。
+例 : 「&lt;UID&gt;/&lt;DATE&gt;-&lt;TIME&gt;」⇒UIDフォルダ配下にスクリーンショット生成
+使用可能なコマンドは以下の通りです。
+&lt;UID&gt; ゲームアカウントUID (ゲームを再起動するまで変わりません)
+&lt;DATE&gt; 「20XX-XX-XX」表示方式の日付
+&lt;TIME&gt; 「XX-XX-XX」表示方式の時刻
+&lt;YEAR&gt; &lt;MONTH&gt; &lt;DAY&gt; : 年月日
+&lt;APM&gt; AM/PM 
+&lt;12H&gt; &lt;24H&gt; 12/24時間
+&lt;MIN&gt; &lt;SEC&gt; 分秒
+&lt;UNIX&gt; UNIX時間
+&lt;FF&gt; &lt;FFF&gt; &lt;FFFF&gt;... 2～7桁までの小数点以下の秒数</value>
+  </data>
+  <data name="IsScreenShotNotify.Text" xml:space="preserve">
+    <value>スクリーンショット保存した時に通知する</value>
+  </data>
+  <data name="IsScreenShotAfterDelete.Text" xml:space="preserve">
+    <value>元のゲームフォルダのスクリーンショットを削除する</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>転送先のファイルフォーマット</value>
+  </data>
   <data name="button1.Text" xml:space="preserve">
-    <value>計算開始</value>
+    <value>参照</value>
   </data>
-  <data name="button2.Text" xml:space="preserve">
-    <value>データ更新</value>
+  <data name="label2.Text" xml:space="preserve">
+    <value>転送先のフォルダパス</value>
   </data>
-  <data name="ButtonSelectAll.Text" xml:space="preserve">
-    <value>全て選択</value>
+  <data name="ButtonScreenShotPathAuto.Text" xml:space="preserve">
+    <value>自動設定</value>
   </data>
-  <data name="ButtonBatch.Text" xml:space="preserve">
-    <value>一括変更</value>
+  <data name="IsScreenShotRaise.Text" xml:space="preserve">
+    <value>転送有効化</value>
   </data>
-  <data name="ElementType.HeaderText" xml:space="preserve">
-    <value>元素</value>
+  <data name="groupBox6.Text" xml:space="preserve">
+    <value>ゲーム時間のカウント</value>
   </data>
-  <data name="CharacterName.HeaderText" xml:space="preserve">
-    <value>名前</value>
+  <data name="IsCountBackground.Text" xml:space="preserve">
+    <value>バックグラウンド時もプレイ時間にカウントする</value>
   </data>
-  <data name="Weapon.HeaderText" xml:space="preserve">
-    <value>武器種</value>
+  <data name="groupBox3.Text" xml:space="preserve">
+    <value>リアルタイムノートの通知 (HoYoLab連携必須)</value>
   </data>
-  <data name="CurrentTalentLevel1.HeaderText" xml:space="preserve">
-    <value>通常</value>
+  <data name="groupBox2.Text" xml:space="preserve">
+    <value>ゲーム通知</value>
   </data>
-  <data name="CurrentTalentLevel2.HeaderText" xml:space="preserve">
-    <value>ｽｷﾙ</value>
+  <data name="IsNotificationGameClosed.Text" xml:space="preserve">
+    <value>ゲーム終了時の通知</value>
   </data>
-  <data name="CurrentTalentLevel3.HeaderText" xml:space="preserve">
-    <value>爆発</value>
+  <data name="IsNotificationGameStart.Text" xml:space="preserve">
+    <value>ゲーム起動時の通知</value>
   </data>
-  <data name="ToTalentLevel1.HeaderText" xml:space="preserve">
-    <value>通常</value>
+  <data name="groupBox8.Text" xml:space="preserve">
+    <value>連携中のアカウント一覧</value>
   </data>
-  <data name="ToTalentLevel2.HeaderText" xml:space="preserve">
-    <value>ｽｷﾙ</value>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>HoYoLabとの連携</value>
   </data>
-  <data name="ToTalentLevel3.HeaderText" xml:space="preserve">
-    <value>爆発</value>
+  <data name="label1.Text" xml:space="preserve">
+    <value>連携すると現在のアカウントステータスをリアルタイムで表示することができます。
+利用できる情報の例 : 戦績情報・リアルタイムノート・旅人手帳</value>
+  </data>
+  <data name="Open_HoYoLabAuth.Text" xml:space="preserve">
+    <value>ブラウザを開いて連携</value>
+  </data>
+  <data name="groupBox5.Text" xml:space="preserve">
+    <value>作者の情報</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>このアプリの作者 : 水咲(みさき)</value>
+  </data>
+  <data name="groupBox4.Text" xml:space="preserve">
+    <value>バージョン情報</value>
+  </data>
+  <data name="OpenGitHubReleases.Text" xml:space="preserve">
+    <value>最新バージョンはこちら</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>76, 15</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>育成計算機＋</value>
+    <value>設定</value>
   </data>
 </root>
