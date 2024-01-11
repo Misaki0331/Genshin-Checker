@@ -28,88 +28,87 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.PanelStar = new System.Windows.Forms.Panel();
-            this.PanelBattleInfo = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.panel1.SuspendLayout();
-            this.SuspendLayout();
+            label1 = new Label();
+            panel1 = new Panel();
+            PanelStar = new Panel();
+            PanelBattleInfo = new Panel();
+            label2 = new Label();
+            panel1.SuspendLayout();
+            SuspendLayout();
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.label1.Font = new System.Drawing.Font("Meiryo UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(0, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(105, 35);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "第 1 間";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            label1.AutoSize = true;
+            label1.BackColor = Color.Transparent;
+            label1.Dock = DockStyle.Left;
+            label1.Font = new Font("Meiryo UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.Location = new Point(0, 0);
+            label1.Name = "label1";
+            label1.Size = new Size(105, 35);
+            label1.TabIndex = 0;
+            label1.Text = "第 1 間";
+            label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.Transparent;
-            this.panel1.Controls.Add(this.PanelStar);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(348, 38);
-            this.panel1.TabIndex = 1;
+            panel1.BackColor = Color.Transparent;
+            panel1.Controls.Add(PanelStar);
+            panel1.Controls.Add(label1);
+            panel1.Dock = DockStyle.Top;
+            panel1.Location = new Point(0, 0);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(348, 38);
+            panel1.TabIndex = 1;
             // 
             // PanelStar
             // 
-            this.PanelStar.AutoSize = true;
-            this.PanelStar.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.PanelStar.Dock = System.Windows.Forms.DockStyle.Left;
-            this.PanelStar.Location = new System.Drawing.Point(105, 0);
-            this.PanelStar.Name = "PanelStar";
-            this.PanelStar.Size = new System.Drawing.Size(0, 38);
-            this.PanelStar.TabIndex = 1;
+            PanelStar.AutoSize = true;
+            PanelStar.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            PanelStar.Dock = DockStyle.Left;
+            PanelStar.Location = new Point(105, 0);
+            PanelStar.Name = "PanelStar";
+            PanelStar.Size = new Size(0, 38);
+            PanelStar.TabIndex = 1;
             // 
             // PanelBattleInfo
             // 
-            this.PanelBattleInfo.AutoSize = true;
-            this.PanelBattleInfo.BackColor = System.Drawing.Color.Transparent;
-            this.PanelBattleInfo.Dock = System.Windows.Forms.DockStyle.Top;
-            this.PanelBattleInfo.Location = new System.Drawing.Point(0, 62);
-            this.PanelBattleInfo.Name = "PanelBattleInfo";
-            this.PanelBattleInfo.Size = new System.Drawing.Size(348, 0);
-            this.PanelBattleInfo.TabIndex = 3;
+            PanelBattleInfo.AutoSize = true;
+            PanelBattleInfo.BackColor = Color.Transparent;
+            PanelBattleInfo.Dock = DockStyle.Top;
+            PanelBattleInfo.Location = new Point(0, 62);
+            PanelBattleInfo.Name = "PanelBattleInfo";
+            PanelBattleInfo.Size = new Size(348, 0);
+            PanelBattleInfo.TabIndex = 3;
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label2.Font = new System.Drawing.Font("Meiryo UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(0, 38);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(324, 24);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "踏破時間 : 20XX/XX/XX XX:XX:XX";
+            label2.AutoSize = true;
+            label2.Dock = DockStyle.Top;
+            label2.Font = new Font("Meiryo UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label2.Location = new Point(0, 38);
+            label2.Name = "label2";
+            label2.Size = new Size(324, 24);
+            label2.TabIndex = 2;
+            label2.Text = "踏破時間 : 20XX/XX/XX XX:XX:XX";
             // 
             // LevelInfo
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.AutoSize = true;
-            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.BackColor = System.Drawing.Color.Transparent;
-            this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Controls.Add(this.PanelBattleInfo);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.panel1);
-            this.MinimumSize = new System.Drawing.Size(350, 0);
-            this.Name = "LevelInfo";
-            this.Size = new System.Drawing.Size(348, 62);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(96F, 96F);
+            AutoScaleMode = AutoScaleMode.Dpi;
+            AutoSize = true;
+            AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            BackColor = Color.Transparent;
+            BorderStyle = BorderStyle.FixedSingle;
+            Controls.Add(PanelBattleInfo);
+            Controls.Add(label2);
+            Controls.Add(panel1);
+            MinimumSize = new Size(350, 0);
+            Name = "LevelInfo";
+            Size = new Size(348, 62);
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion

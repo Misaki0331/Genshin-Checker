@@ -29,123 +29,122 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FloorInfo));
-            this.LabelArea = new System.Windows.Forms.Label();
-            this.LabelInfomation = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.LabelStars = new System.Windows.Forms.Label();
-            this.LabelLatestUpdate = new System.Windows.Forms.Label();
-            this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.SuspendLayout();
+            LabelArea = new Label();
+            LabelInfomation = new Label();
+            panel1 = new Panel();
+            pictureBox1 = new PictureBox();
+            LabelStars = new Label();
+            LabelLatestUpdate = new Label();
+            panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            SuspendLayout();
             // 
             // LabelArea
             // 
-            this.LabelArea.AutoSize = true;
-            this.LabelArea.Dock = System.Windows.Forms.DockStyle.Left;
-            this.LabelArea.Font = new System.Drawing.Font("Meiryo UI", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.LabelArea.Location = new System.Drawing.Point(0, 0);
-            this.LabelArea.Name = "LabelArea";
-            this.LabelArea.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
-            this.LabelArea.Size = new System.Drawing.Size(99, 37);
-            this.LabelArea.TabIndex = 0;
-            this.LabelArea.Text = "12 層";
-            this.LabelArea.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.LabelArea.Click += new System.EventHandler(this.ClickEvent);
-            this.LabelArea.Paint += new System.Windows.Forms.PaintEventHandler(this.LabelPaint);
+            LabelArea.AutoSize = true;
+            LabelArea.Dock = DockStyle.Left;
+            LabelArea.Font = new Font("Meiryo UI", 21.75F, FontStyle.Bold, GraphicsUnit.Point);
+            LabelArea.Location = new Point(0, 0);
+            LabelArea.Name = "LabelArea";
+            LabelArea.Padding = new Padding(3, 0, 0, 0);
+            LabelArea.Size = new Size(99, 37);
+            LabelArea.TabIndex = 0;
+            LabelArea.Text = "12 層";
+            LabelArea.TextAlign = ContentAlignment.MiddleLeft;
+            LabelArea.Click += ClickEvent;
+            LabelArea.Paint += LabelPaint;
             // 
             // LabelInfomation
             // 
-            this.LabelInfomation.BackColor = System.Drawing.Color.Transparent;
-            this.LabelInfomation.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.LabelInfomation.Font = new System.Drawing.Font("Meiryo UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LabelInfomation.Location = new System.Drawing.Point(0, 58);
-            this.LabelInfomation.Name = "LabelInfomation";
-            this.LabelInfomation.Size = new System.Drawing.Size(345, 83);
-            this.LabelInfomation.TabIndex = 1;
-            this.LabelInfomation.Text = "地脈異常の文字列";
-            this.LabelInfomation.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.LabelInfomation.Click += new System.EventHandler(this.ClickEvent);
-            this.LabelInfomation.Paint += new System.Windows.Forms.PaintEventHandler(this.LabelPaint);
+            LabelInfomation.BackColor = Color.Transparent;
+            LabelInfomation.Dock = DockStyle.Bottom;
+            LabelInfomation.Font = new Font("Meiryo UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            LabelInfomation.Location = new Point(0, 58);
+            LabelInfomation.Name = "LabelInfomation";
+            LabelInfomation.Size = new Size(345, 83);
+            LabelInfomation.TabIndex = 1;
+            LabelInfomation.Text = "地脈異常の文字列";
+            LabelInfomation.TextAlign = ContentAlignment.BottomCenter;
+            LabelInfomation.Click += ClickEvent;
+            LabelInfomation.Paint += LabelPaint;
             // 
             // panel1
             // 
-            this.panel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.panel1.BackColor = System.Drawing.Color.Transparent;
-            this.panel1.Controls.Add(this.LabelArea);
-            this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.Controls.Add(this.LabelStars);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(345, 38);
-            this.panel1.TabIndex = 4;
-            this.panel1.Click += new System.EventHandler(this.ClickEvent);
+            panel1.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            panel1.BackColor = Color.Transparent;
+            panel1.Controls.Add(LabelArea);
+            panel1.Controls.Add(pictureBox1);
+            panel1.Controls.Add(LabelStars);
+            panel1.Dock = DockStyle.Top;
+            panel1.Location = new Point(0, 0);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(345, 38);
+            panel1.TabIndex = 4;
+            panel1.Click += ClickEvent;
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(173, 0);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(0);
-            this.pictureBox1.MaximumSize = new System.Drawing.Size(38, 38);
-            this.pictureBox1.MinimumSize = new System.Drawing.Size(38, 38);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(38, 38);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 4;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.ClickEvent);
+            pictureBox1.Dock = DockStyle.Right;
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(173, 0);
+            pictureBox1.Margin = new Padding(0);
+            pictureBox1.MaximumSize = new Size(38, 38);
+            pictureBox1.MinimumSize = new Size(38, 38);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(38, 38);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox1.TabIndex = 4;
+            pictureBox1.TabStop = false;
+            pictureBox1.Click += ClickEvent;
             // 
             // LabelStars
             // 
-            this.LabelStars.AutoSize = true;
-            this.LabelStars.Dock = System.Windows.Forms.DockStyle.Right;
-            this.LabelStars.Font = new System.Drawing.Font("Meiryo UI", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.LabelStars.Location = new System.Drawing.Point(211, 0);
-            this.LabelStars.Margin = new System.Windows.Forms.Padding(0);
-            this.LabelStars.Name = "LabelStars";
-            this.LabelStars.Size = new System.Drawing.Size(134, 37);
-            this.LabelStars.TabIndex = 5;
-            this.LabelStars.Text = "99 / 99";
-            this.LabelStars.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.LabelStars.Click += new System.EventHandler(this.ClickEvent);
-            this.LabelStars.Paint += new System.Windows.Forms.PaintEventHandler(this.LabelPaint);
+            LabelStars.AutoSize = true;
+            LabelStars.Dock = DockStyle.Right;
+            LabelStars.Font = new Font("Meiryo UI", 21.75F, FontStyle.Bold, GraphicsUnit.Point);
+            LabelStars.Location = new Point(211, 0);
+            LabelStars.Margin = new Padding(0);
+            LabelStars.Name = "LabelStars";
+            LabelStars.Size = new Size(134, 37);
+            LabelStars.TabIndex = 5;
+            LabelStars.Text = "99 / 99";
+            LabelStars.TextAlign = ContentAlignment.MiddleCenter;
+            LabelStars.Click += ClickEvent;
+            LabelStars.Paint += LabelPaint;
             // 
             // LabelLatestUpdate
             // 
-            this.LabelLatestUpdate.AutoSize = true;
-            this.LabelLatestUpdate.Dock = System.Windows.Forms.DockStyle.Left;
-            this.LabelLatestUpdate.Font = new System.Drawing.Font("Meiryo UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LabelLatestUpdate.Location = new System.Drawing.Point(0, 38);
-            this.LabelLatestUpdate.Name = "LabelLatestUpdate";
-            this.LabelLatestUpdate.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
-            this.LabelLatestUpdate.Size = new System.Drawing.Size(254, 20);
-            this.LabelLatestUpdate.TabIndex = 5;
-            this.LabelLatestUpdate.Text = "最終更新 2023/12/25 12:34:56";
-            this.LabelLatestUpdate.Click += new System.EventHandler(this.ClickEvent);
-            this.LabelLatestUpdate.Paint += new System.Windows.Forms.PaintEventHandler(this.LabelPaint);
+            LabelLatestUpdate.AutoSize = true;
+            LabelLatestUpdate.Dock = DockStyle.Left;
+            LabelLatestUpdate.Font = new Font("Meiryo UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            LabelLatestUpdate.Location = new Point(0, 38);
+            LabelLatestUpdate.Name = "LabelLatestUpdate";
+            LabelLatestUpdate.Padding = new Padding(3, 0, 0, 0);
+            LabelLatestUpdate.Size = new Size(254, 20);
+            LabelLatestUpdate.TabIndex = 5;
+            LabelLatestUpdate.Text = "最終更新 2023/12/25 12:34:56";
+            LabelLatestUpdate.Click += ClickEvent;
+            LabelLatestUpdate.Paint += LabelPaint;
             // 
             // FloorInfo
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.Controls.Add(this.LabelLatestUpdate);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.LabelInfomation);
-            this.MaximumSize = new System.Drawing.Size(345, 141);
-            this.MinimumSize = new System.Drawing.Size(345, 141);
-            this.Name = "FloorInfo";
-            this.Size = new System.Drawing.Size(345, 141);
-            this.Load += new System.EventHandler(this.FloorInfo_Load);
-            this.Click += new System.EventHandler(this.ClickEvent);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(96F, 96F);
+            AutoScaleMode = AutoScaleMode.Dpi;
+            BackgroundImageLayout = ImageLayout.Zoom;
+            Controls.Add(LabelLatestUpdate);
+            Controls.Add(panel1);
+            Controls.Add(LabelInfomation);
+            MaximumSize = new Size(345, 141);
+            MinimumSize = new Size(345, 141);
+            Name = "FloorInfo";
+            Size = new Size(345, 141);
+            Load += FloorInfo_Load;
+            Click += ClickEvent;
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
