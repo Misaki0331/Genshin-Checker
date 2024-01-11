@@ -1,4 +1,5 @@
-﻿using OpenTK.Graphics.OpenGL;
+﻿using Genshin_Checker.resource.Languages;
+using OpenTK.Graphics.OpenGL;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -113,15 +114,15 @@ namespace Genshin_Checker.App.General
             var invalid = Path.GetInvalidFileNameChars();
             if (format.Contains("\\/") || format.Contains("/\\") || format.Contains("//") || format.Contains("\\\\")
                 || format.Contains("\\ ") || format.Contains("/ ") || format.Contains(" \\") || format.Contains(" /"))
-                return "パスの区切りを連続で2つ以上にすることはできません。";
+                return Localize.Error_ScreenshotFormat_DoubleSeparator;
             if (format.StartsWith(" "))
-                return "先頭文字にスペースは使用できません。";
+                return Localize.Error_ScreenshotFormat_FirstCharacterIsSpace;
             if (format.EndsWith("/") || format.EndsWith("\\"))
-                return "末尾文字にパスを区切りを使用することはできません。";
+                return Localize.Error_ScreenshotFormat_LastCharacterIsSeparate;
 
             if((await GenerateFormat(format)).Replace("\\", "_").Replace("/", "_").IndexOfAny(invalid) >= 0)
             {
-                return "パスに使用できない文字が含まれています。";
+                return Localize.Error_ScreenshotFormat_InvalidCharacters;
             }
             else
             {

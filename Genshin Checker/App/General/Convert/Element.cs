@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Genshin_Checker.resource.Languages;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -39,15 +40,15 @@ namespace Genshin_Checker.App.General.Convert
             //ToDo:ローカライズ用に修正
             return element switch
             {
-                ElementType.Unknown => "不明",
-                ElementType.Anemo => "風",
-                ElementType.Geo => "岩",
-                ElementType.Electro => "雷",
-                ElementType.Dendro => "草",
-                ElementType.Hydro => "水",
-                ElementType.Pyro => "炎",
-                ElementType.Cryo => "氷",
-                _ => "不明"
+                ElementType.Unknown => Genshin.Element_Unknown,
+                ElementType.Anemo => Genshin.Element_Anemo,
+                ElementType.Geo => Genshin.Element_Geo,
+                ElementType.Electro => Genshin.Element_Electro,
+                ElementType.Dendro => Genshin.Element_Dendro,
+                ElementType.Hydro => Genshin.Element_Hydro,
+                ElementType.Pyro => Genshin.Element_Pyro,
+                ElementType.Cryo => Genshin.Element_Cryo,
+                _ => Genshin.Element_Unknown
             };
         }
 

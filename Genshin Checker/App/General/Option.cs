@@ -1,4 +1,5 @@
-﻿using Genshin_Checker.Window.Popup;
+﻿using Genshin_Checker.resource.Languages;
+using Genshin_Checker.Window.Popup;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -36,7 +37,7 @@ namespace Genshin_Checker.App.General
             }　　　　　　　　　　　　　　　
             catch (Exception ex)
             {
-                new ErrorMessage("設定ファイルロード時にエラーが発生しました。", $"{ex}").ShowDialog();
+                new ErrorMessage(resource.Languages.Localize.Error_Config_FailToLoad, $"{ex}").ShowDialog();
             }
         }
         public static Option Instance { get { if (instance == null)

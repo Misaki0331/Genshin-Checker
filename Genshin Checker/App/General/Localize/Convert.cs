@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Genshin_Checker.App.General.Localize
+namespace Genshin_Checker.App.General.LocalizeValue
 {
     public static class Convert
     {

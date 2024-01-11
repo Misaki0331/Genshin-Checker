@@ -58,7 +58,7 @@ namespace Genshin_Checker.Window
                     foreach (int i in account.TravelersDiary.Data.Data.optional_month)
                     {
                         month_index.Add(i);
-                        comboBox1.Items.Add(App.General.Localize.Convert.MonthShort(i));
+                        comboBox1.Items.Add(App.General.LocalizeValue.Convert.MonthShort(i));
                     }
 
                     comboBox1.SelectedIndex =

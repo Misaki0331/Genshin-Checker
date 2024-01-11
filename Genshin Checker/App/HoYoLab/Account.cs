@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Genshin_Checker.resource.Languages;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -238,7 +239,7 @@ namespace Genshin_Checker.App.HoYoLab
         public class UserNotFoundException : Exception
         {
             public UserNotFoundException(int uid)
-            : base($"お使いのHoYoLabアカウントでは「UID {uid}」を所持していません。")
+            : base(string.Format(Localize.Error_HoYoLabAccount_UIDNotFound,uid))
             {
                 this.uid = uid;
             }
@@ -246,7 +247,7 @@ namespace Genshin_Checker.App.HoYoLab
         }
         public class UserNotAuthenticatedException : Exception
         {
-            public UserNotAuthenticatedException(int uid) : base($"該当のユーザーアカウント(UID:{uid})は認証されていない為、利用できません。")
+            public UserNotAuthenticatedException(int uid) : base(string.Format(Localize.Error_HoYoLabAccount_NotAuthenticated,uid))
             {
                 this.uid = uid;
             }

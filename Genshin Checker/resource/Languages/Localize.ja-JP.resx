@@ -216,4 +216,25 @@
   <data name="UIName_SpiralAbyss_Battle2_2" xml:space="preserve">
     <value>後半</value>
   </data>
+  <data name="Error_Config_FailToLoad" xml:space="preserve">
+    <value>設定ファイルロード時にエラーが発生しました。</value>
+  </data>
+  <data name="Error_ScreenshotFormat_DoubleSeparator" xml:space="preserve">
+    <value>パスの区切り文字列を連続で2つ以上にすることはできません。</value>
+  </data>
+  <data name="Error_ScreenshotFormat_FirstCharacterIsSpace" xml:space="preserve">
+    <value>先頭文字にスペースは使用できません。</value>
+  </data>
+  <data name="Error_ScreenshotFormat_LastCharacterIsSeparate" xml:space="preserve">
+    <value>末尾文字にパスの区切り文字を使用することはできません。</value>
+  </data>
+  <data name="Error_ScreenshotFormat_InvalidCharacters" xml:space="preserve">
+    <value>パスに使用できない文字が含まれています。</value>
+  </data>
+  <data name="Error_HoYoLabAccount_UIDNotFound" xml:space="preserve">
+    <value>お使いのHoYoLabアカウントでは「UID {0}」を所持していません。</value>
+  </data>
+  <data name="Error_HoYoLabAccount_NotAuthenticated" xml:space="preserve">
+    <value>該当のHoYoLabアカウント(UID:{0})は認証されていない為、利用できません。</value>
+  </data>
 </root>

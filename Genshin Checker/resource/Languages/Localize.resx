@@ -110,7 +110,7 @@
     <value>Play time : {0} hour(s) {1} minute(s)</value>
   </data>
   <data name="App_Notify_WakeUp" xml:space="preserve">
-    <value>App be launched.
+    <value>App launched.
 Can be opened from the task tray.</value>
   </data>
   <data name="App_Notify_Screenshot_Saved" xml:space="preserve">
@@ -215,5 +215,26 @@ Spiral Abyss: {2}</value>
   </data>
   <data name="UIName_SpiralAbyss_Battle_Common" xml:space="preserve">
     <value>Battle {0}</value>
+  </data>
+  <data name="Error_Config_FailToLoad" xml:space="preserve">
+    <value>An exception error occurred during reading config file.</value>
+  </data>
+  <data name="Error_ScreenshotFormat_DoubleSeparator" xml:space="preserve">
+    <value>Cannot use 2+ consecutive path delimiter characters.</value>
+  </data>
+  <data name="Error_ScreenshotFormat_FirstCharacterIsSpace" xml:space="preserve">
+    <value>Cannot use a space as the first character.</value>
+  </data>
+  <data name="Error_ScreenshotFormat_LastCharacterIsSeparate" xml:space="preserve">
+    <value>Cannot use a directory delimiter character at the end of the format.</value>
+  </data>
+  <data name="Error_ScreenshotFormat_InvalidCharacters" xml:space="preserve">
+    <value>The path contains invalid characters.</value>
+  </data>
+  <data name="Error_HoYoLabAccount_UIDNotFound" xml:space="preserve">
+    <value>In your HoYoLab account, you do not possess the 'UID {0}'.</value>
+  </data>
+  <data name="Error_HoYoLabAccount_NotAuthenticated" xml:space="preserve">
+    <value>The corresponding HoYoLab account (UID: {0}) is not authenticated and therefore cannot be accessed.</value>
   </data>
 </root>

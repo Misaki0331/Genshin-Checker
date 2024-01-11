@@ -79,7 +79,7 @@ namespace Genshin_Checker.resource.Languages {
         }
         
         /// <summary>
-        ///   App be launched.
+        ///   App launched.
         ///Can be opened from the task tray. に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string App_Notify_WakeUp {
@@ -152,11 +152,74 @@ namespace Genshin_Checker.resource.Languages {
         }
         
         /// <summary>
+        ///   An exception error occurred during reading config file. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Error_Config_FailToLoad {
+            get {
+                return ResourceManager.GetString("Error_Config_FailToLoad", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   The corresponding HoYoLab account (UID: {0}) is not authenticated and therefore cannot be accessed. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Error_HoYoLabAccount_NotAuthenticated {
+            get {
+                return ResourceManager.GetString("Error_HoYoLabAccount_NotAuthenticated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   In your HoYoLab account, you do not possess the &apos;UID {0}&apos;. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Error_HoYoLabAccount_UIDNotFound {
+            get {
+                return ResourceManager.GetString("Error_HoYoLabAccount_UIDNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Failed to open registry. に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string Error_Registry_FailedToOpen {
             get {
                 return ResourceManager.GetString("Error_Registry_FailedToOpen", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cannot use 2+ consecutive path delimiter characters. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Error_ScreenshotFormat_DoubleSeparator {
+            get {
+                return ResourceManager.GetString("Error_ScreenshotFormat_DoubleSeparator", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cannot use a space as the first character. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Error_ScreenshotFormat_FirstCharacterIsSpace {
+            get {
+                return ResourceManager.GetString("Error_ScreenshotFormat_FirstCharacterIsSpace", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   The path contains invalid characters. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Error_ScreenshotFormat_InvalidCharacters {
+            get {
+                return ResourceManager.GetString("Error_ScreenshotFormat_InvalidCharacters", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cannot use a directory delimiter character at the end of the format. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Error_ScreenshotFormat_LastCharacterIsSeparate {
+            get {
+                return ResourceManager.GetString("Error_ScreenshotFormat_LastCharacterIsSeparate", resourceCulture);
             }
         }
         

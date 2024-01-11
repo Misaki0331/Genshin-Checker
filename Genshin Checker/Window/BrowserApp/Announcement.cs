@@ -1,4 +1,5 @@
 ﻿using Genshin_Checker.App.HoYoLab;
+using Genshin_Checker.resource.Languages;
 using Genshin_Checker.Window;
 using Newtonsoft.Json;
 using System;
@@ -162,7 +163,7 @@ namespace Genshin_Checker.BrowserApp
                 "document.querySelector(\".home__close\").addEventListener(\"click\", function(){window.close();});" +
                 "miHoYoGameJSSDK.openInBrowser=function(a){window.open(a)};");// +
               //  "miHoYoGameJSSDK.openInWebview=function(a){window.open(a);window.close()}");
-            Text = "ゲームアナウンス";
+            Text = Localize.WindowName_GameAnnouncement;
         }
     }
 }
