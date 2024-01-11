@@ -85,6 +85,11 @@ GitHub : https://github.com/Misaki0331</Description>
       <AutoGen>True</AutoGen>
       <DependentUpon>Common.resx</DependentUpon>
     </Compile>
+    <Compile Update="resource\Languages\Genshin.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Genshin.resx</DependentUpon>
+    </Compile>
     <Compile Update="resource\Languages\Localize.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -126,6 +131,10 @@ GitHub : https://github.com/Misaki0331</Description>
     <EmbeddedResource Update="resource\Languages\Common.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Common.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="resource\Languages\Genshin.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Genshin.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Update="resource\Languages\Localize.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

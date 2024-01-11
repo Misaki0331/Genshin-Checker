@@ -237,4 +237,16 @@
   <data name="Error_HoYoLabAccount_NotAuthenticated" xml:space="preserve">
     <value>該当のHoYoLabアカウント(UID:{0})は認証されていない為、利用できません。</value>
   </data>
+  <data name="Error_API_Endpoint_RootIsNull" xml:space="preserve">
+    <value>rootがnullです。</value>
+  </data>
+  <data name="Error_API_Endpoint_JsonParseInvalid" xml:space="preserve">
+    <value>jsonパース中にエラーが発生しました。
+--- Received Data ---
+{0}
+--- Data End ---</value>
+  </data>
+  <data name="Error_CharacterDetail_ReachedRetryCount" xml:space="preserve">
+    <value>試行回数を超えました。</value>
+  </data>
 </root>

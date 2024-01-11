@@ -237,4 +237,16 @@ Spiral Abyss: {2}</value>
   <data name="Error_HoYoLabAccount_NotAuthenticated" xml:space="preserve">
     <value>The corresponding HoYoLab account (UID: {0}) is not authenticated and therefore cannot be accessed.</value>
   </data>
+  <data name="Error_API_Endpoint_RootIsNull" xml:space="preserve">
+    <value>Root is null.</value>
+  </data>
+  <data name="Error_API_Endpoint_JsonParseInvalid" xml:space="preserve">
+    <value>Failed to convert from json. 
+--- Received Data ---
+{0}
+--- Data End ---</value>
+  </data>
+  <data name="Error_CharacterDetail_ReachedRetryCount" xml:space="preserve">
+    <value>Attempt limit has reached.</value>
+  </data>
 </root>

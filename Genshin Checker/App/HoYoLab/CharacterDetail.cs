@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Genshin_Checker.resource.Languages;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -102,7 +103,7 @@ namespace Genshin_Checker.App.HoYoLab
                             //TooManyRequestsが返ってきたら時間を空けて再リクエストを送る
                             if (ex.Retcode == 2000000429)
                             {
-                                if (i == 29) throw new ArgumentException("試行回数を超えました。",ex);
+                                if (i == 29) throw new ArgumentException(Localize.Error_CharacterDetail_ReachedRetryCount,ex);
                                 Trace.WriteLine($"Ratelimit exceeded. please wait... {i}");
                                 await Task.Delay(10000);
                             }

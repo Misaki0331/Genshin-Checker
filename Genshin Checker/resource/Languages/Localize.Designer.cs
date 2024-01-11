@@ -98,6 +98,27 @@ namespace Genshin_Checker.resource.Languages {
         }
         
         /// <summary>
+        ///   Failed to convert from json. 
+        ///--- Received Data ---
+        ///{0}
+        ///--- Data End --- に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Error_API_Endpoint_JsonParseInvalid {
+            get {
+                return ResourceManager.GetString("Error_API_Endpoint_JsonParseInvalid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Root is null. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Error_API_Endpoint_RootIsNull {
+            get {
+                return ResourceManager.GetString("Error_API_Endpoint_RootIsNull", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Inconsistent UID format. に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string Error_API_EnkaNetwork_400 {
@@ -148,6 +169,15 @@ namespace Genshin_Checker.resource.Languages {
         public static string Error_API_EnkaNetwork_503 {
             get {
                 return ResourceManager.GetString("Error_API_EnkaNetwork_503", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Attempt limit has reached. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Error_CharacterDetail_ReachedRetryCount {
+            get {
+                return ResourceManager.GetString("Error_CharacterDetail_ReachedRetryCount", resourceCulture);
             }
         }
         

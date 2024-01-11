@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Genshin_Checker.resource.Languages;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -26,12 +27,12 @@ namespace Genshin_Checker.App.HoYoLab
                 try
                 {
                     var root = JsonConvert.DeserializeObject<T>(json);
-                    if (root == null) throw new ArgumentNullException($"rootがnullです。");
+                    if (root == null) throw new ArgumentNullException(Localize.Error_API_Endpoint_RootIsNull);
                     return root;
                 }
                 catch(Exception ex)
                 {
-                    throw new InvalidDataException($"jsonパース中にエラーが発生しました。\n--- Received Data ---\n{json}\n--- Data End ---",ex);
+                    throw new InvalidDataException(string.Format(Localize.Error_API_Endpoint_JsonParseInvalid, json), ex);
                 }
             }
         }
