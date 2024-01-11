@@ -10,13 +10,13 @@ namespace Genshin_Checker.App.Command.CommandList
         public override string Name => "getpath";
         public override string Description => "ゲーム内パスを取得します";
 
-        public override async Task<bool> Execute(params string[] parameters)
+        public override async Task Execute(params string[] parameters)
         {
             if(parameters.Length == 1)
             {
                 Console("GameDir -> ゲーム内ディレクトリの位置");
                 Console("WebCache -> ゲーム内ウェブキャッシュの位置");
-                return true;
+                return;
             }
             switch (parameters[1].ToLower())
             {
@@ -50,7 +50,7 @@ namespace Genshin_Checker.App.Command.CommandList
                     Console($"{parameters[1]} は不明なパラメータです。");
                     break;
             }
-            return true;
+            return;
         }
     }
 }

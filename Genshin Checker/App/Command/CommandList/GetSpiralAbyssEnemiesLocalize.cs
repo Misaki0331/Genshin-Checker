@@ -21,12 +21,12 @@ namespace Genshin_Checker.App.Command.CommandList
         public override string Name => "get-localize";
         public override string Description => "各言語のローカライズを取得します。";
 
-        public override async Task<bool> Execute(params string[] parameters)
+        public override async Task Execute(params string[] parameters)
         {
             if(parameters.Length < 2)
             {
                 Console($"GetLocalize [SpiralAbyss]\n[SpiralAbyss] : 深境螺旋の敵情報を取得");
-                return true;
+                return;
             }
             switch(parameters[1].ToLower()) {
                 case "spiralabyss":
@@ -37,7 +37,7 @@ namespace Genshin_Checker.App.Command.CommandList
                     break;
 
             }
-            return true;
+            return;
         }
 
         private async Task SpiralAbyss(params string[] parameters)

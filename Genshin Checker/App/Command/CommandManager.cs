@@ -71,7 +71,7 @@ namespace Genshin_Checker.App.Command
             Console = output;
             try
             {
-                if(!await Execute(parameters))Console("コマンド結果は成功しませんでした。");
+                await Execute(parameters);
             }
             catch (Exception ex)
             {
@@ -79,12 +79,12 @@ namespace Genshin_Checker.App.Command
                 Console($"{ex}");
             }
         }
-        public abstract Task<bool> Execute(params string[] parameters);
+        public abstract Task Execute(params string[] parameters);
 
         public Action<string> Console=(e)=>{};
     }
 
-    public class list : Command
+    public class List : Command
     {
         public override string Name => "list";
         public override string Description => "リストを取得します。";
