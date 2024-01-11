@@ -1,4 +1,5 @@
 ﻿using Genshin_Checker.App.HoYoLab;
+using Genshin_Checker.resource.Languages;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,8 +21,8 @@ namespace Genshin_Checker.UI.Control.SpiralAbyss
         public LevelInfo(Account account, Model.UserData.SpiralAbyss.v1.Level level)
         {
             InitializeComponent();
-            label1.Text = $"第 {level.index} 間";
-            label2.Text = $"踏破時間 : {DateTimeOffset.FromUnixTimeSeconds(level.timestamp).ToLocalTime():yyyy/MM/dd HH:mm:ss}";
+            label1.Text = string.Format(Localize.UIName_SpiralAbyss_Level,level.index);
+            label2.Text = string.Format(Localize.UIName_SpiralAbyss_Timestamp, $"{DateTimeOffset.FromUnixTimeSeconds(level.timestamp).ToLocalTime():yyyy/MM/dd HH:mm:ss}");
             StarPictures = new();
             for(int i = level.max_star; i > 0; i--)
             {
@@ -41,13 +42,13 @@ namespace Genshin_Checker.UI.Control.SpiralAbyss
                     switch (battle.index)
                     {
                         case 1:
-                            name = "前半";
+                            name = Localize.UIName_SpiralAbyss_Battle2_1;
                             break;
                         case 2:
-                            name = "後半";
+                            name = Localize.UIName_SpiralAbyss_Battle2_2;
                             break;
                     }
-                } else if (battles.Count > 2) name = $"第 {battle.index} 戦";
+                } else if (battles.Count > 2) name = string.Format(Localize.UIName_SpiralAbyss_Battle_Common, battle.index);
                 var control = new BattleInfo(account, battle, name, battles.Count > 1) { Dock = DockStyle.Top, BorderStyle = BorderStyle.FixedSingle };
                 control.CharacterClickHandler += a => CharacterClickHandler?.Invoke(a);
                 Battles.Add(control);

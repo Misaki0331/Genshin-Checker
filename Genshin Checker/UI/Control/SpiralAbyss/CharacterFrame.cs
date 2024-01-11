@@ -1,5 +1,6 @@
 ﻿using Genshin_Checker.App.General.Convert;
 using Genshin_Checker.App.HoYoLab;
+using Genshin_Checker.resource.Languages;
 using Genshin_Checker.UI.Control.GameRecord;
 using System;
 using System.Collections.Generic;
@@ -27,13 +28,13 @@ namespace Genshin_Checker.UI.Control.SpiralAbyss
             groupBox1.Text = $"{groupname}";
             if (records == null) {
                 ErrorMessage.Visible = true;
-                ErrorMessage.Text = "戦績情報を\n読み込むことが\nできません\nでした。";
+                ErrorMessage.Text = Localize.UIName_CharacterFrame_FailedToLoad;
                 return;
             }
             if(values.Count == 0)
             {
                 ErrorMessage.Visible = true;
-                ErrorMessage.Text = "キャラクターは\nありません。";
+                ErrorMessage.Text = Localize.UIName_CharacterFrame_Nothing;
                 return;
             }
             groupBox1.Visible = IsShowGroupBox;

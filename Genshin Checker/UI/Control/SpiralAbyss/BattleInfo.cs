@@ -24,7 +24,7 @@ namespace Genshin_Checker.UI.Control.SpiralAbyss
         {
             InitializeComponent();
             if (!IsVisibleDateTime) LabelTimestamp.Visible = false;
-            LabelTimestamp.Text = string.Format(Localize.UIName_SpiralAbyss_Timestamp,DateTimeOffset.FromUnixTimeSeconds(battle.timestamp).ToLocalTime());
+            LabelTimestamp.Text = string.Format(Localize.UIName_SpiralAbyss_Timestamp,$"{DateTimeOffset.FromUnixTimeSeconds(battle.timestamp).ToLocalTime():yyyy/MM/dd HH:mm:ss}");
             LabelBattleName.Text = battleName;
             if (string.IsNullOrEmpty(battleName)) panel1.Visible = false;
             List<CharacterFrame.CharacterArgment> argment = new();

@@ -252,6 +252,87 @@ namespace Genshin_Checker.resource.Languages {
         }
         
         /// <summary>
+        ///   Failed to load. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string UIName_CharacterFrame_FailedToLoad {
+            get {
+                return ResourceManager.GetString("UIName_CharacterFrame_FailedToLoad", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Nothing. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string UIName_CharacterFrame_Nothing {
+            get {
+                return ResourceManager.GetString("UIName_CharacterFrame_Nothing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Battle {0} に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string UIName_SpiralAbyss_Battle_Common {
+            get {
+                return ResourceManager.GetString("UIName_SpiralAbyss_Battle_Common", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   First Half に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string UIName_SpiralAbyss_Battle2_1 {
+            get {
+                return ResourceManager.GetString("UIName_SpiralAbyss_Battle2_1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Latter Half に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string UIName_SpiralAbyss_Battle2_2 {
+            get {
+                return ResourceManager.GetString("UIName_SpiralAbyss_Battle2_2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Floor {0} に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string UIName_SpiralAbyss_Floor {
+            get {
+                return ResourceManager.GetString("UIName_SpiralAbyss_Floor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Latest Update : {0} に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string UIName_SpiralAbyss_LatestUpdate {
+            get {
+                return ResourceManager.GetString("UIName_SpiralAbyss_LatestUpdate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Level {0} に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string UIName_SpiralAbyss_Level {
+            get {
+                return ResourceManager.GetString("UIName_SpiralAbyss_Level", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Locked に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string UIName_SpiralAbyss_Locked {
+            get {
+                return ResourceManager.GetString("UIName_SpiralAbyss_Locked", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Update : {0} に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string UIName_SpiralAbyss_Timestamp {

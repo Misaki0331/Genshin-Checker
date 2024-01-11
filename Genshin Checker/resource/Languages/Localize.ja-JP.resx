@@ -189,4 +189,31 @@
   <data name="UIName_SpiralAbyss_Timestamp" xml:space="preserve">
     <value>踏破時間 : {0}</value>
   </data>
+  <data name="UIName_CharacterFrame_FailedToLoad" xml:space="preserve">
+    <value>戦績情報を読み込むことができませんでした。</value>
+  </data>
+  <data name="UIName_CharacterFrame_Nothing" xml:space="preserve">
+    <value>キャラクターはありません。</value>
+  </data>
+  <data name="UIName_SpiralAbyss_Floor" xml:space="preserve">
+    <value>第 {0} 層</value>
+  </data>
+  <data name="UIName_SpiralAbyss_Locked" xml:space="preserve">
+    <value>未開放</value>
+  </data>
+  <data name="UIName_SpiralAbyss_LatestUpdate" xml:space="preserve">
+    <value>最終更新 : {0}</value>
+  </data>
+  <data name="UIName_SpiralAbyss_Level" xml:space="preserve">
+    <value>第 {0} 間</value>
+  </data>
+  <data name="UIName_SpiralAbyss_Battle_Common" xml:space="preserve">
+    <value>第 {0} 戦</value>
+  </data>
+  <data name="UIName_SpiralAbyss_Battle2_1" xml:space="preserve">
+    <value>前半</value>
+  </data>
+  <data name="UIName_SpiralAbyss_Battle2_2" xml:space="preserve">
+    <value>後半</value>
+  </data>
 </root>

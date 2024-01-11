@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Genshin_Checker.resource.Languages;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -20,16 +21,16 @@ namespace Genshin_Checker.UI.Control.SpiralAbyss
         {
             InitializeComponent();
             this.index = index;
-            LabelArea.Text = $"第 {index} 層";
+            LabelArea.Text = string.Format(Localize.UIName_SpiralAbyss_Floor, index);
             LabelStars.Text = starinfo;
             if (isLocked)
             {
-                LabelStars.Text = "未開放";
+                LabelStars.Text = Localize.UIName_SpiralAbyss_Locked;
                 pictureBox1.Visible = false;
             }
             if(LatestUpdate!= null)
             {
-                LabelLatestUpdate.Text = $"最終更新 : {LatestUpdate:yyyy/MM/dd HH:mm:ss}";
+                LabelLatestUpdate.Text = string.Format(Localize.UIName_SpiralAbyss_LatestUpdate, $"{LatestUpdate:yyyy/MM/dd HH:mm:ss}");
             }
             else
             {

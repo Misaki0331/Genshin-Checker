@@ -189,4 +189,31 @@ Spiral Abyss: {2}</value>
   <data name="UIName_SpiralAbyss_Timestamp" xml:space="preserve">
     <value>Update : {0}</value>
   </data>
+  <data name="UIName_CharacterFrame_FailedToLoad" xml:space="preserve">
+    <value>Failed to load.</value>
+  </data>
+  <data name="UIName_CharacterFrame_Nothing" xml:space="preserve">
+    <value>Nothing.</value>
+  </data>
+  <data name="UIName_SpiralAbyss_Floor" xml:space="preserve">
+    <value>Floor {0}</value>
+  </data>
+  <data name="UIName_SpiralAbyss_Locked" xml:space="preserve">
+    <value>Locked</value>
+  </data>
+  <data name="UIName_SpiralAbyss_LatestUpdate" xml:space="preserve">
+    <value>Latest Update : {0}</value>
+  </data>
+  <data name="UIName_SpiralAbyss_Level" xml:space="preserve">
+    <value>Level {0}</value>
+  </data>
+  <data name="UIName_SpiralAbyss_Battle2_1" xml:space="preserve">
+    <value>First Half</value>
+  </data>
+  <data name="UIName_SpiralAbyss_Battle2_2" xml:space="preserve">
+    <value>Latter Half</value>
+  </data>
+  <data name="UIName_SpiralAbyss_Battle_Common" xml:space="preserve">
+    <value>Battle {0}</value>
+  </data>
 </root>
