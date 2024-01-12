@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.Devices.Geolocation;
+using Genshin_Checker.resource.Languages;
 
 namespace Genshin_Checker.App.HoYoLab
 {
@@ -172,7 +173,7 @@ namespace Genshin_Checker.App.HoYoLab
                     {
                         if (FirstData == DateTime.MaxValue) FirstData = time;
                         if (eventLists.Details.Count > 0 && eventLists.Details[^1].EventTime < time && !IsFirst) // 最初のみはリストの都合上除外する。
-                            throw new InvalidDataException("前後データのイベント時刻が対立しています。API側データが更新された可能性があります。");
+                            throw new InvalidDataException(Localize.Error_TravelersDiaryDetail_Conflict);
                         else IsFirst = false;
                         eventLists.Details.Add(new() { EventTime = time, EventType = d.Action_id, Count = d.Num });
                         if (eventNames.Events.Find(a => a.ID == d.Action_id) == null) eventNames.Events.Add(new() { ID = d.Action_id, Name = d.Action });

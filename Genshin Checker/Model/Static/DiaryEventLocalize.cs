@@ -13,7 +13,7 @@ namespace Genshin_Checker.Model.Static.DiaryEventLocalize
 
     public class Event
     {
-        public Dictionary<string, Localize> Localize { get; set; } = new();
+        public Dictionary<string, LocalizeName> Localize { get; set; } = new();
         /// <summary>
         /// カテゴリ
         /// </summary>
@@ -28,7 +28,7 @@ namespace Genshin_Checker.Model.Static.DiaryEventLocalize
         public bool IsLimited { get; set; } = false;
 
     }
-    public class Localize
+    public class LocalizeName
     {
         public string Name { get; set; } = "";
         public string Description { get; set; } = "";

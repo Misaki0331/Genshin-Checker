@@ -254,6 +254,60 @@ namespace Genshin_Checker.resource.Languages {
         }
         
         /// <summary>
+        ///   Does not match uid ({0} -&gt; {1}) に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Error_SpiralAbyssFile_DoesNotMatchUID {
+            get {
+                return ResourceManager.GetString("Error_SpiralAbyssFile_DoesNotMatchUID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Failed to convert new standard format. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Error_SpiralAbyssFile_FailedConvert {
+            get {
+                return ResourceManager.GetString("Error_SpiralAbyssFile_FailedConvert", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Invalid File version. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Error_SpiralAbyssFile_InvalidFileVersion {
+            get {
+                return ResourceManager.GetString("Error_SpiralAbyssFile_InvalidFileVersion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   No data was saved. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Error_SpiralAbyssFile_RegistryNotFound {
+            get {
+                return ResourceManager.GetString("Error_SpiralAbyssFile_RegistryNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Unknown File version. (Ver{0}) に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Error_SpiralAbyssFile_UnknownFileVersion {
+            get {
+                return ResourceManager.GetString("Error_SpiralAbyssFile_UnknownFileVersion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   The event times of the previous and next data are in conflict; it is possible that the API-side data has been updated. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Error_TravelersDiaryDetail_Conflict {
+            get {
+                return ResourceManager.GetString("Error_TravelersDiaryDetail_Conflict", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Play time : {0} hour(s) {1} minute(s) に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string GameApp_Notify_PlayTime_Result {
@@ -295,6 +349,96 @@ namespace Genshin_Checker.resource.Languages {
         public static string Message_AccountDisconnect_WindowTitle {
             get {
                 return ResourceManager.GetString("Message_AccountDisconnect_WindowTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Please open the game and earn rewards. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Notify_ExpeditionCompleted_Description {
+            get {
+                return ResourceManager.GetString("Notify_ExpeditionCompleted_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Expendition is completed に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Notify_ExpeditionCompleted_Title {
+            get {
+                return ResourceManager.GetString("Notify_ExpeditionCompleted_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Currently {0} of realm coins are stored. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Notify_RealmCoin_Current {
+            get {
+                return ResourceManager.GetString("Notify_RealmCoin_Current", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Realm coins reached max. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Notify_RealmCoinMax_Title {
+            get {
+                return ResourceManager.GetString("Notify_RealmCoinMax_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Realm coins reached value. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Notify_RealmCoinReached_Title {
+            get {
+                return ResourceManager.GetString("Notify_RealmCoinReached_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Currently {0} of original resins are stored. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Notify_Resin_Current {
+            get {
+                return ResourceManager.GetString("Notify_Resin_Current", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Original resin reached max. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Notify_ResinMax_Title {
+            get {
+                return ResourceManager.GetString("Notify_ResinMax_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Orignal resin reached value. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Notify_ResinReached_Title {
+            get {
+                return ResourceManager.GetString("Notify_ResinReached_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Don&apos;t forget to use Parametric Transformer this week! に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Notify_TransformerReached_Description {
+            get {
+                return ResourceManager.GetString("Notify_TransformerReached_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Parametric Transformer is now available. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Notify_TransformerReached_Title {
+            get {
+                return ResourceManager.GetString("Notify_TransformerReached_Title", resourceCulture);
             }
         }
         

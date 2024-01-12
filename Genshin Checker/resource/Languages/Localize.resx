@@ -249,4 +249,58 @@ Spiral Abyss: {2}</value>
   <data name="Error_CharacterDetail_ReachedRetryCount" xml:space="preserve">
     <value>Attempt limit has reached.</value>
   </data>
+  <data name="Notify_ResinMax_Title" xml:space="preserve">
+    <value>Original resin reached max.</value>
+    <comment>@MutedRule(PunctuationTail)</comment>
+  </data>
+  <data name="Notify_Resin_Current" xml:space="preserve">
+    <value>Currently {0} of original resins are stored.</value>
+  </data>
+  <data name="Notify_ResinReached_Title" xml:space="preserve">
+    <value>Orignal resin reached value.</value>
+    <comment>@MutedRule(PunctuationTail)</comment>
+  </data>
+  <data name="Notify_RealmCoinMax_Title" xml:space="preserve">
+    <value>Realm coins reached max.</value>
+    <comment>@MutedRule(PunctuationTail)</comment>
+  </data>
+  <data name="Notify_RealmCoinReached_Title" xml:space="preserve">
+    <value>Realm coins reached value.</value>
+    <comment>@MutedRule(PunctuationTail)</comment>
+  </data>
+  <data name="Notify_RealmCoin_Current" xml:space="preserve">
+    <value>Currently {0} of realm coins are stored.</value>
+  </data>
+  <data name="Notify_TransformerReached_Title" xml:space="preserve">
+    <value>Parametric Transformer is now available.</value>
+    <comment>@MutedRule(PunctuationTail)</comment>
+  </data>
+  <data name="Notify_TransformerReached_Description" xml:space="preserve">
+    <value>Don't forget to use Parametric Transformer this week!</value>
+  </data>
+  <data name="Notify_ExpeditionCompleted_Title" xml:space="preserve">
+    <value>Expendition is completed</value>
+  </data>
+  <data name="Notify_ExpeditionCompleted_Description" xml:space="preserve">
+    <value>Please open the game and earn rewards.</value>
+  </data>
+  <data name="Error_SpiralAbyssFile_RegistryNotFound" xml:space="preserve">
+    <value>No data was saved.</value>
+  </data>
+  <data name="Error_SpiralAbyssFile_InvalidFileVersion" xml:space="preserve">
+    <value>Invalid File version.</value>
+  </data>
+  <data name="Error_SpiralAbyssFile_UnknownFileVersion" xml:space="preserve">
+    <value>Unknown File version. (Ver{0})</value>
+    <comment>@MutedRule(PunctuationTail)</comment>
+  </data>
+  <data name="Error_SpiralAbyssFile_FailedConvert" xml:space="preserve">
+    <value>Failed to convert new standard format.</value>
+  </data>
+  <data name="Error_SpiralAbyssFile_DoesNotMatchUID" xml:space="preserve">
+    <value>Does not match uid ({0} -&gt; {1})</value>
+  </data>
+  <data name="Error_TravelersDiaryDetail_Conflict" xml:space="preserve">
+    <value>The event times of the previous and next data are in conflict; it is possible that the API-side data has been updated.</value>
+  </data>
 </root>

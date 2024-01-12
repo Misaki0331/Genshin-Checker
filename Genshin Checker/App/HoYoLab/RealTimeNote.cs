@@ -1,6 +1,7 @@
 ﻿using Genshin_Checker.App.General;
 using Genshin_Checker.App.HoYoLab;
 using Genshin_Checker.App.Store.RealTimeNote;
+using Genshin_Checker.resource.Languages;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -62,7 +63,7 @@ namespace Genshin_Checker.App
                 if (Data.RealTime.Resin.Current < json.max_resin && json.current_resin >= json.max_resin)
                 {
                     if (config.Notify.RealTimeNotes.ResinMax)
-                        Notification?.Invoke("樹脂上限到達通知", $"現在樹脂が {json.current_resin} 貯まっています。");
+                        Notification?.Invoke(Localize.Notify_ResinMax_Title, string.Format(Localize.Notify_Resin_Current, json.current_resin));
                 }
                 else
                 {
@@ -75,7 +76,7 @@ namespace Genshin_Checker.App
                             IsNotify = true;
                         }
                     }
-                    if (IsNotify) Notification?.Invoke("樹脂到達通知", $"現在樹脂が {json.current_resin} 貯まっています。");
+                    if (IsNotify) Notification?.Invoke(Localize.Notify_ResinReached_Title, string.Format(Localize.Notify_Resin_Current, json.current_resin));
 
                 }
 
@@ -105,7 +106,7 @@ namespace Genshin_Checker.App
                 if (Data.RealTime.RealmCoin.Current < json.max_home_coin && json.current_home_coin >= json.max_home_coin)
                 {
                     if (config.Notify.RealTimeNotes.RealmCoinMax)
-                        Notification?.Invoke("塵歌壺の洞天宝銭の上限到達通知", $"洞天宝銭が現在 {json.current_home_coin} 貯まっています。");
+                        Notification?.Invoke(Localize.Notify_RealmCoinMax_Title, string.Format(Localize.Notify_RealmCoin_Current, json.current_home_coin));
                 }
                 else
                 {
@@ -118,7 +119,7 @@ namespace Genshin_Checker.App
                             IsNotify = true;
                         }
                     }
-                    if (IsNotify) Notification?.Invoke("塵歌壺の洞天宝銭の到達通知", $"洞天宝銭が現在 {json.current_home_coin} 貯まっています。");
+                    if (IsNotify) Notification?.Invoke(Localize.Notify_RealmCoinReached_Title, string.Format(Localize.Notify_RealmCoin_Current, json.current_home_coin));
                 }
                 Data.RealTime.RealmCoin.Current = json.current_home_coin;
                 Data.RealTime.RealmCoin.Max = json.max_home_coin;
@@ -137,7 +138,7 @@ namespace Genshin_Checker.App
                 if (!Data.RealTime.Transform.IsReached && json.transformer.recovery_time.reached)
                 {
                     if (config.Notify.RealTimeNotes.TransformerReached)
-                        Notification?.Invoke("参量物質変化器が利用可能", $"今週の変換もお忘れなく！");
+                        Notification?.Invoke(Localize.Notify_TransformerReached_Title, Localize.Notify_TransformerReached_Description);
                 }
                 Data.RealTime.Transform.IsReached = json.transformer.recovery_time.reached;
                 Data.RealTime.Transform.TransformTime.Day = json.transformer.recovery_time.Day;
@@ -173,7 +174,7 @@ namespace Genshin_Checker.App
                 if (finished != total && finished2 == Data.RealTime.Expedition.Expeditions.Count)
                 {
                     if (config.Notify.RealTimeNotes.ExpeditionAllCompleted)
-                        Notification?.Invoke("探索派遣が完了しました", $"ゲームを開き報酬を獲得してください。");
+                        Notification?.Invoke(Localize.Notify_ExpeditionCompleted_Title, Localize.Notify_ExpeditionCompleted_Description);
                 }
                 Data.Meta.LatestSuccess = DateTime.Now;
                 Data.Meta.Retcode = 0;
@@ -192,7 +193,7 @@ namespace Genshin_Checker.App
                 Data.Meta.IsAPIError = false;
                 Data.Meta.Message = $"{ex.GetType()}\n{ex.Message}";
                 Data.Meta.Retcode = ex.HResult;
-                ServerUpdate.Interval = 60000;
+                ServerUpdate.Interval = 10000;
                 ServerUpdate.Start();
             }
             

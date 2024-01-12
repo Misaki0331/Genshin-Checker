@@ -1,5 +1,6 @@
 ﻿using Genshin_Checker.App.General;
 using Genshin_Checker.Model.UserData.SpiralAbyss.v1;
+using Genshin_Checker.resource.Languages;
 using HarfBuzzSharp;
 using Newtonsoft.Json;
 using System;
@@ -167,17 +168,17 @@ namespace Genshin_Checker.App.HoYoLab
         public async Task<V1> Load(int id)
         {
             var path = Registry.GetValue($"UserData\\{account.UID}\\SpiralAbyss", $"{id}", true);
-            if (path == null) throw new IOException($"螺旋情報保管場所のデータがありません。");
+            if (path == null) throw new IOException(Localize.Error_SpiralAbyssFile_RegistryNotFound);
             var data = await AppData.LoadUserData(path);
             var ver = JsonConvert.DeserializeObject<Model.UserData.SpiralAbyss.Root>(data??"");
             V1? v1 = (ver?.Version) switch
             {
-                null => throw new InvalidDataException($"ファイルバージョン情報を解析できませんでした。"),
+                null => throw new InvalidDataException(Localize.Error_SpiralAbyssFile_InvalidFileVersion),
                 1 => JsonConvert.DeserializeObject<V1>(data??""),
-                _ => throw new InvalidDataException($"不明なファイルバージョン(Ver.{ver.Version})です。"),
+                _ => throw new InvalidDataException(string.Format(Localize.Error_SpiralAbyssFile_UnknownFileVersion,ver.Version)),
             };
-            if (v1 == null) throw new InvalidDataException($"ファイルの変換に失敗しました。");
-            if (v1.UID != account.UID) throw new InvalidDataException($"ユーザーデータが異なります。({v1.UID}→{account.UID})");
+            if (v1 == null) throw new InvalidDataException(Localize.Error_SpiralAbyssFile_FailedConvert);
+            if (v1.UID != account.UID) throw new InvalidDataException(string.Format(Localize.Error_SpiralAbyssFile_DoesNotMatchUID, v1.UID, account.UID));
             return v1;
         }
     }
