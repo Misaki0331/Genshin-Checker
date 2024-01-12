@@ -90,6 +90,11 @@ GitHub : https://github.com/Misaki0331</Description>
       <AutoGen>True</AutoGen>
       <DependentUpon>Genshin.resx</DependentUpon>
     </Compile>
+    <Compile Update="resource\Languages\HoYoLabAPIRetcode.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>HoYoLabAPIRetcode.resx</DependentUpon>
+    </Compile>
     <Compile Update="resource\Languages\Localize.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -135,6 +140,10 @@ GitHub : https://github.com/Misaki0331</Description>
     <EmbeddedResource Update="resource\Languages\Genshin.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Genshin.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="resource\Languages\HoYoLabAPIRetcode.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>HoYoLabAPIRetcode.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Update="resource\Languages\Localize.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

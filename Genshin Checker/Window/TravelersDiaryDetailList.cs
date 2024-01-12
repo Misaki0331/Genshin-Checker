@@ -124,7 +124,7 @@ namespace Genshin_Checker.Window
                 var eventpath = Registry.GetValue(localeEventPath, $"EventName", true);
                 var eventlists = new EventName();
                 var lists = new EventLists();
-                if (path == null) throw new ArgumentException($"{monthlist.SelectedText}に対応する{(listtype.SelectedIndex==0?"原石":"モラ")}データが見つかりませんでした。");
+                if (path == null) throw new ArgumentException(string.Format(Localize.Error_TravelersDiaryDetailList_NoData,monthlist.SelectedText,listtype.SelectedIndex==0?Genshin.Primogems:Genshin.Mora));
                 try
                 {
                     if (eventpath != null)
@@ -146,7 +146,7 @@ namespace Genshin_Checker.Window
                 {
                     throw;
                 }
-                if (lists == null) throw new ArgumentException("データが不整合です。");
+                if (lists == null) throw new ArgumentException(Localize.Error_TravelersDiaryDetailList_InvalidData);
                 lists.Details.Sort((a, b) => b.EventTime.CompareTo(a.EventTime));
                 dataGridView1.SuspendLayout();
                 CurrentView.Rows.Clear();
@@ -161,7 +161,7 @@ namespace Genshin_Checker.Window
             }
             catch(Exception ex)
             {
-                new ErrorMessage("データベースを読み込めませんでした。", $"{ex}").ShowDialog();
+                new ErrorMessage(Localize.Error_TravelersDiaryDetailList_FailedToLoadDatabase, $"{ex}").ShowDialog();
             }
             finally
             {
@@ -183,7 +183,7 @@ namespace Genshin_Checker.Window
             if (p < 0) p = 0;
             if (p > 100) p = 100;
             toolStripProgressBar1.Value = (int)p * 100;
-            toolStripStatusLabel1.Text = $"{p:0.0}% {(e.month == 0 ? "今" : $"{e.month}")}月分の{e.mode}({e.CurrentPage}ページ目)取得中...";
+            toolStripStatusLabel1.Text = $"{p:0.0}% {string.Format(Localize.WindowName_TravelersDiaryDetailList_Downloading, e.month == 0 ? Localize.WindowName_TravelersDiaryDetailList_Downloading_ThisMonth : App.General.LocalizeValue.Convert.MonthShort(e.month),e.mode,e.CurrentPage)}";
 
         }
         private void TravelersDiaryDetail_ProgressCompreted(object? sender, EventArgs e)
@@ -273,8 +273,8 @@ namespace Genshin_Checker.Window
 
         private void cSV出力ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            saveFileDialog1.Filter = "Comma Separated Values (*.csv)|*.csv|すべてのファイル (*.*)|*.*";
-            saveFileDialog1.Title = "保存先を選択してください。";
+            saveFileDialog1.Filter = Localize.WindowName_TravelersDiaryDetailList_SaveToCsv_Filter;
+            saveFileDialog1.Title = Localize.WindowName_TravelersDiaryDetailList_SaveToCsv_Title;
             saveFileDialog1.CheckPathExists = false;
             try
             {
@@ -302,7 +302,7 @@ namespace Genshin_Checker.Window
                 }
             }catch(Exception ex)
             {
-                new ErrorMessage("出力に失敗しました。",$"{ex}").ShowDialog();
+                new ErrorMessage(Localize.Error_TravelersDiaryDetailList_FailedToCsvOutput, $"{ex}").ShowDialog();
             }
         }
     }

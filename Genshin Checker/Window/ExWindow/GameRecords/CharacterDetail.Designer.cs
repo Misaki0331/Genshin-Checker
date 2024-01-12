@@ -28,332 +28,215 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.ArtifactLayout = new System.Windows.Forms.FlowLayoutPanel();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.ConstellationPanel = new System.Windows.Forms.Panel();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.Button_TalentHideShow = new System.Windows.Forms.Button();
-            this.Panel_SubTalent = new System.Windows.Forms.Panel();
-            this.Panel_MainTalent = new System.Windows.Forms.Panel();
-            this.Error_TalentPanel = new System.Windows.Forms.Panel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.label4 = new System.Windows.Forms.Label();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.tableLayoutPanel1.SuspendLayout();
-            this.panel2.SuspendLayout();
-            this.groupBox4.SuspendLayout();
-            this.groupBox3.SuspendLayout();
-            this.groupBox1.SuspendLayout();
-            this.panel5.SuspendLayout();
-            this.Error_TalentPanel.SuspendLayout();
-            this.panel4.SuspendLayout();
-            this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.SuspendLayout();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CharacterDetail));
+            tableLayoutPanel1 = new TableLayoutPanel();
+            panel1 = new Panel();
+            panel2 = new Panel();
+            groupBox4 = new GroupBox();
+            ArtifactLayout = new FlowLayoutPanel();
+            groupBox3 = new GroupBox();
+            ConstellationPanel = new Panel();
+            groupBox1 = new GroupBox();
+            panel5 = new Panel();
+            Button_TalentHideShow = new Button();
+            Panel_SubTalent = new Panel();
+            Panel_MainTalent = new Panel();
+            Error_TalentPanel = new Panel();
+            textBox1 = new TextBox();
+            label3 = new Label();
+            groupBox2 = new GroupBox();
+            panel4 = new Panel();
+            label4 = new Label();
+            panel3 = new Panel();
+            label5 = new Label();
+            label2 = new Label();
+            label1 = new Label();
+            pictureBox1 = new PictureBox();
+            tableLayoutPanel1.SuspendLayout();
+            panel2.SuspendLayout();
+            groupBox4.SuspendLayout();
+            groupBox3.SuspendLayout();
+            groupBox1.SuspendLayout();
+            panel5.SuspendLayout();
+            Error_TalentPanel.SuspendLayout();
+            panel4.SuspendLayout();
+            panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            SuspendLayout();
             // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60F));
-            this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.panel2, 1, 0);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 1;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(784, 621);
-            this.tableLayoutPanel1.TabIndex = 0;
+            resources.ApplyResources(tableLayoutPanel1, "tableLayoutPanel1");
+            tableLayoutPanel1.Controls.Add(panel1, 0, 0);
+            tableLayoutPanel1.Controls.Add(panel2, 1, 0);
+            tableLayoutPanel1.Name = "tableLayoutPanel1";
             // 
             // panel1
             // 
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(3, 3);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(307, 615);
-            this.panel1.TabIndex = 0;
+            resources.ApplyResources(panel1, "panel1");
+            panel1.Name = "panel1";
             // 
             // panel2
             // 
-            this.panel2.AutoScroll = true;
-            this.panel2.Controls.Add(this.groupBox4);
-            this.panel2.Controls.Add(this.groupBox3);
-            this.panel2.Controls.Add(this.groupBox1);
-            this.panel2.Controls.Add(this.groupBox2);
-            this.panel2.Controls.Add(this.panel4);
-            this.panel2.Controls.Add(this.panel3);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(316, 3);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(465, 615);
-            this.panel2.TabIndex = 1;
+            resources.ApplyResources(panel2, "panel2");
+            panel2.Controls.Add(groupBox4);
+            panel2.Controls.Add(groupBox3);
+            panel2.Controls.Add(groupBox1);
+            panel2.Controls.Add(groupBox2);
+            panel2.Controls.Add(panel4);
+            panel2.Controls.Add(panel3);
+            panel2.Name = "panel2";
             // 
             // groupBox4
             // 
-            this.groupBox4.AutoSize = true;
-            this.groupBox4.Controls.Add(this.ArtifactLayout);
-            this.groupBox4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox4.Location = new System.Drawing.Point(0, 209);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(465, 22);
-            this.groupBox4.TabIndex = 2;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "聖遺物";
+            resources.ApplyResources(groupBox4, "groupBox4");
+            groupBox4.Controls.Add(ArtifactLayout);
+            groupBox4.Name = "groupBox4";
+            groupBox4.TabStop = false;
             // 
             // ArtifactLayout
             // 
-            this.ArtifactLayout.AutoSize = true;
-            this.ArtifactLayout.Dock = System.Windows.Forms.DockStyle.Top;
-            this.ArtifactLayout.Location = new System.Drawing.Point(3, 19);
-            this.ArtifactLayout.Name = "ArtifactLayout";
-            this.ArtifactLayout.Size = new System.Drawing.Size(459, 0);
-            this.ArtifactLayout.TabIndex = 0;
+            resources.ApplyResources(ArtifactLayout, "ArtifactLayout");
+            ArtifactLayout.Name = "ArtifactLayout";
             // 
             // groupBox3
             // 
-            this.groupBox3.AutoSize = true;
-            this.groupBox3.Controls.Add(this.ConstellationPanel);
-            this.groupBox3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox3.Location = new System.Drawing.Point(0, 187);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(465, 22);
-            this.groupBox3.TabIndex = 0;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "命ノ星座";
+            resources.ApplyResources(groupBox3, "groupBox3");
+            groupBox3.Controls.Add(ConstellationPanel);
+            groupBox3.Name = "groupBox3";
+            groupBox3.TabStop = false;
             // 
             // ConstellationPanel
             // 
-            this.ConstellationPanel.AutoSize = true;
-            this.ConstellationPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.ConstellationPanel.Location = new System.Drawing.Point(3, 19);
-            this.ConstellationPanel.Name = "ConstellationPanel";
-            this.ConstellationPanel.Size = new System.Drawing.Size(459, 0);
-            this.ConstellationPanel.TabIndex = 0;
+            resources.ApplyResources(ConstellationPanel, "ConstellationPanel");
+            ConstellationPanel.Name = "ConstellationPanel";
             // 
             // groupBox1
             // 
-            this.groupBox1.AutoSize = true;
-            this.groupBox1.Controls.Add(this.panel5);
-            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox1.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.groupBox1.Location = new System.Drawing.Point(0, 57);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(465, 130);
-            this.groupBox1.TabIndex = 1;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "天賦";
+            resources.ApplyResources(groupBox1, "groupBox1");
+            groupBox1.Controls.Add(panel5);
+            groupBox1.Name = "groupBox1";
+            groupBox1.TabStop = false;
             // 
             // panel5
             // 
-            this.panel5.AutoSize = true;
-            this.panel5.Controls.Add(this.Button_TalentHideShow);
-            this.panel5.Controls.Add(this.Panel_SubTalent);
-            this.panel5.Controls.Add(this.Panel_MainTalent);
-            this.panel5.Controls.Add(this.Error_TalentPanel);
-            this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel5.Location = new System.Drawing.Point(3, 19);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(459, 108);
-            this.panel5.TabIndex = 2;
+            resources.ApplyResources(panel5, "panel5");
+            panel5.Controls.Add(Button_TalentHideShow);
+            panel5.Controls.Add(Panel_SubTalent);
+            panel5.Controls.Add(Panel_MainTalent);
+            panel5.Controls.Add(Error_TalentPanel);
+            panel5.Name = "panel5";
             // 
             // Button_TalentHideShow
             // 
-            this.Button_TalentHideShow.Dock = System.Windows.Forms.DockStyle.Top;
-            this.Button_TalentHideShow.Location = new System.Drawing.Point(0, 85);
-            this.Button_TalentHideShow.Name = "Button_TalentHideShow";
-            this.Button_TalentHideShow.Size = new System.Drawing.Size(459, 23);
-            this.Button_TalentHideShow.TabIndex = 2;
-            this.Button_TalentHideShow.Text = "もっと見る ▼";
-            this.Button_TalentHideShow.UseVisualStyleBackColor = true;
-            this.Button_TalentHideShow.Click += new System.EventHandler(this.Button_TalentHideShow_Click);
+            resources.ApplyResources(Button_TalentHideShow, "Button_TalentHideShow");
+            Button_TalentHideShow.Name = "Button_TalentHideShow";
+            Button_TalentHideShow.UseVisualStyleBackColor = true;
+            Button_TalentHideShow.Click += Button_TalentHideShow_Click;
             // 
             // Panel_SubTalent
             // 
-            this.Panel_SubTalent.AutoSize = true;
-            this.Panel_SubTalent.Dock = System.Windows.Forms.DockStyle.Top;
-            this.Panel_SubTalent.Location = new System.Drawing.Point(0, 85);
-            this.Panel_SubTalent.Name = "Panel_SubTalent";
-            this.Panel_SubTalent.Size = new System.Drawing.Size(459, 0);
-            this.Panel_SubTalent.TabIndex = 1;
-            this.Panel_SubTalent.Visible = false;
+            resources.ApplyResources(Panel_SubTalent, "Panel_SubTalent");
+            Panel_SubTalent.Name = "Panel_SubTalent";
             // 
             // Panel_MainTalent
             // 
-            this.Panel_MainTalent.AutoSize = true;
-            this.Panel_MainTalent.Dock = System.Windows.Forms.DockStyle.Top;
-            this.Panel_MainTalent.Location = new System.Drawing.Point(0, 85);
-            this.Panel_MainTalent.Name = "Panel_MainTalent";
-            this.Panel_MainTalent.Size = new System.Drawing.Size(459, 0);
-            this.Panel_MainTalent.TabIndex = 0;
+            resources.ApplyResources(Panel_MainTalent, "Panel_MainTalent");
+            Panel_MainTalent.Name = "Panel_MainTalent";
             // 
             // Error_TalentPanel
             // 
-            this.Error_TalentPanel.AutoSize = true;
-            this.Error_TalentPanel.Controls.Add(this.textBox1);
-            this.Error_TalentPanel.Controls.Add(this.label3);
-            this.Error_TalentPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.Error_TalentPanel.Location = new System.Drawing.Point(0, 0);
-            this.Error_TalentPanel.Name = "Error_TalentPanel";
-            this.Error_TalentPanel.Size = new System.Drawing.Size(459, 85);
-            this.Error_TalentPanel.TabIndex = 3;
-            this.Error_TalentPanel.Visible = false;
+            resources.ApplyResources(Error_TalentPanel, "Error_TalentPanel");
+            Error_TalentPanel.Controls.Add(textBox1);
+            Error_TalentPanel.Controls.Add(label3);
+            Error_TalentPanel.Name = "Error_TalentPanel";
             // 
             // textBox1
             // 
-            this.textBox1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.textBox1.Font = new System.Drawing.Font("Meiryo UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox1.Location = new System.Drawing.Point(0, 25);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBox1.Size = new System.Drawing.Size(459, 60);
-            this.textBox1.TabIndex = 1;
+            resources.ApplyResources(textBox1, "textBox1");
+            textBox1.Name = "textBox1";
+            textBox1.ReadOnly = true;
             // 
             // label3
             // 
-            this.label3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label3.Font = new System.Drawing.Font("Meiryo UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(0, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(459, 25);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "天賦情報の取得に失敗しました。";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            resources.ApplyResources(label3, "label3");
+            label3.Name = "label3";
             // 
             // groupBox2
             // 
-            this.groupBox2.AutoSize = true;
-            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox2.Location = new System.Drawing.Point(0, 52);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(465, 5);
-            this.groupBox2.TabIndex = 1;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "武器";
+            resources.ApplyResources(groupBox2, "groupBox2");
+            groupBox2.Name = "groupBox2";
+            groupBox2.TabStop = false;
             // 
             // panel4
             // 
-            this.panel4.Controls.Add(this.label4);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel4.Location = new System.Drawing.Point(0, 30);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(465, 22);
-            this.panel4.TabIndex = 1;
+            resources.ApplyResources(panel4, "panel4");
+            panel4.Controls.Add(label4);
+            panel4.Name = "panel4";
             // 
             // label4
             // 
-            this.label4.AutoSize = true;
-            this.label4.Dock = System.Windows.Forms.DockStyle.Left;
-            this.label4.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(0, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(0, 15);
-            this.label4.TabIndex = 0;
+            resources.ApplyResources(label4, "label4");
+            label4.Name = "label4";
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.label5);
-            this.panel3.Controls.Add(this.label2);
-            this.panel3.Controls.Add(this.label1);
-            this.panel3.Controls.Add(this.pictureBox1);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel3.Location = new System.Drawing.Point(0, 0);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(465, 30);
-            this.panel3.TabIndex = 0;
+            resources.ApplyResources(panel3, "panel3");
+            panel3.Controls.Add(label5);
+            panel3.Controls.Add(label2);
+            panel3.Controls.Add(label1);
+            panel3.Controls.Add(pictureBox1);
+            panel3.Name = "panel3";
             // 
             // label5
             // 
-            this.label5.AutoSize = true;
-            this.label5.Dock = System.Windows.Forms.DockStyle.Left;
-            this.label5.Font = new System.Drawing.Font("Meiryo UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(30, 0);
-            this.label5.MinimumSize = new System.Drawing.Size(0, 30);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(0, 30);
-            this.label5.TabIndex = 3;
-            this.label5.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            resources.ApplyResources(label5, "label5");
+            label5.ForeColor = Color.Black;
+            label5.Name = "label5";
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.label2.Font = new System.Drawing.Font("Meiryo UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.ForeColor = System.Drawing.Color.Gray;
-            this.label2.Location = new System.Drawing.Point(30, 0);
-            this.label2.MinimumSize = new System.Drawing.Size(0, 30);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(0, 30);
-            this.label2.TabIndex = 2;
-            this.label2.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            resources.ApplyResources(label2, "label2");
+            label2.ForeColor = Color.Gray;
+            label2.Name = "label2";
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.label1.Font = new System.Drawing.Font("Meiryo UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(30, 0);
-            this.label1.MinimumSize = new System.Drawing.Size(0, 30);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(0, 30);
-            this.label1.TabIndex = 1;
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            resources.ApplyResources(label1, "label1");
+            label1.Name = "label1";
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(30, 30);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
+            resources.ApplyResources(pictureBox1, "pictureBox1");
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.TabStop = false;
             // 
             // CharacterDetail
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(784, 621);
-            this.Controls.Add(this.tableLayoutPanel1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
-            this.MinimumSize = new System.Drawing.Size(800, 240);
-            this.Name = "CharacterDetail";
-            this.Text = "CharacterDetail";
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.panel5.ResumeLayout(false);
-            this.panel5.PerformLayout();
-            this.Error_TalentPanel.ResumeLayout(false);
-            this.Error_TalentPanel.PerformLayout();
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.ResumeLayout(false);
-
+            resources.ApplyResources(this, "$this");
+            AutoScaleMode = AutoScaleMode.Dpi;
+            Controls.Add(tableLayoutPanel1);
+            FormBorderStyle = FormBorderStyle.SizableToolWindow;
+            Name = "CharacterDetail";
+            tableLayoutPanel1.ResumeLayout(false);
+            panel2.ResumeLayout(false);
+            panel2.PerformLayout();
+            groupBox4.ResumeLayout(false);
+            groupBox4.PerformLayout();
+            groupBox3.ResumeLayout(false);
+            groupBox3.PerformLayout();
+            groupBox1.ResumeLayout(false);
+            groupBox1.PerformLayout();
+            panel5.ResumeLayout(false);
+            panel5.PerformLayout();
+            Error_TalentPanel.ResumeLayout(false);
+            Error_TalentPanel.PerformLayout();
+            panel4.ResumeLayout(false);
+            panel4.PerformLayout();
+            panel3.ResumeLayout(false);
+            panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ResumeLayout(false);
         }
 
         #endregion

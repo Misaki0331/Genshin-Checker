@@ -61,11 +61,47 @@ namespace Genshin_Checker.resource.Languages {
         }
         
         /// <summary>
+        ///   Cancel に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Cancel {
+            get {
+                return ResourceManager.GetString("Cancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Completed に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string Completed {
             get {
                 return ResourceManager.GetString("Completed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Confirm に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Confirm {
+            get {
+                return ResourceManager.GetString("Confirm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   ... other {0} errors に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Error_WithCount {
+            get {
+                return ResourceManager.GetString("Error_WithCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Error Message に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string ErrorMessage {
+            get {
+                return ResourceManager.GetString("ErrorMessage", resourceCulture);
             }
         }
         
@@ -84,6 +120,15 @@ namespace Genshin_Checker.resource.Languages {
         public static string FormatYearMonth {
             get {
                 return ResourceManager.GetString("FormatYearMonth", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Latter に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Latter {
+            get {
+                return ResourceManager.GetString("Latter", resourceCulture);
             }
         }
         
@@ -196,11 +241,29 @@ namespace Genshin_Checker.resource.Languages {
         }
         
         /// <summary>
+        ///   No に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string No {
+            get {
+                return ResourceManager.GetString("No", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Unknown に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string Unknown {
             get {
                 return ResourceManager.GetString("Unknown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Yes に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Yes {
+            get {
+                return ResourceManager.GetString("Yes", resourceCulture);
             }
         }
     }

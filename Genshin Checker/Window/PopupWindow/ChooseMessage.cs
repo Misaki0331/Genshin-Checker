@@ -1,10 +1,16 @@
-﻿namespace Genshin_Checker.Window.Popup
+﻿using Genshin_Checker.resource.Languages;
+
+namespace Genshin_Checker.Window.Popup
 {
     public partial class ChooseMessage : Form
     {
-        public ChooseMessage(string title,string message,string windowtitle="情報",int selectcount=2,string select1="いいえ",string select2="はい",string select3="キャンセル",string select4="",string select5="")
+        public ChooseMessage(string title,string message,string? windowtitle=null,int selectcount=2,string? select1=null,string? select2=null,string? select3=null,string select4="",string select5="")
         {
             InitializeComponent();
+            windowtitle ??= Common.Confirm;
+            select1 ??= Common.No;
+            select2 ??= Common.Yes; 
+            select3 ??= Common.Cancel;
             Text = windowtitle;
             label1.Text = title;
             textBox1.Text = message.Replace("\r\n","\n").Replace("\n",Environment.NewLine);

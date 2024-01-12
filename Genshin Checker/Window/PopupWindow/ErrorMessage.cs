@@ -1,9 +1,12 @@
-﻿namespace Genshin_Checker.Window.Popup
+﻿using Genshin_Checker.resource.Languages;
+
+namespace Genshin_Checker.Window.Popup
 {
     public partial class ErrorMessage : Form
     {
-        public ErrorMessage(string title,string message,string windowtitle="エラーメッセージ")
+        public ErrorMessage(string title,string message,string? windowtitle=null)
         {
+            windowtitle ??= Common.ErrorMessage;
             InitializeComponent();
             Text = windowtitle;
             label1.Text = title;

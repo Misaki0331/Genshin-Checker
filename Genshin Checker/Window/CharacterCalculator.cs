@@ -7,6 +7,7 @@ using System.Text;
 using Genshin_Checker.App.General.Convert;
 using Genshin_Checker.Window.Popup;
 using System.Security.Policy;
+using Genshin_Checker.resource.Languages;
 
 namespace Genshin_Checker.Window
 {
@@ -25,13 +26,13 @@ namespace Genshin_Checker.Window
             {
                 if (!account.CharacterDetail.IsAvailableUpdate)
                 {
-                    new ErrorMessage("キャラクターの天賦情報を取得中です。", "しばらく経ってからもう一度開いてください。").ShowDialog();
+                    new ErrorMessage(Localize.Error_CharacterCalculator_WaitForTalentInfomation, Localize.Error_CharacterCalculator_WaitForTalentInfomation_Message).ShowDialog();
                     Close();
                     return;
                 }else
                 {
 
-                    var dialog = new ChooseMessage("新しいキャラクターが見つかりました。", "天賦情報を更新しますがよろしいでしょうか？", "確認",2,"はい","後にする");
+                    var dialog = new ChooseMessage(Localize.WindowName_CharacterCalculator_NewCharacterFound, Localize.WindowName_CharacterCalculator_Confirm_UpdateTalentsInfomation, Common.Confirm, 2,Common.Yes,Common.Latter);
                     dialog.ShowDialog();
                     if (dialog.Result == 0)
                     {
@@ -41,16 +42,16 @@ namespace Genshin_Checker.Window
                             var a=await account.CharacterDetail.UpdateGameData(false);
                             if (!a)
                             {
-                                new ErrorMessage("天賦情報の更新に失敗", $"天賦情報の取得に失敗しました。\nエラーログ\n{account.CharacterDetail.LatestException}").ShowDialog();
+                                new ErrorMessage(Localize.Error_CharacterCalculator_FailedToLoadTalentsInfomation, string.Format(Localize.Error_CharacterCalculator_FailedToLoadTalentInfomation, account.CharacterDetail.LatestException)).ShowDialog();
                             }
                         }
                         else
                         {
-                            new ErrorMessage("天賦情報の更新に失敗", "現在別のスレッドで更新しています。\nしばらく経ってからもう一度お試しください。").ShowDialog();
+                            new ErrorMessage(Localize.Error_CharacterCalculator_FailedToLoadTalentsInfomation, Localize.Error_CharacterCalculator_WorkingOtherThread).ShowDialog();
                             Close();
                         }
                     }
-                    return;
+                    Close();
                 }
             }
             var Data= await account.Characters.GetData();
@@ -64,7 +65,7 @@ namespace Genshin_Checker.Window
                 var set = userdata.Datas.FirstOrDefault(a=>a.Key==character.id);
                 var setdata = set.Value;
                 if (setdata == null) setdata = new();
-                if(talent.Count!=3)throw new InvalidDataException("天賦レベルが不整合です。");
+                if(talent.Count!=3)throw new InvalidDataException(Localize.Error_CharacterCalculator_InvalidTalentCount);
                 CharacterView.Rows.Add(setdata.Enabled, character.id, character.rarity, Element.GetElementEnum(character.element), character.name, character.weapon.type_name, character.fetter, character.level,
                     talent[0].level_current, talent[1].level_current, talent[2].level_current, "",
                     character.level > setdata.SetLevel ? character.level : setdata.SetLevel,
@@ -72,7 +73,7 @@ namespace Genshin_Checker.Window
                     talent[1].level_current > setdata.SetTalent2 ? talent[1].level_current : setdata.SetTalent2,
                     talent[2].level_current > setdata.SetTalent3 ? talent[2].level_current : setdata.SetTalent3);
             }
-            Text = $"育成計算機＋ (UID:{account.UID})";
+            Text = $"{Localize.WindowName_CharacterCalculator} (UID:{account.UID})";
         }
 
         private void CharacterView_DataError(object sender, DataGridViewDataErrorEventArgs e)
@@ -98,13 +99,13 @@ namespace Genshin_Checker.Window
             lock (LockObject)
             {
                 StringBuilder ErrorDetail = new();
-                string ErrorTitle = $"データエラーが {ExceptionCount:#,##0} 件発生しました。";
+                string ErrorTitle = string.Format(Localize.Error_CharacterCalculator_MultipleError, $"{ExceptionCount:#,##0}");
                 Exceptions.Reverse();
                 foreach (var ex in Exceptions)
                 {
                     ErrorDetail.Append($"{ex}\n--------------------\n");
                 }
-                if (ExceptionCount > 100) ErrorDetail.Append($"... 他 {ExceptionCount - Exceptions.Count:#,##0} 件");
+                if (ExceptionCount > 100) ErrorDetail.Append(string.Format(Common.Error_WithCount,$"{ExceptionCount - Exceptions.Count:#,##0}"));
                 ExceptionCount = 0;
                 Exceptions.Clear();
                 new ErrorMessage(ErrorTitle, ErrorDetail.ToString()).ShowDialog();
@@ -299,7 +300,7 @@ namespace Genshin_Checker.Window
             }
             catch(Exception ex)
             {
-                new ErrorMessage("アカウントセーブデータに異常があります。", ex.ToString()).ShowDialog();
+                new ErrorMessage(Localize.Error_CharacterCalculator_InvalidSaveData, ex.ToString()).ShowDialog();
                 return new();
             }
 
@@ -311,15 +312,15 @@ namespace Genshin_Checker.Window
             {
                 case 0:
                     ButtonBatch.Enabled = false;
-                    ButtonBatch.Text = "変更";
+                    ButtonBatch.Text = Localize.WindowName_CharacterCalculator_Button_Edit;
                     break;
                 case 1:
                     ButtonBatch.Enabled = true;
-                    ButtonBatch.Text = "変更";
+                    ButtonBatch.Text = Localize.WindowName_CharacterCalculator_Button_Edit;
                     break;
                 default:
                     ButtonBatch.Enabled = true;
-                    ButtonBatch.Text = "一括変更";
+                    ButtonBatch.Text = Localize.WindowName_CharacterCalculator_Button_AllEdit;
                     break;
             }
         }
@@ -331,7 +332,7 @@ namespace Genshin_Checker.Window
 
         private async void button2_Click(object sender, EventArgs e)
         {
-            var dialog = new ChooseMessage("天賦情報の更新", "天賦情報を一括で再取得しますか？\nキャラクターの数によって時間がかかる可能性があります。\n\n※更新する場合は自動的に育成計算機が閉じられます。", "確認");
+            var dialog = new ChooseMessage(Localize.WindowName_CharacterCalculator_UpdateTalentsInfomation_Title, Localize.WindowName_CharacterCalculator_UpdateTalentsInfomation_Description, Common.Confirm);
             dialog.ShowDialog();
             if (dialog.Result == 1)
             {
@@ -342,7 +343,7 @@ namespace Genshin_Checker.Window
                 }
                 else
                 {
-                    new ErrorMessage("天賦情報の更新に失敗", "現在別のスレッドが使用されています。").ShowDialog();
+                    new ErrorMessage(Localize.Error_CharacterCalculator_FailedToLoadTalentsInfomation, Localize.Error_CharacterCalculator_WorkingOtherThread).ShowDialog();
                 }
             }
         }

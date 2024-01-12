@@ -97,85 +97,8 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.3500.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="MonthShort_01" xml:space="preserve">
-    <value>Jan.</value>
-    <comment>@MutedRule(PunctuationTail)</comment>
-  </data>
-  <data name="MonthShort_02" xml:space="preserve">
-    <value>Feb.</value>
-    <comment>@MutedRule(PunctuationTail)</comment>
-  </data>
-  <data name="MonthShort_03" xml:space="preserve">
-    <value>Mar.</value>
-    <comment>@MutedRule(PunctuationTail)</comment>
-  </data>
-  <data name="MonthShort_04" xml:space="preserve">
-    <value>Apr.</value>
-    <comment>@MutedRule(PunctuationTail)</comment>
-  </data>
-  <data name="MonthShort_05" xml:space="preserve">
-    <value>May.</value>
-    <comment>@MutedRule(PunctuationTail)</comment>
-  </data>
-  <data name="MonthShort_06" xml:space="preserve">
-    <value>Jun.</value>
-    <comment>@MutedRule(PunctuationTail)</comment>
-  </data>
-  <data name="MonthShort_07" xml:space="preserve">
-    <value>Jul.</value>
-    <comment>@MutedRule(PunctuationTail)</comment>
-  </data>
-  <data name="MonthShort_08" xml:space="preserve">
-    <value>Aug.</value>
-    <comment>@MutedRule(PunctuationTail)</comment>
-  </data>
-  <data name="MonthShort_09" xml:space="preserve">
-    <value>Sep.</value>
-    <comment>@MutedRule(PunctuationTail)</comment>
-  </data>
-  <data name="MonthShort_10" xml:space="preserve">
-    <value>Oct.</value>
-    <comment>@MutedRule(PunctuationTail)</comment>
-  </data>
-  <data name="MonthShort_11" xml:space="preserve">
-    <value>Nov.</value>
-    <comment>@MutedRule(PunctuationTail)</comment>
-  </data>
-  <data name="MonthShort_12" xml:space="preserve">
-    <value>Dec.</value>
-    <comment>@MutedRule(PunctuationTail)</comment>
-  </data>
-  <data name="Unknown" xml:space="preserve">
-    <value>Unknown</value>
-  </data>
-  <data name="Completed" xml:space="preserve">
-    <value>Completed</value>
-  </data>
-  <data name="Failed" xml:space="preserve">
-    <value>Failed</value>
-  </data>
-  <data name="FormatYearMonth" xml:space="preserve">
-    <value>{1} {0}</value>
-  </data>
-  <data name="Confirm" xml:space="preserve">
-    <value>Confirm</value>
-  </data>
-  <data name="Latter" xml:space="preserve">
-    <value>Latter</value>
-  </data>
-  <data name="Yes" xml:space="preserve">
-    <value>Yes</value>
-  </data>
-  <data name="No" xml:space="preserve">
-    <value>No</value>
-  </data>
-  <data name="Error_WithCount" xml:space="preserve">
-    <value>... other {0} errors</value>
-  </data>
-  <data name="Cancel" xml:space="preserve">
-    <value>Cancel</value>
-  </data>
-  <data name="ErrorMessage" xml:space="preserve">
-    <value>Error Message</value>
+  <data name="-502002" xml:space="preserve">
+    <value>This error occurs when in-game access is not allowed.
+Please open the HoYoLab mobile app once and go to "Enhancement Progression Calculator" permission settings to allow in-game character data access.</value>
   </data>
 </root>

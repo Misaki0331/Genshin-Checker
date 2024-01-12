@@ -69,8 +69,8 @@
             // 
             // SessionTime
             // 
-            resources.ApplyResources(SessionTime, "SessionTime");
             SessionTime.BackColor = Color.Transparent;
+            resources.ApplyResources(SessionTime, "SessionTime");
             SessionTime.ForeColor = Color.White;
             SessionTime.Name = "SessionTime";
             // 
@@ -90,10 +90,10 @@
             // 
             // panel2
             // 
-            resources.ApplyResources(panel2, "panel2");
             panel2.BackColor = Color.Transparent;
             panel2.Controls.Add(label4);
             panel2.Controls.Add(SessionTime);
+            resources.ApplyResources(panel2, "panel2");
             panel2.Name = "panel2";
             // 
             // label4
@@ -105,10 +105,10 @@
             // 
             // panel3
             // 
-            resources.ApplyResources(panel3, "panel3");
             panel3.BackColor = Color.Transparent;
             panel3.Controls.Add(label2);
             panel3.Controls.Add(TotalSessionTime);
+            resources.ApplyResources(panel3, "panel3");
             panel3.Name = "panel3";
             // 
             // label2
@@ -120,8 +120,8 @@
             // 
             // TotalSessionTime
             // 
-            resources.ApplyResources(TotalSessionTime, "TotalSessionTime");
             TotalSessionTime.BackColor = Color.Transparent;
+            resources.ApplyResources(TotalSessionTime, "TotalSessionTime");
             TotalSessionTime.ForeColor = Color.White;
             TotalSessionTime.Name = "TotalSessionTime";
             // 
@@ -141,6 +141,7 @@
             FormClosed += TimerDisplay_FormClosed;
             Load += TimerDisplay_Load;
             panel1.ResumeLayout(false);
+            panel1.PerformLayout();
             panel4.ResumeLayout(false);
             panel4.PerformLayout();
             panel2.ResumeLayout(false);

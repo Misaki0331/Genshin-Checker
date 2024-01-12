@@ -145,4 +145,25 @@
   <data name="FormatYearMonth" xml:space="preserve">
     <value>{0}年{1}</value>
   </data>
+  <data name="Confirm" xml:space="preserve">
+    <value>確認</value>
+  </data>
+  <data name="Latter" xml:space="preserve">
+    <value>後にする</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>はい</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>いいえ</value>
+  </data>
+  <data name="Error_WithCount" xml:space="preserve">
+    <value>... 他 {0} 件</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>キャンセル</value>
+  </data>
+  <data name="ErrorMessage" xml:space="preserve">
+    <value>エラーメッセージ</value>
+  </data>
 </root>

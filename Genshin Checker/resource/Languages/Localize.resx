@@ -439,4 +439,118 @@ Spiral Abyss: {2}</value>
   <data name="WindowName_TravelersDiaryDetailList_Name_ObtainedCount" xml:space="preserve">
     <value>Obtained</value>
   </data>
+  <data name="Error_TravelersDiaryDetailList_InvalidData" xml:space="preserve">
+    <value>Invalid data.</value>
+  </data>
+  <data name="Error_TravelersDiaryDetailList_FailedToLoadDatabase" xml:space="preserve">
+    <value>Failed to load database.</value>
+  </data>
+  <data name="WindowName_TravelersDiaryDetailList_Downloading" xml:space="preserve">
+    <value>Downloading page {2} of {0} {1} data now...</value>
+  </data>
+  <data name="WindowName_TravelersDiaryDetailList_Downloading_ThisMonth" xml:space="preserve">
+    <value>this month</value>
+  </data>
+  <data name="Error_TravelersDiaryDetailList_NoData" xml:space="preserve">
+    <value>No data was found for {1} corresponding to {0}.</value>
+  </data>
+  <data name="Error_TravelersDiaryDetailList_FailedToCsvOutput" xml:space="preserve">
+    <value>Failed to output csv.</value>
+  </data>
+  <data name="WindowName_TravelersDiaryDetailList_SaveToCsv_Title" xml:space="preserve">
+    <value>Choose select output directory.</value>
+  </data>
+  <data name="WindowName_TravelersDiaryDetailList_SaveToCsv_Filter" xml:space="preserve">
+    <value>Comma Separated Values (*.csv)|*.csv|All Files (*.*)|*.*</value>
+  </data>
+  <data name="WindowName_CharacterDetail" xml:space="preserve">
+    <value>Character Detail</value>
+  </data>
+  <data name="UI_FriendshipLevel" xml:space="preserve">
+    <value>Friendship Level : {0}</value>
+  </data>
+  <data name="UI_ConstellationLevel" xml:space="preserve">
+    <value>[C{0}]</value>
+  </data>
+  <data name="UI_ConstellationLevelMax" xml:space="preserve">
+    <value>[C6]</value>
+  </data>
+  <data name="Error_CharacterDetail_DontHaveCharacter" xml:space="preserve">
+    <value>You don't have the character.</value>
+  </data>
+  <data name="Error_CharacterDetail_CharacterDetailIsMissing" xml:space="preserve">
+    <value>This character is missing data.</value>
+  </data>
+  <data name="Error_CharacterDetail_CharacterDetailIsMissing_Message" xml:space="preserve">
+    <value>{0} has no data on the volunteer database yet.
+Please reopen it again after a while.</value>
+  </data>
+  <data name="Error_CharacterDetail_HoYoLabAPIException" xml:space="preserve">
+    <value>ErrorCode : {0}
+Message : {1}
+{2}</value>
+  </data>
+  <data name="Error_CharacterDetail_FailToLoadTalentInfomation" xml:space="preserve">
+    <value>Failed to load talent infomation.</value>
+  </data>
+  <data name="WindowName_CharacterDetail_NoArtifact" xml:space="preserve">
+    <value>Unequipped</value>
+  </data>
+  <data name="WindowName_CharacterDetail_Talent_ShowMore" xml:space="preserve">
+    <value>Show more ▼</value>
+  </data>
+  <data name="WindowName_CharacterDetail_Talent_Hide" xml:space="preserve">
+    <value>Hide ▲</value>
+  </data>
+  <data name="WindowName_CharacterCalculator" xml:space="preserve">
+    <value>Enhancement Progression Calculator+</value>
+  </data>
+  <data name="WindowName_CharacterCalculator_Button_Edit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="WindowName_CharacterCalculator_Button_AllEdit" xml:space="preserve">
+    <value>All Edit</value>
+  </data>
+  <data name="Error_CharacterCalculator_InvalidSaveData" xml:space="preserve">
+    <value>Invalid account data.</value>
+  </data>
+  <data name="Error_CharacterCalculator_InvalidTalentCount" xml:space="preserve">
+    <value>Talents count is invalid.</value>
+  </data>
+  <data name="Error_CharacterCalculator_FailedToLoadTalentsInfomation" xml:space="preserve">
+    <value>Failed to load talents infomation</value>
+  </data>
+  <data name="Error_CharacterCalculator_WorkingOtherThread" xml:space="preserve">
+    <value>Currently working in another thread.</value>
+  </data>
+  <data name="Error_CharacterCalculator_WaitForTalentInfomation" xml:space="preserve">
+    <value>Waiting for talents infomation.</value>
+  </data>
+  <data name="Error_CharacterCalculator_WaitForTalentInfomation_Message" xml:space="preserve">
+    <value>Please open it again after a while.</value>
+  </data>
+  <data name="WindowName_CharacterCalculator_UpdateTalentsInfomation_Title" xml:space="preserve">
+    <value>Update talents infomation?</value>
+    <comment>@MutedRule(PunctuationTail)</comment>
+  </data>
+  <data name="WindowName_CharacterCalculator_UpdateTalentsInfomation_Description" xml:space="preserve">
+    <value>Do you want to reacquire all talents information in bulk?
+This may take some time depending on number of characters.
+
+*This window will automatically close when updating.</value>
+  </data>
+  <data name="WindowName_CharacterCalculator_NewCharacterFound" xml:space="preserve">
+    <value>New characters found.</value>
+  </data>
+  <data name="WindowName_CharacterCalculator_Confirm_UpdateTalentsInfomation" xml:space="preserve">
+    <value>Needs update talents infomation. Do you want to allow this action?</value>
+  </data>
+  <data name="Error_CharacterCalculator_FailedToLoadTalentInfomation" xml:space="preserve">
+    <value>Failed to load talents infomation.
+Error Log
+{0}</value>
+  </data>
+  <data name="Error_CharacterCalculator_MultipleError" xml:space="preserve">
+    <value>{0} data error(s) occurred.</value>
+  </data>
 </root>

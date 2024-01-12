@@ -433,4 +433,117 @@
   <data name="WindowName_TravelersDiaryDetailList_Name_ObtainedCount" xml:space="preserve">
     <value>取得数</value>
   </data>
+  <data name="Error_TravelersDiaryDetailList_InvalidData" xml:space="preserve">
+    <value>データが不整合です。</value>
+  </data>
+  <data name="Error_TravelersDiaryDetailList_FailedToLoadDatabase" xml:space="preserve">
+    <value>データベースを読み込めませんでした。</value>
+  </data>
+  <data name="WindowName_TravelersDiaryDetailList_Downloading" xml:space="preserve">
+    <value>{0}分の{1}データ({2}ページ目)を取得中...</value>
+  </data>
+  <data name="WindowName_TravelersDiaryDetailList_Downloading_ThisMonth" xml:space="preserve">
+    <value>今月</value>
+  </data>
+  <data name="Error_TravelersDiaryDetailList_NoData" xml:space="preserve">
+    <value>{0}に対応する{1}データが見つかりませんでした。</value>
+  </data>
+  <data name="Error_TravelersDiaryDetailList_FailedToCsvOutput" xml:space="preserve">
+    <value>CSV出力に失敗しました。</value>
+  </data>
+  <data name="WindowName_TravelersDiaryDetailList_SaveToCsv_Title" xml:space="preserve">
+    <value>保存先を選択してください。</value>
+  </data>
+  <data name="WindowName_TravelersDiaryDetailList_SaveToCsv_Filter" xml:space="preserve">
+    <value>Comma Separated Values (*.csv)|*.csv|すべてのファイル (*.*)|*.*</value>
+  </data>
+  <data name="WindowName_CharacterDetail" xml:space="preserve">
+    <value>キャラクター詳細</value>
+  </data>
+  <data name="UI_FriendshipLevel" xml:space="preserve">
+    <value>好感度Lv. {0}</value>
+  </data>
+  <data name="UI_ConstellationLevel" xml:space="preserve">
+    <value>【{0}凸】</value>
+  </data>
+  <data name="UI_ConstellationLevelMax" xml:space="preserve">
+    <value>【完凸】</value>
+  </data>
+  <data name="Error_CharacterDetail_DontHaveCharacter" xml:space="preserve">
+    <value>キャラクターが所持されていません。</value>
+  </data>
+  <data name="Error_CharacterDetail_CharacterDetailIsMissing" xml:space="preserve">
+    <value>このキャラクターはデータ不足です。</value>
+  </data>
+  <data name="Error_CharacterDetail_CharacterDetailIsMissing_Message" xml:space="preserve">
+    <value>{0}はまだ有志のデータベース上にデータがありません。
+しばらく経ってからまた開き直してください。</value>
+  </data>
+  <data name="Error_CharacterDetail_HoYoLabAPIException" xml:space="preserve">
+    <value>エラーコード : {0}
+メッセージ : {1}
+{2}</value>
+  </data>
+  <data name="Error_CharacterDetail_FailToLoadTalentInfomation" xml:space="preserve">
+    <value>天賦情報取得時にエラーが発生しました。</value>
+  </data>
+  <data name="WindowName_CharacterDetail_NoArtifact" xml:space="preserve">
+    <value>未装備</value>
+  </data>
+  <data name="WindowName_CharacterDetail_Talent_ShowMore" xml:space="preserve">
+    <value>もっと見る ▼</value>
+  </data>
+  <data name="WindowName_CharacterDetail_Talent_Hide" xml:space="preserve">
+    <value>隠す ▲</value>
+  </data>
+  <data name="WindowName_CharacterCalculator" xml:space="preserve">
+    <value>育成計算機＋</value>
+  </data>
+  <data name="WindowName_CharacterCalculator_Button_Edit" xml:space="preserve">
+    <value>変更</value>
+  </data>
+  <data name="WindowName_CharacterCalculator_Button_AllEdit" xml:space="preserve">
+    <value>一括変更</value>
+  </data>
+  <data name="Error_CharacterCalculator_InvalidSaveData" xml:space="preserve">
+    <value>アカウントセーブデータに異常があります。</value>
+  </data>
+  <data name="Error_CharacterCalculator_InvalidTalentCount" xml:space="preserve">
+    <value>天賦レベルが不整合です。</value>
+  </data>
+  <data name="Error_CharacterCalculator_FailedToLoadTalentsInfomation" xml:space="preserve">
+    <value>天賦情報の更新に失敗</value>
+  </data>
+  <data name="Error_CharacterCalculator_WorkingOtherThread" xml:space="preserve">
+    <value>現在別のスレッドが使用されています。</value>
+  </data>
+  <data name="Error_CharacterCalculator_WaitForTalentInfomation_Message" xml:space="preserve">
+    <value>しばらく経ってからもう一度開いてください。</value>
+  </data>
+  <data name="Error_CharacterCalculator_WaitForTalentInfomation" xml:space="preserve">
+    <value>キャラクターの天賦情報を取得中です。</value>
+  </data>
+  <data name="WindowName_CharacterCalculator_UpdateTalentsInfomation_Title" xml:space="preserve">
+    <value>天賦情報の更新</value>
+  </data>
+  <data name="WindowName_CharacterCalculator_UpdateTalentsInfomation_Description" xml:space="preserve">
+    <value>天賦情報を一括で再取得しますか？
+キャラクターの数によって時間がかかる可能性があります。
+
+※更新する場合は自動的に育成計算機が閉じられます。</value>
+  </data>
+  <data name="WindowName_CharacterCalculator_NewCharacterFound" xml:space="preserve">
+    <value>新しいキャラクターが見つかりました。</value>
+  </data>
+  <data name="WindowName_CharacterCalculator_Confirm_UpdateTalentsInfomation" xml:space="preserve">
+    <value>天賦情報を更新しますがよろしいでしょうか？</value>
+  </data>
+  <data name="Error_CharacterCalculator_FailedToLoadTalentInfomation" xml:space="preserve">
+    <value>天賦情報の取得に失敗しました。
+エラーログ
+{0}</value>
+  </data>
+  <data name="Error_CharacterCalculator_MultipleError" xml:space="preserve">
+    <value>データエラーが {0} 件発生しました。</value>
+  </data>
 </root>

@@ -117,19 +117,25 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="label1.Text" xml:space="preserve">
-    <value>問題が発生した為、アプリを終了する必要があります。</value>
+  <data name="groupBox4.Text" xml:space="preserve">
+    <value>聖遺物</value>
   </data>
-  <data name="button3.Text" xml:space="preserve">
-    <value>クラッシュレポートを開く</value>
+  <data name="groupBox3.Text" xml:space="preserve">
+    <value>命ノ星座</value>
   </data>
-  <data name="button2.Text" xml:space="preserve">
-    <value>再起動</value>
+  <data name="Button_TalentHideShow.Text" xml:space="preserve">
+    <value>もっと見る ▼</value>
   </data>
-  <data name="button1.Text" xml:space="preserve">
-    <value>終了</value>
+  <data name="label3.Text" xml:space="preserve">
+    <value>天賦情報の取得に失敗しました。</value>
+  </data>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>天賦</value>
+  </data>
+  <data name="groupBox2.Text" xml:space="preserve">
+    <value>武器</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>エラー!</value>
+    <value>キャラクター詳細</value>
   </data>
 </root>

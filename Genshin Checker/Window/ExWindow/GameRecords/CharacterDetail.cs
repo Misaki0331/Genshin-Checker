@@ -13,6 +13,7 @@ using Genshin_Checker.UI.Control.GameRecord.CharacterDetail;
 using LiveChartsCore.Drawing;
 using static Genshin_Checker.App.HoYoLab.Account;
 using Genshin_Checker.Window.Popup;
+using Genshin_Checker.resource.Languages;
 
 namespace Genshin_Checker.Window.ExWindow.GameRecords
 {
@@ -61,7 +62,7 @@ namespace Genshin_Checker.Window.ExWindow.GameRecords
                 //キャラクター情報の取得
                 var Detail = await account.Characters.GetData();
                 var CharacterInfo = Detail.avatars.Find(a => a.id == characterID);
-                if (CharacterInfo == null) throw new ArgumentNullException("キャラクターが所持されていません。");
+                if (CharacterInfo == null) throw new ArgumentNullException(Localize.Error_CharacterDetail_DontHaveCharacter);
 
                 string gacha = "";
                 try
@@ -70,20 +71,20 @@ namespace Genshin_Checker.Window.ExWindow.GameRecords
                     gacha = character.SideIconName.Replace("UI_AvatarIcon_Side_", "UI_Gacha_AvatarImg_");
                 }catch(Exception)
                 {
-                    new ErrorMessage("このキャラクターはデータ不足です。", $"{CharacterInfo.name}はまだ有志のデータベース上にデータがありません。\nしばらく経ってからまた開き直してください。").ShowDialog();
+                    new ErrorMessage(Localize.Error_CharacterDetail_CharacterDetailIsMissing,string.Format(Localize.Error_CharacterDetail_CharacterDetailIsMissing_Message, CharacterInfo.name)).ShowDialog();
                 }
 
-                Text = $"キャラクター詳細 - {CharacterInfo.name} (UID:{account.UID})";
+                Text = $"{Localize.WindowName_CharacterDetail} - {CharacterInfo.name} (UID:{account.UID})";
                 IsLoading = true;
                 ImageReload(true);
                 //概要
                 label1.Text = $"{name}";
-                label2.Text = $"Lv.{CharacterInfo.level}";
-                label4.Text = $"好感度Lv.{CharacterInfo.fetter}";
+                label2.Text = string.Format(Localize.UI_Character_Level,CharacterInfo.level);
+                label4.Text = string.Format(Localize.UI_FriendshipLevel,CharacterInfo.fetter);
                 int constellation = CharacterInfo.constellations.FindAll(a => a.is_actived).Count;
                 if (constellation == 0) label5.Text = "";
-                else if (constellation == 6) label5.Text = "【完凸】";
-                else label5.Text = $"【{constellation}凸】";
+                else if (constellation == 6) label5.Text = Localize.UI_ConstellationLevelMax;
+                else label5.Text = string.Format(Localize.UI_ConstellationLevel, constellation);
                 pictureBox1.Image = await App.WebRequest.ImageGetRequest($"https://static-api.misaki-chan.world/genshin-checker/asset/element/type-1/{CharacterInfo.element.ToLower()}.png");
 
                 //武器
@@ -113,7 +114,7 @@ namespace Genshin_Checker.Window.ExWindow.GameRecords
                     list.Reverse();
                     foreach (var main in list)
                     {
-                        var info = new TalentInfo(main.icon, main.name, $"Lv. {main.level_current}", "ここに概要");
+                        var info = new TalentInfo(main.icon, main.name, string.Format(Localize.UI_Talent_Level,main.level_current), "概要をここに(未実装)");
                         info.Dock = DockStyle.Top;
                         Panel_MainTalent.Controls.Add(info);
                         MainTalent.Add(info);
@@ -122,7 +123,7 @@ namespace Genshin_Checker.Window.ExWindow.GameRecords
                     list.Reverse();
                     foreach (var sub in list)
                     {
-                        var info = new TalentInfo(sub.icon, sub.name, $"", "ここに概要");
+                        var info = new TalentInfo(sub.icon, sub.name, $"", "概要をここに(未実装)");
                         info.Dock = DockStyle.Top;
                         Panel_SubTalent.Controls.Add(info);
                         SubTalent.Add(info);
@@ -136,10 +137,10 @@ namespace Genshin_Checker.Window.ExWindow.GameRecords
                     switch (ex.Retcode)
                     {
                         case -502002:
-                            hint = "このエラーはゲーム内アクセスが許可されていない場合に発生します。\n一度HoYoLabモバイルアプリを開き、「育成計算機」の許可設定からゲーム内のキャラクターデータのアクセスを許可してください。";
+                            hint = HoYoLabAPIRetcode._502002;
                             break;
                     }
-                    textBox1.Lines = $"エラーコード : {ex.Retcode}\nメッセージ : {ex.APIMessage}\n{hint}".Split('\n');
+                    textBox1.Lines = string.Format(Localize.Error_CharacterDetail_HoYoLabAPIException,ex.Retcode,ex.APIMessage,hint).Split('\n');
                     Error_TalentPanel.Visible = true;
                     Button_TalentHideShow.Visible = false;
 
@@ -150,7 +151,7 @@ namespace Genshin_Checker.Window.ExWindow.GameRecords
                     textBox1.Lines = $"{ex.GetType()}\n{ex.Message}".Split('\n');
                     Error_TalentPanel.Visible = true;
                     Button_TalentHideShow.Visible = false;
-                    new ErrorMessage("天賦情報取得時にエラーが発生しました。", ex.ToString()).ShowDialog();
+                    new ErrorMessage(Localize.Error_CharacterDetail_FailToLoadTalentInfomation, ex.ToString()).ShowDialog();
                 }
 
                 Panel_MainTalent.ResumeLayout(true);
@@ -189,7 +190,7 @@ namespace Genshin_Checker.Window.ExWindow.GameRecords
                     ArtifactInfo? control = null;
                     if (data == null)
                     {
-                        control = new(i, null, 0, "未装備");
+                        control = new(i, null, 0, Localize.WindowName_CharacterDetail_NoArtifact);
                     }
                     else
                     {
@@ -251,11 +252,11 @@ namespace Genshin_Checker.Window.ExWindow.GameRecords
             Panel_SubTalent.Visible = !Panel_SubTalent.Visible;
             if(Panel_SubTalent.Visible)
             {
-                Button_TalentHideShow.Text = "隠す ▲";
+                Button_TalentHideShow.Text = Localize.WindowName_CharacterDetail_Talent_Hide;
             }
             else
             {
-                Button_TalentHideShow.Text = "もっと見る ▼";
+                Button_TalentHideShow.Text = Localize.WindowName_CharacterDetail_Talent_ShowMore;
             }
         }
     }

@@ -209,6 +209,128 @@ namespace Genshin_Checker.resource.Languages {
         }
         
         /// <summary>
+        ///   Failed to load talents infomation.
+        ///Error Log
+        ///{0} に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Error_CharacterCalculator_FailedToLoadTalentInfomation {
+            get {
+                return ResourceManager.GetString("Error_CharacterCalculator_FailedToLoadTalentInfomation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Failed to load talents infomation に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Error_CharacterCalculator_FailedToLoadTalentsInfomation {
+            get {
+                return ResourceManager.GetString("Error_CharacterCalculator_FailedToLoadTalentsInfomation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Invalid account data. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Error_CharacterCalculator_InvalidSaveData {
+            get {
+                return ResourceManager.GetString("Error_CharacterCalculator_InvalidSaveData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Talents count is invalid. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Error_CharacterCalculator_InvalidTalentCount {
+            get {
+                return ResourceManager.GetString("Error_CharacterCalculator_InvalidTalentCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   {0} data error(s) occurred. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Error_CharacterCalculator_MultipleError {
+            get {
+                return ResourceManager.GetString("Error_CharacterCalculator_MultipleError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Waiting for talents infomation. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Error_CharacterCalculator_WaitForTalentInfomation {
+            get {
+                return ResourceManager.GetString("Error_CharacterCalculator_WaitForTalentInfomation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Please open it again after a while. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Error_CharacterCalculator_WaitForTalentInfomation_Message {
+            get {
+                return ResourceManager.GetString("Error_CharacterCalculator_WaitForTalentInfomation_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Currently working in another thread. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Error_CharacterCalculator_WorkingOtherThread {
+            get {
+                return ResourceManager.GetString("Error_CharacterCalculator_WorkingOtherThread", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   This character is missing data. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Error_CharacterDetail_CharacterDetailIsMissing {
+            get {
+                return ResourceManager.GetString("Error_CharacterDetail_CharacterDetailIsMissing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   {0} has no data on the volunteer database yet.
+        ///Please reopen it again after a while. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Error_CharacterDetail_CharacterDetailIsMissing_Message {
+            get {
+                return ResourceManager.GetString("Error_CharacterDetail_CharacterDetailIsMissing_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   You don&apos;t have the character. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Error_CharacterDetail_DontHaveCharacter {
+            get {
+                return ResourceManager.GetString("Error_CharacterDetail_DontHaveCharacter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Failed to load talent infomation. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Error_CharacterDetail_FailToLoadTalentInfomation {
+            get {
+                return ResourceManager.GetString("Error_CharacterDetail_FailToLoadTalentInfomation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   ErrorCode : {0}
+        ///Message : {1}
+        ///{2} に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Error_CharacterDetail_HoYoLabAPIException {
+            get {
+                return ResourceManager.GetString("Error_CharacterDetail_HoYoLabAPIException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Attempt limit has reached. に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string Error_CharacterDetail_ReachedRetryCount {
@@ -362,6 +484,42 @@ namespace Genshin_Checker.resource.Languages {
         }
         
         /// <summary>
+        ///   Failed to output csv. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Error_TravelersDiaryDetailList_FailedToCsvOutput {
+            get {
+                return ResourceManager.GetString("Error_TravelersDiaryDetailList_FailedToCsvOutput", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Failed to load database. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Error_TravelersDiaryDetailList_FailedToLoadDatabase {
+            get {
+                return ResourceManager.GetString("Error_TravelersDiaryDetailList_FailedToLoadDatabase", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Invalid data. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Error_TravelersDiaryDetailList_InvalidData {
+            get {
+                return ResourceManager.GetString("Error_TravelersDiaryDetailList_InvalidData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   No data was found for {1} corresponding to {0}. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Error_TravelersDiaryDetailList_NoData {
+            get {
+                return ResourceManager.GetString("Error_TravelersDiaryDetailList_NoData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Play time : {0} hour(s) {1} minute(s) に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string GameApp_Notify_PlayTime_Result {
@@ -502,6 +660,33 @@ namespace Genshin_Checker.resource.Languages {
         public static string UI_Character_Level {
             get {
                 return ResourceManager.GetString("UI_Character_Level", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   [C{0}] に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string UI_ConstellationLevel {
+            get {
+                return ResourceManager.GetString("UI_ConstellationLevel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   [C6] に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string UI_ConstellationLevelMax {
+            get {
+                return ResourceManager.GetString("UI_ConstellationLevelMax", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Friendship Level : {0} に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string UI_FriendshipLevel {
+            get {
+                return ResourceManager.GetString("UI_FriendshipLevel", resourceCulture);
             }
         }
         
@@ -719,6 +904,108 @@ namespace Genshin_Checker.resource.Languages {
         public static string WindowName_BattleAuth_Message {
             get {
                 return ResourceManager.GetString("WindowName_BattleAuth_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Enhancement Progression Calculator+ に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string WindowName_CharacterCalculator {
+            get {
+                return ResourceManager.GetString("WindowName_CharacterCalculator", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   All Edit に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string WindowName_CharacterCalculator_Button_AllEdit {
+            get {
+                return ResourceManager.GetString("WindowName_CharacterCalculator_Button_AllEdit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Edit に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string WindowName_CharacterCalculator_Button_Edit {
+            get {
+                return ResourceManager.GetString("WindowName_CharacterCalculator_Button_Edit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Needs update talents infomation. Do you want to allow this action? に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string WindowName_CharacterCalculator_Confirm_UpdateTalentsInfomation {
+            get {
+                return ResourceManager.GetString("WindowName_CharacterCalculator_Confirm_UpdateTalentsInfomation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   New characters found. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string WindowName_CharacterCalculator_NewCharacterFound {
+            get {
+                return ResourceManager.GetString("WindowName_CharacterCalculator_NewCharacterFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Do you want to reacquire all talents information in bulk?
+        ///This may take some time depending on number of characters.
+        ///
+        ///*This window will automatically close when updating. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string WindowName_CharacterCalculator_UpdateTalentsInfomation_Description {
+            get {
+                return ResourceManager.GetString("WindowName_CharacterCalculator_UpdateTalentsInfomation_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Update talents infomation? に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string WindowName_CharacterCalculator_UpdateTalentsInfomation_Title {
+            get {
+                return ResourceManager.GetString("WindowName_CharacterCalculator_UpdateTalentsInfomation_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Character Detail に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string WindowName_CharacterDetail {
+            get {
+                return ResourceManager.GetString("WindowName_CharacterDetail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Unequipped に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string WindowName_CharacterDetail_NoArtifact {
+            get {
+                return ResourceManager.GetString("WindowName_CharacterDetail_NoArtifact", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Hide ▲ に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string WindowName_CharacterDetail_Talent_Hide {
+            get {
+                return ResourceManager.GetString("WindowName_CharacterDetail_Talent_Hide", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Show more ▼ に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string WindowName_CharacterDetail_Talent_ShowMore {
+            get {
+                return ResourceManager.GetString("WindowName_CharacterDetail_Talent_ShowMore", resourceCulture);
             }
         }
         
@@ -1021,6 +1308,24 @@ namespace Genshin_Checker.resource.Languages {
         }
         
         /// <summary>
+        ///   Downloading page {2} of {0} {1} data now... に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string WindowName_TravelersDiaryDetailList_Downloading {
+            get {
+                return ResourceManager.GetString("WindowName_TravelersDiaryDetailList_Downloading", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   this month に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string WindowName_TravelersDiaryDetailList_Downloading_ThisMonth {
+            get {
+                return ResourceManager.GetString("WindowName_TravelersDiaryDetailList_Downloading_ThisMonth", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Event Time に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string WindowName_TravelersDiaryDetailList_Name_EventTime {
@@ -1053,6 +1358,24 @@ namespace Genshin_Checker.resource.Languages {
         public static string WindowName_TravelersDiaryDetailList_Name_ObtainedCount {
             get {
                 return ResourceManager.GetString("WindowName_TravelersDiaryDetailList_Name_ObtainedCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Comma Separated Values (*.csv)|*.csv|All Files (*.*)|*.* に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string WindowName_TravelersDiaryDetailList_SaveToCsv_Filter {
+            get {
+                return ResourceManager.GetString("WindowName_TravelersDiaryDetailList_SaveToCsv_Filter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Choose select output directory. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string WindowName_TravelersDiaryDetailList_SaveToCsv_Title {
+            get {
+                return ResourceManager.GetString("WindowName_TravelersDiaryDetailList_SaveToCsv_Title", resourceCulture);
             }
         }
     }
