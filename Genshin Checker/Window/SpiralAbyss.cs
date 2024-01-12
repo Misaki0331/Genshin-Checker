@@ -1,5 +1,6 @@
 ﻿using Genshin_Checker.App.HoYoLab;
 using Genshin_Checker.Model.UserData.SpiralAbyss.v1;
+using Genshin_Checker.resource.Languages;
 using OpenTK.Graphics.ES20;
 using System;
 using System.Collections.Generic;
@@ -30,7 +31,7 @@ namespace Genshin_Checker.Window
         public SpiralAbyss(Account account)
         {
             InitializeComponent();
-            Text = $"深境螺旋 (UID:{account.UID})";
+            Text = $"{Localize.WindowName_SpiralAbyss} (UID:{account.UID})";
             Icon = Icon.FromHandle(resource.icon.Battle_Chronicle.GetHicon());
             this.account = account;
             GeneralList = new();
@@ -40,7 +41,7 @@ namespace Genshin_Checker.Window
             var data = account.SpiralAbyss.GetList();
             data.Reverse();
             foreach (var i in data)
-                ComboData.Add(new() { id = i, name = $"螺旋 {i} 期" });
+                ComboData.Add(new() { id = i, name = string.Format(Localize.UIName_SpiralAbyss_SeasonName,i) });
             foreach (var i in ComboData)
                 comboBox1.Items.Add(i.name);
             if (ComboData.Count > 0) comboBox1.SelectedIndex = 0;
@@ -79,7 +80,7 @@ namespace Genshin_Checker.Window
         {
             CurrentDisplayData = v1;
             var data = v1.Data;
-            LabelScheduleName.Text = $"第 {data.schedule_id} 回 深境螺旋結果";
+            LabelScheduleName.Text = string.Format(Localize.UIName_SpiralAbyss_ResultTitle, data.schedule_id);
             LabelTimestamp.Text = $"{DateTimeOffset.FromUnixTimeSeconds(data.ScheduleTime.start).ToLocalTime():yyyy/MM/dd HH:mm:ss} ～ {DateTimeOffset.FromUnixTimeSeconds(data.ScheduleTime.end).ToLocalTime():yyyy/MM/dd HH:mm:ss}";
 
             LabelLatestArea.Text = data.max_floor;
@@ -182,7 +183,7 @@ namespace Genshin_Checker.Window
             if (CurrentDisplayData == null) return;
 
             PanelFloorsInfo.SuspendLayout();
-            LabelFloorName.Text = $"第 {floors.index} 層";
+            LabelFloorName.Text = string.Format(Localize.UIName_SpiralAbyss_Floor,floors.index);
             LabelFloorStars.Text = $"{floors.star} / {floors.max_star}";
             LabelFloorInfomation.Text = string.Join("\n", floors.ley_line_disorder);
             if (string.IsNullOrEmpty(LabelFloorInfomation.Text)) LabelFloorInfomation.Visible = false;

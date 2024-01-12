@@ -2,6 +2,7 @@
 using Genshin_Checker.App.Game;
 using System.Text;
 using Genshin_Checker.Window.Popup;
+using Genshin_Checker.resource.Languages;
 
 namespace Genshin_Checker.Window
 {
@@ -66,7 +67,7 @@ namespace Genshin_Checker.Window
             }
             catch(Exception ex)
             {
-                new ErrorMessage("設定を読み込めませんでした。",$"{ex}").ShowDialog();
+                new ErrorMessage(Localize.Error_Config_FailToLoad, $"{ex}").ShowDialog();
             }
         }
 

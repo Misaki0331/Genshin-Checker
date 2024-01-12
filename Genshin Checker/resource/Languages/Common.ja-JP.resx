@@ -133,4 +133,16 @@
   <data name="MonthShort_12" xml:space="preserve">
     <value>12 月</value>
   </data>
+  <data name="Unknown" xml:space="preserve">
+    <value>不明</value>
+  </data>
+  <data name="Completed" xml:space="preserve">
+    <value>完了</value>
+  </data>
+  <data name="Failed" xml:space="preserve">
+    <value>失敗</value>
+  </data>
+  <data name="FormatYearMonth" xml:space="preserve">
+    <value>{0}年{1}</value>
+  </data>
 </root>

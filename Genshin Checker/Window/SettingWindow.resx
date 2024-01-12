@@ -1003,7 +1003,7 @@ Examples of available information : Real-time note, Traveler's Dirty etc...</val
     <value>1</value>
   </data>
   <data name="page_auth.Text" xml:space="preserve">
-    <value>Authentication</value>
+    <value>Auth</value>
   </data>
   <data name="&gt;&gt;page_auth.Name" xml:space="preserve">
     <value>page_auth</value>

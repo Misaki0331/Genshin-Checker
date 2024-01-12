@@ -61,6 +61,24 @@ namespace Genshin_Checker.resource.Languages {
         }
         
         /// <summary>
+        ///   No signature set に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string Account_NoStatusMessage {
+            get {
+                return ResourceManager.GetString("Account_NoStatusMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Reputation Level に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string City_ReputationLevel {
+            get {
+                return ResourceManager.GetString("City_ReputationLevel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Anemo に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string Element_Anemo {
@@ -124,11 +142,110 @@ namespace Genshin_Checker.resource.Languages {
         }
         
         /// <summary>
-        ///   Unknown に類似しているローカライズされた文字列を検索します。
+        ///   Mora に類似しているローカライズされた文字列を検索します。
         /// </summary>
-        internal static string Element_Unknown {
+        internal static string Mora {
             get {
-                return ResourceManager.GetString("Element_Unknown", resourceCulture);
+                return ResourceManager.GetString("Mora", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Anemoculi に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string Oculus_Anemo {
+            get {
+                return ResourceManager.GetString("Oculus_Anemo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cryoculi に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string Oculus_Cryo {
+            get {
+                return ResourceManager.GetString("Oculus_Cryo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Dendroculi に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string Oculus_Dendro {
+            get {
+                return ResourceManager.GetString("Oculus_Dendro", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Electroculi に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string Oculus_Electro {
+            get {
+                return ResourceManager.GetString("Oculus_Electro", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Geoculi に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string Oculus_Geo {
+            get {
+                return ResourceManager.GetString("Oculus_Geo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Hydroculi に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string Oculus_Hydro {
+            get {
+                return ResourceManager.GetString("Oculus_Hydro", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Pyroculi に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string Oculus_Pyro {
+            get {
+                return ResourceManager.GetString("Oculus_Pyro", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Primogems に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string Primogems {
+            get {
+                return ResourceManager.GetString("Primogems", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Elemental Burst に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string TalentType_ElementalBurst {
+            get {
+                return ResourceManager.GetString("TalentType_ElementalBurst", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Elemental Skill に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string TalentType_ElementalSkill {
+            get {
+                return ResourceManager.GetString("TalentType_ElementalSkill", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Normal Attack に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string TalentType_NormalAttack {
+            get {
+                return ResourceManager.GetString("TalentType_NormalAttack", resourceCulture);
             }
         }
     }

@@ -1,17 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
-  <!--
+  <!-- 
     Microsoft ResX Schema 
-
+    
     Version 2.0
-
-    The primary goals of this format is to allow a simple XML format
-    that is mostly human readable. The generation and parsing of the
-    various data types are done through the TypeConverter classes
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
     associated with the data types.
-
+    
     Example:
-
+    
     ... ado.net/XML headers & schema ...
     <resheader name="resmimetype">text/microsoft-resx</resheader>
     <resheader name="version">2.0</resheader>
@@ -26,36 +26,36 @@
         <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
         <comment>This is a comment</comment>
     </data>
-
-    There are any number of "resheader" rows that contain simple
+                
+    There are any number of "resheader" rows that contain simple 
     name/value pairs.
-
-    Each data row contains a name, and value. The row also contains a
-    type or mimetype. Type corresponds to a .NET class that support
-    text/value conversion through the TypeConverter architecture.
-    Classes that don't support this are serialized and stored with the
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
     mimetype set.
-
-    The mimetype is used for serialized objects, and tells the
-    ResXResourceReader how to depersist the object. This is currently not
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
     extensible. For a given mimetype the value must be set accordingly:
-
-    Note - application/x-microsoft.net.object.binary.base64 is the format
-    that the ResXResourceWriter will generate, however the reader can
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
     read any of the formats listed below.
-
+    
     mimetype: application/x-microsoft.net.object.binary.base64
-    value   : The object must be serialized with
+    value   : The object must be serialized with 
             : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
             : and then encoded with base64 encoding.
     
     mimetype: application/x-microsoft.net.object.soap.base64
-    value   : The object must be serialized with
+    value   : The object must be serialized with 
             : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
             : and then encoded with base64 encoding.
 
     mimetype: application/x-microsoft.net.object.bytearray.base64
-    value   : The object must be serialized into a byte array
+    value   : The object must be serialized into a byte array 
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
@@ -117,7 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="button1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Right</value>
   </data>
@@ -252,9 +252,9 @@
   <data name="&gt;&gt;panel4.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <metadata name="CalculateStatus.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <data name="CalculateStatus.UserAddedColumn" type="System.Boolean, mscorlib">
     <value>True</value>
-  </metadata>
+  </data>
   <data name="CalculateStatus.HeaderText" xml:space="preserve">
     <value />
     <comment>@Invariant</comment>
@@ -262,9 +262,9 @@
   <data name="CalculateStatus.Width" type="System.Int32, mscorlib">
     <value>19</value>
   </data>
-  <metadata name="ID.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <data name="ID.UserAddedColumn" type="System.Boolean, mscorlib">
     <value>True</value>
-  </metadata>
+  </data>
   <data name="ID.HeaderText" xml:space="preserve">
     <value>Character ID</value>
     <comment>@Invariant</comment>
@@ -272,9 +272,9 @@
   <data name="ID.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <metadata name="Rarelity.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <data name="Rarelity.UserAddedColumn" type="System.Boolean, mscorlib">
     <value>True</value>
-  </metadata>
+  </data>
   <data name="Rarelity.HeaderText" xml:space="preserve">
     <value>★</value>
     <comment>@Invariant</comment>
@@ -285,11 +285,12 @@
   <data name="Rarelity.Width" type="System.Int32, mscorlib">
     <value>20</value>
   </data>
-  <metadata name="ElementType.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <data name="ElementType.UserAddedColumn" type="System.Boolean, mscorlib">
     <value>True</value>
-  </metadata>
+  </data>
   <data name="ElementType.HeaderText" xml:space="preserve">
-    <value>Elm</value>
+    <value>Elm.</value>
+    <comment>@MutedRule(PunctuationTail)</comment>
   </data>
   <data name="ElementType.MinimumWidth" type="System.Int32, mscorlib">
     <value>40</value>
@@ -297,18 +298,18 @@
   <data name="ElementType.Width" type="System.Int32, mscorlib">
     <value>40</value>
   </data>
-  <metadata name="CharacterName.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <data name="CharacterName.UserAddedColumn" type="System.Boolean, mscorlib">
     <value>True</value>
-  </metadata>
+  </data>
   <data name="CharacterName.HeaderText" xml:space="preserve">
     <value>Name</value>
   </data>
   <data name="CharacterName.MinimumWidth" type="System.Int32, mscorlib">
     <value>120</value>
   </data>
-  <metadata name="Weapon.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <data name="Weapon.UserAddedColumn" type="System.Boolean, mscorlib">
     <value>True</value>
-  </metadata>
+  </data>
   <data name="Weapon.HeaderText" xml:space="preserve">
     <value>Weapons</value>
   </data>
@@ -318,9 +319,9 @@
   <data name="Weapon.Width" type="System.Int32, mscorlib">
     <value>60</value>
   </data>
-  <metadata name="Fetter.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <data name="Fetter.UserAddedColumn" type="System.Boolean, mscorlib">
     <value>True</value>
-  </metadata>
+  </data>
   <data name="Fetter.HeaderText" xml:space="preserve">
     <value>♥</value>
     <comment>@Invariant</comment>
@@ -331,9 +332,9 @@
   <data name="Fetter.Width" type="System.Int32, mscorlib">
     <value>25</value>
   </data>
-  <metadata name="CurrentLevel.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <data name="CurrentLevel.UserAddedColumn" type="System.Boolean, mscorlib">
     <value>True</value>
-  </metadata>
+  </data>
   <data name="CurrentLevel.HeaderText" xml:space="preserve">
     <value>Lv</value>
     <comment>@Invariant</comment>
@@ -344,11 +345,12 @@
   <data name="CurrentLevel.Width" type="System.Int32, mscorlib">
     <value>25</value>
   </data>
-  <metadata name="CurrentTalentLevel1.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <data name="CurrentTalentLevel1.UserAddedColumn" type="System.Boolean, mscorlib">
     <value>True</value>
-  </metadata>
+  </data>
   <data name="CurrentTalentLevel1.HeaderText" xml:space="preserve">
-    <value>N.A</value>
+    <value>N.A.</value>
+    <comment>@MutedRule(PunctuationTail)</comment>
   </data>
   <data name="CurrentTalentLevel1.MinimumWidth" type="System.Int32, mscorlib">
     <value>45</value>
@@ -356,11 +358,12 @@
   <data name="CurrentTalentLevel1.Width" type="System.Int32, mscorlib">
     <value>45</value>
   </data>
-  <metadata name="CurrentTalentLevel2.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <data name="CurrentTalentLevel2.UserAddedColumn" type="System.Boolean, mscorlib">
     <value>True</value>
-  </metadata>
+  </data>
   <data name="CurrentTalentLevel2.HeaderText" xml:space="preserve">
-    <value>E.S</value>
+    <value>E.S.</value>
+    <comment>@MutedRule(PunctuationTail)</comment>
   </data>
   <data name="CurrentTalentLevel2.MinimumWidth" type="System.Int32, mscorlib">
     <value>45</value>
@@ -368,11 +371,12 @@
   <data name="CurrentTalentLevel2.Width" type="System.Int32, mscorlib">
     <value>45</value>
   </data>
-  <metadata name="CurrentTalentLevel3.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <data name="CurrentTalentLevel3.UserAddedColumn" type="System.Boolean, mscorlib">
     <value>True</value>
-  </metadata>
+  </data>
   <data name="CurrentTalentLevel3.HeaderText" xml:space="preserve">
-    <value>B.S</value>
+    <value>E.B.</value>
+    <comment>@MutedRule(PunctuationTail)</comment>
   </data>
   <data name="CurrentTalentLevel3.MinimumWidth" type="System.Int32, mscorlib">
     <value>45</value>
@@ -380,11 +384,11 @@
   <data name="CurrentTalentLevel3.Width" type="System.Int32, mscorlib">
     <value>45</value>
   </data>
-  <metadata name="ToArrow.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <data name="ToArrow.UserAddedColumn" type="System.Boolean, mscorlib">
     <value>True</value>
-  </metadata>
+  </data>
   <data name="ToArrow.HeaderText" xml:space="preserve">
-    <value>ToArrow</value>
+    <value>　</value>
     <comment>@Invariant</comment>
   </data>
   <data name="ToArrow.MinimumWidth" type="System.Int32, mscorlib">
@@ -393,9 +397,9 @@
   <data name="ToArrow.Width" type="System.Int32, mscorlib">
     <value>20</value>
   </data>
-  <metadata name="ToLevel.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <data name="ToLevel.UserAddedColumn" type="System.Boolean, mscorlib">
     <value>True</value>
-  </metadata>
+  </data>
   <data name="ToLevel.HeaderText" xml:space="preserve">
     <value>Lv</value>
     <comment>@Invariant</comment>
@@ -406,11 +410,12 @@
   <data name="ToLevel.Width" type="System.Int32, mscorlib">
     <value>25</value>
   </data>
-  <metadata name="ToTalentLevel1.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <data name="ToTalentLevel1.UserAddedColumn" type="System.Boolean, mscorlib">
     <value>True</value>
-  </metadata>
+  </data>
   <data name="ToTalentLevel1.HeaderText" xml:space="preserve">
-    <value>N.A</value>
+    <value>N.A.</value>
+    <comment>@MutedRule(PunctuationTail)</comment>
   </data>
   <data name="ToTalentLevel1.MinimumWidth" type="System.Int32, mscorlib">
     <value>45</value>
@@ -418,11 +423,12 @@
   <data name="ToTalentLevel1.Width" type="System.Int32, mscorlib">
     <value>45</value>
   </data>
-  <metadata name="ToTalentLevel2.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <data name="ToTalentLevel2.UserAddedColumn" type="System.Boolean, mscorlib">
     <value>True</value>
-  </metadata>
+  </data>
   <data name="ToTalentLevel2.HeaderText" xml:space="preserve">
-    <value>E.S</value>
+    <value>E.S.</value>
+    <comment>@MutedRule(PunctuationTail)</comment>
   </data>
   <data name="ToTalentLevel2.MinimumWidth" type="System.Int32, mscorlib">
     <value>45</value>
@@ -430,11 +436,12 @@
   <data name="ToTalentLevel2.Width" type="System.Int32, mscorlib">
     <value>45</value>
   </data>
-  <metadata name="ToTalentLevel3.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <data name="ToTalentLevel3.UserAddedColumn" type="System.Boolean, mscorlib">
     <value>True</value>
-  </metadata>
+  </data>
   <data name="ToTalentLevel3.HeaderText" xml:space="preserve">
-    <value>B.S</value>
+    <value>E.B.</value>
+    <comment>@MutedRule(PunctuationTail)</comment>
   </data>
   <data name="ToTalentLevel3.MinimumWidth" type="System.Int32, mscorlib">
     <value>45</value>
@@ -466,12 +473,12 @@
   <data name="&gt;&gt;CharacterView.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <metadata name="ErrorHandling.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <data name="ErrorHandling.TrayLocation" type="System.Drawing.Point, System.Drawing">
     <value>17, 17</value>
-  </metadata>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  </data>
+  <data name="$this.Localizable" type="System.Boolean, mscorlib">
     <value>True</value>
-  </metadata>
+  </data>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>96, 96</value>
   </data>

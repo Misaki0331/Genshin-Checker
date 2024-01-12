@@ -1,4 +1,6 @@
-﻿namespace Genshin_Checker.Window.ExWindow.CharacterCalculator
+﻿using Genshin_Checker.resource.Languages;
+
+namespace Genshin_Checker.Window.ExWindow.CharacterCalculator
 {
     public partial class BatchWindow : Form
     {
@@ -17,28 +19,28 @@
             };
             if (!data.IsMultiSelect)
             {
-                Text = $"{data.CharacterName} の目標育成設定";
+                Text = string.Format(Localize.WindowName_BatchWindow_SingleText, data.CharacterName);
                 //キャラクターの名前
                 LabelCharacterName.Text = data.CharacterName;
                 //グループでのスキル名
-                GroupTalent1.Text = $"天賦 : {data.Talent1Name}";
-                GroupTalent2.Text = $"天賦 : {data.Talent2Name}";
-                GroupTalent3.Text = $"天賦 : {data.Talent3Name}";
+                GroupTalent1.Text = string.Format(Localize.WindowName_BatchWindow_TalentName, data.Talent1Name);
+                GroupTalent2.Text = string.Format(Localize.WindowName_BatchWindow_TalentName, data.Talent2Name);
+                GroupTalent3.Text = string.Format(Localize.WindowName_BatchWindow_TalentName, data.Talent3Name);
                 //現在のレベルのテキスト
-                CurrentLevel.Text = $"Lv.{data.MinLevel}";
-                CurrentTalent1.Text = $"Lv.{data.MinTalent1}";
-                CurrentTalent2.Text = $"Lv.{data.MinTalent2}";
-                CurrentTalent3.Text = $"Lv.{data.MinTalent3}";
+                CurrentLevel.Text = string.Format(Localize.UI_Talent_Level,data.MinLevel);
+                CurrentTalent1.Text = string.Format(Localize.UI_Talent_Level, data.MinTalent1);
+                CurrentTalent2.Text = string.Format(Localize.UI_Talent_Level, data.MinTalent2);
+                CurrentTalent3.Text = string.Format(Localize.UI_Talent_Level, data.MinTalent3);
             }
             else
             {
-                Text = $"一括設定";
+                Text = Localize.WindowName_BatchWindow_MultiText;
                 //キャラクターの名前
-                LabelCharacterName.Text = "複数のキャラクター";
+                LabelCharacterName.Text = Localize.WindowName_BatchWindow_MultipleCharacterName;
                 //グループでのスキル名
-                GroupTalent1.Text = "通常攻撃";
-                GroupTalent2.Text = "スキル";
-                GroupTalent3.Text = "元素爆発";
+                GroupTalent1.Text = Genshin.TalentType_NormalAttack;
+                GroupTalent2.Text = Genshin.TalentType_ElementalSkill;
+                GroupTalent3.Text = Genshin.TalentType_ElementalBurst;
                 //現在のレベルのテキスト
                 CurrentLevel.Visible = false;
                 CurrentTalent1.Visible = false;

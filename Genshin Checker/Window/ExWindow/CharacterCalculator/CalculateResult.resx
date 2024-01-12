@@ -298,7 +298,7 @@
     <value>0</value>
   </data>
   <data name="label13.Text" xml:space="preserve">
-    <value>Est. Requied Resin</value>
+    <value>Est. Resin</value>
   </data>
   <data name="&gt;&gt;label13.Name" xml:space="preserve">
     <value>label13</value>
@@ -801,7 +801,7 @@
     <value>True</value>
   </metadata>
   <data name="BossItemNum.HeaderText" xml:space="preserve">
-    <value>Requies</value>
+    <value>Requied</value>
   </data>
   <data name="ViewBossItem.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>

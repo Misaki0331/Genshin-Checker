@@ -303,4 +303,140 @@ Spiral Abyss: {2}</value>
   <data name="Error_TravelersDiaryDetail_Conflict" xml:space="preserve">
     <value>The event times of the previous and next data are in conflict; it is possible that the API-side data has been updated.</value>
   </data>
+  <data name="UIName_SpiralAbyss_SeasonName" xml:space="preserve">
+    <value>Season {0}</value>
+  </data>
+  <data name="UIName_SpiralAbyss_ResultTitle" xml:space="preserve">
+    <value>Result of Spiral Abyss: Season {0}</value>
+  </data>
+  <data name="WindowName_BattleAuth_AuthAndBack" xml:space="preserve">
+    <value>Auth</value>
+  </data>
+  <data name="WindowName_BattleAuth_Message" xml:space="preserve">
+    <value>Click "Auth" then after logged in HoYoLab. If approved, this window will automatically close.</value>
+  </data>
+  <data name="Error_BattleAuth_AccountMismatch" xml:space="preserve">
+    <value>This is not the same account for which you are requesting reauthentication.</value>
+  </data>
+  <data name="Error_BattleAuth_FailedToAuthentication" xml:space="preserve">
+    <value>Failed to Authentication.</value>
+  </data>
+  <data name="Error_BattleAuth_CouldNotAuthentication" xml:space="preserve">
+    <value>Could not authentication.</value>
+  </data>
+  <data name="Error_BattleAuth_ColudNotAuthentication_Message" xml:space="preserve">
+    <value>Please check again the URL is correct and you are logged in.</value>
+  </data>
+  <data name="WindowName_BatchWindow_SingleText" xml:space="preserve">
+    <value>{0}'s goal training setting</value>
+  </data>
+  <data name="WindowName_BatchWindow_MultiText" xml:space="preserve">
+    <value>Multiple characters training setting</value>
+  </data>
+  <data name="WindowName_BatchWindow_MultipleCharacterName" xml:space="preserve">
+    <value>Multiple characters</value>
+  </data>
+  <data name="UI_Talent_Level" xml:space="preserve">
+    <value>Lv. {0}</value>
+  </data>
+  <data name="WindowName_BatchWindow_TalentName" xml:space="preserve">
+    <value>Talent : {0}</value>
+  </data>
+  <data name="WindowName_GameRecord_HeaderText" xml:space="preserve">
+    <value>{0} AR.{1} | Achievement : {2} | Spiral Abyss : {3}</value>
+  </data>
+  <data name="WindowName_GameRecord_HeaderText_NoSpiralAbyss" xml:space="preserve">
+    <value>Unexplored</value>
+  </data>
+  <data name="WindowName_GameRecord_WorldRankText" xml:space="preserve">
+    <value>WR. {0}</value>
+  </data>
+  <data name="Error_GameRecord_FailedToLoad" xml:space="preserve">
+    <value>Failed to load data.</value>
+  </data>
+  <data name="WindowName_RealTimeNote_MaxOut" xml:space="preserve">
+    <value>Max out</value>
+  </data>
+  <data name="WindowName_RealTimeNote_Locked" xml:space="preserve">
+    <value>Locked</value>
+  </data>
+  <data name="WindowName_RealTimeNote_TimeLeft" xml:space="preserve">
+    <value>{0} Left</value>
+  </data>
+  <data name="WindowName_RealTimeNote_ExpeditionCompleted" xml:space="preserve">
+    <value>Completed</value>
+  </data>
+  <data name="WindowName_RealTimeNote_TransformOngoingText" xml:space="preserve">
+    <value>{0} Left</value>
+  </data>
+  <data name="WindowName_RealTimeNote_TransformOngoingDay" xml:space="preserve">
+    <value>{0}D</value>
+  </data>
+  <data name="WindowName_RealTimeNote_TransformOngoingHour" xml:space="preserve">
+    <value>{0}H</value>
+  </data>
+  <data name="WindowName_RealTimeNote_TransformOngoingMinute" xml:space="preserve">
+    <value>{0}M</value>
+  </data>
+  <data name="WindowName_RealTimeNote_TransformOngoingSecond" xml:space="preserve">
+    <value>{0}S</value>
+  </data>
+  <data name="WindowName_RealTimeNote_DiscountWeeklyBossText" xml:space="preserve">
+    <value>{0} left of {1}</value>
+  </data>
+  <data name="WindowName_RealTimeNote_TransformAvailable" xml:space="preserve">
+    <value>Available</value>
+  </data>
+  <data name="WindowName_RealTimeNote_Daily_NotExtraClaimed" xml:space="preserve">
+    <value>Extra Available</value>
+  </data>
+  <data name="WindowName_RealTimeNote_Daily_Completed" xml:space="preserve">
+    <value>Completed</value>
+  </data>
+  <data name="WindowName_RealTimeNote_APIError" xml:space="preserve">
+    <value>API Error</value>
+  </data>
+  <data name="WindowName_RealTimeNote_ExceptionError" xml:space="preserve">
+    <value>Exception Error</value>
+  </data>
+  <data name="WindowName_RealTimeNote_ExceptionErrorDetail" xml:space="preserve">
+    <value>Error Code : {0}
+{1}</value>
+  </data>
+  <data name="WindowName_TimeGraph_DayName" xml:space="preserve">
+    <value>Day's data</value>
+  </data>
+  <data name="WindowName_TimeGraph_WeekName" xml:space="preserve">
+    <value>{0} To</value>
+  </data>
+  <data name="WindowName_TimeGraph_MonthName" xml:space="preserve">
+    <value>Data for {0} {1}</value>
+  </data>
+  <data name="WindowName_TimeGraph_VersionName" xml:space="preserve">
+    <value>Data for {0}</value>
+  </data>
+  <data name="Error_TimeGraph_FailedToDrawGraph" xml:space="preserve">
+    <value>An error occurred while drawing the graph.</value>
+  </data>
+  <data name="WindowName_TimerDisplay_State_Active" xml:space="preserve">
+    <value>Active</value>
+  </data>
+  <data name="WindowName_TimerDisplay_State_Background" xml:space="preserve">
+    <value>Background</value>
+  </data>
+  <data name="WindowName_TimerDisplay_State_NotRunning" xml:space="preserve">
+    <value>Not running</value>
+  </data>
+  <data name="WindowName_TravelersDiaryDetailList_Name_EventTime" xml:space="preserve">
+    <value>Event Time</value>
+  </data>
+  <data name="WindowName_TravelersDiaryDetailList_Name_EventTypeID" xml:space="preserve">
+    <value>Type ID</value>
+  </data>
+  <data name="WindowName_TravelersDiaryDetailList_Name_EventTypeName" xml:space="preserve">
+    <value>Type Name</value>
+  </data>
+  <data name="WindowName_TravelersDiaryDetailList_Name_ObtainedCount" xml:space="preserve">
+    <value>Obtained</value>
+  </data>
 </root>

@@ -173,6 +173,42 @@ namespace Genshin_Checker.resource.Languages {
         }
         
         /// <summary>
+        ///   This is not the same account for which you are requesting reauthentication. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Error_BattleAuth_AccountMismatch {
+            get {
+                return ResourceManager.GetString("Error_BattleAuth_AccountMismatch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Please check again the URL is correct and you are logged in. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Error_BattleAuth_ColudNotAuthentication_Message {
+            get {
+                return ResourceManager.GetString("Error_BattleAuth_ColudNotAuthentication_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Could not authentication. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Error_BattleAuth_CouldNotAuthentication {
+            get {
+                return ResourceManager.GetString("Error_BattleAuth_CouldNotAuthentication", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Failed to Authentication. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Error_BattleAuth_FailedToAuthentication {
+            get {
+                return ResourceManager.GetString("Error_BattleAuth_FailedToAuthentication", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Attempt limit has reached. に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string Error_CharacterDetail_ReachedRetryCount {
@@ -187,6 +223,15 @@ namespace Genshin_Checker.resource.Languages {
         public static string Error_Config_FailToLoad {
             get {
                 return ResourceManager.GetString("Error_Config_FailToLoad", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Failed to load data. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Error_GameRecord_FailedToLoad {
+            get {
+                return ResourceManager.GetString("Error_GameRecord_FailedToLoad", resourceCulture);
             }
         }
         
@@ -295,6 +340,15 @@ namespace Genshin_Checker.resource.Languages {
         public static string Error_SpiralAbyssFile_UnknownFileVersion {
             get {
                 return ResourceManager.GetString("Error_SpiralAbyssFile_UnknownFileVersion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   An error occurred while drawing the graph. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Error_TimeGraph_FailedToDrawGraph {
+            get {
+                return ResourceManager.GetString("Error_TimeGraph_FailedToDrawGraph", resourceCulture);
             }
         }
         
@@ -454,6 +508,15 @@ namespace Genshin_Checker.resource.Languages {
         /// <summary>
         ///   Lv. {0} に類似しているローカライズされた文字列を検索します。
         /// </summary>
+        public static string UI_Talent_Level {
+            get {
+                return ResourceManager.GetString("UI_Talent_Level", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Lv. {0} に類似しているローカライズされた文字列を検索します。
+        /// </summary>
         public static string UI_Weapons_Level {
             get {
                 return ResourceManager.GetString("UI_Weapons_Level", resourceCulture);
@@ -570,6 +633,24 @@ namespace Genshin_Checker.resource.Languages {
         }
         
         /// <summary>
+        ///   Result of Spiral Abyss: Season {0} に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string UIName_SpiralAbyss_ResultTitle {
+            get {
+                return ResourceManager.GetString("UIName_SpiralAbyss_ResultTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Season {0} に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string UIName_SpiralAbyss_SeasonName {
+            get {
+                return ResourceManager.GetString("UIName_SpiralAbyss_SeasonName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Update : {0} に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string UIName_SpiralAbyss_Timestamp {
@@ -584,6 +665,60 @@ namespace Genshin_Checker.resource.Languages {
         public static string Warning_SafeMode {
             get {
                 return ResourceManager.GetString("Warning_SafeMode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Multiple characters に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string WindowName_BatchWindow_MultipleCharacterName {
+            get {
+                return ResourceManager.GetString("WindowName_BatchWindow_MultipleCharacterName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Multiple characters training setting に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string WindowName_BatchWindow_MultiText {
+            get {
+                return ResourceManager.GetString("WindowName_BatchWindow_MultiText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   {0}&apos;s goal training setting に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string WindowName_BatchWindow_SingleText {
+            get {
+                return ResourceManager.GetString("WindowName_BatchWindow_SingleText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Talent : {0} に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string WindowName_BatchWindow_TalentName {
+            get {
+                return ResourceManager.GetString("WindowName_BatchWindow_TalentName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Auth に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string WindowName_BattleAuth_AuthAndBack {
+            get {
+                return ResourceManager.GetString("WindowName_BattleAuth_AuthAndBack", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Click &quot;Auth&quot; then after logged in HoYoLab. If approved, this window will automatically close. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string WindowName_BattleAuth_Message {
+            get {
+                return ResourceManager.GetString("WindowName_BattleAuth_Message", resourceCulture);
             }
         }
         
@@ -615,6 +750,33 @@ namespace Genshin_Checker.resource.Languages {
         }
         
         /// <summary>
+        ///   {0} AR.{1} | Achievement : {2} | Spiral Abyss : {3} に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string WindowName_GameRecord_HeaderText {
+            get {
+                return ResourceManager.GetString("WindowName_GameRecord_HeaderText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Unexplored に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string WindowName_GameRecord_HeaderText_NoSpiralAbyss {
+            get {
+                return ResourceManager.GetString("WindowName_GameRecord_HeaderText_NoSpiralAbyss", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   WR. {0} に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string WindowName_GameRecord_WorldRankText {
+            get {
+                return ResourceManager.GetString("WindowName_GameRecord_WorldRankText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Real-Time Notes に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string WindowName_RealTimeNote {
@@ -624,11 +786,219 @@ namespace Genshin_Checker.resource.Languages {
         }
         
         /// <summary>
+        ///   API Error に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string WindowName_RealTimeNote_APIError {
+            get {
+                return ResourceManager.GetString("WindowName_RealTimeNote_APIError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Completed に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string WindowName_RealTimeNote_Daily_Completed {
+            get {
+                return ResourceManager.GetString("WindowName_RealTimeNote_Daily_Completed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Extra Available に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string WindowName_RealTimeNote_Daily_NotExtraClaimed {
+            get {
+                return ResourceManager.GetString("WindowName_RealTimeNote_Daily_NotExtraClaimed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   {0} left of {1} に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string WindowName_RealTimeNote_DiscountWeeklyBossText {
+            get {
+                return ResourceManager.GetString("WindowName_RealTimeNote_DiscountWeeklyBossText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Exception Error に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string WindowName_RealTimeNote_ExceptionError {
+            get {
+                return ResourceManager.GetString("WindowName_RealTimeNote_ExceptionError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Error Code : {0}
+        ///{1} に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string WindowName_RealTimeNote_ExceptionErrorDetail {
+            get {
+                return ResourceManager.GetString("WindowName_RealTimeNote_ExceptionErrorDetail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Completed に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string WindowName_RealTimeNote_ExpeditionCompleted {
+            get {
+                return ResourceManager.GetString("WindowName_RealTimeNote_ExpeditionCompleted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Locked に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string WindowName_RealTimeNote_Locked {
+            get {
+                return ResourceManager.GetString("WindowName_RealTimeNote_Locked", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Max out に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string WindowName_RealTimeNote_MaxOut {
+            get {
+                return ResourceManager.GetString("WindowName_RealTimeNote_MaxOut", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   {0} Left に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string WindowName_RealTimeNote_TimeLeft {
+            get {
+                return ResourceManager.GetString("WindowName_RealTimeNote_TimeLeft", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Available に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string WindowName_RealTimeNote_TransformAvailable {
+            get {
+                return ResourceManager.GetString("WindowName_RealTimeNote_TransformAvailable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   {0}D に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string WindowName_RealTimeNote_TransformOngoingDay {
+            get {
+                return ResourceManager.GetString("WindowName_RealTimeNote_TransformOngoingDay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   {0}H に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string WindowName_RealTimeNote_TransformOngoingHour {
+            get {
+                return ResourceManager.GetString("WindowName_RealTimeNote_TransformOngoingHour", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   {0}M に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string WindowName_RealTimeNote_TransformOngoingMinute {
+            get {
+                return ResourceManager.GetString("WindowName_RealTimeNote_TransformOngoingMinute", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   {0}S に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string WindowName_RealTimeNote_TransformOngoingSecond {
+            get {
+                return ResourceManager.GetString("WindowName_RealTimeNote_TransformOngoingSecond", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   {0} Left に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string WindowName_RealTimeNote_TransformOngoingText {
+            get {
+                return ResourceManager.GetString("WindowName_RealTimeNote_TransformOngoingText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Spiral Abyss に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string WindowName_SpiralAbyss {
             get {
                 return ResourceManager.GetString("WindowName_SpiralAbyss", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Day&apos;s data に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string WindowName_TimeGraph_DayName {
+            get {
+                return ResourceManager.GetString("WindowName_TimeGraph_DayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Data for {0} {1} に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string WindowName_TimeGraph_MonthName {
+            get {
+                return ResourceManager.GetString("WindowName_TimeGraph_MonthName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Data for {0} に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string WindowName_TimeGraph_VersionName {
+            get {
+                return ResourceManager.GetString("WindowName_TimeGraph_VersionName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   {0} To に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string WindowName_TimeGraph_WeekName {
+            get {
+                return ResourceManager.GetString("WindowName_TimeGraph_WeekName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Active に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string WindowName_TimerDisplay_State_Active {
+            get {
+                return ResourceManager.GetString("WindowName_TimerDisplay_State_Active", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Background に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string WindowName_TimerDisplay_State_Background {
+            get {
+                return ResourceManager.GetString("WindowName_TimerDisplay_State_Background", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Not running に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string WindowName_TimerDisplay_State_NotRunning {
+            get {
+                return ResourceManager.GetString("WindowName_TimerDisplay_State_NotRunning", resourceCulture);
             }
         }
         
@@ -647,6 +1017,42 @@ namespace Genshin_Checker.resource.Languages {
         public static string WindowName_TravelersDiaryDetail {
             get {
                 return ResourceManager.GetString("WindowName_TravelersDiaryDetail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Event Time に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string WindowName_TravelersDiaryDetailList_Name_EventTime {
+            get {
+                return ResourceManager.GetString("WindowName_TravelersDiaryDetailList_Name_EventTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Type ID に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string WindowName_TravelersDiaryDetailList_Name_EventTypeID {
+            get {
+                return ResourceManager.GetString("WindowName_TravelersDiaryDetailList_Name_EventTypeID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Type Name に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string WindowName_TravelersDiaryDetailList_Name_EventTypeName {
+            get {
+                return ResourceManager.GetString("WindowName_TravelersDiaryDetailList_Name_EventTypeName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Obtained に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string WindowName_TravelersDiaryDetailList_Name_ObtainedCount {
+            get {
+                return ResourceManager.GetString("WindowName_TravelersDiaryDetailList_Name_ObtainedCount", resourceCulture);
             }
         }
     }

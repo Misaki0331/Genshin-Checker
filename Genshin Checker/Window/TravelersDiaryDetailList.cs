@@ -8,6 +8,7 @@ using System.Data;
 using System.Text;
 using Genshin_Checker.Window.Popup;
 using Genshin_Checker.App.General.Convert;
+using Genshin_Checker.resource.Languages;
 
 namespace Genshin_Checker.Window
 {
@@ -36,10 +37,10 @@ namespace Genshin_Checker.Window
             CurrentView.Columns.Add("EventTypeID",typeof(int));
             CurrentView.Columns.Add("EventTypeName",typeof(string));
             CurrentView.Columns.Add("ObtainedCount",typeof(int));
-            CurrentView.Columns[0].ColumnName = "取得時刻";
-            CurrentView.Columns[1].ColumnName = "分類ID";
-            CurrentView.Columns[2].ColumnName = "分類名";
-            CurrentView.Columns[3].ColumnName = "取得数";
+            CurrentView.Columns[0].ColumnName = Localize.WindowName_TravelersDiaryDetailList_Name_EventTime;
+            CurrentView.Columns[1].ColumnName = Localize.WindowName_TravelersDiaryDetailList_Name_EventTypeID;
+            CurrentView.Columns[2].ColumnName = Localize.WindowName_TravelersDiaryDetailList_Name_EventTypeName;
+            CurrentView.Columns[3].ColumnName = Localize.WindowName_TravelersDiaryDetailList_Name_ObtainedCount;
             for (int i = 0; i < 4; i++)
             {
                 CurrentView.Columns[i].ReadOnly = true;
@@ -58,12 +59,12 @@ namespace Genshin_Checker.Window
             dataGridView1.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dataGridView1.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            listtype.Items.Add("原石");
-            listtype.Items.Add("モラ");
+            listtype.Items.Add(Genshin.Primogems);
+            listtype.Items.Add(Genshin.Mora);
             listtype.SelectedIndex = 0;
             UpdateDataMonth();
             if (monthlist.Items.Count > 0) monthlist.SelectedIndex = 0;
-            Text = $"旅人通帳 (UID:{account.UID})";
+            Text = $"{Localize.WindowName_TravelersDiaryDetail} (UID:{account.UID})";
             Icon = Icon.FromHandle(resource.icon.Icon_TravelerDirty.GetHicon());
             account.TravelersDiaryDetail.ProgressChanged += TravelersDiaryDetail_ProgressChanged;
             account.TravelersDiaryDetail.ProgressFailed += TravelersDiaryDetail_ProgressFailed;
@@ -97,7 +98,7 @@ namespace Genshin_Checker.Window
                 }
             }
             monthlist.Items.Clear();
-            foreach (var a in PathList) monthlist.Items.Add($"{a.year}年{a.month:00}月");
+            foreach (var a in PathList) monthlist.Items.Add(string.Format(Common.FormatYearMonth, a.year, App.General.LocalizeValue.Convert.MonthShort(a.month)));
             if (monthlist.Items.Count > 0) monthlist.SelectedIndex = 0;
         }
 
@@ -187,7 +188,7 @@ namespace Genshin_Checker.Window
         }
         private void TravelersDiaryDetail_ProgressCompreted(object? sender, EventArgs e)
         {
-            toolStripStatusLabel1.Text = "完了";
+            toolStripStatusLabel1.Text = Common.Completed;
             toolStripProgressBar1.Value = 10000;
             UpdateComboBox("", EventArgs.Empty);
         }
@@ -195,7 +196,7 @@ namespace Genshin_Checker.Window
         private void TravelersDiaryDetail_ProgressFailed(object? sender, Exception e)
         {
             toolStripProgressBar1.Value = 0;
-            toolStripStatusLabel1.Text = $"失敗 ({e.Message})";
+            toolStripStatusLabel1.Text = $"{Common.Failed} ({e.Message})";
         }
         private void TravelersDiaryDetailList_FormClosed(object sender, FormClosedEventArgs e)
         {

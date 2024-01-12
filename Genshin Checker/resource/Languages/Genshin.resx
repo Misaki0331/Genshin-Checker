@@ -97,9 +97,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.3500.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Element_Unknown" xml:space="preserve">
-    <value>Unknown</value>
-  </data>
   <data name="Element_Anemo" xml:space="preserve">
     <value>Anemo</value>
   </data>
@@ -120,5 +117,47 @@
   </data>
   <data name="Element_Cryo" xml:space="preserve">
     <value>Cryo</value>
+  </data>
+  <data name="TalentType_NormalAttack" xml:space="preserve">
+    <value>Normal Attack</value>
+  </data>
+  <data name="TalentType_ElementalSkill" xml:space="preserve">
+    <value>Elemental Skill</value>
+  </data>
+  <data name="TalentType_ElementalBurst" xml:space="preserve">
+    <value>Elemental Burst</value>
+  </data>
+  <data name="Account_NoStatusMessage" xml:space="preserve">
+    <value>No signature set</value>
+  </data>
+  <data name="City_ReputationLevel" xml:space="preserve">
+    <value>Reputation Level</value>
+  </data>
+  <data name="Oculus_Anemo" xml:space="preserve">
+    <value>Anemoculi</value>
+  </data>
+  <data name="Oculus_Geo" xml:space="preserve">
+    <value>Geoculi</value>
+  </data>
+  <data name="Oculus_Electro" xml:space="preserve">
+    <value>Electroculi</value>
+  </data>
+  <data name="Oculus_Dendro" xml:space="preserve">
+    <value>Dendroculi</value>
+  </data>
+  <data name="Oculus_Hydro" xml:space="preserve">
+    <value>Hydroculi</value>
+  </data>
+  <data name="Oculus_Pyro" xml:space="preserve">
+    <value>Pyroculi</value>
+  </data>
+  <data name="Oculus_Cryo" xml:space="preserve">
+    <value>Cryoculi</value>
+  </data>
+  <data name="Mora" xml:space="preserve">
+    <value>Mora</value>
+  </data>
+  <data name="Primogems" xml:space="preserve">
+    <value>Primogems</value>
   </data>
 </root>

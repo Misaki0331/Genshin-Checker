@@ -297,4 +297,140 @@
   <data name="Error_TravelersDiaryDetail_Conflict" xml:space="preserve">
     <value>前後データのイベント時刻が対立しています。API側データが更新された可能性があります。</value>
   </data>
+  <data name="UIName_SpiralAbyss_SeasonName" xml:space="preserve">
+    <value>螺旋 {0} 期</value>
+  </data>
+  <data name="UIName_SpiralAbyss_ResultTitle" xml:space="preserve">
+    <value>第 {0} 回 深境螺旋結果</value>
+  </data>
+  <data name="WindowName_BattleAuth_AuthAndBack" xml:space="preserve">
+    <value>連携してアプリに戻る</value>
+  </data>
+  <data name="WindowName_BattleAuth_Message" xml:space="preserve">
+    <value>ログインが完了したら「連携してアプリに戻る」を選択してください。その場合は自動的にこのウィンドウが閉じられます。</value>
+  </data>
+  <data name="Error_BattleAuth_AccountMismatch" xml:space="preserve">
+    <value>再認証を要求しているアカウントと異なっています。</value>
+  </data>
+  <data name="Error_BattleAuth_FailedToAuthentication" xml:space="preserve">
+    <value>連携に失敗しました。</value>
+  </data>
+  <data name="Error_BattleAuth_CouldNotAuthentication" xml:space="preserve">
+    <value>連携できませんでした。</value>
+  </data>
+  <data name="Error_BattleAuth_ColudNotAuthentication_Message" xml:space="preserve">
+    <value>URLが戦績になっているか、ログインしているかを今一度ご確認ください。</value>
+  </data>
+  <data name="WindowName_BatchWindow_SingleText" xml:space="preserve">
+    <value>{0} の目標育成設定</value>
+  </data>
+  <data name="WindowName_BatchWindow_MultiText" xml:space="preserve">
+    <value>一括設定</value>
+  </data>
+  <data name="WindowName_BatchWindow_MultipleCharacterName" xml:space="preserve">
+    <value>複数のキャラクター</value>
+  </data>
+  <data name="UI_Talent_Level" xml:space="preserve">
+    <value>Lv. {0}</value>
+  </data>
+  <data name="WindowName_BatchWindow_TalentName" xml:space="preserve">
+    <value>天賦 : {0}</value>
+  </data>
+  <data name="WindowName_GameRecord_HeaderText" xml:space="preserve">
+    <value>{0} AR.{1} | 解放済実績 : {2}件 | 深境螺旋 : {3}</value>
+  </data>
+  <data name="WindowName_GameRecord_HeaderText_NoSpiralAbyss" xml:space="preserve">
+    <value>未踏破</value>
+  </data>
+  <data name="WindowName_GameRecord_WorldRankText" xml:space="preserve">
+    <value>世界ランク : {0}</value>
+  </data>
+  <data name="Error_GameRecord_FailedToLoad" xml:space="preserve">
+    <value>データ読込中にエラーが発生しました。</value>
+  </data>
+  <data name="WindowName_RealTimeNote_MaxOut" xml:space="preserve">
+    <value>最大まで回復済</value>
+  </data>
+  <data name="WindowName_RealTimeNote_Locked" xml:space="preserve">
+    <value>開放後利用可能</value>
+  </data>
+  <data name="WindowName_RealTimeNote_TimeLeft" xml:space="preserve">
+    <value>残り {0}</value>
+  </data>
+  <data name="WindowName_RealTimeNote_ExpeditionCompleted" xml:space="preserve">
+    <value>探索完了</value>
+  </data>
+  <data name="WindowName_RealTimeNote_TransformOngoingText" xml:space="preserve">
+    <value>残り 約 {0}</value>
+  </data>
+  <data name="WindowName_RealTimeNote_TransformOngoingDay" xml:space="preserve">
+    <value>{0}日</value>
+  </data>
+  <data name="WindowName_RealTimeNote_TransformOngoingHour" xml:space="preserve">
+    <value>{0} 時間</value>
+  </data>
+  <data name="WindowName_RealTimeNote_TransformOngoingMinute" xml:space="preserve">
+    <value>{0} 分</value>
+  </data>
+  <data name="WindowName_RealTimeNote_TransformOngoingSecond" xml:space="preserve">
+    <value>{0} 秒</value>
+  </data>
+  <data name="WindowName_RealTimeNote_DiscountWeeklyBossText" xml:space="preserve">
+    <value>残り {0} 回 / {1} 回</value>
+  </data>
+  <data name="WindowName_RealTimeNote_TransformAvailable" xml:space="preserve">
+    <value>利用可能</value>
+  </data>
+  <data name="WindowName_RealTimeNote_Daily_NotExtraClaimed" xml:space="preserve">
+    <value>追加報酬未受取</value>
+  </data>
+  <data name="WindowName_RealTimeNote_Daily_Completed" xml:space="preserve">
+    <value>デイリー完了</value>
+  </data>
+  <data name="WindowName_RealTimeNote_APIError" xml:space="preserve">
+    <value>APIエラー</value>
+  </data>
+  <data name="WindowName_RealTimeNote_ExceptionError" xml:space="preserve">
+    <value>内部エラー</value>
+  </data>
+  <data name="WindowName_RealTimeNote_ExceptionErrorDetail" xml:space="preserve">
+    <value>エラーコード : {0}
+{1}</value>
+  </data>
+  <data name="WindowName_TimeGraph_DayName" xml:space="preserve">
+    <value>1日分のデータ</value>
+  </data>
+  <data name="WindowName_TimeGraph_WeekName" xml:space="preserve">
+    <value>{0} ～</value>
+  </data>
+  <data name="WindowName_TimeGraph_MonthName" xml:space="preserve">
+    <value>{0}年{1} のデータ</value>
+  </data>
+  <data name="WindowName_TimeGraph_VersionName" xml:space="preserve">
+    <value>{0} 期間のデータ</value>
+  </data>
+  <data name="Error_TimeGraph_FailedToDrawGraph" xml:space="preserve">
+    <value>グラフ描画中にエラーが発生しました。</value>
+  </data>
+  <data name="WindowName_TimerDisplay_State_NotRunning" xml:space="preserve">
+    <value>未起動</value>
+  </data>
+  <data name="WindowName_TimerDisplay_State_Background" xml:space="preserve">
+    <value>バックグラウンド</value>
+  </data>
+  <data name="WindowName_TimerDisplay_State_Active" xml:space="preserve">
+    <value>アクティブ</value>
+  </data>
+  <data name="WindowName_TravelersDiaryDetailList_Name_EventTime" xml:space="preserve">
+    <value>取得時刻</value>
+  </data>
+  <data name="WindowName_TravelersDiaryDetailList_Name_EventTypeID" xml:space="preserve">
+    <value>分類ID</value>
+  </data>
+  <data name="WindowName_TravelersDiaryDetailList_Name_EventTypeName" xml:space="preserve">
+    <value>分類名</value>
+  </data>
+  <data name="WindowName_TravelersDiaryDetailList_Name_ObtainedCount" xml:space="preserve">
+    <value>取得数</value>
+  </data>
 </root>

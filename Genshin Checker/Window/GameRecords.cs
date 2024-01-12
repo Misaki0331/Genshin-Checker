@@ -2,6 +2,7 @@
 using Genshin_Checker.Store;
 using Genshin_Checker.Model.UI.GameRecords.Exploration;
 using Genshin_Checker.Window.Popup;
+using Genshin_Checker.resource.Languages;
 
 namespace Genshin_Checker.Window
 {
@@ -12,8 +13,8 @@ namespace Genshin_Checker.Window
         {
             InitializeComponent();
             Icon = Icon.FromHandle(resource.icon.Battle_Chronicle.GetHicon());
-            if (account.UID != 0) Text = $"戦績情報 (UID:{account.UID})";
-            else Text = $"戦績情報";
+            if (account.UID != 0) Text = $"{Localize.WindowName_GameRecord} (UID:{account.UID})";
+            else Text = Localize.WindowName_GameRecord;
             this.account = account;
         }
         List<Window.Contains.Exploration> ExplorationControls = new();
@@ -34,7 +35,7 @@ namespace Genshin_Checker.Window
                 }
                 else if (account.GameRecords.Data != null)
                     achieve = account.GameRecords.Data.stats.Achievement;
-                label2.Text = $"{account.Name} AR.{ar} | 解放済実績 : {(achieve!=null?achieve:"-")}件 | 深境螺旋 : {(spiralAbyssProgress == "-" ? "未踏破" : spiralAbyssProgress)}";
+                label2.Text = string.Format(Localize.WindowName_GameRecord_HeaderText,account.Name,ar,(achieve!=null?achieve:"-"),(spiralAbyssProgress == "-" ? Localize.WindowName_GameRecord_HeaderText_NoSpiralAbyss : spiralAbyssProgress));
                 label1.Text = $"UID : {account.UID}";
                 #endregion
                 #region 概要
@@ -51,7 +52,7 @@ namespace Genshin_Checker.Window
                     }
                     Summary_StatusMessage.Text = account.EnkaNetwork.LatestErrorMessage;
                     Summary_StatusMessage.ForeColor = Color.Red;
-                    Summary_AdventureRankState.Text = "世界ランク : 不明";
+                    Summary_AdventureRankState.Text = string.Format(Localize.WindowName_GameRecord_WorldRankText, Common.Unknown);
                 }
                 else
                 {
@@ -59,26 +60,26 @@ namespace Genshin_Checker.Window
                     Summary_UserName.Text = account.EnkaNetwork.Data.playerInfo.nickname;
                     if (string.IsNullOrEmpty(account.EnkaNetwork.Data.playerInfo.signature))
                     {
-                        Summary_StatusMessage.Text = "ステータスメッセージが設定されていません。";
+                        Summary_StatusMessage.Text = Genshin.Account_NoStatusMessage;
                         Summary_StatusMessage.ForeColor = Color.Gray;
                     }
                     else Summary_StatusMessage.Text = account.EnkaNetwork.Data.playerInfo.signature;
                     Summary_AdventureRank.Text = $"{account.EnkaNetwork.Data.playerInfo.level}";
-                    Summary_AdventureRankState.Text = $"世界ランク : {account.EnkaNetwork.Data.playerInfo.worldLevel}";
+                    Summary_AdventureRankState.Text = string.Format(Localize.WindowName_GameRecord_WorldRankText, account.EnkaNetwork.Data.playerInfo.worldLevel);
                 }
                 
                 if (account.GameRecords.Data != null)
                 {
                     var data = account.GameRecords.Data.stats;
-                    Summary_NumLoginDays.Text = $"{data.ActiveDay}";
-                    Summary_NumAchievement.Text = $"{data.Achievement}";
+                    Summary_NumLoginDays.Text = $"{data.ActiveDay:#,##0}";
+                    Summary_NumAchievement.Text = $"{data.Achievement:#,##0}";
                     var cnt = data.ChestLuxurious + data.ChestCommon + data.ChestExquisite + data.ChestMagic + data.ChestPrecious;
-                    Summary_NumUnlockChest.Text = $"{cnt}";
+                    Summary_NumUnlockChest.Text = $"{cnt:#,##0}";
                     cnt = data.OculusAnemo + data.OculusGeo + data.OculusElectro + data.OculusDendro + data.OculusHydro + data.OculusPyro + data.OculusCryo;
-                    Summary_NumOculus.Text = $"{cnt}";
-                    Summary_NumCharacters.Text = $"{data.Characters}";
-                    NumWaypoints.Text = $"{data.WayPoint}";
-                    Summary_NumDomains.Text = $"{data.Domains}";
+                    Summary_NumOculus.Text = $"{cnt:#,##0}";
+                    Summary_NumCharacters.Text = $"{data.Characters:#,##0}";
+                    NumWaypoints.Text = $"{data.WayPoint:#,##0}";
+                    Summary_NumDomains.Text = $"{data.Domains:#,##0}";
                     double per = 0;
                     cnt = 0;
                     foreach (var item in account.GameRecords.Data.world_explorations)
@@ -103,7 +104,7 @@ namespace Genshin_Checker.Window
                         if (ex.Type == "Reputation" && ex.Level != null)
                         {
                             areas.Oculus = new();
-                            areas.Levels.Add(new() { Icon = "https://static-api.misaki-chan.world/genshin-checker/asset/game-records/ys_world_level.png", Name = "評判レベル", Level = (int)ex.Level });
+                            areas.Levels.Add(new() { Icon = "https://static-api.misaki-chan.world/genshin-checker/asset/game-records/ys_world_level.png", Name = Genshin.City_ReputationLevel, Level = (int)ex.Level });
                         }
                         foreach (var level in ex.Offerings)
                         {
@@ -119,7 +120,7 @@ namespace Genshin_Checker.Window
                         if (areas.Progress.Count == 1) areas.Progress[0].Name = areas.Name;
                         areas.Progress.Add(new() { Name = ex.Name, Value = ex.Exploration_percentage / 10.0 });
                     }
-                    var OculusName = new string[] { "風神の瞳", "岩神の瞳", "雷神の瞳", "草神の瞳", "水神の瞳", "炎神の瞳", "氷神の瞳" };
+                    var OculusName = new string[] { Genshin.Oculus_Anemo, Genshin.Oculus_Geo, Genshin.Oculus_Electro, Genshin.Oculus_Dendro, Genshin.Oculus_Hydro, Genshin.Oculus_Pyro, Genshin.Oculus_Cryo };
                     var OculusValue = new int[] { data.stats.OculusAnemo, data.stats.OculusGeo, data.stats.OculusElectro, data.stats.OculusDendro, data.stats.OculusHydro, data.stats.OculusPyro, data.stats.OculusCryo };
                     int OculusAreaCount = 0;
                     Area.Sort((a, b) => b.ID - a.ID);
@@ -158,7 +159,7 @@ namespace Genshin_Checker.Window
                 }
             catch (Exception ex)
             {
-                new ErrorMessage("データ読込中にエラーが発生しました。", $"{ex}").ShowDialog();
+                new ErrorMessage(Localize.Error_GameRecord_FailedToLoad, $"{ex}").ShowDialog();
                 Close();
             }
         }

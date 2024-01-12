@@ -1,5 +1,6 @@
 ﻿using System.Runtime.InteropServices;
 using Genshin_Checker.App.Game;
+using Genshin_Checker.resource.Languages;
 using Genshin_Checker.Window.Popup;
 
 namespace Genshin_Checker.Window
@@ -54,15 +55,15 @@ namespace Genshin_Checker.Window
             {
                 case ProcessTime.ProcessState.NotRunning:
                     CurrentStatus.ForeColor = Color.Red;
-                    CurrentStatus.Text = "未起動";
+                    CurrentStatus.Text = Localize.WindowName_TimerDisplay_State_NotRunning;
                     break;
                 case ProcessTime.ProcessState.Background:
                     CurrentStatus.ForeColor = Color.Orange;
-                    CurrentStatus.Text = "バックグラウンド";
+                    CurrentStatus.Text = Localize.WindowName_TimerDisplay_State_Background;
                     break;
                 case ProcessTime.ProcessState.Foreground:
                     CurrentStatus.ForeColor = Color.Lime;
-                    CurrentStatus.Text = "アクティブ";
+                    CurrentStatus.Text = Localize.WindowName_TimerDisplay_State_Active;
                     break;
             }
         }

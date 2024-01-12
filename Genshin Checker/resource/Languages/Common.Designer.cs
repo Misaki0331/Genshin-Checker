@@ -61,6 +61,33 @@ namespace Genshin_Checker.resource.Languages {
         }
         
         /// <summary>
+        ///   Completed に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Completed {
+            get {
+                return ResourceManager.GetString("Completed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Failed に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Failed {
+            get {
+                return ResourceManager.GetString("Failed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   {1} {0} に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string FormatYearMonth {
+            get {
+                return ResourceManager.GetString("FormatYearMonth", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Jan. に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string MonthShort_01 {
@@ -165,6 +192,15 @@ namespace Genshin_Checker.resource.Languages {
         public static string MonthShort_12 {
             get {
                 return ResourceManager.GetString("MonthShort_12", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Unknown に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Unknown {
+            get {
+                return ResourceManager.GetString("Unknown", resourceCulture);
             }
         }
     }

@@ -118,7 +118,46 @@
   <data name="Element_Pyro" xml:space="preserve">
     <value>炎</value>
   </data>
-  <data name="Element_Unknown" xml:space="preserve">
-    <value>不明</value>
+  <data name="TalentType_NormalAttack" xml:space="preserve">
+    <value>通常攻撃</value>
+  </data>
+  <data name="TalentType_ElementalSkill" xml:space="preserve">
+    <value>元素スキル</value>
+  </data>
+  <data name="TalentType_ElementalBurst" xml:space="preserve">
+    <value>元素爆発</value>
+  </data>
+  <data name="Account_NoStatusMessage" xml:space="preserve">
+    <value>ステータスメッセージを設定していません</value>
+  </data>
+  <data name="City_ReputationLevel" xml:space="preserve">
+    <value>評判レベル</value>
+  </data>
+  <data name="Oculus_Anemo" xml:space="preserve">
+    <value>風神の瞳</value>
+  </data>
+  <data name="Oculus_Geo" xml:space="preserve">
+    <value>岩神の瞳</value>
+  </data>
+  <data name="Oculus_Electro" xml:space="preserve">
+    <value>雷神の瞳</value>
+  </data>
+  <data name="Oculus_Dendro" xml:space="preserve">
+    <value>草神の瞳</value>
+  </data>
+  <data name="Oculus_Hydro" xml:space="preserve">
+    <value>水神の瞳</value>
+  </data>
+  <data name="Oculus_Pyro" xml:space="preserve">
+    <value>炎神の瞳</value>
+  </data>
+  <data name="Oculus_Cryo" xml:space="preserve">
+    <value>氷神の瞳</value>
+  </data>
+  <data name="Mora" xml:space="preserve">
+    <value>モラ</value>
+  </data>
+  <data name="Primogems" xml:space="preserve">
+    <value>原石</value>
   </data>
 </root>

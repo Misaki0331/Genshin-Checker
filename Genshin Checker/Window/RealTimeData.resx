@@ -1,4 +1,5 @@
-﻿<root>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
   <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
@@ -176,7 +177,8 @@
     <value>3</value>
   </data>
   <data name="label3.Text" xml:space="preserve">
-    <value>残り --:--:--</value>
+    <value>--:--:-- left</value>
+    <comment>@MutedRule(PunctuationTail)@MutedRule(PunctuationLead)</comment>
   </data>
   <data name="label3.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>BottomLeft</value>
@@ -755,7 +757,7 @@
     <value>4</value>
   </data>
   <data name="label11.Text" xml:space="preserve">
-    <value>探索派遣</value>
+    <value>Expeditions</value>
   </data>
   <data name="label11.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleLeft</value>
@@ -872,7 +874,8 @@
     <value>5</value>
   </data>
   <data name="label9.Text" xml:space="preserve">
-    <value>あと ---:--:--</value>
+    <value>---:--:-- left</value>
+    <comment>@MutedRule(PunctuationTail)@MutedRule(PunctuationLead)</comment>
   </data>
   <data name="label9.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleLeft</value>
@@ -1043,7 +1046,8 @@
     <value>7</value>
   </data>
   <data name="label7.Text" xml:space="preserve">
-    <value>残り --:--:--</value>
+    <value>--:--:-- left</value>
+    <comment>@MutedRule(PunctuationTail)@MutedRule(PunctuationLead)</comment>
   </data>
   <data name="label7.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>BottomLeft</value>

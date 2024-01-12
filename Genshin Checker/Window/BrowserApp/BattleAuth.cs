@@ -4,6 +4,7 @@ using Newtonsoft.Json;
 using System.Diagnostics;
 using System.Text;
 using Genshin_Checker.Window.Popup;
+using Genshin_Checker.resource.Languages;
 
 namespace Genshin_Checker.BrowserApp
 {
@@ -23,9 +24,10 @@ namespace Genshin_Checker.BrowserApp
             timer.Tick += Timer_Tick;
             panel_menu.SuspendLayout();
             panel_menu.Visible = true;
-            AuthButton = new Button() { Visible = true, Text = "連携してアプリに戻る", AutoSize = true, Dock = DockStyle.Left };
+            AuthButton = new Button() { Visible = true, Text = Localize.WindowName_BattleAuth_AuthAndBack, AutoSize = true, Dock = DockStyle.Left };
             AuthButton.Click += (s, e) => { timer.Start(); AuthButton.Enabled = false; timer_count = 0; };
-            panel_menu.Controls.Add(new Label() { AutoSize = false, TextAlign = ContentAlignment.MiddleLeft, Dock = DockStyle.Fill, Text = "ログインが完了したら「連携してアプリに戻る」を選択してください。その場合は自動的にこのウィンドウが閉じられます。" });
+            panel_menu.Controls.Add(new Label() { AutoSize = false, TextAlign = ContentAlignment.MiddleLeft, Dock = DockStyle.Fill, 
+                Text = Localize.WindowName_BattleAuth_Message});
             panel_menu.Controls.Add(AuthButton);
             panel_menu.ResumeLayout(false);
             IsAutoAuth = isAutoAuth;
@@ -56,6 +58,10 @@ namespace Genshin_Checker.BrowserApp
                     {
                         if (account != null)
                         {
+                            if (account.UID != uid)
+                            {
+                                throw new ArgumentException(Localize.Error_BattleAuth_AccountMismatch);
+                            }
                             try
                             {
                                 var instance = await Account.GetInstance(cookieString, uid);
@@ -64,10 +70,6 @@ namespace Genshin_Checker.BrowserApp
                             catch
                             {
                                 throw;
-                            }
-                            if (account.UID != uid)
-                            {
-                                throw new ArgumentException("再認証を要求しているアカウントと異なっています。");
                             }
                             await account.Rewrite(cookieString);
                         }
@@ -95,7 +97,7 @@ namespace Genshin_Checker.BrowserApp
                         Trace.WriteLine(ex);
                         timer.Stop();
                         AuthButton.Enabled = true;
-                        new ErrorMessage("連携に失敗しました。", $"{ex.Message}\n\n{ex.GetType()}\n\n{ex.StackTrace}").ShowDialog();
+                        new ErrorMessage(Localize.Error_BattleAuth_FailedToAuthentication,$"{ex.Message}\n\n{ex.GetType()}\n\n{ex.StackTrace}").ShowDialog();
                         return;
                     }
                 }
@@ -104,7 +106,7 @@ namespace Genshin_Checker.BrowserApp
             if (timer_count > 10)
             {
                 AuthButton.Enabled = true;
-                new ErrorMessage("連携できませんでした。", $"URLが戦績になっているか、ログインしているかを今一度ご確認ください。").ShowDialog();
+                new ErrorMessage(Localize.Error_BattleAuth_CouldNotAuthentication, Localize.Error_BattleAuth_ColudNotAuthentication_Message).ShowDialog();
             }
             else
             {

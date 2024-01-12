@@ -7,6 +7,7 @@ using LiveChartsCore.Defaults;
 using System.Collections.ObjectModel;
 using Genshin_Checker.resource;
 using Genshin_Checker.Window.Popup;
+using Genshin_Checker.resource.Languages;
 
 namespace Genshin_Checker.Window
 {
@@ -538,20 +539,20 @@ namespace Genshin_Checker.Window
                         DailyGraph_Drawing();
                         Prev.Enabled = dateTimePicker1.MinDate <= dateTimePicker1.Value.AddDays(-1);
                         Next.Enabled = dateTimePicker1.MaxDate >= dateTimePicker1.Value.AddDays(1);
-                        FromLabel.Text = "1日分のデータ";
+                        FromLabel.Text = Localize.WindowName_TimeGraph_DayName;
                         break;
                     case 1:
                         WeekGraph_Drawing();
                         Prev.Enabled = dateTimePicker1.MinDate <= dateTimePicker1.Value.AddDays(-7);
                         Next.Enabled = dateTimePicker1.MaxDate >= dateTimePicker1.Value.AddDays(7);
 
-                        FromLabel.Text = $"{dateTimePicker1.Value.AddDays(-6):yyyy/MM/dd} ～";
+                        FromLabel.Text = string.Format(Localize.WindowName_TimeGraph_WeekName,$"{dateTimePicker1.Value.AddDays(-6):yyyy/MM/dd}");
                         break;
                     case 2:
                         MonthGraph_Drawing();
                         Prev.Enabled = dateTimePicker1.MinDate <= dateTimePicker1.Value.AddMonths(-1);
                         Next.Enabled = dateTimePicker1.MaxDate >= dateTimePicker1.Value.AddMonths(1);
-                        FromLabel.Text = $"{dateTimePicker1.Value:yyyy/MM} のデータ";
+                        FromLabel.Text = string.Format(Localize.WindowName_TimeGraph_MonthName, dateTimePicker1.Value.Year,App.General.LocalizeValue.Convert.MonthShort(dateTimePicker1.Value.Month));
                         break;
                     case 3:
                         VersionGraph_Drawing();
@@ -568,13 +569,13 @@ namespace Genshin_Checker.Window
                         string seasonName = $"Season {season}";
                         if (source.Length > season - 1) seasonName = source[season - 1];
 
-                        FromLabel.Text = $"{seasonName} 期間のデータ";
+                        FromLabel.Text = string.Format(Localize.WindowName_TimeGraph_VersionName, seasonName);
                         break;
                 }
             }
             catch (Exception ex)
             {
-                var window = new ErrorMessage("グラフ描画中にエラーが発生しました。", $"{ex.GetType()}\n{ex.Message}");
+                var window = new ErrorMessage(Localize.Error_TimeGraph_FailedToDrawGraph, $"{ex.GetType()}\n{ex.Message}");
                 window.ShowDialog(this);
             }
         }
@@ -607,7 +608,7 @@ namespace Genshin_Checker.Window
             }
             catch (Exception ex)
             {
-                var window = new ErrorMessage("グラフ描画中にエラーが発生しました。", $"{ex.GetType()}\n{ex.Message}");
+                var window = new ErrorMessage(Localize.Error_TimeGraph_FailedToDrawGraph, $"{ex.GetType()}\n{ex.Message}");
                 window.ShowDialog(this);
             }
         }
@@ -640,7 +641,7 @@ namespace Genshin_Checker.Window
             }
             catch (Exception ex)
             {
-                var window = new ErrorMessage("グラフ描画中にエラーが発生しました。", $"{ex.GetType()}\n{ex.Message}");
+                var window = new ErrorMessage(Localize.Error_TimeGraph_FailedToDrawGraph, $"{ex.GetType()}\n{ex.Message}");
                 window.ShowDialog(this);
             }
         }
@@ -654,7 +655,7 @@ namespace Genshin_Checker.Window
             }
             catch (Exception ex)
             {
-                var window = new ErrorMessage("グラフ描画中にエラーが発生しました。", $"{ex.GetType()}\n{ex.Message}");
+                var window = new ErrorMessage(Localize.Error_TimeGraph_FailedToDrawGraph, $"{ex.GetType()}\n{ex.Message}");
                 window.ShowDialog(this);
             }
         }

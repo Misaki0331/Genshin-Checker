@@ -40,7 +40,7 @@ namespace Genshin_Checker.App.General.Convert
             //ToDo:ローカライズ用に修正
             return element switch
             {
-                ElementType.Unknown => Genshin.Element_Unknown,
+                ElementType.Unknown => Common.Unknown,
                 ElementType.Anemo => Genshin.Element_Anemo,
                 ElementType.Geo => Genshin.Element_Geo,
                 ElementType.Electro => Genshin.Element_Electro,
@@ -48,7 +48,7 @@ namespace Genshin_Checker.App.General.Convert
                 ElementType.Hydro => Genshin.Element_Hydro,
                 ElementType.Pyro => Genshin.Element_Pyro,
                 ElementType.Cryo => Genshin.Element_Cryo,
-                _ => Genshin.Element_Unknown
+                _ => Common.Unknown
             };
         }
 
