@@ -564,4 +564,17 @@
   <data name="Error_CharacterResult_FailedToLoad" xml:space="preserve">
     <value>計算に失敗しました。</value>
   </data>
+  <data name="Error_LoadTravelersDiaryDetail_FailedToLoadFromDatabase" xml:space="preserve">
+    <value>データベースからの取得に失敗しました。</value>
+  </data>
+  <data name="WindowName_LoadTravelersDiaryDetail_LoadingProgress" xml:space="preserve">
+    <value>{0}分の{1}の履歴を取得中...
+現在取得中のページ : {1}ページ目
+累計取得ページ数 : {2}
+進捗率 : {3}%</value>
+  </data>
+  <data name="Error_Program_MultipleLaunched" xml:space="preserve">
+    <value>多重起動を検出した為起動できませんでした。
+起動した引数 : {0}</value>
+  </data>
 </root>

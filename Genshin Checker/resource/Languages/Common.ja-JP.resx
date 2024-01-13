@@ -175,4 +175,18 @@
   <data name="Week_Wed_Sat" xml:space="preserve">
     <value>水・土</value>
   </data>
+  <data name="ApplicationError" xml:space="preserve">
+    <value>アプリケーションエラー</value>
+  </data>
+  <data name="ApplicationErrorTrace" xml:space="preserve">
+    <value>アプリケーションエラーが発生しました。
+再起動しますか？
+
+--- デバッグ情報 ---
+{0}
+{1}
+--- StackTrace ---
+{2}
+--- StackTrace 終わり ---</value>
+  </data>
 </root>

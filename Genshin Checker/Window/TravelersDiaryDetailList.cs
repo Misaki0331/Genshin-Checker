@@ -48,12 +48,12 @@ namespace Genshin_Checker.Window
 
             InitializeComponent();
             dataGridView1.DataSource = CurrentView;
-            dataGridView1.Columns[0].Width = 140;
+            dataGridView1.Columns[0].Width = 150;
             dataGridView1.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
             dataGridView1.Columns[1].Width = 65; 
             dataGridView1.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dataGridView1.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            dataGridView1.Columns[2].Width = 150;
+            dataGridView1.Columns[2].Width = 160;
             dataGridView1.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.NotSet;
             dataGridView1.Columns[3].Width = 67;
             dataGridView1.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;

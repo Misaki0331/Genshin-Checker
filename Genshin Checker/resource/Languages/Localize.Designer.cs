@@ -412,6 +412,25 @@ namespace Genshin_Checker.resource.Languages {
         }
         
         /// <summary>
+        ///   Failed to load from database. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Error_LoadTravelersDiaryDetail_FailedToLoadFromDatabase {
+            get {
+                return ResourceManager.GetString("Error_LoadTravelersDiaryDetail_FailedToLoadFromDatabase", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Could not start because multiple startups were detected.
+        ///Arguments invoked : {0} に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Error_Program_MultipleLaunched {
+            get {
+                return ResourceManager.GetString("Error_Program_MultipleLaunched", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Failed to open registry. に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string Error_Registry_FailedToOpen {
@@ -1114,6 +1133,18 @@ namespace Genshin_Checker.resource.Languages {
         public static string WindowName_GameRecord_WorldRankText {
             get {
                 return ResourceManager.GetString("WindowName_GameRecord_WorldRankText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Retrieving {1} history for {0}...
+        ///Pages currently retrieved : {1} pages
+        ///Total pages : {2} pages
+        ///Progress : {3}% に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string WindowName_LoadTravelersDiaryDetail_LoadingProgress {
+            get {
+                return ResourceManager.GetString("WindowName_LoadTravelersDiaryDetail_LoadingProgress", resourceCulture);
             }
         }
         

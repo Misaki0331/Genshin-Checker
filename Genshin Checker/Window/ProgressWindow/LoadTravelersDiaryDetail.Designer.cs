@@ -28,43 +28,42 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoadTravelersDiaryDetail));
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
-            this.label1 = new System.Windows.Forms.Label();
-            this.delay = new System.Windows.Forms.Timer(this.components);
-            this.SuspendLayout();
+            progressBar1 = new ProgressBar();
+            label1 = new Label();
+            delay = new System.Windows.Forms.Timer(components);
+            SuspendLayout();
             // 
             // progressBar1
             // 
-            resources.ApplyResources(this.progressBar1, "progressBar1");
-            this.progressBar1.Name = "progressBar1";
+            resources.ApplyResources(progressBar1, "progressBar1");
+            progressBar1.Name = "progressBar1";
             // 
             // label1
             // 
-            resources.ApplyResources(this.label1, "label1");
-            this.label1.Name = "label1";
+            resources.ApplyResources(label1, "label1");
+            label1.Name = "label1";
             // 
             // delay
             // 
-            this.delay.Enabled = true;
-            this.delay.Tick += new System.EventHandler(this.delay_Tick);
+            delay.Enabled = true;
+            delay.Tick += delay_Tick;
             // 
             // LoadTravelersDiaryDetail
             // 
             resources.ApplyResources(this, "$this");
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.progressBar1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
-            this.Name = "LoadTravelersDiaryDetail";
-            this.ShowInTaskbar = false;
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.LoadTravelersDiaryDetail_FormClosing);
-            this.Load += new System.EventHandler(this.LoadTravelersDiaryDetail_Load);
-            this.ResumeLayout(false);
-
+            AutoScaleMode = AutoScaleMode.Dpi;
+            Controls.Add(label1);
+            Controls.Add(progressBar1);
+            FormBorderStyle = FormBorderStyle.FixedToolWindow;
+            MaximizeBox = false;
+            MinimizeBox = false;
+            Name = "LoadTravelersDiaryDetail";
+            ShowInTaskbar = false;
+            FormClosing += LoadTravelersDiaryDetail_FormClosing;
+            Load += LoadTravelersDiaryDetail_Load;
+            ResumeLayout(false);
         }
 
         #endregion

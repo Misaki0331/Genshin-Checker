@@ -61,6 +61,32 @@ namespace Genshin_Checker.resource.Languages {
         }
         
         /// <summary>
+        ///   Application Error に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string ApplicationError {
+            get {
+                return ResourceManager.GetString("ApplicationError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Oops! Application was crashed.
+        ///Will Re-launching it?
+        ///
+        ///--- Debug Infomation ---
+        ///{0}
+        ///{1}
+        ///--- StackTrace ---
+        ///{2}
+        ///--- End of StackTrace --- に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string ApplicationErrorTrace {
+            get {
+                return ResourceManager.GetString("ApplicationErrorTrace", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Cancel に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string Cancel {

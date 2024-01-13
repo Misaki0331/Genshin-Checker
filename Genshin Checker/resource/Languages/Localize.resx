@@ -571,4 +571,17 @@ Error Log
   <data name="Error_CharacterResult_FailedToLoad" xml:space="preserve">
     <value>Failed to calculated.</value>
   </data>
+  <data name="Error_LoadTravelersDiaryDetail_FailedToLoadFromDatabase" xml:space="preserve">
+    <value>Failed to load from database.</value>
+  </data>
+  <data name="WindowName_LoadTravelersDiaryDetail_LoadingProgress" xml:space="preserve">
+    <value>Retrieving {1} history for {0}...
+Pages currently retrieved : {1} pages
+Total pages : {2} pages
+Progress : {3}%</value>
+  </data>
+  <data name="Error_Program_MultipleLaunched" xml:space="preserve">
+    <value>Could not start because multiple startups were detected.
+Arguments invoked : {0}</value>
+  </data>
 </root>

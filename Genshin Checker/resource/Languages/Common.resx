@@ -187,4 +187,18 @@
   <data name="Week_Wed_Sat" xml:space="preserve">
     <value>Wed/Sat</value>
   </data>
+  <data name="ApplicationError" xml:space="preserve">
+    <value>Application Error</value>
+  </data>
+  <data name="ApplicationErrorTrace" xml:space="preserve">
+    <value>Oops! Application was crashed.
+Will Re-launching it?
+
+--- Debug Infomation ---
+{0}
+{1}
+--- StackTrace ---
+{2}
+--- End of StackTrace ---</value>
+  </data>
 </root>

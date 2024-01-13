@@ -292,7 +292,7 @@
     <value>29, 0</value>
   </data>
   <data name="label13.Size" type="System.Drawing.Size, System.Drawing">
-    <value>231, 30</value>
+    <value>128, 30</value>
   </data>
   <data name="label13.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -2067,13 +2067,13 @@
     <value>0, 0</value>
   </data>
   <data name="label17.Size" type="System.Drawing.Size, System.Drawing">
-    <value>119, 20</value>
+    <value>104, 20</value>
   </data>
   <data name="label17.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
   <data name="label17.Text" xml:space="preserve">
-    <value>Talent requied</value>
+    <value>Talent Items</value>
   </data>
   <data name="&gt;&gt;label17.Name" xml:space="preserve">
     <value>label17</value>

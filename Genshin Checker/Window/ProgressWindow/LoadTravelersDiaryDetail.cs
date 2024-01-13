@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Genshin_Checker.Window.Popup;
+using Genshin_Checker.resource.Languages;
 
 namespace Genshin_Checker.Window.ProgressWindow
 {
@@ -46,7 +47,7 @@ namespace Genshin_Checker.Window.ProgressWindow
                 await account.TravelersDiaryDetail.Correct(month,(TravelersDiaryDetail.CorrectMode)mode);
             }catch(Exception ex)
             {
-                new ErrorMessage("データベースからの取得に失敗しました。", $"{ex}").ShowDialog();
+                new ErrorMessage(Localize.Error_LoadTravelersDiaryDetail_FailedToLoadFromDatabase, $"{ex}").ShowDialog();
             }
             finally
             {
@@ -65,7 +66,7 @@ namespace Genshin_Checker.Window.ProgressWindow
 
         private void ProgressChanged(object? sender, TravelersDiaryDetail.ProgressState e)
         {
-            label1.Text = $"{(e.month==0?"今":$"{e.month}")}月分の{e.mode}の履歴を取得中... \n現在取得中のページ : {e.CurrentPage}ページ目\n累計取得ページ数 : {e.TotalPage}\n進捗率 : {e.Progress:0.0}%";
+            label1.Text = string.Format(Localize.WindowName_LoadTravelersDiaryDetail_LoadingProgress, $"{(e.month == 0 ? Localize.WindowName_TravelersDiaryDetailList_Downloading_ThisMonth : App.General.LocalizeValue.Convert.MonthShort(e.month))}", e.mode, e.CurrentPage, e.TotalPage, $"{e.Progress:0.0}%");
             int progress = (int)e.Progress;
             if(progress < 0) progress = 0;
             if (progress > 100) progress = 100;

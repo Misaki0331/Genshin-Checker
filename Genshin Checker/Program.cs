@@ -2,6 +2,8 @@ using Genshin_Checker.Window;
 using System.Linq.Expressions;
 using Genshin_Checker.Window.Popup;
 using Microsoft.Toolkit.Uwp.Notifications;
+using System.Globalization;
+using Genshin_Checker.resource.Languages;
 
 namespace Genshin_Checker
 {
@@ -21,8 +23,17 @@ namespace Genshin_Checker
                 new System.Threading.ThreadExceptionEventHandler(
                     Application_ThreadException);
 #endif
-            Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("en-US");
-            Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-US");
+            //言語設定
+            if (CultureInfo.CurrentCulture.Name == "ja-JP"|| CultureInfo.CurrentCulture.Name == "ja")
+            {
+                Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("ja-JP");
+                Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("ja-JP");
+            }
+            else
+            {
+                Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("en-US");
+                Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-US");
+            }
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             Application.EnableVisualStyles();
@@ -68,7 +79,7 @@ namespace Genshin_Checker
                     //得られなかった場合は、すでに起動していると判断して終了
                     var args = "";
                     foreach (var a in System.Environment.GetCommandLineArgs()) args += $"{a} ";
-                    MessageBox.Show($"多重起動はできません。\n起動した引数\n{args}", "Genshin Checker", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(string.Format(Localize.Error_Program_MultipleLaunched,args), "Genshin Checker", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 #endif
@@ -110,7 +121,7 @@ namespace Genshin_Checker
             catch
             {
                 //エラーメッセージを表示する
-                var res = MessageBox.Show($"アプリケーションエラーが発生しました。\n再起動しますか？\n\n--- デバッグ情報 ---\n{e.Exception.GetType()}\n{e.Exception.Message}\n--- StackTrace ---\n{e.Exception.StackTrace}\n--- StackTrace 終わり ---", "Genshin Checker アプリケーションエラー", MessageBoxButtons.YesNo, MessageBoxIcon.Stop);
+                var res = MessageBox.Show(string.Format(Common.ApplicationErrorTrace, e.Exception.GetType(), e.Exception.Message, e), Common.ApplicationError, MessageBoxButtons.YesNo, MessageBoxIcon.Stop);
                 if (res == DialogResult.Yes)
                 {
                     Application.Restart();
