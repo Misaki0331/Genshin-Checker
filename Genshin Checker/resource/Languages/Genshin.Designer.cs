@@ -70,6 +70,78 @@ namespace Genshin_Checker.resource.Languages {
         }
         
         /// <summary>
+        ///   Agnidus Agate に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string Ascension_AgnidusAgate {
+            get {
+                return ResourceManager.GetString("Ascension_AgnidusAgate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Brilliant Diamond に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string Ascension_BrilliantDiamond {
+            get {
+                return ResourceManager.GetString("Ascension_BrilliantDiamond", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Nagadus Emerald に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string Ascension_NagadusEmerald {
+            get {
+                return ResourceManager.GetString("Ascension_NagadusEmerald", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Prithiva Topaz に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string Ascension_PrithivaTopaz {
+            get {
+                return ResourceManager.GetString("Ascension_PrithivaTopaz", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Shivada Jade に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string Ascension_ShivadaJade {
+            get {
+                return ResourceManager.GetString("Ascension_ShivadaJade", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Vajrada Amethyst に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string Ascension_VajradaAmethyst {
+            get {
+                return ResourceManager.GetString("Ascension_VajradaAmethyst", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Varunada Lazurite に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string Ascension_VarunadaLazurite {
+            get {
+                return ResourceManager.GetString("Ascension_VarunadaLazurite", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Vayuda Turquoise に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string Ascension_VayudaTurquoise {
+            get {
+                return ResourceManager.GetString("Ascension_VayudaTurquoise", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Reputation Level に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string City_ReputationLevel {
@@ -219,6 +291,195 @@ namespace Genshin_Checker.resource.Languages {
         internal static string Primogems {
             get {
                 return ResourceManager.GetString("Primogems", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Freedom に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string TalentBook_1_1 {
+            get {
+                return ResourceManager.GetString("TalentBook_1_1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Resistance に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string TalentBook_1_2 {
+            get {
+                return ResourceManager.GetString("TalentBook_1_2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ballad に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string TalentBook_1_3 {
+            get {
+                return ResourceManager.GetString("TalentBook_1_3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Prosperity に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string TalentBook_2_1 {
+            get {
+                return ResourceManager.GetString("TalentBook_2_1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Diligence に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string TalentBook_2_2 {
+            get {
+                return ResourceManager.GetString("TalentBook_2_2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Gold に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string TalentBook_2_3 {
+            get {
+                return ResourceManager.GetString("TalentBook_2_3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Transience に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string TalentBook_3_1 {
+            get {
+                return ResourceManager.GetString("TalentBook_3_1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Elegance に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string TalentBook_3_2 {
+            get {
+                return ResourceManager.GetString("TalentBook_3_2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Light に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string TalentBook_3_3 {
+            get {
+                return ResourceManager.GetString("TalentBook_3_3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Admonition に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string TalentBook_4_1 {
+            get {
+                return ResourceManager.GetString("TalentBook_4_1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ingenuity に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string TalentBook_4_2 {
+            get {
+                return ResourceManager.GetString("TalentBook_4_2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Praxis に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string TalentBook_4_3 {
+            get {
+                return ResourceManager.GetString("TalentBook_4_3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Equity に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string TalentBook_5_1 {
+            get {
+                return ResourceManager.GetString("TalentBook_5_1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Justice に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string TalentBook_5_2 {
+            get {
+                return ResourceManager.GetString("TalentBook_5_2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Order に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string TalentBook_5_3 {
+            get {
+                return ResourceManager.GetString("TalentBook_5_3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Unknown に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string TalentBook_6_1 {
+            get {
+                return ResourceManager.GetString("TalentBook_6_1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Unknown に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string TalentBook_6_2 {
+            get {
+                return ResourceManager.GetString("TalentBook_6_2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Unknown に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string TalentBook_6_3 {
+            get {
+                return ResourceManager.GetString("TalentBook_6_3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Unknown に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string TalentBook_7_1 {
+            get {
+                return ResourceManager.GetString("TalentBook_7_1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Unknown に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string TalentBook_7_2 {
+            get {
+                return ResourceManager.GetString("TalentBook_7_2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Unknown に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string TalentBook_7_3 {
+            get {
+                return ResourceManager.GetString("TalentBook_7_3", resourceCulture);
             }
         }
         

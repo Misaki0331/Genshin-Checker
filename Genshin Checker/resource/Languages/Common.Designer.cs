@@ -259,6 +259,33 @@ namespace Genshin_Checker.resource.Languages {
         }
         
         /// <summary>
+        ///   Mon/Thu に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Week_Mon_Thu {
+            get {
+                return ResourceManager.GetString("Week_Mon_Thu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Tue/Fri に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Week_Tue_Fri {
+            get {
+                return ResourceManager.GetString("Week_Tue_Fri", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Wed/Sat に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Week_Wed_Sat {
+            get {
+                return ResourceManager.GetString("Week_Wed_Sat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Yes に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string Yes {

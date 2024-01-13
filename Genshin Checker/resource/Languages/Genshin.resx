@@ -160,4 +160,91 @@
   <data name="Primogems" xml:space="preserve">
     <value>Primogems</value>
   </data>
+  <data name="Ascension_BrilliantDiamond" xml:space="preserve">
+    <value>Brilliant Diamond</value>
+  </data>
+  <data name="Ascension_AgnidusAgate" xml:space="preserve">
+    <value>Agnidus Agate</value>
+  </data>
+  <data name="Ascension_VarunadaLazurite" xml:space="preserve">
+    <value>Varunada Lazurite</value>
+  </data>
+  <data name="Ascension_NagadusEmerald" xml:space="preserve">
+    <value>Nagadus Emerald</value>
+  </data>
+  <data name="Ascension_VajradaAmethyst" xml:space="preserve">
+    <value>Vajrada Amethyst</value>
+  </data>
+  <data name="Ascension_VayudaTurquoise" xml:space="preserve">
+    <value>Vayuda Turquoise</value>
+  </data>
+  <data name="Ascension_ShivadaJade" xml:space="preserve">
+    <value>Shivada Jade</value>
+  </data>
+  <data name="Ascension_PrithivaTopaz" xml:space="preserve">
+    <value>Prithiva Topaz</value>
+  </data>
+  <data name="TalentBook_1_1" xml:space="preserve">
+    <value>Freedom</value>
+  </data>
+  <data name="TalentBook_1_2" xml:space="preserve">
+    <value>Resistance</value>
+  </data>
+  <data name="TalentBook_1_3" xml:space="preserve">
+    <value>Ballad</value>
+  </data>
+  <data name="TalentBook_2_1" xml:space="preserve">
+    <value>Prosperity</value>
+  </data>
+  <data name="TalentBook_2_2" xml:space="preserve">
+    <value>Diligence</value>
+  </data>
+  <data name="TalentBook_2_3" xml:space="preserve">
+    <value>Gold</value>
+  </data>
+  <data name="TalentBook_3_1" xml:space="preserve">
+    <value>Transience</value>
+  </data>
+  <data name="TalentBook_3_2" xml:space="preserve">
+    <value>Elegance</value>
+  </data>
+  <data name="TalentBook_3_3" xml:space="preserve">
+    <value>Light</value>
+  </data>
+  <data name="TalentBook_4_1" xml:space="preserve">
+    <value>Admonition</value>
+  </data>
+  <data name="TalentBook_4_2" xml:space="preserve">
+    <value>Ingenuity</value>
+  </data>
+  <data name="TalentBook_4_3" xml:space="preserve">
+    <value>Praxis</value>
+  </data>
+  <data name="TalentBook_5_1" xml:space="preserve">
+    <value>Equity</value>
+  </data>
+  <data name="TalentBook_5_2" xml:space="preserve">
+    <value>Justice</value>
+  </data>
+  <data name="TalentBook_5_3" xml:space="preserve">
+    <value>Order</value>
+  </data>
+  <data name="TalentBook_6_1" xml:space="preserve">
+    <value>Unknown</value>
+  </data>
+  <data name="TalentBook_6_2" xml:space="preserve">
+    <value>Unknown</value>
+  </data>
+  <data name="TalentBook_6_3" xml:space="preserve">
+    <value>Unknown</value>
+  </data>
+  <data name="TalentBook_7_1" xml:space="preserve">
+    <value>Unknown</value>
+  </data>
+  <data name="TalentBook_7_2" xml:space="preserve">
+    <value>Unknown</value>
+  </data>
+  <data name="TalentBook_7_3" xml:space="preserve">
+    <value>Unknown</value>
+  </data>
 </root>

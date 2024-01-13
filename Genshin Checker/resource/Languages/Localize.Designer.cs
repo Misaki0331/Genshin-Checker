@@ -209,6 +209,33 @@ namespace Genshin_Checker.resource.Languages {
         }
         
         /// <summary>
+        ///   Character ID ({0}) was not found. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Error_CalculateResult_CharacterNotFound {
+            get {
+                return ResourceManager.GetString("Error_CalculateResult_CharacterNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   {0} - {1} is unknown data. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Error_CalculateResult_InvalidItemID {
+            get {
+                return ResourceManager.GetString("Error_CalculateResult_InvalidItemID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Only support 3 talents. this character has {0} talent(s). に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Error_CalculateResult_InvalidTalentCount {
+            get {
+                return ResourceManager.GetString("Error_CalculateResult_InvalidTalentCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Failed to load talents infomation.
         ///Error Log
         ///{0} に類似しているローカライズされた文字列を検索します。
@@ -336,6 +363,15 @@ namespace Genshin_Checker.resource.Languages {
         public static string Error_CharacterDetail_ReachedRetryCount {
             get {
                 return ResourceManager.GetString("Error_CharacterDetail_ReachedRetryCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Failed to calculated. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Error_CharacterResult_FailedToLoad {
+            get {
+                return ResourceManager.GetString("Error_CharacterResult_FailedToLoad", resourceCulture);
             }
         }
         
@@ -904,6 +940,24 @@ namespace Genshin_Checker.resource.Languages {
         public static string WindowName_BattleAuth_Message {
             get {
                 return ResourceManager.GetString("WindowName_BattleAuth_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Calculate Result に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string WindowName_CalculateResult {
+            get {
+                return ResourceManager.GetString("WindowName_CalculateResult", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Loading... {0} / {1} に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string WindowName_CalculateResult_Loading {
+            get {
+                return ResourceManager.GetString("WindowName_CalculateResult_Loading", resourceCulture);
             }
         }
         

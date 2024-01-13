@@ -178,4 +178,13 @@
   <data name="ErrorMessage" xml:space="preserve">
     <value>Error Message</value>
   </data>
+  <data name="Week_Mon_Thu" xml:space="preserve">
+    <value>Mon/Thu</value>
+  </data>
+  <data name="Week_Tue_Fri" xml:space="preserve">
+    <value>Tue/Fri</value>
+  </data>
+  <data name="Week_Wed_Sat" xml:space="preserve">
+    <value>Wed/Sat</value>
+  </data>
 </root>

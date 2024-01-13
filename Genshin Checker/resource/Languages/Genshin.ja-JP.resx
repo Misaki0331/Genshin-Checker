@@ -160,4 +160,91 @@
   <data name="Primogems" xml:space="preserve">
     <value>原石</value>
   </data>
+  <data name="Ascension_BrilliantDiamond" xml:space="preserve">
+    <value>輝くダイヤ</value>
+  </data>
+  <data name="Ascension_AgnidusAgate" xml:space="preserve">
+    <value>炎願のアゲート</value>
+  </data>
+  <data name="Ascension_VarunadaLazurite" xml:space="preserve">
+    <value>澄明なラピスラズリ</value>
+  </data>
+  <data name="Ascension_NagadusEmerald" xml:space="preserve">
+    <value>成長のエメラルド</value>
+  </data>
+  <data name="Ascension_VajradaAmethyst" xml:space="preserve">
+    <value>最勝のアメシスト</value>
+  </data>
+  <data name="Ascension_VayudaTurquoise" xml:space="preserve">
+    <value>自由のターコイズ</value>
+  </data>
+  <data name="Ascension_ShivadaJade" xml:space="preserve">
+    <value>哀切なアイスクリスタル</value>
+  </data>
+  <data name="Ascension_PrithivaTopaz" xml:space="preserve">
+    <value>堅牢なトパーズ</value>
+  </data>
+  <data name="TalentBook_1_1" xml:space="preserve">
+    <value>自由</value>
+  </data>
+  <data name="TalentBook_1_2" xml:space="preserve">
+    <value>抗争</value>
+  </data>
+  <data name="TalentBook_1_3" xml:space="preserve">
+    <value>詩文</value>
+  </data>
+  <data name="TalentBook_2_1" xml:space="preserve">
+    <value>繁栄</value>
+  </data>
+  <data name="TalentBook_2_2" xml:space="preserve">
+    <value>勤労</value>
+  </data>
+  <data name="TalentBook_2_3" xml:space="preserve">
+    <value>黄金</value>
+  </data>
+  <data name="TalentBook_3_1" xml:space="preserve">
+    <value>浮世</value>
+  </data>
+  <data name="TalentBook_3_2" xml:space="preserve">
+    <value>風雅</value>
+  </data>
+  <data name="TalentBook_3_3" xml:space="preserve">
+    <value>天光</value>
+  </data>
+  <data name="TalentBook_4_1" xml:space="preserve">
+    <value>忠言</value>
+  </data>
+  <data name="TalentBook_4_2" xml:space="preserve">
+    <value>創意</value>
+  </data>
+  <data name="TalentBook_4_3" xml:space="preserve">
+    <value>篤行</value>
+  </data>
+  <data name="TalentBook_5_1" xml:space="preserve">
+    <value>公平</value>
+  </data>
+  <data name="TalentBook_5_2" xml:space="preserve">
+    <value>正義</value>
+  </data>
+  <data name="TalentBook_5_3" xml:space="preserve">
+    <value>秩序</value>
+  </data>
+  <data name="TalentBook_6_1" xml:space="preserve">
+    <value>ナタ1</value>
+  </data>
+  <data name="TalentBook_6_2" xml:space="preserve">
+    <value>ナタ2</value>
+  </data>
+  <data name="TalentBook_6_3" xml:space="preserve">
+    <value>ナタ3</value>
+  </data>
+  <data name="TalentBook_7_1" xml:space="preserve">
+    <value>スネージナヤ1</value>
+  </data>
+  <data name="TalentBook_7_2" xml:space="preserve">
+    <value>スネージナヤ2</value>
+  </data>
+  <data name="TalentBook_7_3" xml:space="preserve">
+    <value>スネージナヤ3</value>
+  </data>
 </root>

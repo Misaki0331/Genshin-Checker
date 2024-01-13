@@ -546,4 +546,22 @@
   <data name="Error_CharacterCalculator_MultipleError" xml:space="preserve">
     <value>データエラーが {0} 件発生しました。</value>
   </data>
+  <data name="WindowName_CalculateResult" xml:space="preserve">
+    <value>育成計算結果</value>
+  </data>
+  <data name="WindowName_CalculateResult_Loading" xml:space="preserve">
+    <value>取得中... {0} / {1}</value>
+  </data>
+  <data name="Error_CalculateResult_InvalidTalentCount" xml:space="preserve">
+    <value>天賦は3つしか対応していません。キャラクターの天賦は {0} つあります。</value>
+  </data>
+  <data name="Error_CalculateResult_CharacterNotFound" xml:space="preserve">
+    <value>キャラクターID ({0})が見つかりませんでした。</value>
+  </data>
+  <data name="Error_CalculateResult_InvalidItemID" xml:space="preserve">
+    <value>{0} - {1} は不正な値です。</value>
+  </data>
+  <data name="Error_CharacterResult_FailedToLoad" xml:space="preserve">
+    <value>計算に失敗しました。</value>
+  </data>
 </root>

@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Genshin_Checker.App.General.Convert;
 using Genshin_Checker.Window.Popup;
+using Genshin_Checker.resource.Languages;
 
 namespace Genshin_Checker.Window.ExWindow.CharacterCalculator
 {
@@ -25,7 +26,7 @@ namespace Genshin_Checker.Window.ExWindow.CharacterCalculator
             Inputs = inputs;
             Account = account;
             Icon = Icon.FromHandle(resource.icon.calculator_new.GetHicon());
-            Text = $"育成計算結果";
+            Text = Localize.WindowName_CalculateResult;
         }
         public class Input
         {
@@ -115,14 +116,14 @@ namespace Genshin_Checker.Window.ExWindow.CharacterCalculator
                 foreach(Input input in Inputs)
                 {
                     cnt++;
-                    ProgressState.Text = $"取得中... ({cnt}/{Inputs.Count})";
+                    ProgressState.Text = string.Format(Localize.WindowName_CalculateResult_Loading, cnt, Inputs.Count);
                     progressBar.Value = 10000*cnt/Inputs.Count;
                     var detail = await Account.CharacterDetail.GetData(input.characterID);
                     //キャラクターのスキルを取得
                     var skill = detail.skill_list.FindAll(a => a.max_level != 1);
-                    if (skill.Count != 3) throw new ArgumentException($"天賦は3つしか対応していません。キャラクターの天賦は {skill.Count} つあります");
+                    if (skill.Count != 3) throw new ArgumentException(string.Format(Localize.Error_CalculateResult_InvalidTalentCount,skill.Count));
                     var character = characters.avatars.Find(a => a.id == input.characterID);
-                    if (character == null) throw new ArgumentNullException(nameof(character), $"{input.characterID}が見つかりません。");
+                    if (character == null) throw new ArgumentNullException(nameof(character), string.Format(Localize.Error_CalculateResult_CharacterNotFound, input.characterID));
                     var skilllist = new List<Model.HoYoLab.CalculatorComputePost.SkillList>();
                     for (int i=0;i<skill.Count;i++)
                     {
@@ -165,7 +166,7 @@ namespace Genshin_Checker.Window.ExWindow.CharacterCalculator
                                 case 2: type = nameof(AscensionNumFragment); break;
                                 case 3: type = nameof(AscensionNumChunk); break;
                                 case 4: type = nameof(AscensionNumGemstone); break;
-                                default: throw new ArgumentException($"{data.id} - {data.name} は不正な値です。");
+                                default: throw new ArgumentException(string.Format(Localize.Error_CalculateResult_InvalidItemID, data.id, data.name));
                             }
                             var row = GetRow(ViewAscensionMaterial, a => (int)a.Cells[nameof(AscensionTypeID)].Value == id);
                             if (row == null)
@@ -230,7 +231,7 @@ namespace Genshin_Checker.Window.ExWindow.CharacterCalculator
                                 0 => nameof(TalentItemNumTeachings),
                                 1 => nameof(TalentItemNumGuide),
                                 2 => nameof(TalentItemNumPhilosophies),
-                                _ => throw new ArgumentException("idが不正です")
+                                _ => throw new ArgumentException(string.Format(Localize.Error_CalculateResult_InvalidItemID, data.id, data.name))
                             };
                             var row = GetRow(ViewTalentItems, a => (int)a.Cells[nameof(TalentItemID)].Value == id / 3);
                             if (row == null)
@@ -286,7 +287,7 @@ namespace Genshin_Checker.Window.ExWindow.CharacterCalculator
             }
             catch(Exception ex)
             {
-                new ErrorMessage("データの読み込みに失敗しました。", ex.ToString()).ShowDialog();
+                new ErrorMessage(Localize.Error_CharacterResult_FailedToLoad, ex.ToString()).ShowDialog();
             }
         }
 
@@ -304,15 +305,15 @@ namespace Genshin_Checker.Window.ExWindow.CharacterCalculator
                         case nameof(AscensionType):
                             e.Value = (int)row.Cells[nameof(AscensionTypeID)].Value switch
                             {
-                                0 => "輝くダイヤ",
-                                1 => "炎願のアゲート",
-                                2 => "澄明なラピスラズリ",
-                                3 => "成長のエメラルド",
-                                4 => "最勝のアメシスト",
-                                5 => "自由のターコイズ",
-                                6 => "哀切なアイスクリスタル",
-                                7 => "堅牢なトパーズ",
-                                _ => $"不明な宝石"
+                                0 => Genshin.Ascension_BrilliantDiamond,
+                                1 => Genshin.Ascension_AgnidusAgate,
+                                2 => Genshin.Ascension_VarunadaLazurite,
+                                3 => Genshin.Ascension_NagadusEmerald,
+                                4 => Genshin.Ascension_VajradaAmethyst,
+                                5 => Genshin.Ascension_VayudaTurquoise,
+                                6 => Genshin.Ascension_ShivadaJade,
+                                7 => Genshin.Ascension_PrithivaTopaz,
+                                _ => Common.Unknown
                             };
                             break;
                     }
@@ -370,28 +371,28 @@ namespace Genshin_Checker.Window.ExWindow.CharacterCalculator
                             };
                             e.Value = (int)row.Cells[nameof(TalentItemID)].Value switch
                             {
-                                0 => "自由",
-                                1 => "抗争",
-                                2 => "詩文",
-                                3 => "繁栄",
-                                4 => "勤労",
-                                5 => "黄金",
-                                6 => "浮世",
-                                7 => "風雅",
-                                8 => "天光",
-                                9 => "忠言",
-                                10 => "創意",
-                                11 => "篤行",
-                                12 => "公平",
-                                13 => "正義",
-                                14 => "秩序",
-                                15 => "ナタ1",
-                                16 => "ナタ2",
-                                17 => "ナタ3",
-                                18 => "スネージナヤ1",
-                                19 => "スネージナヤ2",
-                                20 => "スネージナヤ3",
-                                _ => $"？？",
+                                0 => Genshin.TalentBook_1_1,
+                                1 => Genshin.TalentBook_1_2,
+                                2 => Genshin.TalentBook_1_3,
+                                3 => Genshin.TalentBook_2_1,
+                                4 => Genshin.TalentBook_2_2,
+                                5 => Genshin.TalentBook_2_3,
+                                6 => Genshin.TalentBook_3_1,
+                                7 => Genshin.TalentBook_3_2,
+                                8 => Genshin.TalentBook_3_3,
+                                9 => Genshin.TalentBook_4_1,
+                                10 => Genshin.TalentBook_4_2,
+                                11 => Genshin.TalentBook_4_3,
+                                12 => Genshin.TalentBook_5_1,
+                                13 => Genshin.TalentBook_5_2,
+                                14 => Genshin.TalentBook_5_3,
+                                15 => Genshin.TalentBook_6_1,
+                                16 => Genshin.TalentBook_6_2,
+                                17 => Genshin.TalentBook_6_3,
+                                18 => Genshin.TalentBook_7_1,
+                                19 => Genshin.TalentBook_7_2,
+                                20 => Genshin.TalentBook_7_3,
+                                _ => Common.Unknown,
                             };
                             break;
                         case nameof(TalentItemOpenDays):
@@ -416,10 +417,10 @@ namespace Genshin_Checker.Window.ExWindow.CharacterCalculator
                             if ((int)e.Value == today || today < 0) e.CellStyle.BackColor = color;
                             e.Value = (int)e.Value switch
                             {
-                                0 => "月・木",
-                                1 => "火・金",
-                                2 => "水・土",
-                                _ => "？"
+                                0 => Common.Week_Mon_Thu,
+                                1 => Common.Week_Tue_Fri,
+                                2 => Common.Week_Wed_Sat,
+                                _ => Common.Unknown
                             };
                             break;
                     }

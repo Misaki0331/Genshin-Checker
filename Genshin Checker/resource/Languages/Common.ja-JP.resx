@@ -166,4 +166,13 @@
   <data name="ErrorMessage" xml:space="preserve">
     <value>エラーメッセージ</value>
   </data>
+  <data name="Week_Mon_Thu" xml:space="preserve">
+    <value>月・木</value>
+  </data>
+  <data name="Week_Tue_Fri" xml:space="preserve">
+    <value>火・金</value>
+  </data>
+  <data name="Week_Wed_Sat" xml:space="preserve">
+    <value>水・土</value>
+  </data>
 </root>
