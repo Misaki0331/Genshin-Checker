@@ -1312,6 +1312,69 @@ namespace Genshin_Checker.resource.Languages {
         }
         
         /// <summary>
+        ///   Elm. Bursts に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string WindowName_SpiralAbyss_ElementalBurstsUnleashed {
+            get {
+                return ResourceManager.GetString("WindowName_SpiralAbyss_ElementalBurstsUnleashed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Elm. Skills に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string WindowName_SpiralAbyss_ElementalSkillsCast {
+            get {
+                return ResourceManager.GetString("WindowName_SpiralAbyss_ElementalSkillsCast", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Locked に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string WindowName_SpiralAbyss_Locked {
+            get {
+                return ResourceManager.GetString("WindowName_SpiralAbyss_Locked", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Damage Taken に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string WindowName_SpiralAbyss_MostDamageTaken {
+            get {
+                return ResourceManager.GetString("WindowName_SpiralAbyss_MostDamageTaken", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Most Defeats に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string WindowName_SpiralAbyss_MostDefeats {
+            get {
+                return ResourceManager.GetString("WindowName_SpiralAbyss_MostDefeats", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Most Played に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string WindowName_SpiralAbyss_MostPlayedCharacters {
+            get {
+                return ResourceManager.GetString("WindowName_SpiralAbyss_MostPlayedCharacters", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Max Damages に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string WindowName_SpiralAbyss_StrongestSingleStrike {
+            get {
+                return ResourceManager.GetString("WindowName_SpiralAbyss_StrongestSingleStrike", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Day&apos;s data に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string WindowName_TimeGraph_DayName {

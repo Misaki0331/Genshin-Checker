@@ -93,41 +93,41 @@ namespace Genshin_Checker.Window
             {
                 characters.Add(new(character.id, $"{character.value:#,##0}"));
             }
-            CharacterCount = new(account, "出撃回数", characters);
+            CharacterCount = new(account, Localize.WindowName_SpiralAbyss_MostPlayedCharacters, characters);
             CharacterCount.ClickHandler += a => GameRecords_Character_Click(a);
             PanelCharacterCount.Controls.Add(CharacterCount);
             ///最多撃破数
             characters = new();
             foreach (var character in data.Ranks.Defeat) characters.Add(new(character.id, $"{character.value:#,##0}"));
-            var con = new UI.Control.SpiralAbyss.CharacterFrame(account, "最多撃破数", characters);
+            var con = new UI.Control.SpiralAbyss.CharacterFrame(account, Localize.WindowName_SpiralAbyss_MostDefeats, characters);
             con.ClickHandler+= a => GameRecords_Character_Click(a);
             FlowGeneralData.Controls.Add(con);
             GeneralList.Add(con);
             ///最大ダメージ
             characters = new();
             foreach (var character in data.Ranks.Damage) characters.Add(new(character.id, $"{character.value:#,##0}"));
-            con = new UI.Control.SpiralAbyss.CharacterFrame(account, "最大ダメージ", characters);
+            con = new UI.Control.SpiralAbyss.CharacterFrame(account, Localize.WindowName_SpiralAbyss_StrongestSingleStrike, characters);
             con.ClickHandler += a => GameRecords_Character_Click(a);
             FlowGeneralData.Controls.Add(con);
             GeneralList.Add(con);
             ///受けた最大ダメージ
             characters = new();
             foreach (var character in data.Ranks.TakeDamage) characters.Add(new(character.id, $"{character.value:#,##0}"));
-            con = new UI.Control.SpiralAbyss.CharacterFrame(account, "最大被ダメージ", characters);
+            con = new UI.Control.SpiralAbyss.CharacterFrame(account, Localize.WindowName_SpiralAbyss_MostDamageTaken, characters);
             con.ClickHandler += a => GameRecords_Character_Click(a);
             FlowGeneralData.Controls.Add(con);
             GeneralList.Add(con);
             ///元素爆発使用回数
             characters = new();
             foreach (var character in data.Ranks.EnergySkill) characters.Add(new(character.id, $"{character.value:#,##0}"));
-            con = new UI.Control.SpiralAbyss.CharacterFrame(account, "元素爆発回数", characters);
+            con = new UI.Control.SpiralAbyss.CharacterFrame(account, Localize.WindowName_SpiralAbyss_ElementalBurstsUnleashed, characters);
             con.ClickHandler += a => GameRecords_Character_Click(a);
             FlowGeneralData.Controls.Add(con);
             GeneralList.Add(con);
             ///元素スキル使用回数
             characters = new();
             foreach (var character in data.Ranks.NormalSkill) characters.Add(new(character.id, $"{character.value:#,##0}"));
-            con = new UI.Control.SpiralAbyss.CharacterFrame(account, "元素スキル回数", characters);
+            con = new UI.Control.SpiralAbyss.CharacterFrame(account, Localize.WindowName_SpiralAbyss_ElementalSkillsCast, characters);
             con.ClickHandler += a => GameRecords_Character_Click(a);
             FlowGeneralData.Controls.Add(con);
             GeneralList.Add(con);
@@ -136,7 +136,7 @@ namespace Genshin_Checker.Window
             var floor = data.floors.FindAll(a => true);
             foreach (var f in floor)
             {
-                var str = f.is_unlock ? $"{f.star} / {f.max_star}" : "未開放";
+                var str = f.is_unlock ? $"{f.star} / {f.max_star}" : Localize.WindowName_SpiralAbyss_Locked;
                 DateTime latest = DateTime.MinValue;
                 foreach (var a in f.levels)
                 {

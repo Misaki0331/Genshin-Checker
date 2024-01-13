@@ -584,4 +584,25 @@ Progress : {3}%</value>
     <value>Could not start because multiple startups were detected.
 Arguments invoked : {0}</value>
   </data>
+  <data name="WindowName_SpiralAbyss_MostPlayedCharacters" xml:space="preserve">
+    <value>Most Played</value>
+  </data>
+  <data name="WindowName_SpiralAbyss_MostDefeats" xml:space="preserve">
+    <value>Most Defeats</value>
+  </data>
+  <data name="WindowName_SpiralAbyss_StrongestSingleStrike" xml:space="preserve">
+    <value>Max Damages</value>
+  </data>
+  <data name="WindowName_SpiralAbyss_MostDamageTaken" xml:space="preserve">
+    <value>Damage Taken</value>
+  </data>
+  <data name="WindowName_SpiralAbyss_ElementalBurstsUnleashed" xml:space="preserve">
+    <value>Elm. Bursts</value>
+  </data>
+  <data name="WindowName_SpiralAbyss_ElementalSkillsCast" xml:space="preserve">
+    <value>Elm. Skills</value>
+  </data>
+  <data name="WindowName_SpiralAbyss_Locked" xml:space="preserve">
+    <value>Locked</value>
+  </data>
 </root>

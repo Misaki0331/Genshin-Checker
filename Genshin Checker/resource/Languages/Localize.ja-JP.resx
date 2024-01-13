@@ -577,4 +577,25 @@
     <value>多重起動を検出した為起動できませんでした。
 起動した引数 : {0}</value>
   </data>
+  <data name="WindowName_SpiralAbyss_MostPlayedCharacters" xml:space="preserve">
+    <value>出撃回数</value>
+  </data>
+  <data name="WindowName_SpiralAbyss_MostDefeats" xml:space="preserve">
+    <value>最多撃破数</value>
+  </data>
+  <data name="WindowName_SpiralAbyss_StrongestSingleStrike" xml:space="preserve">
+    <value>最大ダメージ</value>
+  </data>
+  <data name="WindowName_SpiralAbyss_MostDamageTaken" xml:space="preserve">
+    <value>最大被ダメージ</value>
+  </data>
+  <data name="WindowName_SpiralAbyss_ElementalBurstsUnleashed" xml:space="preserve">
+    <value>元素爆発回数</value>
+  </data>
+  <data name="WindowName_SpiralAbyss_ElementalSkillsCast" xml:space="preserve">
+    <value>元素スキル回数</value>
+  </data>
+  <data name="WindowName_SpiralAbyss_Locked" xml:space="preserve">
+    <value>未開放</value>
+  </data>
 </root>
