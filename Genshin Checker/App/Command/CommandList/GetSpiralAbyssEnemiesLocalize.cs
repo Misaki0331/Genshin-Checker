@@ -33,7 +33,8 @@ namespace Genshin_Checker.App.Command.CommandList
                     await SpiralAbyss(parameters);
                     break;
                 default:
-                    Console($"GetLocalize [SpiralAbyss]\n[SpiralAbyss] : 深境螺旋の敵情報を取得");
+                    Console($"Get-Localize [SpiralAbyss]");
+                    Console($"SpiralAbyss [old] : 深境螺旋の敵情報を取得。oldを付けると前回の深境螺旋の敵情報を取得します。");
                     break;
 
             }

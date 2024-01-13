@@ -23,14 +23,15 @@ namespace Genshin_Checker
             InitializeComponent();
             GameLogTemp = new();
             notification.Icon = resource.icon.nahida;
+            bool isdebug = false;
             var cmds = System.Environment.GetCommandLineArgs();
             //コマンドライン引数を列挙する
             foreach (string cmd in cmds)
             {
                 switch (cmd)
                 {
-                    case "-hide":
-                        //IsHide = true;
+                    case "-debug":
+                        isdebug = true;
                         break;
                 }
             }
@@ -56,9 +57,11 @@ namespace Genshin_Checker
             versionNameToolStripMenuItem.Text = $"{name.Name} {name.Version}";
 #if DEBUG
             versionNameToolStripMenuItem.Text += "(DEBUG)";
+            isdebug = true;
 #else
             testToolStripMenuItem.Visible = false;      
 #endif
+            consoleToolStripMenuItem.Visible = isdebug;
             if (safemode)
             {
                 Trace.WriteLine(Localize.Warning_SafeMode);

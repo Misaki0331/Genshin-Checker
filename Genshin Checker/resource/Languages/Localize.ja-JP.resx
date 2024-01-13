@@ -364,7 +364,7 @@
     <value>残り 約 {0}</value>
   </data>
   <data name="WindowName_RealTimeNote_TransformOngoingDay" xml:space="preserve">
-    <value>{0}日</value>
+    <value>{0} 日</value>
   </data>
   <data name="WindowName_RealTimeNote_TransformOngoingHour" xml:space="preserve">
     <value>{0} 時間</value>
@@ -385,7 +385,7 @@
     <value>追加報酬未受取</value>
   </data>
   <data name="WindowName_RealTimeNote_Daily_Completed" xml:space="preserve">
-    <value>デイリー完了</value>
+    <value>本日分完了済</value>
   </data>
   <data name="WindowName_RealTimeNote_APIError" xml:space="preserve">
     <value>APIエラー</value>

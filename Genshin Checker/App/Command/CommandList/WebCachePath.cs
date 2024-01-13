@@ -16,6 +16,7 @@ namespace Genshin_Checker.App.Command.CommandList
             {
                 Console("GameDir -> ゲーム内ディレクトリの位置");
                 Console("WebCache -> ゲーム内ウェブキャッシュの位置");
+                Console("WebLinks -> ゲーム内からアカウントに関連するURLの取得");
                 return;
             }
             switch (parameters[1].ToLower())
