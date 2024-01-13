@@ -1138,9 +1138,9 @@ namespace Genshin_Checker.resource.Languages {
         
         /// <summary>
         ///   Retrieving {1} history for {0}...
-        ///Pages currently retrieved : {1} pages
-        ///Total pages : {2} pages
-        ///Progress : {3}% に類似しているローカライズされた文字列を検索します。
+        ///Pages currently retrieved : {2} pages
+        ///Total pages : {3} pages
+        ///Progress : {4}% に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string WindowName_LoadTravelersDiaryDetail_LoadingProgress {
             get {

@@ -576,9 +576,9 @@ Error Log
   </data>
   <data name="WindowName_LoadTravelersDiaryDetail_LoadingProgress" xml:space="preserve">
     <value>Retrieving {1} history for {0}...
-Pages currently retrieved : {1} pages
-Total pages : {2} pages
-Progress : {3}%</value>
+Pages currently retrieved : {2} pages
+Total pages : {3} pages
+Progress : {4}%</value>
   </data>
   <data name="Error_Program_MultipleLaunched" xml:space="preserve">
     <value>Could not start because multiple startups were detected.
