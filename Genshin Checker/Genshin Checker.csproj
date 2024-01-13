@@ -28,26 +28,26 @@ GitHub : https://github.com/Misaki0331</Description>
     <PackageProjectUrl>https://github.com/Misaki0331/Genshin-Checker/</PackageProjectUrl>
     <RepositoryUrl>https://github.com/Misaki0331/Genshin-Checker/</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <Version>0.11.0</Version>
+    <Version>0.12.0</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <NoWarn>1701;1702; NU1701; NU1702</NoWarn>
+    <NoWarn>1701;1702; NU1701; NU1702; MSB3568</NoWarn>
     <DebugType>embedded</DebugType>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <NoWarn>1701;1702; NU1701; NU1702</NoWarn>
+    <NoWarn>1701;1702; NU1701; NU1702; MSB3568</NoWarn>
     <DebugType>embedded</DebugType>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <NoWarn>1701;1702; NU1701; NU1702</NoWarn>
+    <NoWarn>1701;1702; NU1701; NU1702; MSB3568</NoWarn>
     <DebugType>embedded</DebugType>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <NoWarn>1701;1702; NU1701; NU1702</NoWarn>
+    <NoWarn>1701;1702; NU1701; NU1702; MSB3568</NoWarn>
     <DebugType>embedded</DebugType>
   </PropertyGroup>
 

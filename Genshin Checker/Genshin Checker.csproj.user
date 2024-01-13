@@ -120,6 +120,9 @@
     <EmbeddedResource Update="resource\font.resx">
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Update="Window\ExWindow\CharacterCalculator\CalculateResult.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Update="Window\PopupWindow\FatalError.resx">
       <SubType>Designer</SubType>
     </EmbeddedResource>
