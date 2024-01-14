@@ -19,6 +19,7 @@ namespace Genshin_Checker.App.Command.CommandList
             {
                 Console("AuthKey -> アカウントセンターの認証キーを取得");
                 Console("Account -> アカウント情報を表示します。");
+                Console("Monthly-Card -> 祝福のログを表示します。");
                 return;
             }
             switch (parameters[1].ToLower())
@@ -40,6 +41,21 @@ namespace Genshin_Checker.App.Command.CommandList
                         Console($"Name : {data.nickname}");
                         Console($"通行証ID : {data.aid}");
                     };
+                    break;
+                case "monthly-card":
+                    {
+                        var authkey = await WebViewWatcher.GetServiceCenterAuthKey();
+                        if (authkey == null)
+                        {
+                            Console("Error : 認証キーが見つかりませんでした。ゲーム内で報告ボタンを押して再度実行してください。");
+                            return;
+                        }
+                        var data = await App.Game.GameAPI.GetMonthlyCardLog(authkey);
+                        foreach (var item in data.list)
+                        {
+                            Console($"{item.time} - {item.card_product_name}");
+                        }
+                    }
                     break;
                 default:
                     Console($"{parameters[1]} は不明なパラメータです。");
