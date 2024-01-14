@@ -20,19 +20,30 @@ namespace Genshin_Checker.App.Command.CommandList
                 Console("AuthKey -> アカウントセンターの認証キーを取得");
                 Console("Account -> アカウント情報を表示します。");
                 Console("Monthly-Card -> 祝福のログを表示します。");
+                Console("Crystal -> 創生結晶のログを表示します。");
+                Console("Primogem -> 原石のログを表示します。");
+                Console("Resin -> 樹脂消費のログを表示します。");
+                Console("Star-dust -> スターダストのログを表示します。");
+                Console("star-glitter -> スターライトのログを表示します。");
+                Console("artifact -> 聖遺物のログを表示します。");
+                Console("weapon -> 武器のログを表示します。");
                 return;
             }
+
+            var authkey = await WebViewWatcher.GetServiceCenterAuthKey();
+            var authRequiedMessage = new Action(() => { 
+                Console("Error : 認証キーが見つかりませんでした。ゲーム内で報告ボタンを押して再度実行してください。"); 
+            });
             switch (parameters[1].ToLower())
             {
                 case "authkey":
-                    Console($"{await WebViewWatcher.GetServiceCenterAuthKey()}");
+                    Console($"{authkey}");
                     break;
                 case "account":
-                    { 
-                        var authkey = await WebViewWatcher.GetServiceCenterAuthKey();
+                    {
                         if (authkey == null)
                         {
-                            Console("Error : 認証キーが見つかりませんでした。ゲーム内で報告ボタンを押して再度実行してください。");
+                            authRequiedMessage();
                             return;
                         }
                         var data = await App.Game.GameAPI.GetAccountInfo(authkey);
@@ -44,17 +55,98 @@ namespace Genshin_Checker.App.Command.CommandList
                     break;
                 case "monthly-card":
                     {
-                        var authkey = await WebViewWatcher.GetServiceCenterAuthKey();
                         if (authkey == null)
                         {
-                            Console("Error : 認証キーが見つかりませんでした。ゲーム内で報告ボタンを押して再度実行してください。");
+                            authRequiedMessage();
                             return;
                         }
                         var data = await App.Game.GameAPI.GetMonthlyCardLog(authkey);
                         foreach (var item in data.list)
+                            Console($"{item.EventTime} - {item.EventName}");
+                    }
+                    break;
+                case "crystal":
+                    {
+                        if (authkey == null)
                         {
-                            Console($"{item.time} - {item.card_product_name}");
+                            authRequiedMessage();
+                            return;
                         }
+                        var data = await App.Game.GameAPI.GetCrystalLog(authkey);
+                        foreach (var item in data.list)
+                            Console($"{item.EventTime} ({item.NumItems}) - {item.EventName}");
+                    }
+                    break;
+                case "primogem":
+                    {
+                        if (authkey == null)
+                        {
+                            authRequiedMessage();
+                            return;
+                        }
+                        var data = await App.Game.GameAPI.GetPrimogemLog(authkey);
+                        foreach (var item in data.list)
+                            Console($"{item.EventTime} ({item.NumItems}) - {item.EventName}");
+                    }
+                    break;
+                case "resin":
+                    {
+                        if (authkey == null)
+                        {
+                            authRequiedMessage();
+                            return;
+                        }
+                        var data = await App.Game.GameAPI.GetResinLog(authkey);
+                        foreach (var item in data.list)
+                            Console($"{item.EventTime} ({item.NumItems}) - {item.EventName}");
+                    }
+                    break;
+                case "star-dust":
+                    {
+                        if (authkey == null)
+                        {
+                            authRequiedMessage();
+                            return;
+                        }
+                        var data = await App.Game.GameAPI.GetStardustLog(authkey);
+                        foreach (var item in data.list)
+                            Console($"{item.EventTime} ({item.NumItems}) - {item.EventName}");
+                    }
+                    break;
+                case "star-glitter":
+                    {
+                        if (authkey == null)
+                        {
+                            authRequiedMessage();
+                            return;
+                        }
+                        var data = await App.Game.GameAPI.GetStarglitterLog(authkey);
+                        foreach (var item in data.list)
+                            Console($"{item.EventTime} ({item.NumItems}) - {item.EventName}");
+                    }
+                    break;
+                case "artifact":
+                    {
+                        if (authkey == null)
+                        {
+                            authRequiedMessage();
+                            return;
+                        }
+                        var data = await App.Game.GameAPI.GetArtifactLog(authkey);
+                        foreach (var item in data.list)
+                            Console($"{item.EventTime} {(item.NumItems=="-1"?"消費":"獲得")} {item.ItemName} - {item.EventName}");
+                    }
+                    break;
+                case "weapon":
+                    {
+                        if (authkey == null)
+                        {
+                            authRequiedMessage();
+                            return;
+                        }
+                        var data = await App.Game.GameAPI.GetWeaponLog(authkey);
+                        foreach (var item in data.list)
+                            Console($"{item.EventTime} {(item.NumItems == "-1" ? "消費" : "獲得")} {item.ItemName} - {item.EventName}");
                     }
                     break;
                 default:

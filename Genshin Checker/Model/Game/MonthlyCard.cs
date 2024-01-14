@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,7 +17,7 @@ namespace Genshin_Checker.Model.Game.MonthlyCardLog
         /// </summary>
         public int size { get; set; }
         /// <summary>
-        /// 末尾のデータID
+        /// リクエストした末尾のデータID
         /// </summary>
         public long end_id { get; set; }
         /// <summary>
@@ -30,22 +31,27 @@ namespace Genshin_Checker.Model.Game.MonthlyCardLog
         /// <summary>
         /// データID
         /// </summary>
-        public long id { get; set; }
+        [JsonProperty("id")]
+        public long ID { get; set; }
         /// <summary>
         /// ゲームUID
         /// </summary>
-        public int uid { get; set; }
+        [JsonProperty("uid")]
+        public int UID { get; set; }
         /// <summary>
         /// 消費・増加タイプ
         /// </summary>
-        public int card_product_type { get; set; }
+        [JsonProperty("card_product_type")]
+        public int EventType { get; set; }
         /// <summary>
         /// イベント発生時刻(サーバー時間)
         /// </summary>
-        public string time { get; set; } = "";
+        [JsonProperty("time")]
+        public string EventTime { get; set; } = "";
         /// <summary>
         /// イベント名(ローカライズされた)
         /// </summary>
-        public string card_product_name { get; set; } = "";
+        [JsonProperty("card_product_name")]
+        public string EventName { get; set; } = "";
     }
 }

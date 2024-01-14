@@ -17,6 +17,7 @@ namespace Genshin_Checker.App
 {
     public class WebRequest
     {
+        const string WebUserAgent = "Mozilla/5.0 (X11; Linux x86_64; rv:100.0) Gecko/20100101 Firefox/100.0";
         static private string RandomString(int n)
         {
             const string chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
@@ -64,7 +65,7 @@ namespace Genshin_Checker.App
                     { "x-rpc-app_version", "1.5.0" },
                     { "x-rpc-client_type", "5" },
                     { "x-rpc-language", culture.Name.ToLower() },
-                    { "User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36 Edg/119.0.0.0" },
+                    { "User-Agent", WebUserAgent },
                     { "Cookie", cookie },
                     { "Ds", DS() }
                 };
@@ -104,7 +105,7 @@ namespace Genshin_Checker.App
                     { "x-rpc-app_version", "1.5.0" },
                     { "x-rpc-client_type", "5" },
                     { "x-rpc-language", culture.Name.ToLower() },
-                    { "User-Agent", "Mozilla/5.0 (X11; Linux x86_64; rv:100.0) Gecko/20100101 Firefox/100.0" },
+                    { "User-Agent", WebUserAgent },
                     { "Cookie", cookie },
                     { "DS", DS() }
                 };
@@ -131,7 +132,7 @@ namespace Genshin_Checker.App
             }
             return await response.Content.ReadAsStringAsync();
         }
-        public static async Task<string> GeneralGetRequest(string url)
+        public static async Task<string> GeneralGetRequest(string url,bool HideUserAgent=false)
         {
             var uri = new Uri(url);
             var root = $"{uri.Scheme}://{uri.Host}";
@@ -145,7 +146,7 @@ namespace Genshin_Checker.App
                     { "x-rpc-app_version", "1.5.0" },
                     { "x-rpc-client_type", "5" },
                     { "x-rpc-language", "en-us" },
-                    { "User-Agent", $"Genshin Checker/{System.Reflection.Assembly.GetExecutingAssembly().GetName().Version}" },
+                    { "User-Agent", HideUserAgent?WebUserAgent:$"Genshin Checker/{System.Reflection.Assembly.GetExecutingAssembly().GetName().Version}" },
                 };
             HttpClient client = new();
             client.DefaultRequestHeaders.Clear();
