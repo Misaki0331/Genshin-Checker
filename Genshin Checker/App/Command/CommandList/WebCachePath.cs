@@ -17,6 +17,7 @@ namespace Genshin_Checker.App.Command.CommandList
                 Console("GameDir -> ゲーム内ディレクトリの位置");
                 Console("WebCache -> ゲーム内ウェブキャッシュの位置");
                 Console("WebLinks -> ゲーム内からアカウントに関連するURLの取得");
+                Console("AuthKey -> アカウントセンターの認証キーを取得");
                 return;
             }
             switch (parameters[1].ToLower())
@@ -46,6 +47,9 @@ namespace Genshin_Checker.App.Command.CommandList
                             Console($"リンクは {links.Count} 件見つかりました。");
                         }
                     }
+                    break;
+                case "authkey":
+                    Console($"{await WebViewWatcher.GetServiceCenterAuthKey()}");
                     break;
                 default:
                     Console($"{parameters[1]} は不明なパラメータです。");
