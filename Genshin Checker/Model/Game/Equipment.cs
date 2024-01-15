@@ -58,7 +58,7 @@ namespace Genshin_Checker.Model.Game.EquipmentLog
         /// レアリティ
         /// </summary>
         [JsonProperty("quality")]
-        public int Rarelity { get; set; }
+        public int Rarity { get; set; }
         /// <summary>
         /// レベル
         /// </summary>

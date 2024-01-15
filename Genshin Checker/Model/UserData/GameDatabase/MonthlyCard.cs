@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Genshin_Checker.Model.UserData.GameDatabase.ItemNum
+namespace Genshin_Checker.Model.UserData.GameDatabase.MonthlyCard
 {
 
     public class Root
@@ -37,10 +37,5 @@ namespace Genshin_Checker.Model.UserData.GameDatabase.ItemNum
         /// </summary>
         [JsonProperty("i")]
         public int EventTypeID { get; set; } = 0;
-        /// <summary>
-        /// 対象のカウント
-        /// </summary>
-        [JsonProperty("c")]
-        public int Count { get; set; } = -1;
     }
 }

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Genshin_Checker.Model.UserData.GameDatabase.ItemNum
+namespace Genshin_Checker.Model.UserData.GameDatabase.Enquipment
 {
 
     public class Root
@@ -42,5 +42,20 @@ namespace Genshin_Checker.Model.UserData.GameDatabase.ItemNum
         /// </summary>
         [JsonProperty("c")]
         public int Count { get; set; } = -1;
+        /// <summary>
+        /// レアリティ
+        /// </summary>
+        [JsonProperty("r")]
+        public int Rarity { get; set; } = -1;
+        /// <summary>
+        /// レベル
+        /// </summary>
+        [JsonProperty("l")]
+        public int Level { get; set; } = -1;
+        /// <summary>
+        /// アイテム名(英語)
+        /// </summary>
+        [JsonProperty("n")]
+        public string Name { get; set; } = "";    
     }
 }
