@@ -20,7 +20,7 @@ namespace Genshin_Checker.Model.Game.ItemLog
         /// <summary>
         /// リクエストした末尾のデータID
         /// </summary>
-        public long end_id { get; set; }
+        public string end_id { get; set; } = "";
         /// <summary>
         /// データ
         /// </summary>
@@ -33,7 +33,7 @@ namespace Genshin_Checker.Model.Game.ItemLog
         /// データID
         /// </summary>
         [JsonProperty("id")]
-        public long ID { get; set; }
+        public string ID { get; set; } = "";
         /// <summary>
         /// 消費・増加値
         /// </summary>

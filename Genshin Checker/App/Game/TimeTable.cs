@@ -84,7 +84,9 @@ namespace Genshin_Checker.App
         public static bool SaveDate(DateTime date,string data)
         {
             if (data.Length != 86400) return false;
+#if !DEBUG
             Registry.SetValue($"TimeTable\\{date.Year}\\{date.Month:00}\\{date.Day:00}", "PlayAlias",data,true);
+#endif
             return true;
         }
         public static bool SavePoint(DateTime time, string State)

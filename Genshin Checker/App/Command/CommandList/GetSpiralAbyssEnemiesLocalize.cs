@@ -73,12 +73,8 @@ namespace Genshin_Checker.App.Command.CommandList
 
             List<string> imageURL = new();
             Dictionary<string, V1> Datas = new();
-            var langs = JsonConvert.DeserializeObject<Model.HoYoLab.Languages>(await App.WebRequest.GeneralGetRequest("https://bbs-api-os.hoyolab.com/community/misc/wapi/langs"));
-            if(langs == null || langs.Data == null)
-            {
-                Console("サーバーから言語情報を読み込むことができませんでした。");
-                return;
-            }
+            var langs = await HoYoLab.LocalizeInfo.GetLanguages();
+            if (langs.Data == null) throw new ArgumentNullException(nameof(langs.Data), "languages data is null");
             foreach (var lan in langs.Data.langs) {
                 Datas.Add(lan.value,ValidAccount.SpiralAbyss.Convert(await ValidAccount.Endpoint.GetSpiralAbyss(!IsOld, new System.Globalization.CultureInfo(lan.value))));
                 Console($"Getting Localize : {Path.GetFileName(lan.value)}");

@@ -85,7 +85,7 @@ namespace Genshin_Checker.App.Game
             if (root.Data == null) throw new GameAPIException(root.Retcode, root.Message);
             return root.Data;
         }
-        public static async Task<Model.Game.MonthlyCardLog.Data> GetMonthlyCardLog(string authkey, int size = 20, long end_id = -1, MonthlyFilter filter = MonthlyFilter.All, DateTime? begin = null, DateTime? end = null, CultureInfo? culture = null)
+        public static async Task<Model.Game.MonthlyCardLog.Data> GetMonthlyCardLog(string authkey, int size = 20, long end_id = 0, MonthlyFilter filter = MonthlyFilter.All, DateTime? begin = null, DateTime? end = null, CultureInfo? culture = null)
         {
             culture ??= CultureInfo.CurrentUICulture;
             string lang = culture.TwoLetterISOLanguageName;
@@ -98,7 +98,7 @@ namespace Genshin_Checker.App.Game
                     { "game_biz", "hk4e_global" },
                     { "lang", lang },
                     { "size",$"{size}" },
-                    { "end_id", $"{(end_id==-1?"":$"{end_id}")}" },
+                    { "end_id", $"{(end_id==0?"":$"{end_id}")}" },
                     { "cardtype", filter==MonthlyFilter.All?"":$"{(int)filter}"},
                     { "begin_time", $"{(begin==null?"":$"{begin:yyyy-MM-dd}")}" },
                     { "end_time", $"{(end==null?"":$"{end:yyyy-MM-dd}")}" },
@@ -111,7 +111,7 @@ namespace Genshin_Checker.App.Game
             return root.Data;
         }
 
-        public static async Task<Model.Game.ItemLog.Data> GetCrystalLog(string authkey, int size = 20, long end_id = -1, AddType filter = AddType.All, DateTime? begin = null, DateTime? end = null, CultureInfo? culture = null)
+        public static async Task<Model.Game.ItemLog.Data> GetCrystalLog(string authkey, int size = 20, long end_id = 0, AddType filter = AddType.All, DateTime? begin = null, DateTime? end = null, CultureInfo? culture = null)
         {
             culture ??= CultureInfo.CurrentUICulture;
             string lang = culture.TwoLetterISOLanguageName;
@@ -124,7 +124,7 @@ namespace Genshin_Checker.App.Game
                     { "game_biz", "hk4e_global" },
                     { "lang", lang },
                     { "size",$"{size}" },
-                    { "end_id", $"{(end_id==-1?"":$"{end_id}")}" },
+                    { "end_id", $"{(end_id==0?"":$"{end_id}")}" },
                     { "add_type", filter==AddType.All?"":filter.ToString().ToLower() },
                     { "begin_time", begin==null?"":$"{begin:yyyy-MM-dd HH:mm:ss}" },
                     { "end_time", end==null?"":$"{end:yyyy-MM-dd HH:mm:ss}" },
@@ -137,7 +137,7 @@ namespace Genshin_Checker.App.Game
             return root.Data;
         }
 
-        public static async Task<Model.Game.ItemLog.Data> GetPrimogemLog(string authkey, int size = 20, long end_id = -1, AddType filter = AddType.All, DateTime? begin = null, DateTime? end = null, CultureInfo? culture = null)
+        public static async Task<Model.Game.ItemLog.Data> GetPrimogemLog(string authkey, int size = 20, long end_id = 0, AddType filter = AddType.All, DateTime? begin = null, DateTime? end = null, CultureInfo? culture = null)
         {
             culture ??= CultureInfo.CurrentUICulture;
             string lang = culture.TwoLetterISOLanguageName;
@@ -150,7 +150,7 @@ namespace Genshin_Checker.App.Game
                     { "game_biz", "hk4e_global" },
                     { "lang", lang },
                     { "size",$"{size}" },
-                    { "end_id", $"{(end_id==-1?"":$"{end_id}")}" },
+                    { "end_id", $"{(end_id==0?"":$"{end_id}")}" },
                     { "add_type", filter == AddType.All ? "" : filter.ToString().ToLower() },
                     { "begin_time", begin==null?"":$"{begin:yyyy-MM-dd HH:mm:ss}" },
                     { "end_time", end==null?"":$"{end:yyyy-MM-dd HH:mm:ss}" },
@@ -162,7 +162,7 @@ namespace Genshin_Checker.App.Game
             if (root.Data == null) throw new GameAPIException(root.Retcode, root.Message);
             return root.Data;
         }
-        public static async Task<Model.Game.ItemLog.Data> GetResinLog(string authkey, int size = 20, long end_id = -1, DateTime? begin = null, DateTime? end = null, CultureInfo? culture = null)
+        public static async Task<Model.Game.ItemLog.Data> GetResinLog(string authkey, int size = 20, long end_id = 0, DateTime? begin = null, DateTime? end = null, CultureInfo? culture = null)
         {
             culture ??= CultureInfo.CurrentUICulture;
             string lang = culture.TwoLetterISOLanguageName;
@@ -175,7 +175,7 @@ namespace Genshin_Checker.App.Game
                     { "game_biz", "hk4e_global" },
                     { "lang", lang },
                     { "size",$"{size}" },
-                    { "end_id", $"{(end_id==-1?"":$"{end_id}")}" },
+                    { "end_id", $"{(end_id==0?"":$"{end_id}")}" },
                     { "begin_time", begin==null?"":$"{begin:yyyy-MM-dd HH:mm:ss}" },
                     { "end_time", end==null?"":$"{end:yyyy-MM-dd HH:mm:ss}" },
 
@@ -187,7 +187,7 @@ namespace Genshin_Checker.App.Game
             return root.Data;
         }
 
-        public static async Task<Model.Game.StarItems.Data> GetStarglitterLog(string authkey, int size = 20, long end_id = -1, AddType filter = AddType.All, DateTime? begin = null, DateTime? end = null, CultureInfo? culture = null)
+        public static async Task<Model.Game.StarItems.Data> GetStarglitterLog(string authkey, int size = 20, long end_id = 0, AddType filter = AddType.All, DateTime? begin = null, DateTime? end = null, CultureInfo? culture = null)
         {
             culture ??= CultureInfo.CurrentUICulture;
             string lang = culture.TwoLetterISOLanguageName;
@@ -200,7 +200,7 @@ namespace Genshin_Checker.App.Game
                     { "game_biz", "hk4e_global" },
                     { "lang", lang },
                     { "size",$"{size}" },
-                    { "end_id", $"{(end_id==-1?"":$"{end_id}")}" },
+                    { "end_id", $"{(end_id==0?"":$"{end_id}")}" },
                     { "add_type", filter==AddType.All?"":filter.ToString().ToLower() },
                     { "begin_time", begin==null?"":$"{begin:yyyy-MM-dd HH:mm:ss}" },
                     { "end_time", end==null?"":$"{end:yyyy-MM-dd HH:mm:ss}" },
@@ -213,7 +213,7 @@ namespace Genshin_Checker.App.Game
             return root.Data;
         }
 
-        public static async Task<Model.Game.StarItems.Data> GetStardustLog(string authkey, int size = 20, long end_id = -1, AddType filter = AddType.All, DateTime? begin = null, DateTime? end = null, CultureInfo? culture = null)
+        public static async Task<Model.Game.StarItems.Data> GetStardustLog(string authkey, int size = 20, long end_id = 0, AddType filter = AddType.All, DateTime? begin = null, DateTime? end = null, CultureInfo? culture = null)
         {
             culture ??= CultureInfo.CurrentUICulture;
             string lang = culture.TwoLetterISOLanguageName;
@@ -226,7 +226,7 @@ namespace Genshin_Checker.App.Game
                     { "game_biz", "hk4e_global" },
                     { "lang", lang },
                     { "size",$"{size}" },
-                    { "end_id", $"{(end_id==-1?"":$"{end_id}")}" },
+                    { "end_id", $"{(end_id==0?"":$"{end_id}")}" },
                     { "add_type", filter==AddType.All?"":filter.ToString().ToLower() },
                     { "begin_time", begin==null?"":$"{begin:yyyy-MM-dd HH:mm:ss}" },
                     { "end_time", end==null?"":$"{end:yyyy-MM-dd HH:mm:ss}" },
@@ -239,7 +239,7 @@ namespace Genshin_Checker.App.Game
             return root.Data;
         }
 
-        public static async Task<Model.Game.EquipmentLog.Data> GetArtifactLog(string authkey, int size = 20, long end_id = -1, int rarity = -1, AddType filter = AddType.All, DateTime? begin = null, DateTime? end = null, CultureInfo? culture = null)
+        public static async Task<Model.Game.EquipmentLog.Data> GetArtifactLog(string authkey, int size = 20, long end_id = 0, int rarity = -1, AddType filter = AddType.All, DateTime? begin = null, DateTime? end = null, CultureInfo? culture = null)
         {
             culture ??= CultureInfo.CurrentUICulture;
             string lang = culture.TwoLetterISOLanguageName;
@@ -252,7 +252,7 @@ namespace Genshin_Checker.App.Game
                     { "game_biz", "hk4e_global" },
                     { "lang", lang },
                     { "size",$"{size}" },
-                    { "end_id", $"{(end_id==-1?"":$"{end_id}")}" },
+                    { "end_id", $"{(end_id==0?"":$"{end_id}")}" },
                     { "add_type", filter==AddType.All?"":filter.ToString().ToLower() },
                     { "begin_time", begin==null?"":$"{begin:yyyy-MM-dd HH:mm:ss}" },
                     { "end_time", end==null?"":$"{end:yyyy-MM-dd HH:mm:ss}" },
@@ -266,7 +266,7 @@ namespace Genshin_Checker.App.Game
             return root.Data;
         }
 
-        public static async Task<Model.Game.EquipmentLog.Data> GetWeaponLog(string authkey, int size = 20, long end_id = -1, int rarity = -1, AddType filter = AddType.All, DateTime? begin = null, DateTime? end = null, CultureInfo? culture = null)
+        public static async Task<Model.Game.EquipmentLog.Data> GetWeaponLog(string authkey, int size = 20, long end_id = 0, int rarity = -1, AddType filter = AddType.All, DateTime? begin = null, DateTime? end = null, CultureInfo? culture = null)
         {
             culture ??= CultureInfo.CurrentUICulture;
             string lang = culture.TwoLetterISOLanguageName;
@@ -279,7 +279,7 @@ namespace Genshin_Checker.App.Game
                     { "game_biz", "hk4e_global" },
                     { "lang", lang },
                     { "size",$"{size}" },
-                    { "end_id", $"{(end_id==-1?"":$"{end_id}")}" },
+                    { "end_id", $"{(end_id==0?"":$"{end_id}")}" },
                     { "add_type", filter==AddType.All?"":filter.ToString().ToLower() },
                     { "begin_time", begin==null?"":$"{begin:yyyy-MM-dd HH:mm:ss}" },
                     { "end_time", end==null?"":$"{end:yyyy-MM-dd HH:mm:ss}" },

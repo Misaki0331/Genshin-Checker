@@ -11,19 +11,31 @@ namespace Genshin_Checker.App.General
 {
     internal class AppData
     {
+#if DEBUG
+        const string UserDataDirectry = "UserData.DEBUG";
+#else
+        const string UserDataDirectry = "UserData";
+#endif
         public static string GetRandomPath()
         {
             return $"{Path.GetRandomFileName().Replace(".", "")}.misaki_gsc"; //水咲原神チェッカー
         }
         public static string GetUserDataDir()
         {
-            return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Genshin Checker", "UserData");
+            return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Genshin Checker", UserDataDirectry);
+        }
+        public static bool IsExistFile(string path)
+        {
+            return File.Exists(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Genshin Checker", UserDataDirectry, path));
         }
         public static async Task<string?> LoadUserData(string path, bool compress = true)
         {
+#if DEBUG
+            compress = false;
+#endif
             try
             {
-                if (!Path.IsPathRooted(path)) path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Genshin Checker", "UserData", path);
+                if (!Path.IsPathRooted(path)) path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Genshin Checker", UserDataDirectry, path);
                 if (!File.Exists(path)) throw new FileNotFoundException(path);
                 if (compress)
                 {
@@ -48,11 +60,14 @@ namespace Genshin_Checker.App.General
         }
         public static async Task<bool> SaveUserData(string path, string data, bool compress = true)
         {
+#if DEBUG
+            compress = false;
+#endif
             try
             {
                 Trace.WriteLine($"SAVEFILE : {path}");
                 if(!Path.IsPathRooted(path))path = Path.Combine(GetUserDataDir(), path);
-                if (!Path.IsPathRooted(path)) Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Genshin Checker", "UserData", path);
+                if (!Path.IsPathRooted(path)) Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Genshin Checker", UserDataDirectry, path);
                 var directory = Path.GetDirectoryName(path);
                 if(directory!=null&&!Directory.Exists(directory))Directory.CreateDirectory(directory);
                 if (compress)

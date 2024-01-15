@@ -12,10 +12,18 @@ namespace Genshin_Checker.App
 {
     public class Registry
     {
+#if DEBUG
+        const string PathName = $"Software\\Genshin_Checker.DEBUG";
+#else
+        const string PathName = $"Software\\Genshin_Checker";
+#endif
         public static bool IsReadOnly { get; set; } = false;
         public static string? GetValue(string Subkey, string key, bool compress = false)
         {
-            var regkey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey($"Software\\Genshin_Checker\\{Subkey}");
+#if DEBUG 
+            compress = false;
+#endif
+            var regkey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey($"{PathName}\\{Subkey}");
             if (regkey == null) throw new IOException(Localize.Error_Registry_FailedToOpen);
             var val = regkey.GetValue(key);
             regkey.Close();
@@ -46,10 +54,11 @@ namespace Genshin_Checker.App
             var data = value;
             if (value.Length > 100) data = value[..100]+$"...({value.Length})";
             Trace.WriteLine($"{Subkey}:{key} (Compress:{compress}) Value:\"{data}\"");
+            compress = false;
 #endif
-            if(IsReadOnly&&!force) return;
+            //if(IsReadOnly&&!force) return;
             if (compress) value = Base64FromStringComp(value);
-            var regkey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey($"Software\\Genshin_Checker\\{Subkey}");
+            var regkey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey($"{PathName}\\{Subkey}");
             if (regkey == null) throw new IOException(Localize.Error_Registry_FailedToOpen);
             regkey.SetValue(key,value);
             regkey.Close();
@@ -57,7 +66,7 @@ namespace Genshin_Checker.App
 
         public static List<string> GetKeyNames(string Subkey)
         {
-            var reg = Microsoft.Win32.Registry.CurrentUser.CreateSubKey($"Software\\Genshin_Checker\\{Subkey}");
+            var reg = Microsoft.Win32.Registry.CurrentUser.CreateSubKey($"{PathName}\\{Subkey}");
 
             if (reg == null) throw new IOException(Localize.Error_Registry_FailedToOpen);
             string[] arySubKeyNames = reg.GetValueNames();
