@@ -174,7 +174,7 @@ namespace Genshin_Checker.Window.ProgressWindow
 
         private void UpdateTimer_Tick(object sender, EventArgs e)
         {
-            LabelTimer.Text = $"{Stopwatch.Elapsed}";
+            LabelTimer.Text = $"{Stopwatch.Elapsed:h\\:mm\\:ss\\.fff}";
         }
     }
 }

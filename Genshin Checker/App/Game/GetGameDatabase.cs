@@ -170,7 +170,7 @@ namespace Genshin_Checker.App.Game
                                 LocaleQueueEnquipment.Add(d.ItemName, latest);
                             }
                         }
-                        eventLists.Details.Add(new() { EventTime = time, EventType = d.EventName, Count = int.Parse(d.NumItems.Replace("+", "")), ID = d.ID, EventTypeID = int.MinValue, Level = d.Level, Rarity = d.Rarity, Name = d.ItemName });
+                        eventLists.Details.Add(new() { EventTime = time, EventType = d.EventName, Count = int.Parse(d.NumItems.Replace("+", "")), ID = d.ID, EventTypeID = GameDataStringToEventID.GetIDFromString(d.EventName), Level = d.Level, Rarity = d.Rarity, Name = d.ItemName });
                     }
                     else IsEnd = true;
                     latest = long.Parse(d.ID);
@@ -446,7 +446,7 @@ namespace Genshin_Checker.App.Game
                                 Trace.WriteLine($"ローカライズのキューに追加しました。[{d.EventName}]");
                                 LocaleQueue.Add(d.EventName, latest);
                             }
-                        eventLists.Details.Add(new() { EventTime = time, EventType = d.EventName, Count = int.Parse(d.NumItems.Replace("+", "")), ID = d.ID, EventTypeID = int.MinValue });
+                        eventLists.Details.Add(new() { EventTime = time, EventType = d.EventName, Count = int.Parse(d.NumItems.Replace("+", "")), ID = d.ID, EventTypeID = GameDataStringToEventID.GetIDFromString(d.EventName) });
                         latest = long.Parse(d.ID);
                     }
                     else IsEnd = true;
@@ -585,7 +585,7 @@ namespace Genshin_Checker.App.Game
                                 Trace.WriteLine($"ローカライズのキューに追加しました。[{d.EventName}]");
                                 LocaleQueue.Add(d.EventName, latest);
                             }
-                        eventLists.Details.Add(new() { EventTime = time, EventType = d.EventName, Count = int.Parse(d.NumItems.Replace("+", "")), ID = d.ID, EventTypeID = int.MinValue });
+                        eventLists.Details.Add(new() { EventTime = time, EventType = d.EventName, Count = int.Parse(d.NumItems.Replace("+", "")), ID = d.ID, EventTypeID = GameDataStringToEventID.GetIDFromString(d.EventName) });
                         latest = long.Parse(d.ID);
                     }
                     else IsEnd = true;

@@ -3,6 +3,7 @@ using Genshin_Checker.App.HoYoLab;
 using Genshin_Checker.App.General;
 using Genshin_Checker.Model.UserData.TravelersDiary.EventName;
 using Genshin_Checker.Model.UserData.TravelersDiary.EventLists;
+using Genshin_Checker.Model.UserData.GameDatabase;
 using Newtonsoft.Json;
 using System.Data;
 using System.Text;
@@ -16,7 +17,9 @@ namespace Genshin_Checker.Window
     {
         class ListData
         {
+            public string? CrystalPath;
             public string? PrimogemsPath;
+            public string? ExPrimogemsPath;
             public string? MoraPath;
             public int year = int.MinValue;
             public int month = int.MinValue;
@@ -86,7 +89,8 @@ namespace Genshin_Checker.Window
                         year = year,
                         month = month,
                         PrimogemsPath = Registry.GetValue(regPath, $"Latest{Mode.Primogems}Path", true),
-                        MoraPath = Registry.GetValue(regPath, $"Latest{Mode.Mora}Path", true)
+                        ExPrimogemsPath = Registry.GetValue(regPath, $"LatestExtraPrimogemsPath", true),
+                        MoraPath = Registry.GetValue(regPath, $"Latest{Mode.Mora}Path", true),
                     };
                     if (data.PrimogemsPath != null || data.MoraPath != null)
                     {
@@ -111,10 +115,12 @@ namespace Genshin_Checker.Window
             {
                 //dataGridView1.Rows.Clear();
                 string? path = null;
+                string? expath = null;
                 switch (listtype.SelectedIndex)
                 {
                     case 0:
                         path = PathList[monthlist.SelectedIndex].PrimogemsPath;
+                        expath = PathList[monthlist.SelectedIndex].ExPrimogemsPath;
                         break;
                     case 1:
                         path = PathList[monthlist.SelectedIndex].MoraPath;
@@ -122,26 +128,42 @@ namespace Genshin_Checker.Window
                 }
                 var localeEventPath = $"locale\\{account.Culture.Name.ToLower()}\\";
                 var eventpath = Registry.GetValue(localeEventPath, $"EventName", true);
+
+                var gameeventpath = Registry.GetValue("locale", $"GameDatabaseEventName", true);
+
                 var eventlists = new EventName();
+                var gameeventlists = new Model.UserData.GameDatabase.NameLocalize.Root();
                 var lists = new EventLists();
+                var gamelists = new Model.UserData.GameDatabase.ItemNum.Root();
                 if (path == null) throw new ArgumentException(string.Format(Localize.Error_TravelersDiaryDetailList_NoData,monthlist.SelectedText,listtype.SelectedIndex==0?Genshin.Primogems:Genshin.Mora));
+                //カスタマーセンターの方のローカライズを取得
                 try
                 {
-                    if (eventpath != null)
-                    {
-                        if (Path.IsPathRooted(eventpath))
-                        {
-                            Registry.SetValue(localeEventPath, $"EventName", Path.GetFileName(eventpath), true);
-                        }
+                    if (gameeventpath != null&&AppData.IsExistFile(gameeventpath))
+                        gameeventlists = JsonChecker<Model.UserData.GameDatabase.NameLocalize.Root>.Check(await App.General.AppData.LoadUserData(gameeventpath) ?? "{}");
+                }
+                catch { }
+                //HoYoLabの方のローカライズを取得
+                try
+                {
+                    if (eventpath != null&&AppData.IsExistFile(eventpath))
                         eventlists = JsonConvert.DeserializeObject<EventName>(await App.General.AppData.LoadUserData(eventpath)??"");
-                    }
                 }
-                catch {}
+                catch { }
+                //カスタマーセンターのデータベースを取得
                 try
                 {
-                    lists = JsonConvert.DeserializeObject<EventLists>(await App.General.AppData.LoadUserData(path)??"");
+                    if (expath!=null&&AppData.IsExistFile(expath)) gamelists = JsonChecker<Model.UserData.GameDatabase.ItemNum.Root>.Check(await AppData.LoadUserData(expath) ?? "{}");
                 }
-                catch (FileNotFoundException) { }
+                catch (Exception)
+                {
+                    throw;
+                }
+                //HoYoLabのデータベースを取得
+                try
+                {
+                    if(AppData.IsExistFile(path))lists = JsonChecker<EventLists>.Check(await AppData.LoadUserData(path)??"{}");
+                }
                 catch (Exception)
                 {
                     throw;
@@ -155,6 +177,16 @@ namespace Genshin_Checker.Window
                 {
                     var typename = App.General.TravelersDiaryDatailEventConverter.GetEventName(a.EventType, eventlists);
                     CurrentView.Rows.Add(new object[] { Server.ConvertUTCTime(account.Server,a.EventTime), a.EventType, typename, a.Count });
+                }
+                foreach (var a in gamelists.Details)
+                {
+                    var id = a.EventTypeID == int.MinValue ? GameDataStringToEventID.GetIDFromString(a.EventType) : a.EventTypeID;
+                    if (a.Count < 0 || id!=int.MinValue)
+                    {
+                        if (id != a.EventTypeID) a.EventTypeID = id;
+                        var typename = App.General.TravelersDiaryDatailEventConverter.GetEventName(a.EventTypeID, a.EventType, gameeventlists);
+                        CurrentView.Rows.Add(new object[] { Server.ConvertUTCTime(account.Server, a.EventTime), a.EventTypeID, typename, a.Count });
+                    }
                 }
                 lists.Details.Clear();
                 dataGridView1.ResumeLayout(true);
