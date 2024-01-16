@@ -92,6 +92,7 @@ namespace Genshin_Checker.App.Game
         {
             culture ??= CultureInfo.CurrentUICulture;
             string lang = culture.TwoLetterISOLanguageName;
+            if (culture.Name.ToLower() == "zh-tw") lang = "zh-tw";
             var parms =
                 await new FormUrlEncodedContent(new Dictionary<string, string>
                 {
@@ -118,6 +119,7 @@ namespace Genshin_Checker.App.Game
         {
             culture ??= CultureInfo.CurrentUICulture;
             string lang = culture.TwoLetterISOLanguageName;
+            if (culture.Name.ToLower() == "zh-tw") lang = "zh-tw";
             var parms =
                 await new FormUrlEncodedContent(new Dictionary<string, string>
                 {
@@ -144,6 +146,7 @@ namespace Genshin_Checker.App.Game
         {
             culture ??= CultureInfo.CurrentUICulture;
             string lang = culture.TwoLetterISOLanguageName;
+            if (culture.Name.ToLower() == "zh-tw") lang = "zh-tw";
             var parms =
                 await new FormUrlEncodedContent(new Dictionary<string, string>
                 {
@@ -169,6 +172,7 @@ namespace Genshin_Checker.App.Game
         {
             culture ??= CultureInfo.CurrentUICulture;
             string lang = culture.TwoLetterISOLanguageName;
+            if (culture.Name.ToLower() == "zh-tw") lang = "zh-tw";
             var parms =
                 await new FormUrlEncodedContent(new Dictionary<string, string>
                 {
@@ -194,6 +198,7 @@ namespace Genshin_Checker.App.Game
         {
             culture ??= CultureInfo.CurrentUICulture;
             string lang = culture.TwoLetterISOLanguageName;
+            if (culture.Name.ToLower() == "zh-tw") lang = "zh-tw";
             var parms =
                 await new FormUrlEncodedContent(new Dictionary<string, string>
                 {
@@ -220,6 +225,7 @@ namespace Genshin_Checker.App.Game
         {
             culture ??= CultureInfo.CurrentUICulture;
             string lang = culture.TwoLetterISOLanguageName;
+            if (culture.Name.ToLower() == "zh-tw") lang = "zh-tw";
             var parms =
                 await new FormUrlEncodedContent(new Dictionary<string, string>
                 {
@@ -246,6 +252,7 @@ namespace Genshin_Checker.App.Game
         {
             culture ??= CultureInfo.CurrentUICulture;
             string lang = culture.TwoLetterISOLanguageName;
+            if (culture.Name.ToLower() == "zh-tw") lang = "zh-tw";
             var parms =
                 await new FormUrlEncodedContent(new Dictionary<string, string>
                 {
@@ -273,6 +280,7 @@ namespace Genshin_Checker.App.Game
         {
             culture ??= CultureInfo.CurrentUICulture;
             string lang = culture.TwoLetterISOLanguageName;
+            if (culture.Name.ToLower() == "zh-tw") lang = "zh-tw";
             var parms =
                 await new FormUrlEncodedContent(new Dictionary<string, string>
                 {
