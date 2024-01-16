@@ -151,6 +151,15 @@ namespace Genshin_Checker.resource.Languages {
         }
         
         /// <summary>
+        ///   Crystal に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string Crystal {
+            get {
+                return ResourceManager.GetString("Crystal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Anemo に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string Element_Anemo {

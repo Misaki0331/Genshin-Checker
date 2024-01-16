@@ -445,9 +445,6 @@
   <data name="WindowName_TravelersDiaryDetailList_Downloading_ThisMonth" xml:space="preserve">
     <value>今月</value>
   </data>
-  <data name="Error_TravelersDiaryDetailList_NoData" xml:space="preserve">
-    <value>{0}に対応する{1}データが見つかりませんでした。</value>
-  </data>
   <data name="Error_TravelersDiaryDetailList_FailedToCsvOutput" xml:space="preserve">
     <value>CSV出力に失敗しました。</value>
   </data>

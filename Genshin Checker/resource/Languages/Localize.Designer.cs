@@ -566,15 +566,6 @@ namespace Genshin_Checker.resource.Languages {
         }
         
         /// <summary>
-        ///   No data was found for {1} corresponding to {0}. に類似しているローカライズされた文字列を検索します。
-        /// </summary>
-        public static string Error_TravelersDiaryDetailList_NoData {
-            get {
-                return ResourceManager.GetString("Error_TravelersDiaryDetailList_NoData", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Play time : {0} hour(s) {1} minute(s) に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string GameApp_Notify_PlayTime_Result {

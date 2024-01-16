@@ -131,16 +131,16 @@
     <value>ファイル</value>
   </data>
   <data name="monthlist.Location" type="System.Drawing.Point, System.Drawing">
-    <value>298, 0</value>
+    <value>275, 0</value>
   </data>
   <data name="button1.Text" xml:space="preserve">
     <value>データの更新</value>
   </data>
   <data name="listtype.Location" type="System.Drawing.Point, System.Drawing">
-    <value>419, 0</value>
+    <value>396, 0</value>
   </data>
   <data name="listtype.Size" type="System.Drawing.Size, System.Drawing">
-    <value>65, 23</value>
+    <value>88, 23</value>
   </data>
   <data name="toolStripStatusLabel1.Size" type="System.Drawing.Size, System.Drawing">
     <value>55, 17</value>

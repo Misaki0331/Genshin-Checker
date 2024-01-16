@@ -451,9 +451,6 @@ Spiral Abyss: {2}</value>
   <data name="WindowName_TravelersDiaryDetailList_Downloading_ThisMonth" xml:space="preserve">
     <value>this month</value>
   </data>
-  <data name="Error_TravelersDiaryDetailList_NoData" xml:space="preserve">
-    <value>No data was found for {1} corresponding to {0}.</value>
-  </data>
   <data name="Error_TravelersDiaryDetailList_FailedToCsvOutput" xml:space="preserve">
     <value>Failed to output csv.</value>
   </data>

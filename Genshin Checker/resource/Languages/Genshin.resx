@@ -247,4 +247,7 @@
   <data name="TalentBook_7_3" xml:space="preserve">
     <value>Unknown</value>
   </data>
+  <data name="Crystal" xml:space="preserve">
+    <value>Crystal</value>
+  </data>
 </root>

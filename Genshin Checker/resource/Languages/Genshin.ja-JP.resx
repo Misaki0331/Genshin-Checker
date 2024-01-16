@@ -247,4 +247,7 @@
   <data name="TalentBook_7_3" xml:space="preserve">
     <value>スネージナヤ3</value>
   </data>
+  <data name="Crystal" xml:space="preserve">
+    <value>創世結晶</value>
+  </data>
 </root>
