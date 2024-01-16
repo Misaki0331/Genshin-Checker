@@ -83,6 +83,7 @@ namespace Genshin_Checker.App.General
         }
         public static string GetEventName(int id, string usname, Model.UserData.GameDatabase.NameLocalize.Root? events = null)
         {
+            //ToDo: IDと名前はjson化して外部サーバーから取得するようにしたい
             switch (CultureInfo.CurrentCulture.Name.ToLower())
             {
                 case "ja-jp":
@@ -154,6 +155,7 @@ namespace Genshin_Checker.App.General
         }
         public static string GetEventName(int id, EventName? events = null)
         {
+            //ToDo: IDと名前はjson化して外部サーバーから取得するようにしたい
             switch (CultureInfo.CurrentCulture.Name.ToLower())
             {
                 case "ja-jp":

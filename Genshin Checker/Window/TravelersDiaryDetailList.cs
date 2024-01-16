@@ -10,6 +10,9 @@ using System.Text;
 using Genshin_Checker.Window.Popup;
 using Genshin_Checker.App.General.Convert;
 using Genshin_Checker.resource.Languages;
+using System.Diagnostics;
+using System.ComponentModel;
+using System.Windows.Forms;
 
 namespace Genshin_Checker.Window
 {
@@ -28,6 +31,7 @@ namespace Genshin_Checker.Window
         {
             Primogems = 1,
             Mora = 2,
+            Crystal =3,
         }
         List<ListData> PathList;
         DataTable CurrentView;
@@ -63,6 +67,7 @@ namespace Genshin_Checker.Window
             dataGridView1.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             listtype.Items.Add(Genshin.Primogems);
+            listtype.Items.Add(Genshin.Crystal);
             listtype.Items.Add(Genshin.Mora);
             listtype.SelectedIndex = 0;
             UpdateDataMonth();
@@ -90,6 +95,7 @@ namespace Genshin_Checker.Window
                         month = month,
                         PrimogemsPath = Registry.GetValue(regPath, $"Latest{Mode.Primogems}Path", true),
                         ExPrimogemsPath = Registry.GetValue(regPath, $"LatestExtraPrimogemsPath", true),
+                        CrystalPath = Registry.GetValue(regPath, $"Latest{Mode.Crystal}Path", true),
                         MoraPath = Registry.GetValue(regPath, $"Latest{Mode.Mora}Path", true),
                     };
                     if (data.PrimogemsPath != null || data.MoraPath != null)
@@ -123,6 +129,9 @@ namespace Genshin_Checker.Window
                         expath = PathList[monthlist.SelectedIndex].ExPrimogemsPath;
                         break;
                     case 1:
+                        expath = PathList[monthlist.SelectedIndex].CrystalPath;
+                        break;
+                    case 2:
                         path = PathList[monthlist.SelectedIndex].MoraPath;
                         break;
                 }
@@ -135,7 +144,6 @@ namespace Genshin_Checker.Window
                 var gameeventlists = new Model.UserData.GameDatabase.NameLocalize.Root();
                 var lists = new EventLists();
                 var gamelists = new Model.UserData.GameDatabase.ItemNum.Root();
-                if (path == null) throw new ArgumentException(string.Format(Localize.Error_TravelersDiaryDetailList_NoData,monthlist.SelectedText,listtype.SelectedIndex==0?Genshin.Primogems:Genshin.Mora));
                 //カスタマーセンターの方のローカライズを取得
                 try
                 {
@@ -147,7 +155,7 @@ namespace Genshin_Checker.Window
                 try
                 {
                     if (eventpath != null&&AppData.IsExistFile(eventpath))
-                        eventlists = JsonConvert.DeserializeObject<EventName>(await App.General.AppData.LoadUserData(eventpath)??"");
+                        eventlists = JsonChecker<EventName>.Check(await App.General.AppData.LoadUserData(eventpath)??"");
                 }
                 catch { }
                 //カスタマーセンターのデータベースを取得
@@ -162,7 +170,7 @@ namespace Genshin_Checker.Window
                 //HoYoLabのデータベースを取得
                 try
                 {
-                    if(AppData.IsExistFile(path))lists = JsonChecker<EventLists>.Check(await AppData.LoadUserData(path)??"{}");
+                    if(path != null && AppData.IsExistFile(path))lists = JsonChecker<EventLists>.Check(await AppData.LoadUserData(path)??"{}");
                 }
                 catch (Exception)
                 {
@@ -178,18 +186,27 @@ namespace Genshin_Checker.Window
                     var typename = App.General.TravelersDiaryDatailEventConverter.GetEventName(a.EventType, eventlists);
                     CurrentView.Rows.Add(new object[] { Server.ConvertUTCTime(account.Server,a.EventTime), a.EventType, typename, a.Count });
                 }
+                bool IsEventIDChanged = false;
                 foreach (var a in gamelists.Details)
                 {
                     var id = a.EventTypeID == int.MinValue ? GameDataStringToEventID.GetIDFromString(a.EventType) : a.EventTypeID;
-                    if (a.Count < 0 || id!=int.MinValue)
+                    if (a.Count < 0 || id!=int.MinValue||lists.Details.Find(b=>b.EventTime==a.EventTime)==null)
                     {
-                        if (id != a.EventTypeID) a.EventTypeID = id;
+                        if (id != a.EventTypeID)
+                        {
+                            IsEventIDChanged=true;
+                            a.EventTypeID = id;
+                        }
                         var typename = App.General.TravelersDiaryDatailEventConverter.GetEventName(a.EventTypeID, a.EventType, gameeventlists);
                         CurrentView.Rows.Add(new object[] { Server.ConvertUTCTime(account.Server, a.EventTime), a.EventTypeID, typename, a.Count });
                     }
                 }
                 lists.Details.Clear();
-                dataGridView1.ResumeLayout(true);
+                if (IsEventIDChanged&&expath!=null)
+                    await App.General.AppData.SaveUserData(expath, JsonConvert.SerializeObject(gamelists));
+                gamelists.Details.Clear();
+                dataGridView1.Sort(dataGridView1.Columns[0], ListSortDirection.Descending);
+                dataGridView1.ResumeLayout(true); 
             }
             catch(Exception ex)
             {
@@ -240,66 +257,72 @@ namespace Genshin_Checker.Window
 
         private void dataGridView1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            Color col = Color.White;
-            var type = dataGridView1.Rows[e.RowIndex].Cells[1];
-            if (type != null)
+            try
             {
-                switch (App.General.TravelersDiaryDatailEventConverter.GetEventType((int)type.Value))
+                Color col = Color.White;
+                var type = dataGridView1.Rows[e.RowIndex].Cells[1];
+                if (type != null)
                 {
-                    case TravelersDiaryDatailEventConverter.EventType.Mail:
-                        col = Color.FromArgb(0xCC, 0xAA, 0xFF);
-                        break;
-                    case TravelersDiaryDatailEventConverter.EventType.Adventure:
-                        col = Color.FromArgb(0xFF, 0xBB, 0xBB);
-                        break;
-                    case TravelersDiaryDatailEventConverter.EventType.Daily:
-                        col = Color.FromArgb(0xFF, 0xEE, 0xBB);
-                        break;
-                    case TravelersDiaryDatailEventConverter.EventType.SpirialAbyss:
-                        col = Color.FromArgb(0xBB, 0xFF, 0xBB);
-                        break;
-                    case TravelersDiaryDatailEventConverter.EventType.Quest:
-                        col = Color.FromArgb(0xBB, 0xDD, 0xFF);
-                        break;
-                    case TravelersDiaryDatailEventConverter.EventType.Event:
-                        col = Color.FromArgb(0xBB, 0xBB, 0xEE);
-                        break;
-                    case TravelersDiaryDatailEventConverter.EventType.Achievement:
-                        col = Color.FromArgb(0xFF, 0xDD, 0xBB);
-                        break;
-                    case TravelersDiaryDatailEventConverter.EventType.Enemy:
-                        col = Color.FromArgb(0xFF, 0xDD, 0xDD);
-                        break;
-                    case TravelersDiaryDatailEventConverter.EventType.AdventureExperience:
-                        col = Color.FromArgb(0xAA, 0xFF, 0xAA);
-                        break;
-                    case TravelersDiaryDatailEventConverter.EventType.Reputation:
-                        col = Color.FromArgb(0xFF, 0xFF, 0xCC);
-                        break;
-                    case TravelersDiaryDatailEventConverter.EventType.RandomQuest:
-                        col = Color.FromArgb(0xBB, 0xFF, 0xFF);
-                        break;
-                    case TravelersDiaryDatailEventConverter.EventType.Domains:
-                        col = Color.FromArgb(0xDD, 0xEE, 0xFF);
-                        break;
+                    switch (App.General.TravelersDiaryDatailEventConverter.GetEventType((int)type.Value))
+                    {
+                        case TravelersDiaryDatailEventConverter.EventType.Mail:
+                            col = Color.FromArgb(0xCC, 0xAA, 0xFF);
+                            break;
+                        case TravelersDiaryDatailEventConverter.EventType.Adventure:
+                            col = Color.FromArgb(0xFF, 0xBB, 0xBB);
+                            break;
+                        case TravelersDiaryDatailEventConverter.EventType.Daily:
+                            col = Color.FromArgb(0xFF, 0xEE, 0xBB);
+                            break;
+                        case TravelersDiaryDatailEventConverter.EventType.SpirialAbyss:
+                            col = Color.FromArgb(0xBB, 0xFF, 0xBB);
+                            break;
+                        case TravelersDiaryDatailEventConverter.EventType.Quest:
+                            col = Color.FromArgb(0xBB, 0xDD, 0xFF);
+                            break;
+                        case TravelersDiaryDatailEventConverter.EventType.Event:
+                            col = Color.FromArgb(0xBB, 0xBB, 0xEE);
+                            break;
+                        case TravelersDiaryDatailEventConverter.EventType.Achievement:
+                            col = Color.FromArgb(0xFF, 0xDD, 0xBB);
+                            break;
+                        case TravelersDiaryDatailEventConverter.EventType.Enemy:
+                            col = Color.FromArgb(0xFF, 0xDD, 0xDD);
+                            break;
+                        case TravelersDiaryDatailEventConverter.EventType.AdventureExperience:
+                            col = Color.FromArgb(0xAA, 0xFF, 0xAA);
+                            break;
+                        case TravelersDiaryDatailEventConverter.EventType.Reputation:
+                            col = Color.FromArgb(0xFF, 0xFF, 0xCC);
+                            break;
+                        case TravelersDiaryDatailEventConverter.EventType.RandomQuest:
+                            col = Color.FromArgb(0xBB, 0xFF, 0xFF);
+                            break;
+                        case TravelersDiaryDatailEventConverter.EventType.Domains:
+                            col = Color.FromArgb(0xDD, 0xEE, 0xFF);
+                            break;
 
 
+                    }
                 }
-            }
-            e.CellStyle.BackColor = col;
-            switch (e.ColumnIndex)
+                e.CellStyle.BackColor = col;
+                switch (e.ColumnIndex)
+                {
+                    case 0:
+                        var time = e.Value as DateTime?;
+                        if (time != null)
+                            e.Value = $"{TimeZoneInfo.ConvertTimeFromUtc((DateTime)time, TimeZoneInfo.Local):yyyy/MM/dd(ddd) HH:mm:ss}";
+                        else e.Value = "----/--/--(---) --:--:--";
+                        e.FormattingApplied = true;
+                        break;
+                    case 3:
+                        e.Value = $"{e.Value:#,##0}";
+                        e.FormattingApplied = true;
+                        break;
+                }
+            }catch(Exception ex)
             {
-                case 0:
-                    var time = e.Value as DateTime?;
-                    if (time != null)
-                        e.Value = $"{TimeZoneInfo.ConvertTimeFromUtc((DateTime)time, TimeZoneInfo.Local):yyyy/MM/dd(ddd) HH:mm:ss}";
-                    else e.Value = "----/--/--(---) --:--:--";
-                    e.FormattingApplied = true;
-                    break;
-                case 3:
-                    e.Value = $"{e.Value:#,##0}";
-                    e.FormattingApplied = true;
-                    break;
+                Trace.WriteLine(ex);
             }
         }
 

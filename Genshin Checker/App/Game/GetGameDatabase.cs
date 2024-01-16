@@ -368,7 +368,10 @@ namespace Genshin_Checker.App.Game
                     localize.Locale.Add(l.Key, lang);
                     cnt++;
                 }
-                if (path != null) await App.General.AppData.SaveUserData(localizePath, JsonConvert.SerializeObject(localize));
+                if (path != null)
+                {
+                    await AppData.SaveUserData(localizePath, JsonConvert.SerializeObject(localize));
+                }
                 Trace.WriteLine($"ローカライズセーブ完了 合計:{localize.Locale.Count}件");
             }
             Trace.WriteLine($"Done!");

@@ -11,7 +11,7 @@ namespace Genshin_Checker.App.General
         //ここには旅人手帳に記載されないであろう入手・消費経路の補完
         readonly static Dictionary<string, int> EventPairs = new()
         {
-            {"Purchased Genesis Crystal",-1 }, //創生結晶の購入
+            {"Purchased Genesis Crystals",-1 }, //創生結晶の購入
             {"Purchased Blessing of the Welkin Moon",-2 }, //創生結晶の購入
 
             {"Exchanged Genesis Crystals for Primogems",-11 }, //創生結晶から原石へ変換
