@@ -75,7 +75,7 @@ namespace Genshin_Checker.App.Game
             catch (Exception ex)
             {
                 Trace.WriteLine(ex);
-                return false;
+                throw;
             }
             return true;
         }
@@ -209,7 +209,7 @@ namespace Genshin_Checker.App.Game
                             DataType.Weapon => await GameAPI.GetWeaponLog(authkey, size: 1, end_id: l.Value, begin: begin, end: end, culture: CultureInfo.GetCultureInfo(d.value)),
                             _ => throw new InvalidDataException()
                         };
-                        if (data.list.Count == 1) lang.Add(d.value, data.list[0].EventName);
+                        if (data.list.Count >= 1) lang.Add(d.value, data.list[0].EventName);
                         else throw new InvalidDataException("No such data.");
                         Trace.WriteLine($"{d.value} : {data.list[0].EventName}");
                         //ここに進捗
@@ -240,7 +240,7 @@ namespace Genshin_Checker.App.Game
                             DataType.Weapon => await GameAPI.GetWeaponLog(authkey, size: 1, end_id: l.Value, begin: begin, end: end, culture: CultureInfo.GetCultureInfo(d.value)),
                             _ => throw new InvalidDataException()
                         };
-                        if (data.list.Count == 1) lang.Add(d.value, data.list[0].ItemName);
+                        if (data.list.Count >= 1) lang.Add(d.value, data.list[0].ItemName);
                         else throw new InvalidDataException("No such data.");
                         Trace.WriteLine($"{d.value} : {data.list[0].ItemName}");
                         //ここに進捗
@@ -357,8 +357,8 @@ namespace Genshin_Checker.App.Game
                     Trace.WriteLine($"[{l.Key}] の調査");
                     foreach (var d in langs.Data.langs)
                     {
-                        var data = await GameAPI.GetMonthlyCardLog(authkey, size: 1, end_id: l.Value, culture: CultureInfo.GetCultureInfo(d.value));
-                        if (data.list.Count == 1) lang.Add(d.value, data.list[0].EventName);
+                        var data = await GameAPI.GetMonthlyCardLog(authkey, size: 1, end_id: l.Value, begin: begin, end: end, culture: CultureInfo.GetCultureInfo(d.value));
+                        if (data.list.Count >= 1) lang.Add(d.value, data.list[0].EventName);
                         else throw new InvalidDataException("No such data.");
                         Trace.WriteLine($"{d.value} : {data.list[0].EventName}");
                         //ここに進捗
@@ -481,11 +481,11 @@ namespace Genshin_Checker.App.Game
                     {
                         var data = type switch
                         {
-                            DataType.StarDust => await GameAPI.GetStardustLog(authkey, size: 1, end_id: l.Value, culture: CultureInfo.GetCultureInfo(d.value)),
-                            DataType.StarGlitter => await GameAPI.GetStarglitterLog(authkey, size: 1, end_id: l.Value, culture: CultureInfo.GetCultureInfo(d.value)),
+                            DataType.StarDust => await GameAPI.GetStardustLog(authkey, size: 1, end_id: l.Value, begin: begin, end: end, culture: CultureInfo.GetCultureInfo(d.value)),
+                            DataType.StarGlitter => await GameAPI.GetStarglitterLog(authkey, size: 1, end_id: l.Value, begin: begin, end: end, culture: CultureInfo.GetCultureInfo(d.value)),
                             _ => throw new InvalidDataException()
                         };
-                        if (data.list.Count == 1) lang.Add(d.value, data.list[0].EventName);
+                        if (data.list.Count >= 1) lang.Add(d.value, data.list[0].EventName);
                         else throw new InvalidDataException("No such data.");
                         Trace.WriteLine($"{d.value} : {data.list[0].EventName}");
                         //ここに進捗
@@ -609,12 +609,12 @@ namespace Genshin_Checker.App.Game
                     {
                         var data = type switch
                         {
-                            DataType.Crystal => await GameAPI.GetCrystalLog(authkey, size: 1, end_id: l.Value, culture: CultureInfo.GetCultureInfo(d.value)),
-                            DataType.ExtraPrimogems => await GameAPI.GetPrimogemLog(authkey, size: 1, end_id: l.Value, culture: CultureInfo.GetCultureInfo(d.value)),
-                            DataType.Resin => await GameAPI.GetResinLog(authkey, size: 1, end_id: l.Value, culture: CultureInfo.GetCultureInfo(d.value)),
+                            DataType.Crystal => await GameAPI.GetCrystalLog(authkey, size: 1, end_id: l.Value, begin: begin, end: end, culture: CultureInfo.GetCultureInfo(d.value)),
+                            DataType.ExtraPrimogems => await GameAPI.GetPrimogemLog(authkey, size: 1, end_id: l.Value, begin: begin, end: end, culture: CultureInfo.GetCultureInfo(d.value)),
+                            DataType.Resin => await GameAPI.GetResinLog(authkey, size: 1, end_id: l.Value, begin: begin, end: end, culture: CultureInfo.GetCultureInfo(d.value)),
                             _ => throw new InvalidDataException()
                         };
-                        if (data.list.Count == 1) lang.Add(d.value, data.list[0].EventName);
+                        if (data.list.Count >= 1) lang.Add(d.value, data.list[0].EventName);
                         else throw new InvalidDataException("No such data.");
                         Trace.WriteLine($"{d.value} : {data.list[0].EventName}");
                         //ここに進捗
