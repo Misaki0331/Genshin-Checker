@@ -201,4 +201,10 @@ Will Re-launching it?
 {2}
 --- End of StackTrace ---</value>
   </data>
+  <data name="CommonErrorOccurred" xml:space="preserve">
+    <value>An error has occurred.</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>Close</value>
+  </data>
 </root>

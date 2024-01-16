@@ -327,4 +327,7 @@
   <metadata name="notification.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <data name="現在のアカウント情報を取得ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Get database from current account</value>
+  </data>
 </root>

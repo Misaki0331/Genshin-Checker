@@ -144,7 +144,7 @@ namespace Genshin_Checker.Window
                         expath = PathList[monthlist.SelectedIndex].CrystalPath;
                         break;
                     case 2:
-                        expath = PathList[monthlist.SelectedIndex].MoraPath;
+                        path = PathList[monthlist.SelectedIndex].MoraPath;
                         break;
                     case 3:
                         expath = PathList[monthlist.SelectedIndex].StarDustPath;
@@ -343,7 +343,7 @@ namespace Genshin_Checker.Window
                             if (id == int.MinValue)
                             {
                                 e.CellStyle.ForeColor = Color.Red;
-                                e.Value = "不明";
+                                e.Value = Common.Unknown;
                             }
                         }
                         break;

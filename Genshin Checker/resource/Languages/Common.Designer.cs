@@ -96,6 +96,24 @@ namespace Genshin_Checker.resource.Languages {
         }
         
         /// <summary>
+        ///   Close に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Close {
+            get {
+                return ResourceManager.GetString("Close", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   An error has occurred. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string CommonErrorOccurred {
+            get {
+                return ResourceManager.GetString("CommonErrorOccurred", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Completed に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string Completed {

@@ -1,4 +1,5 @@
 ﻿using Genshin_Checker.App.Game;
+using Genshin_Checker.resource.Languages;
 using Genshin_Checker.Window.Popup;
 using System;
 using System.Collections.Generic;
@@ -37,7 +38,7 @@ namespace Genshin_Checker.Window.ProgressWindow
             var authkey = await WebViewWatcher.GetServiceCenterAuthKey();
             if (authkey == null)
             {
-                new ErrorMessage("ゲームの認証キーを取得できませんでした。", "この機能を使用するにはゲーム内でログインし、パイモンのメニューから報告ボタンをクリックしてください。\n報告ボタンをクリックした後新しくブラウザが立ち上がりますが閉じても問題ありません。").ShowDialog();
+                new ErrorMessage(Localize.Error_LoadGameDatabase_FailedToReadAuth, Localize.Windowname_LoadGameDatabase_AuthkeyTip).ShowDialog();
                 WillClose = true;
                 Close();
                 return;
@@ -50,14 +51,14 @@ namespace Genshin_Checker.Window.ProgressWindow
             }
             catch (GameAPI.GameAPIException ex)
             {
-                new ErrorMessage($"アカウント認証に失敗しました。", $"この機能を使用するにはゲーム内でログインし、パイモンのメニューから報告ボタンをクリックしてください。\n報告ボタンをクリックした後新しくブラウザが立ち上がりますが閉じても問題ありません。\n{ex.Message}").ShowDialog();
+                new ErrorMessage(Localize.Error_LoadGameDatabase_FailedToAuth, $"{Localize.Windowname_LoadGameDatabase_AuthkeyTip}\n{ex.Message}").ShowDialog();
                 WillClose = true;
                 Close();
                 return;
             }
             catch (Exception ex)
             {
-                new ErrorMessage("エラーが発生しました。", $"{ex}").ShowDialog();
+                new ErrorMessage(Common.CommonErrorOccurred, $"{ex}").ShowDialog();
                 WillClose = true;
                 Close();
                 return;
@@ -80,9 +81,9 @@ namespace Genshin_Checker.Window.ProgressWindow
             {
                 int year = now.Year;
                 int month = now.Month;
-                tasks.Add(async()=>await database.GetQueryFromDatabase(GetGameDatabase.DataType.MonthlyCard, year, month));
+                tasks.Add(async () => await database.GetQueryFromDatabase(GetGameDatabase.DataType.MonthlyCard, year, month));
                 tasks.Add(async () => await database.GetQueryFromDatabase(GetGameDatabase.DataType.Crystal, year, month));
-                tasks.Add(async()=>await database.GetQueryFromDatabase(GetGameDatabase.DataType.ExtraPrimogems, year, month));
+                tasks.Add(async () => await database.GetQueryFromDatabase(GetGameDatabase.DataType.ExtraPrimogems, year, month));
                 tasks.Add(async () => await database.GetQueryFromDatabase(GetGameDatabase.DataType.Resin, year, month));
                 if (cnt <= 3)
                 {
@@ -102,6 +103,7 @@ namespace Genshin_Checker.Window.ProgressWindow
                 foreach (var task in tasks)
                 {
                     await task();
+                    if (IsCancelled) break;
                     CurrentTask++;
                 }
                 NoError = true;
@@ -118,33 +120,36 @@ namespace Genshin_Checker.Window.ProgressWindow
                     SendMessage(new HandleRef(progressBar2, progressBar2.Handle),
                         PBM_SETSTATE, PBST_ERROR, IntPtr.Zero);
                 }
-                LabelProgressGeneral.Text = $"失敗";
+                LabelProgressGeneral.Text = Common.Failed;
                 LabelProgressDetail.Text = $"";
-                new ErrorMessage("データベース取得中にエラーが発生しました。", $"{ex}").ShowDialog();
+                new ErrorMessage(Common.CommonErrorOccurred, $"{ex}").ShowDialog();
             }
             if (NoError)
             {
                 progressBar1.Value = 10000;
                 progressBar2.Value = 10000;
-                LabelProgressGeneral.Text = $"100.00% 完了";
+                LabelProgressGeneral.Text = $"{100:0.00}% {Common.Completed}";
                 LabelProgressDetail.Text = $"";
 
-                label1.Text = "データの取得が完了しました。";
+                label1.Text = Localize.Windowname_LoadGameDatabase_Complete;
             }
             else
             {
-                label1.Text = "正常に取得できませんでした。";
+                label1.Text = Localize.Windowname_LoadGameDatabase_Failed;
             }
             Stopwatch.Stop();
             database.ProgressChanged -= Database_ProgressChanged;
             database.ProgressCompreted -= Database_ProgressCompreted;
             database.ProgressFailed -= Database_ProgressFailed;
             WillClose = true;
+            Cancel.Text = Common.Close;
+            if (IsCancelled)
+                Close();
         }
 
         private void Database_ProgressFailed(object? sender, Exception e)
         {
-            new ErrorMessage("取得エラー", $"{e}").ShowDialog();
+            new ErrorMessage(Common.CommonErrorOccurred, $"{e}").ShowDialog();
         }
 
         private void Database_ProgressCompreted(object? sender, EventArgs e)
@@ -156,25 +161,41 @@ namespace Genshin_Checker.Window.ProgressWindow
             LabelProgressDetail.Text = $"Step{e.CompletedTask + 1}/{e.MaxTask} {e.Progress * 100:0.00}%";
             double progress2 = (double)(e.CompletedTask + e.Progress) / (e.MaxTask);
             LabelProgressGeneral.Text = $"{(double)(CurrentTask + progress2) / MaxTask * 100.0:0.00}% {e.year}/{e.month}({e.mode})";
-            double progress = (double)(CurrentTask + (double.IsNaN(progress2)?0:progress2)) / MaxTask;
+            double progress = (double)(CurrentTask + (double.IsNaN(progress2) ? 0 : progress2)) / MaxTask;
             if (progress < 0) progress = 0;
             if (progress > 1) progress = 1;
             if (progress2 < 0) progress2 = 0;
             if (progress2 > 1) progress2 = 1;
-            if(double.IsNaN(progress)) progress = 0;
-            if(double.IsNaN(progress2)) progress2 = 0;
+            if (double.IsNaN(progress)) progress = 0;
+            if (double.IsNaN(progress2)) progress2 = 0;
             progressBar1.Value = (int)(progress * 10000.0);
             progressBar2.Value = (int)(progress2 * 10000.0);
         }
 
         private void LoadGameDatabase_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (!WillClose) e.Cancel = true;
+            if (!WillClose)
+            {
+                e.Cancel = true;
+                Cancel_Click(sender, e);
+            }
         }
 
         private void UpdateTimer_Tick(object sender, EventArgs e)
         {
             LabelTimer.Text = $"{Stopwatch.Elapsed:h\\:mm\\:ss\\.fff}";
+        }
+        bool IsCancelled = false;
+        private void Cancel_Click(object sender, EventArgs e)
+        {
+            if (WillClose)
+            {
+                Close();
+                return;
+            }
+
+            IsCancelled = true;
+            label1.Text = Localize.Windowname_LoadGameDatabase_Cancelled;
         }
     }
 }

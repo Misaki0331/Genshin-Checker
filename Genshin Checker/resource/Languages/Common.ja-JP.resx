@@ -189,4 +189,10 @@
 {2}
 --- StackTrace 終わり ---</value>
   </data>
+  <data name="CommonErrorOccurred" xml:space="preserve">
+    <value>エラーが発生しました。</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>閉じる</value>
+  </data>
 </root>

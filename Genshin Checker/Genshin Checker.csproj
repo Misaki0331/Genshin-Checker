@@ -28,7 +28,7 @@ GitHub : https://github.com/Misaki0331</Description>
     <PackageProjectUrl>https://github.com/Misaki0331/Genshin-Checker/</PackageProjectUrl>
     <RepositoryUrl>https://github.com/Misaki0331/Genshin-Checker/</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <Version>0.12.1</Version>
+    <Version>0.13.0</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

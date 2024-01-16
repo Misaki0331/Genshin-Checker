@@ -117,83 +117,18 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="label1.Text" xml:space="preserve">
+    <value>ゲーム内のデータベースを参照しています。
+しばらくお待ちください...</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="versionNameToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>209, 22</value>
+  <data name="LabelTimer.Size" type="System.Drawing.Size, System.Drawing">
+    <value>0, 15</value>
   </data>
-  <data name="versionNameToolStripMenuItem.Text" xml:space="preserve">
-    <value>バージョン名</value>
-  </data>
-  <data name="toolStripSeparator3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>206, 6</value>
-  </data>
-  <data name="詳細プレイデータToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>209, 22</value>
-  </data>
-  <data name="詳細プレイデータToolStripMenuItem.Text" xml:space="preserve">
-    <value>詳細プレイデータ</value>
-  </data>
-  <data name="emptyToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>94, 22</value>
-  </data>
-  <data name="emptyToolStripMenuItem.Text" xml:space="preserve">
-    <value>(空)</value>
-  </data>
-  <data name="AccountToolStrip.Size" type="System.Drawing.Size, System.Drawing">
-    <value>209, 22</value>
-  </data>
-  <data name="AccountToolStrip.Text" xml:space="preserve">
-    <value>アカウント</value>
-  </data>
-  <data name="ゲームログ開発者向けToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>209, 22</value>
-  </data>
-  <data name="ゲームログ開発者向けToolStripMenuItem.Text" xml:space="preserve">
-    <value>ゲームログ(開発者向け)</value>
-  </data>
-  <data name="現在のアカウント情報を取得ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>209, 22</value>
-  </data>
-  <data name="現在のアカウント情報を取得ToolStripMenuItem.Text" xml:space="preserve">
-    <value>現在のアカウント情報を取得</value>
-  </data>
-  <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>206, 6</value>
-  </data>
-  <data name="設定ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>209, 22</value>
-  </data>
-  <data name="設定ToolStripMenuItem.Text" xml:space="preserve">
-    <value>設定</value>
-  </data>
-  <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>206, 6</value>
-  </data>
-  <data name="終了ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>209, 22</value>
-  </data>
-  <data name="終了ToolStripMenuItem.Text" xml:space="preserve">
-    <value>終了</value>
-  </data>
-  <data name="consoleToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>209, 22</value>
-  </data>
-  <data name="consoleToolStripMenuItem.Text" xml:space="preserve">
-    <value>コンソール</value>
-  </data>
-  <data name="testToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>209, 22</value>
-  </data>
-  <data name="testToolStripMenuItem.Text" xml:space="preserve">
-    <value>テスト</value>
-  </data>
-  <data name="NotificationMenu.Size" type="System.Drawing.Size, System.Drawing">
-    <value>210, 242</value>
-  </data>
-  <data name="notification.Text" xml:space="preserve">
-    <value>原神チェッカー</value>
+  <data name="Cancel.Text" xml:space="preserve">
+    <value>キャンセル</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>MainTray</value>
+    <value>ゲーム内データベース取得</value>
   </data>
 </root>

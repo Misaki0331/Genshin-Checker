@@ -412,6 +412,24 @@ namespace Genshin_Checker.resource.Languages {
         }
         
         /// <summary>
+        ///   Failed to authenticate your account. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Error_LoadGameDatabase_FailedToAuth {
+            get {
+                return ResourceManager.GetString("Error_LoadGameDatabase_FailedToAuth", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Could not obtain authentication key for your account. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Error_LoadGameDatabase_FailedToReadAuth {
+            get {
+                return ResourceManager.GetString("Error_LoadGameDatabase_FailedToReadAuth", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Failed to load from database. に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string Error_LoadTravelersDiaryDetail_FailedToLoadFromDatabase {
@@ -1128,10 +1146,47 @@ namespace Genshin_Checker.resource.Languages {
         }
         
         /// <summary>
+        ///   To use this feature, log in to the game and click the &quot;Feedback&quot; button in the Paimon&apos;s menu.
+        ///After clicking the &quot;Feedback&quot; button, a new browser window will open, but you can close it. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Windowname_LoadGameDatabase_AuthkeyTip {
+            get {
+                return ResourceManager.GetString("Windowname_LoadGameDatabase_AuthkeyTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Processing is being canceled... に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Windowname_LoadGameDatabase_Cancelled {
+            get {
+                return ResourceManager.GetString("Windowname_LoadGameDatabase_Cancelled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Database download completed. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Windowname_LoadGameDatabase_Complete {
+            get {
+                return ResourceManager.GetString("Windowname_LoadGameDatabase_Complete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Database download did not complete successfully. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Windowname_LoadGameDatabase_Failed {
+            get {
+                return ResourceManager.GetString("Windowname_LoadGameDatabase_Failed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Retrieving {1} history for {0}...
         ///Pages currently retrieved : {2} pages
         ///Total pages : {3} pages
-        ///Progress : {4}% に類似しているローカライズされた文字列を検索します。
+        ///Progress : {4} に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string WindowName_LoadTravelersDiaryDetail_LoadingProgress {
             get {

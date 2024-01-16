@@ -575,7 +575,7 @@ Error Log
     <value>Retrieving {1} history for {0}...
 Pages currently retrieved : {2} pages
 Total pages : {3} pages
-Progress : {4}%</value>
+Progress : {4}</value>
   </data>
   <data name="Error_Program_MultipleLaunched" xml:space="preserve">
     <value>Could not start because multiple startups were detected.
@@ -601,5 +601,24 @@ Arguments invoked : {0}</value>
   </data>
   <data name="WindowName_SpiralAbyss_Locked" xml:space="preserve">
     <value>Locked</value>
+  </data>
+  <data name="Windowname_LoadGameDatabase_AuthkeyTip" xml:space="preserve">
+    <value>To use this feature, log in to the game and click the "Feedback" button in the Paimon's menu.
+After clicking the "Feedback" button, a new browser window will open, but you can close it.</value>
+  </data>
+  <data name="Windowname_LoadGameDatabase_Complete" xml:space="preserve">
+    <value>Database download completed.</value>
+  </data>
+  <data name="Windowname_LoadGameDatabase_Failed" xml:space="preserve">
+    <value>Database download did not complete successfully.</value>
+  </data>
+  <data name="Error_LoadGameDatabase_FailedToAuth" xml:space="preserve">
+    <value>Failed to authenticate your account.</value>
+  </data>
+  <data name="Error_LoadGameDatabase_FailedToReadAuth" xml:space="preserve">
+    <value>Could not obtain authentication key for your account.</value>
+  </data>
+  <data name="Windowname_LoadGameDatabase_Cancelled" xml:space="preserve">
+    <value>Processing is being canceled...</value>
   </data>
 </root>
