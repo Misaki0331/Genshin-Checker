@@ -491,6 +491,17 @@ namespace Genshin_Checker.App.Game
                         //ここに進捗
                         ReportProgress(1, 2, (double)(cnt * langs.Data.langs.Count + lang.Count) / (LocaleQueue.Count * langs.Data.langs.Count), type, year, month);
                     }
+                    if (lang.TryGetValue("en-us",out var locale))
+                    {
+                        if (locale != l.Key)
+                        {
+                            Trace.WriteLine($"<!>Warning<!> 翻訳先が違います！！！\n{l.Key} => {locale}");
+                        }
+                    }
+                    else
+                    {
+                        Trace.WriteLine($"<!>Warning<!> 翻訳がありません！！！\n{l.Key} => null");
+                    }
                     Trace.WriteLine($"--------------------------------------------");
                     localize.Locale.Add(l.Key, lang);
                     cnt++;
