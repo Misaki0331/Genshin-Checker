@@ -45,20 +45,21 @@
             consoleToolStripMenuItem = new ToolStripMenuItem();
             testToolStripMenuItem = new ToolStripMenuItem();
             Delay = new System.Windows.Forms.Timer(components);
+            現在のアカウント情報を取得ToolStripMenuItem = new ToolStripMenuItem();
             NotificationMenu.SuspendLayout();
             SuspendLayout();
             // 
             // notification
             // 
-            notification.ContextMenuStrip = NotificationMenu;
             resources.ApplyResources(notification, "notification");
+            notification.ContextMenuStrip = NotificationMenu;
             notification.MouseUp += notification_Click;
             // 
             // NotificationMenu
             // 
-            NotificationMenu.Items.AddRange(new ToolStripItem[] { versionNameToolStripMenuItem, toolStripSeparator3, 詳細プレイデータToolStripMenuItem, AccountToolStrip, ゲームログ開発者向けToolStripMenuItem, toolStripSeparator2, 設定ToolStripMenuItem, toolStripSeparator1, 終了ToolStripMenuItem, consoleToolStripMenuItem, testToolStripMenuItem });
-            NotificationMenu.Name = "contextMenuStrip1";
             resources.ApplyResources(NotificationMenu, "NotificationMenu");
+            NotificationMenu.Items.AddRange(new ToolStripItem[] { versionNameToolStripMenuItem, toolStripSeparator3, 詳細プレイデータToolStripMenuItem, AccountToolStrip, ゲームログ開発者向けToolStripMenuItem, 現在のアカウント情報を取得ToolStripMenuItem, toolStripSeparator2, 設定ToolStripMenuItem, toolStripSeparator1, 終了ToolStripMenuItem, consoleToolStripMenuItem, testToolStripMenuItem });
+            NotificationMenu.Name = "contextMenuStrip1";
             // 
             // versionNameToolStripMenuItem
             // 
@@ -67,20 +68,20 @@
             // 
             // toolStripSeparator3
             // 
-            toolStripSeparator3.Name = "toolStripSeparator3";
             resources.ApplyResources(toolStripSeparator3, "toolStripSeparator3");
+            toolStripSeparator3.Name = "toolStripSeparator3";
             // 
             // 詳細プレイデータToolStripMenuItem
             // 
-            詳細プレイデータToolStripMenuItem.Name = "詳細プレイデータToolStripMenuItem";
             resources.ApplyResources(詳細プレイデータToolStripMenuItem, "詳細プレイデータToolStripMenuItem");
+            詳細プレイデータToolStripMenuItem.Name = "詳細プレイデータToolStripMenuItem";
             詳細プレイデータToolStripMenuItem.Click += 詳細プレイデータToolStripMenuItem_Click;
             // 
             // AccountToolStrip
             // 
+            resources.ApplyResources(AccountToolStrip, "AccountToolStrip");
             AccountToolStrip.DropDownItems.AddRange(new ToolStripItem[] { emptyToolStripMenuItem });
             AccountToolStrip.Name = "AccountToolStrip";
-            resources.ApplyResources(AccountToolStrip, "AccountToolStrip");
             // 
             // emptyToolStripMenuItem
             // 
@@ -89,48 +90,54 @@
             // 
             // ゲームログ開発者向けToolStripMenuItem
             // 
-            ゲームログ開発者向けToolStripMenuItem.Name = "ゲームログ開発者向けToolStripMenuItem";
             resources.ApplyResources(ゲームログ開発者向けToolStripMenuItem, "ゲームログ開発者向けToolStripMenuItem");
+            ゲームログ開発者向けToolStripMenuItem.Name = "ゲームログ開発者向けToolStripMenuItem";
             ゲームログ開発者向けToolStripMenuItem.Click += ゲームログ開発者向けToolStripMenuItem_Click;
             // 
             // toolStripSeparator2
             // 
-            toolStripSeparator2.Name = "toolStripSeparator2";
             resources.ApplyResources(toolStripSeparator2, "toolStripSeparator2");
+            toolStripSeparator2.Name = "toolStripSeparator2";
             // 
             // 設定ToolStripMenuItem
             // 
-            設定ToolStripMenuItem.Name = "設定ToolStripMenuItem";
             resources.ApplyResources(設定ToolStripMenuItem, "設定ToolStripMenuItem");
+            設定ToolStripMenuItem.Name = "設定ToolStripMenuItem";
             設定ToolStripMenuItem.Click += 設定ToolStripMenuItem_Click;
             // 
             // toolStripSeparator1
             // 
-            toolStripSeparator1.Name = "toolStripSeparator1";
             resources.ApplyResources(toolStripSeparator1, "toolStripSeparator1");
+            toolStripSeparator1.Name = "toolStripSeparator1";
             // 
             // 終了ToolStripMenuItem
             // 
-            終了ToolStripMenuItem.Name = "終了ToolStripMenuItem";
             resources.ApplyResources(終了ToolStripMenuItem, "終了ToolStripMenuItem");
+            終了ToolStripMenuItem.Name = "終了ToolStripMenuItem";
             終了ToolStripMenuItem.Click += 終了ToolStripMenuItem_Click;
             // 
             // consoleToolStripMenuItem
             // 
-            consoleToolStripMenuItem.Name = "consoleToolStripMenuItem";
             resources.ApplyResources(consoleToolStripMenuItem, "consoleToolStripMenuItem");
+            consoleToolStripMenuItem.Name = "consoleToolStripMenuItem";
             consoleToolStripMenuItem.Click += consoleToolStripMenuItem_Click;
             // 
             // testToolStripMenuItem
             // 
-            testToolStripMenuItem.Name = "testToolStripMenuItem";
             resources.ApplyResources(testToolStripMenuItem, "testToolStripMenuItem");
+            testToolStripMenuItem.Name = "testToolStripMenuItem";
             testToolStripMenuItem.Click += testToolStripMenuItem_ClickAsync;
             // 
             // Delay
             // 
             Delay.Enabled = true;
             Delay.Tick += Delay_Tick;
+            // 
+            // 現在のアカウント情報を取得ToolStripMenuItem
+            // 
+            resources.ApplyResources(現在のアカウント情報を取得ToolStripMenuItem, "現在のアカウント情報を取得ToolStripMenuItem");
+            現在のアカウント情報を取得ToolStripMenuItem.Name = "現在のアカウント情報を取得ToolStripMenuItem";
+            現在のアカウント情報を取得ToolStripMenuItem.Click += 現在のアカウント情報を取得ToolStripMenuItem_Click;
             // 
             // MainTray
             // 
@@ -166,5 +173,6 @@
         private ToolStripMenuItem AccountToolStrip;
         private ToolStripMenuItem emptyToolStripMenuItem;
         private ToolStripMenuItem consoleToolStripMenuItem;
+        private ToolStripMenuItem 現在のアカウント情報を取得ToolStripMenuItem;
     }
 }

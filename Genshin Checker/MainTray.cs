@@ -18,7 +18,7 @@ namespace Genshin_Checker
     public partial class MainTray : Form
     {
         List<string> GameLogTemp;
-        public MainTray(bool safemode=false)
+        public MainTray(bool safemode = false)
         {
             InitializeComponent();
             GameLogTemp = new();
@@ -36,7 +36,7 @@ namespace Genshin_Checker
                 }
             }
             EnkaData.Data.GetStoreData();
-            
+
             //アプリの初期化&UIの初期化
             ProcessTime.Instance.option.OnlyActiveWindow = true;
             if (Registry.GetValue("Config\\Setting", "IsCountBackground") == "True") ProcessTime.Instance.option.OnlyActiveWindow = false;
@@ -106,9 +106,9 @@ namespace Genshin_Checker
         void Notification(object? sender, string e)
         {
             Trace.WriteLine(sender);
-                notification.BalloonTipTitle = $"{sender}";
-                notification.BalloonTipText = $"{e}";
-                notification.ShowBalloonTip(30000);
+            notification.BalloonTipTitle = $"{sender}";
+            notification.BalloonTipText = $"{e}";
+            notification.ShowBalloonTip(30000);
 
         }
 
@@ -204,7 +204,7 @@ namespace Genshin_Checker
                     });
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 new ErrorMessage(Localize.App_Error_FailedSaveScreenshot, $"{ex}").ShowDialog();
             }
@@ -213,7 +213,7 @@ namespace Genshin_Checker
 
         void AccountRemoved(object? sender, Account account)
         {
-                var find = FormList.FindAll(a => a.Name.StartsWith($"{account.UID}"));
+            var find = FormList.FindAll(a => a.Name.StartsWith($"{account.UID}"));
             foreach (var window in find)
             {
                 try
@@ -224,11 +224,11 @@ namespace Genshin_Checker
                 catch { }
             }
         }
-        private void OpenWindow(Account? account,string name)
+        private void OpenWindow(Account? account, string name)
         {
             string Name = $"{(account != null ? account.UID : "null")},{name}";
-            var delete = FormList.Find(a => a.Name == Name&&a.IsDisposed);
-            if(delete!=null)FormList.Remove(delete);
+            var delete = FormList.Find(a => a.Name == Name && a.IsDisposed);
+            if (delete != null) FormList.Remove(delete);
             var find = FormList.Find(a => a.Name == Name);
             bool IsAdd = find == null;
             if (account == null)
@@ -253,6 +253,9 @@ namespace Genshin_Checker
                             break;
                         case nameof(Window.Debug.Console):
                             find = new Window.Debug.Console() { Name = Name };
+                            break;
+                        case nameof(Window.ProgressWindow.LoadGameDatabase):
+                            find = new Window.ProgressWindow.LoadGameDatabase() { Name = Name };
                             break;
                     }
             }
@@ -295,7 +298,7 @@ namespace Genshin_Checker
             AccountToolStrip.DropDownItems.Clear();
             if (Accounts.Data.Count > 0)
             {
-                foreach(var account in Accounts.Data)
+                foreach (var account in Accounts.Data)
                 {
                     var GameRecord = new ToolStripMenuItem() { Text = Localize.WindowName_GameRecord };
                     GameRecord.Click += (s, e) => { OpenWindow(account, nameof(Window.GameRecords)); };
@@ -329,8 +332,13 @@ namespace Genshin_Checker
 
         private void consoleToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenWindow(null,nameof(Window.Debug.Console));
+            OpenWindow(null, nameof(Window.Debug.Console));
+        }
+
+        private void 現在のアカウント情報を取得ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenWindow(null, nameof(Window.ProgressWindow.LoadGameDatabase));
         }
     }
-    
+
 }
