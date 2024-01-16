@@ -2,8 +2,11 @@
 using Genshin_Checker.UI.Control.SettingWindow;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
+using System.Management;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using static Genshin_Checker.App.HoYoLab.Account;
@@ -80,7 +83,7 @@ namespace Genshin_Checker.App.Game
                     { "game_biz", "hk4e_global" },
                 }).ReadAsStringAsync();
             string url = $"https://sg-public-api.hoyoverse.com/common/csc_qna/public/getUserInfo?{parms}";
-            var json = await App.WebRequest.GeneralGetRequest(url, true);
+            string json = await GetWebString(url);
             var root = JsonChecker<Model.Game.AccountInfo.Root>.Check(json);
             if (root.Data == null) throw new GameAPIException(root.Retcode, root.Message);
             return root.Data;
@@ -105,7 +108,7 @@ namespace Genshin_Checker.App.Game
 
                 }).ReadAsStringAsync();
             string url = $"https://hk4e-api-os.hoyoverse.com/common/hk4e_self_help_query/User/GetMonthlyCardLog?{parms}";
-            var json = await App.WebRequest.GeneralGetRequest(url, true);
+            string json = await GetWebString(url);
             var root = JsonChecker<Model.Game.MonthlyCardLog.Root>.Check(json);
             if (root.Data == null) throw new GameAPIException(root.Retcode, root.Message);
             return root.Data;
@@ -131,7 +134,7 @@ namespace Genshin_Checker.App.Game
 
                 }).ReadAsStringAsync();
             string url = $"https://hk4e-api-os.hoyoverse.com/common/hk4e_self_help_query/User/GetCrystalLog?{parms}";
-            var json = await App.WebRequest.GeneralGetRequest(url, true);
+            string json = await GetWebString(url);
             var root = JsonChecker<Model.Game.ItemLog.Root>.Check(json);
             if (root.Data == null) throw new GameAPIException(root.Retcode, root.Message);
             return root.Data;
@@ -157,7 +160,7 @@ namespace Genshin_Checker.App.Game
 
                 }).ReadAsStringAsync();
             string url = $"https://hk4e-api-os.hoyoverse.com/common/hk4e_self_help_query/User/GetPrimogemLog?{parms}";
-            var json = await App.WebRequest.GeneralGetRequest(url, true);
+            string json = await GetWebString(url);
             var root = JsonChecker<Model.Game.ItemLog.Root>.Check(json);
             if (root.Data == null) throw new GameAPIException(root.Retcode, root.Message);
             return root.Data;
@@ -181,7 +184,7 @@ namespace Genshin_Checker.App.Game
 
                 }).ReadAsStringAsync();
             string url = $"https://hk4e-api-os.hoyoverse.com/common/hk4e_self_help_query/User/GetResinLog?{parms}";
-            var json = await App.WebRequest.GeneralGetRequest(url, true);
+            string json = await GetWebString(url);
             var root = JsonChecker<Model.Game.ItemLog.Root>.Check(json);
             if (root.Data == null) throw new GameAPIException(root.Retcode, root.Message);
             return root.Data;
@@ -207,7 +210,7 @@ namespace Genshin_Checker.App.Game
 
                 }).ReadAsStringAsync();
             string url = $"https://hk4e-api-os.hoyoverse.com/common/hk4e_self_help_query/User/GetStarglitter?{parms}";
-            var json = await App.WebRequest.GeneralGetRequest(url, true);
+            string json = await GetWebString(url);
             var root = JsonChecker<Model.Game.StarItems.Root>.Check(json);
             if (root.Data == null) throw new GameAPIException(root.Retcode, root.Message);
             return root.Data;
@@ -233,7 +236,7 @@ namespace Genshin_Checker.App.Game
 
                 }).ReadAsStringAsync();
             string url = $"https://hk4e-api-os.hoyoverse.com/common/hk4e_self_help_query/User/GetStardustLog?{parms}";
-            var json = await App.WebRequest.GeneralGetRequest(url, true);
+            string json = await GetWebString(url);
             var root = JsonChecker<Model.Game.StarItems.Root>.Check(json);
             if (root.Data == null) throw new GameAPIException(root.Retcode, root.Message);
             return root.Data;
@@ -260,7 +263,7 @@ namespace Genshin_Checker.App.Game
 
                 }).ReadAsStringAsync();
             string url = $"https://hk4e-api-os.hoyoverse.com/common/hk4e_self_help_query/User/GetArtifactLog?{parms}";
-            var json = await App.WebRequest.GeneralGetRequest(url, true);
+            string json = await GetWebString(url);
             var root = JsonChecker<Model.Game.EquipmentLog.Root>.Check(json);
             if (root.Data == null) throw new GameAPIException(root.Retcode, root.Message);
             return root.Data;
@@ -287,11 +290,34 @@ namespace Genshin_Checker.App.Game
 
                 }).ReadAsStringAsync();
             string url = $"https://hk4e-api-os.hoyoverse.com/common/hk4e_self_help_query/User/GetWeaponLog?{parms}";
-            var json = await App.WebRequest.GeneralGetRequest(url, true);
+            string json = await GetWebString(url);
             var root = JsonChecker<Model.Game.EquipmentLog.Root>.Check(json);
             if (root.Data == null) throw new GameAPIException(root.Retcode, root.Message);
             return root.Data;
         }
-
+        private static async Task<string> GetWebString(string url)
+        {
+            const int maxRetryCount = 20;
+            for (int retry = 0; retry < maxRetryCount; retry++)
+            {
+                try
+                {
+                    var json = await App.WebRequest.GeneralGetRequest(url, true);
+                    return json;
+                }
+                catch (HttpRequestException ex) when (ex.StatusCode == System.Net.HttpStatusCode.TooManyRequests)
+                {
+                    if (retry == maxRetryCount - 1) throw;
+                    Trace.WriteLine($"Received 429 error. Retrying in 5 seconds...");
+                    await Task.Delay(5000);
+                }
+                catch (Exception ex)
+                {
+                    Trace.WriteLine($"{ex.Message}");
+                    if (retry == maxRetryCount - 1) throw;
+                }
+            }
+            throw new Exception();
+        }
     }
 }
