@@ -23,6 +23,9 @@ namespace Genshin_Checker.Window
             public string? CrystalPath;
             public string? PrimogemsPath;
             public string? ExPrimogemsPath;
+            public string? StarDustPath;
+            public string? StarGlitterPath;
+            public string? ResinPath;
             public string? MoraPath;
             public int year = int.MinValue;
             public int month = int.MinValue;
@@ -31,7 +34,10 @@ namespace Genshin_Checker.Window
         {
             Primogems = 1,
             Mora = 2,
-            Crystal =3,
+            Crystal = 3,
+            StarDust = 4,
+            StarGlitter = 5,
+            Resin = 6,
         }
         List<ListData> PathList;
         DataTable CurrentView;
@@ -69,6 +75,9 @@ namespace Genshin_Checker.Window
             listtype.Items.Add(Genshin.Primogems);
             listtype.Items.Add(Genshin.Crystal);
             listtype.Items.Add(Genshin.Mora);
+            listtype.Items.Add(Genshin.StarDust);
+            listtype.Items.Add(Genshin.StarGlitter);
+            listtype.Items.Add(Genshin.Resin);
             listtype.SelectedIndex = 0;
             UpdateDataMonth();
             if (monthlist.Items.Count > 0) monthlist.SelectedIndex = 0;
@@ -97,6 +106,9 @@ namespace Genshin_Checker.Window
                         ExPrimogemsPath = Registry.GetValue(regPath, $"LatestExtraPrimogemsPath", true),
                         CrystalPath = Registry.GetValue(regPath, $"Latest{Mode.Crystal}Path", true),
                         MoraPath = Registry.GetValue(regPath, $"Latest{Mode.Mora}Path", true),
+                        ResinPath = Registry.GetValue(regPath, $"Latest{Mode.Resin}Path", true),
+                        StarDustPath = Registry.GetValue(regPath, $"Latest{Mode.StarDust}Path", true),
+                        StarGlitterPath = Registry.GetValue(regPath, $"Latest{Mode.StarGlitter}Path", true),
                     };
                     if (data.PrimogemsPath != null || data.MoraPath != null)
                     {
@@ -115,7 +127,7 @@ namespace Genshin_Checker.Window
         private async void UpdateComboBox(object sender, EventArgs e)
         {
             if (monthlist.SelectedIndex < 0) return;
-            if (listtype.SelectedIndex < 0 || listtype.SelectedIndex > 1) return;
+            if (listtype.SelectedIndex < 0 || listtype.SelectedIndex > 5) return;
             dataGridView1.Visible = false;
             try
             {
@@ -132,7 +144,16 @@ namespace Genshin_Checker.Window
                         expath = PathList[monthlist.SelectedIndex].CrystalPath;
                         break;
                     case 2:
-                        path = PathList[monthlist.SelectedIndex].MoraPath;
+                        expath = PathList[monthlist.SelectedIndex].MoraPath;
+                        break;
+                    case 3:
+                        expath = PathList[monthlist.SelectedIndex].StarDustPath;
+                        break;
+                    case 4:
+                        expath = PathList[monthlist.SelectedIndex].StarGlitterPath;
+                        break;
+                    case 5:
+                        expath = PathList[monthlist.SelectedIndex].ResinPath;
                         break;
                 }
                 var localeEventPath = $"locale\\{account.Culture.Name.ToLower()}\\";
@@ -314,6 +335,17 @@ namespace Genshin_Checker.Window
                             e.Value = $"{TimeZoneInfo.ConvertTimeFromUtc((DateTime)time, TimeZoneInfo.Local):yyyy/MM/dd(ddd) HH:mm:ss}";
                         else e.Value = "----/--/--(---) --:--:--";
                         e.FormattingApplied = true;
+                        break;
+                    case 1:
+                        var id = e.Value as int?;
+                        if (id != null)
+                        {
+                            if (id == int.MinValue)
+                            {
+                                e.CellStyle.ForeColor = Color.Red;
+                                e.Value = "不明";
+                            }
+                        }
                         break;
                     case 3:
                         e.Value = $"{e.Value:#,##0}";

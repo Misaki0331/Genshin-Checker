@@ -250,4 +250,13 @@
   <data name="Crystal" xml:space="preserve">
     <value>Crystal</value>
   </data>
+  <data name="StarDust" xml:space="preserve">
+    <value>Stardust</value>
+  </data>
+  <data name="StarGlitter" xml:space="preserve">
+    <value>Starglitter</value>
+  </data>
+  <data name="Resin" xml:space="preserve">
+    <value>Resin</value>
+  </data>
 </root>

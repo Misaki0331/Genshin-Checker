@@ -304,6 +304,33 @@ namespace Genshin_Checker.resource.Languages {
         }
         
         /// <summary>
+        ///   Resin に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string Resin {
+            get {
+                return ResourceManager.GetString("Resin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Stardust に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string StarDust {
+            get {
+                return ResourceManager.GetString("StarDust", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Starglitter に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string StarGlitter {
+            get {
+                return ResourceManager.GetString("StarGlitter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Freedom に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string TalentBook_1_1 {

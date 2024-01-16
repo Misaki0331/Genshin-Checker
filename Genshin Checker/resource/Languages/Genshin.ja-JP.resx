@@ -250,4 +250,13 @@
   <data name="Crystal" xml:space="preserve">
     <value>創世結晶</value>
   </data>
+  <data name="StarDust" xml:space="preserve">
+    <value>スターダスト</value>
+  </data>
+  <data name="StarGlitter" xml:space="preserve">
+    <value>スターライト</value>
+  </data>
+  <data name="Resin" xml:space="preserve">
+    <value>樹脂</value>
+  </data>
 </root>
