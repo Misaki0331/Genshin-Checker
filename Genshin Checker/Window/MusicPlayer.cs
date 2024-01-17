@@ -36,6 +36,7 @@ namespace Genshin_Checker.Window
         {
             var data = await App.WebRequest.GetRequest(url);
             if (data == null) return;
+            Trace.WriteLine($"Size:{data.Length / 1024.0 / 1024.0:0.00}MB");
             MusicStream = new(data);
             if (WaveStream != null && WaveStream.CanRead) await WaveStream.DisposeAsync();
             WaveStream = new Mp3FileReader(MusicStream);
@@ -44,13 +45,22 @@ namespace Genshin_Checker.Window
 
         private void ButtonPlay_Click(object sender, EventArgs e)
         {
-            if (waveOut.PlaybackState == PlaybackState.Playing) waveOut.Pause();
-            else waveOut.Play();
+            try
+            {
+                if(WaveStream==null) return;
+                if (waveOut.PlaybackState == PlaybackState.Playing) waveOut.Pause();
+                else if(WaveStream.CanRead) waveOut.Play();
+            }
+            catch { }
         }
 
         private void ButtonStop_Click(object sender, EventArgs e)
         {
-            waveOut.Stop();
+            if (WaveStream != null)
+            {
+                waveOut.Stop(); 
+                WaveStream.Position = 0;
+            }
         }
 
         private void update_Tick(object sender, EventArgs e)
