@@ -11,6 +11,7 @@ using System.Security.Policy;
 using System.Text;
 using System.Text.Json.Nodes;
 using System.Threading.Tasks;
+using static Genshin_Checker.Window.ExWindow.CharacterCalculator.CalculateResult;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TaskbarClock;
 
 namespace Genshin_Checker.App
@@ -157,9 +158,9 @@ namespace Genshin_Checker.App
             response.EnsureSuccessStatusCode();
             return await response.Content.ReadAsStringAsync();
         }
-        public static async Task<Image> ImageGetRequest(string? url,CancellationToken? token=null)
+        public static async Task<byte[]?> GetRequest(string? url, CancellationToken? token = null)
         {
-            if (url == null) return resource.icon.fail;
+            if(url==null)return null;
             var uri = new Uri(url);
             bool IsQuery = url.Contains('?');
             var filename = GetCachePath(MD5Hash(url));
@@ -174,8 +175,7 @@ namespace Genshin_Checker.App
                     using MemoryStream cacheout = new();
                     zipStream.CopyTo(cacheout);
                     Trace.WriteLine($"Cache ({fs.Length}->{cacheout.Length}) : {url}");
-                    var cache = new Bitmap(cacheout);
-                    return cache;
+                    return cacheout.ToArray();
                 }
                 catch (Exception ex)
                 {
@@ -201,25 +201,26 @@ namespace Genshin_Checker.App
             client.DefaultRequestHeaders.Clear();
             foreach (KeyValuePair<string, string> header in headers)
                 client.DefaultRequestHeaders.Add(header.Key, header.Value);
-            HttpResponseMessage response=new();
+            HttpResponseMessage response = new();
             for (int i = 0; i < 10; i++)
             {
                 try
                 {
                     if (token == null) response = await client.GetAsync(url);
-                    else response = await client.GetAsync(url, (CancellationToken) token);
+                    else response = await client.GetAsync(url, (CancellationToken)token);
                     if (!response.IsSuccessStatusCode)
                     {
                         Trace.WriteLine($"Error: {response.StatusCode} - {url}");
                         throw new ArgumentException($"Error: {response.StatusCode} - {url}");
                     }
                     break;
-                }catch(Exception ex)
+                }
+                catch (Exception ex)
                 {
                     Trace.WriteLine(ex.Message);
                     if (i == 9)
                     {
-                        return resource.icon.fail;
+                        return null;
                     }
                     continue;
                 }
@@ -232,8 +233,25 @@ namespace Genshin_Checker.App
                 stream.CopyTo(zipStream);
                 zipStream.Close();
             }
-            Trace.WriteLine($"Downloaded ({stream.Length:#,##0} Bytes / {stopwatch.ElapsedMilliseconds/1000.0:0.00} sec) : {url}");
-            var bitmap = new Bitmap(stream);
+            Trace.WriteLine($"Downloaded ({stream.Length:#,##0} Bytes / {stopwatch.ElapsedMilliseconds / 1000.0:0.00} sec) : {url}");
+            byte[] buffer = new byte[16 * 1024];
+            using (MemoryStream ms = new())
+            {
+                int read;
+                while ((read = stream.Read(buffer, 0, buffer.Length)) > 0)
+                {
+                    ms.Write(buffer, 0, read);
+                }
+                return ms.ToArray();
+            }
+        }
+        public static async Task<Image> ImageGetRequest(string? url,CancellationToken? token=null)
+        {
+            if (url == null) return resource.icon.fail;
+            var stream = await GetRequest(url, token);
+            if (stream == null) return resource.icon.fail;
+            MemoryStream ms = new(stream);
+            var bitmap = new Bitmap(ms);
             return bitmap;
         }
 

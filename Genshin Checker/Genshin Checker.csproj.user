@@ -67,6 +67,9 @@
     <Compile Update="Window\Debug\APIChecker.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Window\MusicPlayer.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Window\PopupWindow\ErrorMessage.cs">
       <SubType>Form</SubType>
     </Compile>
