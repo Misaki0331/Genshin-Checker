@@ -311,6 +311,65 @@ namespace Genshin_Checker.App.HoYoLab
             var json = await WebRequest.HoYoPostRequest(url, Account.Cookie, JsonConvert.SerializeObject(data));
             return json ?? "";
         }
+
+        /// <summary>
+        /// 育成計算機
+        /// </summary>
+        /// <param name="data">キャラクターの計算変数</param>
+        /// <returns></returns>
+        /// <exception cref="InvalidDataException"></exception>
+        public static async Task<string> LoginBonusInfo(Account Account)
+        {
+            const string Act_ID = "e202102251931481";
+            var url = $"https://sg-hk4e-api.hoyolab.com/event/sol/info?lang={Account.Culture.Name.ToLower()}&act_id={Act_ID}";
+            var json = await WebRequest.HoYoGetRequest(url, Account.Cookie);
+            return json ?? "";
+        }
+
+
+        /// <summary>
+        /// 育成計算機
+        /// </summary>
+        /// <param name="data">キャラクターの計算変数</param>
+        /// <returns></returns>
+        /// <exception cref="InvalidDataException"></exception>
+        public static async Task<string> LoginBonusResignInfo(Account Account)
+        {
+            const string Act_ID = "e202102251931481";
+            var url = $"https://sg-hk4e-api.hoyolab.com/event/sol/resign_info?act_id={Act_ID}&lang={Account.Culture.Name.ToLower()}";
+            var json = await WebRequest.HoYoGetRequest(url, Account.Cookie);
+            return json ?? "";
+        }
+        
+        /// <summary>
+        /// 育成計算機
+        /// </summary>
+        /// <param name="data">キャラクターの計算変数</param>
+        /// <returns></returns>
+        /// <exception cref="InvalidDataException"></exception>
+        public static async Task<string> LoginBonusExtraAward(Account Account)
+        {
+            const string Act_ID = "e202102251931481";
+            var url = $"https://sg-hk4e-api.hoyolab.com/event/sol/extra_award?act_id={Act_ID}&region={Account.Server}&uid={Account.UID}";
+            var json = await WebRequest.HoYoGetRequest(url, Account.Cookie);
+            return json ?? "";
+        }
+        
+
+        /// <summary>
+        /// 育成計算機
+        /// </summary>
+        /// <param name="data">キャラクターの計算変数</param>
+        /// <returns></returns>
+        /// <exception cref="InvalidDataException"></exception>
+        public static async Task<string> LoginBonusSignIn(Account Account)
+        {
+            const string Act_ID = "e202102251931481";
+            var url = $"https://sg-hk4e-api.hoyolab.com/event/sol/sign?lang=ja-jp";
+            var json = await WebRequest.HoYoPostRequest(url, Account.Cookie, $"{{act_id: \"{Act_ID}\"}}");
+            return json ?? "";
+        }
+
         /// <summary>
         /// EnkaNetwork
         /// </summary>

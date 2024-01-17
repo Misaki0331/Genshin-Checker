@@ -194,7 +194,7 @@ namespace Genshin_Checker.App.Game
             if (LocaleQueue.Count > 0)
             {
                 Trace.WriteLine($"ローカライズのキューが残っている為調査します(対象 : {LocaleQueue.Count})");
-                var langs = await HoYoLab.LocalizeInfo.GetLanguages();
+                var langs = await HoYoLab.Static.LocalizeInfo.GetLanguages();
                 if (langs.Data == null) throw new ArgumentNullException(nameof(langs.Data), "languages data is null");
                 int cnt = 0;
                 foreach (var l in LocaleQueue)
@@ -225,7 +225,7 @@ namespace Genshin_Checker.App.Game
             if (LocaleQueueEnquipment.Count > 0)
             {
                 Trace.WriteLine($"装備のローカライズのキューが残っている為調査します(対象 : {LocaleQueueEnquipment.Count})");
-                var langs = await HoYoLab.LocalizeInfo.GetLanguages();
+                var langs = await HoYoLab.Static.LocalizeInfo.GetLanguages();
                 if (langs.Data == null) throw new ArgumentNullException(nameof(langs.Data), "languages data is null");
                 int cnt = 0;
                 foreach (var l in LocaleQueueEnquipment)
@@ -348,7 +348,7 @@ namespace Genshin_Checker.App.Game
             if (LocaleQueue.Count > 0)
             {
                 Trace.WriteLine($"ローカライズのキューが残っている為調査します(対象 : {LocaleQueue.Count})");
-                var langs = await HoYoLab.LocalizeInfo.GetLanguages();
+                var langs = await HoYoLab.Static.LocalizeInfo.GetLanguages();
                 if (langs.Data == null) throw new ArgumentNullException(nameof(langs.Data), "languages data is null");
                 int cnt = 0;
                 foreach (var l in LocaleQueue)
@@ -473,7 +473,7 @@ namespace Genshin_Checker.App.Game
             if (LocaleQueue.Count > 0)
             {
                 Trace.WriteLine($"ローカライズのキューが残っている為調査します(対象 : {LocaleQueue.Count})");
-                var langs = await HoYoLab.LocalizeInfo.GetLanguages();
+                var langs = await HoYoLab.Static.LocalizeInfo.GetLanguages();
                 if (langs.Data == null) throw new ArgumentNullException(nameof(langs.Data), "languages data is null");
                 int cnt = 0;
                 foreach (var l in LocaleQueue)
@@ -612,7 +612,7 @@ namespace Genshin_Checker.App.Game
             if (LocaleQueue.Count > 0)
             {
                 Trace.WriteLine($"ローカライズのキューが残っている為調査します(対象 : {LocaleQueue.Count})");
-                var langs = await HoYoLab.LocalizeInfo.GetLanguages();
+                var langs = await HoYoLab.Static.LocalizeInfo.GetLanguages();
                 if (langs.Data == null) throw new ArgumentNullException(nameof(langs.Data), "languages data is null");
                 int cnt = 0;
                 foreach (var l in LocaleQueue)
