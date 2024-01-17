@@ -118,23 +118,23 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="cSV出力ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>118, 22</value>
-  </data>
-  <data name="cSV出力ToolStripMenuItem.Text" xml:space="preserve">
-    <value>CSV出力</value>
-  </data>
   <data name="ファイルToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>53, 24</value>
   </data>
   <data name="ファイルToolStripMenuItem.Text" xml:space="preserve">
     <value>ファイル</value>
   </data>
+  <data name="cSV出力ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>118, 22</value>
+  </data>
+  <data name="cSV出力ToolStripMenuItem.Text" xml:space="preserve">
+    <value>CSV出力</value>
+  </data>
   <data name="monthlist.Location" type="System.Drawing.Point, System.Drawing">
     <value>275, 0</value>
   </data>
   <data name="button1.Text" xml:space="preserve">
-    <value>データの更新</value>
+    <value>更新</value>
   </data>
   <data name="listtype.Location" type="System.Drawing.Point, System.Drawing">
     <value>396, 0</value>
@@ -150,5 +150,8 @@
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>旅人通帳</value>
+  </data>
+  <data name="button2.Text" xml:space="preserve">
+    <value>データ同期</value>
   </data>
 </root>

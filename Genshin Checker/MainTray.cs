@@ -69,7 +69,6 @@ namespace Genshin_Checker
                 versionNameToolStripMenuItem.Text += "[Readonly]";
                 Registry.IsReadOnly = true;
             }
-            App.Game.GameLogWatcher.Instance.LogUpdated += LogUpdated;
             App.Game.GameLogWatcher.Instance.Init();
             App.Game.ScreenshotWatcher.Instance.NewImageEvent += ScreenshotEvent;
         }
@@ -159,15 +158,6 @@ namespace Genshin_Checker
             //OpenWindow(Store.Accounts.Data[0], nameof(Window.SpiralAbyss));
         }
 
-        private void LogUpdated(object? sender, string[] e)
-        {
-            foreach (var item in e)
-            {
-                GameLogTemp.Add(item);
-                if (GameLogTemp.Count > 200) GameLogTemp.RemoveAt(0);
-                //Trace.Write(item);
-            }
-        }
 
         private void ÉQÅ[ÉÄÉçÉOäJî≠é“å¸ÇØToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -209,89 +199,14 @@ namespace Genshin_Checker
                 new ErrorMessage(Localize.App_Error_FailedSaveScreenshot, $"{ex}").ShowDialog();
             }
         }
-        List<Form> FormList = new();
 
         void AccountRemoved(object? sender, Account account)
         {
-            var find = FormList.FindAll(a => a.Name.StartsWith($"{account.UID}"));
-            foreach (var window in find)
-            {
-                try
-                {
-                    if (!window.IsDisposed) window.Close();
-                    FormList.Remove(window);
-                }
-                catch { }
-            }
+            ManageWindow.CloseDiposedAccount(account);
         }
         private void OpenWindow(Account? account, string name)
         {
-            string Name = $"{(account != null ? account.UID : "null")},{name}";
-            var delete = FormList.Find(a => a.Name == Name && a.IsDisposed);
-            if (delete != null) FormList.Remove(delete);
-            var find = FormList.Find(a => a.Name == Name);
-            bool IsAdd = find == null;
-            if (account == null)
-            {
-                if (find == null || find.IsDisposed)
-                    switch (name)
-                    {
-                        case nameof(Window.GameLog):
-                            find = new Window.GameLog(GameLogTemp) { Name = Name };
-                            break;
-                        case nameof(Window.TimerDisplay):
-                            find = new Window.TimerDisplay() { Name = Name };
-                            break;
-                        case nameof(Window.TimeGraph):
-                            find = new Window.TimeGraph() { Name = Name };
-                            break;
-                        case nameof(Window.SettingWindow):
-                            find = new Window.SettingWindow() { Name = Name };
-                            break;
-                        case nameof(Window.Debug.APIChecker):
-                            find = new Window.Debug.APIChecker() { Name = Name };
-                            break;
-                        case nameof(Window.Debug.Console):
-                            find = new Window.Debug.Console() { Name = Name };
-                            break;
-                        case nameof(Window.ProgressWindow.LoadGameDatabase):
-                            find = new Window.ProgressWindow.LoadGameDatabase() { Name = Name };
-                            break;
-                    }
-            }
-            else
-            {
-                if (find == null || find.IsDisposed)
-                    switch (name)
-                    {
-                        case nameof(Window.GameRecords):
-                            find = new Window.GameRecords(account) { Name = Name };
-                            break;
-                        case nameof(Window.RealTimeData):
-                            find = new Window.RealTimeData(account) { Name = Name };
-                            break;
-                        case nameof(Window.TravelersDiary):
-                            find = new Window.TravelersDiary(account) { Name = Name };
-                            break;
-                        case nameof(Window.TravelersDiaryDetailList):
-                            find = new Window.TravelersDiaryDetailList(account) { Name = Name };
-                            break;
-                        case nameof(Window.CharacterCalculator):
-                            find = new Window.CharacterCalculator(account) { Name = Name };
-                            break;
-                        case nameof(BrowserApp.WebGameAnnounce):
-                            find = new BrowserApp.WebGameAnnounce(account) { Name = Name };
-                            break;
-                        case nameof(Window.SpiralAbyss):
-                            find = new Window.SpiralAbyss(account) { Name = Name };
-                            break;
-                    }
-            }
-            if (find == null) return;
-            if (IsAdd) FormList.Add(find);
-            find.Show();
-            if (find.WindowState == FormWindowState.Minimized) find.WindowState = FormWindowState.Normal;
-            find.Activate();
+            ManageWindow.OpenWindow(account, name);
         }
         private void ToolStripGenerate()
         {

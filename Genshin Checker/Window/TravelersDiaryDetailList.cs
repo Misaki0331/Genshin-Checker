@@ -45,11 +45,11 @@ namespace Genshin_Checker.Window
         {
             this.account = account;
             PathList = new();
-            CurrentView= new DataTable();
-            CurrentView.Columns.Add("EventTime",typeof(DateTime));
-            CurrentView.Columns.Add("EventTypeID",typeof(int));
-            CurrentView.Columns.Add("EventTypeName",typeof(string));
-            CurrentView.Columns.Add("ObtainedCount",typeof(int));
+            CurrentView = new DataTable();
+            CurrentView.Columns.Add("EventTime", typeof(DateTime));
+            CurrentView.Columns.Add("EventTypeID", typeof(int));
+            CurrentView.Columns.Add("EventTypeName", typeof(string));
+            CurrentView.Columns.Add("ObtainedCount", typeof(int));
             CurrentView.Columns[0].ColumnName = Localize.WindowName_TravelersDiaryDetailList_Name_EventTime;
             CurrentView.Columns[1].ColumnName = Localize.WindowName_TravelersDiaryDetailList_Name_EventTypeID;
             CurrentView.Columns[2].ColumnName = Localize.WindowName_TravelersDiaryDetailList_Name_EventTypeName;
@@ -63,7 +63,7 @@ namespace Genshin_Checker.Window
             dataGridView1.DataSource = CurrentView;
             dataGridView1.Columns[0].Width = 150;
             dataGridView1.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            dataGridView1.Columns[1].Width = 65; 
+            dataGridView1.Columns[1].Width = 65;
             dataGridView1.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dataGridView1.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
             dataGridView1.Columns[2].Width = 160;
@@ -93,7 +93,7 @@ namespace Genshin_Checker.Window
         private void UpdateDataMonth()
         {
             PathList.Clear();
-            for(int year = DateTime.Now.Year; year >= 2023; year--)
+            for (int year = DateTime.Now.Year; year >= 2023; year--)
             {
                 for (int month = 12; month >= 1; month--)
                 {
@@ -168,21 +168,21 @@ namespace Genshin_Checker.Window
                 //カスタマーセンターの方のローカライズを取得
                 try
                 {
-                    if (gameeventpath != null&&AppData.IsExistFile(gameeventpath))
+                    if (gameeventpath != null && AppData.IsExistFile(gameeventpath))
                         gameeventlists = JsonChecker<Model.UserData.GameDatabase.NameLocalize.Root>.Check(await App.General.AppData.LoadUserData(gameeventpath) ?? "{}");
                 }
                 catch { }
                 //HoYoLabの方のローカライズを取得
                 try
                 {
-                    if (eventpath != null&&AppData.IsExistFile(eventpath))
-                        eventlists = JsonChecker<EventName>.Check(await App.General.AppData.LoadUserData(eventpath)??"");
+                    if (eventpath != null && AppData.IsExistFile(eventpath))
+                        eventlists = JsonChecker<EventName>.Check(await App.General.AppData.LoadUserData(eventpath) ?? "");
                 }
                 catch { }
                 //カスタマーセンターのデータベースを取得
                 try
                 {
-                    if (expath!=null&&AppData.IsExistFile(expath)) gamelists = JsonChecker<Model.UserData.GameDatabase.ItemNum.Root>.Check(await AppData.LoadUserData(expath) ?? "{}");
+                    if (expath != null && AppData.IsExistFile(expath)) gamelists = JsonChecker<Model.UserData.GameDatabase.ItemNum.Root>.Check(await AppData.LoadUserData(expath) ?? "{}");
                 }
                 catch (Exception)
                 {
@@ -191,7 +191,7 @@ namespace Genshin_Checker.Window
                 //HoYoLabのデータベースを取得
                 try
                 {
-                    if(path != null && AppData.IsExistFile(path))lists = JsonChecker<EventLists>.Check(await AppData.LoadUserData(path)??"{}");
+                    if (path != null && AppData.IsExistFile(path)) lists = JsonChecker<EventLists>.Check(await AppData.LoadUserData(path) ?? "{}");
                 }
                 catch (Exception)
                 {
@@ -205,17 +205,17 @@ namespace Genshin_Checker.Window
                 foreach (var a in lists.Details)
                 {
                     var typename = App.General.TravelersDiaryDatailEventConverter.GetEventName(a.EventType, eventlists);
-                    CurrentView.Rows.Add(new object[] { Server.ConvertUTCTime(account.Server,a.EventTime), a.EventType, typename, a.Count });
+                    CurrentView.Rows.Add(new object[] { Server.ConvertUTCTime(account.Server, a.EventTime), a.EventType, typename, a.Count });
                 }
                 bool IsEventIDChanged = false;
                 foreach (var a in gamelists.Details)
                 {
                     var id = a.EventTypeID == int.MinValue ? GameDataStringToEventID.GetIDFromString(a.EventType) : a.EventTypeID;
-                    if (a.Count < 0 || id!=int.MinValue||lists.Details.Find(b=>b.EventTime==a.EventTime)==null)
+                    if (a.Count < 0 || id != int.MinValue || lists.Details.Find(b => b.EventTime == a.EventTime) == null)
                     {
                         if (id != a.EventTypeID)
                         {
-                            IsEventIDChanged=true;
+                            IsEventIDChanged = true;
                             a.EventTypeID = id;
                         }
                         var typename = App.General.TravelersDiaryDatailEventConverter.GetEventName(a.EventTypeID, a.EventType, gameeventlists);
@@ -223,13 +223,13 @@ namespace Genshin_Checker.Window
                     }
                 }
                 lists.Details.Clear();
-                if (IsEventIDChanged&&expath!=null)
+                if (IsEventIDChanged && expath != null)
                     await App.General.AppData.SaveUserData(expath, JsonConvert.SerializeObject(gamelists));
                 gamelists.Details.Clear();
                 dataGridView1.Sort(dataGridView1.Columns[0], ListSortDirection.Descending);
-                dataGridView1.ResumeLayout(true); 
+                dataGridView1.ResumeLayout(true);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 new ErrorMessage(Localize.Error_TravelersDiaryDetailList_FailedToLoadDatabase, $"{ex}").ShowDialog();
             }
@@ -242,8 +242,6 @@ namespace Genshin_Checker.Window
 
         private void button1_Click(object sender, EventArgs e)
         {
-            var a = new Window.ProgressWindow.LoadTravelersDiaryDetail(account, Window.ProgressWindow.LoadTravelersDiaryDetail.Mode.All, account.TravelersDiary.Data.Data?.optional_month);
-            a.ShowDialog();
             UpdateDataMonth();
         }
 
@@ -253,7 +251,7 @@ namespace Genshin_Checker.Window
             if (p < 0) p = 0;
             if (p > 100) p = 100;
             toolStripProgressBar1.Value = (int)p * 100;
-            toolStripStatusLabel1.Text = $"{p:0.0}% {string.Format(Localize.WindowName_TravelersDiaryDetailList_Downloading, e.month == 0 ? Localize.WindowName_TravelersDiaryDetailList_Downloading_ThisMonth : App.General.LocalizeValue.Convert.MonthShort(e.month),e.mode,e.CurrentPage)}";
+            toolStripStatusLabel1.Text = $"{p:0.0}% {string.Format(Localize.WindowName_TravelersDiaryDetailList_Downloading, e.month == 0 ? Localize.WindowName_TravelersDiaryDetailList_Downloading_ThisMonth : App.General.LocalizeValue.Convert.MonthShort(e.month), e.mode, e.CurrentPage)}";
 
         }
         private void TravelersDiaryDetail_ProgressCompreted(object? sender, EventArgs e)
@@ -286,6 +284,18 @@ namespace Genshin_Checker.Window
                 {
                     switch (App.General.TravelersDiaryDatailEventConverter.GetEventType((int)type.Value))
                     {
+                        case TravelersDiaryDatailEventConverter.EventType.Purchase:
+                            col = Color.FromArgb(0xCC, 0xCC, 0xFF);
+                            break;
+                        case TravelersDiaryDatailEventConverter.EventType.PurchasePrimogems:
+                            col = Color.FromArgb(255, 230, 245);
+                            break;
+                        case TravelersDiaryDatailEventConverter.EventType.Consumption:
+                            col = Color.FromArgb(0xFF, 0xCC, 0xFF);
+                            break;
+                        case TravelersDiaryDatailEventConverter.EventType.Wish:
+                            col = Color.FromArgb(0xD0,0xD0,0xFF);
+                            break;
                         case TravelersDiaryDatailEventConverter.EventType.Mail:
                             col = Color.FromArgb(0xCC, 0xAA, 0xFF);
                             break;
@@ -348,11 +358,17 @@ namespace Genshin_Checker.Window
                         }
                         break;
                     case 3:
+                        var num = e.Value as int?;
+                        if (num != null)
+                        {
+                            if(num<0) e.CellStyle.ForeColor = Color.FromArgb(255,0,0);
+                        }
                         e.Value = $"{e.Value:#,##0}";
                         e.FormattingApplied = true;
                         break;
                 }
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 Trace.WriteLine(ex);
             }
@@ -367,7 +383,7 @@ namespace Genshin_Checker.Window
             {
                 if (saveFileDialog1.ShowDialog() == DialogResult.OK)
                 {
-                    System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance); 
+                    System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
                     using StreamWriter sw = new(saveFileDialog1.FileName, false, Encoding.GetEncoding("Shift_JIS"));
                     for (int i = 0; i < dataGridView1.Columns.Count; i++)
                     {
@@ -387,10 +403,16 @@ namespace Genshin_Checker.Window
                     }
                     sw.Close();
                 }
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 new ErrorMessage(Localize.Error_TravelersDiaryDetailList_FailedToCsvOutput, $"{ex}").ShowDialog();
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            App.General.ManageWindow.OpenWindow(null, nameof(Window.ProgressWindow.LoadGameDatabase));
         }
     }
 }

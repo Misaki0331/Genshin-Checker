@@ -21,7 +21,9 @@ namespace Genshin_Checker.App.General
             {"Purchased BP Level",-22 }, //紀行のレベル購入
             {"Other Primogem redemption",-99 }, //その他で原石使用(主に樹脂など)
             {"Item crafting material",-101 }, //その他で原石使用(主に樹脂など)
-            {"Revitalized Petrified Tree (Domain)",-102 }, //その他で原石使用(主に樹脂など)
+            {"Revitalized Petrified Tree (Domain)",-102 }, //秘境で入手
+            {"Trounce Blossom challenge reward", -103 }, //週ボス
+            {"Ley Line Blossom challenge reward", -104 }, //地脈
             {"Obtained from Wish",-1000 }, //祈願で入手
             {"Exchanged in the Shop",-201 }, //スターダスト・スターライト交換
 

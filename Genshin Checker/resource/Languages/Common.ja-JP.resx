@@ -98,40 +98,40 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.3500.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="MonthShort_01" xml:space="preserve">
-    <value>1 月</value>
+    <value>1月</value>
   </data>
   <data name="MonthShort_02" xml:space="preserve">
-    <value>2 月</value>
+    <value>2月</value>
   </data>
   <data name="MonthShort_03" xml:space="preserve">
-    <value>3 月</value>
+    <value>3月</value>
   </data>
   <data name="MonthShort_04" xml:space="preserve">
-    <value>4 月</value>
+    <value>4月</value>
   </data>
   <data name="MonthShort_05" xml:space="preserve">
-    <value>5 月</value>
+    <value>5月</value>
   </data>
   <data name="MonthShort_06" xml:space="preserve">
-    <value>6 月</value>
+    <value>6月</value>
   </data>
   <data name="MonthShort_07" xml:space="preserve">
-    <value>7 月</value>
+    <value>7月</value>
   </data>
   <data name="MonthShort_08" xml:space="preserve">
-    <value>8 月</value>
+    <value>8月</value>
   </data>
   <data name="MonthShort_09" xml:space="preserve">
-    <value>9 月</value>
+    <value>9月</value>
   </data>
   <data name="MonthShort_10" xml:space="preserve">
-    <value>10 月</value>
+    <value>10月</value>
   </data>
   <data name="MonthShort_11" xml:space="preserve">
-    <value>11 月</value>
+    <value>11月</value>
   </data>
   <data name="MonthShort_12" xml:space="preserve">
-    <value>12 月</value>
+    <value>12月</value>
   </data>
   <data name="Unknown" xml:space="preserve">
     <value>不明</value>
@@ -194,5 +194,8 @@
   </data>
   <data name="Close" xml:space="preserve">
     <value>閉じる</value>
+  </data>
+  <data name="NoAccount" xml:space="preserve">
+    <value>連携済みのアカウントがありません。</value>
   </data>
 </root>

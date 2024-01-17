@@ -20,18 +20,20 @@ namespace Genshin_Checker.App.HoYoLab
         const int MAXPAGE = 5000000; //取得ページ数上限
         public class ProgressState
         {
-            internal ProgressState(double progress, int current, int total, string mode, int month)
+            internal ProgressState(double progress, int current, int total, string mode, int year,int month)
             {
                 Progress = progress;
                 CurrentPage = current;
                 TotalPage = total;
                 this.mode = mode;
+                this.year = year;
                 this.month = month;
             }
             public readonly double Progress;
             public readonly int CurrentPage;
             public readonly int TotalPage;
             public readonly string mode;
+            public readonly int year;
             public readonly int month;
 
         }
@@ -99,6 +101,8 @@ namespace Genshin_Checker.App.HoYoLab
         /// <returns></returns>
         private async Task CorrectData(int month, Mode mode, int position = 0, int total = int.MaxValue)
         {
+            int tempyear = 0;
+            int tempmonth = 0;
             DateTime Latest = DateTime.MinValue;    //最後の更新日
             int LatestCount = 0;                    //最後の更新の同時刻イベント数
             bool IsEnd = false;                     //取得終了フラグ
@@ -136,6 +140,8 @@ namespace Genshin_Checker.App.HoYoLab
                     if (data.List.Count != 0)
                     {
                         var date = DateTime.Parse(data.List[0].Time); //一番最初の日付の解析
+                        tempyear= date.Year;
+                        tempmonth= date.Month;
                         var regPath = $"UserData\\{uid}\\Date\\{date.Year}\\{date.Month:00}\\"; //レジストリのパスの設定
                         path = Registry.GetValue(regPath, $"Latest{mode}Path", true); //レジストリからデータの所在地の呼び出し
                         if (path == null) //無いなら新しく作成
@@ -195,13 +201,13 @@ namespace Genshin_Checker.App.HoYoLab
                     double progress2 = 1.00 - ((current - end) / (start - end));
                     if (progress2 < 0) progress2 = 0;
                     if (progress2 > 1) progress2 = 1;
-                    progress = (progress2 / total + (double)position / total) * 100.0;
+                    progress = (progress2 / total + (double)position / total);
                 }
                 else
                 {
-                    progress = ((double)position / total) * 100.0;
+                    progress = ((double)position / total);
                 }
-                ProgressChanged?.Invoke(null, new(progress, i, totalcount, $"{mode}", month));
+                ProgressChanged?.Invoke(null, new(progress, i, totalcount, $"{mode}", tempyear,tempmonth));
 
                 //終了処理
                 if (IsEnd || i == MAXPAGE)

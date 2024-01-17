@@ -328,6 +328,6 @@
     <value>17, 17</value>
   </metadata>
   <data name="現在のアカウント情報を取得ToolStripMenuItem.Text" xml:space="preserve">
-    <value>Get database from current account</value>
+    <value>Synchronization of item logs</value>
   </data>
 </root>

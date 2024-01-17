@@ -479,7 +479,7 @@ Spiral Abyss: {2}</value>
     <value>This character is missing data.</value>
   </data>
   <data name="Error_CharacterDetail_CharacterDetailIsMissing_Message" xml:space="preserve">
-    <value>{0} has no data on the volunteer database yet.
+    <value>{0} has no data in enka.network yet.
 Please reopen it again after a while.</value>
   </data>
   <data name="Error_CharacterDetail_HoYoLabAPIException" xml:space="preserve">
@@ -620,5 +620,14 @@ After clicking the "Feedback" button, a new browser window will open, but you ca
   </data>
   <data name="Windowname_LoadGameDatabase_Cancelled" xml:space="preserve">
     <value>Processing is being canceled...</value>
+  </data>
+  <data name="Windowname_LoadGameDatabase_FailedToSessionName" xml:space="preserve">
+    <value>Failed to load session name.</value>
+  </data>
+  <data name="Error_LoadGameDatabase_AccountDisposed" xml:space="preserve">
+    <value>This account is not available.</value>
+  </data>
+  <data name="Error_LoadGameDatabase_AccountDisposed_Message" xml:space="preserve">
+    <value>Failed to load data for this account because it has already been unlinked.</value>
   </data>
 </root>

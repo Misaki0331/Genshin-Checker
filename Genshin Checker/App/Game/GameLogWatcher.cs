@@ -28,11 +28,33 @@ namespace Genshin_Checker.App.Game
             {
                 Interval = 10
             };
+            GameLogTemp = new();
             Delay.Tick += LogChanged;
+            LogUpdated += LogUpdatedList;
         }
         public void Init()
         {
            Delay.Enabled= true;
+        }
+        public List<string> GameLog 
+        { 
+            get { 
+                var output = new List<string>(); 
+                foreach(var item in GameLogTemp) 
+                    output.Add(item); 
+                return output; 
+            } 
+        }
+        List<string> GameLogTemp;
+        private void LogUpdatedList(object? sender, string[] e)
+        {
+
+            foreach (var item in e)
+            {
+                GameLogTemp.Add(item);
+                if (GameLogTemp.Count > 200) GameLogTemp.RemoveAt(0);
+                //Trace.Write(item);
+            }
         }
         public event EventHandler<string[]>? LogUpdated = null;
         private async void LogChanged(object? source, EventArgs e)

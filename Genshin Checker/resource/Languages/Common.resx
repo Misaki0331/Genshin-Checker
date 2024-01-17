@@ -207,4 +207,7 @@ Will Re-launching it?
   <data name="Close" xml:space="preserve">
     <value>Close</value>
   </data>
+  <data name="NoAccount" xml:space="preserve">
+    <value>No accounts.</value>
+  </data>
 </root>

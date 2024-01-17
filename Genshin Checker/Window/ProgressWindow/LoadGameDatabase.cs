@@ -1,18 +1,10 @@
 ﻿using Genshin_Checker.App.Game;
+using Genshin_Checker.App.HoYoLab;
 using Genshin_Checker.resource.Languages;
+using Genshin_Checker.Store;
 using Genshin_Checker.Window.Popup;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
-using System.Drawing;
-using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Genshin_Checker.Window.ProgressWindow
 {
@@ -21,6 +13,22 @@ namespace Genshin_Checker.Window.ProgressWindow
         public LoadGameDatabase()
         {
             InitializeComponent();
+            PanelProgress.Visible = false;
+            PanelSelect.Visible = true;
+            foreach (var account in Accounts.Data)
+            {
+                var name = $"UID:{account.UID}({account.Server}) {account.Name}";
+                AccountTemp.Add(name, account);
+                ComboHoYoLabAccounts.Items.Add(name);
+            }
+            if (AccountTemp.Count == 0)
+            {
+                ExecuteHoYoLab.Enabled = false;
+                ComboHoYoLabAccounts.Items.Add(Common.NoAccount);
+                ComboHoYoLabAccounts.SelectedIndex = 0;
+                ComboHoYoLabAccounts.Enabled = false;
+            }
+            else ComboHoYoLabAccounts.SelectedIndex = 0;
         }
         [DllImport("user32.dll", CharSet = CharSet.Unicode)]
         private static extern IntPtr SendMessage(HandleRef hWnd,
@@ -32,39 +40,27 @@ namespace Genshin_Checker.Window.ProgressWindow
         private const uint PBST_ERROR = 0x0002;
         private const uint PBST_PAUSED = 0x0003;
 
-        bool WillClose = false;
+        bool WillClose = true;
+        Dictionary<string,Account> AccountTemp = new();
         private async void LoadGameDatabase_Load(object sender, EventArgs e)
         {
             var authkey = await WebViewWatcher.GetServiceCenterAuthKey();
             if (authkey == null)
             {
-                new ErrorMessage(Localize.Error_LoadGameDatabase_FailedToReadAuth, Localize.Windowname_LoadGameDatabase_AuthkeyTip).ShowDialog();
-                WillClose = true;
-                Close();
+                SessionInfo.Text = Localize.Windowname_LoadGameDatabase_FailedToSessionName;
                 return;
             }
             var database = new GetGameDatabase(authkey);
             try
             {
                 var res = await database.Init();
-                LabelUserInfo.Text = $"UID:{database.uid} ({database.server})\n{database.username}";
+                SessionInfo.Text = $"UID:{database.uid}({database.server}) {database.username}";
             }
-            catch (GameAPI.GameAPIException ex)
+            catch
             {
-                new ErrorMessage(Localize.Error_LoadGameDatabase_FailedToAuth, $"{Localize.Windowname_LoadGameDatabase_AuthkeyTip}\n{ex.Message}").ShowDialog();
-                WillClose = true;
-                Close();
+                SessionInfo.Text = Localize.Windowname_LoadGameDatabase_FailedToSessionName;
                 return;
             }
-            catch (Exception ex)
-            {
-                new ErrorMessage(Common.CommonErrorOccurred, $"{ex}").ShowDialog();
-                WillClose = true;
-                Close();
-                return;
-            }
-            Trace.WriteLine("解析実行開始");
-            await AnalysisExecution(database);
         }
         int CurrentTask = 0;
         int MaxTask = 0;
@@ -73,7 +69,7 @@ namespace Genshin_Checker.Window.ProgressWindow
         {
             database.ProgressChanged += Database_ProgressChanged;
             database.ProgressCompreted += Database_ProgressCompreted;
-            database.ProgressFailed += Database_ProgressFailed;
+            database.ProgressFailed += ProgressFailed;
             List<Func<Task>> tasks = new();
             var snapshot = DateTime.Now;
             int cnt = 0;
@@ -140,14 +136,93 @@ namespace Genshin_Checker.Window.ProgressWindow
             Stopwatch.Stop();
             database.ProgressChanged -= Database_ProgressChanged;
             database.ProgressCompreted -= Database_ProgressCompreted;
-            database.ProgressFailed -= Database_ProgressFailed;
+            database.ProgressFailed -= ProgressFailed;
             WillClose = true;
             Cancel.Text = Common.Close;
             if (IsCancelled)
                 Close();
         }
 
-        private void Database_ProgressFailed(object? sender, Exception e)
+        private async Task AnalysisExecution(Account account)
+        {
+            List<Func<Task>> tasks = new();
+            var snapshot = DateTime.Now;
+            account.TravelersDiaryDetail.ProgressChanged += TravelersDiaryDetail_ProgressChanged;
+            account.TravelersDiaryDetail.ProgressFailed += ProgressFailed;
+            foreach (var month in account.TravelersDiary.Data.Data == null?new List<int> { 0 } :account.TravelersDiary.Data.Data.optional_month)
+            {
+                tasks.Add(async () => await account.TravelersDiaryDetail.Correct(new List<int> { month }, TravelersDiaryDetail.CorrectMode.Primogems));
+                tasks.Add(async () => await account.TravelersDiaryDetail.Correct(new List<int> { month }, TravelersDiaryDetail.CorrectMode.Mora));
+            }
+            CurrentTask = 0;
+            MaxTask = tasks.Count;
+            Stopwatch.Start();
+            bool NoError = false;
+            try
+            {
+                foreach (var task in tasks)
+                {
+                    await task();
+                    if (IsCancelled) break;
+                    CurrentTask++;
+                }
+                NoError = true;
+            }
+            catch (Exception ex)
+            {
+                if (progressBar1.IsHandleCreated)
+                {
+                    SendMessage(new HandleRef(progressBar1, progressBar1.Handle),
+                        PBM_SETSTATE, PBST_ERROR, IntPtr.Zero);
+                }
+                if (progressBar2.IsHandleCreated)
+                {
+                    SendMessage(new HandleRef(progressBar2, progressBar2.Handle),
+                        PBM_SETSTATE, PBST_ERROR, IntPtr.Zero);
+                }
+                LabelProgressGeneral.Text = Common.Failed;
+                LabelProgressDetail.Text = $"";
+                new ErrorMessage(Common.CommonErrorOccurred, $"{ex}").ShowDialog();
+            }
+            if (NoError)
+            {
+                progressBar1.Value = 10000;
+                progressBar2.Value = 10000;
+                LabelProgressGeneral.Text = $"{100:0.00}% {Common.Completed}";
+                LabelProgressDetail.Text = $"";
+
+                label1.Text = Localize.Windowname_LoadGameDatabase_Complete;
+            }
+            else
+            {
+                label1.Text = Localize.Windowname_LoadGameDatabase_Failed;
+            }
+            Stopwatch.Stop();
+            WillClose = true;
+            Cancel.Text = Common.Close;
+            account.TravelersDiaryDetail.ProgressChanged -= TravelersDiaryDetail_ProgressChanged;
+            account.TravelersDiaryDetail.ProgressFailed -= ProgressFailed;
+            if (IsCancelled)
+                Close();
+        }
+
+        private void TravelersDiaryDetail_ProgressChanged(object? sender, TravelersDiaryDetail.ProgressState e)
+        {
+            LabelProgressDetail.Text = $"{e.Progress * 100:0.00}% Pages:{e.CurrentPage} ";
+            double progress2 = e.Progress;
+            double progress = (double)(CurrentTask + (double.IsNaN(progress2) ? 0 : progress2)) / MaxTask;
+            LabelProgressGeneral.Text = $"{progress * 100.0:0.00}% {e.year}/{e.month}({e.mode})";
+            if (progress < 0) progress = 0;
+            if (progress > 1) progress = 1;
+            if (progress2 < 0) progress2 = 0;
+            if (progress2 > 1) progress2 = 1;
+            if (double.IsNaN(progress)) progress = 0;
+            if (double.IsNaN(progress2)) progress2 = 0;
+            progressBar1.Value = (int)(progress * 10000.0);
+            progressBar2.Value = (int)(progress2 * 10000.0);
+        }
+
+        private void ProgressFailed(object? sender, Exception e)
         {
             new ErrorMessage(Common.CommonErrorOccurred, $"{e}").ShowDialog();
         }
@@ -160,8 +235,8 @@ namespace Genshin_Checker.Window.ProgressWindow
         {
             LabelProgressDetail.Text = $"Step{e.CompletedTask + 1}/{e.MaxTask} {e.Progress * 100:0.00}%";
             double progress2 = (double)(e.CompletedTask + e.Progress) / (e.MaxTask);
-            LabelProgressGeneral.Text = $"{(double)(CurrentTask + progress2) / MaxTask * 100.0:0.00}% {e.year}/{e.month}({e.mode})";
             double progress = (double)(CurrentTask + (double.IsNaN(progress2) ? 0 : progress2)) / MaxTask;
+            LabelProgressGeneral.Text = $"{progress * 100.0:0.00}% {e.year}/{e.month}({e.mode})";
             if (progress < 0) progress = 0;
             if (progress > 1) progress = 1;
             if (progress2 < 0) progress2 = 0;
@@ -196,6 +271,62 @@ namespace Genshin_Checker.Window.ProgressWindow
 
             IsCancelled = true;
             label1.Text = Localize.Windowname_LoadGameDatabase_Cancelled;
+        }
+
+        private async void ExecuteGameSession_Click(object sender, EventArgs e)
+        {
+            WillClose = false;
+            var authkey = await WebViewWatcher.GetServiceCenterAuthKey();
+            if (authkey == null)
+            {
+                new ErrorMessage(Localize.Error_LoadGameDatabase_FailedToReadAuth, Localize.Windowname_LoadGameDatabase_AuthkeyTip).ShowDialog();
+                WillClose = true;
+                Close();
+                return;
+            }
+            var database = new GetGameDatabase(authkey);
+            try
+            {
+                var res = await database.Init();
+                LabelUserInfo.Text = $"UID:{database.uid} ({database.server})\n{database.username}";
+            }
+            catch (GameAPI.GameAPIException ex)
+            {
+                new ErrorMessage(Localize.Error_LoadGameDatabase_FailedToAuth, $"{Localize.Windowname_LoadGameDatabase_AuthkeyTip}\n{ex.Message}").ShowDialog();
+                WillClose = true;
+                Close();
+                return;
+            }
+            catch (Exception ex)
+            {
+                new ErrorMessage(Common.CommonErrorOccurred, $"{ex}").ShowDialog();
+                WillClose = true;
+                Close();
+                return;
+            }
+            Trace.WriteLine("解析実行開始");
+            PanelProgress.Visible = true;
+            PanelSelect.Visible = false;
+            await AnalysisExecution(database);
+        }
+
+        private async void ExecuteHoYoLab_Click(object sender, EventArgs e)
+        {
+            WillClose = false;
+            if (AccountTemp.TryGetValue(ComboHoYoLabAccounts.Text, out var account))
+            {
+                if (account.IsDisposed)
+                {
+                    new ErrorMessage(Localize.Error_LoadGameDatabase_AccountDisposed, Localize.Error_LoadGameDatabase_AccountDisposed_Message).ShowDialog();
+                    WillClose = true;
+                    Close();
+                    return;
+                }
+                PanelProgress.Visible = true;
+                PanelSelect.Visible = false;
+                LabelUserInfo.Text = $"UID:{account.UID} ({account.Server})\n{account.Name}";
+                await AnalysisExecution(account);
+            }
         }
     }
 }

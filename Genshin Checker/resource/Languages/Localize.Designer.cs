@@ -319,7 +319,7 @@ namespace Genshin_Checker.resource.Languages {
         }
         
         /// <summary>
-        ///   {0} has no data on the volunteer database yet.
+        ///   {0} has no data in enka.network yet.
         ///Please reopen it again after a while. に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string Error_CharacterDetail_CharacterDetailIsMissing_Message {
@@ -408,6 +408,24 @@ namespace Genshin_Checker.resource.Languages {
         public static string Error_HoYoLabAccount_UIDNotFound {
             get {
                 return ResourceManager.GetString("Error_HoYoLabAccount_UIDNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   This account is not available. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Error_LoadGameDatabase_AccountDisposed {
+            get {
+                return ResourceManager.GetString("Error_LoadGameDatabase_AccountDisposed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Failed to load data for this account because it has already been unlinked. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Error_LoadGameDatabase_AccountDisposed_Message {
+            get {
+                return ResourceManager.GetString("Error_LoadGameDatabase_AccountDisposed_Message", resourceCulture);
             }
         }
         
@@ -1179,6 +1197,15 @@ namespace Genshin_Checker.resource.Languages {
         public static string Windowname_LoadGameDatabase_Failed {
             get {
                 return ResourceManager.GetString("Windowname_LoadGameDatabase_Failed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Failed to load session name. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Windowname_LoadGameDatabase_FailedToSessionName {
+            get {
+                return ResourceManager.GetString("Windowname_LoadGameDatabase_FailedToSessionName", resourceCulture);
             }
         }
         

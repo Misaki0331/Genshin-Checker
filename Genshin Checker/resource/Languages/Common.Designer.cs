@@ -294,6 +294,15 @@ namespace Genshin_Checker.resource.Languages {
         }
         
         /// <summary>
+        ///   No accounts. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string NoAccount {
+            get {
+                return ResourceManager.GetString("NoAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Unknown に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string Unknown {

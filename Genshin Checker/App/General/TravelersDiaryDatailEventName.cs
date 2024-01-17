@@ -12,6 +12,10 @@ namespace Genshin_Checker.App.General
     {
         public enum EventType
         {
+            Purchase,       //購入
+            PurchasePrimogems,       //購入
+            Consumption,    //消費
+            Wish,    //祈願
             Quest,          //通常任務 2
             Mail,           //メール 12
             Adventure,      //冒険 17,19
@@ -30,6 +34,20 @@ namespace Genshin_Checker.App.General
         {
             switch (id)
             {
+                case -1:
+                case -2:
+                    return EventType.Purchase;
+                case -11:        
+                case -12:        
+                case -13:        
+                    return EventType.PurchasePrimogems;
+                case -201:
+                case -21:
+                case -22:
+                case -99:
+                    return EventType.Consumption;
+                case -1000:
+                    return EventType.Wish;
                 case 2:
                     return EventType.Quest;
                 case 4:
@@ -89,6 +107,20 @@ namespace Genshin_Checker.App.General
                 case "ja-jp":
                     switch (id)
                     {
+                        case -1: return "創世結晶を購入";
+                        case -2: return "空月の祝福を購入";
+                        case -11: return "創世結晶から原石に変換";
+                        case -12: return "空月の祝福ログイン報酬";
+                        case -13: return "紀行報酬";
+                        case -21: return "ショップでの購入";
+                        case -22: return "紀行レベルの購入";
+                        case -99: return "樹脂やその他の購入";
+                        case -101: return "合成素材に使用";
+                        case -102: return "秘境での報酬";
+                        case -103: return "ボス討伐";
+                        case -104: return "地脈の花報酬";
+                        case -201: return "ショップ交換";
+                        case -1000: return "祈願獲得";
                         case 4: return "アイテム購入・交換報酬";
                         case 5: return "冒険ランク報酬";
                         case 12: return "メール";

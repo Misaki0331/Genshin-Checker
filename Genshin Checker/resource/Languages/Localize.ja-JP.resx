@@ -473,7 +473,7 @@
     <value>このキャラクターはデータ不足です。</value>
   </data>
   <data name="Error_CharacterDetail_CharacterDetailIsMissing_Message" xml:space="preserve">
-    <value>{0}はまだ有志のデータベース上にデータがありません。
+    <value>{0}はまだEnka.Network上にデータがありません。
 しばらく経ってからまた開き直してください。</value>
   </data>
   <data name="Error_CharacterDetail_HoYoLabAPIException" xml:space="preserve">
@@ -613,5 +613,14 @@
   </data>
   <data name="Windowname_LoadGameDatabase_Cancelled" xml:space="preserve">
     <value>キャンセルしています...</value>
+  </data>
+  <data name="Windowname_LoadGameDatabase_FailedToSessionName" xml:space="preserve">
+    <value>データを取得できませんでした。</value>
+  </data>
+  <data name="Error_LoadGameDatabase_AccountDisposed" xml:space="preserve">
+    <value>このアカウントは利用できません。</value>
+  </data>
+  <data name="Error_LoadGameDatabase_AccountDisposed_Message" xml:space="preserve">
+    <value>このアカウントは既に連携が解除されている為、データ取得ができませんでした。</value>
   </data>
 </root>
