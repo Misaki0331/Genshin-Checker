@@ -33,7 +33,7 @@ namespace Genshin_Checker.App.General
                 var json = Registry.GetValue("Config\\Setting", "Data", true);
 #endif
                 if (json == null) return;
-                instance = JsonConvert.DeserializeObject<Option>(json);
+                instance = JsonChecker<Option>.Check(json);
             }　　　　　　　　　　　　　　　
             catch (Exception ex)
             {

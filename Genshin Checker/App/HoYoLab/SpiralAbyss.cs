@@ -170,11 +170,11 @@ namespace Genshin_Checker.App.HoYoLab
             var path = Registry.GetValue($"UserData\\{account.UID}\\SpiralAbyss", $"{id}", true);
             if (path == null) throw new IOException(Localize.Error_SpiralAbyssFile_RegistryNotFound);
             var data = await AppData.LoadUserData(path);
-            var ver = JsonConvert.DeserializeObject<Model.UserData.SpiralAbyss.Root>(data??"");
+            var ver = JsonChecker<Model.UserData.SpiralAbyss.Root>.Check(data??"");
             V1? v1 = (ver?.Version) switch
             {
                 null => throw new InvalidDataException(Localize.Error_SpiralAbyssFile_InvalidFileVersion),
-                1 => JsonConvert.DeserializeObject<V1>(data??""),
+                1 => JsonChecker<V1>.Check(data??""),
                 _ => throw new InvalidDataException(string.Format(Localize.Error_SpiralAbyssFile_UnknownFileVersion,ver.Version)),
             };
             if (v1 == null) throw new InvalidDataException(Localize.Error_SpiralAbyssFile_FailedConvert);

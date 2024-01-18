@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Genshin_Checker.Window.Popup;
 using Genshin_Checker.App.HoYoLab;
+using Genshin_Checker.App.General;
 
 namespace Genshin_Checker.Store
 {
@@ -32,7 +33,7 @@ namespace Genshin_Checker.Store
 #endif
                 if (str == null) return;
                 AccountDatas.Clear();
-                var data = JsonConvert.DeserializeObject<List<Account.JSON.UserData>>(str);
+                var data = JsonChecker<List<Account.JSON.UserData>>.Check(str);
                 if (data == null) return;
                 foreach (var d in data)
                 {

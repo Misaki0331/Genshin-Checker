@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Genshin_Checker.App.General;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
@@ -81,7 +82,7 @@ namespace Genshin_Checker.App
                 var data = await response.Content.ReadAsStringAsync();
                 try
                 {
-                    var json = Newtonsoft.Json.JsonConvert.DeserializeObject<Model.HoYoLab.Root<object>>(data);
+                    var json = JsonChecker<Model.HoYoLab.Root<object>>.Check(data);
                     return data;
                 }
                 catch
@@ -123,7 +124,7 @@ namespace Genshin_Checker.App
                 var data2 = await response.Content.ReadAsStringAsync();
                 try
                 {
-                    var json = Newtonsoft.Json.JsonConvert.DeserializeObject<Model.HoYoLab.Root<object>>(data2);
+                    var json = JsonChecker<Model.HoYoLab.Root<object>>.Check(data2);
                     return data2;
                 }
                 catch

@@ -8,6 +8,7 @@ using Genshin_Checker.App.General.Convert;
 using Genshin_Checker.Window.Popup;
 using System.Security.Policy;
 using Genshin_Checker.resource.Languages;
+using Genshin_Checker.App.General;
 
 namespace Genshin_Checker.Window
 {
@@ -294,7 +295,7 @@ namespace Genshin_Checker.Window
                 var regPath = $"UserData\\{account.UID}\\Character\\";
                 string? str = Registry.GetValue(regPath, "Objective", true);
                 if (str == null) return new();
-                var data = JsonConvert.DeserializeObject<Model.UserData.CharacterCalculator.CharacterObjective.Root>(str);
+                var data = JsonChecker<Model.UserData.CharacterCalculator.CharacterObjective.Root>.Check(str);
                 if(data == null) return new();
                 return data;
             }

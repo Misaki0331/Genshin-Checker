@@ -121,7 +121,7 @@ namespace Genshin_Checker.App.HoYoLab
             else eventpath = Path.Combine(AppData.GetUserDataDir(),eventpath);
             try
             {
-                eventNames = JsonConvert.DeserializeObject<EventName>(await AppData.LoadUserData(eventpath)??"");
+                eventNames = JsonChecker<EventName>.Check(await AppData.LoadUserData(eventpath)??"");
             }
             catch (FileNotFoundException) { } //ファイルが無い場合は放置
             catch (Exception)
@@ -152,7 +152,7 @@ namespace Genshin_Checker.App.HoYoLab
                         else if (Path.IsPathRooted(path)) Registry.SetValue(regPath, $"Latest{mode}Path", Path.GetFileName(path), true);
                         try
                         {
-                            eventLists = JsonConvert.DeserializeObject<EventLists>(await App.General.AppData.LoadUserData(path)??"");
+                            eventLists = JsonChecker<EventLists>.Check(await App.General.AppData.LoadUserData(path)??"");
                         }
                         catch (FileNotFoundException) { }
                         catch (Exception)

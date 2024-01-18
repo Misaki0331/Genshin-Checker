@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.Text;
 using Genshin_Checker.Window.Popup;
 using Genshin_Checker.resource.Languages;
+using Genshin_Checker.App.General;
 
 namespace Genshin_Checker.BrowserApp
 {
@@ -44,7 +45,7 @@ namespace Genshin_Checker.BrowserApp
 
             if (Web.Source.ToString().StartsWith("https://act.hoyolab.com/app/community-game-records-sea/index.html"))
             {
-                var data = JsonConvert.DeserializeObject<Root>(await Web.CoreWebView2.ExecuteScriptAsync("var GetUID = function(){for(var i=0;i<5;i++){var uid = document.getElementsByClassName(\"uid\"); if(uid.length!=1){throw \"No Data.\";} var id=uid[0].outerText.replace(\"UID\",\"\"); if(id.length<8){throw \"UID is empty. Please again later.\";} return id}}; \r\nvar res = {};\r\ntry{ res = {message:\"ok\",uid:GetUID()}}catch(e){res = {message:e,uid:null}} res;"));
+                var data = JsonChecker<Root>.Check(await Web.CoreWebView2.ExecuteScriptAsync("var GetUID = function(){for(var i=0;i<5;i++){var uid = document.getElementsByClassName(\"uid\"); if(uid.length!=1){throw \"No Data.\";} var id=uid[0].outerText.replace(\"UID\",\"\"); if(id.length<8){throw \"UID is empty. Please again later.\";} return id}}; \r\nvar res = {};\r\ntry{ res = {message:\"ok\",uid:GetUID()}}catch(e){res = {message:e,uid:null}} res;"));
 
                 var cookies = await Web.CoreWebView2.CookieManager.GetCookiesAsync("https://hoyolab.com");
 
