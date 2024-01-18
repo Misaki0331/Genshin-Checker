@@ -15,13 +15,14 @@ namespace Genshin_Checker.Window
         internal Uri DefaultUri;
         internal bool IsWebViewPopup = false;
         internal Size PopupWindowSize = new(1280, 720);
-        public WebMiniBrowser(Uri uri, bool autoshow=true, Size? size=null)
+        public WebMiniBrowser(Uri uri, bool autoshow=true, Size? size=null, bool urlboxshow=true)
         {
             DefaultUri = uri;
             //Web.CoreWebView2InitializationCompleted += Web_InitializationCompleted;
             InitializeComponent();
             Web.CoreWebView2InitializationCompleted += Web_CoreWebView2InitializationCompleted;
 
+            if (!urlboxshow) UrlBox.Visible = false;
             Web.Source = DefaultUri;
             if (size != null) Size = (Size)size;
             if (autoshow)
