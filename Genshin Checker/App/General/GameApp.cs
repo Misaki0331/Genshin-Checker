@@ -20,7 +20,7 @@ namespace Genshin_Checker.App.General
             {
                 fs = new($"{PATH}/{FILENAME}", FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
                 byte[] bytes = new byte[65536];
-                await fs.ReadAsync(bytes, 0, bytes.Length);
+                await fs.ReadAsync(bytes);
                 var res = Encoding.UTF8.GetString(bytes, 0, bytes.Length);
                 if (res != null)
                 {
@@ -37,7 +37,7 @@ namespace Genshin_Checker.App.General
             }
             finally
             {
-                if(fs!=null)fs.Dispose();
+                fs?.Dispose();
             }
             return null;
         }

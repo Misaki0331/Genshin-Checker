@@ -166,6 +166,21 @@ namespace Genshin_Checker.App.HoYoLab
             if (root.Data == null) throw new HoYoLabAPIException(root.Retcode, root.Message);
             return root.Data;
         }
+
+        /// <summary>
+        /// ログボ受取
+        /// </summary>
+        /// <param name="data">キャラクターの計算変数</param>
+        /// <returns></returns>
+        /// <exception cref="InvalidDataException"></exception>
+        public async Task<Model.HoYoLab.DailyBonusLogin.Data> LoginBonusSignIn()
+        {
+            if (!Account.IsAuthed) throw new UserNotAuthenticatedException(Account.UID);
+            var json = await GetJson.LoginBonusSignIn(Account);
+            var root = JsonChecker<Model.HoYoLab.DailyBonusLogin.Root>.Check(json);
+            if (root.Data == null) throw new HoYoLabAPIException(root.Retcode, root.Message);
+            return root.Data;
+        }
         /// <summary>
         /// EnkaNetwork
         /// </summary>
@@ -186,9 +201,11 @@ namespace Genshin_Checker.App.HoYoLab
         /// <param name="server">ゲームアカウントが所在しているサーバー</param>
         /// <returns></returns>
         /// <exception cref="InvalidDataException"></exception>
-        public static async Task<string> GetServerAccounts(Account Account,Servers server)
+        public static async Task<string> GetServerAccounts(Account Account,Servers? server=null)
         {
-            var url = $"https://api-account-os.hoyolab.com/binding/api/getUserGameRolesByLtoken?game_biz=hk4e_global&region={Account.Server}";
+            var region = Account.Server;
+            if (server != null) region = (Servers)server;
+            var url = $"https://api-account-os.hoyolab.com/binding/api/getUserGameRolesByLtoken?game_biz=hk4e_global&region={region}";
             var json = await WebRequest.HoYoGetRequest(url, Account.Cookie);
             return json ?? "";
         }
@@ -367,6 +384,21 @@ namespace Genshin_Checker.App.HoYoLab
             const string Act_ID = "e202102251931481";
             var url = $"https://sg-hk4e-api.hoyolab.com/event/sol/sign?lang=ja-jp";
             var json = await WebRequest.HoYoPostRequest(url, Account.Cookie, $"{{act_id: \"{Act_ID}\"}}");
+            return json ?? "";
+        }
+
+
+        /// <summary>
+        /// 育成計算機
+        /// </summary>
+        /// <param name="data">キャラクターの計算変数</param>
+        /// <returns></returns>
+        /// <exception cref="InvalidDataException"></exception>
+        public static async Task<string> LoginBonusRewards(Account Account)
+        {
+            const string Act_ID = "e202102251931481";
+            var url = $"https://sg-hk4e-api.hoyolab.com/event/sol/home?lang=ja-jp&act_id={Act_ID}";
+            var json = await App.WebRequest.HoYoGetRequest(url, Account.Cookie);
             return json ?? "";
         }
 

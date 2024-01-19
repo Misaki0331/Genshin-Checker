@@ -25,7 +25,7 @@ namespace Genshin_Checker.App.HoYoLab.Static
     public static class LoginBonusRewards
     {
         static Model.HoYoLab.DailyBonusRewards.Root? Cached = null;
-        public static async Task<Model.HoYoLab.DailyBonusRewards.Root> GetLanguages() {
+        public static async Task<Model.HoYoLab.DailyBonusRewards.Root> GetRewards() {
             if (Cached != null) return Cached;
             const string Act_ID = "e202102251931481";
             var data = JsonChecker<Model.HoYoLab.DailyBonusRewards.Root>.Check(await App.WebRequest.GeneralGetRequest($"https://sg-hk4e-api.hoyolab.com/event/sol/home?lang=ja-jp&act_id={Act_ID}"));

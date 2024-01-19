@@ -15,8 +15,7 @@ namespace Genshin_Checker.App.General
             try
             {
                 var root = JsonConvert.DeserializeObject<T>(json);
-                if (root == null) throw new ArgumentNullException(Localize.Error_API_Endpoint_RootIsNull);
-                return root;
+                return root == null ? throw new ArgumentNullException(Localize.Error_API_Endpoint_RootIsNull) : root;
             }
             catch (Exception ex)
             {

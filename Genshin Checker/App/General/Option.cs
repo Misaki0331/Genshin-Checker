@@ -37,7 +37,7 @@ namespace Genshin_Checker.App.General
             }　　　　　　　　　　　　　　　
             catch (Exception ex)
             {
-                new ErrorMessage(resource.Languages.Localize.Error_Config_FailToLoad, $"{ex}").ShowDialog();
+                new ErrorMessage(Localize.Error_Config_FailToLoad, $"{ex}").ShowDialog();
             }
         }
         public static Option Instance { get { if (instance == null)

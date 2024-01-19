@@ -1,17 +1,12 @@
 ﻿using Genshin_Checker.App.Game;
 using Genshin_Checker.App.HoYoLab;
 using Genshin_Checker.Window;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Genshin_Checker.App.General
 {
     public static class ManageWindow
     {
-        static List<Form> FormList = new();
+        static readonly List<Form> FormList = new();
         public static void CloseDiposedAccount(Account account)
         {
             var find = FormList.FindAll(a => a.Name.StartsWith($"{account.UID}"));
@@ -37,17 +32,17 @@ namespace Genshin_Checker.App.General
                 if (find == null || find.IsDisposed)
                     switch (name)
                     {
-                        case nameof(Genshin_Checker.Window.GameLog):
-                            find = new Genshin_Checker.Window.GameLog(GameLogWatcher.Instance.GameLog) { Name = Name };
+                        case nameof(GameLog):
+                            find = new GameLog(GameLogWatcher.Instance.GameLog) { Name = Name };
                             break;
-                        case nameof(Genshin_Checker.Window.TimerDisplay):
-                            find = new Genshin_Checker.Window.TimerDisplay() { Name = Name };
+                        case nameof(TimerDisplay):
+                            find = new TimerDisplay() { Name = Name };
                             break;
-                        case nameof(Genshin_Checker.Window.TimeGraph):
-                            find = new Genshin_Checker.Window.TimeGraph() { Name = Name };
+                        case nameof(TimeGraph):
+                            find = new TimeGraph() { Name = Name };
                             break;
-                        case nameof(Genshin_Checker.Window.SettingWindow):
-                            find = new Genshin_Checker.Window.SettingWindow() { Name = Name };
+                        case nameof(SettingWindow):
+                            find = new SettingWindow() { Name = Name };
                             break;
                         case nameof(Genshin_Checker.Window.Debug.APIChecker):
                             find = new Genshin_Checker.Window.Debug.APIChecker() { Name = Name };
@@ -68,17 +63,17 @@ namespace Genshin_Checker.App.General
                         case nameof(Genshin_Checker.Window.GameRecords):
                             find = new Genshin_Checker.Window.GameRecords(account) { Name = Name };
                             break;
-                        case nameof(Genshin_Checker.Window.RealTimeData):
-                            find = new Genshin_Checker.Window.RealTimeData(account) { Name = Name };
+                        case nameof(RealTimeData):
+                            find = new RealTimeData(account) { Name = Name };
                             break;
                         case nameof(Genshin_Checker.Window.TravelersDiary):
                             find = new Genshin_Checker.Window.TravelersDiary(account) { Name = Name };
                             break;
-                        case nameof(Genshin_Checker.Window.TravelersDiaryDetailList):
-                            find = new Genshin_Checker.Window.TravelersDiaryDetailList(account) { Name = Name };
+                        case nameof(TravelersDiaryDetailList):
+                            find = new TravelersDiaryDetailList(account) { Name = Name };
                             break;
-                        case nameof(Genshin_Checker.Window.CharacterCalculator):
-                            find = new Genshin_Checker.Window.CharacterCalculator(account) { Name = Name };
+                        case nameof(CharacterCalculator):
+                            find = new CharacterCalculator(account) { Name = Name };
                             break;
                         case nameof(BrowserApp.WebGameAnnounce):
                             find = new BrowserApp.WebGameAnnounce(account) { Name = Name };

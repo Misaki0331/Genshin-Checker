@@ -55,7 +55,7 @@ namespace Genshin_Checker.App
             if (IsDisposed) return;
             ServerUpdate.Stop();
             Option.Instance.Accounts.TryGetValue(account.UID, out var config);
-            if(config==null)config = new();
+            config ??= new();
             try
             {
                 var json = await getNote();

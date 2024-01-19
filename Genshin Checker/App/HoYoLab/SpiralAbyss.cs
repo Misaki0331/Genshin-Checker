@@ -167,8 +167,7 @@ namespace Genshin_Checker.App.HoYoLab
         }
         public async Task<V1> Load(int id)
         {
-            var path = Registry.GetValue($"UserData\\{account.UID}\\SpiralAbyss", $"{id}", true);
-            if (path == null) throw new IOException(Localize.Error_SpiralAbyssFile_RegistryNotFound);
+            var path = Registry.GetValue($"UserData\\{account.UID}\\SpiralAbyss", $"{id}", true) ?? throw new IOException(Localize.Error_SpiralAbyssFile_RegistryNotFound);
             var data = await AppData.LoadUserData(path);
             var ver = JsonChecker<Model.UserData.SpiralAbyss.Root>.Check(data??"");
             V1? v1 = (ver?.Version) switch
@@ -176,8 +175,7 @@ namespace Genshin_Checker.App.HoYoLab
                 null => throw new InvalidDataException(Localize.Error_SpiralAbyssFile_InvalidFileVersion),
                 1 => JsonChecker<V1>.Check(data??""),
                 _ => throw new InvalidDataException(string.Format(Localize.Error_SpiralAbyssFile_UnknownFileVersion,ver.Version)),
-            };
-            if (v1 == null) throw new InvalidDataException(Localize.Error_SpiralAbyssFile_FailedConvert);
+            } ?? throw new InvalidDataException(Localize.Error_SpiralAbyssFile_FailedConvert);
             if (v1.UID != account.UID) throw new InvalidDataException(string.Format(Localize.Error_SpiralAbyssFile_DoesNotMatchUID, v1.UID, account.UID));
             return v1;
         }

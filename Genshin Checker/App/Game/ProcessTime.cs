@@ -1,15 +1,7 @@
 ﻿using Genshin_Checker.App.Window;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Reflection.Metadata;
 using System.Runtime.InteropServices;
 using System.Text;
-using System.Threading.Tasks;
-using System.Timers;
-using System.Xml.Schema;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Genshin_Checker.App.Game
 {
@@ -26,7 +18,7 @@ namespace Genshin_Checker.App.Game
         /// <summary>該当プロセスが実行中であるかどうか</summary>
         Process? TargetProcess;
 
-        private object lockObject = new object(); //ロック処理に必要
+        private readonly object lockObject = new(); //ロック処理に必要
         public event EventHandler<Result>? SessionEnd;
         public event EventHandler<Result>? ChangedState;
         public event EventHandler? SessionStart;
@@ -73,7 +65,6 @@ namespace Genshin_Checker.App.Game
                     case ProcessState.NotRunning:
                         SessionTime.Stop();
                         SessionCheck.Instance.Append(SessionTime.Elapsed.Ticks);
-
                         SessionEnd?.Invoke(null, new(SessionTime.Elapsed, state));
                         break;
                     case ProcessState.Foreground:
@@ -236,14 +227,14 @@ namespace Genshin_Checker.App.Window
         public extern static bool EnumWindows(EnumWindowsDelegate lpEnumFunc,
         IntPtr lparam);
 
-        [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = true)]
+        [DllImport("user32.dll", CharSet = CharSet.Unicode, SetLastError = true)]
         private static extern int GetWindowText(IntPtr hWnd,
             StringBuilder lpString, int nMaxCount);
 
         [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = true)]
         private static extern int GetWindowTextLength(IntPtr hWnd);
 
-        [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = true)]
+        [DllImport("user32.dll", CharSet = CharSet.Unicode, SetLastError = true)]
         private static extern int GetClassName(IntPtr hWnd,
             StringBuilder lpClassName, int nMaxCount);
 
@@ -280,24 +271,6 @@ namespace Genshin_Checker.App.Window
         public Point? WindowPos { get => titlebar != null ? new(titlebar.Value.rcTitleBar.left, titlebar.Value.rcTitleBar.top) : null; }
         public Size? WindowSize { get => titlebar != null ? new(titlebar.Value.rcTitleBar.right - titlebar.Value.rcTitleBar.left, titlebar.Value.rcTitleBar.bottom - titlebar.Value.rcTitleBar.top) : null; }
         public bool IsCurrentWindow { get => GetForegroundWindow() == Hwnd; }
-        /*public TitleBarButtonStates WindowButtonState { get => titlebar != null ? new(titlebar.Value.cbSize.)}
-        public class WindowStatus
-        {
-            public readonly bool IsUnavailable;
-            public readonly bool IsPressed;
-            public readonly bool IsOffScreen;
-            public readonly bool IsInvisible;
-            public readonly bool IsFocusable;
-            internal WindowStatus(TitleState state)
-            {
-                IsUnavailable = (int)state / 0x00000001 % 2 == 1;
-                IsPressed = (int)state / 0x00000008 % 2 == 1;
-                IsInvisible = (int)state / 0x00008000 % 2 == 1;
-                IsOffScreen = (int)state / 0x00010000 % 2 == 1;
-                IsFocusable = (int)state / 0x00100000 % 2 == 1;
-            }
-        } 
-        */
         public bool Reload()
         {
             return GetWindow(Hwnd);
@@ -318,11 +291,11 @@ namespace Genshin_Checker.App.Window
             if (0 < textLen)
             {
                 //ウィンドウのタイトルを取得する
-                StringBuilder tsb = new StringBuilder(textLen + 1);
+                StringBuilder tsb = new(textLen + 1);
                 GetWindowText(hwnd, tsb, tsb.Capacity);
 
                 //ウィンドウのクラス名を取得する
-                StringBuilder csb = new StringBuilder(256);
+                StringBuilder csb = new(256);
                 GetClassName(hwnd, csb, csb.Capacity);
 
                 WindowClassName = csb.ToString();

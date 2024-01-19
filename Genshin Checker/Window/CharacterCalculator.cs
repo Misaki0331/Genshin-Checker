@@ -64,9 +64,8 @@ namespace Genshin_Checker.Window
                 var charainfo = await account.CharacterDetail.GetData(character.id);
                 var talent = charainfo.skill_list.FindAll(a=>a.max_level!=1);
                 var set = userdata.Datas.FirstOrDefault(a=>a.Key==character.id);
-                var setdata = set.Value;
-                if (setdata == null) setdata = new();
-                if(talent.Count!=3)throw new InvalidDataException(Localize.Error_CharacterCalculator_InvalidTalentCount);
+                var setdata = set.Value ?? new();
+                if (talent.Count!=3)throw new InvalidDataException(Localize.Error_CharacterCalculator_InvalidTalentCount);
                 CharacterView.Rows.Add(setdata.Enabled, character.id, character.rarity, Element.GetElementEnum(character.element), character.name, character.weapon.type_name, character.fetter, character.level,
                     talent[0].level_current, talent[1].level_current, talent[2].level_current, "",
                     character.level > setdata.SetLevel ? character.level : setdata.SetLevel,

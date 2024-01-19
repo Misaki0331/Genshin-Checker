@@ -64,7 +64,7 @@ namespace Genshin_Checker.Window.ProgressWindow
         }
         int CurrentTask = 0;
         int MaxTask = 0;
-        Stopwatch Stopwatch = new();
+        readonly Stopwatch Stopwatch = new();
         private async Task AnalysisExecution(GetGameDatabase database)
         {
             database.ProgressChanged += Database_ProgressChanged;
