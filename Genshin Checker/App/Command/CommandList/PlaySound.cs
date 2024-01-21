@@ -8,17 +8,17 @@ namespace Genshin_Checker.App.Command.CommandList
         public override string Name => "play";
         public override string Description => "サウンドプレイヤー";
 
-        public override Task Execute(params string[] parameters)
+        public override async Task Execute(params string[] parameters)
         {
             if (parameters.Length < 2)
             {
                 Console($"play url : 指定したURLを再生");
-                return Task.CompletedTask;
+                return;
             }
-            var a = new Genshin_Checker.Window.MusicPlayer();
-            a.LoadSong(parameters[1]);
+            var a = new Genshin_Checker.InternalTools.MusicInfoSetter();
+            await a.LoadSong(parameters[1]);
             a.ShowDialog();
-            return Task.CompletedTask;
+            return;
         }
     }
 }

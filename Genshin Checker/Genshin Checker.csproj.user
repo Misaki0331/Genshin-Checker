@@ -4,6 +4,9 @@
     <_LastSelectedProfileId>C:\Users\Misaki\dev\Genshin Checker\Genshin Checker\Properties\PublishProfiles\ReleaseGitHub.pubxml</_LastSelectedProfileId>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Update="InternalTools\MusicInfoSetter.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="MainTray.cs">
       <SubType>Form</SubType>
     </Compile>
