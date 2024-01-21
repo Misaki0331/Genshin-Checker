@@ -623,4 +623,7 @@
   <data name="Error_LoadGameDatabase_AccountDisposed_Message" xml:space="preserve">
     <value>このアカウントは既に連携が解除されている為、データ取得ができませんでした。</value>
   </data>
+  <data name="Windowname_LoadGameDatabase_FailedButInit" xml:space="preserve">
+    <value>データ準備処理の為もう一度やり直してください。</value>
+  </data>
 </root>

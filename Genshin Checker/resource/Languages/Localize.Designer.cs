@@ -1201,6 +1201,15 @@ namespace Genshin_Checker.resource.Languages {
         }
         
         /// <summary>
+        ///   Please try again for data preparation process. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Windowname_LoadGameDatabase_FailedButInit {
+            get {
+                return ResourceManager.GetString("Windowname_LoadGameDatabase_FailedButInit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Failed to load session name. に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string Windowname_LoadGameDatabase_FailedToSessionName {

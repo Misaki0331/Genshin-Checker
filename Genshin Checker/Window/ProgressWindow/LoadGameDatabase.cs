@@ -44,22 +44,25 @@ namespace Genshin_Checker.Window.ProgressWindow
         Dictionary<string,Account> AccountTemp = new();
         private async void LoadGameDatabase_Load(object sender, EventArgs e)
         {
-            var authkey = await WebViewWatcher.GetServiceCenterAuthKey();
-            if (authkey == null)
-            {
-                SessionInfo.Text = Localize.Windowname_LoadGameDatabase_FailedToSessionName;
-                return;
-            }
-            var database = new GetGameDatabase(authkey);
             try
             {
+                var authkey = await WebViewWatcher.GetServiceCenterAuthKey();
+                if (authkey == null)
+                {
+                    SessionInfo.Text = Localize.Windowname_LoadGameDatabase_FailedToSessionName;
+                    return;
+                }
+                var database = new GetGameDatabase(authkey);
                 var res = await database.Init();
                 SessionInfo.Text = $"UID:{database.uid}({database.server}) {database.username}";
             }
-            catch
+            catch(GameAPI.GameAPIException ex)
             {
-                SessionInfo.Text = Localize.Windowname_LoadGameDatabase_FailedToSessionName;
+                SessionInfo.Text = $"{Localize.Windowname_LoadGameDatabase_FailedToSessionName}";
                 return;
+            }catch(InvalidDataException)
+            {
+                SessionInfo.Text = $"{Localize.Windowname_LoadGameDatabase_FailedButInit}";
             }
         }
         int CurrentTask = 0;

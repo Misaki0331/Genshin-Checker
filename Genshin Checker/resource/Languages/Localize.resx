@@ -630,4 +630,7 @@ After clicking the "Feedback" button, a new browser window will open, but you ca
   <data name="Error_LoadGameDatabase_AccountDisposed_Message" xml:space="preserve">
     <value>Failed to load data for this account because it has already been unlinked.</value>
   </data>
+  <data name="Windowname_LoadGameDatabase_FailedButInit" xml:space="preserve">
+    <value>Please try again for data preparation process.</value>
+  </data>
 </root>

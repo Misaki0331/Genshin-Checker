@@ -16,7 +16,8 @@ namespace Genshin_Checker.App.Game
 {
     public static class WebViewWatcher
     {
-        static List<string> ExpiredAuthKeys = new();
+        static List<string>? TempLinks = null;
+        static string? LatestServiceCenterAuthKey = null;
         public static async Task<List<string>?> GetLinks()
         {
             var path = await GameApp.WhereWebCacheFilePath();
@@ -43,40 +44,55 @@ namespace Genshin_Checker.App.Game
                 fs.Close();
             }
             File.Delete(temp);
-            return links;
+            if (TempLinks == null)
+            {
+                TempLinks = new();
+                foreach (var l in links) TempLinks.Add(l);
+                throw new InvalidDataException("起動時にデータが取得できていなかったため、この操作は取り消されました。\nもう一度やり直してください。");
+            }
+            var result = links.Except(TempLinks).ToList();
+            Trace.WriteLine(result);
+            TempLinks.Clear();
+            TempLinks = links;
+            return result;
+        }
+        public static async Task<bool> Init()
+        {
+            try
+            {
+                return await GetLinks()!=null;
+            }
+            catch (InvalidDataException)
+            {
+                return true;
+            }
         }
         public static async Task<string?> GetServiceCenterAuthKey()
         {
-            //ToDo:期限切れの認証キーは追加リクエストしないようにしたい。
-            //リストから無くなったら削除したい。
             //先頭682文字はユーザー固有文字列っぽい。
             //可能ならアカウントリスト取れるかも？
             var links = await GetLinks();
             if(links == null) return null;
             var urls = links.FindAll(a => a.StartsWith("https://webstatic-sea.hoyoverse.com/csc-service-center-fe/index.html"));
             urls.Reverse();
-            Trace.WriteLine($"{urls.Count} Expaired:{ExpiredAuthKeys.Count}");
-            if (urls.Count==0) return null;
-            foreach( var url in urls)
+            if (urls.Count == 0) return LatestServiceCenterAuthKey;
+            foreach (var url in urls)
             {
                 NameValueCollection querys = HttpUtility.ParseQueryString(new Uri(url).Query);
-                var authkey=querys["authkey"];
-                if (authkey == null||ExpiredAuthKeys.Find(a=>a==authkey)!=null) continue;
+                var authkey = querys["authkey"];
+                if (authkey == null) continue;
                 try
                 {
                     var a = await GameAPI.GetAccountInfo(authkey);
                     Trace.WriteLine($"{a.aid} OK");
+                    LatestServiceCenterAuthKey = authkey;
                     return authkey;
                 }
-                catch(GameAPI.GameAPIException)
-                {
-                    ExpiredAuthKeys.Add(authkey);
-                }
-                finally
+                catch (GameAPI.GameAPIException)
                 {
                 }
             }
-            return null;
+            return LatestServiceCenterAuthKey;
         } 
     }
 }

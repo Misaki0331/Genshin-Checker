@@ -37,7 +37,7 @@ namespace Genshin_Checker.App.Command.CommandList
             switch (parameters[1].ToLower())
             {
                 case "authkey":
-                    Console($"{authkey}");
+                    Console($"{authkey??"(null)"}");
                     break;
                 case "account":
                     {

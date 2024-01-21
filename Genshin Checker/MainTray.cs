@@ -123,12 +123,14 @@ namespace Genshin_Checker
         }
 
 
-        private void MainTray_Load(object sender, EventArgs e)
+        private async void MainTray_Load(object sender, EventArgs e)
         {
             notification.Visible = true;
             notification.BalloonTipTitle = Localize.AppName;
             notification.BalloonTipText = Localize.App_Notify_WakeUp;
             notification.ShowBalloonTip(30000);
+
+            await App.Game.WebViewWatcher.Init();
         }
 
         private void Delay_Tick(object sender, EventArgs e)
