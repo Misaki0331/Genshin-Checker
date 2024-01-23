@@ -1,5 +1,7 @@
 ﻿using Genshin_Checker.resource.Languages;
 using Microsoft.Win32;
+using Newtonsoft.Json;
+using OpenTK.Input;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -74,6 +76,32 @@ namespace Genshin_Checker.App
             return new(arySubKeyNames);
         }
 
+        public static string GetJson()
+        {
+            List<RegistryJson> data = new();
+            GetPath(PathName, data);
+            return JsonConvert.SerializeObject(data);
+        }
+        static void GetPath(string path, List<RegistryJson> data)
+        {
+            var sub = Microsoft.Win32.Registry.CurrentUser.OpenSubKey(path);
+            if (sub == null) return;
+            foreach (string valueName in sub.GetValueNames())
+            {
+                var jsonpath = path.Replace($"{PathName}\\", "");
+                data.Add(new() { Path = jsonpath, Key = valueName, Value = $"{sub.GetValue(valueName)}" });
+            }
+            foreach (string subkey in sub.GetSubKeyNames())
+            {
+                GetPath(path+"\\"+subkey, data);
+            }
+        }
+        class RegistryJson
+        {
+            public string Path { get; set; }
+            public string Key { get; set; }
+            public string Value { get; set; }
+        }
         /// <summary>
         /// 文字列からBASE64に圧縮する
         /// </summary>
