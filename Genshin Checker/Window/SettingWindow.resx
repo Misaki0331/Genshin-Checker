@@ -1108,7 +1108,7 @@ Examples of available information : Real-time note, Traveler's Dirty etc...</val
     <value>3, 3</value>
   </data>
   <data name="groupBox9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>587, 45</value>
+    <value>587, 28</value>
   </data>
   <data name="groupBox9.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>

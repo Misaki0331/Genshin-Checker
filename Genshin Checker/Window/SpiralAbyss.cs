@@ -1,6 +1,7 @@
 ﻿using Genshin_Checker.App.HoYoLab;
 using Genshin_Checker.Model.UserData.SpiralAbyss.v1;
 using Genshin_Checker.resource.Languages;
+using Genshin_Checker.Window.Popup;
 using OpenTK.Graphics.ES20;
 using System;
 using System.Collections.Generic;
@@ -211,11 +212,17 @@ namespace Genshin_Checker.Window
             PanelReset();
             this.ResumeLayout(true);
             if (find == null) return;
-            var GameData = await account.SpiralAbyss.Load(find.id);
-
-            this.SuspendLayout();
-            PanelLoad(GameData);
-            this.ResumeLayout(true);
+            try
+            {
+                var GameData = await account.SpiralAbyss.Load(find.id);
+                this.SuspendLayout();
+                PanelLoad(GameData);
+                this.ResumeLayout(true);
+            }
+            catch(Exception ex)
+            {
+                new ErrorMessage("データが読み込めませんでした。", ex.ToString()).ShowDialog();
+            }
 
         }
 
