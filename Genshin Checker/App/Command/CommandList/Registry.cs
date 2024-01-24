@@ -21,7 +21,13 @@ namespace Genshin_Checker.App.Command.CommandList
             App.Registry.SetJson(getjson);
             Console("復元完了");*/
 
-            await MovingData.BackupToZip(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "Test.zip"));
+            var a=await MovingData.WriteToApp(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "Test.zip"));
+            if (a != null)
+            {
+                Console("アプリデータの上書きに失敗しました。");
+                Console(a.ToString());
+            }
+            else Console("上書きに成功!");
             return;
         }
     }

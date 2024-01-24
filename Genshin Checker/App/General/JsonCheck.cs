@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,6 +21,19 @@ namespace Genshin_Checker.App.General
             catch (Exception ex)
             {
                 throw new InvalidDataException(string.Format(Localize.Error_API_Endpoint_JsonParseInvalid, json), ex);
+            }
+        }
+        public static bool IsValid(string json)
+        {
+            try
+            {
+                Check(json);
+                return true;
+            }
+            catch (Exception e) 
+            {
+                Trace.Write(e);
+                return false;
             }
         }
     }

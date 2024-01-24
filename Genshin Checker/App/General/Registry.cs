@@ -108,7 +108,8 @@ namespace Genshin_Checker.App
         public static void AllClear()
         {
             var sub = Microsoft.Win32.Registry.CurrentUser;
-            sub.DeleteSubKeyTree(PathName);
+            if(sub.OpenSubKey(PathName) != null )
+                sub.DeleteSubKeyTree(PathName);
             sub.Close();
         }
         static void GetPath(string path, List<RegistryJson> data)
@@ -126,7 +127,7 @@ namespace Genshin_Checker.App
             }
             sub.Close();
         }
-        class RegistryJson
+        internal class RegistryJson
         {
             public string Path { get; set; } = "";
             public string Key { get; set; } = "";

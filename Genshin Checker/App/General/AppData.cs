@@ -11,7 +11,8 @@ namespace Genshin_Checker.App.General
 {
     internal class AppData
     {
-        public static string UserDataPath { get => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Genshin Checker", UserDataDirectry); }
+        public static string AppDataDirectry { get => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Genshin Checker"); }
+        public static string UserDataPath { get => Path.Combine(AppDataDirectry, UserDataDirectry); }
 #if DEBUG
         const string UserDataDirectry = "UserData.DEBUG";
 #else
