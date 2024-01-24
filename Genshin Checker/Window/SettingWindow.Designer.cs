@@ -61,6 +61,11 @@
             label1 = new Label();
             panel1 = new Panel();
             Open_HoYoLabAuth = new Button();
+            page_application = new TabPage();
+            groupBox9 = new GroupBox();
+            panel7 = new Panel();
+            ButtonDataOverride = new Button();
+            ButtonBackup = new Button();
             page_about = new TabPage();
             groupBox5 = new GroupBox();
             panel3 = new Panel();
@@ -86,6 +91,9 @@
             page_auth.SuspendLayout();
             groupBox1.SuspendLayout();
             panel1.SuspendLayout();
+            page_application.SuspendLayout();
+            groupBox9.SuspendLayout();
+            panel7.SuspendLayout();
             page_about.SuspendLayout();
             groupBox5.SuspendLayout();
             panel3.SuspendLayout();
@@ -99,6 +107,7 @@
             tabControl1.Controls.Add(page_general);
             tabControl1.Controls.Add(page_notification);
             tabControl1.Controls.Add(page_auth);
+            tabControl1.Controls.Add(page_application);
             tabControl1.Controls.Add(page_about);
             tabControl1.Multiline = true;
             tabControl1.Name = "tabControl1";
@@ -323,6 +332,42 @@
             Open_HoYoLabAuth.UseVisualStyleBackColor = true;
             Open_HoYoLabAuth.Click += Open_HoYoLabAuth_Click;
             // 
+            // page_application
+            // 
+            page_application.Controls.Add(groupBox9);
+            resources.ApplyResources(page_application, "page_application");
+            page_application.Name = "page_application";
+            page_application.UseVisualStyleBackColor = true;
+            // 
+            // groupBox9
+            // 
+            resources.ApplyResources(groupBox9, "groupBox9");
+            groupBox9.Controls.Add(panel7);
+            groupBox9.Name = "groupBox9";
+            groupBox9.TabStop = false;
+            // 
+            // panel7
+            // 
+            panel7.Controls.Add(ButtonDataOverride);
+            panel7.Controls.Add(ButtonBackup);
+            resources.ApplyResources(panel7, "panel7");
+            panel7.Name = "panel7";
+            // 
+            // ButtonDataOverride
+            // 
+            resources.ApplyResources(ButtonDataOverride, "ButtonDataOverride");
+            ButtonDataOverride.ForeColor = Color.Red;
+            ButtonDataOverride.Name = "ButtonDataOverride";
+            ButtonDataOverride.UseVisualStyleBackColor = true;
+            ButtonDataOverride.Click += ButtonDataOverride_Click;
+            // 
+            // ButtonBackup
+            // 
+            resources.ApplyResources(ButtonBackup, "ButtonBackup");
+            ButtonBackup.Name = "ButtonBackup";
+            ButtonBackup.UseVisualStyleBackColor = true;
+            ButtonBackup.Click += ButtonBackup_Click;
+            // 
             // page_about
             // 
             page_about.Controls.Add(groupBox5);
@@ -439,6 +484,10 @@
             groupBox1.PerformLayout();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
+            page_application.ResumeLayout(false);
+            page_application.PerformLayout();
+            groupBox9.ResumeLayout(false);
+            panel7.ResumeLayout(false);
             page_about.ResumeLayout(false);
             page_about.PerformLayout();
             groupBox5.ResumeLayout(false);
@@ -498,5 +547,10 @@
         private CheckBox IsScreenShotNotify;
         private GroupBox groupBox8;
         private TabControl TabAccountNotify;
+        private TabPage page_application;
+        private GroupBox groupBox9;
+        private Panel panel7;
+        private Button ButtonDataOverride;
+        private Button ButtonBackup;
     }
 }

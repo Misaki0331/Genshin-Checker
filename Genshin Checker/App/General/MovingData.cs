@@ -12,9 +12,12 @@ namespace Genshin_Checker.App.General
             {
                 if (!Directory.Exists(name)) Directory.CreateDirectory(name);
                 Directory.CreateDirectory(Path.Combine(name, "UserData"));
-                foreach (var info in Directory.GetFiles(AppData.UserDataPath))
+                if (Directory.Exists(Path.Combine(AppData.UserDataPath)))
                 {
-                    File.Copy(info, Path.Combine(name, "UserData", Path.GetFileName(info)));
+                    foreach (var info in Directory.GetFiles(AppData.UserDataPath))
+                    {
+                        File.Copy(info, Path.Combine(name, "UserData", Path.GetFileName(info)));
+                    }
                 }
                 var sr = new StreamWriter(Path.Combine(name,"Settings"));
                 await sr.WriteAsync(Registry.GetJson());
@@ -33,10 +36,12 @@ namespace Genshin_Checker.App.General
         }
         public static async Task<Exception?> WriteToApp(string path,bool Recovery=false)
         {
+            
             string name = Path.Combine(Path.GetTempPath(), Path.GetRandomFileName().Replace(".", ""));
             bool IsNeedRecovery = false;
             try
             {
+                if (!File.Exists(path)) throw new FileNotFoundException("The file is not found.");
                 if (!Recovery)
                 {
                     var ex = await BackupToZip(Path.Combine(AppData.AppDataDirectry, "Buckup.old_zip"));

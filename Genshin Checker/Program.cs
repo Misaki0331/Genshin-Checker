@@ -39,6 +39,8 @@ namespace Genshin_Checker
             Application.EnableVisualStyles();
             ApplicationConfiguration.Initialize();
             bool ToastActivated = false;
+            bool Override = false;
+            string path = "";
             //トースト通知の引数が含まれる場合は通知を削除
             foreach (string cmd in Environment.GetCommandLineArgs())
             {
@@ -47,6 +49,12 @@ namespace Genshin_Checker
                     case "-ToastActivated":
                         ToastActivated= true;
                         break;
+                    case "-Override":
+                        Override = true; 
+                        break;
+                }
+                if (cmd.StartsWith("Path:")){
+                    path = cmd[5..];
                 }
             }
             if (ToastActivated)
@@ -54,6 +62,16 @@ namespace Genshin_Checker
                 ToastNotificationManagerCompat.History.Clear();
                 return;
             }
+            if (Override)
+            {
+                var a = App.General.MovingData.WriteToApp(path).Result;
+                string result;
+                if (a != null) result = $"{a.GetType()} - {a.Message}";
+                else result = $"引継ぎが完了しました。";
+                System.Diagnostics.Process.Start(Application.ExecutablePath,new List<string>() {$"Result:{result}"});
+                return;
+            }
+
             //Mutex名を決める（必ずアプリケーション固有の文字列に変更すること！）
             string mutexName = "Genshin Checker";
             //Mutexオブジェクトを作成する

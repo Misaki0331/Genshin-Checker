@@ -18,6 +18,7 @@ namespace Genshin_Checker
     public partial class MainTray : Form
     {
         List<string> GameLogTemp;
+        string StartupMessage = "";
         public MainTray(bool safemode = false)
         {
             InitializeComponent();
@@ -33,6 +34,10 @@ namespace Genshin_Checker
                     case "-debug":
                         isdebug = true;
                         break;
+                }
+                if (cmd.StartsWith("Result:"))
+                {
+                    StartupMessage= cmd[7..];
                 }
             }
             EnkaData.Data.GetStoreData();
@@ -127,7 +132,7 @@ namespace Genshin_Checker
         {
             notification.Visible = true;
             notification.BalloonTipTitle = Localize.AppName;
-            notification.BalloonTipText = Localize.App_Notify_WakeUp;
+            notification.BalloonTipText = string.IsNullOrEmpty(StartupMessage) ? Localize.App_Notify_WakeUp : StartupMessage;
             notification.ShowBalloonTip(30000);
 
             await App.Game.WebViewWatcher.Init();

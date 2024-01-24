@@ -21,7 +21,7 @@ namespace Genshin_Checker.Window
 {
     public partial class SettingWindow : Form
     {
-        List<TabPage> AccountNotify=new();
+        List<TabPage> AccountNotify = new();
         List<UI.Control.SettingWindow.AccountInfo> AccountBannar = new();
         public SettingWindow()
         {
@@ -120,7 +120,7 @@ namespace Genshin_Checker.Window
         private void CheckedChanged(object sender, EventArgs e)
         {
             var obj = (CheckBox)sender;
-            if(obj == null) return;
+            if (obj == null) return;
             try
             {
                 switch (obj.Name)
@@ -129,7 +129,8 @@ namespace Genshin_Checker.Window
                         App.Game.ScreenshotWatcher.Instance.IsRaise = obj.Checked;
                         break;
                 }
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 obj.Checked = !obj.Checked;
                 new ErrorMessage("設定の変更に失敗しました。", $"{ex.Message}").ShowDialog();
@@ -140,8 +141,8 @@ namespace Genshin_Checker.Window
         void changeValue(CheckBox name)
         {
             if (name == IsCountBackground) ProcessTime.Instance.option.OnlyActiveWindow = !name.Checked;
-            else if(name == IsNotificationGameStart) Option.Instance.Notification.IsGameStart = name.Checked;
-            else if(name == IsNotificationGameClosed) Option.Instance.Notification.IsGameEnd = name.Checked;
+            else if (name == IsNotificationGameStart) Option.Instance.Notification.IsGameStart = name.Checked;
+            else if (name == IsNotificationGameClosed) Option.Instance.Notification.IsGameEnd = name.Checked;
             else if (name == IsScreenShotRaise) Option.Instance.ScreenShot.IsRaise = name.Checked;
             else if (name == IsScreenShotAfterDelete) Option.Instance.ScreenShot.IsSaveAfterDelete = name.Checked;
             else if (name == IsScreenShotNotify) Option.Instance.ScreenShot.IsNotify = name.Checked;
@@ -155,15 +156,15 @@ namespace Genshin_Checker.Window
                 FileName = link,
                 UseShellExecute = true,
             };
-            if (link!=null)Process.Start(pi);
-    }
+            if (link != null) Process.Start(pi);
+        }
 
         private async void Open_HoYoLabAuth_Click(object sender, EventArgs e)
         {
             Open_HoYoLabAuth.Enabled = false;
             try
             {
-                var dialog=new BrowserApp.BattleAuth(isAutoAuth:false);
+                var dialog = new BrowserApp.BattleAuth(isAutoAuth: false);
                 dialog.ShowDialog(this);
             }
             catch (Exception)
@@ -178,7 +179,7 @@ namespace Genshin_Checker.Window
         private async void ButtonScreenShotPathAuto_Click(object sender, EventArgs e)
         {
             var str = await GameApp.WhereScreenShotPath();
-            if(str == null)
+            if (str == null)
             {
                 new ErrorMessage("スクリーンショットのパスの取得に失敗", "ゲームを起動してもう一度お試しください。").ShowDialog();
                 return;
@@ -241,6 +242,51 @@ namespace Genshin_Checker.Window
 
         protected override void OnResize(EventArgs e)
         {
+        }
+
+        private async void ButtonBackup_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.Filter = $"{System.Reflection.Assembly.GetExecutingAssembly().GetName().Name} Backup File(*.gscbu)|*.gscbu";
+            sfd.FilterIndex = 1;
+            sfd.Title = "保存先のファイルを選択してください";
+            sfd.RestoreDirectory = true;
+            sfd.OverwritePrompt = true;
+            sfd.CheckPathExists = false;
+
+            //ダイアログを表示する
+            if (sfd.ShowDialog() == DialogResult.OK)
+            {
+                var result = await MovingData.BackupToZip(sfd.FileName);
+                if (result == null)
+                {
+                    new ErrorMessage("正常にバックアップを作成しました！", "ユーザーの個人情報が含まれるので慎重に取り扱いください。").ShowDialog();
+                }
+                else
+                {
+                    new ErrorMessage("バックアップの保存に失敗しました。", result.ToString()).ShowDialog();
+                }
+            }
+        }
+
+        private void ButtonDataOverride_Click(object sender, EventArgs e)
+        {
+            var message = new ChooseMessage("この操作はアプリ内の全てのデータが消える恐れがあります！", "データを復旧させたい、お引っ越しする以外の利用は基本的に推奨しません。\nどうしても実行したい場合はバックアップを取得してから実行することを強くお勧めします。\nそれでもこの操作を続行しますか？", selectcount: 2, select1: "いいえ", select2: "はい");
+            message.ShowDialog();
+            if (message.Result == 2) return;
+            OpenFileDialog sfd = new();
+            sfd.Filter = $"{System.Reflection.Assembly.GetExecutingAssembly().GetName().Name} Backup File(*.gscbu)|*.gscbu";
+            sfd.FilterIndex = 1;
+            sfd.Title = "読込元のファイルを選択してください";
+            sfd.RestoreDirectory = true;
+            if (sfd.ShowDialog() == DialogResult.OK)
+            {
+                message = new ChooseMessage("本当にこの操作を実行しますか？", "この操作を行うと全てのデータが上書きされます。", selectcount: 2, select1: "いいえ", select2: "はい");
+                message.ShowDialog();
+                if (message.Result == 2) return;
+                Process.Start(Application.ExecutablePath, new List<string>() { $"-Override", $"Path:{sfd.FileName}" });
+                Application.Exit();
+            }
         }
     }
 }
