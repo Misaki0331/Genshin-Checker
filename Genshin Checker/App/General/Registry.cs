@@ -1,10 +1,12 @@
-﻿using Genshin_Checker.resource.Languages;
+﻿using Genshin_Checker.App.General;
+using Genshin_Checker.resource.Languages;
 using Microsoft.Win32;
 using Newtonsoft.Json;
 using OpenTK.Input;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.IO.Compression;
 using System.Linq;
 using System.Text;
@@ -82,6 +84,33 @@ namespace Genshin_Checker.App
             GetPath(PathName, data);
             return JsonConvert.SerializeObject(data);
         }
+        public static bool SetJson(string str)
+        {
+            try
+            {
+                var data = JsonChecker<List<RegistryJson>>.Check(str);
+                var path = Microsoft.Win32.Registry.CurrentUser.CreateSubKey(PathName);
+                foreach (var item in data)
+                {
+                    var sub = path.CreateSubKey(item.Path);
+                    sub.SetValue(item.Key, item.Value);
+                    Trace.WriteLine($"{item.Path} - {item.Key}:{item.Value}");
+                    sub.Close();
+                }
+                path.Close();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+        public static void AllClear()
+        {
+            var sub = Microsoft.Win32.Registry.CurrentUser;
+            sub.DeleteSubKeyTree(PathName);
+            sub.Close();
+        }
         static void GetPath(string path, List<RegistryJson> data)
         {
             var sub = Microsoft.Win32.Registry.CurrentUser.OpenSubKey(path);
@@ -95,12 +124,13 @@ namespace Genshin_Checker.App
             {
                 GetPath(path+"\\"+subkey, data);
             }
+            sub.Close();
         }
         class RegistryJson
         {
-            public string Path { get; set; }
-            public string Key { get; set; }
-            public string Value { get; set; }
+            public string Path { get; set; } = "";
+            public string Key { get; set; } = "";
+            public string Value { get; set; } = "";
         }
         /// <summary>
         /// 文字列からBASE64に圧縮する

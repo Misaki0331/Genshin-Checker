@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Genshin_Checker.App.General
 {
-    class JsonChecker<T>
+    public class JsonChecker<T>
     {
         public static T Check(string json)
         {
