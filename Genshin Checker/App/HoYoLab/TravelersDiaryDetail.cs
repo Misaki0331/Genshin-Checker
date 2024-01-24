@@ -118,7 +118,7 @@ namespace Genshin_Checker.App.HoYoLab
             }
             //相対パスに設定
             else if (Path.IsPathRooted(eventpath)) Registry.SetValue(localeEventPath, $"EventName", Path.GetFileName(eventpath), true);
-            else eventpath = Path.Combine(AppData.GetUserDataDir(),eventpath);
+            else eventpath = Path.Combine(AppData.UserDataPath, eventpath);
             try
             {
                 eventNames = JsonChecker<EventName>.Check(await AppData.LoadUserData(eventpath)??"");
