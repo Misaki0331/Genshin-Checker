@@ -132,9 +132,13 @@ namespace Genshin_Checker
         {
             notification.Visible = true;
             notification.BalloonTipTitle = Localize.AppName;
-            notification.BalloonTipText = string.IsNullOrEmpty(StartupMessage) ? Localize.App_Notify_WakeUp : StartupMessage;
+            notification.BalloonTipText = Localize.App_Notify_WakeUp;
             notification.ShowBalloonTip(30000);
 
+            if (!string.IsNullOrEmpty(StartupMessage))
+            {
+                new ErrorMessage($"起動時のメッセージ", StartupMessage).ShowDialog();
+            }
             await App.Game.WebViewWatcher.Init();
         }
 

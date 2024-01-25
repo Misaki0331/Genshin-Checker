@@ -22,7 +22,9 @@ namespace Genshin_Checker.App.General
                 var sr = new StreamWriter(Path.Combine(name,"Settings"));
                 await sr.WriteAsync(Registry.GetJson());
                 sr.Close();
-                if(File.Exists(path)) File.Delete(path);
+                var dir = Path.GetDirectoryName(path);
+                if (!Directory.Exists(dir)&&dir!=null) Directory.CreateDirectory(dir);
+                if (File.Exists(path)) File.Delete(path);
                 ZipFile.CreateFromDirectory(name+"\\", path);
                 Directory.Delete(name, true);
                 return null;

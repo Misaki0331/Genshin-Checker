@@ -66,7 +66,7 @@ namespace Genshin_Checker
             {
                 var a = App.General.MovingData.WriteToApp(path).Result;
                 string result;
-                if (a != null) result = $"{a.GetType()} - {a.Message}";
+                if (a != null) result = $"{a.GetType()} - {a.Message}\n{a}";
                 else result = $"ˆøŒp‚¬‚ªŠ®—¹‚µ‚Ü‚µ‚½B";
                 System.Diagnostics.Process.Start(Application.ExecutablePath,new List<string>() {$"Result:{result}"});
                 return;
