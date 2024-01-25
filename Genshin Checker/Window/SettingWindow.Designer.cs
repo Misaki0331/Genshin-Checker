@@ -64,6 +64,7 @@
             page_application = new TabPage();
             groupBox9 = new GroupBox();
             panel7 = new Panel();
+            ButtonDataReset = new Button();
             ButtonDataOverride = new Button();
             ButtonBackup = new Button();
             page_about = new TabPage();
@@ -348,10 +349,19 @@
             // 
             // panel7
             // 
+            panel7.Controls.Add(ButtonDataReset);
             panel7.Controls.Add(ButtonDataOverride);
             panel7.Controls.Add(ButtonBackup);
             resources.ApplyResources(panel7, "panel7");
             panel7.Name = "panel7";
+            // 
+            // ButtonDataReset
+            // 
+            resources.ApplyResources(ButtonDataReset, "ButtonDataReset");
+            ButtonDataReset.ForeColor = Color.Red;
+            ButtonDataReset.Name = "ButtonDataReset";
+            ButtonDataReset.UseVisualStyleBackColor = true;
+            ButtonDataReset.Click += ButtonDataReset_Click;
             // 
             // ButtonDataOverride
             // 
@@ -552,5 +562,6 @@
         private Panel panel7;
         private Button ButtonDataOverride;
         private Button ButtonBackup;
+        private Button ButtonDataReset;
     }
 }

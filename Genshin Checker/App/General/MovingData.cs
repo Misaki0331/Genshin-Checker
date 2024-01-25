@@ -95,5 +95,11 @@ namespace Genshin_Checker.App.General
             }
             
         }
+        public static bool AllClear()
+        {
+            if (Directory.Exists(AppData.UserDataPath)) Directory.Delete(AppData.UserDataPath, true);
+            Registry.AllClear();
+            return true;
+        }
     }
 }

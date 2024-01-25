@@ -1,6 +1,7 @@
 ﻿using Genshin_Checker.App;
 using Genshin_Checker.App.Game;
 using Genshin_Checker.App.General;
+using Genshin_Checker.resource.Languages;
 using Genshin_Checker.Window.Popup;
 using Newtonsoft.Json.Linq;
 using System;
@@ -260,7 +261,7 @@ namespace Genshin_Checker.Window
                 var result = await MovingData.BackupToZip(sfd.FileName);
                 if (result == null)
                 {
-                    new ErrorMessage("正常にバックアップを作成しました！", "ユーザーの個人情報が含まれるので慎重に取り扱いください。").ShowDialog();
+                    new ErrorMessage("正常にバックアップを作成しました！", "ユーザーのログイン情報が含まれるので慎重に取り扱いください。\n\n注意：このファイルを絶対にインターネットにアップロードしないでください。\nアカウントが乗っ取られる可能性があります。").ShowDialog();
                 }
                 else
                 {
@@ -271,7 +272,7 @@ namespace Genshin_Checker.Window
 
         private void ButtonDataOverride_Click(object sender, EventArgs e)
         {
-            var message = new ChooseMessage("この操作はアプリ内の全てのデータが消える恐れがあります！", "データを復旧させたい、お引っ越しする以外の利用は基本的に推奨しません。\nどうしても実行したい場合はバックアップを取得してから実行することを強くお勧めします。\nそれでもこの操作を続行しますか？", selectcount: 2, select1: "いいえ", select2: "はい");
+            var message = new ChooseMessage("この操作はアプリ内の全てのデータが消える恐れがあります！", "データを復旧させたい、お引っ越しする以外の利用は基本的に推奨しません。\nどうしても実行したい場合はバックアップを取得してから実行することを強くお勧めします。\nそれでもこの操作を続行しますか？", selectcount: 2);
             message.ShowDialog();
             if (message.Result == 2) return;
             OpenFileDialog sfd = new();
@@ -281,12 +282,25 @@ namespace Genshin_Checker.Window
             sfd.RestoreDirectory = true;
             if (sfd.ShowDialog() == DialogResult.OK)
             {
-                message = new ChooseMessage("本当にこの操作を実行しますか？", "この操作を行うと全てのデータが上書きされます。", selectcount: 2, select1: "いいえ", select2: "はい");
+                message = new ChooseMessage("本当にこの操作を実行しますか？", "この操作を行うと全てのデータが上書きされます。", selectcount: 2);
                 message.ShowDialog();
                 if (message.Result == 2) return;
                 Process.Start(Application.ExecutablePath, new List<string>() { $"-Override", $"Path:{sfd.FileName}" });
                 Application.Exit();
             }
+        }
+
+        private void ButtonDataReset_Click(object sender, EventArgs e)
+        {
+            var message = new ChooseMessage("この操作はアプリ内の全ての個人データが削除されます！", "削除されるデータは以下の通りです。\n・プレイ時間情報\n・ログイン情報\n・設定情報\n・全アカウントの旅人通帳のアーカイブ\n・全アカウントの深境螺旋のアーカイブ", selectcount: 2);
+            message.ShowDialog();
+            if (message.Result == 2) return;
+            message = new ChooseMessage("本当に削除しますか？", "この処理が実行されるとバックアップが無い限り元に戻せなくなります。\n本当によろしいですか？\nこの操作後、アプリは再起動します。", selectcount: 2);
+            message.ShowDialog();
+            if (message.Result == 2) return;
+
+            Process.Start(Application.ExecutablePath, new List<string>() { $"-ALLDELETE" });
+            Application.Exit();
         }
     }
 }

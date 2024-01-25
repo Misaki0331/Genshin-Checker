@@ -1020,6 +1020,39 @@ Examples of available information : Real-time note, Traveler's Dirty etc...</val
   <data name="groupBox9.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="ButtonDataReset.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="ButtonDataReset.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt, style=Bold</value>
+  </data>
+  <data name="ButtonDataReset.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="ButtonDataReset.Location" type="System.Drawing.Point, System.Drawing">
+    <value>150, 0</value>
+  </data>
+  <data name="ButtonDataReset.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="ButtonDataReset.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="ButtonDataReset.Text" xml:space="preserve">
+    <value>ALL RESET</value>
+  </data>
+  <data name="&gt;&gt;ButtonDataReset.Name" xml:space="preserve">
+    <value>ButtonDataReset</value>
+  </data>
+  <data name="&gt;&gt;ButtonDataReset.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ButtonDataReset.Parent" xml:space="preserve">
+    <value>panel7</value>
+  </data>
+  <data name="&gt;&gt;ButtonDataReset.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="ButtonDataOverride.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Left</value>
   </data>
@@ -1048,7 +1081,7 @@ Examples of available information : Real-time note, Traveler's Dirty etc...</val
     <value>panel7</value>
   </data>
   <data name="&gt;&gt;ButtonDataOverride.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="ButtonBackup.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Left</value>
@@ -1075,7 +1108,7 @@ Examples of available information : Real-time note, Traveler's Dirty etc...</val
     <value>panel7</value>
   </data>
   <data name="&gt;&gt;ButtonBackup.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="panel7.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
@@ -1108,7 +1141,7 @@ Examples of available information : Real-time note, Traveler's Dirty etc...</val
     <value>3, 3</value>
   </data>
   <data name="groupBox9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>587, 28</value>
+    <value>587, 45</value>
   </data>
   <data name="groupBox9.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>

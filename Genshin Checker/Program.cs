@@ -40,6 +40,7 @@ namespace Genshin_Checker
             ApplicationConfiguration.Initialize();
             bool ToastActivated = false;
             bool Override = false;
+            bool Alldelete = false;
             string path = "";
             //トースト通知の引数が含まれる場合は通知を削除
             foreach (string cmd in Environment.GetCommandLineArgs())
@@ -51,6 +52,9 @@ namespace Genshin_Checker
                         break;
                     case "-Override":
                         Override = true; 
+                        break;
+                    case "-ALLDELETE":
+                        Alldelete = true;
                         break;
                 }
                 if (cmd.StartsWith("Path:")){
@@ -71,7 +75,29 @@ namespace Genshin_Checker
                 System.Diagnostics.Process.Start(Application.ExecutablePath,new List<string>() {$"Result:{result}"});
                 return;
             }
-
+            if (Alldelete)
+            {
+                var a = new ChooseMessage("これが最後の確認です。", "本アプリに保存している個人データは全て削除されます。\n操作後は元に戻せません。\n\n本当によろしいですか？", selectcount: 2, select1: Common.No, select2: Common.Yes);
+                a.ShowDialog();
+                if (a.Result == 1)
+                {
+                    try
+                    {
+                        App.General.MovingData.AllClear();
+                        new ErrorMessage("データは正常に削除しました。", "またのご利用お待ちしております。").ShowDialog();
+                    }
+                    catch(Exception e)
+                    {
+                        new ErrorMessage("データ削除中にエラーが発生しました。", e.ToString()).ShowDialog();
+                    }
+                    return;
+                }
+                else
+                {
+                    System.Diagnostics.Process.Start(Application.ExecutablePath, new List<string>() { $"Result:削除処理が中断されました。" });
+                    return;
+                }
+            }
             //Mutex名を決める（必ずアプリケーション固有の文字列に変更すること！）
             string mutexName = "Genshin Checker";
             //Mutexオブジェクトを作成する

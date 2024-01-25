@@ -19,6 +19,7 @@ namespace Genshin_Checker
     {
         List<string> GameLogTemp;
         string StartupMessage = "";
+        int StartupResult = 0;
         public MainTray(bool safemode = false)
         {
             InitializeComponent();
@@ -38,6 +39,10 @@ namespace Genshin_Checker
                 if (cmd.StartsWith("Result:"))
                 {
                     StartupMessage= cmd[7..];
+                }
+                if (cmd.StartsWith("ResultCode:"))
+                {
+                    if(!int.TryParse(cmd[11..],out StartupResult))StartupResult=-1;
                 }
             }
             EnkaData.Data.GetStoreData();
