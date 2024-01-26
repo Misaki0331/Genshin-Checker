@@ -261,7 +261,7 @@ namespace Genshin_Checker.Window
                 var result = await MovingData.BackupToZip(sfd.FileName);
                 if (result == null)
                 {
-                    new ErrorMessage("正常にバックアップを作成しました！", "ユーザーのログイン情報が含まれるので慎重に取り扱いください。\n\n注意：このファイルを絶対にインターネットにアップロードしないでください。\nアカウントが乗っ取られる可能性があります。").ShowDialog();
+                    new InfoMessage("正常にバックアップを作成しました！", "ユーザーのログイン情報が含まれるので慎重に取り扱いください。\n\n警告：このファイルを絶対にインターネットにアップロードしないでください。\nアカウントが乗っ取られる可能性があります。").ShowDialog();
                 }
                 else
                 {

@@ -123,6 +123,7 @@ GitHub : https://github.com/Misaki0331</Description>
     <Compile Update="Window\PopupWindow\ChooseMessage.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Window\PopupWindow\InfoMessage.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -172,6 +173,7 @@ GitHub : https://github.com/Misaki0331</Description>
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Resources\" />
     <Folder Include="Window\Contains\" />
   </ItemGroup>
 

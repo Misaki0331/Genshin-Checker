@@ -94,6 +94,9 @@
     <Compile Update="Window\GameRecords.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Window\PopupWindow\InfoMessage.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Window\ProgressWindow\LoadGameDatabase.cs">
       <SubType>Form</SubType>
     </Compile>

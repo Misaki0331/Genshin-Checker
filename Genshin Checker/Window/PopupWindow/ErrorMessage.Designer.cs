@@ -107,9 +107,9 @@
 
         #endregion
 
-        private PictureBox pictureBox1;
+        internal PictureBox pictureBox1;
         private Button button1;
-        private Label label1;
-        private TextBox textBox1;
+        internal Label label1;
+        internal TextBox textBox1;
     }
 }

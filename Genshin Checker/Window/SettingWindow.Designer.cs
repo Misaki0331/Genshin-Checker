@@ -157,9 +157,9 @@
             // 
             // panel6
             // 
+            resources.ApplyResources(panel6, "panel6");
             panel6.Controls.Add(ScreenShotTransferFileFormat);
             panel6.Controls.Add(ScreenShotTransferImageType);
-            resources.ApplyResources(panel6, "panel6");
             panel6.Name = "panel6";
             // 
             // ScreenShotTransferFileFormat
@@ -184,9 +184,9 @@
             // 
             // panel5
             // 
+            resources.ApplyResources(panel5, "panel5");
             panel5.Controls.Add(ScreenShotTransferDirectry);
             panel5.Controls.Add(button1);
-            resources.ApplyResources(panel5, "panel5");
             panel5.Name = "panel5";
             // 
             // ScreenShotTransferDirectry
@@ -209,10 +209,10 @@
             // 
             // panel4
             // 
+            resources.ApplyResources(panel4, "panel4");
             panel4.Controls.Add(ScreenshotPath);
             panel4.Controls.Add(ButtonScreenShotPathAuto);
             panel4.Controls.Add(IsScreenShotRaise);
-            resources.ApplyResources(panel4, "panel4");
             panel4.Name = "panel4";
             // 
             // ScreenshotPath
@@ -251,9 +251,9 @@
             // 
             // page_notification
             // 
+            resources.ApplyResources(page_notification, "page_notification");
             page_notification.Controls.Add(groupBox3);
             page_notification.Controls.Add(groupBox2);
-            resources.ApplyResources(page_notification, "page_notification");
             page_notification.Name = "page_notification";
             page_notification.UseVisualStyleBackColor = true;
             // 
@@ -295,9 +295,9 @@
             // 
             // page_auth
             // 
+            resources.ApplyResources(page_auth, "page_auth");
             page_auth.Controls.Add(groupBox8);
             page_auth.Controls.Add(groupBox1);
-            resources.ApplyResources(page_auth, "page_auth");
             page_auth.Name = "page_auth";
             page_auth.UseVisualStyleBackColor = true;
             // 
@@ -322,8 +322,8 @@
             // 
             // panel1
             // 
-            panel1.Controls.Add(Open_HoYoLabAuth);
             resources.ApplyResources(panel1, "panel1");
+            panel1.Controls.Add(Open_HoYoLabAuth);
             panel1.Name = "panel1";
             // 
             // Open_HoYoLabAuth
@@ -335,8 +335,8 @@
             // 
             // page_application
             // 
-            page_application.Controls.Add(groupBox9);
             resources.ApplyResources(page_application, "page_application");
+            page_application.Controls.Add(groupBox9);
             page_application.Name = "page_application";
             page_application.UseVisualStyleBackColor = true;
             // 
@@ -349,10 +349,10 @@
             // 
             // panel7
             // 
+            resources.ApplyResources(panel7, "panel7");
             panel7.Controls.Add(ButtonDataReset);
             panel7.Controls.Add(ButtonDataOverride);
             panel7.Controls.Add(ButtonBackup);
-            resources.ApplyResources(panel7, "panel7");
             panel7.Name = "panel7";
             // 
             // ButtonDataReset
@@ -380,9 +380,9 @@
             // 
             // page_about
             // 
+            resources.ApplyResources(page_about, "page_about");
             page_about.Controls.Add(groupBox5);
             page_about.Controls.Add(groupBox4);
-            resources.ApplyResources(page_about, "page_about");
             page_about.Name = "page_about";
             page_about.UseVisualStyleBackColor = true;
             // 
@@ -396,9 +396,9 @@
             // 
             // panel3
             // 
+            resources.ApplyResources(panel3, "panel3");
             panel3.Controls.Add(OpenAuthorGitHub);
             panel3.Controls.Add(OpenAuthorMisskey);
-            resources.ApplyResources(panel3, "panel3");
             panel3.Name = "panel3";
             // 
             // OpenAuthorGitHub
@@ -434,8 +434,8 @@
             // 
             // panel2
             // 
-            panel2.Controls.Add(OpenGitHubReleases);
             resources.ApplyResources(panel2, "panel2");
+            panel2.Controls.Add(OpenGitHubReleases);
             panel2.Name = "panel2";
             // 
             // OpenGitHubReleases
