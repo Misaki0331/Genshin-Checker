@@ -77,6 +77,7 @@ namespace Genshin_Checker.App.General
                 case 54:
                 case 67:
                 case 1046:
+                case 1071:
                 case 1073:
                 case 1074:
                 case 1082:
@@ -155,6 +156,7 @@ namespace Genshin_Checker.App.General
                         case 1049: return "アチーブメント";
                         case 1052: return "低ランク聖遺物処理";
                         case 1054: return "評判任務(討伐懸賞)";
+                        case 1071: return "百貨珍品報酬";
                         case 1073: return "写真イベント(フレンド協力可)";
                         case 1074: return "参量物質変化器変換報酬";
                         case 1084: return "イベントマルチミニゲーム報酬";
