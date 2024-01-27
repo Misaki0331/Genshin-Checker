@@ -69,10 +69,16 @@ namespace Genshin_Checker
             if (Override)
             {
                 var a = App.General.MovingData.WriteToApp(path).Result;
-                string result;
-                if (a != null) result = $"{a.GetType()} - {a.Message}\n{a}";
-                else result = $"引継ぎが完了しました。";
-                System.Diagnostics.Process.Start(Application.ExecutablePath,new List<string>() {$"Result:{result}"});
+                if (a != null)
+                {
+                    System.Diagnostics.Process.Start(Application.ExecutablePath, new List<string>()
+                { $"Style:Error", $"Title:上書き中にエラーが発生しました。", $"Message:{a}" });
+                }
+                else
+                {
+                    System.Diagnostics.Process.Start(Application.ExecutablePath, new List<string>()
+                { $"Style:Info", $"Title:データの上書きが完了しました。", $"Message:データの復旧処理は完了しましたが、ログイン情報は引き継いでおりません。\n便利機能にアクセスするには再度ログインをお願いいたします。" });
+                }
                 return;
             }
             if (Alldelete)
@@ -84,7 +90,7 @@ namespace Genshin_Checker
                     try
                     {
                         App.General.MovingData.AllClear();
-                        new ErrorMessage("データは正常に削除しました。", "またのご利用お待ちしております。").ShowDialog();
+                        new InfoMessage("データは正常に削除しました。", "またのご利用お待ちしております。").ShowDialog();
                     }
                     catch(Exception e)
                     {
@@ -94,7 +100,7 @@ namespace Genshin_Checker
                 }
                 else
                 {
-                    System.Diagnostics.Process.Start(Application.ExecutablePath, new List<string>() { $"Result:削除処理が中断されました。" });
+                    System.Diagnostics.Process.Start(Application.ExecutablePath, new List<string>() { $"Style:Error", $"Title:削除処理が中断されました。", $"Message:もう一度やり直してください。" });
                     return;
                 }
             }

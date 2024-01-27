@@ -5,7 +5,7 @@ namespace Genshin_Checker.App.General
 {
     public class MovingData
     {
-        public static async Task<Exception?> BackupToZip(string path)
+        public static async Task<Exception?> BackupToZip(string path, bool IsWithCredential=false)
         {
             string name = Path.Combine(Path.GetTempPath(),Path.GetRandomFileName().Replace(".",""));
             try
@@ -20,7 +20,7 @@ namespace Genshin_Checker.App.General
                     }
                 }
                 var sr = new StreamWriter(Path.Combine(name,"Settings"));
-                await sr.WriteAsync(Registry.GetJson());
+                await sr.WriteAsync(Registry.GetJson(IsWithCredential));
                 sr.Close();
                 var dir = Path.GetDirectoryName(path);
                 if (!Directory.Exists(dir)&&dir!=null) Directory.CreateDirectory(dir);
@@ -46,7 +46,7 @@ namespace Genshin_Checker.App.General
                 if (!File.Exists(path)) throw new FileNotFoundException("The file is not found.");
                 if (!Recovery)
                 {
-                    var ex = await BackupToZip(Path.Combine(AppData.AppDataDirectry, "Buckup.old_zip"));
+                    var ex = await BackupToZip(Path.Combine(AppData.AppDataDirectry, "Buckup.old_zip"),IsWithCredential: true);
                     if (ex != null)
                     {
                         throw new ArgumentException("Could not create buckup files.", ex);
@@ -72,6 +72,7 @@ namespace Genshin_Checker.App.General
                 }
                 Registry.SetJson(json);
                 Directory.Delete(name, true);
+                try { File.Delete(Path.Combine(AppData.AppDataDirectry, "Buckup.old_zip")); } catch { }
                 return null;
             }
             catch (Exception ex)
@@ -87,6 +88,7 @@ namespace Genshin_Checker.App.General
                         {
                             ex = new InvalidDataException($"リカバリに失敗しました。{ex2.GetType()}{ex2.Message}", ex);
                         }
+                        try { File.Delete(Path.Combine(AppData.AppDataDirectry, "Buckup.old_zip")); } catch { }
                     }
                 }
 

@@ -78,10 +78,10 @@ namespace Genshin_Checker.App
             return new(arySubKeyNames);
         }
 
-        public static string GetJson()
+        public static string GetJson(bool IsWithCredential=false)
         {
             List<RegistryJson> data = new();
-            GetPath(PathName, data);
+            GetPath(PathName, data, IsWithCredential);
             return JsonConvert.SerializeObject(data);
         }
         public static bool SetJson(string str)
@@ -112,13 +112,14 @@ namespace Genshin_Checker.App
                 sub.DeleteSubKeyTree(PathName);
             sub.Close();
         }
-        static void GetPath(string path, List<RegistryJson> data)
+        static void GetPath(string path, List<RegistryJson> data, bool IsWithCredential = false)
         {
             var sub = Microsoft.Win32.Registry.CurrentUser.OpenSubKey(path);
             if (sub == null) return;
             foreach (string valueName in sub.GetValueNames())
             {
                 var jsonpath = path.Replace($"{PathName}\\", "");
+                if (!IsWithCredential && jsonpath.StartsWith("Config\\UserData\\")) continue;
                 data.Add(new() { Path = jsonpath, Key = valueName, Value = $"{sub.GetValue(valueName)}" });
             }
             foreach (string subkey in sub.GetSubKeyNames())

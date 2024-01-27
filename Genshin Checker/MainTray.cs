@@ -18,8 +18,13 @@ namespace Genshin_Checker
     public partial class MainTray : Form
     {
         List<string> GameLogTemp;
-        string StartupMessage = "";
-        int StartupResult = 0;
+        class StartUpData
+        {
+            internal string Message = "";
+            internal string Title = "";
+            internal string Style = "";
+        }
+        StartUpData? startup;
         public MainTray(bool safemode = false)
         {
             InitializeComponent();
@@ -36,13 +41,20 @@ namespace Genshin_Checker
                         isdebug = true;
                         break;
                 }
-                if (cmd.StartsWith("Result:"))
+                if (cmd.StartsWith("Title:"))
                 {
-                    StartupMessage= cmd[7..];
+                    startup ??= new();
+                    startup.Title = cmd[6..];
                 }
-                if (cmd.StartsWith("ResultCode:"))
+                if (cmd.StartsWith("Style:"))
                 {
-                    if(!int.TryParse(cmd[11..],out StartupResult))StartupResult=-1;
+                    startup ??= new();
+                    startup.Style = cmd[6..];
+                }
+                if (cmd.StartsWith("Message:"))
+                {
+                    startup ??= new();
+                    startup.Message= cmd[8..];
                 }
             }
             EnkaData.Data.GetStoreData();
@@ -139,12 +151,20 @@ namespace Genshin_Checker
             notification.BalloonTipTitle = Localize.AppName;
             notification.BalloonTipText = Localize.App_Notify_WakeUp;
             notification.ShowBalloonTip(30000);
-
-            if (!string.IsNullOrEmpty(StartupMessage))
-            {
-                new ErrorMessage($"起動時のメッセージ", StartupMessage).ShowDialog();
-            }
             await App.Game.WebViewWatcher.Init();
+
+            if (startup!=null)
+            {
+                switch (startup.Style.ToLower())
+                {
+                    case "info":
+                        new InfoMessage(startup.Title, startup.Message, startup.Title).ShowDialog();
+                        break;
+                    case "error":
+                        new ErrorMessage(startup.Title, startup.Message,startup.Title).ShowDialog();
+                        break;
+                }
+            }
         }
 
         private void Delay_Tick(object sender, EventArgs e)
