@@ -226,9 +226,6 @@
   <data name="ButtonBackup.Text" xml:space="preserve">
     <value>バックアップ</value>
   </data>
-  <data name="groupBox9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>587, 28</value>
-  </data>
   <data name="groupBox9.Text" xml:space="preserve">
     <value>ユーザーデータ設定</value>
   </data>

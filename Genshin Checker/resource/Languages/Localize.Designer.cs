@@ -385,6 +385,15 @@ namespace Genshin_Checker.resource.Languages {
         }
         
         /// <summary>
+        ///   Set up Path before starting monitoring. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Error_Config_Screenshot_IsRaise {
+            get {
+                return ResourceManager.GetString("Error_Config_Screenshot_IsRaise", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Failed to load data. に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string Error_GameRecord_FailedToLoad {

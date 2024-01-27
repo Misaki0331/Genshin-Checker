@@ -168,6 +168,15 @@ namespace Genshin_Checker.resource.Languages {
         }
         
         /// <summary>
+        ///   Infomation に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string InfoMessage {
+            get {
+                return ResourceManager.GetString("InfoMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Latter に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string Latter {

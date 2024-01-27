@@ -274,7 +274,7 @@ namespace Genshin_Checker.Window
         {
             var message = new ChooseMessage(ManageUserData.LoadBackup_Notice_Title, ManageUserData.LoadBackup_Notice_Message, selectcount: 2);
             message.ShowDialog();
-            if (message.Result == 2) return;
+            if (message.Result != 1) return;
             OpenFileDialog sfd = new();
             sfd.Filter = $"{System.Reflection.Assembly.GetExecutingAssembly().GetName().Name} Backup File(*.gscbu)|*.gscbu";
             sfd.FilterIndex = 1;
@@ -284,7 +284,7 @@ namespace Genshin_Checker.Window
             {
                 message = new ChooseMessage(ManageUserData.LoadBackup_FinalConfirm_Title, ManageUserData.LoadBackup_FinalConfirm_Message, selectcount: 2);
                 message.ShowDialog();
-                if (message.Result == 2) return;
+                if (message.Result != 1) return;
                 Process.Start(Application.ExecutablePath, new List<string>() { $"-Override", $"Path:{sfd.FileName}" });
                 Application.Exit();
             }
@@ -294,10 +294,10 @@ namespace Genshin_Checker.Window
         {
             var message = new ChooseMessage(ManageUserData.Delete_Notice_Title, ManageUserData.Delete_Notice_Message, selectcount: 2);
             message.ShowDialog();
-            if (message.Result == 2) return;
+            if (message.Result != 1) return;
             message = new ChooseMessage(ManageUserData.Delete_Confirm_Title, ManageUserData.Delete_Confirm_Message, selectcount: 2);
             message.ShowDialog();
-            if (message.Result == 2) return;
+            if (message.Result != 1) return;
 
             Process.Start(Application.ExecutablePath, new List<string>() { $"-ALLDELETE" });
             Application.Exit();

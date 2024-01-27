@@ -58,7 +58,7 @@ namespace Genshin_Checker.Window.ProgressWindow
             }
             catch(GameAPI.GameAPIException ex)
             {
-                SessionInfo.Text = $"{Localize.Windowname_LoadGameDatabase_FailedToSessionName}";
+                SessionInfo.Text = $"{Localize.Windowname_LoadGameDatabase_FailedToSessionName}\n{ex.Retcode} - {ex.APIMessage}";
                 return;
             }catch(InvalidDataException)
             {

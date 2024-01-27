@@ -210,4 +210,7 @@ Will Re-launching it?
   <data name="NoAccount" xml:space="preserve">
     <value>No accounts.</value>
   </data>
+  <data name="InfoMessage" xml:space="preserve">
+    <value>Infomation</value>
+  </data>
 </root>

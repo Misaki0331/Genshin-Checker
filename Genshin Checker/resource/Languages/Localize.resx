@@ -645,4 +645,7 @@ After clicking the "Feedback" button, a new browser window will open, but you ca
   <data name="WindowName_SettingWindow_Transfer_Description" xml:space="preserve">
     <value>Select the directory to transfer the screenshots.</value>
   </data>
+  <data name="Error_Config_Screenshot_IsRaise" xml:space="preserve">
+    <value>Set up Path before starting monitoring.</value>
+  </data>
 </root>

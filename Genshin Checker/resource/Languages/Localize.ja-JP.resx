@@ -638,4 +638,7 @@
   <data name="WindowName_SettingWindow_Transfer_Description" xml:space="preserve">
     <value>スクリーンショットを転送するフォルダを選択してください。</value>
   </data>
+  <data name="Error_Config_Screenshot_IsRaise" xml:space="preserve">
+    <value>監視を開始する前にPathを設定してください。</value>
+  </data>
 </root>

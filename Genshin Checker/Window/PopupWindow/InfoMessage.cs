@@ -6,7 +6,7 @@ namespace Genshin_Checker.Window.Popup
     {
         public InfoMessage(string title,string message,string? windowtitle=null): base(title,message,windowtitle)
         {
-            windowtitle ??= Common.ErrorMessage;
+            windowtitle ??= Common.InfoMessage;
             Text = windowtitle;
             label1.Text = title;
             textBox1.Text = message.Replace("\r\n", "\n").Replace("\n", Environment.NewLine);

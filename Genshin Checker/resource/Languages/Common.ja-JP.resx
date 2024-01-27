@@ -198,4 +198,7 @@
   <data name="NoAccount" xml:space="preserve">
     <value>連携済みのアカウントがありません。</value>
   </data>
+  <data name="InfoMessage" xml:space="preserve">
+    <value>情報</value>
+  </data>
 </root>

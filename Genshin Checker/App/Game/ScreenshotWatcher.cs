@@ -1,4 +1,5 @@
 ﻿using Genshin_Checker.App.General;
+using Genshin_Checker.resource.Languages;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -18,7 +19,7 @@ namespace Genshin_Checker.App.Game
         public bool IsRaise { get => watcher.EnableRaisingEvents; 
             set
             {
-                if (value&&string.IsNullOrEmpty(watcher.Path)) throw new ArgumentException("監視を開始する前にPathを設定してください。"); 
+                if (value&&string.IsNullOrEmpty(watcher.Path)) throw new ArgumentException(Localize.Error_Config_Screenshot_IsRaise); 
                 watcher.EnableRaisingEvents = value; 
             } 
         }

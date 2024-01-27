@@ -119,7 +119,7 @@ namespace Genshin_Checker.App
             foreach (string valueName in sub.GetValueNames())
             {
                 var jsonpath = path.Replace($"{PathName}\\", "");
-                if (!IsWithCredential && jsonpath.StartsWith("Config\\UserData\\")) continue;
+                if (!IsWithCredential && jsonpath.StartsWith("Config\\UserData")) continue;
                 data.Add(new() { Path = jsonpath, Key = valueName, Value = $"{sub.GetValue(valueName)}" });
             }
             foreach (string subkey in sub.GetSubKeyNames())
