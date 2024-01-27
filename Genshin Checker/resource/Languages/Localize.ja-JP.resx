@@ -626,4 +626,16 @@
   <data name="Windowname_LoadGameDatabase_FailedButInit" xml:space="preserve">
     <value>データ準備処理の為もう一度やり直してください。</value>
   </data>
+  <data name="WindowName_SettingWindow_FailedToChangeConfig" xml:space="preserve">
+    <value>設定の変更に失敗しました。</value>
+  </data>
+  <data name="WindowName_SettingWindow_FailedToGetScreenshotPath_Message" xml:space="preserve">
+    <value>ゲームを起動してもう一度お試しください。</value>
+  </data>
+  <data name="WindowName_SettingWindow_FailedToGetScreenshotPath_Title" xml:space="preserve">
+    <value>スクリーンショットのパスの取得に失敗。</value>
+  </data>
+  <data name="WindowName_SettingWindow_Transfer_Description" xml:space="preserve">
+    <value>スクリーンショットを転送するフォルダを選択してください。</value>
+  </data>
 </root>

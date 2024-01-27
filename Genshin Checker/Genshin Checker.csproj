@@ -101,6 +101,11 @@ GitHub : https://github.com/Misaki0331</Description>
       <AutoGen>True</AutoGen>
       <DependentUpon>Localize.resx</DependentUpon>
     </Compile>
+    <Compile Update="resource\Languages\ManageUserData.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ManageUserData.resx</DependentUpon>
+    </Compile>
     <Compile Update="resource\namecard.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -150,6 +155,10 @@ GitHub : https://github.com/Misaki0331</Description>
     <EmbeddedResource Update="resource\Languages\Localize.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Localize.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="resource\Languages\ManageUserData.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ManageUserData.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Update="resource\namecard.resx">
       <Generator>ResXFileCodeGenerator</Generator>

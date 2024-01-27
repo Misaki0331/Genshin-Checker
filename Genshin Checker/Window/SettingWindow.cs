@@ -134,7 +134,7 @@ namespace Genshin_Checker.Window
             catch (Exception ex)
             {
                 obj.Checked = !obj.Checked;
-                new ErrorMessage("設定の変更に失敗しました。", $"{ex.Message}").ShowDialog();
+                new ErrorMessage(Localize.WindowName_SettingWindow_FailedToChangeConfig, $"{ex.Message}").ShowDialog();
             }
             Option.Save();
             changeValue(obj);
@@ -182,7 +182,7 @@ namespace Genshin_Checker.Window
             var str = await GameApp.WhereScreenShotPath();
             if (str == null)
             {
-                new ErrorMessage("スクリーンショットのパスの取得に失敗", "ゲームを起動してもう一度お試しください。").ShowDialog();
+                new ErrorMessage(Localize.WindowName_SettingWindow_FailedToGetScreenshotPath_Title, Localize.WindowName_SettingWindow_FailedToGetScreenshotPath_Message).ShowDialog();
                 return;
             }
             ScreenshotPath.Text = str;
@@ -209,7 +209,7 @@ namespace Genshin_Checker.Window
         {
             using var fbd = new FolderBrowserDialog()
             {
-                Description = "スクリーンショットを転送するフォルダを選択してください",
+                Description = Localize.WindowName_SettingWindow_Transfer_Description,
             };
             if (fbd.ShowDialog() != System.Windows.Forms.DialogResult.OK)
                 return;
@@ -250,7 +250,7 @@ namespace Genshin_Checker.Window
             SaveFileDialog sfd = new SaveFileDialog();
             sfd.Filter = $"{System.Reflection.Assembly.GetExecutingAssembly().GetName().Name} Backup File(*.gscbu)|*.gscbu";
             sfd.FilterIndex = 1;
-            sfd.Title = "保存先のファイルを選択してください";
+            sfd.Title = ManageUserData.SaveBackup_SaveTo_Title;
             sfd.RestoreDirectory = true;
             sfd.OverwritePrompt = true;
             sfd.CheckPathExists = false;
@@ -261,28 +261,28 @@ namespace Genshin_Checker.Window
                 var result = await MovingData.BackupToZip(sfd.FileName);
                 if (result == null)
                 {
-                    new InfoMessage("正常にバックアップを作成しました！", "ユーザーのログイン情報が含まれるので慎重に取り扱いください。\n\n警告：このファイルを絶対にインターネットにアップロードしないでください。\nアカウントが乗っ取られる可能性があります。").ShowDialog();
+                    new InfoMessage(ManageUserData.SaveBackup_Success_Title, ManageUserData.SaveBackup_Success_Message).ShowDialog();
                 }
                 else
                 {
-                    new ErrorMessage("バックアップの保存に失敗しました。", result.ToString()).ShowDialog();
+                    new ErrorMessage(ManageUserData.SaveBackup_Failed_Title, result.ToString()).ShowDialog();
                 }
             }
         }
 
         private void ButtonDataOverride_Click(object sender, EventArgs e)
         {
-            var message = new ChooseMessage("この操作はアプリ内の全てのデータが消える恐れがあります！", "データを復旧させたい、お引っ越しする以外の利用は基本的に推奨しません。\nどうしても実行したい場合はバックアップを取得してから実行することを強くお勧めします。\nそれでもこの操作を続行しますか？", selectcount: 2);
+            var message = new ChooseMessage(ManageUserData.LoadBackup_Notice_Title, ManageUserData.LoadBackup_Notice_Message, selectcount: 2);
             message.ShowDialog();
             if (message.Result == 2) return;
             OpenFileDialog sfd = new();
             sfd.Filter = $"{System.Reflection.Assembly.GetExecutingAssembly().GetName().Name} Backup File(*.gscbu)|*.gscbu";
             sfd.FilterIndex = 1;
-            sfd.Title = "読込元のファイルを選択してください";
+            sfd.Title = ManageUserData.LoadBackup_LoadTo_Title;
             sfd.RestoreDirectory = true;
             if (sfd.ShowDialog() == DialogResult.OK)
             {
-                message = new ChooseMessage("本当にこの操作を実行しますか？", "この操作を行うと全てのデータが上書きされます。", selectcount: 2);
+                message = new ChooseMessage(ManageUserData.LoadBackup_FinalConfirm_Title, ManageUserData.LoadBackup_FinalConfirm_Message, selectcount: 2);
                 message.ShowDialog();
                 if (message.Result == 2) return;
                 Process.Start(Application.ExecutablePath, new List<string>() { $"-Override", $"Path:{sfd.FileName}" });
@@ -292,10 +292,10 @@ namespace Genshin_Checker.Window
 
         private void ButtonDataReset_Click(object sender, EventArgs e)
         {
-            var message = new ChooseMessage("この操作はアプリ内の全ての個人データが削除されます！", "削除されるデータは以下の通りです。\n・プレイ時間情報\n・ログイン情報\n・設定情報\n・全アカウントの旅人通帳のアーカイブ\n・全アカウントの深境螺旋のアーカイブ", selectcount: 2);
+            var message = new ChooseMessage(ManageUserData.Delete_Notice_Title, ManageUserData.Delete_Notice_Message, selectcount: 2);
             message.ShowDialog();
             if (message.Result == 2) return;
-            message = new ChooseMessage("本当に削除しますか？", "この処理が実行されるとバックアップが無い限り元に戻せなくなります。\n本当によろしいですか？\nこの操作後、アプリは再起動します。", selectcount: 2);
+            message = new ChooseMessage(ManageUserData.Delete_Confirm_Title, ManageUserData.Delete_Confirm_Message, selectcount: 2);
             message.ShowDialog();
             if (message.Result == 2) return;
 

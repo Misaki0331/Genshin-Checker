@@ -1385,6 +1385,42 @@ namespace Genshin_Checker.resource.Languages {
         }
         
         /// <summary>
+        ///   Failed to change config data. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string WindowName_SettingWindow_FailedToChangeConfig {
+            get {
+                return ResourceManager.GetString("WindowName_SettingWindow_FailedToChangeConfig", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Please launch the game and try again. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string WindowName_SettingWindow_FailedToGetScreenshotPath_Message {
+            get {
+                return ResourceManager.GetString("WindowName_SettingWindow_FailedToGetScreenshotPath_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Failed to load screenshot path. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string WindowName_SettingWindow_FailedToGetScreenshotPath_Title {
+            get {
+                return ResourceManager.GetString("WindowName_SettingWindow_FailedToGetScreenshotPath_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Select the directory to transfer the screenshots. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string WindowName_SettingWindow_Transfer_Description {
+            get {
+                return ResourceManager.GetString("WindowName_SettingWindow_Transfer_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Spiral Abyss に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string WindowName_SpiralAbyss {

@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using Genshin_Checker.resource.Languages;
+using System.Diagnostics;
 using System.IO.Compression;
 
 namespace Genshin_Checker.App.General
@@ -86,7 +87,7 @@ namespace Genshin_Checker.App.General
                         var ex2 = await WriteToApp(Path.Combine(AppData.AppDataDirectry, "Buckup.old_zip"), true);
                         if(ex2 != null)
                         {
-                            ex = new InvalidDataException($"リカバリに失敗しました。{ex2.GetType()}{ex2.Message}", ex);
+                            ex = new InvalidDataException($"{ManageUserData.FailedToRecovery}{ex2.GetType()}{ex2.Message}", ex);
                         }
                         try { File.Delete(Path.Combine(AppData.AppDataDirectry, "Buckup.old_zip")); } catch { }
                     }

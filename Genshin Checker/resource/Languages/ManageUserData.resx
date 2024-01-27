@@ -1,0 +1,185 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+		Microsoft ResX Schema
+
+		Version 1.3
+
+		The primary goals of this format is to allow a simple XML format 
+		that is mostly human readable. The generation and parsing of the 
+		various data types are done through the TypeConverter classes 
+		associated with the data types.
+
+		Example:
+
+		... ado.net/XML headers & schema ...
+		<resheader name="resmimetype">text/microsoft-resx</resheader>
+		<resheader name="version">1.3</resheader>
+		<resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+		<resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+		<data name="Name1">this is my long string</data>
+		<data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+		<data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+			[base64 mime encoded serialized .NET Framework object]
+		</data>
+		<data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+			[base64 mime encoded string representing a byte array form of the .NET Framework object]
+		</data>
+
+		There are any number of "resheader" rows that contain simple 
+		name/value pairs.
+
+		Each data row contains a name, and value. The row also contains a 
+		type or mimetype. Type corresponds to a .NET class that support 
+		text/value conversion through the TypeConverter architecture. 
+		Classes that don't support this are serialized and stored with the 
+		mimetype set.
+
+		The mimetype is used for serialized objects, and tells the 
+		ResXResourceReader how to depersist the object. This is currently not 
+		extensible. For a given mimetype the value must be set accordingly:
+
+		Note - application/x-microsoft.net.object.binary.base64 is the format 
+		that the ResXResourceWriter will generate, however the reader can 
+		read any of the formats listed below.
+
+		mimetype: application/x-microsoft.net.object.binary.base64
+		value   : The object must be serialized with 
+			: System.Serialization.Formatters.Binary.BinaryFormatter
+			: and then encoded with base64 encoding.
+
+		mimetype: application/x-microsoft.net.object.soap.base64
+		value   : The object must be serialized with 
+			: System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+			: and then encoded with base64 encoding.
+
+		mimetype: application/x-microsoft.net.object.bytearray.base64
+		value   : The object must be serialized into a byte array 
+			: using a System.ComponentModel.TypeConverter
+			: and then encoded with base64 encoding.
+	-->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>1.3</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.3500.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.3500.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Error_Overwrite_Title" xml:space="preserve">
+    <value>An error occurred while overwriting application data.</value>
+  </data>
+  <data name="Complete_Overwrite_Title" xml:space="preserve">
+    <value>Application data was successfully overwritten.</value>
+  </data>
+  <data name="Complete_Overwrite_Message" xml:space="preserve">
+    <value>The data recovery process has been completed, but login information has not been transferred.
+Please log in again to access the convenient functions.</value>
+  </data>
+  <data name="FinalConfirm_Title" xml:space="preserve">
+    <value>THIS IS THE FINAL CONFIRMATION.</value>
+  </data>
+  <data name="FinalConfirm_Message" xml:space="preserve">
+    <value>All personal data stored in this app will be deleted.
+After the operation, it cannot be undone.
+
+Are you really sure?</value>
+  </data>
+  <data name="Complete_DeletedData_Title" xml:space="preserve">
+    <value>User data has been successfully deleted.</value>
+  </data>
+  <data name="Complete_DeletedData_Message" xml:space="preserve">
+    <value>We look forward to seeing you again.</value>
+  </data>
+  <data name="Error_DeletedData_Title" xml:space="preserve">
+    <value>An error occurred while deleting data.</value>
+  </data>
+  <data name="Cancelled_DeleteData_Title" xml:space="preserve">
+    <value>Delete processing has been interrupted.</value>
+  </data>
+  <data name="Cancelled_DeleteData_Message" xml:space="preserve">
+    <value>Please try again later.</value>
+  </data>
+  <data name="FailedToRecovery" xml:space="preserve">
+    <value>Failed to recovery.</value>
+  </data>
+  <data name="SaveBackup_SaveTo_Title" xml:space="preserve">
+    <value>Specify the backup file to save to.</value>
+  </data>
+  <data name="SaveBackup_Success_Title" xml:space="preserve">
+    <value>Backup successfully created!</value>
+  </data>
+  <data name="SaveBackup_Success_Message" xml:space="preserve">
+    <value>All data except login data has been backed up.</value>
+  </data>
+  <data name="SaveBackup_Failed_Title" xml:space="preserve">
+    <value>Failed to save backup.</value>
+  </data>
+  <data name="LoadBackup_Notice_Title" xml:space="preserve">
+    <value>This operation may cause all data in the application to be lost!</value>
+  </data>
+  <data name="LoadBackup_Notice_Message" xml:space="preserve">
+    <value>We basically do not recommend using this function except to recover or move data.
+If you must perform this operation, we strongly recommend that you obtain a backup before doing so.
+Do you still wish to proceed with this operation?</value>
+  </data>
+  <data name="LoadBackup_FinalConfirm_Title" xml:space="preserve">
+    <value>Do you really want to perform this operation?</value>
+  </data>
+  <data name="LoadBackup_FinalConfirm_Message" xml:space="preserve">
+    <value>This operation will overwrite all data.</value>
+  </data>
+  <data name="LoadBackup_LoadTo_Title" xml:space="preserve">
+    <value>Select the file from which you want to load.</value>
+  </data>
+  <data name="Delete_Notice_Title" xml:space="preserve">
+    <value>This operation will delete all personal data in the application!</value>
+  </data>
+  <data name="Delete_Notice_Message" xml:space="preserve">
+    <value>The data to be lost are as follows...
+* Playing time data
+* Login infomation
+* Setting files
+* Archived Traveler's pathbook data for saved all accounts
+* Archived spiral abyss data for saved all accounts</value>
+  </data>
+  <data name="Delete_Confirm_Title" xml:space="preserve">
+    <value>Do you really want to delete it?</value>
+  </data>
+  <data name="Delete_Confirm_Message" xml:space="preserve">
+    <value>Once this process is executed, it cannot be undone unless there is a backup.
+Are you sure you want to do this?
+The application will restart after this operation.</value>
+  </data>
+</root>

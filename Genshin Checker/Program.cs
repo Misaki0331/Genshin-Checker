@@ -63,46 +63,18 @@ namespace Genshin_Checker
             }
             if (ToastActivated)
             {
-                ToastNotificationManagerCompat.History.Clear();
+                App.General.CommandLineFunction.AllToastClear();
                 return;
             }
             if (Override)
             {
-                var a = App.General.MovingData.WriteToApp(path).Result;
-                if (a != null)
-                {
-                    System.Diagnostics.Process.Start(Application.ExecutablePath, new List<string>()
-                { $"Style:Error", $"Title:上書き中にエラーが発生しました。", $"Message:{a}" });
-                }
-                else
-                {
-                    System.Diagnostics.Process.Start(Application.ExecutablePath, new List<string>()
-                { $"Style:Info", $"Title:データの上書きが完了しました。", $"Message:データの復旧処理は完了しましたが、ログイン情報は引き継いでおりません。\n便利機能にアクセスするには再度ログインをお願いいたします。" });
-                }
+                App.General.CommandLineFunction.Override(path);
                 return;
             }
             if (Alldelete)
             {
-                var a = new ChooseMessage("これが最後の確認です。", "本アプリに保存している個人データは全て削除されます。\n操作後は元に戻せません。\n\n本当によろしいですか？", selectcount: 2, select1: Common.No, select2: Common.Yes);
-                a.ShowDialog();
-                if (a.Result == 1)
-                {
-                    try
-                    {
-                        App.General.MovingData.AllClear();
-                        new InfoMessage("データは正常に削除しました。", "またのご利用お待ちしております。").ShowDialog();
-                    }
-                    catch(Exception e)
-                    {
-                        new ErrorMessage("データ削除中にエラーが発生しました。", e.ToString()).ShowDialog();
-                    }
-                    return;
-                }
-                else
-                {
-                    System.Diagnostics.Process.Start(Application.ExecutablePath, new List<string>() { $"Style:Error", $"Title:削除処理が中断されました。", $"Message:もう一度やり直してください。" });
-                    return;
-                }
+                App.General.CommandLineFunction.AllDelete();
+                return;
             }
             //Mutex名を決める（必ずアプリケーション固有の文字列に変更すること！）
             string mutexName = "Genshin Checker";
