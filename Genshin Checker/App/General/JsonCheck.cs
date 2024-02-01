@@ -23,10 +23,11 @@ namespace Genshin_Checker.App.General
                 throw new InvalidDataException(string.Format(Localize.Error_API_Endpoint_JsonParseInvalid, json), ex);
             }
         }
-        public static bool IsValid(string json)
+        public static bool IsValid(string? json)
         {
             try
             {
+                if (json == null) throw new ArgumentNullException("json is null.");
                 Check(json);
                 return true;
             }

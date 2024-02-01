@@ -26,7 +26,7 @@ namespace Genshin_Checker.App.General
         {
             return File.Exists(Path.Combine(UserDataPath, path));
         }
-        public static async Task<string?> LoadUserData(string path, bool compress = true)
+        public static async Task<string?> LoadUserData(string path, bool compress = true, bool ReturnException=true)
         {
 #if DEBUG
             compress = false;
@@ -50,8 +50,10 @@ namespace Genshin_Checker.App.General
                     if (compress) data = StringFromBase64Comp(data);
                     return data;
                 }
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
+                if (ReturnException) throw;
                 Trace.WriteLine(ex);
                 return null;
             }
