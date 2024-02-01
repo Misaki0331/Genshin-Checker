@@ -84,6 +84,7 @@ namespace Genshin_Checker.Window
                     cnt = 0;
                     foreach (var item in account.GameRecords.Data.world_explorations)
                     {
+                        if (item.Type == "Offering" && item.Exploration_percentage <= 0) continue;
                         per += item.Exploration_percentage / 10.0;
                         cnt++;
                     }
