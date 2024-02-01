@@ -41,6 +41,20 @@ namespace Genshin_Checker.Model.EnkaNetwork.Store.Characters
 
         [JsonProperty("WeaponType")]
         public string WeaponType { get; set; } = string.Empty;
+
+        [JsonProperty("Costumes")]
+        public KeyValuePair<int,Costumes> Costumes { get; set; }
+    }
+    public class Costumes
+    {
+        [JsonProperty("sideIconName")]
+        public string SideIconName { get; set; } = string.Empty;
+        [JsonProperty("icon")]
+        public string Icon { get; set; } = string.Empty;
+        [JsonProperty("art")]
+        public string Art { get; set; } = string.Empty;
+        [JsonProperty("avatarId")]
+        public int AvatarId { get; set; }
     }
 
     public class Root

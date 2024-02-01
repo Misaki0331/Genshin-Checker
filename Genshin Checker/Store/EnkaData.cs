@@ -57,6 +57,7 @@ namespace Genshin_Checker.Store
             private set { _characters = value; }
         }
         private Dictionary<string, Model.EnkaNetwork.Store.Characters.Data>? _characters;
+        /*
         public Dictionary<int, Model.EnkaNetwork.Store.Costumes.Data>? Costumes
         {
             get
@@ -67,7 +68,7 @@ namespace Genshin_Checker.Store
             }
             private set { _costumes = value; }
         }
-        private Dictionary<int, Model.EnkaNetwork.Store.Costumes.Data>? _costumes;
+        private Dictionary<int, Model.EnkaNetwork.Store.Costumes.Data>? _costumes;*/
         public Dictionary<int,Model.EnkaNetwork.Store.Affixes.Data>? Affixes
         {
             get
@@ -117,12 +118,13 @@ namespace Genshin_Checker.Store
             var pfps = JsonChecker<Dictionary<int, Model.EnkaNetwork.Store.Pfps.Data>>.Check(json);
             if (pfps != null) Pfps = pfps;
         }
+        /*
         async void GetCostumes()
         {
             var json = await App.WebRequest.GeneralGetRequest("https://api.enka.network/store/costumes.json");
             var costumes = JsonChecker<Dictionary<int, Model.EnkaNetwork.Store.Costumes.Data>>.Check(json);
             if (costumes != null) Costumes = costumes;
-        }
+        }*/
         async void GetAffixes()
         {
             var json = await App.WebRequest.GeneralGetRequest("https://api.enka.network/store/affixes.json");
@@ -138,7 +140,7 @@ namespace Genshin_Checker.Store
                 if (_namecard == null || IsReload) GetNameCard();
                 if (_locale == null || IsReload) GetLocale();
                 if (_characters == null || IsReload) GetCharacters();
-                if (_costumes == null || IsReload) GetCostumes();
+                //if (_costumes == null || IsReload) GetCostumes();
                 if (_affixes == null || IsReload) GetAffixes();
                 if (_pfps == null || IsReload) GetPfps();
             }
