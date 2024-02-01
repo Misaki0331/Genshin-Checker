@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -47,14 +48,15 @@ namespace Genshin_Checker.Window
                 comboBox1.Items.Add(i.name);
             if (ComboData.Count > 0) comboBox1.SelectedIndex = 0;
             else comboBox1.Enabled = false;
-            LoadDataCurrent();
         }
 
         private void SpiralAbyss_Load(object sender, EventArgs e)
         {
+            LoadDataCurrent();
         }
         void PanelReset()
         {
+            Trace.WriteLine("PanelReset");
             if (CharacterCount != null && !CharacterCount.IsDisposed)
             {
                 PanelCharacterCount.Controls.Remove(CharacterCount);
@@ -79,6 +81,8 @@ namespace Genshin_Checker.Window
         }
         void PanelLoad(V1 v1)
         {
+            PanelReset();
+            Trace.WriteLine("PanelLoad");
             CurrentDisplayData = v1;
             var data = v1.Data;
             LabelScheduleName.Text = string.Format(Localize.UIName_SpiralAbyss_ResultTitle, data.schedule_id);
@@ -132,7 +136,7 @@ namespace Genshin_Checker.Window
             con.ClickHandler += a => GameRecords_Character_Click(a);
             FlowGeneralData.Controls.Add(con);
             GeneralList.Add(con);
-
+            Trace.WriteLine($"GeneralList:{GeneralList.Count}");
 
             var floor = data.floors.FindAll(a => true);
             foreach (var f in floor)
@@ -152,7 +156,6 @@ namespace Genshin_Checker.Window
         }
         async void LoadDataCurrent()
         {
-            PanelReset();
             var GameData = await account.SpiralAbyss.GetCurrent();
             PanelLoad(GameData);
             
@@ -208,9 +211,6 @@ namespace Genshin_Checker.Window
         private async void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             var find = ComboData.Find(a => a.name == comboBox1.Text);
-            this.SuspendLayout();
-            PanelReset();
-            this.ResumeLayout(true);
             if (find == null) return;
             try
             {
@@ -221,7 +221,7 @@ namespace Genshin_Checker.Window
             }
             catch(Exception ex)
             {
-                new ErrorMessage("データが読み込めませんでした。", ex.ToString()).ShowDialog();
+                new ErrorMessage(Common.CommonErrorOccurred, ex.ToString()).ShowDialog();
             }
 
         }

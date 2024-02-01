@@ -126,31 +126,35 @@ namespace Genshin_Checker.Window
                         if (areas.Progress.Count == 1) areas.Progress[0].Name = areas.Name;
                         areas.Progress.Add(new() { Name = ex.Name, Value = ex.Exploration_percentage / 10.0, IsVisible = true });
                     }
-                    var OculusName = new string[] { Genshin.Oculus_Anemo, Genshin.Oculus_Geo, Genshin.Oculus_Electro, Genshin.Oculus_Dendro, Genshin.Oculus_Hydro, Genshin.Oculus_Pyro, Genshin.Oculus_Cryo };
-                    var OculusValue = new int[] { data.stats.OculusAnemo, data.stats.OculusGeo, data.stats.OculusElectro, data.stats.OculusDendro, data.stats.OculusHydro, data.stats.OculusPyro, data.stats.OculusCryo };
+                    var OculusName = new List<string>() { Genshin.Oculus_Anemo, Genshin.Oculus_Geo, Genshin.Oculus_Electro, Genshin.Oculus_Dendro, Genshin.Oculus_Hydro, Genshin.Oculus_Pyro, Genshin.Oculus_Cryo };
+                    var OculusValue = new List<int>() { data.stats.OculusAnemo, data.stats.OculusGeo, data.stats.OculusElectro, data.stats.OculusDendro, data.stats.OculusHydro, data.stats.OculusPyro, data.stats.OculusCryo };
                     int OculusAreaCount = 0;
                     Area.Sort((a, b) => b.ID - a.ID);
+                    //コントロール追加用と神の瞳用に反転
+                    Area.Reverse();
                     foreach (var ex in Area)
                     {
-                        if (ex.Oculus != null && OculusAreaCount < OculusName.Length)
+                        if (ex.Oculus != null && OculusAreaCount < OculusName.Count)
                         {
                             ex.Oculus.Name = OculusName[OculusAreaCount];
                             ex.Oculus.Count = OculusValue[OculusAreaCount];
                             OculusAreaCount++;
                         }
-                        var control = new Window.Contains.Exploration(ex);
-                        control.Dock = DockStyle.Top;
-                        control.BorderStyle = BorderStyle.FixedSingle;
+                        var control = new Window.Contains.Exploration(ex)
+                        {
+                            Dock = DockStyle.Top,
+                            BorderStyle = BorderStyle.FixedSingle
+                        };
                         ExplorationControls.Add(control);
                     }
-                    //コントロール追加用に反転
-                    ExplorationControls.Reverse();
-                    foreach(var control in ExplorationControls)
+                    foreach (var control in ExplorationControls)
                     {
-                        tabPage2.Controls.Add((Control) control);
+                        tabPage2.Controls.Add(control);
                     }
-                    //元に戻す
+                    //参照用に元に戻す
                     ExplorationControls.Reverse();
+                    //(今後使うかどうかは不明)
+                    Area.Reverse();
                 }
                 #endregion
                 #region キャラクター
