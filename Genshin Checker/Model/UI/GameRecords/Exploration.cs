@@ -30,6 +30,7 @@ namespace Genshin_Checker.Model.UI.GameRecords.Exploration
     {
         public string Name { get; set; } = string.Empty;
         public double Value { get; set; } = 0;
+        public bool IsVisible { get; set; } = false;
     }
     public class Oculus
     {

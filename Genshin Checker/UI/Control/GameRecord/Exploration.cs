@@ -76,6 +76,8 @@ namespace Genshin_Checker.Window.Contains
             for(int i=Area.Progress.Count-1;i>=0;i--)
             {
                 var progress = Area.Progress[i];
+                //非表示ならスキップ。
+                if (!progress.IsVisible) continue;
                 var control = new ExplorationProgressBar(progress)
                 {
                     Dock = DockStyle.Top

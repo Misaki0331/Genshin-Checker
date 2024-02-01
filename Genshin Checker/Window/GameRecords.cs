@@ -101,16 +101,21 @@ namespace Genshin_Checker.Window
                         areas.ID = ex.Id;
                         areas.Name = ex.Name;
                         areas.Images.Icon = ex.Icon;
+                        Progress progress = new() { Value = ex.Exploration_percentage / 10.0, IsVisible=true };
                         if (ex.Type == "Reputation" && ex.Level != null)
                         {
                             areas.Oculus = new();
                             areas.Levels.Add(new() { Icon = "https://static-api.misaki-chan.world/genshin-checker/asset/game-records/ys_world_level.png", Name = Genshin.City_ReputationLevel, Level = (int)ex.Level });
                         }
+                        if (ex.Type == "Offering")
+                        {
+                            if (ex.Exploration_percentage <= 0) progress.IsVisible = false;
+                        }
                         foreach (var level in ex.Offerings)
                         {
                             areas.Levels.Add(new() { Icon = level.icon, Name = level.name, Level = level.level });
                         }
-                        areas.Progress.Add(new() { Value = ex.Exploration_percentage / 10.0 });
+                        areas.Progress.Add(progress);
                         Area.Add(areas);
                     }
                     foreach (var ex in data.world_explorations.FindAll(a => a.Parent_id != 0))
@@ -118,15 +123,14 @@ namespace Genshin_Checker.Window
                         Root? areas = Area.Find(a => a.ID == ex.Parent_id);
                         if (areas == null) continue;
                         if (areas.Progress.Count == 1) areas.Progress[0].Name = areas.Name;
-                        areas.Progress.Add(new() { Name = ex.Name, Value = ex.Exploration_percentage / 10.0 });
+                        areas.Progress.Add(new() { Name = ex.Name, Value = ex.Exploration_percentage / 10.0, IsVisible = true });
                     }
                     var OculusName = new string[] { Genshin.Oculus_Anemo, Genshin.Oculus_Geo, Genshin.Oculus_Electro, Genshin.Oculus_Dendro, Genshin.Oculus_Hydro, Genshin.Oculus_Pyro, Genshin.Oculus_Cryo };
                     var OculusValue = new int[] { data.stats.OculusAnemo, data.stats.OculusGeo, data.stats.OculusElectro, data.stats.OculusDendro, data.stats.OculusHydro, data.stats.OculusPyro, data.stats.OculusCryo };
                     int OculusAreaCount = 0;
                     Area.Sort((a, b) => b.ID - a.ID);
-                    for (int i = Area.Count - 1; i >= 0; i--)
+                    foreach (var ex in Area)
                     {
-                        var ex = Area[i];
                         if (ex.Oculus != null && OculusAreaCount < OculusName.Length)
                         {
                             ex.Oculus.Name = OculusName[OculusAreaCount];
@@ -136,9 +140,16 @@ namespace Genshin_Checker.Window
                         var control = new Window.Contains.Exploration(ex);
                         control.Dock = DockStyle.Top;
                         control.BorderStyle = BorderStyle.FixedSingle;
-                        tabPage2.Controls.Add(control);
                         ExplorationControls.Add(control);
                     }
+                    //コントロール追加用に反転
+                    ExplorationControls.Reverse();
+                    foreach(var control in ExplorationControls)
+                    {
+                        tabPage2.Controls.Add((Control) control);
+                    }
+                    //元に戻す
+                    ExplorationControls.Reverse();
                 }
                 #endregion
                 #region キャラクター
