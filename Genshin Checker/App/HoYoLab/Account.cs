@@ -94,6 +94,7 @@ namespace Genshin_Checker.App.HoYoLab
                 7 => Servers.os_euro,
                 8 => Servers.os_asia,
                 9 => Servers.os_cht,
+                18 => Servers.os_asia,
                 _ => throw new InvalidDataException($"unknown uid({uid})"),
             }; ;
         }
