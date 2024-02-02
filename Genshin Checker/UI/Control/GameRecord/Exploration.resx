@@ -1,5 +1,64 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
+  <!--
+    Microsoft ResX Schema 
+
+    Version 2.0
+
+    The primary goals of this format is to allow a simple XML format
+    that is mostly human readable. The generation and parsing of the
+    various data types are done through the TypeConverter classes
+    associated with the data types.
+
+    Example:
+
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+
+    There are any number of "resheader" rows that contain simple
+    name/value pairs.
+
+    Each data row contains a name, and value. The row also contains a
+    type or mimetype. Type corresponds to a .NET class that support
+    text/value conversion through the TypeConverter architecture.
+    Classes that don't support this are serialized and stored with the
+    mimetype set.
+
+    The mimetype is used for serialized objects, and tells the
+    ResXResourceReader how to depersist the object. This is currently not
+    extensible. For a given mimetype the value must be set accordingly:
+
+    Note - application/x-microsoft.net.object.binary.base64 is the format
+    that the ResXResourceWriter will generate, however the reader can
+    read any of the formats listed below.
+
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
   <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
@@ -58,254 +117,353 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="ExContain_ShowDetailButton.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="ExContain_Main.Size" type="System.Drawing.Size, System.Drawing">
-    <value>411, 100</value>
-  </data>
-  <data name="&gt;&gt;ExContain_MapIcon.Name" xml:space="preserve">
-    <value>ExContain_MapIcon</value>
-  </data>
-  <data name="OculusCount.Location" type="System.Drawing.Point, System.Drawing">
-    <value>210, 0</value>
-  </data>
-  <data name="ExContain_MapName.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="ExContain_ProgressPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>411, 0</value>
-  </data>
-  <data name="&gt;&gt;ExContain_Main.Parent" xml:space="preserve">
-    <value>ExContainer</value>
-  </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>Exploration</value>
-  </data>
-  <data name="ExContain_ProgressPanel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 100</value>
-  </data>
-  <data name="&gt;&gt;ExContain_Main.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ExContain_MapIcon.Type" xml:space="preserve">
-    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="OculusCount.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Right</value>
-  </data>
-  <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>311, 71</value>
-  </data>
-  <data name="ExContain_ShowDetailButton.Text" xml:space="preserve">
-    <value>Show more ▶</value>
-  </data>
-  <data name="&gt;&gt;panel1.Name" xml:space="preserve">
-    <value>panel1</value>
-  </data>
-  <data name="panel1.TabIndex" type="System.Int32, mscorlib">
-    <value>11</value>
-  </data>
-  <data name="ExContain_ShowDetailButton.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
-  </data>
-  <data name="ExContain_MapName.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="ExContain_HideDetailButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 123</value>
-  </data>
-  <data name="&gt;&gt;ExContain_ProgressPanel.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="ExContain_Index.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;OculusCount.Name" xml:space="preserve">
-    <value>OculusCount</value>
-  </data>
-  <data name="ExContainer.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
-    <value>411, 146</value>
-  </data>
-  <data name="&gt;&gt;ExContainer.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="ExContain_MapIcon.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;ExContain_MapName.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;ExContain_MapName.Name" xml:space="preserve">
-    <value>ExContain_MapName</value>
-  </data>
-  <data name="ExContain_MapIcon.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Left</value>
-  </data>
-  <data name="&gt;&gt;ExContain_HideDetailButton.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;ExContain_ProgressPanel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.UserControl, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="ExContain_Index.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="ExContain_ProgressPanel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="&gt;&gt;ExContain_MapIcon.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="ExContain_MapIcon.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
-  </data>
-  <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;ExContain_HideDetailButton.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="ExContain_HideDetailButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="ExContain_Main.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="&gt;&gt;panel1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="ExContainer.Size" type="System.Drawing.Size, System.Drawing">
-    <value>411, 100</value>
-  </data>
-  <data name="ExContain_ProgressPanel.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
-  </data>
-  <data name="&gt;&gt;ExContain_Index.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="ExContain_ShowDetailButton.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="&gt;&gt;ExContain_ShowDetailButton.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="ExContain_Index.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="&gt;&gt;ExContain_MapIcon.Parent" xml:space="preserve">
-    <value>ExContain_Main</value>
-  </data>
-  <data name="OculusCount.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="ExContainer.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>100, 29</value>
   </data>
   <data name="&gt;&gt;OculusCount.Parent" xml:space="preserve">
     <value>panel1</value>
   </data>
-  <data name="OculusCount.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
-  </data>
-  <data name="OculusCount.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>BottomRight</value>
-  </data>
-  <data name="&gt;&gt;panel1.Parent" xml:space="preserve">
-    <value>ExContain_Main</value>
-  </data>
-  <data name="&gt;&gt;ExContain_HideDetailButton.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;ExContain_ProgressPanel.Name" xml:space="preserve">
-    <value>ExContain_ProgressPanel</value>
-  </data>
-  <data name="OculusCount.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>0, 71</value>
-  </data>
-  <data name="ExContain_Main.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="panel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Bottom</value>
-  </data>
-  <data name="&gt;&gt;ExContain_Main.Name" xml:space="preserve">
-    <value>ExContain_Main</value>
-  </data>
-  <data name="ExContain_HideDetailButton.Text" xml:space="preserve">
-    <value>Hide ◀</value>
-  </data>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>96, 96</value>
-  </data>
-  <data name="ExContain_MapIcon.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
-    <value>StretchImage</value>
-  </data>
-  <data name="ExContain_ShowDetailButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>411, 23</value>
-  </data>
-  <data name="ExContain_MapName.Location" type="System.Drawing.Point, System.Drawing">
-    <value>100, 0</value>
-  </data>
-  <data name="ExContainer.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="ExContain_Main.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="ExContain_ShowDetailButton.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
   </data>
-  <data name="&gt;&gt;ExContain_HideDetailButton.Name" xml:space="preserve">
-    <value>ExContain_HideDetailButton</value>
+  <data name="&gt;&gt;ExContain_Index.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;ExContain_Main.ZOrder" xml:space="preserve">
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="InvisibleAreaPanel.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;ExContain_ProgressPanel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ExContain_Index.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="ExContain_HideDetailButton.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="ExContainer.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
   </data>
-  <data name="ExContain_MapName.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Meiryo UI, 15.75pt, style=Bold</value>
+  <data name="ExContain_Index.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
   </data>
-  <data name="&gt;&gt;ExContain_MapName.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;ExContain_MapIcon.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
-  <data name="&gt;&gt;ExContain_Index.Parent" xml:space="preserve">
-    <value>panel1</value>
+  <data name="panel2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 123</value>
   </data>
-  <data name="ExContain_Index.Size" type="System.Drawing.Size, System.Drawing">
-    <value>210, 71</value>
+  <data name="&gt;&gt;ExContain_ShowDetailButton.Name" xml:space="preserve">
+    <value>ExContain_ShowDetailButton</value>
   </data>
-  <data name="ExContain_ProgressPanel.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="ExContain_MapName.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
   </data>
-  <data name="ExContain_MapIcon.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 100</value>
+  <data name="&gt;&gt;AreaDetailPanel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="ExContain_HideDetailButton.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
   </data>
+  <data name="ExContain_ProgressPanel.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="ExContain_MapIcon.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel2.Name" xml:space="preserve">
+    <value>panel2</value>
+  </data>
+  <data name="&gt;&gt;ExContain_Main.Name" xml:space="preserve">
+    <value>ExContain_Main</value>
+  </data>
+  <data name="&gt;&gt;ExContain_HideDetailButton.Name" xml:space="preserve">
+    <value>ExContain_HideDetailButton</value>
+  </data>
+  <data name="&gt;&gt;ExContain_ProgressPanel.Name" xml:space="preserve">
+    <value>ExContain_ProgressPanel</value>
+  </data>
+  <data name="&gt;&gt;DetailPanel.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="ExContainer.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="ExContain_Main.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="AreaDetailPanel.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;ExContainer.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
   <data name="OculusCount.Font" type="System.Drawing.Font, System.Drawing">
     <value>Meiryo UI, 12pt</value>
   </data>
-  <data name="ExContain_ShowDetailButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 100</value>
+  <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>311, 71</value>
+  </data>
+  <data name="ExContain_HideDetailButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="ExContain_ProgressPanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>411, 0</value>
+  </data>
+  <data name="&gt;&gt;DetailPanel.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;panel1.Parent" xml:space="preserve">
+    <value>ExContain_Main</value>
+  </data>
+  <data name="&gt;&gt;AreaDetailPanel.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;ExContain_ProgressPanel.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="ExContain_Main.Size" type="System.Drawing.Size, System.Drawing">
+    <value>411, 100</value>
+  </data>
+  <data name="ExContain_Index.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>100, 29</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>Exploration</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.UserControl, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ExContain_ShowDetailButton.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;panel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ExContain_MapName.Text" xml:space="preserve">
+    <value>Area Name</value>
+  </data>
+  <data name="&gt;&gt;ExContain_MapIcon.Parent" xml:space="preserve">
+    <value>ExContain_Main</value>
+  </data>
+  <data name="&gt;&gt;DetailPanel.Name" xml:space="preserve">
+    <value>DetailPanel</value>
+  </data>
+  <data name="&gt;&gt;InvisibleAreaPanel.Name" xml:space="preserve">
+    <value>InvisibleAreaPanel</value>
+  </data>
+  <data name="&gt;&gt;ExContain_Main.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ExContain_MapIcon.Name" xml:space="preserve">
+    <value>ExContain_MapIcon</value>
+  </data>
+  <data name="&gt;&gt;ExContainer.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;panel2.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;AreaDetailPanel.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
+    <value>411, 146</value>
+  </data>
+  <data name="panel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="&gt;&gt;panel1.Name" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;ExContain_Main.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="OculusCount.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>BottomRight</value>
   </data>
   <data name="OculusCount.Text" xml:space="preserve">
     <value>Oculus : 999</value>
   </data>
-  <data name="&gt;&gt;ExContain_ShowDetailButton.Name" xml:space="preserve">
-    <value>ExContain_ShowDetailButton</value>
+  <data name="&gt;&gt;ExContain_MapIcon.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="DetailPanel.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="OculusCount.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Parent" xml:space="preserve">
+    <value>DetailPanel</value>
+  </data>
+  <data name="&gt;&gt;OculusCount.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="ExContain_HideDetailButton.Text" xml:space="preserve">
+    <value>Hide ◀</value>
+  </data>
+  <data name="ExContainer.Size" type="System.Drawing.Size, System.Drawing">
+    <value>411, 100</value>
+  </data>
+  <data name="ExContain_ProgressPanel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 100</value>
+  </data>
+  <data name="ExContain_Index.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="panel2.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="ExContain_MapName.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Meiryo UI, 15.75pt, style=Bold</value>
+  </data>
+  <data name="panel1.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="ExContain_MapName.Location" type="System.Drawing.Point, System.Drawing">
+    <value>100, 0</value>
+  </data>
+  <data name="&gt;&gt;InvisibleAreaPanel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="OculusCount.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="ExContainer.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>96, 96</value>
+  </data>
+  <data name="DetailPanel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 123</value>
+  </data>
+  <data name="&gt;&gt;InvisibleAreaPanel.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="ExContain_ShowDetailButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>411, 23</value>
+  </data>
+  <data name="OculusCount.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>0, 71</value>
+  </data>
+  <data name="ExContain_MapIcon.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 100</value>
+  </data>
+  <data name="&gt;&gt;OculusCount.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ExContain_HideDetailButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 123</value>
+  </data>
+  <data name="&gt;&gt;ExContain_HideDetailButton.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;ExContain_HideDetailButton.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;InvisibleAreaPanel.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;ExContain_Index.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="ExContain_ShowDetailButton.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;DetailPanel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="OculusCount.Size" type="System.Drawing.Size, System.Drawing">
+    <value>101, 71</value>
+  </data>
+  <data name="&gt;&gt;ExContain_ShowDetailButton.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;ExContainer.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ExContain_MapIcon.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
+    <value>StretchImage</value>
+  </data>
+  <data name="&gt;&gt;OculusCount.Name" xml:space="preserve">
+    <value>OculusCount</value>
+  </data>
+  <data name="&gt;&gt;AreaDetailPanel.Name" xml:space="preserve">
+    <value>AreaDetailPanel</value>
+  </data>
+  <data name="&gt;&gt;ExContain_ProgressPanel.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="OculusCount.Location" type="System.Drawing.Point, System.Drawing">
+    <value>210, 0</value>
+  </data>
+  <data name="&gt;&gt;ExContain_MapName.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="ExContain_ProgressPanel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Name" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="ExContain_ShowDetailButton.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;ExContain_MapName.Name" xml:space="preserve">
+    <value>ExContain_MapName</value>
+  </data>
+  <data name="ExContain_Main.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="ExContain_HideDetailButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>411, 23</value>
+  </data>
+  <data name="&gt;&gt;ExContain_Index.Name" xml:space="preserve">
+    <value>ExContain_Index</value>
+  </data>
+  <data name="&gt;&gt;panel2.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;ExContain_HideDetailButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ExContain_MapIcon.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="&gt;&gt;ExContain_MapName.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ExContain_HideDetailButton.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="&gt;&gt;ExContainer.Name" xml:space="preserve">
+    <value>ExContainer</value>
+  </data>
+  <data name="ExContain_MapName.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;ExContain_MapName.Parent" xml:space="preserve">
+    <value>ExContain_Main</value>
+  </data>
+  <data name="ExContainer.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="AreaDetailPanel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 19</value>
   </data>
   <data name="ExContain_HideDetailButton.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -313,61 +471,52 @@
   <data name="&gt;&gt;ExContain_ShowDetailButton.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="OculusCount.Size" type="System.Drawing.Size, System.Drawing">
-    <value>101, 71</value>
+  <data name="ExContain_Main.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
   </data>
-  <data name="ExContain_HideDetailButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>411, 23</value>
+  <data name="ExContain_MapIcon.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
   </data>
-  <data name="&gt;&gt;ExContain_ProgressPanel.ZOrder" xml:space="preserve">
-    <value>2</value>
+  <data name="ExContain_Index.Size" type="System.Drawing.Size, System.Drawing">
+    <value>210, 71</value>
   </data>
-  <data name="&gt;&gt;ExContainer.ZOrder" xml:space="preserve">
-    <value>3</value>
+  <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
-  <data name="$this.AutoSize" type="System.Boolean, mscorlib">
+  <data name="OculusCount.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
-  </data>
-  <data name="&gt;&gt;ExContainer.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="ExContain_MapName.Text" xml:space="preserve">
-    <value>Area Name</value>
-  </data>
-  <data name="&gt;&gt;OculusCount.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="ExContainer.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;ExContain_MapName.Parent" xml:space="preserve">
-    <value>ExContain_Main</value>
-  </data>
-  <data name="&gt;&gt;ExContain_Index.Name" xml:space="preserve">
-    <value>ExContain_Index</value>
-  </data>
-  <data name="&gt;&gt;OculusCount.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ExContain_Index.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="ExContain_MapName.Size" type="System.Drawing.Size, System.Drawing">
     <value>222, 26</value>
   </data>
-  <data name="&gt;&gt;ExContain_ShowDetailButton.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="&gt;&gt;panel2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="ExContainer.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
+  <data name="ExContain_ShowDetailButton.Text" xml:space="preserve">
+    <value>Show more ▶</value>
   </data>
-  <data name="&gt;&gt;ExContainer.Name" xml:space="preserve">
+  <data name="&gt;&gt;ExContain_Main.Parent" xml:space="preserve">
     <value>ExContainer</value>
   </data>
-  <metadata name="$this.Language" type="System.Globalization.CultureInfo, System.Private.CoreLib, Culture=neutral, PublicKeyToken=7cec85d7bea7798e">
-    <value>ja-JP</value>
-  </metadata>
+  <data name="ExContainer.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="$this.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="InvisibleAreaPanel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>-32768, 0</value>
+  </data>
+  <data name="ExContain_ShowDetailButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 100</value>
+  </data>
+  <data name="ExContain_ProgressPanel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
+  </metadata>
+  <metadata name="$this.Language" type="System.Globalization.CultureInfo, System.Private.CoreLib, Culture=neutral, PublicKeyToken=7cec85d7bea7798e">
+    <value>ja-JP</value>
   </metadata>
 </root>

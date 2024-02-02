@@ -103,6 +103,11 @@ namespace Genshin_Checker.Window
                         areas.Name = ex.Name;
                         areas.Images.Icon = ex.Icon;
                         Progress progress = new() { Value = ex.Exploration_percentage / 10.0, IsVisible=true };
+                        foreach (var exp in ex.area_exploration_list)
+                        {
+                            areas.AreaDetailProgress.Add(new() { IsVisible = true, Name = exp.name, Value = exp.exploration_percentage/10.0 });
+                        }
+                        areas.IsDetailEnabled = ex.area_exploration_list.Count>0;
                         if (ex.Type == "Reputation" && ex.Level != null)
                         {
                             areas.Oculus = new();

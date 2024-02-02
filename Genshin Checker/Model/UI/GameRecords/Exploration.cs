@@ -14,6 +14,8 @@ namespace Genshin_Checker.Model.UI.GameRecords.Exploration
         public Images Images { get; set; } = new();
         public List<Progress> Progress { get; set; } = new();
         public Oculus? Oculus { get; set; } = null;
+        public List<Progress> AreaDetailProgress { get; set; } = new();
+        public bool IsDetailEnabled { get; set; } = false;
 
     }
     public class Images

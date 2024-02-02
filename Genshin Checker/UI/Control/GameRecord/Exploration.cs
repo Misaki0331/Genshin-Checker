@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -16,13 +17,17 @@ namespace Genshin_Checker.Window.Contains
     {
         Root Area;
         List<ExplorationProgressBar> ProgressBar;
+        List<ExplorationProgressBarMini> AreaDetail;
         List<ExplorationLevel> Levels;
         public Exploration(Root area)
         {
             Area = area;
             ProgressBar = new();
             Levels = new();
+            AreaDetail = new();
             InitializeComponent();
+            groupBox1.AutoSizeMode = AutoSizeMode.GrowOnly;
+            DetailPanel.AutoSizeMode = AutoSizeMode.GrowOnly;
             ContainLoad();
         }
         /// <summary>
@@ -30,9 +35,12 @@ namespace Genshin_Checker.Window.Contains
         /// </summary>
         public void Release()
         {
-            foreach(var ex in ProgressBar)
+            this.SuspendLayout();
+            foreach (var ex in ProgressBar)
                 ex.Dispose();
             foreach (var ex in Levels)
+                ex.Dispose();
+            foreach (var ex in AreaDetail)
                 ex.Dispose();
             Dispose();
         }
@@ -69,13 +77,15 @@ namespace Genshin_Checker.Window.Contains
 
             return negaImg;
         }
-        private async void ContainLoad() {
+        private async void ContainLoad()
+        {
 
             ExContain_MapIcon.Image = CreateNegativeImage(await App.WebRequest.ImageGetRequest(Area.Images.Icon));
             ExContain_MapName.Text = Area.Name;
-            for(int i=Area.Progress.Count-1;i>=0;i--)
+            var AreaProgress = Area.Progress.FindAll(a => true);
+            AreaProgress.Reverse();
+            foreach (var progress in AreaProgress)
             {
-                var progress = Area.Progress[i];
                 //非表示ならスキップ。
                 if (!progress.IsVisible) continue;
                 var control = new ExplorationProgressBar(progress)
@@ -92,9 +102,10 @@ namespace Genshin_Checker.Window.Contains
             else OculusCount.Visible = false;
 
 
-            for (int i = Area.Levels.Count - 1; i >= 0; i--)
+            var AreaLevels = Area.Levels.FindAll(a => true);
+            AreaLevels.Reverse();
+            foreach (var levels in AreaLevels)
             {
-                var levels = Area.Levels[i];
                 var control = new ExplorationLevel(levels)
                 {
                     Dock = DockStyle.Top
@@ -102,6 +113,41 @@ namespace Genshin_Checker.Window.Contains
                 ExContain_Index.Controls.Add(control);
                 Levels.Add(control);
             }
+
+            var AreaDetail = Area.AreaDetailProgress.FindAll(a => true);
+            AreaDetail.Reverse();
+            foreach (var level in AreaDetail)
+            {
+                var control = new ExplorationProgressBarMini(level)
+                {
+                    Dock = DockStyle.Top
+                };
+                groupBox1.Controls.Add(control);
+                this.AreaDetail.Add(control);
+            }
+            if (Area.IsDetailEnabled)
+            {
+                ExContain_ShowDetailButton.Visible = true;
+            }
+
+        }
+
+        private void AreaDetailPanel_SizeChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void ExContain_ShowDetailButton_Click(object sender, EventArgs e)
+        {
+            ExContain_ShowDetailButton.Visible = false;
+            ExContain_HideDetailButton.Visible = true;
+            DetailPanel.Visible = true;
+        }
+
+        private void ExContain_HideDetailButton_Click(object sender, EventArgs e)
+        {
+            ExContain_ShowDetailButton.Visible = true;
+            ExContain_HideDetailButton.Visible = false;
+            DetailPanel.Visible = false;
         }
     }
 }

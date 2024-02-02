@@ -283,6 +283,12 @@ namespace Genshin_Checker.Model.HoYoLab.GameRecords
 
         [JsonProperty("is_hot")]
         public bool Is_hot { get; set; }
+
+        [JsonProperty("index_active")]
+        public bool Index_Active { get; set; }
+
+        [JsonProperty("detail_active")]
+        public bool Detail_Active { get; set; }
     }
 
 

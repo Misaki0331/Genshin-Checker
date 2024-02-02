@@ -1,6 +1,6 @@
 ﻿namespace Genshin_Checker.UI.Control.GameRecord
 {
-    partial class ExplorationProgressBar
+    partial class ExplorationProgressBarMini
     {
         /// <summary> 
         /// 必要なデザイナー変数です。
@@ -41,66 +41,69 @@
             // 
             ExContain_MapProgress1.AutoSize = true;
             ExContain_MapProgress1.Controls.Add(ExContain_ProgressPanel);
-            ExContain_MapProgress1.Controls.Add(ExContain_HiddenableName1);
             ExContain_MapProgress1.Dock = DockStyle.Top;
             ExContain_MapProgress1.Location = new Point(0, 0);
             ExContain_MapProgress1.Name = "ExContain_MapProgress1";
-            ExContain_MapProgress1.Size = new Size(299, 47);
+            ExContain_MapProgress1.Size = new Size(313, 20);
             ExContain_MapProgress1.TabIndex = 6;
             // 
             // ExContain_ProgressPanel
             // 
-            ExContain_ProgressPanel.Controls.Add(ExContain_ProgressBar1);
             ExContain_ProgressPanel.Controls.Add(ExContain_ProgressLabel1);
+            ExContain_ProgressPanel.Controls.Add(ExContain_HiddenableName1);
             ExContain_ProgressPanel.Dock = DockStyle.Top;
-            ExContain_ProgressPanel.Location = new Point(0, 24);
+            ExContain_ProgressPanel.Location = new Point(0, 0);
             ExContain_ProgressPanel.Name = "ExContain_ProgressPanel";
-            ExContain_ProgressPanel.Size = new Size(299, 23);
+            ExContain_ProgressPanel.Size = new Size(313, 20);
             ExContain_ProgressPanel.TabIndex = 1;
             // 
             // ExContain_ProgressBar1
             // 
-            ExContain_ProgressBar1.Dock = DockStyle.Fill;
-            ExContain_ProgressBar1.Location = new Point(0, 0);
+            ExContain_ProgressBar1.Dock = DockStyle.Top;
+            ExContain_ProgressBar1.Location = new Point(0, 20);
             ExContain_ProgressBar1.Maximum = 1000;
             ExContain_ProgressBar1.Name = "ExContain_ProgressBar1";
-            ExContain_ProgressBar1.Size = new Size(222, 23);
+            ExContain_ProgressBar1.Size = new Size(313, 17);
             ExContain_ProgressBar1.TabIndex = 1;
             ExContain_ProgressBar1.Value = 80;
             // 
             // ExContain_ProgressLabel1
             // 
             ExContain_ProgressLabel1.AutoSize = true;
-            ExContain_ProgressLabel1.Dock = DockStyle.Right;
-            ExContain_ProgressLabel1.Font = new Font("Meiryo UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            ExContain_ProgressLabel1.Location = new Point(222, 0);
+            ExContain_ProgressLabel1.Dock = DockStyle.Left;
+            ExContain_ProgressLabel1.Font = new Font("Meiryo UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            ExContain_ProgressLabel1.Location = new Point(132, 0);
+            ExContain_ProgressLabel1.MinimumSize = new Size(0, 20);
             ExContain_ProgressLabel1.Name = "ExContain_ProgressLabel1";
-            ExContain_ProgressLabel1.Size = new Size(77, 20);
+            ExContain_ProgressLabel1.Size = new Size(57, 20);
             ExContain_ProgressLabel1.TabIndex = 2;
             ExContain_ProgressLabel1.Text = "999.9%";
+            ExContain_ProgressLabel1.TextAlign = ContentAlignment.BottomLeft;
             // 
             // ExContain_HiddenableName1
             // 
             ExContain_HiddenableName1.AutoSize = true;
-            ExContain_HiddenableName1.Dock = DockStyle.Top;
-            ExContain_HiddenableName1.Font = new Font("Meiryo UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            ExContain_HiddenableName1.Dock = DockStyle.Left;
+            ExContain_HiddenableName1.Font = new Font("Meiryo UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
             ExContain_HiddenableName1.Location = new Point(0, 0);
+            ExContain_HiddenableName1.MinimumSize = new Size(0, 20);
             ExContain_HiddenableName1.Name = "ExContain_HiddenableName1";
-            ExContain_HiddenableName1.Size = new Size(167, 24);
+            ExContain_HiddenableName1.Size = new Size(132, 20);
             ExContain_HiddenableName1.TabIndex = 0;
             ExContain_HiddenableName1.Text = "非表示にできる地名";
             ExContain_HiddenableName1.Visible = false;
             // 
-            // ExplorationProgressBar
+            // ExplorationProgressBarMini
             // 
             AutoScaleDimensions = new SizeF(96F, 96F);
             AutoScaleMode = AutoScaleMode.Dpi;
             AutoSize = true;
+            Controls.Add(ExContain_ProgressBar1);
             Controls.Add(ExContain_MapProgress1);
-            Name = "ExplorationProgressBar";
-            Size = new Size(299, 47);
+            Margin = new Padding(0, 0, 0, 3);
+            Name = "ExplorationProgressBarMini";
+            Size = new Size(313, 40);
             ExContain_MapProgress1.ResumeLayout(false);
-            ExContain_MapProgress1.PerformLayout();
             ExContain_ProgressPanel.ResumeLayout(false);
             ExContain_ProgressPanel.PerformLayout();
             ResumeLayout(false);

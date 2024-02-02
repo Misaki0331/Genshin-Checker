@@ -9,13 +9,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Genshin_Checker.Model.UI.GameRecords.Exploration;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Genshin_Checker.UI.Control.GameRecord
 {
-    public partial class ExplorationProgressBar : UserControl
+    public partial class ExplorationProgressBarMini : UserControl
     {
         Progress Progress;
-        public ExplorationProgressBar(Progress progress)
+        public ExplorationProgressBarMini(Progress progress)
         {
             Progress = progress;
             InitializeComponent();
@@ -36,8 +37,8 @@ namespace Genshin_Checker.UI.Control.GameRecord
                 ExContain_HiddenableName1.Visible = true;
                 ExContain_HiddenableName1.Text = Progress.Name;
             }
-            ExContain_ProgressBar1.Value = (int)(Progress.Value > 1000 ? 1000 : Progress.Value < 0 ? 0 : Progress.Value * 10.0);
-            if (Progress.Value < 100) SendMessage(new HandleRef(ExContain_ProgressBar1, ExContain_ProgressBar1.Handle),
+            ExContain_ProgressBar1.Value = (int)(Progress.Value > 100 ? 1000 : Progress.Value < 0 ? 0 : Progress.Value*10);
+            if(Progress.Value<100) SendMessage(new HandleRef(ExContain_ProgressBar1, ExContain_ProgressBar1.Handle),
             PBM_SETSTATE, PBST_PAUSED, IntPtr.Zero);
             ExContain_ProgressLabel1.Text = $"{Progress.Value:0.0}%";
         }

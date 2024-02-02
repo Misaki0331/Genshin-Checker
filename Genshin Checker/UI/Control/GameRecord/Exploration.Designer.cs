@@ -29,100 +29,119 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Exploration));
-            this.ExContainer = new System.Windows.Forms.Panel();
-            this.ExContain_Main = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.ExContain_Index = new System.Windows.Forms.Panel();
-            this.OculusCount = new System.Windows.Forms.Label();
-            this.ExContain_MapName = new System.Windows.Forms.Label();
-            this.ExContain_MapIcon = new System.Windows.Forms.PictureBox();
-            this.ExContain_ShowDetailButton = new System.Windows.Forms.Button();
-            this.ExContain_ProgressPanel = new System.Windows.Forms.Panel();
-            this.ExContain_HideDetailButton = new System.Windows.Forms.Button();
-            this.ExContainer.SuspendLayout();
-            this.ExContain_Main.SuspendLayout();
-            this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ExContain_MapIcon)).BeginInit();
-            this.SuspendLayout();
+            ExContainer = new Panel();
+            ExContain_Main = new Panel();
+            panel1 = new Panel();
+            ExContain_Index = new Panel();
+            OculusCount = new Label();
+            ExContain_MapName = new Label();
+            ExContain_MapIcon = new PictureBox();
+            ExContain_ShowDetailButton = new Button();
+            ExContain_ProgressPanel = new Panel();
+            ExContain_HideDetailButton = new Button();
+            DetailPanel = new Panel();
+            groupBox1 = new GroupBox();
+            ExContainer.SuspendLayout();
+            ExContain_Main.SuspendLayout();
+            panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)ExContain_MapIcon).BeginInit();
+            DetailPanel.SuspendLayout();
+            SuspendLayout();
             // 
             // ExContainer
             // 
-            resources.ApplyResources(this.ExContainer, "ExContainer");
-            this.ExContainer.Controls.Add(this.ExContain_Main);
-            this.ExContainer.Name = "ExContainer";
+            resources.ApplyResources(ExContainer, "ExContainer");
+            ExContainer.Controls.Add(ExContain_Main);
+            ExContainer.Name = "ExContainer";
             // 
             // ExContain_Main
             // 
-            resources.ApplyResources(this.ExContain_Main, "ExContain_Main");
-            this.ExContain_Main.Controls.Add(this.panel1);
-            this.ExContain_Main.Controls.Add(this.ExContain_MapName);
-            this.ExContain_Main.Controls.Add(this.ExContain_MapIcon);
-            this.ExContain_Main.Name = "ExContain_Main";
+            resources.ApplyResources(ExContain_Main, "ExContain_Main");
+            ExContain_Main.Controls.Add(panel1);
+            ExContain_Main.Controls.Add(ExContain_MapName);
+            ExContain_Main.Controls.Add(ExContain_MapIcon);
+            ExContain_Main.Name = "ExContain_Main";
             // 
             // panel1
             // 
-            resources.ApplyResources(this.panel1, "panel1");
-            this.panel1.Controls.Add(this.ExContain_Index);
-            this.panel1.Controls.Add(this.OculusCount);
-            this.panel1.Name = "panel1";
+            resources.ApplyResources(panel1, "panel1");
+            panel1.Controls.Add(ExContain_Index);
+            panel1.Controls.Add(OculusCount);
+            panel1.Name = "panel1";
             // 
             // ExContain_Index
             // 
-            resources.ApplyResources(this.ExContain_Index, "ExContain_Index");
-            this.ExContain_Index.Name = "ExContain_Index";
+            resources.ApplyResources(ExContain_Index, "ExContain_Index");
+            ExContain_Index.Name = "ExContain_Index";
             // 
             // OculusCount
             // 
-            resources.ApplyResources(this.OculusCount, "OculusCount");
-            this.OculusCount.Name = "OculusCount";
+            resources.ApplyResources(OculusCount, "OculusCount");
+            OculusCount.Name = "OculusCount";
             // 
             // ExContain_MapName
             // 
-            resources.ApplyResources(this.ExContain_MapName, "ExContain_MapName");
-            this.ExContain_MapName.Name = "ExContain_MapName";
+            resources.ApplyResources(ExContain_MapName, "ExContain_MapName");
+            ExContain_MapName.Name = "ExContain_MapName";
             // 
             // ExContain_MapIcon
             // 
-            resources.ApplyResources(this.ExContain_MapIcon, "ExContain_MapIcon");
-            this.ExContain_MapIcon.BackColor = System.Drawing.Color.Transparent;
-            this.ExContain_MapIcon.Name = "ExContain_MapIcon";
-            this.ExContain_MapIcon.TabStop = false;
+            resources.ApplyResources(ExContain_MapIcon, "ExContain_MapIcon");
+            ExContain_MapIcon.BackColor = Color.Transparent;
+            ExContain_MapIcon.Name = "ExContain_MapIcon";
+            ExContain_MapIcon.TabStop = false;
             // 
             // ExContain_ShowDetailButton
             // 
-            resources.ApplyResources(this.ExContain_ShowDetailButton, "ExContain_ShowDetailButton");
-            this.ExContain_ShowDetailButton.Name = "ExContain_ShowDetailButton";
-            this.ExContain_ShowDetailButton.UseVisualStyleBackColor = true;
+            resources.ApplyResources(ExContain_ShowDetailButton, "ExContain_ShowDetailButton");
+            ExContain_ShowDetailButton.Name = "ExContain_ShowDetailButton";
+            ExContain_ShowDetailButton.UseVisualStyleBackColor = true;
+            ExContain_ShowDetailButton.Click += ExContain_ShowDetailButton_Click;
             // 
             // ExContain_ProgressPanel
             // 
-            resources.ApplyResources(this.ExContain_ProgressPanel, "ExContain_ProgressPanel");
-            this.ExContain_ProgressPanel.Name = "ExContain_ProgressPanel";
+            resources.ApplyResources(ExContain_ProgressPanel, "ExContain_ProgressPanel");
+            ExContain_ProgressPanel.Name = "ExContain_ProgressPanel";
             // 
             // ExContain_HideDetailButton
             // 
-            resources.ApplyResources(this.ExContain_HideDetailButton, "ExContain_HideDetailButton");
-            this.ExContain_HideDetailButton.Name = "ExContain_HideDetailButton";
-            this.ExContain_HideDetailButton.UseVisualStyleBackColor = true;
+            resources.ApplyResources(ExContain_HideDetailButton, "ExContain_HideDetailButton");
+            ExContain_HideDetailButton.Name = "ExContain_HideDetailButton";
+            ExContain_HideDetailButton.UseVisualStyleBackColor = true;
+            ExContain_HideDetailButton.Click += ExContain_HideDetailButton_Click;
+            // 
+            // DetailPanel
+            // 
+            resources.ApplyResources(DetailPanel, "DetailPanel");
+            DetailPanel.Controls.Add(groupBox1);
+            DetailPanel.Name = "DetailPanel";
+            // 
+            // groupBox1
+            // 
+            resources.ApplyResources(groupBox1, "groupBox1");
+            groupBox1.Name = "groupBox1";
+            groupBox1.TabStop = false;
             // 
             // Exploration
             // 
             resources.ApplyResources(this, "$this");
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.Controls.Add(this.ExContain_HideDetailButton);
-            this.Controls.Add(this.ExContain_ShowDetailButton);
-            this.Controls.Add(this.ExContain_ProgressPanel);
-            this.Controls.Add(this.ExContainer);
-            this.Name = "Exploration";
-            this.ExContainer.ResumeLayout(false);
-            this.ExContain_Main.ResumeLayout(false);
-            this.ExContain_Main.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ExContain_MapIcon)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleMode = AutoScaleMode.Dpi;
+            Controls.Add(ExContain_HideDetailButton);
+            Controls.Add(DetailPanel);
+            Controls.Add(ExContain_ShowDetailButton);
+            Controls.Add(ExContain_ProgressPanel);
+            Controls.Add(ExContainer);
+            Name = "Exploration";
+            ExContainer.ResumeLayout(false);
+            ExContain_Main.ResumeLayout(false);
+            ExContain_Main.PerformLayout();
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)ExContain_MapIcon).EndInit();
+            DetailPanel.ResumeLayout(false);
+            DetailPanel.PerformLayout();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -137,5 +156,7 @@
         private Label OculusCount;
         private Panel panel1;
         private Button ExContain_HideDetailButton;
+        private Panel DetailPanel;
+        private GroupBox groupBox1;
     }
 }
