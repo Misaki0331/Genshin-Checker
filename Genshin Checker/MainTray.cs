@@ -57,7 +57,6 @@ namespace Genshin_Checker
                     startup.Message= cmd[8..];
                 }
             }
-            EnkaData.Data.GetStoreData();
 
             //ƒAƒvƒŠ‚Ì‰Šú‰»&UI‚Ì‰Šú‰»
             ProcessTime.Instance.option.OnlyActiveWindow = true;
@@ -165,6 +164,8 @@ namespace Genshin_Checker
                         break;
                 }
             }
+            await EnkaData.Data.GetStoreData();
+            if (await App.General.AppUpdater.CheckVersion()) new Window.PopupWindow.UpdateNotice().ShowDialog();
         }
 
         private void Delay_Tick(object sender, EventArgs e)

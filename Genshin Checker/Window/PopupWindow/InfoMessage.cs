@@ -10,7 +10,6 @@ namespace Genshin_Checker.Window.Popup
             Text = windowtitle;
             label1.Text = title;
             textBox1.Text = message.Replace("\r\n", "\n").Replace("\n", Environment.NewLine);
-            pictureBox1.Image = resource.PaimonsPaint.Furina_2;
             pictureBox1.Image = resource.PaimonsPaint.Furina_3;
             Icon = Icon.FromHandle(new Bitmap(pictureBox1.Image).GetHicon());
         }

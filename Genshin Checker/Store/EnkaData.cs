@@ -23,12 +23,11 @@ namespace Genshin_Checker.Store
             {
                 Interval = 5000
             };
-            FailReload.Tick += (s, e) => GetStoreData(false);
+            FailReload.Tick += async(s, e) => await GetStoreData(false);
         }
         public Dictionary<int, Model.EnkaNetwork.Store.Namecard.Icon>? Namecard { 
             get {
-                if (_namecard == null)
-                { GetNameCard(); return null; }
+                if (_namecard == null) return null; 
                 else return _namecard; 
             } 
             private set { _namecard = value; } 
@@ -38,8 +37,7 @@ namespace Genshin_Checker.Store
         {
             get
             {
-                if (_locale == null)
-                { GetLocale(); return null; }
+                if (_locale == null) return null; 
                 else return _locale;
             }
             private set { _locale = value; }
@@ -50,8 +48,7 @@ namespace Genshin_Checker.Store
         {
             get
             {
-                if (_characters == null)
-                { GetCharacters(); return null; }
+                if (_characters == null)return null; 
                 else return _characters;
             }
             private set { _characters = value; }
@@ -73,8 +70,7 @@ namespace Genshin_Checker.Store
         {
             get
             {
-                if (_affixes == null)
-                { GetAffixes(); return null; }
+                if (_affixes == null) return null; 
                 else return _affixes;
             }
             private set { _affixes = value; }
@@ -85,8 +81,7 @@ namespace Genshin_Checker.Store
         {
             get
             {
-                if (_affixes == null)
-                { GetPfps(); return null; }
+                if (_pfps == null)return null;
                 else return _pfps;
             }
             private set { _pfps = value; }
@@ -94,25 +89,25 @@ namespace Genshin_Checker.Store
         private Dictionary<int, Model.EnkaNetwork.Store.Pfps.Data>? _pfps;
 
 
-        async void GetNameCard()
+        async Task GetNameCard()
         {
             var json = await App.WebRequest.GeneralGetRequest("https://api.enka.network/store/namecards.json");
             var namecard = JsonChecker<Dictionary<int, Model.EnkaNetwork.Store.Namecard.Icon>>.Check(json);
             if (namecard != null) Namecard = namecard;
         }
-        async void GetLocale()
+        async Task GetLocale()
         {
             var json = await App.WebRequest.GeneralGetRequest("https://api.enka.network/store/loc.json");
             var locale = JsonChecker<Dictionary<string, Dictionary<string, string>>>.Check(json);
             if (locale != null) Locale = locale;
         }
-        async void GetCharacters()
+        async Task GetCharacters()
         {
             var json = await App.WebRequest.GeneralGetRequest("https://api.enka.network/store/characters.json");
             var characters = JsonChecker<Dictionary<string, Model.EnkaNetwork.Store.Characters.Data>>.Check(json);
             if (characters != null) Characters = characters;
         }
-        async void GetPfps()
+        async Task GetPfps()
         {
             var json = await App.WebRequest.GeneralGetRequest("https://api.enka.network/store/pfps.json");
             var pfps = JsonChecker<Dictionary<int, Model.EnkaNetwork.Store.Pfps.Data>>.Check(json);
@@ -125,24 +120,24 @@ namespace Genshin_Checker.Store
             var costumes = JsonChecker<Dictionary<int, Model.EnkaNetwork.Store.Costumes.Data>>.Check(json);
             if (costumes != null) Costumes = costumes;
         }*/
-        async void GetAffixes()
+        async Task GetAffixes()
         {
             var json = await App.WebRequest.GeneralGetRequest("https://api.enka.network/store/affixes.json");
             var affixes = JsonChecker<Dictionary<int, Model.EnkaNetwork.Store.Affixes.Data>>.Check(json);
             if (affixes != null) Affixes = affixes;
         }
 
-        public void GetStoreData(bool IsReload=false)
+        public async Task GetStoreData(bool IsReload=false)
         {
             FailReload.Stop();
             try
             {
-                if (_namecard == null || IsReload) GetNameCard();
-                if (_locale == null || IsReload) GetLocale();
-                if (_characters == null || IsReload) GetCharacters();
+                if (_namecard == null || IsReload) await GetNameCard();
+                if (_locale == null || IsReload) await GetLocale();
+                if (_characters == null || IsReload) await GetCharacters();
                 //if (_costumes == null || IsReload) GetCostumes();
-                if (_affixes == null || IsReload) GetAffixes();
-                if (_pfps == null || IsReload) GetPfps();
+                if (_affixes == null || IsReload) await GetAffixes();
+                if (_pfps == null || IsReload) await GetPfps();
             }
             catch (Exception ex)
             {
