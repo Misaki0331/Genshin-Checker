@@ -17,6 +17,7 @@ namespace Genshin_Checker.Window.PopupWindow
         {
             InitializeComponent();
             pictureBox1.Image = resource.PaimonsPaint.Furina_3;
+            Icon = Icon.FromHandle(new Bitmap(pictureBox1.Image).GetHicon());
         }
 
         private void CloseLink_Click(object sender, EventArgs e)

@@ -90,8 +90,6 @@ namespace Genshin_Checker
                 versionNameToolStripMenuItem.Text += "[Readonly]";
                 Registry.IsReadOnly = true;
             }
-            App.Game.GameLogWatcher.Instance.Init();
-            App.Game.ScreenshotWatcher.Instance.NewImageEvent += ScreenshotEvent;
         }
 
         void AccountAdded(object? sender, Account e)
@@ -151,6 +149,8 @@ namespace Genshin_Checker
             notification.BalloonTipText = Localize.App_Notify_WakeUp;
             notification.ShowBalloonTip(30000);
             await App.Game.WebViewWatcher.Init();
+            App.Game.GameLogWatcher.Instance.Init();
+            App.Game.ScreenshotWatcher.Instance.NewImageEvent += ScreenshotEvent;
 
             if (startup!=null)
             {
@@ -164,8 +164,8 @@ namespace Genshin_Checker
                         break;
                 }
             }
-            await EnkaData.Data.GetStoreData();
             if (await App.General.AppUpdater.CheckVersion()) new Window.PopupWindow.UpdateNotice().ShowDialog();
+            await EnkaData.Data.GetStoreData();
         }
 
         private void Delay_Tick(object sender, EventArgs e)

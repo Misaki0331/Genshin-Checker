@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UpdateNotice));
             pictureBox1 = new PictureBox();
             label1 = new Label();
             VersionText = new Label();
@@ -54,90 +55,52 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.Dock = DockStyle.Left;
-            pictureBox1.Location = new Point(10, 10);
+            resources.ApplyResources(pictureBox1, "pictureBox1");
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(96, 96);
-            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox1.TabIndex = 1;
             pictureBox1.TabStop = false;
             // 
             // label1
             // 
-            label1.AutoSize = true;
-            label1.Dock = DockStyle.Top;
-            label1.Font = new Font("Meiryo UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(0, 0);
+            resources.ApplyResources(label1, "label1");
             label1.Name = "label1";
-            label1.Size = new Size(306, 26);
-            label1.TabIndex = 2;
-            label1.Text = "新しいバージョンが利用可能です。";
             // 
             // VersionText
             // 
-            VersionText.AutoSize = true;
-            VersionText.Dock = DockStyle.Bottom;
-            VersionText.Font = new Font("Meiryo UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
-            VersionText.Location = new Point(0, 50);
+            resources.ApplyResources(VersionText, "VersionText");
             VersionText.Name = "VersionText";
-            VersionText.Size = new Size(187, 26);
-            VersionText.TabIndex = 3;
-            VersionText.Text = "0.14.1 → 0.15.0";
             // 
             // LatestUpdate
             // 
-            LatestUpdate.AutoSize = true;
-            LatestUpdate.Dock = DockStyle.Bottom;
-            LatestUpdate.Font = new Font("Meiryo UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            LatestUpdate.Location = new Point(0, 76);
+            resources.ApplyResources(LatestUpdate, "LatestUpdate");
             LatestUpdate.Name = "LatestUpdate";
-            LatestUpdate.Size = new Size(275, 20);
-            LatestUpdate.TabIndex = 4;
-            LatestUpdate.Text = "更新時刻 : 20XX/XX/XX XX:XX:XX";
             // 
             // panel1
             // 
             panel1.Controls.Add(panel2);
             panel1.Controls.Add(pictureBox1);
-            panel1.Dock = DockStyle.Top;
-            panel1.Location = new Point(0, 0);
+            resources.ApplyResources(panel1, "panel1");
             panel1.Name = "panel1";
-            panel1.Padding = new Padding(10);
-            panel1.Size = new Size(666, 116);
-            panel1.TabIndex = 5;
             // 
             // panel2
             // 
             panel2.Controls.Add(VersionText);
             panel2.Controls.Add(LatestUpdate);
             panel2.Controls.Add(label1);
-            panel2.Dock = DockStyle.Fill;
-            panel2.Location = new Point(106, 10);
+            resources.ApplyResources(panel2, "panel2");
             panel2.Name = "panel2";
-            panel2.Size = new Size(550, 96);
-            panel2.TabIndex = 2;
             // 
             // panel3
             // 
             panel3.Controls.Add(Body);
             panel3.Controls.Add(panel4);
-            panel3.Dock = DockStyle.Fill;
-            panel3.Location = new Point(0, 116);
+            resources.ApplyResources(panel3, "panel3");
             panel3.Name = "panel3";
-            panel3.Padding = new Padding(10, 0, 10, 0);
-            panel3.Size = new Size(666, 237);
-            panel3.TabIndex = 6;
             // 
             // Body
             // 
-            Body.Dock = DockStyle.Fill;
-            Body.Location = new Point(10, 0);
-            Body.Multiline = true;
+            resources.ApplyResources(Body, "Body");
             Body.Name = "Body";
             Body.ReadOnly = true;
-            Body.ScrollBars = ScrollBars.Both;
-            Body.Size = new Size(498, 237);
-            Body.TabIndex = 1;
             // 
             // panel4
             // 
@@ -145,95 +108,58 @@
             panel4.Controls.Add(label6);
             panel4.Controls.Add(DownloadSize);
             panel4.Controls.Add(label4);
-            panel4.Dock = DockStyle.Right;
-            panel4.Location = new Point(508, 0);
+            resources.ApplyResources(panel4, "panel4");
             panel4.Name = "panel4";
-            panel4.Size = new Size(148, 237);
-            panel4.TabIndex = 0;
             // 
             // DownloadCount
             // 
-            DownloadCount.Dock = DockStyle.Top;
-            DownloadCount.Location = new Point(0, 65);
+            resources.ApplyResources(DownloadCount, "DownloadCount");
             DownloadCount.Name = "DownloadCount";
-            DownloadCount.Size = new Size(148, 15);
-            DownloadCount.TabIndex = 3;
-            DownloadCount.Text = "0";
-            DownloadCount.TextAlign = ContentAlignment.TopRight;
             // 
             // label6
             // 
-            label6.AutoSize = true;
-            label6.Dock = DockStyle.Top;
-            label6.Location = new Point(0, 30);
+            resources.ApplyResources(label6, "label6");
             label6.Name = "label6";
-            label6.Padding = new Padding(0, 20, 0, 0);
-            label6.Size = new Size(83, 35);
-            label6.TabIndex = 2;
-            label6.Text = "ダウンロード回数";
             // 
             // DownloadSize
             // 
-            DownloadSize.Dock = DockStyle.Top;
-            DownloadSize.Location = new Point(0, 15);
+            resources.ApplyResources(DownloadSize, "DownloadSize");
             DownloadSize.Name = "DownloadSize";
-            DownloadSize.Size = new Size(148, 15);
-            DownloadSize.TabIndex = 1;
-            DownloadSize.Text = "12.345 MB";
-            DownloadSize.TextAlign = ContentAlignment.TopRight;
             // 
             // label4
             // 
-            label4.AutoSize = true;
-            label4.Dock = DockStyle.Top;
-            label4.Location = new Point(0, 0);
+            resources.ApplyResources(label4, "label4");
             label4.Name = "label4";
-            label4.Size = new Size(87, 15);
-            label4.TabIndex = 0;
-            label4.Text = "ダウンロードサイズ";
             // 
             // panel5
             // 
             panel5.Controls.Add(OpenLink);
             panel5.Controls.Add(CloseLink);
-            panel5.Dock = DockStyle.Bottom;
-            panel5.Location = new Point(0, 353);
+            resources.ApplyResources(panel5, "panel5");
             panel5.Name = "panel5";
-            panel5.Size = new Size(666, 23);
-            panel5.TabIndex = 2;
             // 
             // OpenLink
             // 
-            OpenLink.Dock = DockStyle.Right;
-            OpenLink.Location = new Point(516, 0);
+            resources.ApplyResources(OpenLink, "OpenLink");
             OpenLink.Name = "OpenLink";
-            OpenLink.Size = new Size(75, 23);
-            OpenLink.TabIndex = 1;
-            OpenLink.Text = "ページを開く";
             OpenLink.UseVisualStyleBackColor = true;
             OpenLink.Click += OpenLink_Click;
             // 
             // CloseLink
             // 
-            CloseLink.Dock = DockStyle.Right;
-            CloseLink.Location = new Point(591, 0);
+            resources.ApplyResources(CloseLink, "CloseLink");
             CloseLink.Name = "CloseLink";
-            CloseLink.Size = new Size(75, 23);
-            CloseLink.TabIndex = 0;
-            CloseLink.Text = "後で";
             CloseLink.UseVisualStyleBackColor = true;
             CloseLink.Click += CloseLink_Click;
             // 
             // UpdateNotice
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            resources.ApplyResources(this, "$this");
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(666, 376);
             Controls.Add(panel3);
             Controls.Add(panel1);
             Controls.Add(panel5);
             Name = "UpdateNotice";
-            Text = "UpdateNotice";
             Load += UpdateNotice_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel1.ResumeLayout(false);
