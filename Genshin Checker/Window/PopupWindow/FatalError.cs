@@ -22,13 +22,13 @@ namespace Genshin_Checker.Window.Popup
             label2.Text = ex.GetType().ToString();
             if (ex.GetType() == typeof(System.NullReferenceException)) label2.Text = "∧＿∧\r\n(　´∀｀)＜ぬるぽ";
             if (string.IsNullOrEmpty(crashreportpath)) button3.Enabled = false;
-            TopMost= true;
-            StartPosition= FormStartPosition.CenterScreen;
+            TopMost = true;
+            StartPosition = FormStartPosition.CenterScreen;
         }
         static string errormessage = "";
         public static string CrashLog(Exception ex)
         {
-            if(!string.IsNullOrEmpty(crashreportpath))return errormessage;
+            if (!string.IsNullOrEmpty(crashreportpath)) return errormessage;
             StringBuilder ErrorMessage = new();
             string message = ex.Message;
             if (ex.GetType() == typeof(System.NullReferenceException)) message = "　　 （　・∀・）　　　|　|　ｶﾞｯ\r\n　　と　　　　）　 　 |　|\r\n　　　 Ｙ　/ノ　　　 人\r\n　　　　 /　）　 　 < 　>__Λ∩\r\n　　 ＿/し'　／／. Ｖ｀Д´）/ \r\n　　（＿フ彡　　　　　 　　/";
@@ -39,7 +39,7 @@ namespace Genshin_Checker.Window.Popup
             var name = System.Reflection.Assembly.GetExecutingAssembly().GetName();
             ErrorMessage.Append($"【バージョン】\n{name.Name} {name.Version}\n\n");
             crashreportpath = CrashReport(ErrorMessage.ToString());
-            errormessage= ErrorMessage.ToString();
+            errormessage = ErrorMessage.ToString();
             return errormessage;
         }
         public static string GetCrashLogPath()
@@ -175,6 +175,17 @@ namespace Genshin_Checker.Window.Popup
             ps1.StartInfo.UseShellExecute = true;
             ps1.StartInfo.FileName = crashreportpath;
             ps1.Start();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            var link = "https://github.com/Misaki0331/Genshin-Checker/releases/latest";
+            ProcessStartInfo pi = new ProcessStartInfo()
+            {
+                FileName = link,
+                UseShellExecute = true,
+            };
+            if (link != null) Process.Start(pi);
         }
     }
 }

@@ -39,7 +39,7 @@ namespace Genshin_Checker.Window.PopupWindow
         private void UpdateNotice_Load(object sender, EventArgs e)
         {
             VersionText.Text = $"{App.General.AppUpdater.CurrentVersion} → {App.General.AppUpdater.NewVersion}";
-            LatestUpdate.Text = $"Latest : {App.General.AppUpdater.LatestReleaseTime}";
+            LatestUpdate.Text = $"Latest : {App.General.AppUpdater.LatestReleaseTime.ToLocalTime()}";
             Body.Lines = App.General.AppUpdater.UpdateBody.Split("\n");
             DownloadSize.Text = $"{App.General.AppUpdater.ApplicationSize / 1024.0 / 1024.0:0.000} MB";
             DownloadCount.Text = $"{App.General.AppUpdater.DownloadCount:#,##0}";

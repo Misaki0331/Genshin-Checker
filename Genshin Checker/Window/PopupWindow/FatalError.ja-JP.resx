@@ -132,4 +132,7 @@
   <data name="$this.Text" xml:space="preserve">
     <value>エラー!</value>
   </data>
+  <data name="button4.Text" xml:space="preserve">
+    <value>アップデートリンク</value>
+  </data>
 </root>
