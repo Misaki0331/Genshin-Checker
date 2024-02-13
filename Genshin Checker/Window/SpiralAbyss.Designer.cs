@@ -29,312 +29,320 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SpiralAbyss));
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.FlowGeneralData = new System.Windows.Forms.FlowLayoutPanel();
-            this.PanelCharacterCount = new System.Windows.Forms.Panel();
-            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.LabelLatestArea = new System.Windows.Forms.Label();
-            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.label5 = new System.Windows.Forms.Label();
-            this.LabelStarCount = new System.Windows.Forms.Label();
-            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            this.label7 = new System.Windows.Forms.Label();
-            this.LabelWinCount = new System.Windows.Forms.Label();
-            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
-            this.label9 = new System.Windows.Forms.Label();
-            this.LabelPlayCount = new System.Windows.Forms.Label();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.PanelFloorsInfo = new System.Windows.Forms.Panel();
-            this.PanelFloor = new System.Windows.Forms.Panel();
-            this.LabelFloorInfomation = new System.Windows.Forms.Label();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.LabelFloorStars = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.LabelFloorName = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.LabelScheduleName = new System.Windows.Forms.Label();
-            this.LabelTimestamp = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.tabControl1.SuspendLayout();
-            this.tabPage1.SuspendLayout();
-            this.flowLayoutPanel2.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
-            this.tableLayoutPanel3.SuspendLayout();
-            this.tableLayoutPanel4.SuspendLayout();
-            this.tableLayoutPanel5.SuspendLayout();
-            this.tabPage2.SuspendLayout();
-            this.panel3.SuspendLayout();
-            this.PanelFloor.SuspendLayout();
-            this.panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.panel2.SuspendLayout();
-            this.tableLayoutPanel2.SuspendLayout();
-            this.SuspendLayout();
+            tabControl1 = new TabControl();
+            tabPage1 = new TabPage();
+            FlowGeneralData = new FlowLayoutPanel();
+            PanelCharacterCount = new Panel();
+            flowLayoutPanel2 = new FlowLayoutPanel();
+            tableLayoutPanel1 = new TableLayoutPanel();
+            label1 = new Label();
+            LabelLatestArea = new Label();
+            tableLayoutPanel3 = new TableLayoutPanel();
+            label5 = new Label();
+            LabelStarCount = new Label();
+            tableLayoutPanel4 = new TableLayoutPanel();
+            label7 = new Label();
+            LabelWinCount = new Label();
+            tableLayoutPanel5 = new TableLayoutPanel();
+            label9 = new Label();
+            LabelPlayCount = new Label();
+            tabPage2 = new TabPage();
+            panel3 = new Panel();
+            PanelFloorsInfo = new Panel();
+            PanelFloor = new Panel();
+            LabelFloorInfomation = new Label();
+            panel4 = new Panel();
+            LabelFloorStars = new Label();
+            pictureBox1 = new PictureBox();
+            LabelFloorName = new Label();
+            panel1 = new Panel();
+            LabelScheduleName = new Label();
+            LabelTimestamp = new Label();
+            panel2 = new Panel();
+            CheckSummarize = new CheckBox();
+            comboBox1 = new ComboBox();
+            tableLayoutPanel2 = new TableLayoutPanel();
+            label3 = new Label();
+            label4 = new Label();
+            tabControl1.SuspendLayout();
+            tabPage1.SuspendLayout();
+            flowLayoutPanel2.SuspendLayout();
+            tableLayoutPanel1.SuspendLayout();
+            tableLayoutPanel3.SuspendLayout();
+            tableLayoutPanel4.SuspendLayout();
+            tableLayoutPanel5.SuspendLayout();
+            tabPage2.SuspendLayout();
+            panel3.SuspendLayout();
+            PanelFloor.SuspendLayout();
+            panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            panel2.SuspendLayout();
+            tableLayoutPanel2.SuspendLayout();
+            SuspendLayout();
             // 
             // tabControl1
             // 
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            resources.ApplyResources(this.tabControl1, "tabControl1");
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
+            tabControl1.Controls.Add(tabPage1);
+            tabControl1.Controls.Add(tabPage2);
+            resources.ApplyResources(tabControl1, "tabControl1");
+            tabControl1.Name = "tabControl1";
+            tabControl1.SelectedIndex = 0;
             // 
             // tabPage1
             // 
-            resources.ApplyResources(this.tabPage1, "tabPage1");
-            this.tabPage1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(27)))), ((int)(((byte)(52)))));
-            this.tabPage1.Controls.Add(this.FlowGeneralData);
-            this.tabPage1.Controls.Add(this.PanelCharacterCount);
-            this.tabPage1.Controls.Add(this.flowLayoutPanel2);
-            this.tabPage1.ForeColor = System.Drawing.Color.White;
-            this.tabPage1.Name = "tabPage1";
+            resources.ApplyResources(tabPage1, "tabPage1");
+            tabPage1.BackColor = Color.FromArgb(16, 27, 52);
+            tabPage1.Controls.Add(FlowGeneralData);
+            tabPage1.Controls.Add(PanelCharacterCount);
+            tabPage1.Controls.Add(flowLayoutPanel2);
+            tabPage1.ForeColor = Color.White;
+            tabPage1.Name = "tabPage1";
             // 
             // FlowGeneralData
             // 
-            resources.ApplyResources(this.FlowGeneralData, "FlowGeneralData");
-            this.FlowGeneralData.Name = "FlowGeneralData";
+            resources.ApplyResources(FlowGeneralData, "FlowGeneralData");
+            FlowGeneralData.Name = "FlowGeneralData";
             // 
             // PanelCharacterCount
             // 
-            resources.ApplyResources(this.PanelCharacterCount, "PanelCharacterCount");
-            this.PanelCharacterCount.Name = "PanelCharacterCount";
+            resources.ApplyResources(PanelCharacterCount, "PanelCharacterCount");
+            PanelCharacterCount.Name = "PanelCharacterCount";
             // 
             // flowLayoutPanel2
             // 
-            resources.ApplyResources(this.flowLayoutPanel2, "flowLayoutPanel2");
-            this.flowLayoutPanel2.Controls.Add(this.tableLayoutPanel1);
-            this.flowLayoutPanel2.Controls.Add(this.tableLayoutPanel3);
-            this.flowLayoutPanel2.Controls.Add(this.tableLayoutPanel4);
-            this.flowLayoutPanel2.Controls.Add(this.tableLayoutPanel5);
-            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
+            resources.ApplyResources(flowLayoutPanel2, "flowLayoutPanel2");
+            flowLayoutPanel2.Controls.Add(tableLayoutPanel1);
+            flowLayoutPanel2.Controls.Add(tableLayoutPanel3);
+            flowLayoutPanel2.Controls.Add(tableLayoutPanel4);
+            flowLayoutPanel2.Controls.Add(tableLayoutPanel5);
+            flowLayoutPanel2.Name = "flowLayoutPanel2";
             // 
             // tableLayoutPanel1
             // 
-            resources.ApplyResources(this.tableLayoutPanel1, "tableLayoutPanel1");
-            this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.LabelLatestArea, 0, 1);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            resources.ApplyResources(tableLayoutPanel1, "tableLayoutPanel1");
+            tableLayoutPanel1.Controls.Add(label1, 0, 0);
+            tableLayoutPanel1.Controls.Add(LabelLatestArea, 0, 1);
+            tableLayoutPanel1.Name = "tableLayoutPanel1";
             // 
             // label1
             // 
-            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            resources.ApplyResources(this.label1, "label1");
-            this.label1.Name = "label1";
+            label1.BorderStyle = BorderStyle.FixedSingle;
+            resources.ApplyResources(label1, "label1");
+            label1.Name = "label1";
             // 
             // LabelLatestArea
             // 
-            this.LabelLatestArea.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            resources.ApplyResources(this.LabelLatestArea, "LabelLatestArea");
-            this.LabelLatestArea.Name = "LabelLatestArea";
+            LabelLatestArea.BorderStyle = BorderStyle.FixedSingle;
+            resources.ApplyResources(LabelLatestArea, "LabelLatestArea");
+            LabelLatestArea.Name = "LabelLatestArea";
             // 
             // tableLayoutPanel3
             // 
-            resources.ApplyResources(this.tableLayoutPanel3, "tableLayoutPanel3");
-            this.tableLayoutPanel3.Controls.Add(this.label5, 0, 0);
-            this.tableLayoutPanel3.Controls.Add(this.LabelStarCount, 0, 1);
-            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            resources.ApplyResources(tableLayoutPanel3, "tableLayoutPanel3");
+            tableLayoutPanel3.Controls.Add(label5, 0, 0);
+            tableLayoutPanel3.Controls.Add(LabelStarCount, 0, 1);
+            tableLayoutPanel3.Name = "tableLayoutPanel3";
             // 
             // label5
             // 
-            this.label5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            resources.ApplyResources(this.label5, "label5");
-            this.label5.Name = "label5";
+            label5.BorderStyle = BorderStyle.FixedSingle;
+            resources.ApplyResources(label5, "label5");
+            label5.Name = "label5";
             // 
             // LabelStarCount
             // 
-            this.LabelStarCount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            resources.ApplyResources(this.LabelStarCount, "LabelStarCount");
-            this.LabelStarCount.Name = "LabelStarCount";
+            LabelStarCount.BorderStyle = BorderStyle.FixedSingle;
+            resources.ApplyResources(LabelStarCount, "LabelStarCount");
+            LabelStarCount.Name = "LabelStarCount";
             // 
             // tableLayoutPanel4
             // 
-            resources.ApplyResources(this.tableLayoutPanel4, "tableLayoutPanel4");
-            this.tableLayoutPanel4.Controls.Add(this.label7, 0, 0);
-            this.tableLayoutPanel4.Controls.Add(this.LabelWinCount, 0, 1);
-            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
+            resources.ApplyResources(tableLayoutPanel4, "tableLayoutPanel4");
+            tableLayoutPanel4.Controls.Add(label7, 0, 0);
+            tableLayoutPanel4.Controls.Add(LabelWinCount, 0, 1);
+            tableLayoutPanel4.Name = "tableLayoutPanel4";
             // 
             // label7
             // 
-            this.label7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            resources.ApplyResources(this.label7, "label7");
-            this.label7.Name = "label7";
+            label7.BorderStyle = BorderStyle.FixedSingle;
+            resources.ApplyResources(label7, "label7");
+            label7.Name = "label7";
             // 
             // LabelWinCount
             // 
-            this.LabelWinCount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            resources.ApplyResources(this.LabelWinCount, "LabelWinCount");
-            this.LabelWinCount.Name = "LabelWinCount";
+            LabelWinCount.BorderStyle = BorderStyle.FixedSingle;
+            resources.ApplyResources(LabelWinCount, "LabelWinCount");
+            LabelWinCount.Name = "LabelWinCount";
             // 
             // tableLayoutPanel5
             // 
-            resources.ApplyResources(this.tableLayoutPanel5, "tableLayoutPanel5");
-            this.tableLayoutPanel5.Controls.Add(this.label9, 0, 0);
-            this.tableLayoutPanel5.Controls.Add(this.LabelPlayCount, 0, 1);
-            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
+            resources.ApplyResources(tableLayoutPanel5, "tableLayoutPanel5");
+            tableLayoutPanel5.Controls.Add(label9, 0, 0);
+            tableLayoutPanel5.Controls.Add(LabelPlayCount, 0, 1);
+            tableLayoutPanel5.Name = "tableLayoutPanel5";
             // 
             // label9
             // 
-            this.label9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            resources.ApplyResources(this.label9, "label9");
-            this.label9.Name = "label9";
+            label9.BorderStyle = BorderStyle.FixedSingle;
+            resources.ApplyResources(label9, "label9");
+            label9.Name = "label9";
             // 
             // LabelPlayCount
             // 
-            this.LabelPlayCount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            resources.ApplyResources(this.LabelPlayCount, "LabelPlayCount");
-            this.LabelPlayCount.Name = "LabelPlayCount";
+            LabelPlayCount.BorderStyle = BorderStyle.FixedSingle;
+            resources.ApplyResources(LabelPlayCount, "LabelPlayCount");
+            LabelPlayCount.Name = "LabelPlayCount";
             // 
             // tabPage2
             // 
-            this.tabPage2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(27)))), ((int)(((byte)(52)))));
-            this.tabPage2.Controls.Add(this.panel3);
-            this.tabPage2.Controls.Add(this.PanelFloor);
-            this.tabPage2.Controls.Add(this.panel1);
-            resources.ApplyResources(this.tabPage2, "tabPage2");
-            this.tabPage2.Name = "tabPage2";
+            tabPage2.BackColor = Color.FromArgb(16, 27, 52);
+            tabPage2.Controls.Add(panel3);
+            tabPage2.Controls.Add(PanelFloor);
+            tabPage2.Controls.Add(panel1);
+            resources.ApplyResources(tabPage2, "tabPage2");
+            tabPage2.Name = "tabPage2";
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.PanelFloorsInfo);
-            resources.ApplyResources(this.panel3, "panel3");
-            this.panel3.Name = "panel3";
+            panel3.Controls.Add(PanelFloorsInfo);
+            resources.ApplyResources(panel3, "panel3");
+            panel3.Name = "panel3";
             // 
             // PanelFloorsInfo
             // 
-            resources.ApplyResources(this.PanelFloorsInfo, "PanelFloorsInfo");
-            this.PanelFloorsInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(27)))), ((int)(((byte)(52)))));
-            this.PanelFloorsInfo.ForeColor = System.Drawing.Color.White;
-            this.PanelFloorsInfo.Name = "PanelFloorsInfo";
+            resources.ApplyResources(PanelFloorsInfo, "PanelFloorsInfo");
+            PanelFloorsInfo.BackColor = Color.FromArgb(16, 27, 52);
+            PanelFloorsInfo.ForeColor = Color.White;
+            PanelFloorsInfo.Name = "PanelFloorsInfo";
             // 
             // PanelFloor
             // 
-            resources.ApplyResources(this.PanelFloor, "PanelFloor");
-            this.PanelFloor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(27)))), ((int)(((byte)(52)))));
-            this.PanelFloor.Controls.Add(this.LabelFloorInfomation);
-            this.PanelFloor.Controls.Add(this.panel4);
-            this.PanelFloor.ForeColor = System.Drawing.Color.White;
-            this.PanelFloor.Name = "PanelFloor";
+            resources.ApplyResources(PanelFloor, "PanelFloor");
+            PanelFloor.BackColor = Color.FromArgb(16, 27, 52);
+            PanelFloor.Controls.Add(LabelFloorInfomation);
+            PanelFloor.Controls.Add(panel4);
+            PanelFloor.ForeColor = Color.White;
+            PanelFloor.Name = "PanelFloor";
             // 
             // LabelFloorInfomation
             // 
-            resources.ApplyResources(this.LabelFloorInfomation, "LabelFloorInfomation");
-            this.LabelFloorInfomation.Name = "LabelFloorInfomation";
+            resources.ApplyResources(LabelFloorInfomation, "LabelFloorInfomation");
+            LabelFloorInfomation.Name = "LabelFloorInfomation";
             // 
             // panel4
             // 
-            this.panel4.Controls.Add(this.LabelFloorStars);
-            this.panel4.Controls.Add(this.pictureBox1);
-            this.panel4.Controls.Add(this.LabelFloorName);
-            resources.ApplyResources(this.panel4, "panel4");
-            this.panel4.Name = "panel4";
+            panel4.Controls.Add(LabelFloorStars);
+            panel4.Controls.Add(pictureBox1);
+            panel4.Controls.Add(LabelFloorName);
+            resources.ApplyResources(panel4, "panel4");
+            panel4.Name = "panel4";
             // 
             // LabelFloorStars
             // 
-            resources.ApplyResources(this.LabelFloorStars, "LabelFloorStars");
-            this.LabelFloorStars.Name = "LabelFloorStars";
+            resources.ApplyResources(LabelFloorStars, "LabelFloorStars");
+            LabelFloorStars.Name = "LabelFloorStars";
             // 
             // pictureBox1
             // 
-            resources.ApplyResources(this.pictureBox1, "pictureBox1");
-            this.pictureBox1.Image = global::Genshin_Checker.resource.icon.UI_Icon_Tower_Star;
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.TabStop = false;
+            resources.ApplyResources(pictureBox1, "pictureBox1");
+            pictureBox1.Image = resource.icon.UI_Icon_Tower_Star;
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.TabStop = false;
             // 
             // LabelFloorName
             // 
-            resources.ApplyResources(this.LabelFloorName, "LabelFloorName");
-            this.LabelFloorName.Name = "LabelFloorName";
+            resources.ApplyResources(LabelFloorName, "LabelFloorName");
+            LabelFloorName.Name = "LabelFloorName";
             // 
             // panel1
             // 
-            resources.ApplyResources(this.panel1, "panel1");
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel1.Name = "panel1";
+            resources.ApplyResources(panel1, "panel1");
+            panel1.BorderStyle = BorderStyle.Fixed3D;
+            panel1.Name = "panel1";
             // 
             // LabelScheduleName
             // 
-            resources.ApplyResources(this.LabelScheduleName, "LabelScheduleName");
-            this.LabelScheduleName.Name = "LabelScheduleName";
+            resources.ApplyResources(LabelScheduleName, "LabelScheduleName");
+            LabelScheduleName.Name = "LabelScheduleName";
             // 
             // LabelTimestamp
             // 
-            resources.ApplyResources(this.LabelTimestamp, "LabelTimestamp");
-            this.LabelTimestamp.Name = "LabelTimestamp";
+            resources.ApplyResources(LabelTimestamp, "LabelTimestamp");
+            LabelTimestamp.Name = "LabelTimestamp";
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.comboBox1);
-            this.panel2.Controls.Add(this.LabelTimestamp);
-            this.panel2.Controls.Add(this.LabelScheduleName);
-            resources.ApplyResources(this.panel2, "panel2");
-            this.panel2.Name = "panel2";
+            panel2.Controls.Add(CheckSummarize);
+            panel2.Controls.Add(comboBox1);
+            panel2.Controls.Add(LabelTimestamp);
+            panel2.Controls.Add(LabelScheduleName);
+            resources.ApplyResources(panel2, "panel2");
+            panel2.Name = "panel2";
+            // 
+            // CheckSummarize
+            // 
+            resources.ApplyResources(CheckSummarize, "CheckSummarize");
+            CheckSummarize.Name = "CheckSummarize";
+            CheckSummarize.UseVisualStyleBackColor = true;
+            CheckSummarize.CheckedChanged += CheckSummarize_CheckedChanged;
             // 
             // comboBox1
             // 
-            resources.ApplyResources(this.comboBox1, "comboBox1");
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            resources.ApplyResources(comboBox1, "comboBox1");
+            comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Name = "comboBox1";
+            comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
             // 
             // tableLayoutPanel2
             // 
-            resources.ApplyResources(this.tableLayoutPanel2, "tableLayoutPanel2");
-            this.tableLayoutPanel2.Controls.Add(this.label3, 0, 0);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            resources.ApplyResources(tableLayoutPanel2, "tableLayoutPanel2");
+            tableLayoutPanel2.Controls.Add(label3, 0, 0);
+            tableLayoutPanel2.Name = "tableLayoutPanel2";
             // 
             // label3
             // 
-            this.label3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            resources.ApplyResources(this.label3, "label3");
-            this.label3.Name = "label3";
+            label3.BorderStyle = BorderStyle.FixedSingle;
+            resources.ApplyResources(label3, "label3");
+            label3.Name = "label3";
             // 
             // label4
             // 
-            this.label4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            resources.ApplyResources(this.label4, "label4");
-            this.label4.Name = "label4";
+            label4.BorderStyle = BorderStyle.FixedSingle;
+            resources.ApplyResources(label4, "label4");
+            label4.Name = "label4";
             // 
             // SpiralAbyss
             // 
             resources.ApplyResources(this, "$this");
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.Controls.Add(this.tabControl1);
-            this.Controls.Add(this.panel2);
-            this.Name = "SpiralAbyss";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.SpiralAbyss_FormClosed);
-            this.Load += new System.EventHandler(this.SpiralAbyss_Load);
-            this.ResizeEnd += new System.EventHandler(this.SpiralAbyss_ResizeEnd);
-            this.Resize += new System.EventHandler(this.SpiralAbyss_Resize);
-            this.tabControl1.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage1.PerformLayout();
-            this.flowLayoutPanel2.ResumeLayout(false);
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel3.ResumeLayout(false);
-            this.tableLayoutPanel4.ResumeLayout(false);
-            this.tableLayoutPanel5.ResumeLayout(false);
-            this.tabPage2.ResumeLayout(false);
-            this.tabPage2.PerformLayout();
-            this.panel3.ResumeLayout(false);
-            this.PanelFloor.ResumeLayout(false);
-            this.PanelFloor.PerformLayout();
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
-            this.tableLayoutPanel2.ResumeLayout(false);
-            this.ResumeLayout(false);
-
+            AutoScaleMode = AutoScaleMode.Dpi;
+            Controls.Add(tabControl1);
+            Controls.Add(panel2);
+            Name = "SpiralAbyss";
+            FormClosed += SpiralAbyss_FormClosed;
+            Load += SpiralAbyss_Load;
+            ResizeEnd += SpiralAbyss_ResizeEnd;
+            Resize += SpiralAbyss_Resize;
+            tabControl1.ResumeLayout(false);
+            tabPage1.ResumeLayout(false);
+            tabPage1.PerformLayout();
+            flowLayoutPanel2.ResumeLayout(false);
+            tableLayoutPanel1.ResumeLayout(false);
+            tableLayoutPanel3.ResumeLayout(false);
+            tableLayoutPanel4.ResumeLayout(false);
+            tableLayoutPanel5.ResumeLayout(false);
+            tabPage2.ResumeLayout(false);
+            tabPage2.PerformLayout();
+            panel3.ResumeLayout(false);
+            PanelFloor.ResumeLayout(false);
+            PanelFloor.PerformLayout();
+            panel4.ResumeLayout(false);
+            panel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            panel2.ResumeLayout(false);
+            panel2.PerformLayout();
+            tableLayoutPanel2.ResumeLayout(false);
+            ResumeLayout(false);
         }
 
         #endregion
@@ -373,5 +381,6 @@
         private Label LabelFloorName;
         private ComboBox comboBox1;
         private Panel panel3;
+        private CheckBox CheckSummarize;
     }
 }

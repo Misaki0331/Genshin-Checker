@@ -1,5 +1,64 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
+  <!--
+    Microsoft ResX Schema 
+
+    Version 2.0
+
+    The primary goals of this format is to allow a simple XML format
+    that is mostly human readable. The generation and parsing of the
+    various data types are done through the TypeConverter classes
+    associated with the data types.
+
+    Example:
+
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+
+    There are any number of "resheader" rows that contain simple
+    name/value pairs.
+
+    Each data row contains a name, and value. The row also contains a
+    type or mimetype. Type corresponds to a .NET class that support
+    text/value conversion through the TypeConverter architecture.
+    Classes that don't support this are serialized and stored with the
+    mimetype set.
+
+    The mimetype is used for serialized objects, and tells the
+    ResXResourceReader how to depersist the object. This is currently not
+    extensible. For a given mimetype the value must be set accordingly:
+
+    Note - application/x-microsoft.net.object.binary.base64 is the format
+    that the ResXResourceWriter will generate, however the reader can
+    read any of the formats listed below.
+
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
   <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
@@ -77,7 +136,7 @@
     <value>3, 74</value>
   </data>
   <data name="FlowGeneralData.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1250, 0</value>
+    <value>1200, 0</value>
   </data>
   <data name="FlowGeneralData.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -104,7 +163,7 @@
     <value>3, 74</value>
   </data>
   <data name="PanelCharacterCount.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1250, 0</value>
+    <value>1200, 0</value>
   </data>
   <data name="PanelCharacterCount.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -567,7 +626,7 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="flowLayoutPanel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1250, 71</value>
+    <value>1200, 71</value>
   </data>
   <data name="flowLayoutPanel2.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -591,7 +650,7 @@
     <value>3, 3, 3, 3</value>
   </data>
   <data name="tabPage1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1256, 627</value>
+    <value>1206, 767</value>
   </data>
   <data name="tabPage1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -621,7 +680,7 @@
     <value>0, 0</value>
   </data>
   <data name="PanelFloorsInfo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>885, 557</value>
+    <value>835, 697</value>
   </data>
   <data name="PanelFloorsInfo.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -645,7 +704,7 @@
     <value>368, 67</value>
   </data>
   <data name="panel3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>885, 557</value>
+    <value>835, 697</value>
   </data>
   <data name="panel3.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -681,7 +740,7 @@
     <value>0, 44</value>
   </data>
   <data name="LabelFloorInfomation.Size" type="System.Drawing.Size, System.Drawing">
-    <value>73, 20</value>
+    <value>145, 20</value>
   </data>
   <data name="LabelFloorInfomation.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -813,7 +872,7 @@
     <value>0, 0</value>
   </data>
   <data name="panel4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>885, 44</value>
+    <value>835, 44</value>
   </data>
   <data name="panel4.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -837,7 +896,7 @@
     <value>368, 3</value>
   </data>
   <data name="PanelFloor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>885, 64</value>
+    <value>835, 64</value>
   </data>
   <data name="PanelFloor.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -867,7 +926,7 @@
     <value>3, 3</value>
   </data>
   <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>365, 621</value>
+    <value>365, 761</value>
   </data>
   <data name="panel1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -891,7 +950,7 @@
     <value>3, 3, 3, 3</value>
   </data>
   <data name="tabPage2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1256, 627</value>
+    <value>1206, 767</value>
   </data>
   <data name="tabPage2.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -918,7 +977,7 @@
     <value>0, 26</value>
   </data>
   <data name="tabControl1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1264, 655</value>
+    <value>1214, 795</value>
   </data>
   <data name="tabControl1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -966,7 +1025,7 @@
     <value>panel2</value>
   </data>
   <data name="&gt;&gt;LabelScheduleName.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="LabelTimestamp.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1005,13 +1064,49 @@
     <value>panel2</value>
   </data>
   <data name="&gt;&gt;LabelTimestamp.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
+  </data>
+  <data name="CheckSummarize.Appearance" type="System.Windows.Forms.Appearance, System.Windows.Forms">
+    <value>Button</value>
+  </data>
+  <data name="CheckSummarize.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="CheckSummarize.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="CheckSummarize.Location" type="System.Drawing.Point, System.Drawing">
+    <value>985, 0</value>
+  </data>
+  <data name="CheckSummarize.Size" type="System.Drawing.Size, System.Drawing">
+    <value>108, 26</value>
+  </data>
+  <data name="CheckSummarize.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="CheckSummarize.Text" xml:space="preserve">
+    <value>Detail Infomation</value>
+  </data>
+  <data name="CheckSummarize.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="&gt;&gt;CheckSummarize.Name" xml:space="preserve">
+    <value>CheckSummarize</value>
+  </data>
+  <data name="&gt;&gt;CheckSummarize.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;CheckSummarize.Parent" xml:space="preserve">
+    <value>panel2</value>
+  </data>
+  <data name="&gt;&gt;CheckSummarize.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="comboBox1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Right</value>
   </data>
   <data name="comboBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1143, 0</value>
+    <value>1093, 0</value>
   </data>
   <data name="comboBox1.Size" type="System.Drawing.Size, System.Drawing">
     <value>121, 23</value>
@@ -1029,7 +1124,7 @@
     <value>panel2</value>
   </data>
   <data name="&gt;&gt;comboBox1.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="panel2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
@@ -1038,7 +1133,7 @@
     <value>0, 0</value>
   </data>
   <data name="panel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1264, 26</value>
+    <value>1214, 26</value>
   </data>
   <data name="panel2.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -1155,7 +1250,7 @@
     <value>96, 96</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>1264, 681</value>
+    <value>1214, 821</value>
   </data>
   <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>815, 375</value>

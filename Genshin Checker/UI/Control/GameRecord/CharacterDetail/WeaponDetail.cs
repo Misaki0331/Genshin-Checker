@@ -1,4 +1,5 @@
-﻿using Genshin_Checker.resource.Languages;
+﻿using Genshin_Checker.App.General.UI;
+using Genshin_Checker.resource.Languages;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -23,8 +24,8 @@ namespace Genshin_Checker.UI.Control.GameRecord.CharacterDetail
             label1.Text = Name;
             label2.Text = string.Format(Localize.UI_Weapons_Level, level);
             label3.Text = string.Format(Localize.UI_Weapons_RefinementRank,refinement);
-            pictureBox2.BackgroundImage = new Bitmap(await App.WebRequest.ImageGetRequest($"https://static-api.misaki-chan.world/genshin-checker/asset/rarelity-frame/rarity-{star}.png"),pictureBox2.Width,pictureBox2.Height);
-            pictureBox2.Image = await App.WebRequest.ImageGetRequest(weaponImageUrl);
+            pictureBox2.BackgroundImage = DrawControl.BitmapInterpolation(await App.WebRequest.ImageGetRequest($"https://static-api.misaki-chan.world/genshin-checker/asset/rarelity-frame/rarity-{star}.png"),pictureBox2.Width,pictureBox2.Height);
+            pictureBox2.Image = DrawControl.BitmapInterpolation(await App.WebRequest.ImageGetRequest(weaponImageUrl),pictureBox2.Width,pictureBox2.Height);
             pictureBox3.Image = await App.WebRequest.ImageGetRequest($"https://static-api.misaki-chan.world/genshin-checker/asset/star/{star}.png");
         }
     }

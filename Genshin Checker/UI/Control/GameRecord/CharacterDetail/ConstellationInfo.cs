@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Genshin_Checker.App.General.UI;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -27,7 +28,7 @@ namespace Genshin_Checker.UI.Control.GameRecord.CharacterDetail
 
         private async void ConstellationInfo_Load(object sender, EventArgs e)
         {
-            pictureBox1.Image=new Bitmap(await App.WebRequest.ImageGetRequest(iconurl),pictureBox1.Width,pictureBox1.Height);
+            pictureBox1.Image= DrawControl.BitmapInterpolation(await App.WebRequest.ImageGetRequest(iconurl),pictureBox1.Width,pictureBox1.Height);
         }
     }
 }

@@ -14,6 +14,7 @@ using LiveChartsCore.Drawing;
 using static Genshin_Checker.App.HoYoLab.Account;
 using Genshin_Checker.Window.Popup;
 using Genshin_Checker.resource.Languages;
+using Genshin_Checker.App.General.UI;
 
 namespace Genshin_Checker.Window.ExWindow.GameRecords
 {
@@ -240,7 +241,7 @@ namespace Genshin_Checker.Window.ExWindow.GameRecords
                     if (size.Width <= 0 || size.Height <= 0) return;
                     picture.Dock = DockStyle.None;
                     picture.SizeMode = PictureBoxSizeMode.AutoSize;
-                    picture.Image = new Bitmap(CharacterBanner, new((int)(CharacterBanner.Width * zoom), (int)(CharacterBanner.Height * zoom)));
+                    picture.Image = DrawControl.BitmapInterpolation(CharacterBanner, (int)(CharacterBanner.Width * zoom), (int)(CharacterBanner.Height * zoom));
                     old?.Dispose();
                 }
                 picture.Location = new(-picture.Width / 2 + panel1.Width / 2, 0);

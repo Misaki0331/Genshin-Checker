@@ -28,7 +28,7 @@ namespace Genshin_Checker.Window
         class ComboBoxData
         {
             public int id;
-            public string name="";
+            public string name = "";
         }
         public SpiralAbyss(Account account)
         {
@@ -43,7 +43,7 @@ namespace Genshin_Checker.Window
             var data = account.SpiralAbyss.GetList();
             data.Reverse();
             foreach (var i in data)
-                ComboData.Add(new() { id = i, name = string.Format(Localize.UIName_SpiralAbyss_SeasonName,i) });
+                ComboData.Add(new() { id = i, name = string.Format(Localize.UIName_SpiralAbyss_SeasonName, i) });
             foreach (var i in ComboData)
                 comboBox1.Items.Add(i.name);
             if (ComboData.Count > 0) comboBox1.SelectedIndex = 0;
@@ -105,7 +105,7 @@ namespace Genshin_Checker.Window
             characters = new();
             foreach (var character in data.Ranks.Defeat) characters.Add(new(character.id, $"{character.value:#,##0}"));
             var con = new UI.Control.SpiralAbyss.CharacterFrame(account, Localize.WindowName_SpiralAbyss_MostDefeats, characters);
-            con.ClickHandler+= a => GameRecords_Character_Click(a);
+            con.ClickHandler += a => GameRecords_Character_Click(a);
             FlowGeneralData.Controls.Add(con);
             GeneralList.Add(con);
             ///最大ダメージ
@@ -158,7 +158,7 @@ namespace Genshin_Checker.Window
         {
             var GameData = await account.SpiralAbyss.GetCurrent();
             PanelLoad(GameData);
-            
+
         }
 
         private void Floors_ClickHandler(int args)
@@ -172,7 +172,7 @@ namespace Genshin_Checker.Window
             else CurrentFloorIndex = index;
             PanelFloorsInfo.Visible = false;
             PanelFloorsInfo.SuspendLayout();
-            foreach(var f in LevelInfo)
+            foreach (var f in LevelInfo)
             {
                 PanelFloorsInfo.Controls.Remove(f);
                 f.Dispose();
@@ -187,7 +187,7 @@ namespace Genshin_Checker.Window
             if (CurrentDisplayData == null) return;
 
             PanelFloorsInfo.SuspendLayout();
-            LabelFloorName.Text = string.Format(Localize.UIName_SpiralAbyss_Floor,floors.index);
+            LabelFloorName.Text = string.Format(Localize.UIName_SpiralAbyss_Floor, floors.index);
             LabelFloorStars.Text = $"{floors.star} / {floors.max_star}";
             LabelFloorInfomation.Text = string.Join("\n", floors.ley_line_disorder);
             if (string.IsNullOrEmpty(LabelFloorInfomation.Text)) LabelFloorInfomation.Visible = false;
@@ -195,9 +195,9 @@ namespace Genshin_Checker.Window
             PanelFloor.Visible = true;
             var levels = floors.levels.FindAll(A => true);
             levels.Reverse();
-            foreach(var level in levels)
+            foreach (var level in levels)
             {
-                var control = new UI.Control.SpiralAbyss.LevelInfo(account, level) { Dock=DockStyle.Top,BorderStyle=BorderStyle.FixedSingle};
+                var control = new UI.Control.SpiralAbyss.LevelInfo(account, level, !CheckSummarize.Checked) { Dock = DockStyle.Top, BorderStyle = BorderStyle.FixedSingle };
                 control.CharacterClickHandler += a => GameRecords_Character_Click(a);
                 PanelFloorsInfo.Controls.Add(control);
                 LevelInfo.Add(control);
@@ -206,7 +206,7 @@ namespace Genshin_Checker.Window
 
             PanelFloorsInfo.Visible = true;
         }
-        
+
 
         private async void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -219,7 +219,7 @@ namespace Genshin_Checker.Window
                 PanelLoad(GameData);
                 this.ResumeLayout(true);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 new ErrorMessage(Common.CommonErrorOccurred, ex.ToString()).ShowDialog();
             }
@@ -242,28 +242,39 @@ namespace Genshin_Checker.Window
             CharacterForm.Activate();
 
         }
-
+        bool FirstResize = false;
         protected override void OnResize(EventArgs e)
         {
+            if (!FirstResize)
+            {
+                this.Invalidate();
+                this.PerformLayout();
+                FirstResize = true;
+            }
         }
         private void SpiralAbyss_ResizeEnd(object sender, EventArgs e)
         {
             this.Invalidate();
             this.PerformLayout();
+            FirstResize = false;
         }
 
         private void SpiralAbyss_Resize(object sender, EventArgs e)
         {
-            if (WindowState == FormWindowState.Maximized)
-            {
-                this.Invalidate();
-                this.PerformLayout();
-            }
         }
 
         private void SpiralAbyss_FormClosed(object sender, FormClosedEventArgs e)
         {
-            if (CharacterForm != null && !CharacterForm.IsDisposed)CharacterForm.Dispose();
+            if (CharacterForm != null && !CharacterForm.IsDisposed) CharacterForm.Dispose();
+        }
+
+        private void CheckSummarize_CheckedChanged(object sender, EventArgs e)
+        {
+            this.SuspendLayout();
+            foreach (var l in LevelInfo) {
+                l.ShowInline = !CheckSummarize.Checked;
+            }
+            ResumeLayout(true);
         }
     }
 }

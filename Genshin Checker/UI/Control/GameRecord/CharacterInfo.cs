@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Genshin_Checker.App.General.UI;
 
 namespace Genshin_Checker.UI.Control.GameRecord
 {
@@ -58,16 +59,16 @@ namespace Genshin_Checker.UI.Control.GameRecord
             switch (Rare)
             {
                 case -1:
-                    pictureBox1.BackgroundImage = new Bitmap(await App.WebRequest.ImageGetRequest("https://static-api.misaki-chan.world/genshin-checker/asset/enemy-base/base.png"), pictureBox1.Width, pictureBox1.Height);
+                    pictureBox1.BackgroundImage = DrawControl.BitmapInterpolation(await App.WebRequest.ImageGetRequest("https://static-api.misaki-chan.world/genshin-checker/asset/enemy-base/base.png"), pictureBox1.Width, pictureBox1.Height);
                     break;
                 case 4:
-                    pictureBox1.BackgroundImage = new Bitmap(await App.WebRequest.ImageGetRequest("https://static-api.misaki-chan.world/genshin-checker/asset/character-base/roleStarBg4.png"), pictureBox1.Width, pictureBox1.Height);
+                    pictureBox1.BackgroundImage = DrawControl.BitmapInterpolation(await App.WebRequest.ImageGetRequest("https://static-api.misaki-chan.world/genshin-checker/asset/character-base/roleStarBg4.png"), pictureBox1.Width, pictureBox1.Height);
                     break;
                 case 5:
-                    pictureBox1.BackgroundImage = new Bitmap(await App.WebRequest.ImageGetRequest("https://static-api.misaki-chan.world/genshin-checker/asset/character-base/roleStarBg5.png"), pictureBox1.Width, pictureBox1.Height);
+                    pictureBox1.BackgroundImage = DrawControl.BitmapInterpolation(await App.WebRequest.ImageGetRequest("https://static-api.misaki-chan.world/genshin-checker/asset/character-base/roleStarBg5.png"), pictureBox1.Width, pictureBox1.Height);
                     break;
             }
-            pictureBox1.Image = new Bitmap(await App.WebRequest.ImageGetRequest(CharacterIcon),pictureBox1.Width,pictureBox1.Height);
+            pictureBox1.Image = DrawControl.BitmapInterpolation(await App.WebRequest.ImageGetRequest(CharacterIcon), pictureBox1.Width, pictureBox1.Height);
             this.ResumeLayout(false);
         }
     }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Genshin_Checker.App.General.UI;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -45,8 +46,8 @@ namespace Genshin_Checker.UI.Control.GameRecord.CharacterDetail
                 star = 1;
             }
             else pictureBox2.Image = await App.WebRequest.ImageGetRequest($"https://static-api.misaki-chan.world/genshin-checker/asset/star/{star}.png");
-            pictureBox1.BackgroundImage = new Bitmap(await App.WebRequest.ImageGetRequest($"https://static-api.misaki-chan.world/genshin-checker/asset/rarelity-frame/rarity-{star}.png"), pictureBox1.Width, pictureBox1.Height);
-            pictureBox1.Image = await App.WebRequest.ImageGetRequest(IconURL);
+            pictureBox1.BackgroundImage = DrawControl.BitmapInterpolation(await App.WebRequest.ImageGetRequest($"https://static-api.misaki-chan.world/genshin-checker/asset/rarelity-frame/rarity-{star}.png"), pictureBox1.Width, pictureBox1.Height);
+            pictureBox1.Image = DrawControl.BitmapInterpolation(await App.WebRequest.ImageGetRequest(IconURL), pictureBox1.Width, pictureBox1.Height);
         }
     }
 }

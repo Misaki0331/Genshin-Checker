@@ -3,6 +3,7 @@ using Genshin_Checker.Store;
 using Genshin_Checker.Model.UI.GameRecords.Exploration;
 using Genshin_Checker.Window.Popup;
 using Genshin_Checker.resource.Languages;
+using Genshin_Checker.App.General.UI;
 
 namespace Genshin_Checker.Window
 {
@@ -44,7 +45,7 @@ namespace Genshin_Checker.Window
                     Summary_UserName.Text = account.Name;
                     if (account.GameRecords.Data != null) {
                         Summary_AdventureRank.Text = $"{account.GameRecords.Data.role.Level}";
-                        Summary_UserIcon.Image = await App.WebRequest.ImageGetRequest(account.GameRecords.Data.role.game_head_icon);
+                        Summary_UserIcon.Image = DrawControl.BitmapInterpolation(await App.WebRequest.ImageGetRequest(account.GameRecords.Data.role.game_head_icon), Summary_UserIcon.Width, Summary_UserIcon.Height);
                     }
                     else
                     {
@@ -56,7 +57,7 @@ namespace Genshin_Checker.Window
                 }
                 else
                 {
-                    Summary_UserIcon.Image = await App.WebRequest.ImageGetRequest(EnkaData.Convert.AvaterIcon.GetIconURL(account.EnkaNetwork.Data.playerInfo.profilePicture.avatarId));
+                    Summary_UserIcon.Image = DrawControl.BitmapInterpolation(await App.WebRequest.ImageGetRequest(EnkaData.Convert.AvaterIcon.GetIconURL(account.EnkaNetwork.Data.playerInfo.profilePicture.avatarId)), Summary_UserIcon.Width, Summary_UserIcon.Height);
                     Summary_UserName.Text = account.EnkaNetwork.Data.playerInfo.nickname;
                     if (string.IsNullOrEmpty(account.EnkaNetwork.Data.playerInfo.signature))
                     {

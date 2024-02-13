@@ -32,8 +32,10 @@
             panel1 = new Panel();
             PanelStar = new Panel();
             PanelBattleInfo = new Panel();
+            tableLayoutPanel1 = new TableLayoutPanel();
             label2 = new Label();
             panel1.SuspendLayout();
+            PanelBattleInfo.SuspendLayout();
             SuspendLayout();
             // 
             // label1
@@ -74,11 +76,26 @@
             // 
             PanelBattleInfo.AutoSize = true;
             PanelBattleInfo.BackColor = Color.Transparent;
+            PanelBattleInfo.Controls.Add(tableLayoutPanel1);
             PanelBattleInfo.Dock = DockStyle.Top;
             PanelBattleInfo.Location = new Point(0, 62);
             PanelBattleInfo.Name = "PanelBattleInfo";
             PanelBattleInfo.Size = new Size(348, 0);
             PanelBattleInfo.TabIndex = 3;
+            // 
+            // tableLayoutPanel1
+            // 
+            tableLayoutPanel1.AutoSize = true;
+            tableLayoutPanel1.ColumnCount = 2;
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel1.Dock = DockStyle.Top;
+            tableLayoutPanel1.Location = new Point(0, 0);
+            tableLayoutPanel1.Name = "tableLayoutPanel1";
+            tableLayoutPanel1.RowCount = 1;
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel1.Size = new Size(348, 0);
+            tableLayoutPanel1.TabIndex = 0;
             // 
             // label2
             // 
@@ -105,8 +122,11 @@
             MinimumSize = new Size(350, 0);
             Name = "LevelInfo";
             Size = new Size(348, 62);
+            Load += LevelInfo_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
+            PanelBattleInfo.ResumeLayout(false);
+            PanelBattleInfo.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -118,5 +138,6 @@
         private Panel PanelBattleInfo;
         private Label label2;
         private Panel PanelStar;
+        private TableLayoutPanel tableLayoutPanel1;
     }
 }

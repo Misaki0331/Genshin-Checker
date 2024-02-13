@@ -171,4 +171,7 @@
   <data name="$this.Text" xml:space="preserve">
     <value>深境螺旋</value>
   </data>
+  <data name="CheckSummarize.Text" xml:space="preserve">
+    <value>詳細情報</value>
+  </data>
 </root>

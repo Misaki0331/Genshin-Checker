@@ -4,6 +4,7 @@ using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Genshin_Checker.App.General.UI
 {
@@ -79,6 +80,21 @@ namespace Genshin_Checker.App.General.UI
             Point window = pictureControl.PointToClient(Point.Empty);
             Point location = OverrideControl.PointToClient(pictureControl.PointToClient(new(-window.X * 2, -window.Y * 2)));
             if(image!=null)graphics.DrawImage(image, location);
+        }
+        public static Bitmap BitmapInterpolation(Image image, int width, int height, InterpolationMode mode = InterpolationMode.HighQualityBilinear)
+        {
+            return BitmapInterpolation((Bitmap)image, width, height, mode);
+        }
+        public static Bitmap BitmapInterpolation(Bitmap bitmap, int width, int height, InterpolationMode mode=InterpolationMode.HighQualityBilinear)
+        {
+            Bitmap canvas = new(width, height);
+            Graphics g = Graphics.FromImage(canvas);
+            //補間方法として最近傍補間を指定する
+            g.InterpolationMode =mode;
+            //画像を拡大縮小して描画する
+            g.DrawImage(bitmap, 0, 0, width, height);
+            g.Dispose();
+            return canvas;
         }
     }
 }

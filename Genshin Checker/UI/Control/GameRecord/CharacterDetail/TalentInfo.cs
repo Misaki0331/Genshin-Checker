@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Genshin_Checker.App.General.UI;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -24,7 +25,7 @@ namespace Genshin_Checker.UI.Control.GameRecord.CharacterDetail
 
         private async void TalentInfo_Load(object sender, EventArgs e)
         {
-            pictureBox1.Image = await App.WebRequest.ImageGetRequest(iconlink);
+            pictureBox1.Image = DrawControl.BitmapInterpolation(await App.WebRequest.ImageGetRequest(iconlink), pictureBox1.Width, pictureBox1.Height);
         }
     }
 }

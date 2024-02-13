@@ -1,4 +1,5 @@
-﻿using Genshin_Checker.App.HoYoLab;
+﻿using Genshin_Checker.App.General.UI;
+using Genshin_Checker.App.HoYoLab;
 using Genshin_Checker.resource.Languages;
 using Genshin_Checker.Store;
 using System;
@@ -148,7 +149,7 @@ namespace Genshin_Checker.Window
         {
             var url = EnkaData.Convert.Namecard.GetNameCardURL(account.EnkaNetwork.Data.playerInfo.nameCardId);
             var image = url == null ? null : await App.WebRequest.ImageGetRequest(url);
-            if (image != null) BackgroundImage = new Bitmap(image,ClientSize);
+            if (image != null) BackgroundImage = DrawControl.BitmapInterpolation(image, ClientSize.Width, ClientSize.Height);
         }
         private void Label_Paint(object sender, PaintEventArgs e)
         {
