@@ -170,7 +170,7 @@ namespace Genshin_Checker.Window
         {
             if (CurrentFloorIndex == index) return;
             else CurrentFloorIndex = index;
-            PanelFloorsInfo.Visible = false;
+            //PanelFloorsInfo.Visible = false;
             PanelFloorsInfo.SuspendLayout();
             foreach (var f in LevelInfo)
             {
@@ -203,8 +203,6 @@ namespace Genshin_Checker.Window
                 LevelInfo.Add(control);
             }
             PanelFloorsInfo.ResumeLayout(true);
-
-            PanelFloorsInfo.Visible = true;
         }
 
 
@@ -254,8 +252,10 @@ namespace Genshin_Checker.Window
         }
         private void SpiralAbyss_ResizeEnd(object sender, EventArgs e)
         {
+            PanelFloorsInfo.Visible = false;
             this.Invalidate();
             this.PerformLayout();
+            PanelFloorsInfo.Visible = true;
             FirstResize = false;
         }
 
@@ -271,9 +271,13 @@ namespace Genshin_Checker.Window
         private void CheckSummarize_CheckedChanged(object sender, EventArgs e)
         {
             this.SuspendLayout();
+            PanelFloorsInfo.SuspendLayout();
             foreach (var l in LevelInfo) {
+                l.SuspendLayout();
                 l.ShowInline = !CheckSummarize.Checked;
+                l.ResumeLayout(true);
             }
+            PanelFloorsInfo.ResumeLayout(true);
             ResumeLayout(true);
         }
     }
