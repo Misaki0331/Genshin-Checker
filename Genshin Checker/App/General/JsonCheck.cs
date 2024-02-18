@@ -37,5 +37,10 @@ namespace Genshin_Checker.App.General
                 return false;
             }
         }
+        public static string format(string json)
+        {
+            var j = Check(json);
+            return JsonConvert.SerializeObject(j, Formatting.Indented);
+        }
     }
 }

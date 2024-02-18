@@ -1,4 +1,5 @@
-﻿using Genshin_Checker.App.HoYoLab;
+﻿using Genshin_Checker.App.General;
+using Genshin_Checker.App.HoYoLab;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -39,7 +40,7 @@ namespace Genshin_Checker.Window.Debug
         {
             var account = CheckAccount();
             if (account == null) return;
-            OutputBox.Text = await GetJson.GetGameRecords(account);
+            OutputBox.Text = JsonChecker<dynamic>.format(await GetJson.GetGameRecords(account));
             
         }
 
@@ -47,62 +48,62 @@ namespace Genshin_Checker.Window.Debug
         {
             var account = CheckAccount();
             if (account == null) return;
-            OutputBox.Text = await GetJson.GetCharacters(account);
+            OutputBox.Text = JsonChecker<dynamic>.format(await GetJson.GetCharacters(account));
         }
 
         private async void ButtonRealTimeNote_Click(object sender, EventArgs e)
         {
             var account = CheckAccount();
             if (account == null) return;
-            OutputBox.Text = await GetJson.GetRealTimeNote(account);
+            OutputBox.Text = JsonChecker<dynamic>.format(await GetJson.GetRealTimeNote(account));
         }
 
         private async void ButtonEnkaNetwork_Click(object sender, EventArgs e)
         {
             var account = CheckAccount();
             if (account == null) return;
-            OutputBox.Text = await GetJson.GetEnkaNetwork(account.UID);
+            OutputBox.Text = JsonChecker<dynamic>.format(await GetJson.GetEnkaNetwork(account.UID));
         }
 
         private async void ButtonSpiralAbyssCurrent_Click(object sender, EventArgs e)
         {
             var account = CheckAccount();
             if (account == null) return;
-            OutputBox.Text = await GetJson.GetSpiralAbyss(account, true);
+            OutputBox.Text = JsonChecker<dynamic>.format(await GetJson.GetSpiralAbyss(account, true));
         }
 
         private async void ButtonSpiralAbyssPreviously_Click(object sender, EventArgs e)
         {
             var account = CheckAccount();
             if (account == null) return;
-            OutputBox.Text = await GetJson.GetSpiralAbyss(account, false);
+            OutputBox.Text = JsonChecker<dynamic>.format(await GetJson.GetSpiralAbyss(account, false));
         }
 
         private async void ButtonTravelersDiary_Click(object sender, EventArgs e)
         {
             var account = CheckAccount();
             if (account == null) return;
-            OutputBox.Text = await GetJson.GetTravelersDiaryInfo(account, (int)NumTravelerDiaryMonth.Value);
+            OutputBox.Text = JsonChecker<dynamic>.format(await GetJson.GetTravelersDiaryInfo(account, (int)NumTravelerDiaryMonth.Value));
         }
 
         private async void ButtonTravelersDiaryDetail_Click(object sender, EventArgs e)
         {
             var account = CheckAccount();
             if (account == null) return;
-            OutputBox.Text = await GetJson.GetTravelersDiaryDetail(account,(int)NumTravelerDiaryDetailType.Value,(int)NumTravelerDiaryDetailPage.Value,(int)NumTravelerDiaryDetailMonth.Value);
+            OutputBox.Text = JsonChecker<dynamic>.format(await GetJson.GetTravelersDiaryDetail(account,(int)NumTravelerDiaryDetailType.Value,(int)NumTravelerDiaryDetailPage.Value,(int)NumTravelerDiaryDetailMonth.Value));
         }
         private async void ButtonStellarJourney_Click(object sender, EventArgs e)
         {
             var account = CheckAccount();
             if (account == null) return;
-            OutputBox.Text = await GetJson.GetActiveQuery(account,DateTimeStellarJourneySince.Value);
+            OutputBox.Text = JsonChecker<dynamic>.format(await GetJson.GetActiveQuery(account,DateTimeStellarJourneySince.Value));
         }
 
         private async void ButtonCharacterDetail_Click(object sender, EventArgs e)
         {
             var account = CheckAccount();
             if (account == null) return;
-            OutputBox.Text = await GetJson.GetCharacterDetail(account, (int)NumCharacterDetailCharacterID.Value);
+            OutputBox.Text = JsonChecker<dynamic>.format(await GetJson.GetCharacterDetail(account, (int)NumCharacterDetailCharacterID.Value));
         }
 
     }

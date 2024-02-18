@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup Label="Globals">
-    <WebView2LoaderPreference>Static</WebView2LoaderPreference>
+    <WebView2LoaderPreference>Dynamic</WebView2LoaderPreference>
     <Platforms>AnyCPU;x64</Platforms>
   </PropertyGroup>
 
