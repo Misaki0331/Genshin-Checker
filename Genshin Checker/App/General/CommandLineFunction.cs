@@ -1,22 +1,23 @@
 ﻿using Genshin_Checker.resource.Languages;
 using Genshin_Checker.Window.Popup;
 using Microsoft.Toolkit.Uwp.Notifications;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Genshin_Checker.App.General
 {
     public class CommandLineFunction
     {
+        /// <summary>
+        /// 全てのトースト通知を削除
+        /// </summary>
         public static void AllToastClear()
         {
-            ToastNotificationManagerCompat.History.Clear(); 
+            ToastNotificationManagerCompat.History.Clear();
             Environment.Exit(0);
         }
+        /// <summary>
+        /// セーブデータの上書き
+        /// </summary>
+        /// <param name="path">上書きする圧縮データのパス</param>
         public static void Override(string path)
         {
             var a = App.General.MovingData.WriteToApp(path).Result;
@@ -33,6 +34,9 @@ namespace Genshin_Checker.App.General
                 Environment.Exit(0);
             }
         }
+        /// <summary>
+        /// セーブデータの削除
+        /// </summary>
         public static void AllDelete()
         {
             var a = new ChooseMessage(ManageUserData.FinalConfirm_Title, ManageUserData.FinalConfirm_Message, selectcount: 2, select1: Common.No, select2: Common.Yes);

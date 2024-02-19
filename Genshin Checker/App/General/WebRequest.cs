@@ -19,7 +19,15 @@ namespace Genshin_Checker.App
 {
     public class WebRequest
     {
+        /// <summary>
+        /// 基本的なユーザーエージェント
+        /// </summary>
         const string WebUserAgent = "Mozilla/5.0 (X11; Linux x86_64; rv:100.0) Gecko/20100101 Firefox/100.0";
+        /// <summary>
+        /// ランダムな文字列
+        /// </summary>
+        /// <param name="n">文字数</param>
+        /// <returns>文字数分のランダムな文字列</returns>
         static private string RandomString(int n)
         {
             const string chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
@@ -29,6 +37,11 @@ namespace Genshin_Checker.App
                 result += chars[random.Next(0, chars.Length)];
             return result;
         }
+        /// <summary>
+        /// ハッシュ情報
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
         static private string MD5Hash(string input)
         {
             using var md5 = MD5.Create();
@@ -38,10 +51,19 @@ namespace Genshin_Checker.App
                 builder.Append(b.ToString("x2"));
             return builder.ToString();
         }
+        /// <summary>
+        /// アプリ内のキャッシュファイルパス取得
+        /// </summary>
+        /// <param name="filename">ファイル名</param>
+        /// <returns>フルパス</returns>
         public static string GetCachePath(string filename)
         {
             return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Genshin Checker", "CacheFiles", filename); //水咲原神チェッカー
         }
+        /// <summary>
+        /// DS認証情報
+        /// </summary>
+        /// <returns></returns>
         static private string DS()
         {
             //Todo: saltはstatic APIに投げて動的に変更させる
@@ -52,6 +74,13 @@ namespace Genshin_Checker.App
             var input = $"salt={salt}&t={time}&r={r}";
             return $"{time},{r},{MD5Hash(input)}";
         }
+        /// <summary>
+        /// HoYoLab内GETリクエスト
+        /// </summary>
+        /// <param name="url">リクエスト先</param>
+        /// <param name="cookie">クッキー情報</param>
+        /// <param name="culture">言語</param>
+        /// <returns>JSON</returns>
         public static async Task<string> HoYoGetRequest(string url, string cookie, CultureInfo? culture = null)
         {
             culture ??= CultureInfo.CurrentCulture;
@@ -92,6 +121,14 @@ namespace Genshin_Checker.App
             }
             return await response.Content.ReadAsStringAsync();
         }
+        /// <summary>
+        /// HoYoLab内Postリクエスト
+        /// </summary>
+        /// <param name="url">URL</param>
+        /// <param name="cookie">クッキー</param>
+        /// <param name="data">データ</param>
+        /// <param name="culture">言語</param>
+        /// <returns>JSON</returns>
         public static async Task<string> HoYoPostRequest(string url, string cookie, string data, CultureInfo? culture = null)
         {
             culture ??= CultureInfo.CurrentCulture;
@@ -134,7 +171,13 @@ namespace Genshin_Checker.App
             }
             return await response.Content.ReadAsStringAsync();
         }
-        public static async Task<string> GeneralGetRequest(string url,bool HideUserAgent=false)
+        /// <summary>
+        /// 一般的なGETリクエスト
+        /// </summary>
+        /// <param name="url">URL</param>
+        /// <param name="HideUserAgent">一般的なユーザーエージェントを使用するか</param>
+        /// <returns>JSON</returns>
+        public static async Task<string> GeneralGetRequest(string url, bool HideUserAgent = false)
         {
             var uri = new Uri(url);
             var root = $"{uri.Scheme}://{uri.Host}";
@@ -159,9 +202,15 @@ namespace Genshin_Checker.App
             response.EnsureSuccessStatusCode();
             return await response.Content.ReadAsStringAsync();
         }
+        /// <summary>
+        /// ファイルのダウンロード
+        /// </summary>
+        /// <param name="url">URL</param>
+        /// <param name="token">キャンセルトークン</param>
+        /// <returns>ファイル</returns>
         public static async Task<byte[]?> GetRequest(string? url, CancellationToken? token = null)
         {
-            if(url==null)return null;
+            if (url == null) return null;
             var uri = new Uri(url);
             bool IsQuery = url.Contains('?');
             var filename = GetCachePath(MD5Hash(url));
@@ -238,14 +287,20 @@ namespace Genshin_Checker.App
             byte[] buffer = new byte[16 * 1024];
             using MemoryStream ms = new();
             stream.Position = 0;
-                int read;
-                while ((read = stream.Read(buffer, 0, buffer.Length)) > 0)
-                {
-                    ms.Write(buffer, 0, read);
-                }
-                return ms.ToArray();
+            int read;
+            while ((read = stream.Read(buffer, 0, buffer.Length)) > 0)
+            {
+                ms.Write(buffer, 0, read);
+            }
+            return ms.ToArray();
         }
-        public static async Task<Image> ImageGetRequest(string? url,CancellationToken? token=null)
+        /// <summary>
+        /// 画像の取得リクエスト
+        /// </summary>
+        /// <param name="url">URL</param>
+        /// <param name="token">キャンセルトークン</param>
+        /// <returns>画像データ</returns>
+        public static async Task<Image> ImageGetRequest(string? url, CancellationToken? token = null)
         {
             if (url == null) return resource.icon.fail;
             var stream = await GetRequest(url, token);

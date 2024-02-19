@@ -1,11 +1,6 @@
 ﻿using Genshin_Checker.resource.Languages;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Genshin_Checker.App.General
 {
@@ -31,12 +26,17 @@ namespace Genshin_Checker.App.General
                 Check(json);
                 return true;
             }
-            catch (Exception e) 
+            catch (Exception e)
             {
                 Trace.Write(e);
                 return false;
             }
         }
+        /// <summary>
+        /// jsonをフォーマット化する
+        /// </summary>
+        /// <param name="json"></param>
+        /// <returns></returns>
         public static string format(string json)
         {
             var j = Check(json);

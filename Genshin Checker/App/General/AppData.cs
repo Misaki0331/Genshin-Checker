@@ -1,32 +1,49 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.IO.Compression;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Genshin_Checker.App.General
 {
     internal class AppData
     {
+        /// <summary>
+        /// アプリディレクトリ
+        /// </summary>
         public static string AppDataDirectry { get => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Genshin Checker"); }
+        /// <summary>
+        /// ユーザーデータディレクトリ
+        /// </summary>
         public static string UserDataPath { get => Path.Combine(AppDataDirectry, UserDataDirectry); }
 #if DEBUG
         const string UserDataDirectry = "UserData.DEBUG";
 #else
         const string UserDataDirectry = "UserData";
 #endif
+        /// <summary>
+        /// ランダムなファイル名を取得
+        /// </summary>
+        /// <returns></returns>
         public static string GetRandomPath()
         {
             return $"{Path.GetRandomFileName().Replace(".", "")}.misaki_gsc"; //水咲原神チェッカー
         }
+        /// <summary>
+        /// ユーザーデータにファイルが存在するか
+        /// </summary>
+        /// <param name="path">ランダム化されたファイル名</param>
+        /// <returns>存在するか</returns>
         public static bool IsExistFile(string path)
         {
             return File.Exists(Path.Combine(UserDataPath, path));
         }
-        public static async Task<string?> LoadUserData(string path, bool compress = true, bool ReturnException=true)
+        /// <summary>
+        /// データをロードする
+        /// </summary>
+        /// <param name="path">ランダム化されたファイル名</param>
+        /// <param name="compress">圧縮済みの場合はチェック必須</param>
+        /// <param name="ReturnException">例外が発生した場合は処理を停止するか</param>
+        /// <returns>データ</returns>
+        public static async Task<string?> LoadUserData(string path, bool compress = true, bool ReturnException = true)
         {
 #if DEBUG
             compress = false;
@@ -58,6 +75,13 @@ namespace Genshin_Checker.App.General
                 return null;
             }
         }
+        /// <summary>
+        /// データをセーブする
+        /// </summary>
+        /// <param name="path">ランダム化されたファイル名</param>
+        /// <param name="data">データ</param>
+        /// <param name="compress">圧縮するかどうか</param>
+        /// <returns>成功したかどうか</returns>
         public static async Task<bool> SaveUserData(string path, string data, bool compress = true)
         {
 #if DEBUG
@@ -66,10 +90,10 @@ namespace Genshin_Checker.App.General
             try
             {
                 Trace.WriteLine($"SAVEFILE : {path}");
-                if(!Path.IsPathRooted(path))path = Path.Combine(UserDataPath, path);
+                if (!Path.IsPathRooted(path)) path = Path.Combine(UserDataPath, path);
                 if (!Path.IsPathRooted(path)) Path.Combine(UserDataPath, path);
                 var directory = Path.GetDirectoryName(path);
-                if(directory!=null&&!Directory.Exists(directory))Directory.CreateDirectory(directory);
+                if (directory != null && !Directory.Exists(directory)) Directory.CreateDirectory(directory);
                 if (compress)
                 {
                     byte[] buffer = Encoding.UTF8.GetBytes(data);

@@ -6,9 +6,15 @@ namespace Genshin_Checker.App.General
 {
     public class MovingData
     {
-        public static async Task<Exception?> BackupToZip(string path, bool IsWithCredential=false)
+        /// <summary>
+        /// バックアップ用のファイルを生成する。
+        /// </summary>
+        /// <param name="path">出力先パス</param>
+        /// <param name="IsWithCredential">認証情報を含めるか</param>
+        /// <returns>例外エラーが発生したかどうか</returns>
+        public static async Task<Exception?> BackupToZip(string path, bool IsWithCredential = false)
         {
-            string name = Path.Combine(Path.GetTempPath(),Path.GetRandomFileName().Replace(".",""));
+            string name = Path.Combine(Path.GetTempPath(), Path.GetRandomFileName().Replace(".", ""));
             try
             {
                 if (!Directory.Exists(name)) Directory.CreateDirectory(name);
@@ -20,26 +26,26 @@ namespace Genshin_Checker.App.General
                         File.Copy(info, Path.Combine(name, "UserData", Path.GetFileName(info)));
                     }
                 }
-                var sr = new StreamWriter(Path.Combine(name,"Settings"));
+                var sr = new StreamWriter(Path.Combine(name, "Settings"));
                 await sr.WriteAsync(Registry.GetJson(IsWithCredential));
                 sr.Close();
                 var dir = Path.GetDirectoryName(path);
-                if (!Directory.Exists(dir)&&dir!=null) Directory.CreateDirectory(dir);
+                if (!Directory.Exists(dir) && dir != null) Directory.CreateDirectory(dir);
                 if (File.Exists(path)) File.Delete(path);
-                ZipFile.CreateFromDirectory(name+"\\", path);
+                ZipFile.CreateFromDirectory(name + "\\", path);
                 Directory.Delete(name, true);
                 return null;
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
                 Trace.WriteLine(ex);
-                if (Directory.Exists(name)) Directory.Delete(name,true);
+                if (Directory.Exists(name)) Directory.Delete(name, true);
                 return ex;
             }
         }
-        public static async Task<Exception?> WriteToApp(string path,bool Recovery=false)
+        public static async Task<Exception?> WriteToApp(string path, bool Recovery = false)
         {
-            
+
             string name = Path.Combine(Path.GetTempPath(), Path.GetRandomFileName().Replace(".", ""));
             bool IsNeedRecovery = false;
             try
@@ -47,7 +53,7 @@ namespace Genshin_Checker.App.General
                 if (!File.Exists(path)) throw new FileNotFoundException("The file is not found.");
                 if (!Recovery)
                 {
-                    var ex = await BackupToZip(Path.Combine(AppData.AppDataDirectry, "Buckup.old_zip"),IsWithCredential: true);
+                    var ex = await BackupToZip(Path.Combine(AppData.AppDataDirectry, "Buckup.old_zip"), IsWithCredential: true);
                     if (ex != null)
                     {
                         throw new ArgumentException("Could not create buckup files.", ex);
@@ -61,10 +67,10 @@ namespace Genshin_Checker.App.General
                 var json = await sr.ReadToEndAsync();
                 sr.Close();
 
-                if(!JsonChecker<List<Registry.RegistryJson>>.IsValid(json))throw new InvalidDataException("json is invalid");
+                if (!JsonChecker<List<Registry.RegistryJson>>.IsValid(json)) throw new InvalidDataException("json is invalid");
                 IsNeedRecovery = true;
 
-                if(Directory.Exists(AppData.UserDataPath))Directory.Delete(AppData.UserDataPath, true);
+                if (Directory.Exists(AppData.UserDataPath)) Directory.Delete(AppData.UserDataPath, true);
                 Registry.AllClear();
                 Directory.CreateDirectory(AppData.UserDataPath);
                 foreach (var info in Directory.GetFiles(Path.Combine(name, "UserData")))
@@ -85,7 +91,7 @@ namespace Genshin_Checker.App.General
                     {
                         Trace.WriteLine("ロールバックします。");
                         var ex2 = await WriteToApp(Path.Combine(AppData.AppDataDirectry, "Buckup.old_zip"), true);
-                        if(ex2 != null)
+                        if (ex2 != null)
                         {
                             ex = new InvalidDataException($"{ManageUserData.FailedToRecovery}{ex2.GetType()}{ex2.Message}", ex);
                         }
@@ -96,7 +102,7 @@ namespace Genshin_Checker.App.General
                 if (Directory.Exists(name)) Directory.Delete(name, true);
                 return ex;
             }
-            
+
         }
         public static bool AllClear()
         {

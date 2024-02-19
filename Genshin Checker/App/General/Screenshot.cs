@@ -1,12 +1,6 @@
 ﻿using Genshin_Checker.resource.Languages;
-using OpenTK.Graphics.OpenGL;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing.Imaging;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Genshin_Checker.App.General
 {
@@ -67,6 +61,11 @@ namespace Genshin_Checker.App.General
             if (Option.Instance.ScreenShot.IsSaveAfterDelete) File.Delete(e);
             return path;
         }
+        /// <summary>
+        /// 画像フォーマットの変換
+        /// </summary>
+        /// <param name="format">フォーマット元</param>
+        /// <returns>フォーマットされた文字列</returns>
         public static async Task<string> GenerateFormat(string format)
         {
             var uid = await GameApp.CurrentUID();
@@ -92,9 +91,9 @@ namespace Genshin_Checker.App.General
             format = format.Replace("<DOW+>", $"{dow[(int)time.DayOfWeek].ToUpper()}");
             format = format.Replace("<DOW->", $"{dow[(int)time.DayOfWeek].ToLower()}");
             string[] monthname = new string[] { "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" };
-            format = format.Replace("<MONTHNAME>", $"{monthname[time.Month-1]}");
-            format = format.Replace("<MONTHNAME+>", $"{monthname[time.Month-1].ToUpper()}");
-            format = format.Replace("<MONTHNAME->", $"{monthname[time.Month-1].ToLower()}");
+            format = format.Replace("<MONTHNAME>", $"{monthname[time.Month - 1]}");
+            format = format.Replace("<MONTHNAME+>", $"{monthname[time.Month - 1].ToUpper()}");
+            format = format.Replace("<MONTHNAME->", $"{monthname[time.Month - 1].ToLower()}");
 
             format = format.Replace("<MONTHNAME3>", $"{monthname[time.Month - 1][..3]}");
             format = format.Replace("<MONTHNAME3+>", $"{monthname[time.Month - 1][..3].ToUpper()}");
@@ -109,6 +108,12 @@ namespace Genshin_Checker.App.General
 
             return format;
         }
+        /// <summary>
+        /// 指定文字列をフォーマット文字列として設定する。<br/>
+        /// エラーが無い場合は返り値が空文字列になる。
+        /// </summary>
+        /// <param name="format">フォーマット</param>
+        /// <returns>空の場合はエラーなし</returns>
         public static async Task<string> SetFileFormat(string format)
         {
             var invalid = Path.GetInvalidFileNameChars();
@@ -120,14 +125,13 @@ namespace Genshin_Checker.App.General
             if (format.EndsWith("/") || format.EndsWith("\\"))
                 return Localize.Error_ScreenshotFormat_LastCharacterIsSeparate;
 
-            if((await GenerateFormat(format)).Replace("\\", "_").Replace("/", "_").IndexOfAny(invalid) >= 0)
+            if ((await GenerateFormat(format)).Replace("\\", "_").Replace("/", "_").IndexOfAny(invalid) >= 0)
             {
                 return Localize.Error_ScreenshotFormat_InvalidCharacters;
             }
             else
             {
                 Option.Instance.ScreenShot.SaveFileFormat = format;
-                Registry.SetValue("Config\\Setting", "ScreenShotSaveFileFormat", $"{format}");
                 return "";
             }
         }

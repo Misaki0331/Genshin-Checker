@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Genshin_Checker.App.General
+﻿namespace Genshin_Checker.App.General
 {
     public static class GameDataStringToEventID
     {
@@ -31,7 +25,7 @@ namespace Genshin_Checker.App.General
 
         public static int GetIDFromString(string en_name)
         {
-            if(EventPairs.TryGetValue(en_name, out int id))
+            if (EventPairs.TryGetValue(en_name, out int id))
                 return id;
             return int.MinValue;
         }

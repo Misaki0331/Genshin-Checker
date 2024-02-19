@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Genshin_Checker.App.General
+﻿namespace Genshin_Checker.App.General
 {
     public static class AppUpdater
     {
@@ -22,6 +16,10 @@ namespace Genshin_Checker.App.General
                 return $"{System.Reflection.Assembly.GetExecutingAssembly().GetName().Version}";
             }
         }
+        /// <summary>
+        /// バージョンチェック
+        /// </summary>
+        /// <returns>新しいバージョンがあるかどうか</returns>
         public static async Task<bool> CheckVersion()
         {
             var root = JsonChecker<Model.GitHub.Latest.Root>.Check(await WebRequest.GeneralGetRequest("https://api.github.com/repos/misaki0331/genshin-checker/releases/latest"));
@@ -29,7 +27,7 @@ namespace Genshin_Checker.App.General
             NewVersionName = root.name;
             LatestReleaseTime = root.published_at;
             UpdateBody = root.body;
-            if(root.assets.Count > 0)
+            if (root.assets.Count > 0)
             {
                 DownloadCount = root.assets[0].download_count;
                 ApplicationSize = root.assets[0].size;
@@ -39,13 +37,14 @@ namespace Genshin_Checker.App.General
             var current = CurrentVersion.Split(".");
             var latest = NewVersion.Split(".");
             bool IsNewRelease = false;
-            for(int i = 0; i < Math.Min(current.Length, latest.Length); i++)
+            for (int i = 0; i < Math.Min(current.Length, latest.Length); i++)
             {
-                if (int.TryParse(current[i],out int c) && int.TryParse(latest[i],out int l)) {
+                if (int.TryParse(current[i], out int c) && int.TryParse(latest[i], out int l))
+                {
                     if (c > l) break;
                     if (c < l)
                     {
-                        IsNewRelease = true; 
+                        IsNewRelease = true;
                         break;
                     }
                 }

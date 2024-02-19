@@ -1,21 +1,20 @@
-﻿using OpenTK.Graphics.OpenGL;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
+﻿using System.Diagnostics;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace Genshin_Checker.App.General
 {
     public static class GameApp
     {
+        /// <summary>
+        /// ゲーム本体のディレクトリの取得
+        /// </summary>
+        /// <returns>成功した場合はパスが返ってくる</returns>
         public static async Task<string?> WhereGameDir()
         {
             string PATH = $"{Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)}\\AppData\\LocalLow\\miHoYo\\Genshin Impact";
             const string FILENAME = "output_log.txt";
-            FileStream? fs=null;
+            FileStream? fs = null;
             try
             {
                 fs = new($"{PATH}/{FILENAME}", FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
@@ -41,7 +40,10 @@ namespace Genshin_Checker.App.General
             }
             return null;
         }
-
+        /// <summary>
+        /// ゲーム内Webキャッシュファイルの取得
+        /// </summary>
+        /// <returns>成功した場合はパスが返ってくる</returns>
         public static async Task<string?> WhereWebCacheFilePath()
         {
             var gamedir = await WhereGameDir();
@@ -52,6 +54,10 @@ namespace Genshin_Checker.App.General
             if (!File.Exists(path)) return null;
             return path;
         }
+        /// <summary>
+        /// スクリーンショットのディレクトリを取得
+        /// </summary>
+        /// <returns>成功した場合はパスが返ってくる</returns>
         public static async Task<string?> WhereScreenShotPath()
         {
             var str = await WhereGameDir();
@@ -61,6 +67,10 @@ namespace Genshin_Checker.App.General
             if (Directory.Exists(path)) return path;
             else return null;
         }
+        /// <summary>
+        /// ゲーム内のUIDを取得(再起動するまで値は変わらない)
+        /// </summary>
+        /// <returns>UID</returns>
         public static async Task<string?> CurrentUID()
         {
             string PATH = $"{Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)}\\AppData\\LocalLow\\miHoYo\\Genshin Impact";

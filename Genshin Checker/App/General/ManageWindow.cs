@@ -7,6 +7,10 @@ namespace Genshin_Checker.App.General
     public static class ManageWindow
     {
         static readonly List<Form> FormList = new();
+        /// <summary>
+        /// 該当アカウントのウィンドウを削除する
+        /// </summary>
+        /// <param name="account"></param>
         public static void CloseDiposedAccount(Account account)
         {
             var find = FormList.FindAll(a => a.Name.StartsWith($"{account.UID}"));
@@ -20,7 +24,12 @@ namespace Genshin_Checker.App.General
                 catch { }
             }
         }
-        public static void OpenWindow(Account? account, string name)
+        /// <summary>
+        /// ウィンドウを表示、あるいはアクティベートする
+        /// </summary>
+        /// <param name="account">アカウント</param>
+        /// <param name="name">種類</param>
+        public static Form OpenWindow(Account? account, string name)
         {
             string Name = $"{(account != null ? account.UID : "null")},{name}";
             var delete = FormList.Find(a => a.Name == Name && a.IsDisposed);
@@ -83,11 +92,12 @@ namespace Genshin_Checker.App.General
                             break;
                     }
             }
-            if (find == null) return;
+            if (find == null) throw new ArgumentException($"{Name} is no form names.");
             if (IsAdd) FormList.Add(find);
-            find.Show();
             if (find.WindowState == FormWindowState.Minimized) find.WindowState = FormWindowState.Normal;
+            find.Show();
             find.Activate();
+            return find;
         }
     }
 }
