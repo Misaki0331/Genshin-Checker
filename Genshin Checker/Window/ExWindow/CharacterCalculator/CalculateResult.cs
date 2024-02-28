@@ -542,6 +542,7 @@ namespace Genshin_Checker.Window.ExWindow.CharacterCalculator
                             break;
                         case nameof(CharacterViewLocalItemNum):
                             e.CellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                            if (character.localitem == null) e.Value = "";
                             break;
                         case nameof(CharacterViewTalentName):
                             if (character.talent.type == -1)
