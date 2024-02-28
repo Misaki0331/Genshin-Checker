@@ -596,7 +596,6 @@
   </metadata>
   <data name="LocalSpecialtyItemImage.HeaderText" xml:space="preserve">
     <value />
-    <comment>@Invariant</comment>
   </data>
   <data name="LocalSpecialtyItemImage.Width" type="System.Int32, mscorlib">
     <value>20</value>
@@ -783,7 +782,6 @@
   </metadata>
   <data name="BossItemImage.HeaderText" xml:space="preserve">
     <value> </value>
-    <comment>@Invariant</comment>
   </data>
   <data name="BossItemImage.Width" type="System.Int32, mscorlib">
     <value>19</value>
@@ -1700,7 +1698,6 @@
   </metadata>
   <data name="WeeklyBossItemImage.HeaderText" xml:space="preserve">
     <value />
-    <comment>@Invariant</comment>
   </data>
   <data name="WeeklyBossItemImage.Width" type="System.Int32, mscorlib">
     <value>20</value>
@@ -1848,7 +1845,6 @@
   </metadata>
   <data name="EnemyItemImage.HeaderText" xml:space="preserve">
     <value />
-    <comment>@Invariant</comment>
   </data>
   <data name="EnemyItemImage.Width" type="System.Int32, mscorlib">
     <value>20</value>
@@ -2486,6 +2482,177 @@
   <data name="&gt;&gt;tabPage3.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
+  <metadata name="CharacterViewID.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="CharacterViewID.HeaderText" xml:space="preserve">
+    <value>ID</value>
+  </data>
+  <data name="CharacterViewID.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <metadata name="CharacterViewRarity.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="CharacterViewRarity.HeaderText" xml:space="preserve">
+    <value>★</value>
+  </data>
+  <data name="CharacterViewRarity.ToolTipText" xml:space="preserve">
+    <value>Rarity</value>
+  </data>
+  <data name="CharacterViewRarity.Width" type="System.Int32, mscorlib">
+    <value>20</value>
+  </data>
+  <metadata name="CharacterViewName.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="CharacterViewName.HeaderText" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="CharacterViewName.MinimumWidth" type="System.Int32, mscorlib">
+    <value>80</value>
+  </data>
+  <metadata name="CharacterViewLocalIcon.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="CharacterViewLocalIcon.HeaderText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="CharacterViewLocalIcon.Width" type="System.Int32, mscorlib">
+    <value>20</value>
+  </data>
+  <metadata name="CharacterViewLocalItemName.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="CharacterViewLocalItemName.HeaderText" xml:space="preserve">
+    <value>Local name</value>
+  </data>
+  <data name="CharacterViewLocalItemName.MinimumWidth" type="System.Int32, mscorlib">
+    <value>100</value>
+  </data>
+  <metadata name="CharacterViewLocalItemNum.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="CharacterViewLocalItemNum.HeaderText" xml:space="preserve">
+    <value>Requied</value>
+  </data>
+  <data name="CharacterViewLocalItemNum.Width" type="System.Int32, mscorlib">
+    <value>64</value>
+  </data>
+  <metadata name="CharacterViewTalentName.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="CharacterViewTalentName.HeaderText" xml:space="preserve">
+    <value>Talents name</value>
+  </data>
+  <data name="CharacterViewTalentName.MinimumWidth" type="System.Int32, mscorlib">
+    <value>100</value>
+  </data>
+  <metadata name="CharacterViewTalentDay.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="CharacterViewTalentDay.HeaderText" xml:space="preserve">
+    <value>Unlock</value>
+  </data>
+  <data name="CharacterViewTalentDay.Width" type="System.Int32, mscorlib">
+    <value>60</value>
+  </data>
+  <metadata name="CharacterViewTalentTNum.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="CharacterViewTalentTNum.HeaderText" xml:space="preserve">
+    <value>T</value>
+  </data>
+  <data name="CharacterViewTalentTNum.Width" type="System.Int32, mscorlib">
+    <value>32</value>
+  </data>
+  <metadata name="CharacterViewTalentGNum.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="CharacterViewTalentGNum.HeaderText" xml:space="preserve">
+    <value>G</value>
+  </data>
+  <data name="CharacterViewTalentGNum.Width" type="System.Int32, mscorlib">
+    <value>32</value>
+  </data>
+  <metadata name="CharacterViewTalentPNum.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="CharacterViewTalentPNum.HeaderText" xml:space="preserve">
+    <value>P</value>
+  </data>
+  <data name="CharacterViewTalentPNum.Width" type="System.Int32, mscorlib">
+    <value>32</value>
+  </data>
+  <metadata name="CharacterViewHerosWitNum.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="CharacterViewHerosWitNum.HeaderText" xml:space="preserve">
+    <value>Hero's wit</value>
+  </data>
+  <data name="CharacterViewHerosWitNum.Width" type="System.Int32, mscorlib">
+    <value>75</value>
+  </data>
+  <metadata name="CharacterViewMoraTotal.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="CharacterViewMoraTotal.HeaderText" xml:space="preserve">
+    <value>Mora</value>
+  </data>
+  <data name="CharacterViewMoraTotal.Width" type="System.Int32, mscorlib">
+    <value>75</value>
+  </data>
+  <data name="CharacterView.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="CharacterView.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="CharacterView.Size" type="System.Drawing.Size, System.Drawing">
+    <value>796, 466</value>
+  </data>
+  <data name="CharacterView.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;CharacterView.Name" xml:space="preserve">
+    <value>CharacterView</value>
+  </data>
+  <data name="&gt;&gt;CharacterView.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;CharacterView.Parent" xml:space="preserve">
+    <value>tabPage4</value>
+  </data>
+  <data name="&gt;&gt;CharacterView.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="tabPage4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 24</value>
+  </data>
+  <data name="tabPage4.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="tabPage4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>802, 472</value>
+  </data>
+  <data name="tabPage4.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="tabPage4.Text" xml:space="preserve">
+    <value>Characters</value>
+  </data>
+  <data name="&gt;&gt;tabPage4.Name" xml:space="preserve">
+    <value>tabPage4</value>
+  </data>
+  <data name="&gt;&gt;tabPage4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPage4.Parent" xml:space="preserve">
+    <value>tabControl1</value>
+  </data>
+  <data name="&gt;&gt;tabPage4.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
   <data name="tabControl1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
@@ -2700,6 +2867,84 @@
     <value>EnemyItemTotalNum</value>
   </data>
   <data name="&gt;&gt;EnemyItemTotalNum.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;CharacterViewID.Name" xml:space="preserve">
+    <value>CharacterViewID</value>
+  </data>
+  <data name="&gt;&gt;CharacterViewID.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;CharacterViewRarity.Name" xml:space="preserve">
+    <value>CharacterViewRarity</value>
+  </data>
+  <data name="&gt;&gt;CharacterViewRarity.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;CharacterViewName.Name" xml:space="preserve">
+    <value>CharacterViewName</value>
+  </data>
+  <data name="&gt;&gt;CharacterViewName.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;CharacterViewLocalIcon.Name" xml:space="preserve">
+    <value>CharacterViewLocalIcon</value>
+  </data>
+  <data name="&gt;&gt;CharacterViewLocalIcon.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewImageColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;CharacterViewLocalItemName.Name" xml:space="preserve">
+    <value>CharacterViewLocalItemName</value>
+  </data>
+  <data name="&gt;&gt;CharacterViewLocalItemName.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;CharacterViewLocalItemNum.Name" xml:space="preserve">
+    <value>CharacterViewLocalItemNum</value>
+  </data>
+  <data name="&gt;&gt;CharacterViewLocalItemNum.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;CharacterViewTalentName.Name" xml:space="preserve">
+    <value>CharacterViewTalentName</value>
+  </data>
+  <data name="&gt;&gt;CharacterViewTalentName.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;CharacterViewTalentDay.Name" xml:space="preserve">
+    <value>CharacterViewTalentDay</value>
+  </data>
+  <data name="&gt;&gt;CharacterViewTalentDay.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;CharacterViewTalentTNum.Name" xml:space="preserve">
+    <value>CharacterViewTalentTNum</value>
+  </data>
+  <data name="&gt;&gt;CharacterViewTalentTNum.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;CharacterViewTalentGNum.Name" xml:space="preserve">
+    <value>CharacterViewTalentGNum</value>
+  </data>
+  <data name="&gt;&gt;CharacterViewTalentGNum.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;CharacterViewTalentPNum.Name" xml:space="preserve">
+    <value>CharacterViewTalentPNum</value>
+  </data>
+  <data name="&gt;&gt;CharacterViewTalentPNum.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;CharacterViewHerosWitNum.Name" xml:space="preserve">
+    <value>CharacterViewHerosWitNum</value>
+  </data>
+  <data name="&gt;&gt;CharacterViewHerosWitNum.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;CharacterViewMoraTotal.Name" xml:space="preserve">
+    <value>CharacterViewMoraTotal</value>
+  </data>
+  <data name="&gt;&gt;CharacterViewMoraTotal.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">

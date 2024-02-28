@@ -185,7 +185,6 @@ GitHub : https://github.com/Misaki0331</Description>
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Resources\" />
     <Folder Include="Window\Contains\" />
   </ItemGroup>
 

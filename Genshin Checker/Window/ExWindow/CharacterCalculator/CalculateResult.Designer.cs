@@ -132,6 +132,21 @@
             panel15 = new Panel();
             ResinCharaExp = new Label();
             label15 = new Label();
+            tabPage4 = new TabPage();
+            CharacterView = new DataGridView();
+            CharacterViewID = new DataGridViewTextBoxColumn();
+            CharacterViewRarity = new DataGridViewTextBoxColumn();
+            CharacterViewName = new DataGridViewTextBoxColumn();
+            CharacterViewLocalIcon = new DataGridViewImageColumn();
+            CharacterViewLocalItemName = new DataGridViewTextBoxColumn();
+            CharacterViewLocalItemNum = new DataGridViewTextBoxColumn();
+            CharacterViewTalentName = new DataGridViewTextBoxColumn();
+            CharacterViewTalentDay = new DataGridViewTextBoxColumn();
+            CharacterViewTalentTNum = new DataGridViewTextBoxColumn();
+            CharacterViewTalentGNum = new DataGridViewTextBoxColumn();
+            CharacterViewTalentPNum = new DataGridViewTextBoxColumn();
+            CharacterViewHerosWitNum = new DataGridViewTextBoxColumn();
+            CharacterViewMoraTotal = new DataGridViewTextBoxColumn();
             panel1.SuspendLayout();
             ProgressPanel.SuspendLayout();
             tableLayoutPanel4.SuspendLayout();
@@ -175,6 +190,8 @@
             panel13.SuspendLayout();
             panel11.SuspendLayout();
             panel15.SuspendLayout();
+            tabPage4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)CharacterView).BeginInit();
             SuspendLayout();
             // 
             // panel1
@@ -276,6 +293,7 @@
             tabControl1.Controls.Add(tabPage1);
             tabControl1.Controls.Add(tabPage2);
             tabControl1.Controls.Add(tabPage3);
+            tabControl1.Controls.Add(tabPage4);
             resources.ApplyResources(tabControl1, "tabControl1");
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
@@ -972,6 +990,140 @@
             resources.ApplyResources(label15, "label15");
             label15.Name = "label15";
             // 
+            // tabPage4
+            // 
+            tabPage4.Controls.Add(CharacterView);
+            resources.ApplyResources(tabPage4, "tabPage4");
+            tabPage4.Name = "tabPage4";
+            tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // CharacterView
+            // 
+            CharacterView.AllowUserToAddRows = false;
+            CharacterView.AllowUserToDeleteRows = false;
+            CharacterView.AllowUserToResizeColumns = false;
+            CharacterView.AllowUserToResizeRows = false;
+            CharacterView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            CharacterView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            CharacterView.Columns.AddRange(new DataGridViewColumn[] { CharacterViewID, CharacterViewRarity, CharacterViewName, CharacterViewLocalIcon, CharacterViewLocalItemName, CharacterViewLocalItemNum, CharacterViewTalentName, CharacterViewTalentDay, CharacterViewTalentTNum, CharacterViewTalentGNum, CharacterViewTalentPNum, CharacterViewHerosWitNum, CharacterViewMoraTotal });
+            resources.ApplyResources(CharacterView, "CharacterView");
+            CharacterView.EnableHeadersVisualStyles = false;
+            CharacterView.Name = "CharacterView";
+            CharacterView.ReadOnly = true;
+            CharacterView.RowHeadersVisible = false;
+            CharacterView.RowTemplate.Height = 25;
+            CharacterView.CellFormatting += TableFormatting;
+            // 
+            // CharacterViewID
+            // 
+            resources.ApplyResources(CharacterViewID, "CharacterViewID");
+            CharacterViewID.Name = "CharacterViewID";
+            CharacterViewID.ReadOnly = true;
+            // 
+            // CharacterViewRarity
+            // 
+            CharacterViewRarity.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            CharacterViewRarity.FillWeight = 20F;
+            resources.ApplyResources(CharacterViewRarity, "CharacterViewRarity");
+            CharacterViewRarity.Name = "CharacterViewRarity";
+            CharacterViewRarity.ReadOnly = true;
+            CharacterViewRarity.Resizable = DataGridViewTriState.False;
+            CharacterViewRarity.SortMode = DataGridViewColumnSortMode.NotSortable;
+            // 
+            // CharacterViewName
+            // 
+            CharacterViewName.DividerWidth = 1;
+            CharacterViewName.FillWeight = 40F;
+            resources.ApplyResources(CharacterViewName, "CharacterViewName");
+            CharacterViewName.Name = "CharacterViewName";
+            CharacterViewName.ReadOnly = true;
+            CharacterViewName.Resizable = DataGridViewTriState.False;
+            // 
+            // CharacterViewLocalIcon
+            // 
+            CharacterViewLocalIcon.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            resources.ApplyResources(CharacterViewLocalIcon, "CharacterViewLocalIcon");
+            CharacterViewLocalIcon.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            CharacterViewLocalIcon.Name = "CharacterViewLocalIcon";
+            CharacterViewLocalIcon.ReadOnly = true;
+            CharacterViewLocalIcon.Resizable = DataGridViewTriState.True;
+            CharacterViewLocalIcon.SortMode = DataGridViewColumnSortMode.Automatic;
+            // 
+            // CharacterViewLocalItemName
+            // 
+            CharacterViewLocalItemName.FillWeight = 50F;
+            resources.ApplyResources(CharacterViewLocalItemName, "CharacterViewLocalItemName");
+            CharacterViewLocalItemName.Name = "CharacterViewLocalItemName";
+            CharacterViewLocalItemName.ReadOnly = true;
+            CharacterViewLocalItemName.Resizable = DataGridViewTriState.False;
+            // 
+            // CharacterViewLocalItemNum
+            // 
+            CharacterViewLocalItemNum.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            CharacterViewLocalItemNum.DividerWidth = 1;
+            CharacterViewLocalItemNum.FillWeight = 20F;
+            resources.ApplyResources(CharacterViewLocalItemNum, "CharacterViewLocalItemNum");
+            CharacterViewLocalItemNum.Name = "CharacterViewLocalItemNum";
+            CharacterViewLocalItemNum.ReadOnly = true;
+            CharacterViewLocalItemNum.Resizable = DataGridViewTriState.False;
+            // 
+            // CharacterViewTalentName
+            // 
+            CharacterViewTalentName.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            CharacterViewTalentName.FillWeight = 40F;
+            resources.ApplyResources(CharacterViewTalentName, "CharacterViewTalentName");
+            CharacterViewTalentName.Name = "CharacterViewTalentName";
+            CharacterViewTalentName.ReadOnly = true;
+            // 
+            // CharacterViewTalentDay
+            // 
+            CharacterViewTalentDay.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            resources.ApplyResources(CharacterViewTalentDay, "CharacterViewTalentDay");
+            CharacterViewTalentDay.Name = "CharacterViewTalentDay";
+            CharacterViewTalentDay.ReadOnly = true;
+            // 
+            // CharacterViewTalentTNum
+            // 
+            CharacterViewTalentTNum.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            CharacterViewTalentTNum.FillWeight = 10F;
+            resources.ApplyResources(CharacterViewTalentTNum, "CharacterViewTalentTNum");
+            CharacterViewTalentTNum.Name = "CharacterViewTalentTNum";
+            CharacterViewTalentTNum.ReadOnly = true;
+            // 
+            // CharacterViewTalentGNum
+            // 
+            CharacterViewTalentGNum.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            CharacterViewTalentGNum.FillWeight = 10F;
+            resources.ApplyResources(CharacterViewTalentGNum, "CharacterViewTalentGNum");
+            CharacterViewTalentGNum.Name = "CharacterViewTalentGNum";
+            CharacterViewTalentGNum.ReadOnly = true;
+            // 
+            // CharacterViewTalentPNum
+            // 
+            CharacterViewTalentPNum.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            CharacterViewTalentPNum.DividerWidth = 1;
+            CharacterViewTalentPNum.FillWeight = 10F;
+            resources.ApplyResources(CharacterViewTalentPNum, "CharacterViewTalentPNum");
+            CharacterViewTalentPNum.Name = "CharacterViewTalentPNum";
+            CharacterViewTalentPNum.ReadOnly = true;
+            // 
+            // CharacterViewHerosWitNum
+            // 
+            CharacterViewHerosWitNum.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            CharacterViewHerosWitNum.DividerWidth = 1;
+            CharacterViewHerosWitNum.FillWeight = 25F;
+            resources.ApplyResources(CharacterViewHerosWitNum, "CharacterViewHerosWitNum");
+            CharacterViewHerosWitNum.Name = "CharacterViewHerosWitNum";
+            CharacterViewHerosWitNum.ReadOnly = true;
+            // 
+            // CharacterViewMoraTotal
+            // 
+            CharacterViewMoraTotal.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            CharacterViewMoraTotal.FillWeight = 30F;
+            resources.ApplyResources(CharacterViewMoraTotal, "CharacterViewMoraTotal");
+            CharacterViewMoraTotal.Name = "CharacterViewMoraTotal";
+            CharacterViewMoraTotal.ReadOnly = true;
+            // 
             // CalculateResult
             // 
             resources.ApplyResources(this, "$this");
@@ -1041,6 +1193,8 @@
             panel11.PerformLayout();
             panel15.ResumeLayout(false);
             panel15.PerformLayout();
+            tabPage4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)CharacterView).EndInit();
             ResumeLayout(false);
         }
 
@@ -1148,5 +1302,20 @@
         private DataGridViewImageColumn WeeklyBossItemImage;
         private DataGridViewTextBoxColumn WeeklyBossItemName;
         private DataGridViewTextBoxColumn WeeklyBossItemNum;
+        private TabPage tabPage4;
+        private DataGridView CharacterView;
+        private DataGridViewTextBoxColumn CharacterViewID;
+        private DataGridViewTextBoxColumn CharacterViewRarity;
+        private DataGridViewTextBoxColumn CharacterViewName;
+        private DataGridViewImageColumn CharacterViewLocalIcon;
+        private DataGridViewTextBoxColumn CharacterViewLocalItemName;
+        private DataGridViewTextBoxColumn CharacterViewLocalItemNum;
+        private DataGridViewTextBoxColumn CharacterViewTalentName;
+        private DataGridViewTextBoxColumn CharacterViewTalentDay;
+        private DataGridViewTextBoxColumn CharacterViewTalentTNum;
+        private DataGridViewTextBoxColumn CharacterViewTalentGNum;
+        private DataGridViewTextBoxColumn CharacterViewTalentPNum;
+        private DataGridViewTextBoxColumn CharacterViewHerosWitNum;
+        private DataGridViewTextBoxColumn CharacterViewMoraTotal;
     }
 }

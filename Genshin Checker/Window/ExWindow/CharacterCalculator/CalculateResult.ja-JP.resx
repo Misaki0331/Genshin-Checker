@@ -334,4 +334,46 @@
   <data name="groupBox3.Text" xml:space="preserve">
     <value>精鋭ボス素材</value>
   </data>
+  <data name="CharacterViewID.HeaderText" xml:space="preserve">
+    <value>ID</value>
+  </data>
+  <data name="CharacterViewRarity.HeaderText" xml:space="preserve">
+    <value>★</value>
+  </data>
+  <data name="CharacterViewRarity.ToolTipText" xml:space="preserve">
+    <value>レアリティ</value>
+  </data>
+  <data name="CharacterViewTalentDay.HeaderText" xml:space="preserve">
+    <value>開放日</value>
+  </data>
+  <data name="CharacterViewName.HeaderText" xml:space="preserve">
+    <value>キャラクター名</value>
+  </data>
+  <data name="CharacterViewLocalItemName.HeaderText" xml:space="preserve">
+    <value>特産素材</value>
+  </data>
+  <data name="CharacterViewLocalItemNum.HeaderText" xml:space="preserve">
+    <value>必要数</value>
+  </data>
+  <data name="CharacterViewTalentName.HeaderText" xml:space="preserve">
+    <value>天賦素材</value>
+  </data>
+  <data name="CharacterViewTalentTNum.HeaderText" xml:space="preserve">
+    <value>教え</value>
+  </data>
+  <data name="CharacterViewTalentGNum.HeaderText" xml:space="preserve">
+    <value>導き</value>
+  </data>
+  <data name="CharacterViewTalentPNum.HeaderText" xml:space="preserve">
+    <value>哲学</value>
+  </data>
+  <data name="CharacterViewHerosWitNum.HeaderText" xml:space="preserve">
+    <value>大英雄の経験</value>
+  </data>
+  <data name="CharacterViewMoraTotal.HeaderText" xml:space="preserve">
+    <value>合計モラ</value>
+  </data>
+  <data name="tabPage4.Text" xml:space="preserve">
+    <value>キャラクター</value>
+  </data>
 </root>

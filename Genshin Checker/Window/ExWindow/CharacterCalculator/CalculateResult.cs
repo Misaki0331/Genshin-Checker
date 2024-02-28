@@ -101,6 +101,7 @@ namespace Genshin_Checker.Window.ExWindow.CharacterCalculator
 
 
         }
+        List<CharacterData> characterDatas = new();
         private async void CalculateResult_Load(object sender, EventArgs e)
         {
             int CharacterMora = 0;
@@ -112,9 +113,19 @@ namespace Genshin_Checker.Window.ExWindow.CharacterCalculator
             int cnt = 0;
             try
             {
+                characterDatas.Clear();
                 var characters = await Account.Characters.GetData();
                 foreach(Input input in Inputs)
                 {
+                    var RequiedItemData = new CharacterData();
+                    RequiedItemData.id = input.characterID;
+                    var chr = characters.avatars.Find(a => a.id == input.characterID);
+                    if (chr != null)
+                    {
+                        RequiedItemData.name = chr.name;
+                        RequiedItemData.element = Element.GetElementEnum(chr.element);
+                        RequiedItemData.star = chr.rarity;
+                    }
                     cnt++;
                     ProgressState.Text = string.Format(Localize.WindowName_CalculateResult_Loading, cnt, Inputs.Count);
                     progressBar.Value = 10000*cnt/Inputs.Count;
@@ -147,12 +158,14 @@ namespace Genshin_Checker.Window.ExWindow.CharacterCalculator
                     {
                         if (data.id == 202) //モラ
                         {
+                            RequiedItemData.Mora = data.num;
                             CharacterMora += data.num;
                             CharacterMoraResult.Text = $"{CharacterMora:#,##0}";
                             TotalMoraResult.Text = $"{(TalentMora + CharacterMora):#,##0}";
                         }
                         else if (data.id == 104003) //大英雄の経験
                         {
+                            RequiedItemData.HerosWit = data.num;
                             CharacterExp += data.num;
                             CharacterExpResult.Text = $"{CharacterExp:#,##0}";
                         }
@@ -162,10 +175,22 @@ namespace Genshin_Checker.Window.ExWindow.CharacterCalculator
                             string type = "";
                             switch (data.id % 10) //アイテムIDの1の位
                             {
-                                case 1: type = nameof(AscensionNumSliver); break;
-                                case 2: type = nameof(AscensionNumFragment); break;
-                                case 3: type = nameof(AscensionNumChunk); break;
-                                case 4: type = nameof(AscensionNumGemstone); break;
+                                case 1:
+                                    RequiedItemData.ascension.Sliver = data.num;
+                                    type = nameof(AscensionNumSliver); 
+                                    break;
+                                case 2:
+                                    RequiedItemData.ascension.Fragment = data.num;
+                                    type = nameof(AscensionNumFragment); 
+                                    break;
+                                case 3:
+                                    RequiedItemData.ascension.Chunk = data.num;
+                                    type = nameof(AscensionNumChunk); 
+                                    break;
+                                case 4:
+                                    RequiedItemData.ascension.Gemstone = data.num;
+                                    type = nameof(AscensionNumGemstone); 
+                                    break;
                                 default: throw new ArgumentException(string.Format(Localize.Error_CalculateResult_InvalidItemID, data.id, data.name));
                             }
                             var row = GetRow(ViewAscensionMaterial, a => (int)a.Cells[nameof(AscensionTypeID)].Value == id);
@@ -178,6 +203,7 @@ namespace Genshin_Checker.Window.ExWindow.CharacterCalculator
                         }
                         else if (data.id > 113000 && data.id < 114000)
                         {
+                            RequiedItemData.enemybossitem = new() { iconurl = data.icon_url, name = data.name, id = data.id, num = data.num };
                             var row = GetRow(ViewBossItem, a => (int)a.Cells[nameof(BossItemID)].Value == data.id);
                             if (row == null)
                             {
@@ -188,6 +214,7 @@ namespace Genshin_Checker.Window.ExWindow.CharacterCalculator
                         }
                         else if ((data.id > 100000 && data.id <= 100099) || (data.id > 101200 && data.id <= 101299))
                         {
+                            RequiedItemData.localitem = new() { iconurl = data.icon_url, name = data.name, id = data.id, num = data.num };
                             var row = GetRow(ViewLocalSpecialtyItem, a => (int)a.Cells[nameof(LocalSpecialtyID)].Value == data.id);
                             if (row == null)
                             {
@@ -196,6 +223,9 @@ namespace Genshin_Checker.Window.ExWindow.CharacterCalculator
                             else row.Cells[nameof(LocalSpecialtyItemNum)].Value = (int)row.Cells[nameof(LocalSpecialtyItemNum)].Value + data.num;
                         }else if ((data.id >= 112002 && data.id < 113000))
                         {
+                            var find = RequiedItemData.items.Find(a => a.id == data.id);
+                            if (find != null) find.num += data.num;
+                            else RequiedItemData.items.Add(new() { iconurl = data.icon_url, name = data.name, id = data.id, num = data.num });
                             var row = GetRow(ViewEnemyItems, a => (int)a.Cells[nameof(EnemyItemID)].Value == data.id);
                             if (row == null)
                             {
@@ -213,12 +243,14 @@ namespace Genshin_Checker.Window.ExWindow.CharacterCalculator
                     {
                         if (data.id == 202)
                         {
+                            RequiedItemData.Mora += data.num;
                             TalentMora += data.num;
                             TalentMoraResult.Text = $"{TalentMora:#,##0}";
                             TotalMoraResult.Text = $"{(TalentMora + CharacterMora):#,##0}";
                         }
                         else if (data.id == 104319)
                         {
+                            RequiedItemData.talentcrown += data.num;
                             TalentCrown += data.num;
                             TalentCrownResult.Text = $"{TalentCrown:#,##0}";
                         }
@@ -226,13 +258,25 @@ namespace Genshin_Checker.Window.ExWindow.CharacterCalculator
                         {
                             var id = data.id - 104301;
                             if (id >= 19) id -= 1;
-                            string pos = (id % 3) switch
+                            string pos = "";
+                            switch(id % 3)
                             {
-                                0 => nameof(TalentItemNumTeachings),
-                                1 => nameof(TalentItemNumGuide),
-                                2 => nameof(TalentItemNumPhilosophies),
-                                _ => throw new ArgumentException(string.Format(Localize.Error_CalculateResult_InvalidItemID, data.id, data.name))
+                                case 0 : 
+                                    pos = nameof(TalentItemNumTeachings);
+                                    RequiedItemData.talent.teaching = data.num;
+                                    break;
+                                case 1 : 
+                                    pos = nameof(TalentItemNumGuide);
+                                    RequiedItemData.talent.guide = data.num;
+                                    break;
+                                case 2 : 
+                                    pos = nameof(TalentItemNumPhilosophies);
+                                    RequiedItemData.talent.philosophies = data.num;
+                                    break;
+                                default: 
+                                    throw new ArgumentException(string.Format(Localize.Error_CalculateResult_InvalidItemID, data.id, data.name));
                             };
+                            RequiedItemData.talent.type = id / 3;
                             var row = GetRow(ViewTalentItems, a => (int)a.Cells[nameof(TalentItemID)].Value == id / 3);
                             if (row == null)
                             {
@@ -247,6 +291,7 @@ namespace Genshin_Checker.Window.ExWindow.CharacterCalculator
                         }
                         else if (data.id > 113000 && data.id < 114000)
                         {
+                            RequiedItemData.weeklybossitem = new() { iconurl = data.icon_url, name = data.name, id = data.id, num = data.num };
                             var row = GetRow(ViewWeeklyBossItems, a => (int)a.Cells[nameof(WeeklyBossItemID)].Value == data.id);
                             if (row == null)
                             {
@@ -256,6 +301,9 @@ namespace Genshin_Checker.Window.ExWindow.CharacterCalculator
                         }
                         else if ((data.id >= 112002 && data.id < 113000))
                         {
+                            var find = RequiedItemData.items.Find(a => a.id == data.id);
+                            if (find != null) find.num += data.num;
+                            else RequiedItemData.items.Add(new() { iconurl = data.icon_url, name = data.name, id = data.id, num = data.num });
                             var row = GetRow(ViewEnemyItems, a => (int)a.Cells[nameof(EnemyItemID)].Value == data.id);
                             if (row == null)
                             {
@@ -268,9 +316,28 @@ namespace Genshin_Checker.Window.ExWindow.CharacterCalculator
                             }
                         }
                     }
+                    characterDatas.Add(RequiedItemData);
                     CalcurateResin(CharacterExp*20000,CharacterMora, BossItemCount, TalentMora, TalentBooksCount);
                 }
-
+                CharacterView.Rows.Clear();
+                foreach(var row in characterDatas)
+                {
+                    CharacterView.Rows.Add(
+                        row.id,
+                        row.star,
+                        row.name,
+                        row.localitem != null ? await App.WebRequest.ImageGetRequest(row.localitem.iconurl):new Bitmap(1, 1),//特産アイコン
+                        row.localitem != null ? row.localitem.name : "",
+                        row.localitem != null ? row.localitem.num : 0,
+                        row.talent.type,
+                        "",
+                        row.talent.teaching,
+                        row.talent.guide,
+                        row.talent.philosophies,
+                        row.HerosWit,
+                        row.Mora
+                        );
+                };
                 ViewAscensionMaterial.Sort(ViewAscensionMaterial.Columns[nameof(AscensionTypeID)], ListSortDirection.Ascending);
                 ViewAscensionMaterial.ClearSelection();
                 ViewBossItem.Sort(ViewBossItem.Columns[nameof(BossItemID)], ListSortDirection.Ascending);
@@ -428,6 +495,101 @@ namespace Genshin_Checker.Window.ExWindow.CharacterCalculator
                 // 週ボスドロップ素材
                 case nameof(ViewWeeklyBossItems):
                     break;
+                case nameof(CharacterView):
+                    var character = characterDatas.Find(a=>a.id==(int)row.Cells[nameof(CharacterViewID)].Value);
+                    if (character==null)
+                    {
+                        return;
+                    }
+                    switch (Table.Columns[e.ColumnIndex].Name)
+                    {
+                        case nameof(CharacterViewRarity):
+                            break;
+                        case nameof(CharacterViewName):
+                            e.CellStyle.BackColor = Element.GetBackgroundColor(character.element);
+                              
+                            break;
+                        case nameof(CharacterViewTalentName):
+                            if (character.talent.type == -1)
+                            {
+                                e.Value = "";
+                                break;
+                            }
+                            e.CellStyle.BackColor = (character.talent.type / 3) switch
+                            {
+                                0 => World.GetBackgroundColor(World.Country.Mondstadt),
+                                1 => World.GetBackgroundColor(World.Country.Liyue),
+                                2 => World.GetBackgroundColor(World.Country.Inazuma),
+                                3 => World.GetBackgroundColor(World.Country.Sumeru),
+                                4 => World.GetBackgroundColor(World.Country.Fontaine),
+                                5 => World.GetBackgroundColor(World.Country.Natlan),
+                                6 => World.GetBackgroundColor(World.Country.Snezhnaya),
+                                _ => World.GetBackgroundColor(World.Country.Unknown)
+                            };
+                            e.Value = character.talent.type switch
+                            {
+                                0 => Genshin.TalentBook_1_1,
+                                1 => Genshin.TalentBook_1_2,
+                                2 => Genshin.TalentBook_1_3,
+                                3 => Genshin.TalentBook_2_1,
+                                4 => Genshin.TalentBook_2_2,
+                                5 => Genshin.TalentBook_2_3,
+                                6 => Genshin.TalentBook_3_1,
+                                7 => Genshin.TalentBook_3_2,
+                                8 => Genshin.TalentBook_3_3,
+                                9 => Genshin.TalentBook_4_1,
+                                10 => Genshin.TalentBook_4_2,
+                                11 => Genshin.TalentBook_4_3,
+                                12 => Genshin.TalentBook_5_1,
+                                13 => Genshin.TalentBook_5_2,
+                                14 => Genshin.TalentBook_5_3,
+                                15 => Genshin.TalentBook_6_1,
+                                16 => Genshin.TalentBook_6_2,
+                                17 => Genshin.TalentBook_6_3,
+                                18 => Genshin.TalentBook_7_1,
+                                19 => Genshin.TalentBook_7_2,
+                                20 => Genshin.TalentBook_7_3,
+                                _ => Common.Unknown,
+                            };
+                            break;
+                        case nameof(CharacterViewTalentDay):
+                            if (character.talent.type == -1) break;
+                            var color = Color.FromArgb(0xFF, 0xFF, 0xCC, 0xCC);
+                            var today = -1;
+                            switch (Server.GameServerDate(Account.Server).DayOfWeek)
+                            {
+                                case DayOfWeek.Monday:
+                                case DayOfWeek.Thursday:
+                                    today = 0;
+                                    break;
+                                case DayOfWeek.Tuesday:
+                                case DayOfWeek.Friday:
+                                    today = 1;
+                                    break;
+                                case DayOfWeek.Wednesday:
+                                case DayOfWeek.Saturday:
+                                    today = 2;
+                                    break;
+                            }
+                            if (character.talent.type%3 == today || today < 0) e.CellStyle.BackColor = color;
+                            e.Value = (character.talent.type % 3) switch
+                            {
+                                0 => Common.Week_Mon_Thu,
+                                1 => Common.Week_Tue_Fri,
+                                2 => Common.Week_Wed_Sat,
+                                _ => Common.Unknown
+                            };
+                            break;
+                        case nameof(CharacterViewTalentTNum):
+                        case nameof(CharacterViewTalentGNum):
+                        case nameof(CharacterViewTalentPNum):
+                            if(e.Value==null||(int)e.Value==0)e.Value = "";
+                            break;
+                        case nameof(CharacterViewMoraTotal):
+                            e.Value = $"{e.Value:#,##0}";
+                            break;
+                    }
+                    break;
             }
         }
 
@@ -437,6 +599,43 @@ namespace Genshin_Checker.Window.ExWindow.CharacterCalculator
             {
                 view.ClearSelection();
             }
+        }
+        class CharacterData
+        {
+            public int star;
+            public int id;
+            public App.General.Convert.Element.ElementType element;
+            public string name = string.Empty;
+            public int talentcrown = 0;
+            public Talent talent = new();
+            public Ascension ascension = new();
+            public List<Item> items = new();
+            public class Talent
+            {
+                public int type=-1;
+                public int teaching;
+                public int guide;
+                public int philosophies;
+            }
+            public class Ascension
+            {
+                public int Sliver;
+                public int Fragment;
+                public int Chunk;
+                public int Gemstone;
+            }
+            public class Item
+            {
+                public string iconurl = string.Empty;
+                public int id;
+                public string name = string.Empty;
+                public int num;
+            }
+            public Item? localitem;
+            public Item? enemybossitem;
+            public Item? weeklybossitem;
+            public int Mora;
+            public int HerosWit;
         }
     }
 }

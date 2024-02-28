@@ -23,57 +23,64 @@ namespace Genshin_Checker.Window
         }
         private async void CharacterCalculator_Load(object sender, EventArgs e)
         {
-            if (!await account.CharacterDetail.IsReadyCacheData())
+            try
             {
-                if (!account.CharacterDetail.IsAvailableUpdate)
+                if (!await account.CharacterDetail.IsReadyCacheData())
                 {
-                    new ErrorMessage(Localize.Error_CharacterCalculator_WaitForTalentInfomation, Localize.Error_CharacterCalculator_WaitForTalentInfomation_Message).ShowDialog();
-                    Close();
-                    return;
-                }else
-                {
-
-                    var dialog = new ChooseMessage(Localize.WindowName_CharacterCalculator_NewCharacterFound, Localize.WindowName_CharacterCalculator_Confirm_UpdateTalentsInfomation, Common.Confirm, 2,Common.Yes,Common.Latter);
-                    dialog.ShowDialog();
-                    if (dialog.Result == 0)
+                    if (!account.CharacterDetail.IsAvailableUpdate)
                     {
-                        if (account.CharacterDetail.IsAvailableUpdate)
+                        new ErrorMessage(Localize.Error_CharacterCalculator_WaitForTalentInfomation, Localize.Error_CharacterCalculator_WaitForTalentInfomation_Message).ShowDialog();
+                        Close();
+                        return;
+                    }
+                    else
+                    {
+
+                        var dialog = new ChooseMessage(Localize.WindowName_CharacterCalculator_NewCharacterFound, Localize.WindowName_CharacterCalculator_Confirm_UpdateTalentsInfomation, Common.Confirm, 2, Common.Yes, Common.Latter);
+                        dialog.ShowDialog();
+                        if (dialog.Result == 0)
                         {
-                            Close();
-                            var a=await account.CharacterDetail.UpdateGameData(false);
-                            if (!a)
+                            if (account.CharacterDetail.IsAvailableUpdate)
                             {
-                                new ErrorMessage(Localize.Error_CharacterCalculator_FailedToLoadTalentsInfomation, string.Format(Localize.Error_CharacterCalculator_FailedToLoadTalentInfomation, account.CharacterDetail.LatestException)).ShowDialog();
+                                Close();
+                                var a = await account.CharacterDetail.UpdateGameData(false);
+                                if (!a)
+                                {
+                                    new ErrorMessage(Localize.Error_CharacterCalculator_FailedToLoadTalentsInfomation, string.Format(Localize.Error_CharacterCalculator_FailedToLoadTalentInfomation, account.CharacterDetail.LatestException)).ShowDialog();
+                                }
+                            }
+                            else
+                            {
+                                new ErrorMessage(Localize.Error_CharacterCalculator_FailedToLoadTalentsInfomation, Localize.Error_CharacterCalculator_WorkingOtherThread).ShowDialog();
+                                Close();
                             }
                         }
-                        else
-                        {
-                            new ErrorMessage(Localize.Error_CharacterCalculator_FailedToLoadTalentsInfomation, Localize.Error_CharacterCalculator_WorkingOtherThread).ShowDialog();
-                            Close();
-                        }
+                        Close();
                     }
-                    Close();
                 }
-            }
-            var Data= await account.Characters.GetData();
-            var characters = Data.avatars.FindAll(a=>true);
-            var userdata = DataLoad();
-            for(int i=0; i<characters.Count; i++)
+                var Data = await account.Characters.GetData();
+                var characters = Data.avatars.FindAll(a => true);
+                var userdata = DataLoad();
+                for (int i = 0; i < characters.Count; i++)
+                {
+                    var character = characters[i];
+                    var charainfo = await account.CharacterDetail.GetData(character.id);
+                    var talent = charainfo.skill_list.FindAll(a => a.max_level != 1);
+                    var set = userdata.Datas.FirstOrDefault(a => a.Key == character.id);
+                    var setdata = set.Value ?? new();
+                    if (talent.Count != 3) throw new InvalidDataException(Localize.Error_CharacterCalculator_InvalidTalentCount);
+                    CharacterView.Rows.Add(setdata.Enabled, character.id, character.rarity, Element.GetElementEnum(character.element), character.name, character.weapon.type_name, character.fetter, character.level,
+                        talent[0].level_current, talent[1].level_current, talent[2].level_current, "",
+                        character.level > setdata.SetLevel ? character.level : setdata.SetLevel,
+                        talent[0].level_current > setdata.SetTalent1 ? talent[0].level_current : setdata.SetTalent1,
+                        talent[1].level_current > setdata.SetTalent2 ? talent[1].level_current : setdata.SetTalent2,
+                        talent[2].level_current > setdata.SetTalent3 ? talent[2].level_current : setdata.SetTalent3);
+                }
+                Text = $"{Localize.WindowName_CharacterCalculator} (UID:{account.UID})";
+            }catch(Exception ex)
             {
-                var character = characters[i];
-                var charainfo = await account.CharacterDetail.GetData(character.id);
-                var talent = charainfo.skill_list.FindAll(a=>a.max_level!=1);
-                var set = userdata.Datas.FirstOrDefault(a=>a.Key==character.id);
-                var setdata = set.Value ?? new();
-                if (talent.Count!=3)throw new InvalidDataException(Localize.Error_CharacterCalculator_InvalidTalentCount);
-                CharacterView.Rows.Add(setdata.Enabled, character.id, character.rarity, Element.GetElementEnum(character.element), character.name, character.weapon.type_name, character.fetter, character.level,
-                    talent[0].level_current, talent[1].level_current, talent[2].level_current, "",
-                    character.level > setdata.SetLevel ? character.level : setdata.SetLevel,
-                    talent[0].level_current > setdata.SetTalent1 ? talent[0].level_current : setdata.SetTalent1,
-                    talent[1].level_current > setdata.SetTalent2 ? talent[1].level_current : setdata.SetTalent2,
-                    talent[2].level_current > setdata.SetTalent3 ? talent[2].level_current : setdata.SetTalent3);
+                new ErrorMessage(ex.GetType().ToString(), ex.ToString()).ShowDialog();
             }
-            Text = $"{Localize.WindowName_CharacterCalculator} (UID:{account.UID})";
         }
 
         private void CharacterView_DataError(object sender, DataGridViewDataErrorEventArgs e)
