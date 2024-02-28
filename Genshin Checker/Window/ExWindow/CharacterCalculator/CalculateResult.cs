@@ -383,6 +383,9 @@ namespace Genshin_Checker.Window.ExWindow.CharacterCalculator
                                 _ => Common.Unknown
                             };
                             break;
+                        default:
+                            e.CellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                            break;
                     }
                     e.CellStyle.BackColor = (int)row.Cells[nameof(AscensionTypeID)].Value switch
                     {
@@ -398,6 +401,12 @@ namespace Genshin_Checker.Window.ExWindow.CharacterCalculator
                     break;
                 // 精鋭ボス
                 case nameof(ViewBossItem):
+                    switch (Table.Columns[e.ColumnIndex].Name)
+                    {
+                        case nameof(BossItemNum):
+                            e.CellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                            break;
+                    }
                     break;
                 // 精鋭ドロップ素材
                 case nameof(ViewEnemyItems):
@@ -405,6 +414,8 @@ namespace Genshin_Checker.Window.ExWindow.CharacterCalculator
                     {
                         case nameof(EnemyItemCharacterNum):
                         case nameof(EnemyItemTalentNum):
+                        case nameof(EnemyItemTotalNum):
+                            e.CellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
                             if (e.Value == null || (int)e.Value == 0) e.Value = "";
                             break;
                     }
@@ -419,6 +430,12 @@ namespace Genshin_Checker.Window.ExWindow.CharacterCalculator
                     break;
                 // 特産素材
                 case nameof(ViewLocalSpecialtyItem):
+                    switch (Table.Columns[e.ColumnIndex].Name)
+                    {
+                        case nameof(LocalSpecialtyItemNum):
+                            e.CellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                            break;
+                    }
                     break;
                 // 天賦素材
                 case nameof(ViewTalentItems):
@@ -482,6 +499,8 @@ namespace Genshin_Checker.Window.ExWindow.CharacterCalculator
                                     break;
                             }
                             if ((int)e.Value == today || today < 0) e.CellStyle.BackColor = color;
+
+                            e.CellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                             e.Value = (int)e.Value switch
                             {
                                 0 => Common.Week_Mon_Thu,
@@ -490,10 +509,20 @@ namespace Genshin_Checker.Window.ExWindow.CharacterCalculator
                                 _ => Common.Unknown
                             };
                             break;
+                        default:
+                            e.CellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                            break;
                     }
                     break;
                 // 週ボスドロップ素材
                 case nameof(ViewWeeklyBossItems):
+
+                    switch (Table.Columns[e.ColumnIndex].Name)
+                    {
+                        case nameof(WeeklyBossItemNum):
+                            e.CellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                            break;
+                    }
                     break;
                 case nameof(CharacterView):
                     var character = characterDatas.Find(a=>a.id==(int)row.Cells[nameof(CharacterViewID)].Value);
@@ -504,10 +533,15 @@ namespace Genshin_Checker.Window.ExWindow.CharacterCalculator
                     switch (Table.Columns[e.ColumnIndex].Name)
                     {
                         case nameof(CharacterViewRarity):
+                            e.CellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                            if ($"{e.Value}" == "5") e.CellStyle.BackColor = Color.FromArgb(0xFF, 0xEE, 0xAA);
+                            else if ($"{e.Value}" == "4") e.CellStyle.BackColor = Color.FromArgb(0xCC, 0xAA, 0xFF);
                             break;
                         case nameof(CharacterViewName):
                             e.CellStyle.BackColor = Element.GetBackgroundColor(character.element);
-                              
+                            break;
+                        case nameof(CharacterViewLocalItemNum):
+                            e.CellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
                             break;
                         case nameof(CharacterViewTalentName):
                             if (character.talent.type == -1)
@@ -556,6 +590,7 @@ namespace Genshin_Checker.Window.ExWindow.CharacterCalculator
                             if (character.talent.type == -1) break;
                             var color = Color.FromArgb(0xFF, 0xFF, 0xCC, 0xCC);
                             var today = -1;
+                            e.CellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                             switch (Server.GameServerDate(Account.Server).DayOfWeek)
                             {
                                 case DayOfWeek.Monday:
@@ -584,8 +619,11 @@ namespace Genshin_Checker.Window.ExWindow.CharacterCalculator
                         case nameof(CharacterViewTalentGNum):
                         case nameof(CharacterViewTalentPNum):
                             if(e.Value==null||(int)e.Value==0)e.Value = "";
+                            e.CellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
                             break;
+                        case nameof(CharacterViewHerosWitNum):
                         case nameof(CharacterViewMoraTotal):
+                            e.CellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
                             e.Value = $"{e.Value:#,##0}";
                             break;
                     }

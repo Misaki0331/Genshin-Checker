@@ -196,16 +196,16 @@
             // 
             // panel1
             // 
+            resources.ApplyResources(panel1, "panel1");
             panel1.Controls.Add(ProgressPanel);
             panel1.Controls.Add(tableLayoutPanel4);
-            resources.ApplyResources(panel1, "panel1");
             panel1.Name = "panel1";
             // 
             // ProgressPanel
             // 
+            resources.ApplyResources(ProgressPanel, "ProgressPanel");
             ProgressPanel.Controls.Add(progressBar);
             ProgressPanel.Controls.Add(ProgressState);
-            resources.ApplyResources(ProgressPanel, "ProgressPanel");
             ProgressPanel.Name = "ProgressPanel";
             // 
             // progressBar
@@ -290,18 +290,18 @@
             // 
             // tabControl1
             // 
+            resources.ApplyResources(tabControl1, "tabControl1");
             tabControl1.Controls.Add(tabPage1);
             tabControl1.Controls.Add(tabPage2);
             tabControl1.Controls.Add(tabPage3);
             tabControl1.Controls.Add(tabPage4);
-            resources.ApplyResources(tabControl1, "tabControl1");
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
             // 
             // tabPage1
             // 
-            tabPage1.Controls.Add(tableLayoutPanel1);
             resources.ApplyResources(tabPage1, "tabPage1");
+            tabPage1.Controls.Add(tableLayoutPanel1);
             tabPage1.Name = "tabPage1";
             tabPage1.UseVisualStyleBackColor = true;
             // 
@@ -324,6 +324,7 @@
             // 
             // ViewLocalSpecialtyItem
             // 
+            resources.ApplyResources(ViewLocalSpecialtyItem, "ViewLocalSpecialtyItem");
             ViewLocalSpecialtyItem.AllowUserToAddRows = false;
             ViewLocalSpecialtyItem.AllowUserToDeleteRows = false;
             ViewLocalSpecialtyItem.AllowUserToResizeColumns = false;
@@ -331,7 +332,6 @@
             ViewLocalSpecialtyItem.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             ViewLocalSpecialtyItem.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             ViewLocalSpecialtyItem.Columns.AddRange(new DataGridViewColumn[] { LocalSpecialtyID, LocalSpecialtyItemImage, LocalSpecialtyItemName, LocalSpecialtyItemNum });
-            resources.ApplyResources(ViewLocalSpecialtyItem, "ViewLocalSpecialtyItem");
             ViewLocalSpecialtyItem.EnableHeadersVisualStyles = false;
             ViewLocalSpecialtyItem.Name = "ViewLocalSpecialtyItem";
             ViewLocalSpecialtyItem.ReadOnly = true;
@@ -383,6 +383,7 @@
             // 
             // ViewAscensionMaterial
             // 
+            resources.ApplyResources(ViewAscensionMaterial, "ViewAscensionMaterial");
             ViewAscensionMaterial.AllowUserToAddRows = false;
             ViewAscensionMaterial.AllowUserToDeleteRows = false;
             ViewAscensionMaterial.AllowUserToResizeColumns = false;
@@ -390,7 +391,6 @@
             ViewAscensionMaterial.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             ViewAscensionMaterial.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             ViewAscensionMaterial.Columns.AddRange(new DataGridViewColumn[] { AscensionTypeID, AscensionType, AscensionNumSliver, AscensionNumFragment, AscensionNumChunk, AscensionNumGemstone });
-            resources.ApplyResources(ViewAscensionMaterial, "ViewAscensionMaterial");
             ViewAscensionMaterial.EnableHeadersVisualStyles = false;
             ViewAscensionMaterial.Name = "ViewAscensionMaterial";
             ViewAscensionMaterial.ReadOnly = true;
@@ -457,6 +457,7 @@
             // 
             // ViewBossItem
             // 
+            resources.ApplyResources(ViewBossItem, "ViewBossItem");
             ViewBossItem.AllowUserToAddRows = false;
             ViewBossItem.AllowUserToDeleteRows = false;
             ViewBossItem.AllowUserToResizeColumns = false;
@@ -464,7 +465,6 @@
             ViewBossItem.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             ViewBossItem.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             ViewBossItem.Columns.AddRange(new DataGridViewColumn[] { BossItemID, BossItemImage, BossItemName, BossItemNum });
-            resources.ApplyResources(ViewBossItem, "ViewBossItem");
             ViewBossItem.EnableHeadersVisualStyles = false;
             ViewBossItem.Name = "ViewBossItem";
             ViewBossItem.ReadOnly = true;
@@ -510,9 +510,9 @@
             // 
             // panel2
             // 
+            resources.ApplyResources(panel2, "panel2");
             panel2.Controls.Add(panel3);
             panel2.Controls.Add(panel4);
-            resources.ApplyResources(panel2, "panel2");
             panel2.Name = "panel2";
             // 
             // panel3
@@ -579,8 +579,8 @@
             // 
             // tabPage2
             // 
-            tabPage2.Controls.Add(tableLayoutPanel2);
             resources.ApplyResources(tabPage2, "tabPage2");
+            tabPage2.Controls.Add(tableLayoutPanel2);
             tabPage2.Name = "tabPage2";
             tabPage2.UseVisualStyleBackColor = true;
             // 
@@ -594,9 +594,9 @@
             // 
             // panel5
             // 
+            resources.ApplyResources(panel5, "panel5");
             panel5.Controls.Add(panel6);
             panel5.Controls.Add(panel7);
-            resources.ApplyResources(panel5, "panel5");
             panel5.Name = "panel5";
             // 
             // panel6
@@ -670,6 +670,7 @@
             // 
             // ViewTalentItems
             // 
+            resources.ApplyResources(ViewTalentItems, "ViewTalentItems");
             ViewTalentItems.AllowUserToAddRows = false;
             ViewTalentItems.AllowUserToDeleteRows = false;
             ViewTalentItems.AllowUserToResizeColumns = false;
@@ -677,7 +678,6 @@
             ViewTalentItems.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             ViewTalentItems.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             ViewTalentItems.Columns.AddRange(new DataGridViewColumn[] { TalentItemID, TalentItemName, TalentItemOpenDays, TalentItemNumTeachings, TalentItemNumGuide, TalentItemNumPhilosophies });
-            resources.ApplyResources(ViewTalentItems, "ViewTalentItems");
             ViewTalentItems.EnableHeadersVisualStyles = false;
             ViewTalentItems.Name = "ViewTalentItems";
             ViewTalentItems.ReadOnly = true;
@@ -745,6 +745,7 @@
             // 
             // ViewWeeklyBossItems
             // 
+            resources.ApplyResources(ViewWeeklyBossItems, "ViewWeeklyBossItems");
             ViewWeeklyBossItems.AllowUserToAddRows = false;
             ViewWeeklyBossItems.AllowUserToDeleteRows = false;
             ViewWeeklyBossItems.AllowUserToResizeColumns = false;
@@ -752,7 +753,6 @@
             ViewWeeklyBossItems.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             ViewWeeklyBossItems.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             ViewWeeklyBossItems.Columns.AddRange(new DataGridViewColumn[] { WeeklyBossItemID, WeeklyBossItemImage, WeeklyBossItemName, WeeklyBossItemNum });
-            resources.ApplyResources(ViewWeeklyBossItems, "ViewWeeklyBossItems");
             ViewWeeklyBossItems.EnableHeadersVisualStyles = false;
             ViewWeeklyBossItems.Name = "ViewWeeklyBossItems";
             ViewWeeklyBossItems.ReadOnly = true;
@@ -800,8 +800,8 @@
             // 
             // tabPage3
             // 
-            tabPage3.Controls.Add(tableLayoutPanel3);
             resources.ApplyResources(tabPage3, "tabPage3");
+            tabPage3.Controls.Add(tableLayoutPanel3);
             tabPage3.Name = "tabPage3";
             tabPage3.UseVisualStyleBackColor = true;
             // 
@@ -821,6 +821,7 @@
             // 
             // ViewEnemyItems
             // 
+            resources.ApplyResources(ViewEnemyItems, "ViewEnemyItems");
             ViewEnemyItems.AllowUserToAddRows = false;
             ViewEnemyItems.AllowUserToDeleteRows = false;
             ViewEnemyItems.AllowUserToResizeColumns = false;
@@ -828,7 +829,6 @@
             ViewEnemyItems.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             ViewEnemyItems.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             ViewEnemyItems.Columns.AddRange(new DataGridViewColumn[] { EnemyItemID, EnemyItemImage, EnemyItemName, EnemyItemCharacterNum, EnemyItemTalentNum, EnemyItemTotalNum });
-            resources.ApplyResources(ViewEnemyItems, "ViewEnemyItems");
             ViewEnemyItems.EnableHeadersVisualStyles = false;
             ViewEnemyItems.Name = "ViewEnemyItems";
             ViewEnemyItems.ReadOnly = true;
@@ -890,26 +890,26 @@
             // 
             // groupBox7
             // 
-            groupBox7.Controls.Add(panel10);
             resources.ApplyResources(groupBox7, "groupBox7");
+            groupBox7.Controls.Add(panel10);
             groupBox7.Name = "groupBox7";
             groupBox7.TabStop = false;
             // 
             // panel10
             // 
+            resources.ApplyResources(panel10, "panel10");
             panel10.Controls.Add(panel14);
             panel10.Controls.Add(panel12);
             panel10.Controls.Add(panel13);
             panel10.Controls.Add(panel11);
             panel10.Controls.Add(panel15);
-            resources.ApplyResources(panel10, "panel10");
             panel10.Name = "panel10";
             // 
             // panel14
             // 
+            resources.ApplyResources(panel14, "panel14");
             panel14.Controls.Add(ResinTalentMora);
             panel14.Controls.Add(label21);
-            resources.ApplyResources(panel14, "panel14");
             panel14.Name = "panel14";
             // 
             // ResinTalentMora
@@ -924,9 +924,9 @@
             // 
             // panel12
             // 
+            resources.ApplyResources(panel12, "panel12");
             panel12.Controls.Add(ResinTalentBooks);
             panel12.Controls.Add(label17);
-            resources.ApplyResources(panel12, "panel12");
             panel12.Name = "panel12";
             // 
             // ResinTalentBooks
@@ -941,9 +941,9 @@
             // 
             // panel13
             // 
+            resources.ApplyResources(panel13, "panel13");
             panel13.Controls.Add(ResinCharacterMora);
             panel13.Controls.Add(label19);
-            resources.ApplyResources(panel13, "panel13");
             panel13.Name = "panel13";
             // 
             // ResinCharacterMora
@@ -958,9 +958,9 @@
             // 
             // panel11
             // 
+            resources.ApplyResources(panel11, "panel11");
             panel11.Controls.Add(ResinBossItem);
             panel11.Controls.Add(label14);
-            resources.ApplyResources(panel11, "panel11");
             panel11.Name = "panel11";
             // 
             // ResinBossItem
@@ -975,9 +975,9 @@
             // 
             // panel15
             // 
+            resources.ApplyResources(panel15, "panel15");
             panel15.Controls.Add(ResinCharaExp);
             panel15.Controls.Add(label15);
-            resources.ApplyResources(panel15, "panel15");
             panel15.Name = "panel15";
             // 
             // ResinCharaExp
@@ -992,13 +992,14 @@
             // 
             // tabPage4
             // 
-            tabPage4.Controls.Add(CharacterView);
             resources.ApplyResources(tabPage4, "tabPage4");
+            tabPage4.Controls.Add(CharacterView);
             tabPage4.Name = "tabPage4";
             tabPage4.UseVisualStyleBackColor = true;
             // 
             // CharacterView
             // 
+            resources.ApplyResources(CharacterView, "CharacterView");
             CharacterView.AllowUserToAddRows = false;
             CharacterView.AllowUserToDeleteRows = false;
             CharacterView.AllowUserToResizeColumns = false;
@@ -1006,7 +1007,6 @@
             CharacterView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             CharacterView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             CharacterView.Columns.AddRange(new DataGridViewColumn[] { CharacterViewID, CharacterViewRarity, CharacterViewName, CharacterViewLocalIcon, CharacterViewLocalItemName, CharacterViewLocalItemNum, CharacterViewTalentName, CharacterViewTalentDay, CharacterViewTalentTNum, CharacterViewTalentGNum, CharacterViewTalentPNum, CharacterViewHerosWitNum, CharacterViewMoraTotal });
-            resources.ApplyResources(CharacterView, "CharacterView");
             CharacterView.EnableHeadersVisualStyles = false;
             CharacterView.Name = "CharacterView";
             CharacterView.ReadOnly = true;
