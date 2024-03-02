@@ -191,8 +191,18 @@ namespace Genshin_Checker
         //ここはテスト用
         private void testToolStripMenuItem_ClickAsync(object sender, EventArgs e)
         {
+            /*try
+            {
+                var form = new Window.ExWindow.EmptyWindow();
+                var directx = new DirectX.Core();
+                directx.Init(form);
+                directx.Loop();
+                directx.Dispose();
+            }catch(Exception ex)
+            {
+                new ErrorMessage("DirectX Error!", ex.ToString()).ShowDialog();
+            }*/
             OpenWindow(null, nameof(Window.Debug.APIChecker));
-            //OpenWindow(Store.Accounts.Data[0], nameof(Window.SpiralAbyss));
         }
 
 

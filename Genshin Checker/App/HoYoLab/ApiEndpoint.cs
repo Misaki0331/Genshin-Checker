@@ -303,6 +303,34 @@ namespace Genshin_Checker.App.HoYoLab
             var json = await WebRequest.HoYoGetRequest(url, Account.Cookie);
             return json ?? "";
         }
+
+        /// <summary>
+        /// HoYoLabのマテリアル情報取得
+        /// </summary>
+        /// <returns></returns>
+        /// <exception cref="InvalidDataException"></exception>
+        public static async Task<string> GetHoYoLabMaterial(Account Account)
+        {
+            var url = $"https://bbs-api-os.hoyolab.com/community/painter/wapi/circle/channel/guide/material?game_id=2";
+            var json = await WebRequest.HoYoGetRequest(url, Account.Cookie);
+            return json ?? "";
+        }
+
+        /// <summary>
+        /// HoYoLabのマテリアル情報取得
+        /// </summary>
+        /// <returns></returns>
+        /// <exception cref="InvalidDataException"></exception>
+        public static async Task<string> ExchangeCode(Account Account,string campaignCode)
+        {
+            long unixtime = DateTime.Now.Ticks / 10000;
+            var url = $"https://sg-hk4e-api.hoyolab.com/common/apicdkey/api/webExchangeCdkeyHyl?cdkey={campaignCode}&game_biz=hk4e_global&lang={Account.Culture.Name.ToLower().Split('-')[0]}&region={Account.Server}&t={unixtime}&uid={Account.UID}";
+            var json = await WebRequest.HoYoGetRequest(url, Account.Cookie);
+            return json ?? "";
+        }
+        
+
+
         /// <summary>
         /// 旅の振り返りAPI
         /// </summary>
