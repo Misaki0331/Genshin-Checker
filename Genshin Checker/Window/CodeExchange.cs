@@ -41,6 +41,10 @@ namespace Genshin_Checker.Window
             }
             else ComboHoYoLabAccounts.SelectedIndex = 0;
             CodeInput.Focus();
+            var codes = AccountTemp[$"{ComboHoYoLabAccounts.Items[0]}"].HoYoLabInfomation.GetCodeList();
+            foreach( var code in codes.Codes) {
+                textBox2.AppendText($"【{code.Code}】 有効期限 : {code.ExpairUtc.ToLocalTime()}{System.Environment.NewLine}");
+            }
         }
 
         private async void button1_Click(object sender, EventArgs e)

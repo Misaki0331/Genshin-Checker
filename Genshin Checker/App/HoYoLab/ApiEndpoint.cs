@@ -138,6 +138,19 @@ namespace Genshin_Checker.App.HoYoLab
             return root.Data;
         }
         /// <summary>
+        /// HoYoLabの情報を取得
+        /// </summary>
+        /// <returns></returns>
+        /// <exception cref="InvalidDataException"></exception>
+        public async Task<Model.HoYoLab.MainMaterial.Data> GetHoYoLabMaterial()
+        {
+            if (!Account.IsAuthed) throw new UserNotAuthenticatedException(Account.UID);
+            var json = await GetJson.GetHoYoLabMaterial(Account);
+            var root = JsonChecker<Model.HoYoLab.MainMaterial.Root>.Check(json);
+            if (root.Data == null) throw new HoYoLabAPIException(root.Retcode, root.Message);
+            return root.Data;
+        }
+        /// <summary>
         /// 旅の振り返りAPI
         /// </summary>
         /// <param name="since">該当DateTimeから今日までの差分を取得<br/>最大90日前まで利用可能</param>
