@@ -236,6 +236,7 @@
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>BatchWindow</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="panel4.Size" type="System.Drawing.Size, System.Drawing">
     <value>269, 25</value>
@@ -257,6 +258,7 @@
   </data>
   <data name="ButtonSetToLv90.Text" xml:space="preserve">
     <value>Lv.90</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="GroupTalent2.Text" xml:space="preserve">
     <value>Normal Skill</value>
@@ -482,6 +484,7 @@
   </data>
   <data name="ArrowLevel.Text" xml:space="preserve">
     <value>▶</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="GroupTalent1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
@@ -494,6 +497,7 @@
   </data>
   <data name="ButtonAppry.Text" xml:space="preserve">
     <value>OK</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="panel3.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 19</value>
@@ -530,6 +534,7 @@
   </data>
   <data name="ArrowTalent1.Text" xml:space="preserve">
     <value>▶</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="CurrentTalent2.Size" type="System.Drawing.Size, System.Drawing">
     <value>45, 20</value>
@@ -554,6 +559,7 @@
   </data>
   <data name="CurrentLevel.Text" xml:space="preserve">
     <value>Lv. 10</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="&gt;&gt;ButtonSetToTalent10.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -569,6 +575,7 @@
   </data>
   <data name="ArrowTalent2.Text" xml:space="preserve">
     <value>▶</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="&gt;&gt;NumericLevel.ZOrder" xml:space="preserve">
     <value>2</value>
@@ -665,6 +672,7 @@
   </data>
   <data name="CurrentTalent1.Text" xml:space="preserve">
     <value>Lv. 10</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="&gt;&gt;RadioEnable.Name" xml:space="preserve">
     <value>RadioEnable</value>
@@ -776,6 +784,7 @@
   </data>
   <data name="CurrentTalent3.Text" xml:space="preserve">
     <value>Lv. 10</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="&gt;&gt;ButtonSetToLv90.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -1109,6 +1118,7 @@
   </data>
   <data name="CurrentTalent2.Text" xml:space="preserve">
     <value>Lv. 10</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="GroupTalent1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1178,6 +1188,7 @@
   </data>
   <data name="ArrowTalent3.Text" xml:space="preserve">
     <value>▶</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="&gt;&gt;ArrowLevel.Parent" xml:space="preserve">
     <value>panel1</value>
