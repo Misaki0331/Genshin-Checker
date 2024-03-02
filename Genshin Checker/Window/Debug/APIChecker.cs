@@ -31,9 +31,9 @@ namespace Genshin_Checker.Window.Debug
         {
             var name = Accounts.Text;
             AccountReload();
-            Accounts.Text= name;
-            if(int.TryParse(name, out int value))
-            return Store.Accounts.Data.Find(a=>a.UID==int.Parse(name));
+            Accounts.Text = name;
+            if (int.TryParse(name, out int value))
+                return Store.Accounts.Data.Find(a => a.UID == int.Parse(name));
             return null;
         }
         private async void ButtonGameRecord_Click(object sender, EventArgs e)
@@ -41,7 +41,7 @@ namespace Genshin_Checker.Window.Debug
             var account = CheckAccount();
             if (account == null) return;
             OutputBox.Text = JsonChecker<dynamic>.format(await GetJson.GetGameRecords(account));
-            
+
         }
 
         private async void ButtonCharacters_Click(object sender, EventArgs e)
@@ -90,13 +90,13 @@ namespace Genshin_Checker.Window.Debug
         {
             var account = CheckAccount();
             if (account == null) return;
-            OutputBox.Text = JsonChecker<dynamic>.format(await GetJson.GetTravelersDiaryDetail(account,(int)NumTravelerDiaryDetailType.Value,(int)NumTravelerDiaryDetailPage.Value,(int)NumTravelerDiaryDetailMonth.Value));
+            OutputBox.Text = JsonChecker<dynamic>.format(await GetJson.GetTravelersDiaryDetail(account, (int)NumTravelerDiaryDetailType.Value, (int)NumTravelerDiaryDetailPage.Value, (int)NumTravelerDiaryDetailMonth.Value));
         }
         private async void ButtonStellarJourney_Click(object sender, EventArgs e)
         {
             var account = CheckAccount();
             if (account == null) return;
-            OutputBox.Text = JsonChecker<dynamic>.format(await GetJson.GetActiveQuery(account,DateTimeStellarJourneySince.Value));
+            OutputBox.Text = JsonChecker<dynamic>.format(await GetJson.GetActiveQuery(account, DateTimeStellarJourneySince.Value));
         }
 
         private async void ButtonCharacterDetail_Click(object sender, EventArgs e)
@@ -106,5 +106,19 @@ namespace Genshin_Checker.Window.Debug
             OutputBox.Text = JsonChecker<dynamic>.format(await GetJson.GetCharacterDetail(account, (int)NumCharacterDetailCharacterID.Value));
         }
 
+        private async void button1_Click(object sender, EventArgs e)
+        {
+
+            var account = CheckAccount();
+            if (account == null) return;
+            OutputBox.Text = JsonChecker<dynamic>.format(await GetJson.GetHoYoLabMaterial(account));
+        }
+
+        private async void button2_Click(object sender, EventArgs e)
+        {
+            var account = CheckAccount();
+            if (account == null) return;
+            OutputBox.Text = JsonChecker<dynamic>.format(await GetJson.ExchangeCode(account,textBox1.Text));
+        }
     }
 }

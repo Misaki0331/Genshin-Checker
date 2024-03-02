@@ -1046,7 +1046,7 @@
             CharacterViewLocalIcon.ImageLayout = DataGridViewImageCellLayout.Zoom;
             CharacterViewLocalIcon.Name = "CharacterViewLocalIcon";
             CharacterViewLocalIcon.ReadOnly = true;
-            CharacterViewLocalIcon.Resizable = DataGridViewTriState.True;
+            CharacterViewLocalIcon.Resizable = DataGridViewTriState.False;
             CharacterViewLocalIcon.SortMode = DataGridViewColumnSortMode.Automatic;
             // 
             // CharacterViewLocalItemName

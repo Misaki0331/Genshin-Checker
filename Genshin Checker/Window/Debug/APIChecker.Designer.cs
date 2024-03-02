@@ -28,380 +28,384 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.Accounts = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.OutputBox = new System.Windows.Forms.TextBox();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.NumCharacterDetailCharacterID = new System.Windows.Forms.NumericUpDown();
-            this.label8 = new System.Windows.Forms.Label();
-            this.ButtonCharacterDetail = new System.Windows.Forms.Button();
-            this.NumTravelerDiaryDetailPage = new System.Windows.Forms.NumericUpDown();
-            this.label7 = new System.Windows.Forms.Label();
-            this.NumTravelerDiaryDetailMonth = new System.Windows.Forms.NumericUpDown();
-            this.label6 = new System.Windows.Forms.Label();
-            this.NumTravelerDiaryDetailType = new System.Windows.Forms.NumericUpDown();
-            this.label5 = new System.Windows.Forms.Label();
-            this.ButtonTravelersDiaryDetail = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
-            this.ButtonStellarJourney = new System.Windows.Forms.Button();
-            this.DateTimeStellarJourneySince = new System.Windows.Forms.DateTimePicker();
-            this.ButtonTravelersDiary = new System.Windows.Forms.Button();
-            this.NumTravelerDiaryMonth = new System.Windows.Forms.NumericUpDown();
-            this.label3 = new System.Windows.Forms.Label();
-            this.ButtonEnkaNetwork = new System.Windows.Forms.Button();
-            this.ButtonRealTimeNote = new System.Windows.Forms.Button();
-            this.ButtonSpiralAbyssPreviously = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.ButtonSpiralAbyssCurrent = new System.Windows.Forms.Button();
-            this.ButtonCharacters = new System.Windows.Forms.Button();
-            this.ButtonGameRecord = new System.Windows.Forms.Button();
-            this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.NumCharacterDetailCharacterID)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NumTravelerDiaryDetailPage)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NumTravelerDiaryDetailMonth)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NumTravelerDiaryDetailType)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NumTravelerDiaryMonth)).BeginInit();
-            this.SuspendLayout();
+            panel1 = new Panel();
+            Accounts = new ComboBox();
+            label1 = new Label();
+            OutputBox = new TextBox();
+            panel2 = new Panel();
+            button2 = new Button();
+            textBox1 = new TextBox();
+            button1 = new Button();
+            NumCharacterDetailCharacterID = new NumericUpDown();
+            label8 = new Label();
+            ButtonCharacterDetail = new Button();
+            NumTravelerDiaryDetailPage = new NumericUpDown();
+            label7 = new Label();
+            NumTravelerDiaryDetailMonth = new NumericUpDown();
+            label6 = new Label();
+            NumTravelerDiaryDetailType = new NumericUpDown();
+            label5 = new Label();
+            ButtonTravelersDiaryDetail = new Button();
+            label4 = new Label();
+            ButtonStellarJourney = new Button();
+            DateTimeStellarJourneySince = new DateTimePicker();
+            ButtonTravelersDiary = new Button();
+            NumTravelerDiaryMonth = new NumericUpDown();
+            label3 = new Label();
+            ButtonEnkaNetwork = new Button();
+            ButtonRealTimeNote = new Button();
+            ButtonSpiralAbyssPreviously = new Button();
+            label2 = new Label();
+            ButtonSpiralAbyssCurrent = new Button();
+            ButtonCharacters = new Button();
+            ButtonGameRecord = new Button();
+            panel1.SuspendLayout();
+            panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)NumCharacterDetailCharacterID).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)NumTravelerDiaryDetailPage).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)NumTravelerDiaryDetailMonth).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)NumTravelerDiaryDetailType).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)NumTravelerDiaryMonth).BeginInit();
+            SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.Accounts);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(542, 28);
-            this.panel1.TabIndex = 0;
+            panel1.Controls.Add(Accounts);
+            panel1.Controls.Add(label1);
+            panel1.Dock = DockStyle.Top;
+            panel1.Location = new Point(0, 0);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(542, 28);
+            panel1.TabIndex = 0;
             // 
             // Accounts
             // 
-            this.Accounts.Dock = System.Windows.Forms.DockStyle.Left;
-            this.Accounts.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.Accounts.FormattingEnabled = true;
-            this.Accounts.Location = new System.Drawing.Point(114, 0);
-            this.Accounts.Name = "Accounts";
-            this.Accounts.Size = new System.Drawing.Size(157, 23);
-            this.Accounts.TabIndex = 1;
+            Accounts.Dock = DockStyle.Left;
+            Accounts.DropDownStyle = ComboBoxStyle.DropDownList;
+            Accounts.FormattingEnabled = true;
+            Accounts.Location = new Point(114, 0);
+            Accounts.Name = "Accounts";
+            Accounts.Size = new Size(157, 23);
+            Accounts.TabIndex = 1;
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.label1.Location = new System.Drawing.Point(0, 0);
-            this.label1.MinimumSize = new System.Drawing.Size(0, 23);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(114, 23);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "連携済みのアカウント :";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            label1.AutoSize = true;
+            label1.Dock = DockStyle.Left;
+            label1.Location = new Point(0, 0);
+            label1.MinimumSize = new Size(0, 23);
+            label1.Name = "label1";
+            label1.Size = new Size(114, 23);
+            label1.TabIndex = 0;
+            label1.Text = "連携済みのアカウント :";
+            label1.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // OutputBox
             // 
-            this.OutputBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.OutputBox.Location = new System.Drawing.Point(0, 198);
-            this.OutputBox.MaxLength = 2147483647;
-            this.OutputBox.Multiline = true;
-            this.OutputBox.Name = "OutputBox";
-            this.OutputBox.ReadOnly = true;
-            this.OutputBox.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.OutputBox.Size = new System.Drawing.Size(542, 252);
-            this.OutputBox.TabIndex = 0;
+            OutputBox.Dock = DockStyle.Fill;
+            OutputBox.Location = new Point(0, 226);
+            OutputBox.MaxLength = int.MaxValue;
+            OutputBox.Multiline = true;
+            OutputBox.Name = "OutputBox";
+            OutputBox.ReadOnly = true;
+            OutputBox.ScrollBars = ScrollBars.Both;
+            OutputBox.Size = new Size(542, 224);
+            OutputBox.TabIndex = 0;
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.NumCharacterDetailCharacterID);
-            this.panel2.Controls.Add(this.label8);
-            this.panel2.Controls.Add(this.ButtonCharacterDetail);
-            this.panel2.Controls.Add(this.NumTravelerDiaryDetailPage);
-            this.panel2.Controls.Add(this.label7);
-            this.panel2.Controls.Add(this.NumTravelerDiaryDetailMonth);
-            this.panel2.Controls.Add(this.label6);
-            this.panel2.Controls.Add(this.NumTravelerDiaryDetailType);
-            this.panel2.Controls.Add(this.label5);
-            this.panel2.Controls.Add(this.ButtonTravelersDiaryDetail);
-            this.panel2.Controls.Add(this.label4);
-            this.panel2.Controls.Add(this.ButtonStellarJourney);
-            this.panel2.Controls.Add(this.DateTimeStellarJourneySince);
-            this.panel2.Controls.Add(this.ButtonTravelersDiary);
-            this.panel2.Controls.Add(this.NumTravelerDiaryMonth);
-            this.panel2.Controls.Add(this.label3);
-            this.panel2.Controls.Add(this.ButtonEnkaNetwork);
-            this.panel2.Controls.Add(this.ButtonRealTimeNote);
-            this.panel2.Controls.Add(this.ButtonSpiralAbyssPreviously);
-            this.panel2.Controls.Add(this.label2);
-            this.panel2.Controls.Add(this.ButtonSpiralAbyssCurrent);
-            this.panel2.Controls.Add(this.ButtonCharacters);
-            this.panel2.Controls.Add(this.ButtonGameRecord);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 28);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(542, 170);
-            this.panel2.TabIndex = 23;
+            panel2.Controls.Add(button2);
+            panel2.Controls.Add(textBox1);
+            panel2.Controls.Add(button1);
+            panel2.Controls.Add(NumCharacterDetailCharacterID);
+            panel2.Controls.Add(label8);
+            panel2.Controls.Add(ButtonCharacterDetail);
+            panel2.Controls.Add(NumTravelerDiaryDetailPage);
+            panel2.Controls.Add(label7);
+            panel2.Controls.Add(NumTravelerDiaryDetailMonth);
+            panel2.Controls.Add(label6);
+            panel2.Controls.Add(NumTravelerDiaryDetailType);
+            panel2.Controls.Add(label5);
+            panel2.Controls.Add(ButtonTravelersDiaryDetail);
+            panel2.Controls.Add(label4);
+            panel2.Controls.Add(ButtonStellarJourney);
+            panel2.Controls.Add(DateTimeStellarJourneySince);
+            panel2.Controls.Add(ButtonTravelersDiary);
+            panel2.Controls.Add(NumTravelerDiaryMonth);
+            panel2.Controls.Add(label3);
+            panel2.Controls.Add(ButtonEnkaNetwork);
+            panel2.Controls.Add(ButtonRealTimeNote);
+            panel2.Controls.Add(ButtonSpiralAbyssPreviously);
+            panel2.Controls.Add(label2);
+            panel2.Controls.Add(ButtonSpiralAbyssCurrent);
+            panel2.Controls.Add(ButtonCharacters);
+            panel2.Controls.Add(ButtonGameRecord);
+            panel2.Dock = DockStyle.Top;
+            panel2.Location = new Point(0, 28);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(542, 198);
+            panel2.TabIndex = 23;
+            // 
+            // button2
+            // 
+            button2.Location = new Point(161, 169);
+            button2.Name = "button2";
+            button2.Size = new Size(100, 23);
+            button2.TabIndex = 48;
+            button2.Text = "CodeExcharge";
+            button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
+            // 
+            // textBox1
+            // 
+            textBox1.Location = new Point(8, 168);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(147, 23);
+            textBox1.TabIndex = 47;
+            // 
+            // button1
+            // 
+            button1.Location = new Point(289, 141);
+            button1.Name = "button1";
+            button1.Size = new Size(100, 23);
+            button1.TabIndex = 46;
+            button1.Text = "Material";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // NumCharacterDetailCharacterID
             // 
-            this.NumCharacterDetailCharacterID.Location = new System.Drawing.Point(194, 140);
-            this.NumCharacterDetailCharacterID.Maximum = new decimal(new int[] {
-            10000999,
-            0,
-            0,
-            0});
-            this.NumCharacterDetailCharacterID.Minimum = new decimal(new int[] {
-            10000000,
-            0,
-            0,
-            0});
-            this.NumCharacterDetailCharacterID.Name = "NumCharacterDetailCharacterID";
-            this.NumCharacterDetailCharacterID.Size = new System.Drawing.Size(83, 23);
-            this.NumCharacterDetailCharacterID.TabIndex = 45;
-            this.NumCharacterDetailCharacterID.Value = new decimal(new int[] {
-            10000000,
-            0,
-            0,
-            0});
+            NumCharacterDetailCharacterID.Location = new Point(194, 140);
+            NumCharacterDetailCharacterID.Maximum = new decimal(new int[] { 10000999, 0, 0, 0 });
+            NumCharacterDetailCharacterID.Minimum = new decimal(new int[] { 10000000, 0, 0, 0 });
+            NumCharacterDetailCharacterID.Name = "NumCharacterDetailCharacterID";
+            NumCharacterDetailCharacterID.Size = new Size(83, 23);
+            NumCharacterDetailCharacterID.TabIndex = 45;
+            NumCharacterDetailCharacterID.Value = new decimal(new int[] { 10000000, 0, 0, 0 });
             // 
             // label8
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(114, 143);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(74, 15);
-            this.label8.TabIndex = 44;
-            this.label8.Text = "CharacterID :";
+            label8.AutoSize = true;
+            label8.Location = new Point(114, 143);
+            label8.Name = "label8";
+            label8.Size = new Size(74, 15);
+            label8.TabIndex = 44;
+            label8.Text = "CharacterID :";
             // 
             // ButtonCharacterDetail
             // 
-            this.ButtonCharacterDetail.Location = new System.Drawing.Point(8, 139);
-            this.ButtonCharacterDetail.Name = "ButtonCharacterDetail";
-            this.ButtonCharacterDetail.Size = new System.Drawing.Size(100, 23);
-            this.ButtonCharacterDetail.TabIndex = 43;
-            this.ButtonCharacterDetail.Text = "CharacterDetail";
-            this.ButtonCharacterDetail.UseVisualStyleBackColor = true;
-            this.ButtonCharacterDetail.Click += new System.EventHandler(this.ButtonCharacterDetail_Click);
+            ButtonCharacterDetail.Location = new Point(8, 139);
+            ButtonCharacterDetail.Name = "ButtonCharacterDetail";
+            ButtonCharacterDetail.Size = new Size(100, 23);
+            ButtonCharacterDetail.TabIndex = 43;
+            ButtonCharacterDetail.Text = "CharacterDetail";
+            ButtonCharacterDetail.UseVisualStyleBackColor = true;
+            ButtonCharacterDetail.Click += ButtonCharacterDetail_Click;
             // 
             // NumTravelerDiaryDetailPage
             // 
-            this.NumTravelerDiaryDetailPage.Location = new System.Drawing.Point(381, 82);
-            this.NumTravelerDiaryDetailPage.Maximum = new decimal(new int[] {
-            9999,
-            0,
-            0,
-            0});
-            this.NumTravelerDiaryDetailPage.Name = "NumTravelerDiaryDetailPage";
-            this.NumTravelerDiaryDetailPage.Size = new System.Drawing.Size(47, 23);
-            this.NumTravelerDiaryDetailPage.TabIndex = 42;
+            NumTravelerDiaryDetailPage.Location = new Point(381, 82);
+            NumTravelerDiaryDetailPage.Maximum = new decimal(new int[] { 9999, 0, 0, 0 });
+            NumTravelerDiaryDetailPage.Name = "NumTravelerDiaryDetailPage";
+            NumTravelerDiaryDetailPage.Size = new Size(47, 23);
+            NumTravelerDiaryDetailPage.TabIndex = 42;
             // 
             // label7
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(336, 86);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(39, 15);
-            this.label7.TabIndex = 41;
-            this.label7.Text = "Page :";
+            label7.AutoSize = true;
+            label7.Location = new Point(336, 86);
+            label7.Name = "label7";
+            label7.Size = new Size(39, 15);
+            label7.TabIndex = 41;
+            label7.Text = "Page :";
             // 
             // NumTravelerDiaryDetailMonth
             // 
-            this.NumTravelerDiaryDetailMonth.Location = new System.Drawing.Point(283, 82);
-            this.NumTravelerDiaryDetailMonth.Maximum = new decimal(new int[] {
-            12,
-            0,
-            0,
-            0});
-            this.NumTravelerDiaryDetailMonth.Name = "NumTravelerDiaryDetailMonth";
-            this.NumTravelerDiaryDetailMonth.Size = new System.Drawing.Size(47, 23);
-            this.NumTravelerDiaryDetailMonth.TabIndex = 40;
+            NumTravelerDiaryDetailMonth.Location = new Point(283, 82);
+            NumTravelerDiaryDetailMonth.Maximum = new decimal(new int[] { 12, 0, 0, 0 });
+            NumTravelerDiaryDetailMonth.Name = "NumTravelerDiaryDetailMonth";
+            NumTravelerDiaryDetailMonth.Size = new Size(47, 23);
+            NumTravelerDiaryDetailMonth.TabIndex = 40;
             // 
             // label6
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(228, 86);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(49, 15);
-            this.label6.TabIndex = 39;
-            this.label6.Text = "Month :";
+            label6.AutoSize = true;
+            label6.Location = new Point(228, 86);
+            label6.Name = "label6";
+            label6.Size = new Size(49, 15);
+            label6.TabIndex = 39;
+            label6.Text = "Month :";
             // 
             // NumTravelerDiaryDetailType
             // 
-            this.NumTravelerDiaryDetailType.Location = new System.Drawing.Point(175, 82);
-            this.NumTravelerDiaryDetailType.Maximum = new decimal(new int[] {
-            99,
-            0,
-            0,
-            0});
-            this.NumTravelerDiaryDetailType.Name = "NumTravelerDiaryDetailType";
-            this.NumTravelerDiaryDetailType.Size = new System.Drawing.Size(47, 23);
-            this.NumTravelerDiaryDetailType.TabIndex = 38;
+            NumTravelerDiaryDetailType.Location = new Point(175, 82);
+            NumTravelerDiaryDetailType.Maximum = new decimal(new int[] { 99, 0, 0, 0 });
+            NumTravelerDiaryDetailType.Name = "NumTravelerDiaryDetailType";
+            NumTravelerDiaryDetailType.Size = new Size(47, 23);
+            NumTravelerDiaryDetailType.TabIndex = 38;
             // 
             // label5
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(132, 86);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(37, 15);
-            this.label5.TabIndex = 37;
-            this.label5.Text = "Type :";
+            label5.AutoSize = true;
+            label5.Location = new Point(132, 86);
+            label5.Name = "label5";
+            label5.Size = new Size(37, 15);
+            label5.TabIndex = 37;
+            label5.Text = "Type :";
             // 
             // ButtonTravelersDiaryDetail
             // 
-            this.ButtonTravelersDiaryDetail.Location = new System.Drawing.Point(8, 82);
-            this.ButtonTravelersDiaryDetail.Name = "ButtonTravelersDiaryDetail";
-            this.ButtonTravelersDiaryDetail.Size = new System.Drawing.Size(118, 23);
-            this.ButtonTravelersDiaryDetail.TabIndex = 36;
-            this.ButtonTravelersDiaryDetail.Text = "TravelerDiaryDetail";
-            this.ButtonTravelersDiaryDetail.UseVisualStyleBackColor = true;
-            this.ButtonTravelersDiaryDetail.Click += new System.EventHandler(this.ButtonTravelersDiaryDetail_Click);
+            ButtonTravelersDiaryDetail.Location = new Point(8, 82);
+            ButtonTravelersDiaryDetail.Name = "ButtonTravelersDiaryDetail";
+            ButtonTravelersDiaryDetail.Size = new Size(118, 23);
+            ButtonTravelersDiaryDetail.TabIndex = 36;
+            ButtonTravelersDiaryDetail.Text = "TravelerDiaryDetail";
+            ButtonTravelersDiaryDetail.UseVisualStyleBackColor = true;
+            ButtonTravelersDiaryDetail.Click += ButtonTravelersDiaryDetail_Click;
             // 
             // label4
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(114, 115);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(41, 15);
-            this.label4.TabIndex = 35;
-            this.label4.Text = "Since :";
+            label4.AutoSize = true;
+            label4.Location = new Point(114, 115);
+            label4.Name = "label4";
+            label4.Size = new Size(41, 15);
+            label4.TabIndex = 35;
+            label4.Text = "Since :";
             // 
             // ButtonStellarJourney
             // 
-            this.ButtonStellarJourney.Location = new System.Drawing.Point(8, 111);
-            this.ButtonStellarJourney.Name = "ButtonStellarJourney";
-            this.ButtonStellarJourney.Size = new System.Drawing.Size(100, 23);
-            this.ButtonStellarJourney.TabIndex = 34;
-            this.ButtonStellarJourney.Text = "StellarJourney";
-            this.ButtonStellarJourney.UseVisualStyleBackColor = true;
-            this.ButtonStellarJourney.Click += new System.EventHandler(this.ButtonStellarJourney_Click);
+            ButtonStellarJourney.Location = new Point(8, 111);
+            ButtonStellarJourney.Name = "ButtonStellarJourney";
+            ButtonStellarJourney.Size = new Size(100, 23);
+            ButtonStellarJourney.TabIndex = 34;
+            ButtonStellarJourney.Text = "StellarJourney";
+            ButtonStellarJourney.UseVisualStyleBackColor = true;
+            ButtonStellarJourney.Click += ButtonStellarJourney_Click;
             // 
             // DateTimeStellarJourneySince
             // 
-            this.DateTimeStellarJourneySince.Location = new System.Drawing.Point(164, 111);
-            this.DateTimeStellarJourneySince.Name = "DateTimeStellarJourneySince";
-            this.DateTimeStellarJourneySince.Size = new System.Drawing.Size(119, 23);
-            this.DateTimeStellarJourneySince.TabIndex = 33;
+            DateTimeStellarJourneySince.Location = new Point(164, 111);
+            DateTimeStellarJourneySince.Name = "DateTimeStellarJourneySince";
+            DateTimeStellarJourneySince.Size = new Size(119, 23);
+            DateTimeStellarJourneySince.TabIndex = 33;
             // 
             // ButtonTravelersDiary
             // 
-            this.ButtonTravelersDiary.Location = new System.Drawing.Point(8, 53);
-            this.ButtonTravelersDiary.Name = "ButtonTravelersDiary";
-            this.ButtonTravelersDiary.Size = new System.Drawing.Size(85, 23);
-            this.ButtonTravelersDiary.TabIndex = 32;
-            this.ButtonTravelersDiary.Text = "TravelerDiary";
-            this.ButtonTravelersDiary.UseVisualStyleBackColor = true;
-            this.ButtonTravelersDiary.Click += new System.EventHandler(this.ButtonTravelersDiary_Click);
+            ButtonTravelersDiary.Location = new Point(8, 53);
+            ButtonTravelersDiary.Name = "ButtonTravelersDiary";
+            ButtonTravelersDiary.Size = new Size(85, 23);
+            ButtonTravelersDiary.TabIndex = 32;
+            ButtonTravelersDiary.Text = "TravelerDiary";
+            ButtonTravelersDiary.UseVisualStyleBackColor = true;
+            ButtonTravelersDiary.Click += ButtonTravelersDiary_Click;
             // 
             // NumTravelerDiaryMonth
             // 
-            this.NumTravelerDiaryMonth.Location = new System.Drawing.Point(154, 53);
-            this.NumTravelerDiaryMonth.Maximum = new decimal(new int[] {
-            12,
-            0,
-            0,
-            0});
-            this.NumTravelerDiaryMonth.Name = "NumTravelerDiaryMonth";
-            this.NumTravelerDiaryMonth.Size = new System.Drawing.Size(47, 23);
-            this.NumTravelerDiaryMonth.TabIndex = 31;
+            NumTravelerDiaryMonth.Location = new Point(154, 53);
+            NumTravelerDiaryMonth.Maximum = new decimal(new int[] { 12, 0, 0, 0 });
+            NumTravelerDiaryMonth.Name = "NumTravelerDiaryMonth";
+            NumTravelerDiaryMonth.Size = new Size(47, 23);
+            NumTravelerDiaryMonth.TabIndex = 31;
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(99, 57);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(49, 15);
-            this.label3.TabIndex = 30;
-            this.label3.Text = "Month :";
+            label3.AutoSize = true;
+            label3.Location = new Point(99, 57);
+            label3.Name = "label3";
+            label3.Size = new Size(49, 15);
+            label3.TabIndex = 30;
+            label3.Text = "Month :";
             // 
             // ButtonEnkaNetwork
             // 
-            this.ButtonEnkaNetwork.Location = new System.Drawing.Point(289, 4);
-            this.ButtonEnkaNetwork.Name = "ButtonEnkaNetwork";
-            this.ButtonEnkaNetwork.Size = new System.Drawing.Size(89, 23);
-            this.ButtonEnkaNetwork.TabIndex = 29;
-            this.ButtonEnkaNetwork.Text = "Enka.Network";
-            this.ButtonEnkaNetwork.UseVisualStyleBackColor = true;
-            this.ButtonEnkaNetwork.Click += new System.EventHandler(this.ButtonEnkaNetwork_Click);
+            ButtonEnkaNetwork.Location = new Point(289, 4);
+            ButtonEnkaNetwork.Name = "ButtonEnkaNetwork";
+            ButtonEnkaNetwork.Size = new Size(89, 23);
+            ButtonEnkaNetwork.TabIndex = 29;
+            ButtonEnkaNetwork.Text = "Enka.Network";
+            ButtonEnkaNetwork.UseVisualStyleBackColor = true;
+            ButtonEnkaNetwork.Click += ButtonEnkaNetwork_Click;
             // 
             // ButtonRealTimeNote
             // 
-            this.ButtonRealTimeNote.Location = new System.Drawing.Point(194, 4);
-            this.ButtonRealTimeNote.Name = "ButtonRealTimeNote";
-            this.ButtonRealTimeNote.Size = new System.Drawing.Size(89, 23);
-            this.ButtonRealTimeNote.TabIndex = 28;
-            this.ButtonRealTimeNote.Text = "RealTimeNote";
-            this.ButtonRealTimeNote.UseVisualStyleBackColor = true;
-            this.ButtonRealTimeNote.Click += new System.EventHandler(this.ButtonRealTimeNote_Click);
+            ButtonRealTimeNote.Location = new Point(194, 4);
+            ButtonRealTimeNote.Name = "ButtonRealTimeNote";
+            ButtonRealTimeNote.Size = new Size(89, 23);
+            ButtonRealTimeNote.TabIndex = 28;
+            ButtonRealTimeNote.Text = "RealTimeNote";
+            ButtonRealTimeNote.UseVisualStyleBackColor = true;
+            ButtonRealTimeNote.Click += ButtonRealTimeNote_Click;
             // 
             // ButtonSpiralAbyssPreviously
             // 
-            this.ButtonSpiralAbyssPreviously.Location = new System.Drawing.Point(141, 26);
-            this.ButtonSpiralAbyssPreviously.Name = "ButtonSpiralAbyssPreviously";
-            this.ButtonSpiralAbyssPreviously.Size = new System.Drawing.Size(71, 23);
-            this.ButtonSpiralAbyssPreviously.TabIndex = 27;
-            this.ButtonSpiralAbyssPreviously.Text = "previously";
-            this.ButtonSpiralAbyssPreviously.UseVisualStyleBackColor = true;
-            this.ButtonSpiralAbyssPreviously.Click += new System.EventHandler(this.ButtonSpiralAbyssPreviously_Click);
+            ButtonSpiralAbyssPreviously.Location = new Point(141, 26);
+            ButtonSpiralAbyssPreviously.Name = "ButtonSpiralAbyssPreviously";
+            ButtonSpiralAbyssPreviously.Size = new Size(71, 23);
+            ButtonSpiralAbyssPreviously.TabIndex = 27;
+            ButtonSpiralAbyssPreviously.Text = "previously";
+            ButtonSpiralAbyssPreviously.UseVisualStyleBackColor = true;
+            ButtonSpiralAbyssPreviously.Click += ButtonSpiralAbyssPreviously_Click;
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 30);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(67, 15);
-            this.label2.TabIndex = 26;
-            this.label2.Text = "SpiralAbyss";
+            label2.AutoSize = true;
+            label2.Location = new Point(6, 30);
+            label2.Name = "label2";
+            label2.Size = new Size(67, 15);
+            label2.TabIndex = 26;
+            label2.Text = "SpiralAbyss";
             // 
             // ButtonSpiralAbyssCurrent
             // 
-            this.ButtonSpiralAbyssCurrent.Location = new System.Drawing.Point(79, 26);
-            this.ButtonSpiralAbyssCurrent.Name = "ButtonSpiralAbyssCurrent";
-            this.ButtonSpiralAbyssCurrent.Size = new System.Drawing.Size(56, 23);
-            this.ButtonSpiralAbyssCurrent.TabIndex = 25;
-            this.ButtonSpiralAbyssCurrent.Text = "current";
-            this.ButtonSpiralAbyssCurrent.UseVisualStyleBackColor = true;
-            this.ButtonSpiralAbyssCurrent.Click += new System.EventHandler(this.ButtonSpiralAbyssCurrent_Click);
+            ButtonSpiralAbyssCurrent.Location = new Point(79, 26);
+            ButtonSpiralAbyssCurrent.Name = "ButtonSpiralAbyssCurrent";
+            ButtonSpiralAbyssCurrent.Size = new Size(56, 23);
+            ButtonSpiralAbyssCurrent.TabIndex = 25;
+            ButtonSpiralAbyssCurrent.Text = "current";
+            ButtonSpiralAbyssCurrent.UseVisualStyleBackColor = true;
+            ButtonSpiralAbyssCurrent.Click += ButtonSpiralAbyssCurrent_Click;
             // 
             // ButtonCharacters
             // 
-            this.ButtonCharacters.Location = new System.Drawing.Point(99, 4);
-            this.ButtonCharacters.Name = "ButtonCharacters";
-            this.ButtonCharacters.Size = new System.Drawing.Size(89, 23);
-            this.ButtonCharacters.TabIndex = 24;
-            this.ButtonCharacters.Text = "Characters";
-            this.ButtonCharacters.UseVisualStyleBackColor = true;
-            this.ButtonCharacters.Click += new System.EventHandler(this.ButtonCharacters_Click);
+            ButtonCharacters.Location = new Point(99, 4);
+            ButtonCharacters.Name = "ButtonCharacters";
+            ButtonCharacters.Size = new Size(89, 23);
+            ButtonCharacters.TabIndex = 24;
+            ButtonCharacters.Text = "Characters";
+            ButtonCharacters.UseVisualStyleBackColor = true;
+            ButtonCharacters.Click += ButtonCharacters_Click;
             // 
             // ButtonGameRecord
             // 
-            this.ButtonGameRecord.Location = new System.Drawing.Point(4, 4);
-            this.ButtonGameRecord.Name = "ButtonGameRecord";
-            this.ButtonGameRecord.Size = new System.Drawing.Size(89, 23);
-            this.ButtonGameRecord.TabIndex = 23;
-            this.ButtonGameRecord.Text = "GameRecord";
-            this.ButtonGameRecord.UseVisualStyleBackColor = true;
-            this.ButtonGameRecord.Click += new System.EventHandler(this.ButtonGameRecord_Click);
+            ButtonGameRecord.Location = new Point(4, 4);
+            ButtonGameRecord.Name = "ButtonGameRecord";
+            ButtonGameRecord.Size = new Size(89, 23);
+            ButtonGameRecord.TabIndex = 23;
+            ButtonGameRecord.Text = "GameRecord";
+            ButtonGameRecord.UseVisualStyleBackColor = true;
+            ButtonGameRecord.Click += ButtonGameRecord_Click;
             // 
             // APIChecker
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(542, 450);
-            this.Controls.Add(this.OutputBox);
-            this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel1);
-            this.Name = "APIChecker";
-            this.Text = "APIChecker";
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.NumCharacterDetailCharacterID)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NumTravelerDiaryDetailPage)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NumTravelerDiaryDetailMonth)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NumTravelerDiaryDetailType)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NumTravelerDiaryMonth)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(542, 450);
+            Controls.Add(OutputBox);
+            Controls.Add(panel2);
+            Controls.Add(panel1);
+            Name = "APIChecker";
+            Text = "APIChecker";
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
+            panel2.ResumeLayout(false);
+            panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)NumCharacterDetailCharacterID).EndInit();
+            ((System.ComponentModel.ISupportInitialize)NumTravelerDiaryDetailPage).EndInit();
+            ((System.ComponentModel.ISupportInitialize)NumTravelerDiaryDetailMonth).EndInit();
+            ((System.ComponentModel.ISupportInitialize)NumTravelerDiaryDetailType).EndInit();
+            ((System.ComponentModel.ISupportInitialize)NumTravelerDiaryMonth).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -433,5 +437,8 @@
         private Button ButtonSpiralAbyssCurrent;
         private Button ButtonCharacters;
         private Button ButtonGameRecord;
+        private Button button1;
+        private Button button2;
+        private TextBox textBox1;
     }
 }

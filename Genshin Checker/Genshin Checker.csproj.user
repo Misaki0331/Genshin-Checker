@@ -70,6 +70,9 @@
     <Compile Update="Window\Debug\APIChecker.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Window\ExWindow\EmptyWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Window\MusicPlayer.cs">
       <SubType>Form</SubType>
     </Compile>
