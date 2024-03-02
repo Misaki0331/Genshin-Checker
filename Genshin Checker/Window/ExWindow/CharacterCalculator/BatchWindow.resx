@@ -1,4 +1,64 @@
-﻿<root>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!--
+    Microsoft ResX Schema 
+
+    Version 2.0
+
+    The primary goals of this format is to allow a simple XML format
+    that is mostly human readable. The generation and parsing of the
+    various data types are done through the TypeConverter classes
+    associated with the data types.
+
+    Example:
+
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+
+    There are any number of "resheader" rows that contain simple
+    name/value pairs.
+
+    Each data row contains a name, and value. The row also contains a
+    type or mimetype. Type corresponds to a .NET class that support
+    text/value conversion through the TypeConverter architecture.
+    Classes that don't support this are serialized and stored with the
+    mimetype set.
+
+    The mimetype is used for serialized objects, and tells the
+    ResXResourceReader how to depersist the object. This is currently not
+    extensible. For a given mimetype the value must be set accordingly:
+
+    Note - application/x-microsoft.net.object.binary.base64 is the format
+    that the ResXResourceWriter will generate, however the reader can
+    read any of the formats listed below.
+
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
   <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
@@ -58,1107 +118,1107 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="RadioDisable.Location" type="System.Drawing.Point, System.Drawing">
-    <value>165, 19</value>
-  </data>
   <data name="GroupLevel.Size" type="System.Drawing.Size, System.Drawing">
     <value>275, 47</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="ArrowLevel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Left</value>
-  </data>
-  <data name="RadioEnable.Appearance" type="System.Windows.Forms.Appearance, System.Windows.Forms">
-    <value>Button</value>
-  </data>
-  <data name="&gt;&gt;ButtonAppry.Parent" xml:space="preserve">
-    <value>panel5</value>
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="panel4.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>275, 48</value>
-  </data>
-  <data name="ArrowTalent2.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="TrackTalent1.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="CurrentTalent3.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Left</value>
-  </data>
-  <data name="&gt;&gt;GroupLevel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="GroupTalent1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="&gt;&gt;ButtonCancel.Parent" xml:space="preserve">
-    <value>panel5</value>
-  </data>
-  <data name="TrackLevel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>71, 0</value>
-  </data>
-  <data name="ArrowTalent1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 12pt</value>
-  </data>
-  <data name="&gt;&gt;panel2.Name" xml:space="preserve">
-    <value>panel2</value>
-  </data>
-  <data name="panel4.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="panel3.Size" type="System.Drawing.Size, System.Drawing">
     <value>269, 25</value>
-  </data>
-  <data name="&gt;&gt;TrackLevel.Parent" xml:space="preserve">
-    <value>panel1</value>
-  </data>
-  <data name="ButtonSetToLv90.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="NumericLevel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>226, 0</value>
-  </data>
-  <data name="TrackLevel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>155, 25</value>
-  </data>
-  <data name="label1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Left</value>
-  </data>
-  <data name="&gt;&gt;panel1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="ButtonCancel.Text" xml:space="preserve">
-    <value>Cancel</value>
-  </data>
-  <data name="&gt;&gt;NumericTalent3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="TrackTalent3.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="LabelCharacterName.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 12pt, style=Bold</value>
-  </data>
-  <data name="ButtonSetToTalent9.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="ButtonCancel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 25</value>
-  </data>
-  <data name="panel5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 282</value>
-  </data>
-  <data name="&gt;&gt;GroupTalent1.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;CurrentTalent3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;panel1.Name" xml:space="preserve">
-    <value>panel1</value>
-  </data>
-  <data name="&gt;&gt;GroupTalent2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="panel6.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
-  </data>
-  <data name="NumericTalent1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>226, 0</value>
-  </data>
-  <data name="&gt;&gt;panel6.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="ButtonSetToTalent9.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="panel6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 21</value>
-  </data>
-  <data name="&gt;&gt;ArrowTalent3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="RadioDisable.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="RadioDisable.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Right</value>
-  </data>
-  <data name="ButtonSetToTalent10.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;ArrowTalent3.Name" xml:space="preserve">
-    <value>ArrowTalent3</value>
-  </data>
-  <data name="&gt;&gt;TrackTalent3.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="CurrentTalent2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Left</value>
-  </data>
-  <data name="ButtonSetToLv90.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="&gt;&gt;ButtonAppry.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="NumericTalent1.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="ArrowTalent1.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="CurrentTalent1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Left</value>
-  </data>
-  <data name="&gt;&gt;panel4.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="GroupTalent2.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>275, 319</value>
-  </data>
-  <data name="TrackTalent3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>155, 25</value>
   </data>
   <data name="&gt;&gt;panel1.Parent" xml:space="preserve">
     <value>GroupLevel</value>
   </data>
-  <data name="&gt;&gt;TrackLevel.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="CurrentTalent1.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="RadioEnable.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Right</value>
-  </data>
-  <data name="&gt;&gt;panel5.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="CurrentLevel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="label1.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="ButtonSetToTalent10.Size" type="System.Drawing.Size, System.Drawing">
-    <value>63, 25</value>
-  </data>
-  <data name="&gt;&gt;panel6.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ButtonSetToLv90.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="ButtonAppry.Text" xml:space="preserve">
-    <value>OK</value>
-  </data>
-  <data name="&gt;&gt;CurrentLevel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;panel5.Name" xml:space="preserve">
-    <value>panel5</value>
-  </data>
-  <data name="panel3.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="ButtonSetToTalent10.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>BottomLeft</value>
-  </data>
-  <data name="&gt;&gt;TrackTalent1.Parent" xml:space="preserve">
-    <value>panel2</value>
-  </data>
-  <data name="panel5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>275, 25</value>
-  </data>
-  <data name="NumericLevel.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="ButtonCancel.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="ButtonSetToLv90.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Left</value>
-  </data>
-  <data name="&gt;&gt;CurrentTalent1.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;NumericTalent1.Name" xml:space="preserve">
-    <value>NumericTalent1</value>
-  </data>
-  <data name="panel4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 19</value>
-  </data>
-  <data name="ButtonSetToTalent9.Text" xml:space="preserve">
-    <value>Talent 9</value>
-  </data>
-  <data name="NumericTalent2.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Right</value>
-  </data>
-  <data name="GroupTalent3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>275, 47</value>
-  </data>
-  <data name="&gt;&gt;ButtonSetToTalent10.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>89, 25</value>
-  </data>
-  <data name="CurrentLevel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>45, 20</value>
-  </data>
-  <data name="RadioEnable.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="TrackTalent3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>71, 0</value>
-  </data>
-  <data name="CurrentLevel.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 11.25pt</value>
-  </data>
-  <data name="&gt;&gt;CurrentLevel.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;NumericTalent1.Parent" xml:space="preserve">
-    <value>panel2</value>
-  </data>
-  <data name="&gt;&gt;CurrentTalent3.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="panel1.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="&gt;&gt;RadioDisable.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>BatchWindow</value>
-  </data>
-  <data name="&gt;&gt;GroupTalent3.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>269, 25</value>
-  </data>
-  <data name="&gt;&gt;GroupTalent1.Name" xml:space="preserve">
-    <value>GroupTalent1</value>
-  </data>
-  <data name="&gt;&gt;LabelCharacterName.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="NumericLevel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Right</value>
-  </data>
-  <data name="&gt;&gt;panel3.Name" xml:space="preserve">
-    <value>panel3</value>
-  </data>
-  <data name="GroupLevel.Text" xml:space="preserve">
-    <value>Character Level</value>
-  </data>
-  <data name="&gt;&gt;CurrentLevel.Name" xml:space="preserve">
-    <value>CurrentLevel</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;NumericLevel.Name" xml:space="preserve">
-    <value>NumericLevel</value>
-  </data>
-  <data name="&gt;&gt;TrackTalent3.Parent" xml:space="preserve">
-    <value>panel4</value>
-  </data>
-  <data name="NumericTalent3.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Right</value>
-  </data>
-  <data name="groupBox1.Text" xml:space="preserve">
-    <value>Enhancement State</value>
-  </data>
-  <data name="panel3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 19</value>
-  </data>
-  <data name="ArrowTalent1.Text" xml:space="preserve">
-    <value>▶</value>
-  </data>
-  <data name="ButtonSetToTalent9.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>BottomLeft</value>
-  </data>
-  <data name="CurrentTalent1.Text" xml:space="preserve">
-    <value>Lv. 10</value>
-  </data>
-  <data name="&gt;&gt;GroupTalent1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="GroupTalent2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 188</value>
-  </data>
-  <data name="ButtonAppry.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Right</value>
-  </data>
-  <data name="LabelCharacterName.Size" type="System.Drawing.Size, System.Drawing">
-    <value>127, 21</value>
-  </data>
-  <data name="panel1.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="CurrentTalent2.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="TrackTalent2.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="panel5.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="GroupTalent2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>275, 47</value>
-  </data>
-  <data name="&gt;&gt;NumericLevel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;CurrentTalent2.Name" xml:space="preserve">
-    <value>CurrentTalent2</value>
-  </data>
-  <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 46</value>
-  </data>
-  <data name="panel2.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="GroupTalent2.Text" xml:space="preserve">
-    <value>Normal Skill</value>
-  </data>
-  <data name="NumericTalent1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>43, 23</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="$this.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="NumericTalent2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>226, 0</value>
-  </data>
-  <data name="ArrowTalent3.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="&gt;&gt;TrackLevel.Type" xml:space="preserve">
+  <data name="&gt;&gt;TrackTalent2.Type" xml:space="preserve">
     <value>System.Windows.Forms.TrackBar, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;ButtonSetToLv90.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="GroupTalent3.Text" xml:space="preserve">
-    <value>Burst Skill</value>
-  </data>
-  <data name="ArrowTalent1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Left</value>
-  </data>
-  <data name="ButtonSetToTalent9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>57, 25</value>
-  </data>
-  <data name="&gt;&gt;CurrentTalent1.Parent" xml:space="preserve">
-    <value>panel2</value>
-  </data>
-  <data name="RadioEnable.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="ButtonAppry.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 25</value>
-  </data>
-  <data name="CurrentTalent3.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;ButtonSetToTalent9.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="panel6.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="&gt;&gt;CurrentLevel.Parent" xml:space="preserve">
-    <value>panel1</value>
-  </data>
-  <data name="ArrowLevel.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="ArrowTalent1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>45, 0</value>
-  </data>
-  <data name="&gt;&gt;ButtonSetToTalent10.Name" xml:space="preserve">
-    <value>ButtonSetToTalent10</value>
-  </data>
-  <data name="ArrowTalent1.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="&gt;&gt;panel2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="panel2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 19</value>
-  </data>
-  <data name="&gt;&gt;ButtonAppry.Name" xml:space="preserve">
-    <value>ButtonAppry</value>
-  </data>
-  <data name="CurrentLevel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Left</value>
-  </data>
-  <data name="&gt;&gt;GroupLevel.Name" xml:space="preserve">
-    <value>GroupLevel</value>
-  </data>
-  <data name="ArrowLevel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>26, 21</value>
-  </data>
-  <data name="CurrentLevel.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="CurrentLevel.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="&gt;&gt;NumericTalent3.Name" xml:space="preserve">
-    <value>NumericTalent3</value>
-  </data>
-  <data name="NumericTalent3.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;ArrowTalent2.Parent" xml:space="preserve">
-    <value>panel3</value>
-  </data>
-  <data name="CurrentTalent3.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 11.25pt</value>
-  </data>
-  <data name="&gt;&gt;TrackLevel.Name" xml:space="preserve">
-    <value>TrackLevel</value>
-  </data>
-  <data name="GroupLevel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 94</value>
-  </data>
-  <data name="ArrowTalent2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Left</value>
-  </data>
-  <data name="&gt;&gt;ButtonSetToTalent10.Parent" xml:space="preserve">
-    <value>panel6</value>
-  </data>
-  <data name="RadioEnable.Size" type="System.Drawing.Size, System.Drawing">
-    <value>52, 26</value>
-  </data>
-  <data name="ArrowTalent2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 12pt</value>
-  </data>
-  <data name="groupBox1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="&gt;&gt;ArrowTalent1.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="GroupTalent1.Text" xml:space="preserve">
-    <value>Normal Attack</value>
-  </data>
-  <data name="&gt;&gt;TrackTalent2.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="panel2.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="ArrowLevel.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 12pt</value>
-  </data>
-  <data name="GroupTalent1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>275, 47</value>
-  </data>
-  <data name="panel5.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="$this.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;CurrentTalent2.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;panel6.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;GroupTalent3.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;CurrentTalent3.Parent" xml:space="preserve">
-    <value>panel4</value>
-  </data>
-  <data name="RadioDisable.Size" type="System.Drawing.Size, System.Drawing">
-    <value>55, 26</value>
-  </data>
-  <data name="&gt;&gt;RadioDisable.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.Name" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="ArrowLevel.Text" xml:space="preserve">
-    <value>▶</value>
-  </data>
-  <data name="ButtonCancel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>125, 0</value>
-  </data>
-  <data name="ArrowTalent3.Text" xml:space="preserve">
-    <value>▶</value>
-  </data>
-  <data name="&gt;&gt;NumericTalent1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="LabelCharacterName.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="ArrowTalent3.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Left</value>
-  </data>
-  <data name="ButtonSetToTalent9.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="GroupLevel.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="ArrowTalent2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>26, 21</value>
-  </data>
-  <data name="&gt;&gt;LabelCharacterName.Name" xml:space="preserve">
-    <value>LabelCharacterName</value>
-  </data>
-  <data name="GroupTalent2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="&gt;&gt;ArrowLevel.Parent" xml:space="preserve">
-    <value>panel1</value>
-  </data>
-  <data name="&gt;&gt;GroupTalent3.Name" xml:space="preserve">
-    <value>GroupTalent3</value>
-  </data>
-  <data name="NumericTalent3.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Right</value>
-  </data>
-  <data name="ArrowTalent2.Text" xml:space="preserve">
-    <value>▶</value>
-  </data>
-  <data name="ButtonSetToLv90.Text" xml:space="preserve">
-    <value>Lv.90</value>
-  </data>
-  <data name="&gt;&gt;RadioDisable.Name" xml:space="preserve">
-    <value>RadioDisable</value>
-  </data>
-  <data name="CurrentTalent3.Text" xml:space="preserve">
-    <value>Lv. 10</value>
-  </data>
-  <data name="&gt;&gt;ButtonSetToLv90.Name" xml:space="preserve">
-    <value>ButtonSetToLv90</value>
-  </data>
-  <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
-  </data>
-  <data name="NumericLevel.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Right</value>
-  </data>
-  <data name="&gt;&gt;ArrowTalent3.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="CurrentTalent1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="LabelCharacterName.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="LabelCharacterName.Text" xml:space="preserve">
-    <value>Character Name</value>
-  </data>
-  <data name="panel4.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="&gt;&gt;ArrowTalent3.Parent" xml:space="preserve">
-    <value>panel4</value>
-  </data>
-  <data name="&gt;&gt;NumericTalent2.Name" xml:space="preserve">
-    <value>NumericTalent2</value>
-  </data>
-  <data name="&gt;&gt;ArrowLevel.Name" xml:space="preserve">
-    <value>ArrowLevel</value>
-  </data>
-  <data name="panel2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="&gt;&gt;panel5.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;panel3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="NumericTalent3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>43, 23</value>
-  </data>
-  <data name="GroupTalent3.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
-  </data>
-  <data name="NumericTalent1.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Right</value>
-  </data>
-  <data name="ButtonSetToLv90.Location" type="System.Drawing.Point, System.Drawing">
-    <value>89, 0</value>
-  </data>
-  <data name="&gt;&gt;RadioEnable.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;ArrowLevel.Type" xml:space="preserve">
+  <data name="&gt;&gt;ArrowTalent3.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;RadioEnable.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="ButtonCancel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Right</value>
-  </data>
-  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="label1.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleLeft</value>
   </data>
   <data name="&gt;&gt;TrackTalent1.Name" xml:space="preserve">
     <value>TrackTalent1</value>
   </data>
-  <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="panel6.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
   </data>
-  <data name="&gt;&gt;NumericLevel.Parent" xml:space="preserve">
-    <value>panel1</value>
-  </data>
-  <data name="label1.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="RadioEnable.Text" xml:space="preserve">
-    <value>Enable</value>
-  </data>
-  <data name="&gt;&gt;GroupTalent3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;panel3.Parent" xml:space="preserve">
-    <value>GroupTalent2</value>
-  </data>
-  <data name="&gt;&gt;ButtonSetToTalent9.Parent" xml:space="preserve">
+  <data name="&gt;&gt;ButtonSetToTalent10.Parent" xml:space="preserve">
     <value>panel6</value>
   </data>
-  <data name="RadioDisable.Text" xml:space="preserve">
-    <value>Disable</value>
+  <data name="CurrentLevel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>45, 20</value>
   </data>
-  <data name="GroupTalent1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 141</value>
-  </data>
-  <data name="&gt;&gt;ButtonCancel.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="NumericTalent3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>226, 0</value>
-  </data>
-  <data name="ArrowTalent3.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 12pt</value>
-  </data>
-  <data name="NumericTalent2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Right</value>
-  </data>
-  <data name="CurrentTalent2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 11.25pt</value>
-  </data>
-  <data name="panel3.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;ArrowTalent1.Parent" xml:space="preserve">
-    <value>panel2</value>
-  </data>
-  <data name="&gt;&gt;GroupTalent2.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="RadioDisable.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="CurrentTalent3.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
-  <data name="&gt;&gt;panel2.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>BatchWindow</value>
   </data>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>96, 96</value>
+  <data name="&gt;&gt;GroupTalent3.Name" xml:space="preserve">
+    <value>GroupTalent3</value>
   </data>
-  <data name="&gt;&gt;TrackTalent3.Name" xml:space="preserve">
-    <value>TrackTalent3</value>
+  <data name="&gt;&gt;NumericTalent1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="CurrentLevel.Text" xml:space="preserve">
-    <value>Lv. 10</value>
-  </data>
-  <data name="GroupTalent1.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="NumericTalent1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Right</value>
-  </data>
-  <data name="ButtonSetToTalent10.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="ButtonSetToTalent9.Location" type="System.Drawing.Point, System.Drawing">
-    <value>132, 0</value>
-  </data>
-  <data name="&gt;&gt;TrackTalent1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TrackBar, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="ArrowTalent3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>26, 21</value>
-  </data>
-  <data name="&gt;&gt;NumericTalent3.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="GroupTalent1.AutoSize" type="System.Boolean, mscorlib">
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="GroupTalent3.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="&gt;&gt;label1.Name" xml:space="preserve">
     <value>label1</value>
   </data>
-  <data name="&gt;&gt;ButtonCancel.Name" xml:space="preserve">
-    <value>ButtonCancel</value>
-  </data>
-  <data name="CurrentTalent2.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="panel6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>275, 25</value>
-  </data>
-  <data name="&gt;&gt;panel3.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;ArrowLevel.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="label1.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>0, 25</value>
-  </data>
-  <data name="ButtonSetToTalent10.Location" type="System.Drawing.Point, System.Drawing">
-    <value>189, 0</value>
-  </data>
-  <data name="ArrowTalent3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>45, 0</value>
-  </data>
-  <data name="ButtonAppry.Location" type="System.Drawing.Point, System.Drawing">
-    <value>200, 0</value>
-  </data>
-  <data name="&gt;&gt;RadioDisable.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;TrackTalent3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TrackBar, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="ButtonSetToLv90.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
-    <value>panel6</value>
-  </data>
-  <data name="ButtonSetToTalent10.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="CurrentTalent1.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="TrackTalent2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="NumericLevel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>43, 23</value>
-  </data>
-  <data name="LabelCharacterName.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="panel4.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
   </data>
-  <data name="CurrentTalent3.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="ButtonSetToLv90.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>BottomLeft</value>
   </data>
-  <data name="&gt;&gt;ButtonCancel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;CurrentTalent2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;CurrentTalent2.Parent" xml:space="preserve">
-    <value>panel3</value>
-  </data>
-  <data name="&gt;&gt;panel4.Type" xml:space="preserve">
+  <data name="&gt;&gt;panel2.Type" xml:space="preserve">
     <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="TrackTalent2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>71, 0</value>
+  <data name="ButtonSetToLv90.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="ArrowTalent2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>45, 0</value>
+  </data>
+  <data name="panel4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>269, 25</value>
+  </data>
+  <data name="TrackTalent3.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;panel6.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;CurrentTalent1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ButtonSetToTalent9.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;ArrowTalent3.Name" xml:space="preserve">
+    <value>ArrowTalent3</value>
+  </data>
+  <data name="NumericLevel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>226, 0</value>
+  </data>
+  <data name="CurrentLevel.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 11.25pt</value>
+  </data>
+  <data name="CurrentTalent1.Text" xml:space="preserve">
+    <value>Lv. 10</value>
+  </data>
+  <data name="GroupTalent2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>275, 47</value>
   </data>
   <data name="&gt;&gt;ArrowTalent1.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;NumericTalent3.Parent" xml:space="preserve">
-    <value>panel4</value>
+  <data name="LabelCharacterName.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
   </data>
-  <data name="&gt;&gt;ButtonAppry.ZOrder" xml:space="preserve">
+  <data name="GroupLevel.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="GroupTalent2.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
+  <data name="&gt;&gt;GroupTalent2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;NumericTalent2.Parent" xml:space="preserve">
+  <data name="ButtonSetToTalent10.Text" xml:space="preserve">
+    <value>Talent 10</value>
+  </data>
+  <data name="ButtonSetToTalent10.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="NumericTalent2.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="ButtonSetToLv90.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="CurrentTalent2.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;NumericLevel.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="ButtonCancel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;GroupLevel.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;panel3.Name" xml:space="preserve">
     <value>panel3</value>
   </data>
-  <data name="&gt;&gt;NumericTalent1.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;groupBox1.Name" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="RadioEnable.Location" type="System.Drawing.Point, System.Drawing">
+    <value>220, 19</value>
+  </data>
+  <data name="&gt;&gt;GroupTalent3.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="CurrentTalent2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>45, 20</value>
+  </data>
+  <data name="&gt;&gt;CurrentTalent1.Parent" xml:space="preserve">
+    <value>panel2</value>
+  </data>
+  <data name="&gt;&gt;ButtonSetToLv90.ZOrder" xml:space="preserve">
     <value>2</value>
+  </data>
+  <data name="&gt;&gt;ButtonSetToTalent10.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="LabelCharacterName.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="&gt;&gt;panel6.Name" xml:space="preserve">
+    <value>panel6</value>
+  </data>
+  <data name="TrackTalent2.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;ArrowTalent2.Name" xml:space="preserve">
+    <value>ArrowTalent2</value>
+  </data>
+  <data name="&gt;&gt;TrackTalent3.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="GroupTalent1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>275, 47</value>
+  </data>
+  <data name="CurrentTalent1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>45, 20</value>
+  </data>
+  <data name="panel1.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="GroupLevel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 94</value>
+  </data>
+  <data name="GroupTalent2.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="TrackTalent3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>155, 25</value>
+  </data>
+  <data name="&gt;&gt;panel5.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="ButtonSetToTalent9.Text" xml:space="preserve">
+    <value>Talent 9</value>
+  </data>
+  <data name="CurrentTalent2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="LabelCharacterName.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 12pt, style=Bold</value>
+  </data>
+  <data name="label1.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>0, 25</value>
+  </data>
+  <data name="panel6.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 21</value>
+  </data>
+  <data name="ArrowTalent1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 12pt</value>
+  </data>
+  <data name="NumericTalent1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>43, 23</value>
+  </data>
+  <data name="ArrowTalent1.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>275, 48</value>
+  </data>
+  <data name="ButtonSetToTalent9.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="&gt;&gt;CurrentTalent3.Parent" xml:space="preserve">
+    <value>panel4</value>
+  </data>
+  <data name="&gt;&gt;TrackLevel.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;GroupTalent1.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;NumericTalent3.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;NumericLevel.Name" xml:space="preserve">
+    <value>NumericLevel</value>
+  </data>
+  <data name="&gt;&gt;CurrentLevel.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="GroupTalent3.Text" xml:space="preserve">
+    <value>Burst Skill</value>
+  </data>
+  <data name="GroupTalent3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 235</value>
+  </data>
+  <data name="NumericTalent3.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;RadioEnable.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="ArrowLevel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;TrackLevel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TrackBar, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="RadioEnable.Text" xml:space="preserve">
+    <value>Enable</value>
+  </data>
+  <data name="&gt;&gt;GroupLevel.Name" xml:space="preserve">
+    <value>GroupLevel</value>
+  </data>
+  <data name="&gt;&gt;ButtonSetToTalent9.Name" xml:space="preserve">
+    <value>ButtonSetToTalent9</value>
+  </data>
+  <data name="RadioEnable.Size" type="System.Drawing.Size, System.Drawing">
+    <value>52, 26</value>
+  </data>
+  <data name="RadioDisable.Location" type="System.Drawing.Point, System.Drawing">
+    <value>165, 19</value>
+  </data>
+  <data name="RadioDisable.Size" type="System.Drawing.Size, System.Drawing">
+    <value>55, 26</value>
+  </data>
+  <data name="NumericTalent2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>43, 23</value>
+  </data>
+  <data name="GroupTalent1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 141</value>
+  </data>
+  <data name="CurrentTalent2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="NumericTalent2.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;NumericTalent2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ButtonAppry.Name" xml:space="preserve">
+    <value>ButtonAppry</value>
+  </data>
+  <data name="ArrowLevel.Text" xml:space="preserve">
+    <value>▶</value>
+  </data>
+  <data name="TrackTalent2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>71, 0</value>
+  </data>
+  <data name="&gt;&gt;ButtonSetToTalent9.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="GroupLevel.Text" xml:space="preserve">
+    <value>Character Level</value>
+  </data>
+  <data name="GroupTalent3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>275, 47</value>
+  </data>
+  <data name="&gt;&gt;TrackLevel.Name" xml:space="preserve">
+    <value>TrackLevel</value>
+  </data>
+  <data name="NumericTalent1.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;panel2.Parent" xml:space="preserve">
+    <value>GroupTalent1</value>
+  </data>
+  <data name="&gt;&gt;TrackTalent3.Name" xml:space="preserve">
+    <value>TrackTalent3</value>
+  </data>
+  <data name="ArrowTalent1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>45, 0</value>
+  </data>
+  <data name="&gt;&gt;ArrowTalent3.Parent" xml:space="preserve">
+    <value>panel4</value>
+  </data>
+  <data name="GroupTalent1.Text" xml:space="preserve">
+    <value>Normal Attack</value>
+  </data>
+  <data name="TrackLevel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="panel5.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="LabelCharacterName.Text" xml:space="preserve">
+    <value>Character Name</value>
+  </data>
+  <data name="LabelCharacterName.Size" type="System.Drawing.Size, System.Drawing">
+    <value>127, 21</value>
+  </data>
+  <data name="CurrentTalent3.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;ButtonSetToLv90.Name" xml:space="preserve">
+    <value>ButtonSetToLv90</value>
+  </data>
+  <data name="CurrentTalent1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="&gt;&gt;GroupTalent2.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 46</value>
+  </data>
+  <data name="ButtonSetToTalent9.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="panel2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>269, 25</value>
+  </data>
+  <data name="&gt;&gt;TrackTalent1.Parent" xml:space="preserve">
+    <value>panel2</value>
+  </data>
+  <data name="CurrentTalent1.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;CurrentLevel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;GroupTalent3.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
+    <value>panel6</value>
+  </data>
+  <data name="&gt;&gt;panel4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;TrackLevel.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;CurrentTalent3.Name" xml:space="preserve">
+    <value>CurrentTalent3</value>
+  </data>
+  <data name="RadioEnable.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="panel6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>275, 25</value>
+  </data>
+  <data name="CurrentTalent3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>45, 20</value>
+  </data>
+  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
+    <value>CenterParent</value>
+  </data>
+  <data name="&gt;&gt;NumericTalent3.Name" xml:space="preserve">
+    <value>NumericTalent3</value>
+  </data>
+  <data name="&gt;&gt;TrackTalent3.Parent" xml:space="preserve">
+    <value>panel4</value>
+  </data>
+  <data name="&gt;&gt;TrackTalent2.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;ButtonCancel.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;ButtonSetToLv90.Parent" xml:space="preserve">
+    <value>panel6</value>
+  </data>
+  <data name="CurrentLevel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>System.Windows.Forms.Form, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="GroupLevel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
+  <data name="CurrentTalent1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
-  <data name="&gt;&gt;ArrowTalent2.ZOrder" xml:space="preserve">
+  <data name="ButtonAppry.Text" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="ButtonCancel.Text" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="CurrentTalent3.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="NumericTalent1.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="TrackTalent2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="&gt;&gt;TrackTalent1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TrackBar, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="GroupTalent3.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;panel6.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="CurrentLevel.Text" xml:space="preserve">
+    <value>Lv. 10</value>
+  </data>
+  <data name="RadioDisable.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="panel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="TrackTalent1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>71, 0</value>
+  </data>
+  <data name="panel2.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="CurrentLevel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="GroupLevel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;NumericTalent2.Name" xml:space="preserve">
+    <value>NumericTalent2</value>
+  </data>
+  <data name="NumericTalent3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>43, 23</value>
+  </data>
+  <data name="NumericLevel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="TrackTalent1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>155, 25</value>
+  </data>
+  <data name="&gt;&gt;ButtonCancel.Name" xml:space="preserve">
+    <value>ButtonCancel</value>
+  </data>
+  <data name="ButtonSetToLv90.Size" type="System.Drawing.Size, System.Drawing">
+    <value>43, 25</value>
+  </data>
+  <data name="ButtonAppry.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 25</value>
+  </data>
+  <data name="ArrowLevel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>26, 21</value>
+  </data>
+  <data name="&gt;&gt;CurrentTalent2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ButtonSetToTalent10.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>BottomLeft</value>
+  </data>
+  <data name="ButtonCancel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 25</value>
+  </data>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>89, 25</value>
+  </data>
+  <data name="TrackTalent2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>155, 25</value>
+  </data>
+  <data name="&gt;&gt;NumericTalent3.Parent" xml:space="preserve">
+    <value>panel4</value>
+  </data>
+  <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>291, 0</value>
+  </data>
+  <data name="ArrowLevel.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 12pt</value>
+  </data>
+  <data name="ButtonSetToLv90.Text" xml:space="preserve">
+    <value>Lv.90</value>
+  </data>
+  <data name="groupBox1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
   </data>
   <data name="&gt;&gt;TrackTalent2.Parent" xml:space="preserve">
     <value>panel3</value>
   </data>
-  <data name="&gt;&gt;GroupLevel.ZOrder" xml:space="preserve">
-    <value>4</value>
+  <data name="ButtonSetToLv90.Location" type="System.Drawing.Point, System.Drawing">
+    <value>89, 0</value>
   </data>
-  <data name="panel3.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+  <data name="&gt;&gt;CurrentTalent1.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="panel2.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <data name="ArrowLevel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>45, 0</value>
+  <data name="ArrowLevel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
   </data>
-  <data name="&gt;&gt;panel2.Parent" xml:space="preserve">
-    <value>GroupTalent1</value>
+  <data name="CurrentTalent1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
   </data>
-  <data name="TrackTalent1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>155, 25</value>
+  <data name="&gt;&gt;panel1.Name" xml:space="preserve">
+    <value>panel1</value>
   </data>
-  <data name="ArrowTalent1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>26, 21</value>
-  </data>
-  <data name="&gt;&gt;panel4.Name" xml:space="preserve">
-    <value>panel4</value>
-  </data>
-  <data name="ButtonSetToLv90.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>BottomLeft</value>
-  </data>
-  <data name="CurrentTalent1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>45, 20</value>
-  </data>
-  <data name="&gt;&gt;CurrentTalent3.Name" xml:space="preserve">
-    <value>CurrentTalent3</value>
-  </data>
-  <data name="&gt;&gt;LabelCharacterName.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="&gt;&gt;RadioEnable.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="panel3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>269, 25</value>
-  </data>
-  <data name="&gt;&gt;CurrentTalent1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="CurrentTalent1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 11.25pt</value>
-  </data>
-  <data name="&gt;&gt;CurrentTalent1.Name" xml:space="preserve">
-    <value>CurrentTalent1</value>
-  </data>
-  <data name="&gt;&gt;NumericLevel.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="CurrentTalent2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>45, 20</value>
-  </data>
-  <data name="&gt;&gt;NumericTalent2.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;TrackTalent1.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;GroupLevel.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;ArrowTalent2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ButtonSetToLv90.Parent" xml:space="preserve">
-    <value>panel6</value>
-  </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>BatchWindow</value>
-  </data>
-  <data name="TrackTalent1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="&gt;&gt;ArrowTalent2.Name" xml:space="preserve">
-    <value>ArrowTalent2</value>
-  </data>
-  <data name="NumericTalent2.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="TrackTalent3.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="GroupTalent3.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="ArrowTalent2.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;GroupTalent1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;TrackTalent2.Name" xml:space="preserve">
-    <value>TrackTalent2</value>
-  </data>
-  <data name="&gt;&gt;ArrowTalent1.Name" xml:space="preserve">
-    <value>ArrowTalent1</value>
-  </data>
-  <data name="panel4.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="&gt;&gt;GroupTalent2.Name" xml:space="preserve">
-    <value>GroupTalent2</value>
-  </data>
-  <data name="ArrowTalent3.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="ButtonSetToLv90.Size" type="System.Drawing.Size, System.Drawing">
-    <value>43, 25</value>
-  </data>
-  <data name="TrackTalent1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>71, 0</value>
-  </data>
-  <data name="&gt;&gt;LabelCharacterName.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;RadioEnable.Name" xml:space="preserve">
-    <value>RadioEnable</value>
-  </data>
-  <data name="GroupTalent3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 235</value>
-  </data>
-  <data name="&gt;&gt;panel6.Name" xml:space="preserve">
-    <value>panel6</value>
+  <data name="panel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
   </data>
   <data name="ButtonSetToTalent10.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Left</value>
   </data>
-  <data name="ButtonSetToTalent10.Text" xml:space="preserve">
-    <value>Talent 10</value>
+  <data name="RadioDisable.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Right</value>
   </data>
-  <data name="ArrowLevel.AutoSize" type="System.Boolean, mscorlib">
+  <data name="RadioDisable.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>291, 0</value>
-  </data>
-  <data name="&gt;&gt;panel4.Parent" xml:space="preserve">
-    <value>GroupTalent3</value>
-  </data>
-  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
-    <value>CenterParent</value>
-  </data>
-  <data name="GroupLevel.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;ButtonSetToTalent9.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;ButtonSetToTalent9.Name" xml:space="preserve">
-    <value>ButtonSetToTalent9</value>
-  </data>
-  <data name="TrackLevel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="LabelCharacterName.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="NumericTalent2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>43, 23</value>
-  </data>
-  <data name="GroupTalent3.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="TrackTalent2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>155, 25</value>
-  </data>
-  <data name="&gt;&gt;TrackTalent2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TrackBar, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;panel5.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="CurrentTalent2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="&gt;&gt;ButtonSetToTalent10.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="CurrentTalent2.Text" xml:space="preserve">
-    <value>Lv. 10</value>
-  </data>
-  <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 19</value>
-  </data>
-  <data name="CurrentTalent3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>45, 20</value>
-  </data>
-  <data name="ArrowTalent2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>45, 0</value>
-  </data>
-  <data name="TrackLevel.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="ButtonAppry.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="ButtonSetToTalent9.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="label1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Left</value>
   </data>
-  <data name="RadioEnable.Location" type="System.Drawing.Point, System.Drawing">
-    <value>220, 19</value>
+  <data name="panel2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
   </data>
-  <data name="panel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>269, 25</value>
+  <data name="&gt;&gt;RadioDisable.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="panel5.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="NumericTalent3.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;GroupTalent3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ArrowTalent2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>26, 21</value>
+  </data>
+  <data name="panel4.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="panel1.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="&gt;&gt;RadioDisable.Name" xml:space="preserve">
+    <value>RadioDisable</value>
+  </data>
+  <data name="&gt;&gt;ButtonAppry.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="CurrentTalent3.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="NumericTalent1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="TrackTalent1.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="GroupLevel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="GroupTalent2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="NumericLevel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>43, 23</value>
+  </data>
+  <data name="&gt;&gt;CurrentLevel.Name" xml:space="preserve">
+    <value>CurrentLevel</value>
+  </data>
+  <data name="&gt;&gt;RadioEnable.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="ButtonSetToTalent10.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="panel6.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;CurrentTalent2.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;LabelCharacterName.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="ArrowTalent3.Text" xml:space="preserve">
+    <value>▶</value>
+  </data>
+  <data name="ButtonSetToTalent10.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="TrackTalent3.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
   </data>
   <data name="RadioDisable.Appearance" type="System.Windows.Forms.Appearance, System.Windows.Forms">
     <value>Button</value>
   </data>
-  <data name="&gt;&gt;NumericTalent2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="NumericTalent2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Right</value>
   </data>
-  <data name="&gt;&gt;label1.Type" xml:space="preserve">
+  <data name="&gt;&gt;panel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ArrowTalent2.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="ArrowTalent2.Text" xml:space="preserve">
+    <value>▶</value>
+  </data>
+  <data name="TrackLevel.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="panel5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 282</value>
+  </data>
+  <data name="&gt;&gt;ArrowLevel.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;NumericTalent2.Parent" xml:space="preserve">
+    <value>panel3</value>
+  </data>
+  <data name="ButtonSetToTalent9.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="ArrowTalent1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="&gt;&gt;ButtonSetToTalent9.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;LabelCharacterName.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="panel3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 19</value>
+  </data>
+  <data name="label1.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>BatchWindow</value>
+  </data>
+  <data name="NumericLevel.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;NumericLevel.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="NumericLevel.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;GroupTalent2.Name" xml:space="preserve">
+    <value>GroupTalent2</value>
+  </data>
+  <data name="&gt;&gt;ArrowTalent2.Parent" xml:space="preserve">
+    <value>panel3</value>
+  </data>
+  <data name="TrackTalent1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="&gt;&gt;ArrowLevel.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;GroupTalent2.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;panel4.Parent" xml:space="preserve">
+    <value>GroupTalent3</value>
+  </data>
+  <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 19</value>
+  </data>
+  <data name="label1.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="ButtonCancel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>125, 0</value>
+  </data>
+  <data name="&gt;&gt;ButtonCancel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="panel5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>275, 25</value>
+  </data>
+  <data name="ArrowLevel.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
     <value>Quick Settings :</value>
   </data>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <data name="ButtonSetToLv90.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;RadioEnable.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="ArrowTalent2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 12pt</value>
+  </data>
+  <data name="panel4.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="&gt;&gt;GroupTalent1.Name" xml:space="preserve">
+    <value>GroupTalent1</value>
+  </data>
+  <data name="&gt;&gt;ButtonSetToTalent10.Name" xml:space="preserve">
+    <value>ButtonSetToTalent10</value>
+  </data>
+  <data name="&gt;&gt;CurrentTalent2.Parent" xml:space="preserve">
+    <value>panel3</value>
+  </data>
+  <data name="&gt;&gt;NumericTalent2.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="ButtonAppry.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;ButtonAppry.Parent" xml:space="preserve">
+    <value>panel5</value>
+  </data>
+  <data name="TrackLevel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>71, 0</value>
+  </data>
+  <data name="&gt;&gt;NumericTalent1.Name" xml:space="preserve">
+    <value>NumericTalent1</value>
+  </data>
+  <data name="CurrentTalent2.Text" xml:space="preserve">
+    <value>Lv. 10</value>
+  </data>
+  <data name="ArrowTalent3.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 12pt</value>
+  </data>
+  <data name="GroupTalent1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="ArrowTalent3.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
-  </metadata>
+  </data>
+  <data name="ArrowTalent2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="ButtonSetToTalent10.Location" type="System.Drawing.Point, System.Drawing">
+    <value>189, 0</value>
+  </data>
+  <data name="$this.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="$this.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="panel2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 19</value>
+  </data>
+  <data name="LabelCharacterName.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;CurrentTalent2.Name" xml:space="preserve">
+    <value>CurrentTalent2</value>
+  </data>
+  <data name="ButtonSetToTalent9.Location" type="System.Drawing.Point, System.Drawing">
+    <value>132, 0</value>
+  </data>
+  <data name="ArrowTalent1.Text" xml:space="preserve">
+    <value>▶</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>275, 319</value>
+  </data>
+  <data name="&gt;&gt;ArrowTalent2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;GroupTalent2.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;panel3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NumericTalent2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>226, 0</value>
+  </data>
+  <data name="NumericTalent3.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;RadioEnable.Name" xml:space="preserve">
+    <value>RadioEnable</value>
+  </data>
+  <data name="NumericTalent3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>226, 0</value>
+  </data>
+  <data name="TrackTalent3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>71, 0</value>
+  </data>
+  <data name="&gt;&gt;panel4.Name" xml:space="preserve">
+    <value>panel4</value>
+  </data>
+  <data name="CurrentTalent2.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="GroupTalent2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 188</value>
+  </data>
+  <data name="&gt;&gt;GroupTalent1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ButtonSetToTalent10.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="ButtonSetToTalent10.Size" type="System.Drawing.Size, System.Drawing">
+    <value>63, 25</value>
+  </data>
+  <data name="RadioEnable.Appearance" type="System.Windows.Forms.Appearance, System.Windows.Forms">
+    <value>Button</value>
+  </data>
+  <data name="CurrentLevel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>269, 25</value>
+  </data>
+  <data name="panel3.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="ArrowTalent2.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="ArrowTalent3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>26, 21</value>
+  </data>
+  <data name="LabelCharacterName.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;label1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ArrowTalent3.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="label1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;ArrowTalent1.Parent" xml:space="preserve">
+    <value>panel2</value>
+  </data>
+  <data name="&gt;&gt;panel5.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;ArrowTalent1.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;GroupLevel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="GroupTalent1.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="CurrentLevel.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="ButtonSetToTalent9.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>BottomLeft</value>
+  </data>
+  <data name="&gt;&gt;CurrentTalent3.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;panel2.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="ArrowTalent3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>45, 0</value>
+  </data>
+  <data name="ButtonSetToTalent9.Size" type="System.Drawing.Size, System.Drawing">
+    <value>57, 25</value>
+  </data>
+  <data name="&gt;&gt;NumericTalent1.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="panel3.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="&gt;&gt;panel3.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;LabelCharacterName.Name" xml:space="preserve">
+    <value>LabelCharacterName</value>
+  </data>
+  <data name="&gt;&gt;CurrentTalent1.Name" xml:space="preserve">
+    <value>CurrentTalent1</value>
+  </data>
+  <data name="&gt;&gt;RadioDisable.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="GroupTalent2.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;ButtonSetToTalent9.Parent" xml:space="preserve">
+    <value>panel6</value>
+  </data>
+  <data name="&gt;&gt;ArrowTalent3.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="GroupTalent3.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="&gt;&gt;TrackTalent1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;TrackTalent2.Name" xml:space="preserve">
+    <value>TrackTalent2</value>
+  </data>
+  <data name="&gt;&gt;LabelCharacterName.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NumericTalent1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>226, 0</value>
+  </data>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>Enhancement State</value>
+  </data>
+  <data name="&gt;&gt;ButtonAppry.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="ArrowLevel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>45, 0</value>
+  </data>
+  <data name="&gt;&gt;panel2.Name" xml:space="preserve">
+    <value>panel2</value>
+  </data>
+  <data name="CurrentTalent3.Text" xml:space="preserve">
+    <value>Lv. 10</value>
+  </data>
+  <data name="&gt;&gt;NumericLevel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel4.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;ArrowLevel.Name" xml:space="preserve">
+    <value>ArrowLevel</value>
+  </data>
+  <data name="ArrowTalent2.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;panel5.Name" xml:space="preserve">
+    <value>panel5</value>
+  </data>
+  <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;NumericTalent3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>96, 96</value>
+  </data>
+  <data name="GroupTalent2.Text" xml:space="preserve">
+    <value>Normal Skill</value>
+  </data>
+  <data name="ButtonSetToLv90.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="CurrentTalent3.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 11.25pt</value>
+  </data>
+  <data name="RadioEnable.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="ButtonAppry.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="ArrowTalent1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="ArrowTalent1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>26, 21</value>
+  </data>
+  <data name="&gt;&gt;ButtonCancel.Parent" xml:space="preserve">
+    <value>panel5</value>
+  </data>
+  <data name="RadioEnable.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;ArrowLevel.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ButtonCancel.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="TrackLevel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>155, 25</value>
+  </data>
+  <data name="&gt;&gt;panel5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="panel4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 19</value>
+  </data>
+  <data name="RadioDisable.Text" xml:space="preserve">
+    <value>Disable</value>
+  </data>
+  <data name="GroupTalent1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;GroupTalent1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;panel6.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;NumericTalent1.Parent" xml:space="preserve">
+    <value>panel2</value>
+  </data>
+  <data name="&gt;&gt;ArrowTalent1.Name" xml:space="preserve">
+    <value>ArrowTalent1</value>
+  </data>
+  <data name="ArrowTalent3.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="CurrentTalent2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 11.25pt</value>
+  </data>
+  <data name="CurrentTalent3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="&gt;&gt;ButtonSetToLv90.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;TrackTalent3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TrackBar, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="CurrentTalent1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 11.25pt</value>
+  </data>
+  <data name="&gt;&gt;CurrentLevel.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="panel3.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;panel3.Parent" xml:space="preserve">
+    <value>GroupTalent2</value>
+  </data>
+  <data name="ButtonAppry.Location" type="System.Drawing.Point, System.Drawing">
+    <value>200, 0</value>
+  </data>
+  <data name="&gt;&gt;GroupLevel.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;CurrentTalent3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;RadioDisable.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <metadata name="$this.Language" type="System.Globalization.CultureInfo, System.Private.CoreLib, Culture=neutral, PublicKeyToken=7cec85d7bea7798e">
     <value>ja-JP</value>
+  </metadata>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
   </metadata>
 </root>

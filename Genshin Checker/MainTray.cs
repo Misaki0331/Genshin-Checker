@@ -54,7 +54,7 @@ namespace Genshin_Checker
                 if (cmd.StartsWith("Message:"))
                 {
                     startup ??= new();
-                    startup.Message= cmd[8..];
+                    startup.Message = cmd[8..];
                 }
             }
 
@@ -152,7 +152,7 @@ namespace Genshin_Checker
             App.Game.GameLogWatcher.Instance.Init();
             App.Game.ScreenshotWatcher.Instance.NewImageEvent += ScreenshotEvent;
 
-            if (startup!=null)
+            if (startup != null)
             {
                 switch (startup.Style.ToLower())
                 {
@@ -160,7 +160,7 @@ namespace Genshin_Checker
                         new InfoMessage(startup.Title, startup.Message, startup.Title).ShowDialog();
                         break;
                     case "error":
-                        new ErrorMessage(startup.Title, startup.Message,startup.Title).ShowDialog();
+                        new ErrorMessage(startup.Title, startup.Message, startup.Title).ShowDialog();
                         break;
                 }
             }
@@ -300,6 +300,11 @@ namespace Genshin_Checker
         private void 現在のアカウント情報を取得ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OpenWindow(null, nameof(Window.ProgressWindow.LoadGameDatabase));
+        }
+
+        private void toolStripCodeExchange_Click(object sender, EventArgs e)
+        {
+            OpenWindow(null, nameof(Window.CodeExchange));
         }
     }
 

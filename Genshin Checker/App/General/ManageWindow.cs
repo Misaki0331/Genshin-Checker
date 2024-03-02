@@ -62,6 +62,9 @@ namespace Genshin_Checker.App.General
                         case nameof(Genshin_Checker.Window.ProgressWindow.LoadGameDatabase):
                             find = new Genshin_Checker.Window.ProgressWindow.LoadGameDatabase() { Name = Name };
                             break;
+                        case nameof(Genshin_Checker.Window.CodeExchange):
+                            find = new Genshin_Checker.Window.CodeExchange() { Name = Name };
+                            break;
                     }
             }
             else

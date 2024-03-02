@@ -170,7 +170,6 @@ namespace Genshin_Checker.App.HoYoLab
         /// <summary>
         /// ログボ受取
         /// </summary>
-        /// <param name="data">キャラクターの計算変数</param>
         /// <returns></returns>
         /// <exception cref="InvalidDataException"></exception>
         public async Task<Model.HoYoLab.DailyBonusLogin.Data> LoginBonusSignIn()
@@ -178,6 +177,21 @@ namespace Genshin_Checker.App.HoYoLab
             if (!Account.IsAuthed) throw new UserNotAuthenticatedException(Account.UID);
             var json = await GetJson.LoginBonusSignIn(Account);
             var root = JsonChecker<Model.HoYoLab.DailyBonusLogin.Root>.Check(json);
+            if (root.Data == null) throw new HoYoLabAPIException(root.Retcode, root.Message);
+            return root.Data;
+        }
+
+        /// <summary>
+        /// ログボ受取
+        /// </summary>
+        /// <param name="campaignCode">キャラクターの計算変数</param>
+        /// <returns></returns>
+        /// <exception cref="InvalidDataException"></exception>
+        public async Task<Model.HoYoLab.CodeExchange.Data> CodeExchange(string campaignCode)
+        {
+            if (!Account.IsAuthed) throw new UserNotAuthenticatedException(Account.UID);
+            var json = await GetJson.ExchangeCode(Account,campaignCode);
+            var root = JsonChecker<Model.HoYoLab.CodeExchange.Root>.Check(json);
             if (root.Data == null) throw new HoYoLabAPIException(root.Retcode, root.Message);
             return root.Data;
         }

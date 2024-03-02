@@ -64,6 +64,9 @@
     <Compile Update="Window\CharacterCalculator.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Window\CodeExchange.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Window\Debug\Console.cs">
       <SubType>Form</SubType>
     </Compile>
