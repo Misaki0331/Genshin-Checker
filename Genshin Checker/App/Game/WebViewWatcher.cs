@@ -73,7 +73,7 @@ namespace Genshin_Checker.App.Game
             //可能ならアカウントリスト取れるかも？
             var links = await GetLinks();
             if(links == null) return null;
-            var urls = links.FindAll(a => a.StartsWith("https://webstatic-sea.hoyoverse.com/csc-service-center-fe/index.html"));
+            var urls = links.FindAll(a => a.StartsWith("https://cs.hoyoverse.com/csc-service-center-fe/index.html"));
             urls.Reverse();
             if (urls.Count == 0) return LatestServiceCenterAuthKey;
             foreach (var url in urls)
