@@ -156,8 +156,15 @@ namespace Genshin_Checker.Window
         }
         async void LoadDataCurrent()
         {
-            var GameData = await account.SpiralAbyss.GetCurrent();
-            PanelLoad(GameData);
+            try
+            {
+                var GameData = await account.SpiralAbyss.GetCurrent();
+                PanelLoad(GameData);
+            }catch(Exception ex)
+            {
+                new ErrorMessage(Common.ErrorMessage, ex.ToString()).ShowDialog();
+                Close();
+            }
 
         }
 
