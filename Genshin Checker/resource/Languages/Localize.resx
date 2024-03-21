@@ -648,4 +648,16 @@ After clicking the "Feedback" button, a new browser window will open, but you ca
   <data name="Error_Config_Screenshot_IsRaise" xml:space="preserve">
     <value>Set up Path before starting monitoring.</value>
   </data>
+  <data name="Error_RedeemCode_MissingAccount_Title" xml:space="preserve">
+    <value>No authenticated accounts!</value>
+  </data>
+  <data name="Error_RedeemCode_MissingAccount_Message" xml:space="preserve">
+    <value>Please authenticate your account.</value>
+  </data>
+  <data name="Error_RedeemCode_FailedToRedeem" xml:space="preserve">
+    <value>Failed to activation the code.</value>
+  </data>
+  <data name="Message_RedeemCode_Success" xml:space="preserve">
+    <value>Please check your mailbox in game.</value>
+  </data>
 </root>

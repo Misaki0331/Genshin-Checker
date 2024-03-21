@@ -476,6 +476,33 @@ namespace Genshin_Checker.resource.Languages {
         }
         
         /// <summary>
+        ///   Failed to activation the code. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Error_RedeemCode_FailedToRedeem {
+            get {
+                return ResourceManager.GetString("Error_RedeemCode_FailedToRedeem", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Please authenticate your account. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Error_RedeemCode_MissingAccount_Message {
+            get {
+                return ResourceManager.GetString("Error_RedeemCode_MissingAccount_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   No authenticated accounts! に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Error_RedeemCode_MissingAccount_Title {
+            get {
+                return ResourceManager.GetString("Error_RedeemCode_MissingAccount_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Failed to open registry. に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string Error_Registry_FailedToOpen {
@@ -652,6 +679,15 @@ namespace Genshin_Checker.resource.Languages {
         public static string Message_AccountDisconnect_WindowTitle {
             get {
                 return ResourceManager.GetString("Message_AccountDisconnect_WindowTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Please check your mailbox in game. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Message_RedeemCode_Success {
+            get {
+                return ResourceManager.GetString("Message_RedeemCode_Success", resourceCulture);
             }
         }
         

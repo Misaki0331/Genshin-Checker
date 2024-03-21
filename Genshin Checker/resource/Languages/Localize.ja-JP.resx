@@ -641,4 +641,16 @@
   <data name="Error_Config_Screenshot_IsRaise" xml:space="preserve">
     <value>監視を開始する前にPathを設定してください。</value>
   </data>
+  <data name="Error_RedeemCode_MissingAccount_Title" xml:space="preserve">
+    <value>連携しているアカウントがありません！</value>
+  </data>
+  <data name="Error_RedeemCode_MissingAccount_Message" xml:space="preserve">
+    <value>アカウントの連携をしてください。</value>
+  </data>
+  <data name="Error_RedeemCode_FailedToRedeem" xml:space="preserve">
+    <value>コードの交換に失敗しました。</value>
+  </data>
+  <data name="Message_RedeemCode_Success" xml:space="preserve">
+    <value>ゲーム内のメールボックスをチェックしてください。</value>
+  </data>
 </root>

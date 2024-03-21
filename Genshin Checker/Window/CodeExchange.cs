@@ -36,14 +36,15 @@ namespace Genshin_Checker.Window
                 ComboHoYoLabAccounts.Items.Add(Common.NoAccount);
                 ComboHoYoLabAccounts.SelectedIndex = 0;
                 ComboHoYoLabAccounts.Enabled = false;
-                new ErrorMessage("連携しているアカウントがありません！", "アカウントの連携をしてください。").ShowDialog();
+                new ErrorMessage(Localize.Error_RedeemCode_MissingAccount_Title, Localize.Error_RedeemCode_MissingAccount_Message).ShowDialog();
                 Close();
+                return;
             }
             else ComboHoYoLabAccounts.SelectedIndex = 0;
             CodeInput.Focus();
             var codes = AccountTemp[$"{ComboHoYoLabAccounts.Items[0]}"].HoYoLabInfomation.GetCodeList();
             foreach( var code in codes.Codes) {
-                textBox2.AppendText($"【{code.Code}】 有効期限 : {code.ExpairUtc.ToLocalTime()}{System.Environment.NewLine}");
+                textBox2.AppendText($"【{code.Code}】 {Common.ExpairTime} : {code.ExpairUtc.ToLocalTime()}{System.Environment.NewLine}");
             }
         }
 
@@ -61,15 +62,15 @@ namespace Genshin_Checker.Window
                 try
                 {
                     var result = await account.Endpoint.CodeExchange(CodeInput.Text);
-                    new InfoMessage(result.msg, $"ゲーム内のメールボックスをチェックしてください。").ShowDialog();
+                    new InfoMessage(result.msg, Localize.Message_RedeemCode_Success).ShowDialog();
                 }
                 catch (Account.HoYoLabAPIException ex)
                 {
-                    new ErrorMessage("コードの交換に失敗しました。", $"{ex.APIMessage}\nCode : {ex.Retcode}").ShowDialog();
+                    new ErrorMessage(Localize.Error_RedeemCode_FailedToRedeem, $"{ex.APIMessage}\nCode : {ex.Retcode}").ShowDialog();
                 }
                 catch (Exception ex)
                 {
-                    new ErrorMessage("エラーが発生しました", $"{ex}").ShowDialog();
+                    new ErrorMessage(Common.ErrorMessage, $"{ex}").ShowDialog();
                 }
             }
         }

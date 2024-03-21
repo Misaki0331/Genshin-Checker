@@ -150,6 +150,15 @@ namespace Genshin_Checker.resource.Languages {
         }
         
         /// <summary>
+        ///   Expair Time に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string ExpairTime {
+            get {
+                return ResourceManager.GetString("ExpairTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Failed に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string Failed {

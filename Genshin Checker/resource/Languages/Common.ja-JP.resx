@@ -201,4 +201,7 @@
   <data name="InfoMessage" xml:space="preserve">
     <value>情報</value>
   </data>
+  <data name="ExpairTime" xml:space="preserve">
+    <value>有効期限</value>
+  </data>
 </root>

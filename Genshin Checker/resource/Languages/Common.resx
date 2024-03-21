@@ -213,4 +213,7 @@ Will Re-launching it?
   <data name="InfoMessage" xml:space="preserve">
     <value>Infomation</value>
   </data>
+  <data name="ExpairTime" xml:space="preserve">
+    <value>Expair Time</value>
+  </data>
 </root>
