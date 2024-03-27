@@ -232,6 +232,7 @@ namespace Genshin_Checker.App.HoYoLab
         {
             var region = Account.Server;
             if (server != null) region = (Servers)server;
+            //ToDo : APIから取得するようにする
             var url = $"https://api-account-os.hoyolab.com/binding/api/getUserGameRolesByLtoken?game_biz=hk4e_global&region={region}";
             var json = await WebRequest.HoYoGetRequest(url, Account.Cookie);
             return json ?? "";

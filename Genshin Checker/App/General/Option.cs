@@ -64,6 +64,7 @@ namespace Genshin_Checker.App.General
         /// 設定：スクリーンショット
         /// </summary>
         public OptionClass.ScreenShot ScreenShot { get; set; } = new();
+        public OptionClass.Application Application { get; set; } = new();
         /// <summary>
         /// 設定：アカウント
         /// </summary>
@@ -73,6 +74,10 @@ namespace Genshin_Checker.App.General
 }
 namespace Genshin_Checker.App.General.OptionClass
 {
+    public class Application
+    {
+        public bool TimerOnlyActiveWindow { get; set; } = true;
+    }
     public class Notification
     {
         /// <summary>

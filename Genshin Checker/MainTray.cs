@@ -59,16 +59,12 @@ namespace Genshin_Checker
             }
 
             //アプリの初期化&UIの初期化
-            ProcessTime.Instance.option.OnlyActiveWindow = true;
-            if (Registry.GetValue("Config\\Setting", "IsCountBackground") == "True") ProcessTime.Instance.option.OnlyActiveWindow = false;
             ProcessTime.WatchDog = true;
             ProcessTime.Instance.SessionStart += TargetStart;
             ProcessTime.Instance.SessionEnd += TargetEnd;
             ProcessTime.Instance.ChangedState += ChangeState;
             notification.Icon = resource.icon.nahida;
             notification.Visible = true;
-            //new Window.WebMiniBrowser(new("https://google.com"));
-            //new BrowserApp.HoYoApp();
             Store.Accounts.Data.AccountChanges += (s, e) => { ToolStripGenerate(); };
             Store.Accounts.Data.AccountAdded += AccountAdded;
             Store.Accounts.Data.AccountRemoved += AccountRemoved;
@@ -191,18 +187,7 @@ namespace Genshin_Checker
         //ここはテスト用
         private void testToolStripMenuItem_ClickAsync(object sender, EventArgs e)
         {
-            /*try
-            {
-                var form = new Window.ExWindow.EmptyWindow();
-                var directx = new DirectX.Core();
-                directx.Init(form);
-                directx.Loop();
-                directx.Dispose();
-            }catch(Exception ex)
-            {
-                new ErrorMessage("DirectX Error!", ex.ToString()).ShowDialog();
-            }*/
-            OpenWindow(null, nameof(Window.Debug.APIChecker));
+
         }
 
 
@@ -219,9 +204,9 @@ namespace Genshin_Checker
                 if (Option.Instance.ScreenShot.IsNotify)
                 {
                     var toastContent = new ToastContentBuilder()
-            .AddText(Localize.App_Notify_Screenshot_Saved)
-            .AddAttributionText($"UID: {await App.General.GameApp.CurrentUID()}")
-            .AddHeroImage(new Uri(path));
+                        .AddText(Localize.App_Notify_Screenshot_Saved)
+                        .AddAttributionText($"UID: {await App.General.GameApp.CurrentUID()}")
+                        .AddHeroImage(new Uri(path));
                     toastContent.Show(toast =>
                     {
                         toast.Activated += (s, e) =>

@@ -109,7 +109,6 @@ namespace Genshin_Checker
                 //はじめからMainメソッドにあったコードを実行
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
-                Genshin_Checker.DirectX.DLL.Winmm.timeBeginPeriod(1);
 
                 Application.Run(new MainTray(safemode: !HasHandle));
             }

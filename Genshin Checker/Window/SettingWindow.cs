@@ -38,7 +38,7 @@ namespace Genshin_Checker.Window
             //DrawItemイベントハンドラを追加
             tabControl1.DrawItem += Tab_DrawItem;
             label4.Text = $"Version : {System.Reflection.Assembly.GetExecutingAssembly().GetName().Version}";
-            IsCountBackground.Checked = !ProcessTime.Instance.option.OnlyActiveWindow;
+            IsCountBackground.Checked = !Option.Instance.Application.TimerOnlyActiveWindow;
             IsNotificationGameStart.Checked = Option.Instance.Notification.IsGameStart;
             IsNotificationGameClosed.Checked = Option.Instance.Notification.IsGameEnd;
             IsScreenShotRaise.Checked = Option.Instance.ScreenShot.IsRaise;
@@ -141,7 +141,7 @@ namespace Genshin_Checker.Window
         }
         void changeValue(CheckBox name)
         {
-            if (name == IsCountBackground) ProcessTime.Instance.option.OnlyActiveWindow = !name.Checked;
+            if (name == IsCountBackground) Option.Instance.Application.TimerOnlyActiveWindow = !name.Checked;
             else if (name == IsNotificationGameStart) Option.Instance.Notification.IsGameStart = name.Checked;
             else if (name == IsNotificationGameClosed) Option.Instance.Notification.IsGameEnd = name.Checked;
             else if (name == IsScreenShotRaise) Option.Instance.ScreenShot.IsRaise = name.Checked;

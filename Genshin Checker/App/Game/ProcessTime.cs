@@ -1,4 +1,5 @@
-﻿using Genshin_Checker.App.Window;
+﻿using Genshin_Checker.App.General;
+using Genshin_Checker.App.Window;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -37,7 +38,6 @@ namespace Genshin_Checker.App.Game
             CurrentProcessState = ProcessState.NotRunning;
             TargetProcess = null;
             option = new ProcessTimeOption();
-            option.OnlyActiveWindow = true;
 
             LatestTotalSessionTime = new(SessionCheck.Instance.Load());
         }
@@ -71,7 +71,7 @@ namespace Genshin_Checker.App.Game
                         SessionTime.Start();
                         break;
                     case ProcessState.Background:
-                        if (option.OnlyActiveWindow)
+                        if (Option.Instance.Application.TimerOnlyActiveWindow)
                             SessionTime.Stop();
                         else SessionTime.Start();
                         break;
@@ -177,10 +177,6 @@ namespace Genshin_Checker.App.Game
     }
     public class ProcessTimeOption
     {
-        /// <summary>
-        /// アクティブウィンドウ時のみタイマーのカウントを進める。
-        /// </summary>
-        public bool OnlyActiveWindow = true;
         /// <summary>
         /// プロセス検索頻度
         /// </summary>
