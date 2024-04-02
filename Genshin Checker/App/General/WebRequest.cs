@@ -64,15 +64,15 @@ namespace Genshin_Checker.App
         /// DS認証情報
         /// </summary>
         /// <returns></returns>
-        static private string DS()
+        static public string DS(long? time=null,string? random=null)
         {
             //Todo: saltはstatic APIに投げて動的に変更させる
             const string salt = "6s25p5ox5y14umn1p61aqyyvbvvl3lrt";
-            string r = RandomString(6);
+            if(random==null)random = RandomString(6);
 
-            var time = (long)(DateTime.UtcNow - new DateTime(1970, 1, 1)).TotalSeconds;
-            var input = $"salt={salt}&t={time}&r={r}";
-            return $"{time},{r},{MD5Hash(input)}";
+            if(time==null)time = (long)(DateTime.UtcNow - new DateTime(1970, 1, 1)).TotalSeconds;
+            var input = $"salt={salt}&t={time}&r={random}";
+            return $"{time},{random},{MD5Hash(input)}";
         }
         /// <summary>
         /// HoYoLab内GETリクエスト
