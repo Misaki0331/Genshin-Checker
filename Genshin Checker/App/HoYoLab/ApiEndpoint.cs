@@ -1,16 +1,6 @@
-﻿using Genshin_Checker.resource.Languages;
-using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
+﻿using Newtonsoft.Json;
 using System.Globalization;
 using Genshin_Checker.App.General;
-using System.Linq;
-using System.Net;
-using System.Security.Cryptography;
-using System.Security.Policy;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using static Genshin_Checker.App.HoYoLab.Account;
 
 namespace Genshin_Checker.App.HoYoLab
@@ -345,7 +335,7 @@ namespace Genshin_Checker.App.HoYoLab
         }
 
         /// <summary>
-        /// HoYoLabのマテリアル情報取得
+        /// 交換コード引き換え
         /// </summary>
         /// <returns></returns>
         /// <exception cref="InvalidDataException"></exception>
@@ -386,9 +376,8 @@ namespace Genshin_Checker.App.HoYoLab
         }
 
         /// <summary>
-        /// 育成計算機
+        /// ログインボーナスの情報
         /// </summary>
-        /// <param name="data">キャラクターの計算変数</param>
         /// <returns></returns>
         /// <exception cref="InvalidDataException"></exception>
         public static async Task<string> LoginBonusInfo(Account Account)
@@ -401,9 +390,8 @@ namespace Genshin_Checker.App.HoYoLab
 
 
         /// <summary>
-        /// 育成計算機
+        /// ログインボーナスのサインイン情報
         /// </summary>
-        /// <param name="data">キャラクターの計算変数</param>
         /// <returns></returns>
         /// <exception cref="InvalidDataException"></exception>
         public static async Task<string> LoginBonusResignInfo(Account Account)
@@ -415,9 +403,8 @@ namespace Genshin_Checker.App.HoYoLab
         }
         
         /// <summary>
-        /// 育成計算機
+        /// ログインボーナスの期間限定の追加報酬
         /// </summary>
-        /// <param name="data">キャラクターの計算変数</param>
         /// <returns></returns>
         /// <exception cref="InvalidDataException"></exception>
         public static async Task<string> LoginBonusExtraAward(Account Account)
@@ -430,9 +417,8 @@ namespace Genshin_Checker.App.HoYoLab
         
 
         /// <summary>
-        /// 育成計算機
+        /// ログインボーナスのサインイン
         /// </summary>
-        /// <param name="data">キャラクターの計算変数</param>
         /// <returns></returns>
         /// <exception cref="InvalidDataException"></exception>
         public static async Task<string> LoginBonusSignIn(Account Account)
@@ -445,9 +431,8 @@ namespace Genshin_Checker.App.HoYoLab
 
 
         /// <summary>
-        /// 育成計算機
+        /// ログインボーナスのリワード一覧
         /// </summary>
-        /// <param name="data">キャラクターの計算変数</param>
         /// <returns></returns>
         /// <exception cref="InvalidDataException"></exception>
         public static async Task<string> LoginBonusRewards(Account Account)
