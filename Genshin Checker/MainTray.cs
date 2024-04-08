@@ -13,6 +13,7 @@ using Microsoft.Toolkit.Uwp.Notifications;
 using System.Drawing.Imaging;
 using System.Security.Policy;
 using Genshin_Checker.resource.Languages;
+using Genshin_Checker.Window.Debug;
 namespace Genshin_Checker
 {
     public partial class MainTray : Form
@@ -162,6 +163,7 @@ namespace Genshin_Checker
             }
             if (await App.General.AppUpdater.CheckVersion()) new Window.PopupWindow.UpdateNotice().ShowDialog();
             await EnkaData.Data.GetStoreData();
+            await Misaki_chan.Data.GetStoreData();
         }
 
         private void Delay_Tick(object sender, EventArgs e)
@@ -187,7 +189,7 @@ namespace Genshin_Checker
         //ここはテスト用
         private void testToolStripMenuItem_ClickAsync(object sender, EventArgs e)
         {
-
+            OpenWindow(null,nameof(APIChecker));
         }
 
 

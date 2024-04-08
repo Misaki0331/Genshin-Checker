@@ -15,6 +15,8 @@ using static Genshin_Checker.App.HoYoLab.Account;
 using Genshin_Checker.Window.Popup;
 using Genshin_Checker.resource.Languages;
 using Genshin_Checker.App.General.UI;
+using Genshin_Checker.Store;
+using System.Diagnostics;
 
 namespace Genshin_Checker.Window.ExWindow.GameRecords
 {
@@ -27,6 +29,7 @@ namespace Genshin_Checker.Window.ExWindow.GameRecords
         List<ConstellationInfo> Constellation;
         List<ArtifactInfo> ArtifactInfos;
         Image? CharacterBanner;
+        List<Button> TrailerVideoButtons;
         private CancellationTokenSource? cts;
         private SemaphoreSlim _semaphore;
         bool IsLoading = false;
@@ -44,6 +47,7 @@ namespace Genshin_Checker.Window.ExWindow.GameRecords
             SubTalent = new();
             Constellation = new();
             ArtifactInfos = new();
+            TrailerVideoButtons = new();
             _semaphore= new SemaphoreSlim(1,1);
             WeaponDetail = new WeaponDetail() { Dock=DockStyle.Top};
             groupBox2.Controls.Add(WeaponDetail);
@@ -201,6 +205,33 @@ namespace Genshin_Checker.Window.ExWindow.GameRecords
                     ArtifactInfos.Add(control);
                 }
                 ArtifactLayout.ResumeLayout(true);
+                //トレーラービデオ
+                VideoListPanel.SuspendLayout();
+                foreach(var control in TrailerVideoButtons)
+                {
+                    VideoListPanel.Controls.Remove(control);
+                    control.Dispose();
+                }
+                TrailerVideoButtons.Clear();
+                var charainfo = Misaki_chan.Data.Characters?.Data.Find(a => a.Id == characterID);
+                if(charainfo?.Wiki.Video!=null)
+                {
+                    Trace.WriteLine("トレーラービデオ");
+                    var addbutton = new Action<string,string,string?>((string controlname,string ytid,string? title) => {
+                        var b = new Button();
+                        b.Text = controlname;
+                        b.Click += (s, e) => { new WebMiniBrowser(new($"https://static-api.misaki-chan.world/embed/youtube.html?v={ytid}&t={System.Web.HttpUtility.UrlEncode(title)}"), size: new(1280, 720), urlboxshow: false).Show(); };
+                        b.AutoSize = true;
+                        VideoListPanel.Controls.Add(b);
+                        TrailerVideoButtons.Add(b);
+                    });
+                    var link = charainfo.Wiki.Video.Trailer?.Ja;
+                    if (link != null) addbutton("実践動画(日本語)", link.Ytid, link.Title);
+                    link = charainfo.Wiki.Video.Trailer?.En;
+                    if (link != null) addbutton("実践動画(英語)", link.Ytid, link.Title);
+                }
+
+                VideoListPanel.ResumeLayout(true);
 
                 if (!string.IsNullOrEmpty(gacha))
                 {

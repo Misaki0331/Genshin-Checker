@@ -32,6 +32,8 @@
             tableLayoutPanel1 = new TableLayoutPanel();
             panel1 = new Panel();
             panel2 = new Panel();
+            tabControl1 = new TabControl();
+            tabPage1 = new TabPage();
             groupBox4 = new GroupBox();
             ArtifactLayout = new FlowLayoutPanel();
             groupBox3 = new GroupBox();
@@ -45,6 +47,9 @@
             textBox1 = new TextBox();
             label3 = new Label();
             groupBox2 = new GroupBox();
+            tabPage2 = new TabPage();
+            groupBox5 = new GroupBox();
+            VideoListPanel = new FlowLayoutPanel();
             panel4 = new Panel();
             label4 = new Label();
             panel3 = new Panel();
@@ -54,11 +59,15 @@
             pictureBox1 = new PictureBox();
             tableLayoutPanel1.SuspendLayout();
             panel2.SuspendLayout();
+            tabControl1.SuspendLayout();
+            tabPage1.SuspendLayout();
             groupBox4.SuspendLayout();
             groupBox3.SuspendLayout();
             groupBox1.SuspendLayout();
             panel5.SuspendLayout();
             Error_TalentPanel.SuspendLayout();
+            tabPage2.SuspendLayout();
+            groupBox5.SuspendLayout();
             panel4.SuspendLayout();
             panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -79,13 +88,28 @@
             // panel2
             // 
             resources.ApplyResources(panel2, "panel2");
-            panel2.Controls.Add(groupBox4);
-            panel2.Controls.Add(groupBox3);
-            panel2.Controls.Add(groupBox1);
-            panel2.Controls.Add(groupBox2);
+            panel2.Controls.Add(tabControl1);
             panel2.Controls.Add(panel4);
             panel2.Controls.Add(panel3);
             panel2.Name = "panel2";
+            // 
+            // tabControl1
+            // 
+            tabControl1.Controls.Add(tabPage1);
+            tabControl1.Controls.Add(tabPage2);
+            resources.ApplyResources(tabControl1, "tabControl1");
+            tabControl1.Name = "tabControl1";
+            tabControl1.SelectedIndex = 0;
+            // 
+            // tabPage1
+            // 
+            tabPage1.Controls.Add(groupBox4);
+            tabPage1.Controls.Add(groupBox3);
+            tabPage1.Controls.Add(groupBox1);
+            tabPage1.Controls.Add(groupBox2);
+            resources.ApplyResources(tabPage1, "tabPage1");
+            tabPage1.Name = "tabPage1";
+            tabPage1.UseVisualStyleBackColor = true;
             // 
             // groupBox4
             // 
@@ -132,7 +156,6 @@
             resources.ApplyResources(Button_TalentHideShow, "Button_TalentHideShow");
             Button_TalentHideShow.Name = "Button_TalentHideShow";
             Button_TalentHideShow.UseVisualStyleBackColor = true;
-            Button_TalentHideShow.Click += Button_TalentHideShow_Click;
             // 
             // Panel_SubTalent
             // 
@@ -168,10 +191,29 @@
             groupBox2.Name = "groupBox2";
             groupBox2.TabStop = false;
             // 
+            // tabPage2
+            // 
+            tabPage2.Controls.Add(groupBox5);
+            resources.ApplyResources(tabPage2, "tabPage2");
+            tabPage2.Name = "tabPage2";
+            tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // groupBox5
+            // 
+            resources.ApplyResources(groupBox5, "groupBox5");
+            groupBox5.Controls.Add(VideoListPanel);
+            groupBox5.Name = "groupBox5";
+            groupBox5.TabStop = false;
+            // 
+            // VideoListPanel
+            // 
+            resources.ApplyResources(VideoListPanel, "VideoListPanel");
+            VideoListPanel.Name = "VideoListPanel";
+            // 
             // panel4
             // 
-            resources.ApplyResources(panel4, "panel4");
             panel4.Controls.Add(label4);
+            resources.ApplyResources(panel4, "panel4");
             panel4.Name = "panel4";
             // 
             // label4
@@ -181,11 +223,11 @@
             // 
             // panel3
             // 
-            resources.ApplyResources(panel3, "panel3");
             panel3.Controls.Add(label5);
             panel3.Controls.Add(label2);
             panel3.Controls.Add(label1);
             panel3.Controls.Add(pictureBox1);
+            resources.ApplyResources(panel3, "panel3");
             panel3.Name = "panel3";
             // 
             // label5
@@ -220,7 +262,9 @@
             Name = "CharacterDetail";
             tableLayoutPanel1.ResumeLayout(false);
             panel2.ResumeLayout(false);
-            panel2.PerformLayout();
+            tabControl1.ResumeLayout(false);
+            tabPage1.ResumeLayout(false);
+            tabPage1.PerformLayout();
             groupBox4.ResumeLayout(false);
             groupBox4.PerformLayout();
             groupBox3.ResumeLayout(false);
@@ -231,6 +275,10 @@
             panel5.PerformLayout();
             Error_TalentPanel.ResumeLayout(false);
             Error_TalentPanel.PerformLayout();
+            tabPage2.ResumeLayout(false);
+            tabPage2.PerformLayout();
+            groupBox5.ResumeLayout(false);
+            groupBox5.PerformLayout();
             panel4.ResumeLayout(false);
             panel4.PerformLayout();
             panel3.ResumeLayout(false);
@@ -248,21 +296,26 @@
         private Label label2;
         private Label label1;
         private PictureBox pictureBox1;
+        private Panel panel4;
+        private Label label4;
+        private Label label5;
+        private TabControl tabControl1;
+        private TabPage tabPage1;
+        private GroupBox groupBox4;
+        private FlowLayoutPanel ArtifactLayout;
+        private GroupBox groupBox3;
+        private Panel ConstellationPanel;
+        private GroupBox groupBox1;
         private Panel panel5;
         private Button Button_TalentHideShow;
         private Panel Panel_SubTalent;
         private Panel Panel_MainTalent;
-        private Panel panel4;
         private Panel Error_TalentPanel;
-        private Label label3;
-        private GroupBox groupBox1;
         private TextBox textBox1;
+        private Label label3;
         private GroupBox groupBox2;
-        private GroupBox groupBox3;
-        private Panel ConstellationPanel;
-        private Label label4;
-        private Label label5;
-        private GroupBox groupBox4;
-        private FlowLayoutPanel ArtifactLayout;
+        private TabPage tabPage2;
+        private GroupBox groupBox5;
+        private FlowLayoutPanel VideoListPanel;
     }
 }
