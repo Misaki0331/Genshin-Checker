@@ -130,7 +130,7 @@
     <value>3, 3</value>
   </data>
   <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>307, 615</value>
+    <value>311, 594</value>
   </data>
   <data name="panel1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -148,6 +148,9 @@
     <value>0</value>
   </data>
   <data name="panel2.AutoScroll" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="tabPage1.AutoScroll" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="groupBox4.AutoSize" type="System.Boolean, mscorlib">
@@ -538,7 +541,7 @@
     <value>4, 24</value>
   </data>
   <data name="tabPage1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>457, 535</value>
+    <value>457, 514</value>
   </data>
   <data name="tabPage1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -558,6 +561,9 @@
   <data name="&gt;&gt;tabPage1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="tabPage2.AutoScroll" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
   <data name="groupBox5.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -571,7 +577,7 @@
     <value>3, 19</value>
   </data>
   <data name="VideoListPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>451, 0</value>
+    <value>457, 0</value>
   </data>
   <data name="VideoListPanel.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -595,7 +601,7 @@
     <value>0, 0</value>
   </data>
   <data name="groupBox5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>457, 22</value>
+    <value>463, 22</value>
   </data>
   <data name="groupBox5.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -619,7 +625,7 @@
     <value>4, 24</value>
   </data>
   <data name="tabPage2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>457, 535</value>
+    <value>463, 514</value>
   </data>
   <data name="tabPage2.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -646,7 +652,7 @@
     <value>0, 52</value>
   </data>
   <data name="tabControl1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>465, 563</value>
+    <value>471, 542</value>
   </data>
   <data name="tabControl1.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -700,7 +706,7 @@
     <value>0, 30</value>
   </data>
   <data name="panel4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>465, 22</value>
+    <value>471, 22</value>
   </data>
   <data name="panel4.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -859,7 +865,7 @@
     <value>0, 0</value>
   </data>
   <data name="panel3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>465, 30</value>
+    <value>471, 30</value>
   </data>
   <data name="panel3.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -880,10 +886,10 @@
     <value>Fill</value>
   </data>
   <data name="panel2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>316, 3</value>
+    <value>320, 3</value>
   </data>
   <data name="panel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>465, 615</value>
+    <value>471, 594</value>
   </data>
   <data name="panel2.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -910,7 +916,7 @@
     <value>1</value>
   </data>
   <data name="tableLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>784, 621</value>
+    <value>794, 600</value>
   </data>
   <data name="tableLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -937,10 +943,10 @@
     <value>96, 96</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>784, 621</value>
+    <value>794, 600</value>
   </data>
   <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>800, 240</value>
+    <value>810, 240</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>CharacterDetail</value>

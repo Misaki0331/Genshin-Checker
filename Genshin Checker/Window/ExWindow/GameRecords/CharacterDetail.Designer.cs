@@ -103,11 +103,11 @@
             // 
             // tabPage1
             // 
+            resources.ApplyResources(tabPage1, "tabPage1");
             tabPage1.Controls.Add(groupBox4);
             tabPage1.Controls.Add(groupBox3);
             tabPage1.Controls.Add(groupBox1);
             tabPage1.Controls.Add(groupBox2);
-            resources.ApplyResources(tabPage1, "tabPage1");
             tabPage1.Name = "tabPage1";
             tabPage1.UseVisualStyleBackColor = true;
             // 
@@ -194,8 +194,8 @@
             // 
             // tabPage2
             // 
-            tabPage2.Controls.Add(groupBox5);
             resources.ApplyResources(tabPage2, "tabPage2");
+            tabPage2.Controls.Add(groupBox5);
             tabPage2.Name = "tabPage2";
             tabPage2.UseVisualStyleBackColor = true;
             // 
