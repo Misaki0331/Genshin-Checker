@@ -156,6 +156,7 @@
             resources.ApplyResources(Button_TalentHideShow, "Button_TalentHideShow");
             Button_TalentHideShow.Name = "Button_TalentHideShow";
             Button_TalentHideShow.UseVisualStyleBackColor = true;
+            Button_TalentHideShow.Click += Button_TalentHideShow_Click;
             // 
             // Panel_SubTalent
             // 
