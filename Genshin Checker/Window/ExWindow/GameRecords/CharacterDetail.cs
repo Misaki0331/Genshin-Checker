@@ -70,7 +70,9 @@ namespace Genshin_Checker.Window.ExWindow.GameRecords
                 //キャラクター情報の取得
                 var Detail = await account.Characters.GetData();
                 var CharacterInfo = Detail.avatars.Find(a => a.id == characterID);
+                var staticinfo = Misaki_chan.Data.Characters?.Data.Find(a => a.Id == characterID);
                 if (CharacterInfo == null) throw new ArgumentNullException(Localize.Error_CharacterDetail_DontHaveCharacter);
+
 
                 string gacha = "";
                 try
@@ -121,18 +123,42 @@ namespace Genshin_Checker.Window.ExWindow.GameRecords
                     var data = await account.CharacterDetail.GetData(characterID);
                     var list = data.skill_list.FindAll(a => a.max_level != 1);
                     list.Reverse();
+                    int cnt = 0;
                     foreach (var main in list)
                     {
-                        var info = new TalentInfo(main.icon, main.name, string.Format(Localize.UI_Talent_Level, main.level_current), "概要をここに(未実装)");
+                        int? triggerConstellations=null;
+                        int add_levels=0;
+                        bool enabled = false;
+                        switch (cnt)
+                        {
+                            case 2:
+                                triggerConstellations = staticinfo?.Skills.Upgrade_skills.Normal?.Constellations;
+                                add_levels = staticinfo?.Skills.Upgrade_skills.Normal?.Add_level ?? 0;
+                                break;
+                            case 1:
+                                triggerConstellations = staticinfo?.Skills.Upgrade_skills.Skill?.Constellations;
+                                add_levels = staticinfo?.Skills.Upgrade_skills.Skill?.Add_level ?? 0;
+                                break;
+                            case 0:
+                                triggerConstellations = staticinfo?.Skills.Upgrade_skills.Burst?.Constellations;
+                                add_levels = staticinfo?.Skills.Upgrade_skills.Burst?.Add_level ?? 0;
+                                break;
+                        }
+                        if (triggerConstellations != null && CharacterInfo.actived_constellation_num >= triggerConstellations)
+                        {
+                            enabled = true;
+                        }
+                        var info = new TalentInfo(main.icon, main.name, string.Format(Localize.UI_Talent_Level, main.level_current+(enabled?add_levels:0)),enabled, "概要をここに(未実装)");
                         info.Dock = DockStyle.Top;
                         Panel_MainTalent.Controls.Add(info);
                         MainTalent.Add(info);
+                        cnt++;
                     }
                     list = data.skill_list.FindAll(a => a.max_level == 1);
                     list.Reverse();
                     foreach (var sub in list)
                     {
-                        var info = new TalentInfo(sub.icon, sub.name, $"", "概要をここに(未実装)");
+                        var info = new TalentInfo(sub.icon, sub.name, $"",false, "概要をここに(未実装)");
                         info.Dock = DockStyle.Top;
                         Panel_SubTalent.Controls.Add(info);
                         SubTalent.Add(info);
@@ -217,8 +243,7 @@ namespace Genshin_Checker.Window.ExWindow.GameRecords
                     control.Dispose();
                 }
                 TrailerVideoButtons.Clear();
-                var charainfo = Misaki_chan.Data.Characters?.Data.Find(a => a.Id == characterID);
-                if (charainfo?.Wiki.Video != null)
+                if (staticinfo?.Wiki.Video != null)
                 {
                     Trace.WriteLine("トレーラービデオ");
                     var addbutton = new Action<string, string, string?>((string controlname, string ytid, string? title) =>
@@ -242,11 +267,11 @@ namespace Genshin_Checker.Window.ExWindow.GameRecords
                         VideoListPanel.Controls.Add(b);
                         TrailerVideoButtons.Add(b);
                     });
-                    var link = charainfo.Wiki.Video.Trailer?.Ja;
+                    var link = staticinfo.Wiki.Video.Trailer?.Ja;
                     if (link != null) addbutton("実践動画(日本語)", link.Ytid, link.Title);
-                    link = charainfo.Wiki.Video.Trailer?.En;
+                    link = staticinfo.Wiki.Video.Trailer?.En;
                     if (link != null) addbutton("実践動画(英語)", link.Ytid, link.Title);
-                    var song = charainfo.Wiki.Songs?.Theme;
+                    var song = staticinfo.Wiki.Songs?.Theme;
                     if (song != null)
                     {
                         addsong("テーマ曲", song.Path,song.Title.Ja);

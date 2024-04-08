@@ -14,11 +14,16 @@ namespace Genshin_Checker.UI.Control.GameRecord.CharacterDetail
     public partial class TalentInfo : UserControl
     {
         string iconlink = "";
-        public TalentInfo(string talentIcon,string talentName, string talentLevel,string talentDescription)
+        public TalentInfo(string talentIcon,string talentName, string talentLevel,bool ConstellationEnabled, string talentDescription)
         {
             InitializeComponent();
             label1.Text = talentName;
-            label2.Text = talentLevel; 
+            label2.Text = talentLevel;
+            if (ConstellationEnabled)
+            {
+                label2.ForeColor = Color.DarkTurquoise;
+                label2.Font = new(label2.Font, FontStyle.Bold);
+            }
             //label3.Text=talentDescription;
             iconlink = talentIcon;
         }
