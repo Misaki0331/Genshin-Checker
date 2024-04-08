@@ -14,6 +14,7 @@ namespace Genshin_Checker.App.General.Music
         WaveStream? WaveStream;
         WaveOut waveOut;
         List<QueueInfo> Queues;
+        QueueInfo Current;
         Stopwatch Stopwatch;
         System.TimeSpan LatestPosition;
         private static Player? _instance;
@@ -46,20 +47,27 @@ namespace Genshin_Checker.App.General.Music
         public bool IsPlaying { get=>waveOut.PlaybackState== PlaybackState.Playing; }
         public static Player Instance { get => _instance ??= new(); }
         public System.TimeSpan CurrentTime { get => LatestPosition + Stopwatch.Elapsed; set => Seek(CurrentTime); }
-        public async Task Next()
+        public System.TimeSpan? TotalTile { get => WaveStream?.TotalTime; }
+        public async Task Next(bool play=false)
         {
 
             while (Queues.Count > 0)
             {
                 try
                 {
-                    await FileInit($"{Queues[0].Uri}");
-                    Play();
+                    Current = Queues[0];
+                    lock (Queues)
+                    {
+                        Queues.Remove(Queues[0]);
+                    }
+                    await FileInit($"{Current.Uri}");
+                    if(play)Play();
                     break;
 
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
+                    Trace.WriteLine($"再生エラー : {ex}");
                     continue;
                 }
             }
@@ -67,16 +75,37 @@ namespace Genshin_Checker.App.General.Music
         public async void Play()
         {
             if (WaveStream == null) await Next();
-            if (WaveStream == null) return;
-            LatestPosition = WaveStream.CurrentTime;
-            waveOut.Play();
+            if (WaveStream == null)
+            {
+                Trace.WriteLine("再生できませんでした。");
+                return;
+            }
+            if (seeked)
+            {
+                LatestPosition = WaveStream.CurrentTime;
+                waveOut.Play();
+                Stopwatch.Restart();
+            }
+            else
+            {
+                waveOut.Play();
+                Stopwatch.Start();
+            }
         }
+        bool seeked = false;
         public void Seek(TimeSpan time)
         {
             if(WaveStream == null) return;
             if (WaveStream.CanSeek)
             {
                 WaveStream.CurrentTime = time;
+                if (!IsPlaying)seeked=true;
+                else
+                {
+                    LatestPosition = time;
+                    Stopwatch.Restart();
+                }
+                
             }
         }
         public void Pause()
@@ -116,11 +145,13 @@ namespace Genshin_Checker.App.General.Music
         /// </summary>
         /// <param name="url"></param>
         /// <returns>キューの数</returns>
-        public int AddQueue(string url)
+        public int AddQueue(string url, string title = "")
         {
+            Trace.WriteLine($"音楽キュー追加しました。 - {title}");
             lock (Queues)
             {
-                Queues.Add(new() { Title = url, Uri = new(url) });
+                Queues.Add(new() { Title = title, Uri = new(url) });
+                if (Queues.Count == 1&&!IsPlaying) Task.Run(async () => { await Next(true); });
                 return Queues.Count;
             }
         }

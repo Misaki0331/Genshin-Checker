@@ -17,12 +17,15 @@ using Genshin_Checker.resource.Languages;
 using Genshin_Checker.App.General.UI;
 using Genshin_Checker.Store;
 using System.Diagnostics;
+using Genshin_Checker.Model.Misaki_chan.Character;
+using Genshin_Checker.App.General.Music;
 
 namespace Genshin_Checker.Window.ExWindow.GameRecords
 {
     public partial class CharacterDetail : Form
     {
         PictureBox picture;
+        MusicPlayer? player;
         List<TalentInfo> MainTalent;
         List<TalentInfo> SubTalent;
         WeaponDetail WeaponDetail;
@@ -48,11 +51,11 @@ namespace Genshin_Checker.Window.ExWindow.GameRecords
             Constellation = new();
             ArtifactInfos = new();
             TrailerVideoButtons = new();
-            _semaphore= new SemaphoreSlim(1,1);
-            WeaponDetail = new WeaponDetail() { Dock=DockStyle.Top};
+            _semaphore = new SemaphoreSlim(1, 1);
+            WeaponDetail = new WeaponDetail() { Dock = DockStyle.Top };
             groupBox2.Controls.Add(WeaponDetail);
         }
-        public async void DataUpdate(Account account,int characterID,string name)
+        public async void DataUpdate(Account account, int characterID, string name)
         {
 
             await _semaphore.WaitAsync(); // ロックを取得する
@@ -74,9 +77,10 @@ namespace Genshin_Checker.Window.ExWindow.GameRecords
                 {
                     var character = Store.EnkaData.Data.Characters[$"{characterID}"];
                     gacha = character.SideIconName.Replace("UI_AvatarIcon_Side_", "UI_Gacha_AvatarImg_");
-                }catch(Exception)
+                }
+                catch (Exception)
                 {
-                    new ErrorMessage(Localize.Error_CharacterDetail_CharacterDetailIsMissing,string.Format(Localize.Error_CharacterDetail_CharacterDetailIsMissing_Message, CharacterInfo.name)).ShowDialog();
+                    new ErrorMessage(Localize.Error_CharacterDetail_CharacterDetailIsMissing, string.Format(Localize.Error_CharacterDetail_CharacterDetailIsMissing_Message, CharacterInfo.name)).ShowDialog();
                 }
 
                 Text = $"{Localize.WindowName_CharacterDetail} - {CharacterInfo.name} (UID:{account.UID})";
@@ -84,8 +88,8 @@ namespace Genshin_Checker.Window.ExWindow.GameRecords
                 ImageReload(true);
                 //概要
                 label1.Text = $"{name}";
-                label2.Text = string.Format(Localize.UI_Character_Level,CharacterInfo.level);
-                label4.Text = string.Format(Localize.UI_FriendshipLevel,CharacterInfo.fetter);
+                label2.Text = string.Format(Localize.UI_Character_Level, CharacterInfo.level);
+                label4.Text = string.Format(Localize.UI_FriendshipLevel, CharacterInfo.fetter);
                 int constellation = CharacterInfo.constellations.FindAll(a => a.is_actived).Count;
                 if (constellation == 0) label5.Text = "";
                 else if (constellation == 6) label5.Text = Localize.UI_ConstellationLevelMax;
@@ -119,7 +123,7 @@ namespace Genshin_Checker.Window.ExWindow.GameRecords
                     list.Reverse();
                     foreach (var main in list)
                     {
-                        var info = new TalentInfo(main.icon, main.name, string.Format(Localize.UI_Talent_Level,main.level_current), "概要をここに(未実装)");
+                        var info = new TalentInfo(main.icon, main.name, string.Format(Localize.UI_Talent_Level, main.level_current), "概要をここに(未実装)");
                         info.Dock = DockStyle.Top;
                         Panel_MainTalent.Controls.Add(info);
                         MainTalent.Add(info);
@@ -145,7 +149,7 @@ namespace Genshin_Checker.Window.ExWindow.GameRecords
                             hint = HoYoLabAPIRetcode._502002;
                             break;
                     }
-                    textBox1.Lines = string.Format(Localize.Error_CharacterDetail_HoYoLabAPIException,ex.Retcode,ex.APIMessage,hint).Split('\n');
+                    textBox1.Lines = string.Format(Localize.Error_CharacterDetail_HoYoLabAPIException, ex.Retcode, ex.APIMessage, hint).Split('\n');
                     Error_TalentPanel.Visible = true;
                     Button_TalentHideShow.Visible = false;
 
@@ -207,20 +211,33 @@ namespace Genshin_Checker.Window.ExWindow.GameRecords
                 ArtifactLayout.ResumeLayout(true);
                 //トレーラービデオ
                 VideoListPanel.SuspendLayout();
-                foreach(var control in TrailerVideoButtons)
+                foreach (var control in TrailerVideoButtons)
                 {
                     VideoListPanel.Controls.Remove(control);
                     control.Dispose();
                 }
                 TrailerVideoButtons.Clear();
                 var charainfo = Misaki_chan.Data.Characters?.Data.Find(a => a.Id == characterID);
-                if(charainfo?.Wiki.Video!=null)
+                if (charainfo?.Wiki.Video != null)
                 {
                     Trace.WriteLine("トレーラービデオ");
-                    var addbutton = new Action<string,string,string?>((string controlname,string ytid,string? title) => {
+                    var addbutton = new Action<string, string, string?>((string controlname, string ytid, string? title) =>
+                    {
                         var b = new Button();
                         b.Text = controlname;
                         b.Click += (s, e) => { new WebMiniBrowser(new($"https://static-api.misaki-chan.world/embed/youtube.html?v={ytid}&t={System.Web.HttpUtility.UrlEncode(title)}"), size: new(1280, 720), urlboxshow: false).Show(); };
+                        b.AutoSize = true;
+                        VideoListPanel.Controls.Add(b);
+                        TrailerVideoButtons.Add(b);
+                    });
+                    var addsong = new Action<string,string,string>((string controlname,string url,string title) =>
+                    {
+                        var b = new Button();
+                        b.Text = controlname;
+                        b.Click += (s, e) => {
+                            Player.Instance.AddQueue($"https://static-api.misaki-chan.world/{url}",title);
+                            Genshin_Checker.App.General.ManageWindow.OpenWindow(null, nameof(MusicPlayer));
+                        };
                         b.AutoSize = true;
                         VideoListPanel.Controls.Add(b);
                         TrailerVideoButtons.Add(b);
@@ -229,6 +246,12 @@ namespace Genshin_Checker.Window.ExWindow.GameRecords
                     if (link != null) addbutton("実践動画(日本語)", link.Ytid, link.Title);
                     link = charainfo.Wiki.Video.Trailer?.En;
                     if (link != null) addbutton("実践動画(英語)", link.Ytid, link.Title);
+                    var song = charainfo.Wiki.Songs?.Theme;
+                    if (song != null)
+                    {
+                        addsong("テーマ曲", song.Path,song.Title.Ja);
+                    }
+
                 }
 
                 VideoListPanel.ResumeLayout(true);
@@ -282,7 +305,7 @@ namespace Genshin_Checker.Window.ExWindow.GameRecords
         private void Button_TalentHideShow_Click(object sender, EventArgs e)
         {
             Panel_SubTalent.Visible = !Panel_SubTalent.Visible;
-            if(Panel_SubTalent.Visible)
+            if (Panel_SubTalent.Visible)
             {
                 Button_TalentHideShow.Text = Localize.WindowName_CharacterDetail_Talent_Hide;
             }
@@ -290,6 +313,11 @@ namespace Genshin_Checker.Window.ExWindow.GameRecords
             {
                 Button_TalentHideShow.Text = Localize.WindowName_CharacterDetail_Talent_ShowMore;
             }
+        }
+
+        private void CharacterDetail_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            player?.Close();
         }
     }
 }

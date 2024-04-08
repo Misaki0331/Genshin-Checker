@@ -93,6 +93,7 @@
             MaximizeBox = false;
             Name = "MusicPlayer";
             Text = "MusicPlayer";
+            Load += MusicPlayer_Load;
             ResumeLayout(false);
         }
 

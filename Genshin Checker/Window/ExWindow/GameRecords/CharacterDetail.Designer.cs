@@ -260,6 +260,7 @@
             Controls.Add(tableLayoutPanel1);
             FormBorderStyle = FormBorderStyle.SizableToolWindow;
             Name = "CharacterDetail";
+            FormClosed += CharacterDetail_FormClosed;
             tableLayoutPanel1.ResumeLayout(false);
             panel2.ResumeLayout(false);
             tabControl1.ResumeLayout(false);

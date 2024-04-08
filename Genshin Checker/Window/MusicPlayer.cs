@@ -1,4 +1,6 @@
-﻿using NAudio.Wave;
+﻿using Genshin_Checker.App.General.Music;
+using Genshin_Checker.Window.Popup;
+using NAudio.Wave;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,67 +16,43 @@ namespace Genshin_Checker.Window
 {
     public partial class MusicPlayer : Form
     {
-        MemoryStream? MusicStream;
-        WaveStream? WaveStream;
-        WaveOut waveOut;
         public MusicPlayer()
         {
             InitializeComponent();
-            waveOut = new WaveOut();
-        }
-        public async void LoadSong(string url)
-        {
-            try
-            {
-                await FileInit(url);
-            }
-            catch (Exception ex) {
-                Trace.WriteLine(ex);
-            }
-        }
-        public async Task FileInit(string url)
-        {
-            var data = await App.WebRequest.GetRequest(url);
-            if (data == null) return;
-            Trace.WriteLine($"Size:{data.Length / 1024.0 / 1024.0:0.00}MB");
-            MusicStream = new(data);
-            if (WaveStream != null && WaveStream.CanRead) await WaveStream.DisposeAsync();
-            WaveStream = new Mp3FileReader(MusicStream);
-            waveOut.Init(WaveStream);
+            update.Start();
         }
 
         private void ButtonPlay_Click(object sender, EventArgs e)
         {
-            try
-            {
-                if(WaveStream==null) return;
-                if (waveOut.PlaybackState == PlaybackState.Playing) waveOut.Pause();
-                else if(WaveStream.CanRead) waveOut.Play();
-            }
-            catch { }
+            if(Player.Instance.IsPlaying) Player.Instance.Pause();
+            else Player.Instance.Play();
         }
 
         private void ButtonStop_Click(object sender, EventArgs e)
         {
-            if (WaveStream != null)
-            {
-                waveOut.Stop(); 
-                WaveStream.Position = 0;
-            }
+            Player.Instance.Stop();
         }
 
         private void update_Tick(object sender, EventArgs e)
         {
-            if (WaveStream == null)
+            var total = Player.Instance.TotalTile;
+            if (total==null)
             {
                 progressBar1.Value = 0;
-                label1.Text = $"-:-- / -:--";
+                label1.Text = $"-:--.-- / -:--.--";
             }
             else
             {
-                progressBar1.Value = (int)((double)WaveStream.Position/(double)WaveStream.Length*10000.0);
-                label1.Text = $"{WaveStream.CurrentTime:m\\:ss} / {WaveStream.TotalTime:m\\:ss}";
+                var current = Player.Instance.CurrentTime;
+                int per = (int)((double)current.TotalMilliseconds / (double)total.Value.TotalMilliseconds * 10000.0);
+                if (per > 10000) per = 10000;
+                progressBar1.Value = per;
+                label1.Text = $"{current:m\\:ss\\:ff} / {total:m\\:ss\\:ff}";
             }
+        }
+
+        private void MusicPlayer_Load(object sender, EventArgs e)
+        {
         }
     }
 }

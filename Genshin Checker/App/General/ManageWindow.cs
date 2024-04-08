@@ -65,6 +65,9 @@ namespace Genshin_Checker.App.General
                         case nameof(Genshin_Checker.Window.CodeExchange):
                             find = new Genshin_Checker.Window.CodeExchange() { Name = Name };
                             break;
+                        case nameof(Genshin_Checker.Window.MusicPlayer):
+                            find = new Genshin_Checker.Window.MusicPlayer() { Name = Name };
+                            break;
                     }
             }
             else
