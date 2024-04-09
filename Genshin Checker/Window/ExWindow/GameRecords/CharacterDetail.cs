@@ -250,7 +250,7 @@ namespace Genshin_Checker.Window.ExWindow.GameRecords
                     {
                         var b = new Button();
                         b.Text = controlname;
-                        b.Click += (s, e) => { new WebMiniBrowser(new($"https://static-api.misaki-chan.world/embed/youtube.html?v={ytid}&t={System.Web.HttpUtility.UrlEncode(title)}"), size: new(1280, 720), urlboxshow: false).Show(); };
+                        b.Click += (s, e) => { new WebMiniBrowser(new($"https://static-api.misaki-chan.world/embed/youtube.html?v={ytid}&t={System.Web.HttpUtility.UrlEncode(title)}"), size: new(1280, 720+ SystemInformation.CaptionHeight+7), urlboxshow: false).Show(); };
                         b.AutoSize = true;
                         VideoListPanel.Controls.Add(b);
                         TrailerVideoButtons.Add(b);
@@ -267,14 +267,14 @@ namespace Genshin_Checker.Window.ExWindow.GameRecords
                         VideoListPanel.Controls.Add(b);
                         TrailerVideoButtons.Add(b);
                     });
-                    var link = staticinfo.Wiki.Video.Trailer?.Ja;
+                    var link = staticinfo.Wiki.Video["trailer"]["ja"];
                     if (link != null) addbutton("実践動画(日本語)", link.Ytid, link.Title);
-                    link = staticinfo.Wiki.Video.Trailer?.En;
+                    link = staticinfo.Wiki.Video["trailer"]["en"];
                     if (link != null) addbutton("実践動画(英語)", link.Ytid, link.Title);
                     var song = staticinfo.Wiki.Songs?.Theme;
                     if (song != null)
                     {
-                        addsong("テーマ曲", song.Path,song.Title.Ja);
+                        addsong("テーマ曲", song.Path, song.Title["ja"]);
                     }
 
                 }

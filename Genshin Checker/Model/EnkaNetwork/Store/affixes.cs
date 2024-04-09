@@ -15,7 +15,7 @@ namespace Genshin_Checker.Model.EnkaNetwork.Store.Affixes
 {
     public class Root
     {
-        public KeyValuePair<int,Data> index { get; set; }
+        public Dictionary<int, Data> index { get; set; } = new();
     }
 
     public class Data

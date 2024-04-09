@@ -25,7 +25,7 @@ namespace Genshin_Checker.Model.EnkaNetwork.Store.Characters
         public List<int> SkillOrder { get; set; } = new();
 
         [JsonProperty("Skills")]
-        public KeyValuePair<int,string> Skills { get; set; }
+        public Dictionary<int, string> Skills { get; set; } = new();
 
         [JsonProperty("ProudMap")]
         public Dictionary<int, int> ProudMap { get; set; } = new();
@@ -43,7 +43,7 @@ namespace Genshin_Checker.Model.EnkaNetwork.Store.Characters
         public string WeaponType { get; set; } = string.Empty;
 
         [JsonProperty("Costumes")]
-        public KeyValuePair<int,Costumes> Costumes { get; set; }
+        public Dictionary<int, Costumes> Costumes { get; set; } = new();
     }
     public class Costumes
     {

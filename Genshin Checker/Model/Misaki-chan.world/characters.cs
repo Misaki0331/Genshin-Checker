@@ -32,7 +32,7 @@ namespace Genshin_Checker.Model.Misaki_chan.Character
         public string Weapon { get; set; } = "";
 
         [JsonPropertyName("name")]
-        public Name Name { get; set; } = new();
+        public KeyValuePair<string,string> Name { get; set; } = new();
 
         [JsonPropertyName("profile")]
         public Profile Profile { get; set; } = new();
@@ -58,11 +58,7 @@ namespace Genshin_Checker.Model.Misaki_chan.Character
 
     public class Name
     {
-        [JsonPropertyName("ja")]
-        public string Ja { get; set; } = "";
-
-        [JsonPropertyName("en")]
-        public string En { get; set; } = "";
+        public KeyValuePair<string, string> Lang { get;}
     }
 
     public class Profile
@@ -122,35 +118,9 @@ namespace Genshin_Checker.Model.Misaki_chan.Character
         public string Path { get; set; } = "";
 
         [JsonPropertyName("title")]
-        public Title Title { get; set; } = new();
+        public Dictionary<string, string> Title { get; set; } = new();
     }
 
-    public class Title
-    {
-        [JsonPropertyName("ja")]
-        public string Ja { get; set; } = "";
-
-        [JsonPropertyName("en")]
-        public string En { get; set; } = "";
-
-        [JsonPropertyName("zh-cn")]
-        public string Zhcn { get; set; } = "";
-
-        [JsonPropertyName("zh-tw")]
-        public string Zhtw { get; set; } = "";
-
-        [JsonPropertyName("kr")]
-        public string Kr { get; set; } = "";
-    }
-
-    public class Trailer
-    {
-        [JsonPropertyName("ja")]
-        public TrailerVideo? Ja { get; set; }
-
-        [JsonPropertyName("en")]
-        public TrailerVideo? En { get; set; }
-    }
 
     public class UpgradeSkills
     {
@@ -162,11 +132,6 @@ namespace Genshin_Checker.Model.Misaki_chan.Character
         public Skill? Burst { get; set; }
     }
 
-    public class Video
-    {
-        [JsonPropertyName("trailer")]
-        public Trailer? Trailer { get; set; }
-    }
 
     public class Wiki
     {
@@ -174,7 +139,7 @@ namespace Genshin_Checker.Model.Misaki_chan.Character
         public Songs? Songs { get; set; }
 
         [JsonPropertyName("video")]
-        public Video? Video { get; set; }
+        public Dictionary<string, Dictionary<string, TrailerVideo>> Video { get; set; } = new();
     }
 
 
