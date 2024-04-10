@@ -56,6 +56,7 @@
             consoleToolStripMenuItem = new ToolStripMenuItem();
             testToolStripMenuItem = new ToolStripMenuItem();
             Delay = new System.Windows.Forms.Timer(components);
+            func_musicplayer = new ToolStripMenuItem();
             NotificationMenu.SuspendLayout();
             SuspendLayout();
             // 
@@ -68,7 +69,7 @@
             // NotificationMenu
             // 
             resources.ApplyResources(NotificationMenu, "NotificationMenu");
-            NotificationMenu.Items.AddRange(new ToolStripItem[] { versionNameToolStripMenuItem, toolStripSeparator3, 詳細プレイデータToolStripMenuItem, AccountToolStrip, ゲームログ開発者向けToolStripMenuItem, 現在のアカウント情報を取得ToolStripMenuItem, toolStripCodeExchange, toolStripSeparator2, 設定ToolStripMenuItem, toolStripSeparator1, ShortcutFunction1, ShortcutFunction2, ShortcutFunction3, ShortcutFunction4, ShortcutFunction5, ShortcutFunction6, ShortcutFunction7, ShortcutFunction8, ShortcutSeparator, 終了ToolStripMenuItem, consoleToolStripMenuItem, testToolStripMenuItem });
+            NotificationMenu.Items.AddRange(new ToolStripItem[] { versionNameToolStripMenuItem, toolStripSeparator3, 詳細プレイデータToolStripMenuItem, AccountToolStrip, ゲームログ開発者向けToolStripMenuItem, 現在のアカウント情報を取得ToolStripMenuItem, toolStripCodeExchange, func_musicplayer, toolStripSeparator2, 設定ToolStripMenuItem, toolStripSeparator1, ShortcutFunction1, ShortcutFunction2, ShortcutFunction3, ShortcutFunction4, ShortcutFunction5, ShortcutFunction6, ShortcutFunction7, ShortcutFunction8, ShortcutSeparator, 終了ToolStripMenuItem, consoleToolStripMenuItem, testToolStripMenuItem });
             NotificationMenu.Name = "contextMenuStrip1";
             // 
             // versionNameToolStripMenuItem
@@ -120,6 +121,7 @@
             // 
             resources.ApplyResources(toolStripSeparator2, "toolStripSeparator2");
             toolStripSeparator2.Name = "toolStripSeparator2";
+            toolStripSeparator2.Click += toolStripSeparator2_Click;
             // 
             // 設定ToolStripMenuItem
             // 
@@ -200,6 +202,12 @@
             Delay.Enabled = true;
             Delay.Tick += Delay_Tick;
             // 
+            // func_musicplayer
+            // 
+            resources.ApplyResources(func_musicplayer, "func_musicplayer");
+            func_musicplayer.Name = "func_musicplayer";
+            func_musicplayer.Click += func_musicplayer_Click;
+            // 
             // MainTray
             // 
             resources.ApplyResources(this, "$this");
@@ -245,5 +253,6 @@
         private ToolStripMenuItem ShortcutFunction8;
         private ToolStripSeparator ShortcutSeparator;
         private ToolStripMenuItem toolStripCodeExchange;
+        private ToolStripMenuItem func_musicplayer;
     }
 }

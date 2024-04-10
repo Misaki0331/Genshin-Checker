@@ -267,10 +267,25 @@ namespace Genshin_Checker.Window.ExWindow.GameRecords
                         VideoListPanel.Controls.Add(b);
                         TrailerVideoButtons.Add(b);
                     });
-                    var link = staticinfo.Wiki.Video["trailer"]["ja"];
-                    if (link != null) addbutton("実践動画(日本語)", link.Ytid, link.Title);
-                    link = staticinfo.Wiki.Video["trailer"]["en"];
-                    if (link != null) addbutton("実践動画(英語)", link.Ytid, link.Title);
+                    foreach (var video in staticinfo.Wiki.Video)
+                    {
+                        var title = video.Key switch
+                        {
+                            "trailer" => "実践紹介",
+                            _ => video.Key
+                        };
+                        foreach (var lang in video.Value)
+                        {
+                            var langname = lang.Key switch
+                            {
+                                "ja" => "(日本語)",
+                                "en" => "(英語)",
+                                "none" => "",
+                                _ => $"({lang.Key})"
+                            };
+                            addbutton($"{title}{langname}", lang.Value.Ytid, lang.Value.Title);
+                        }
+                    }
                     var song = staticinfo.Wiki.Songs?.Theme;
                     if (song != null)
                     {

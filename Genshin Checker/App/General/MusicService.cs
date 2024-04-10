@@ -24,6 +24,7 @@ namespace Genshin_Checker.App.General.Music
             waveOut = new WaveOut();
             LatestPosition = new();
             Stopwatch = new();
+            Current = new();
             waveOut.PlaybackStopped += WaveOut_PlaybackStopped;
         }
 
@@ -46,8 +47,10 @@ namespace Genshin_Checker.App.General.Music
         }
         public bool IsPlaying { get=>waveOut.PlaybackState== PlaybackState.Playing; }
         public static Player Instance { get => _instance ??= new(); }
+        public string CurrentTitle { get => Current.Title; }
         public System.TimeSpan CurrentTime { get => LatestPosition + Stopwatch.Elapsed; set => Seek(CurrentTime); }
         public System.TimeSpan? TotalTile { get => WaveStream?.TotalTime; }
+        public double Volume { get => waveOut.Volume; set => waveOut.Volume = (float)value; }
         public async Task Next(bool play=false)
         {
 

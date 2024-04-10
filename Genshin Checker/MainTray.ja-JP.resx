@@ -145,6 +145,12 @@
   <data name="toolStripCodeExchange.Text" xml:space="preserve">
     <value>交換コード引き換え</value>
   </data>
+  <data name="func_musicplayer.Size" type="System.Drawing.Size, System.Drawing">
+    <value>184, 22</value>
+  </data>
+  <data name="func_musicplayer.Text" xml:space="preserve">
+    <value>音楽プレイヤー</value>
+  </data>
   <data name="設定ToolStripMenuItem.Text" xml:space="preserve">
     <value>設定</value>
   </data>
@@ -210,7 +216,7 @@
     <value>テスト</value>
   </data>
   <data name="NotificationMenu.Size" type="System.Drawing.Size, System.Drawing">
-    <value>185, 446</value>
+    <value>185, 468</value>
   </data>
   <data name="notification.Text" xml:space="preserve">
     <value>原神チェッカー</value>

@@ -189,7 +189,7 @@ namespace Genshin_Checker
         //ここはテスト用
         private void testToolStripMenuItem_ClickAsync(object sender, EventArgs e)
         {
-            OpenWindow(null,nameof(APIChecker));
+            OpenWindow(null, nameof(APIChecker));
         }
 
 
@@ -292,6 +292,16 @@ namespace Genshin_Checker
         private void toolStripCodeExchange_Click(object sender, EventArgs e)
         {
             OpenWindow(null, nameof(Window.CodeExchange));
+        }
+
+        private void toolStripSeparator2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void func_musicplayer_Click(object sender, EventArgs e)
+        {
+            OpenWindow(null, nameof(Window.MusicPlayer));
         }
     }
 

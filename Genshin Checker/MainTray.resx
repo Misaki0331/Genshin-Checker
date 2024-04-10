@@ -117,335 +117,344 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="versionNameToolStripMenuItem.Text" xml:space="preserve">
-    <value>VersionName</value>
-  </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Form, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="ShortcutFunction2.Text" xml:space="preserve">
-    <value>Shortcut 2</value>
-  </data>
-  <data name="ShortcutFunction4.Text" xml:space="preserve">
-    <value>Shortcut 4</value>
-  </data>
-  <data name="&gt;&gt;AccountToolStrip.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>407, 194</value>
-  </data>
-  <data name="&gt;&gt;toolStripSeparator3.Name" xml:space="preserve">
-    <value>toolStripSeparator3</value>
-  </data>
-  <data name="&gt;&gt;toolStripSeparator1.Name" xml:space="preserve">
-    <value>toolStripSeparator1</value>
-  </data>
-  <data name="ゲームログ開発者向けToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>184, 22</value>
-  </data>
-  <data name="&gt;&gt;詳細プレイデータToolStripMenuItem.Name" xml:space="preserve">
-    <value>詳細プレイデータToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;ShortcutSeparator.Name" xml:space="preserve">
-    <value>ShortcutSeparator</value>
-  </data>
-  <data name="&gt;&gt;NotificationMenu.Name" xml:space="preserve">
-    <value>NotificationMenu</value>
-  </data>
-  <data name="&gt;&gt;現在のアカウント情報を取得ToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;notification.Name" xml:space="preserve">
-    <value>notification</value>
-  </data>
   <data name="&gt;&gt;toolStripSeparator1.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="versionNameToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>184, 22</value>
-  </data>
-  <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>181, 6</value>
-  </data>
-  <data name="ShortcutFunction6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>184, 22</value>
-  </data>
-  <data name="notification.Text" xml:space="preserve">
-    <value>Genshin Checker</value>
-  </data>
-  <data name="&gt;&gt;ShortcutFunction1.Name" xml:space="preserve">
-    <value>ShortcutFunction1</value>
-  </data>
-  <data name="emptyToolStripMenuItem.Text" xml:space="preserve">
-    <value>(Empty)</value>
-  </data>
-  <data name="&gt;&gt;ShortcutFunction4.Name" xml:space="preserve">
-    <value>ShortcutFunction4</value>
-  </data>
-  <data name="&gt;&gt;consoleToolStripMenuItem.Name" xml:space="preserve">
-    <value>consoleToolStripMenuItem</value>
-  </data>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>7, 15</value>
-  </data>
-  <data name="&gt;&gt;設定ToolStripMenuItem.Name" xml:space="preserve">
-    <value>設定ToolStripMenuItem</value>
-  </data>
-  <data name="終了ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>184, 22</value>
-  </data>
-  <data name="&gt;&gt;ShortcutFunction6.Name" xml:space="preserve">
-    <value>ShortcutFunction6</value>
-  </data>
-  <data name="ShortcutFunction7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>184, 22</value>
-  </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>MainTray</value>
   </data>
   <data name="&gt;&gt;ShortcutSeparator.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;testToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;ShortcutFunction1.Name" xml:space="preserve">
+    <value>ShortcutFunction1</value>
   </data>
-  <data name="&gt;&gt;emptyToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ShortcutFunction8.Name" xml:space="preserve">
-    <value>ShortcutFunction8</value>
-  </data>
-  <data name="emptyToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>115, 22</value>
-  </data>
-  <data name="&gt;&gt;versionNameToolStripMenuItem.Name" xml:space="preserve">
-    <value>versionNameToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;NotificationMenu.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="ShortcutFunction3.Text" xml:space="preserve">
-    <value>Shortcut 3</value>
-  </data>
-  <data name="&gt;&gt;現在のアカウント情報を取得ToolStripMenuItem.Name" xml:space="preserve">
-    <value>現在のアカウント情報を取得ToolStripMenuItem</value>
-  </data>
-  <data name="ShortcutFunction1.Text" xml:space="preserve">
-    <value>Shortcut 1</value>
-  </data>
-  <data name="&gt;&gt;ShortcutFunction1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="testToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="ShortcutFunction6.Size" type="System.Drawing.Size, System.Drawing">
     <value>184, 22</value>
-  </data>
-  <data name="設定ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>184, 22</value>
-  </data>
-  <data name="&gt;&gt;ShortcutFunction5.Name" xml:space="preserve">
-    <value>ShortcutFunction5</value>
-  </data>
-  <data name="&gt;&gt;ShortcutFunction6.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;emptyToolStripMenuItem.Name" xml:space="preserve">
-    <value>emptyToolStripMenuItem</value>
-  </data>
-  <data name="ShortcutFunction3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>184, 22</value>
-  </data>
-  <data name="ShortcutFunction8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>184, 22</value>
-  </data>
-  <data name="&gt;&gt;ゲームログ開発者向けToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="ShortcutFunction1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>184, 22</value>
-  </data>
-  <data name="ShortcutFunction4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>184, 22</value>
-  </data>
-  <data name="詳細プレイデータToolStripMenuItem.Text" xml:space="preserve">
-    <value>Gameplay detail</value>
-  </data>
-  <data name="ShortcutFunction2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>184, 22</value>
-  </data>
-  <data name="toolStripSeparator3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>181, 6</value>
-  </data>
-  <data name="&gt;&gt;testToolStripMenuItem.Name" xml:space="preserve">
-    <value>testToolStripMenuItem</value>
-  </data>
-  <data name="ゲームログ開発者向けToolStripMenuItem.Text" xml:space="preserve">
-    <value>Game Log</value>
-  </data>
-  <data name="NotificationMenu.Size" type="System.Drawing.Size, System.Drawing">
-    <value>185, 198</value>
-  </data>
-  <data name="&gt;&gt;toolStripSeparator2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;versionNameToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="consoleToolStripMenuItem.Text" xml:space="preserve">
-    <value>Console</value>
-  </data>
-  <data name="&gt;&gt;ShortcutFunction3.Name" xml:space="preserve">
-    <value>ShortcutFunction3</value>
-  </data>
-  <data name="&gt;&gt;toolStripCodeExchange.Name" xml:space="preserve">
-    <value>toolStripCodeExchange</value>
-  </data>
-  <data name="AccountToolStrip.Size" type="System.Drawing.Size, System.Drawing">
-    <value>184, 22</value>
-  </data>
-  <data name="&gt;&gt;ShortcutFunction7.Name" xml:space="preserve">
-    <value>ShortcutFunction7</value>
-  </data>
-  <data name="現在のアカウント情報を取得ToolStripMenuItem.Text" xml:space="preserve">
-    <value>Synchronization of item logs</value>
-  </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>MainTray</value>
-    <comment>@Invariant</comment>
-  </data>
-  <data name="詳細プレイデータToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>184, 22</value>
-  </data>
-  <data name="ShortcutFunction5.Text" xml:space="preserve">
-    <value>Shortcut 5</value>
-  </data>
-  <data name="&gt;&gt;終了ToolStripMenuItem.Name" xml:space="preserve">
-    <value>終了ToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;ShortcutFunction8.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="設定ToolStripMenuItem.Text" xml:space="preserve">
-    <value>Setting</value>
-  </data>
-  <data name="AccountToolStrip.Text" xml:space="preserve">
-    <value>Accounts</value>
-  </data>
-  <data name="&gt;&gt;ShortcutFunction2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;toolStripCodeExchange.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="versionNameToolStripMenuItem.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="ShortcutFunction5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>184, 22</value>
-  </data>
-  <data name="ShortcutFunction6.Text" xml:space="preserve">
-    <value>Shortcut 6</value>
-  </data>
-  <data name="ShortcutFunction8.Text" xml:space="preserve">
-    <value>Shortcut 8</value>
-  </data>
-  <data name="&gt;&gt;notification.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NotifyIcon, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ゲームログ開発者向けToolStripMenuItem.Name" xml:space="preserve">
-    <value>ゲームログ開発者向けToolStripMenuItem</value>
-  </data>
-  <data name="testToolStripMenuItem.Text" xml:space="preserve">
-    <value>TestFunction</value>
-  </data>
-  <data name="consoleToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>184, 22</value>
-  </data>
-  <data name="&gt;&gt;ShortcutFunction3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ShortcutFunction5.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;設定ToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="toolStripCodeExchange.Size" type="System.Drawing.Size, System.Drawing">
-    <value>184, 22</value>
-  </data>
-  <data name="終了ToolStripMenuItem.Text" xml:space="preserve">
-    <value>Exit</value>
-  </data>
-  <data name="&gt;&gt;toolStripSeparator2.Name" xml:space="preserve">
-    <value>toolStripSeparator2</value>
-  </data>
-  <data name="&gt;&gt;Delay.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Timer, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Delay.Name" xml:space="preserve">
-    <value>Delay</value>
-  </data>
-  <data name="&gt;&gt;終了ToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="ShortcutSeparator.Size" type="System.Drawing.Size, System.Drawing">
-    <value>181, 6</value>
-  </data>
-  <data name="&gt;&gt;詳細プレイデータToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>181, 6</value>
-  </data>
-  <data name="&gt;&gt;consoleToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="現在のアカウント情報を取得ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>209, 22</value>
-  </data>
-  <data name="emptyToolStripMenuItem.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;AccountToolStrip.Name" xml:space="preserve">
-    <value>AccountToolStrip</value>
-  </data>
-  <data name="&gt;&gt;toolStripSeparator3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ShortcutFunction7.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="ShortcutFunction7.Text" xml:space="preserve">
-    <value>Shortcut 7</value>
   </data>
   <data name="&gt;&gt;ShortcutFunction2.Name" xml:space="preserve">
     <value>ShortcutFunction2</value>
   </data>
-  <data name="&gt;&gt;ShortcutFunction4.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;consoleToolStripMenuItem.Name" xml:space="preserve">
+    <value>consoleToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator1.Name" xml:space="preserve">
+    <value>toolStripSeparator1</value>
+  </data>
+  <data name="現在のアカウント情報を取得ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>209, 22</value>
+  </data>
+  <data name="toolStripSeparator3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>181, 6</value>
+  </data>
+  <data name="&gt;&gt;notification.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NotifyIcon, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="$this.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>Zoom</value>
   </data>
-  <metadata name="$this.Language" type="System.Globalization.CultureInfo, System.Private.CoreLib, Culture=neutral, PublicKeyToken=7cec85d7bea7798e">
-    <value>ja-JP</value>
-  </metadata>
+  <data name="&gt;&gt;consoleToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator2.Name" xml:space="preserve">
+    <value>toolStripSeparator2</value>
+  </data>
+  <data name="emptyToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>115, 22</value>
+  </data>
+  <data name="&gt;&gt;ShortcutFunction2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="testToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>184, 22</value>
+  </data>
+  <data name="&gt;&gt;func_musicplayer.Name" xml:space="preserve">
+    <value>func_musicplayer</value>
+  </data>
+  <data name="ShortcutFunction3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>184, 22</value>
+  </data>
+  <data name="&gt;&gt;設定ToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="emptyToolStripMenuItem.Text" xml:space="preserve">
+    <value>(Empty)</value>
+  </data>
+  <data name="ゲームログ開発者向けToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>184, 22</value>
+  </data>
+  <data name="&gt;&gt;AccountToolStrip.Name" xml:space="preserve">
+    <value>AccountToolStrip</value>
+  </data>
+  <data name="&gt;&gt;ShortcutFunction8.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator3.Name" xml:space="preserve">
+    <value>toolStripSeparator3</value>
+  </data>
+  <data name="ShortcutSeparator.Size" type="System.Drawing.Size, System.Drawing">
+    <value>181, 6</value>
+  </data>
+  <data name="&gt;&gt;testToolStripMenuItem.Name" xml:space="preserve">
+    <value>testToolStripMenuItem</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>407, 194</value>
+  </data>
+  <data name="ShortcutFunction3.Text" xml:space="preserve">
+    <value>Shortcut 3</value>
+  </data>
+  <data name="&gt;&gt;ShortcutFunction3.Name" xml:space="preserve">
+    <value>ShortcutFunction3</value>
+  </data>
+  <data name="ShortcutFunction7.Text" xml:space="preserve">
+    <value>Shortcut 7</value>
+  </data>
+  <data name="&gt;&gt;ShortcutFunction4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ShortcutFunction8.Text" xml:space="preserve">
+    <value>Shortcut 8</value>
+  </data>
+  <data name="ShortcutFunction6.Text" xml:space="preserve">
+    <value>Shortcut 6</value>
+  </data>
+  <data name="ShortcutFunction5.Text" xml:space="preserve">
+    <value>Shortcut 5</value>
+  </data>
+  <data name="ShortcutFunction2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>184, 22</value>
+  </data>
+  <data name="notification.Text" xml:space="preserve">
+    <value>Genshin Checker</value>
+  </data>
+  <data name="ShortcutFunction1.Text" xml:space="preserve">
+    <value>Shortcut 1</value>
+  </data>
+  <data name="&gt;&gt;ShortcutFunction6.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ShortcutSeparator.Name" xml:space="preserve">
+    <value>ShortcutSeparator</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="emptyToolStripMenuItem.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ShortcutFunction4.Name" xml:space="preserve">
+    <value>ShortcutFunction4</value>
+  </data>
+  <data name="ShortcutFunction8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>184, 22</value>
+  </data>
+  <data name="toolStripCodeExchange.Text" xml:space="preserve">
+    <value>Redeem code</value>
+  </data>
+  <data name="終了ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Exit</value>
+  </data>
+  <data name="ShortcutFunction1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>184, 22</value>
+  </data>
+  <data name="&gt;&gt;Delay.Name" xml:space="preserve">
+    <value>Delay</value>
+  </data>
+  <data name="詳細プレイデータToolStripMenuItem.Text" xml:space="preserve">
+    <value>Gameplay detail</value>
+  </data>
+  <data name="&gt;&gt;toolStripCodeExchange.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;emptyToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ShortcutFunction5.Name" xml:space="preserve">
+    <value>ShortcutFunction5</value>
+  </data>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>7, 15</value>
+  </data>
+  <data name="toolStripCodeExchange.Size" type="System.Drawing.Size, System.Drawing">
+    <value>184, 22</value>
+  </data>
+  <data name="&gt;&gt;func_musicplayer.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="設定ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>184, 22</value>
+  </data>
+  <data name="&gt;&gt;toolStripCodeExchange.Name" xml:space="preserve">
+    <value>toolStripCodeExchange</value>
+  </data>
+  <data name="&gt;&gt;AccountToolStrip.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;emptyToolStripMenuItem.Name" xml:space="preserve">
+    <value>emptyToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;ゲームログ開発者向けToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;versionNameToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ShortcutFunction4.Text" xml:space="preserve">
+    <value>Shortcut 4</value>
+  </data>
+  <data name="ShortcutFunction2.Text" xml:space="preserve">
+    <value>Shortcut 2</value>
+  </data>
+  <data name="consoleToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>184, 22</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="AccountToolStrip.Text" xml:space="preserve">
+    <value>Accounts</value>
+  </data>
+  <data name="詳細プレイデータToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>184, 22</value>
+  </data>
+  <data name="&gt;&gt;ゲームログ開発者向けToolStripMenuItem.Name" xml:space="preserve">
+    <value>ゲームログ開発者向けToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;NotificationMenu.Name" xml:space="preserve">
+    <value>NotificationMenu</value>
+  </data>
+  <data name="versionNameToolStripMenuItem.Text" xml:space="preserve">
+    <value>VersionName</value>
+  </data>
+  <data name="ShortcutFunction5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>184, 22</value>
+  </data>
+  <data name="&gt;&gt;NotificationMenu.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ShortcutFunction1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ゲームログ開発者向けToolStripMenuItem.Text" xml:space="preserve">
+    <value>Game Log</value>
+  </data>
+  <data name="&gt;&gt;現在のアカウント情報を取得ToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;現在のアカウント情報を取得ToolStripMenuItem.Name" xml:space="preserve">
+    <value>現在のアカウント情報を取得ToolStripMenuItem</value>
+  </data>
+  <data name="設定ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Setting</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>MainTray</value>
+    <comment>@Invariant</comment>
+  </data>
+  <data name="&gt;&gt;notification.Name" xml:space="preserve">
+    <value>notification</value>
+  </data>
+  <data name="現在のアカウント情報を取得ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Synchronization of item logs</value>
+  </data>
+  <data name="&gt;&gt;ShortcutFunction3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="versionNameToolStripMenuItem.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;versionNameToolStripMenuItem.Name" xml:space="preserve">
+    <value>versionNameToolStripMenuItem</value>
+  </data>
+  <data name="consoleToolStripMenuItem.Text" xml:space="preserve">
+    <value>Console</value>
+  </data>
+  <data name="終了ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>184, 22</value>
+  </data>
+  <data name="&gt;&gt;ShortcutFunction7.Name" xml:space="preserve">
+    <value>ShortcutFunction7</value>
+  </data>
+  <data name="&gt;&gt;ShortcutFunction7.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="func_musicplayer.Size" type="System.Drawing.Size, System.Drawing">
+    <value>184, 22</value>
+  </data>
+  <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>181, 6</value>
+  </data>
+  <data name="AccountToolStrip.Size" type="System.Drawing.Size, System.Drawing">
+    <value>184, 22</value>
+  </data>
+  <data name="&gt;&gt;終了ToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>MainTray</value>
+  </data>
+  <data name="testToolStripMenuItem.Text" xml:space="preserve">
+    <value>TestFunction</value>
+  </data>
+  <data name="&gt;&gt;testToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="versionNameToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>184, 22</value>
+  </data>
+  <data name="ShortcutFunction7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>184, 22</value>
+  </data>
+  <data name="&gt;&gt;終了ToolStripMenuItem.Name" xml:space="preserve">
+    <value>終了ToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;Delay.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Timer, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ShortcutFunction6.Name" xml:space="preserve">
+    <value>ShortcutFunction6</value>
+  </data>
+  <data name="ShortcutFunction4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>184, 22</value>
+  </data>
+  <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>181, 6</value>
+  </data>
+  <data name="&gt;&gt;詳細プレイデータToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ShortcutFunction5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NotificationMenu.Size" type="System.Drawing.Size, System.Drawing">
+    <value>185, 198</value>
+  </data>
+  <data name="&gt;&gt;ShortcutFunction8.Name" xml:space="preserve">
+    <value>ShortcutFunction8</value>
+  </data>
+  <data name="&gt;&gt;設定ToolStripMenuItem.Name" xml:space="preserve">
+    <value>設定ToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;詳細プレイデータToolStripMenuItem.Name" xml:space="preserve">
+    <value>詳細プレイデータToolStripMenuItem</value>
+  </data>
   <metadata name="notification.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
-  <metadata name="Delay.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>277, 17</value>
-  </metadata>
-  <metadata name="NotificationMenu.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>130, 17</value>
+  <metadata name="$this.Language" type="System.Globalization.CultureInfo, System.Private.CoreLib, Culture=neutral, PublicKeyToken=7cec85d7bea7798e">
+    <value>ja-JP</value>
   </metadata>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <data name="toolStripCodeExchange.Text" xml:space="preserve">
-    <value>Redeem code</value>
-  </data>
+  <metadata name="NotificationMenu.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>130, 17</value>
+  </metadata>
+  <metadata name="Delay.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>277, 17</value>
+  </metadata>
 </root>
