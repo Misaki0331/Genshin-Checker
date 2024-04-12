@@ -49,8 +49,9 @@ namespace Genshin_Checker.Window
                 var ui = new UICode(code.Code, code.ExpairUtc.ToLocalTime()) { Dock = DockStyle.Top };
                 ui.UiCodeClicked += ClickedUICode;
                 Codes.Add(ui);
-                panel1.Controls.Add(ui);
             }
+            Codes.Reverse();
+            foreach(var ui in Codes) panel1.Controls.Add(ui);
         }
 
         private void ClickedUICode(object? sender, string e)
