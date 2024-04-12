@@ -564,6 +564,39 @@
   <data name="tabPage2.AutoScroll" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="GroupCharacterStory.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="GroupCharacterStory.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="GroupCharacterStory.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 22</value>
+  </data>
+  <data name="GroupCharacterStory.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>0, 15</value>
+  </data>
+  <data name="GroupCharacterStory.Size" type="System.Drawing.Size, System.Drawing">
+    <value>463, 15</value>
+  </data>
+  <data name="GroupCharacterStory.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="GroupCharacterStory.Text" xml:space="preserve">
+    <value>Character Story</value>
+  </data>
+  <data name="&gt;&gt;GroupCharacterStory.Name" xml:space="preserve">
+    <value>GroupCharacterStory</value>
+  </data>
+  <data name="&gt;&gt;GroupCharacterStory.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;GroupCharacterStory.Parent" xml:space="preserve">
+    <value>tabPage2</value>
+  </data>
+  <data name="&gt;&gt;GroupCharacterStory.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="groupBox5.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -619,7 +652,7 @@
     <value>tabPage2</value>
   </data>
   <data name="&gt;&gt;groupBox5.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="tabPage2.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 24</value>

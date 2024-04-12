@@ -37,7 +37,11 @@
             SongTitle = new Label();
             volumebar = new TrackBar();
             volumelabel = new Label();
+            dataGridView1 = new DataGridView();
+            Title = new DataGridViewTextBoxColumn();
+            Time = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)volumebar).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // ButtonPlay
@@ -47,7 +51,6 @@
             ButtonPlay.Name = "ButtonPlay";
             ButtonPlay.Size = new Size(30, 30);
             ButtonPlay.TabIndex = 0;
-            ButtonPlay.Text = "▶";
             ButtonPlay.UseVisualStyleBackColor = true;
             ButtonPlay.Click += ButtonPlay_Click;
             // 
@@ -120,11 +123,42 @@
             volumelabel.Text = "Vol.\r\n100";
             volumelabel.TextAlign = ContentAlignment.MiddleCenter;
             // 
+            // dataGridView1
+            // 
+            dataGridView1.AllowUserToAddRows = false;
+            dataGridView1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.ColumnHeader;
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Title, Time });
+            dataGridView1.Location = new Point(0, 111);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.ReadOnly = true;
+            dataGridView1.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
+            dataGridView1.RowTemplate.Height = 25;
+            dataGridView1.Size = new Size(357, 190);
+            dataGridView1.TabIndex = 7;
+            // 
+            // Title
+            // 
+            Title.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Title.HeaderText = "Title";
+            Title.Name = "Title";
+            Title.ReadOnly = true;
+            // 
+            // Time
+            // 
+            Time.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            Time.HeaderText = "Time";
+            Time.Name = "Time";
+            Time.ReadOnly = true;
+            Time.Width = 80;
+            // 
             // MusicPlayer
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(357, 113);
+            ClientSize = new Size(357, 301);
+            Controls.Add(dataGridView1);
             Controls.Add(volumelabel);
             Controls.Add(volumebar);
             Controls.Add(label1);
@@ -137,6 +171,7 @@
             Text = "MusicPlayer";
             Load += MusicPlayer_Load;
             ((System.ComponentModel.ISupportInitialize)volumebar).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -151,5 +186,8 @@
         private Label SongTitle;
         private TrackBar volumebar;
         private Label volumelabel;
+        private DataGridView dataGridView1;
+        private DataGridViewTextBoxColumn Title;
+        private DataGridViewTextBoxColumn Time;
     }
 }

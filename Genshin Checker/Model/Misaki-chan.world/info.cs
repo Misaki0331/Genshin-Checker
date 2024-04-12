@@ -87,6 +87,9 @@ namespace Genshin_Checker.Model.Misaki_chan.info
 
         [JsonPropertyName("music")]
         public Dictionary<string, Dictionary<string, string>> Music { get; set; } = new();
+
+        [JsonPropertyName("character_story")]
+        public Dictionary<string, Dictionary<string, string>> Story { get; set; } = new();
     }
 
 

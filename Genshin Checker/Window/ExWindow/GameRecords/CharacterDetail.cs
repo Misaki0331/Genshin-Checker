@@ -31,6 +31,7 @@ namespace Genshin_Checker.Window.ExWindow.GameRecords
         WeaponDetail WeaponDetail;
         List<ConstellationInfo> Constellation;
         List<ArtifactInfo> ArtifactInfos;
+        List<UI.Control.GameRecord.CharacterDetail.CharacterStory> CharacterStories;
         Image? CharacterBanner;
         List<Button> TrailerVideoButtons;
         private CancellationTokenSource? cts;
@@ -51,6 +52,7 @@ namespace Genshin_Checker.Window.ExWindow.GameRecords
             Constellation = new();
             ArtifactInfos = new();
             TrailerVideoButtons = new();
+            CharacterStories = new();
             _semaphore = new SemaphoreSlim(1, 1);
             WeaponDetail = new WeaponDetail() { Dock = DockStyle.Top };
             groupBox2.Controls.Add(WeaponDetail);
@@ -245,7 +247,7 @@ namespace Genshin_Checker.Window.ExWindow.GameRecords
                 TrailerVideoButtons.Clear();
                 if (staticinfo?.Wiki.Video != null)
                 {
-                    Trace.WriteLine("トレーラービデオ");
+                    groupBox5.Visible = true;
                     var addbutton = new Action<string, string, string?>((string controlname, string ytid, string? title) =>
                     {
                         var b = new Button();
@@ -293,8 +295,36 @@ namespace Genshin_Checker.Window.ExWindow.GameRecords
                     }
 
                 }
+                else
+                    groupBox5.Visible = true;
 
                 VideoListPanel.ResumeLayout(true);
+                //キャラクターストーリー
+                GroupCharacterStory.SuspendLayout();
+                foreach(var ui in CharacterStories)
+                {
+                    GroupCharacterStory.Controls.Remove(ui);
+                    ui.Dispose();
+                }
+                CharacterStories.Clear();
+                var charastory = Misaki_chan.Data.CharacterStory?.Data.Find(a => a.ID == characterID);
+                if (charastory != null)
+                {
+                    GroupCharacterStory.Visible = true;
+                    for(int i=charastory.Story.Count-1;i>=0;i--)
+                    {
+                        var story = charastory.Story.ElementAt(i);
+                        var ui = new CharacterStory(story.Value.Title != null ? story.Value.Title : story.Key, null, story.Value.Text);
+                        ui.Dock = DockStyle.Top;
+                        ui.BorderStyle = BorderStyle.FixedSingle;
+                        GroupCharacterStory.Controls.Add(ui);
+                        CharacterStories.Add(ui);
+                    }
+                }
+                else
+                    GroupCharacterStory.Visible = false;
+                GroupCharacterStory.ResumeLayout(true);
+
 
                 if (!string.IsNullOrEmpty(gacha))
                 {

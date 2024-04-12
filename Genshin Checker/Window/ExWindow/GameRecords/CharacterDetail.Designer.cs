@@ -48,6 +48,7 @@
             label3 = new Label();
             groupBox2 = new GroupBox();
             tabPage2 = new TabPage();
+            GroupCharacterStory = new GroupBox();
             groupBox5 = new GroupBox();
             VideoListPanel = new FlowLayoutPanel();
             panel4 = new Panel();
@@ -195,9 +196,16 @@
             // tabPage2
             // 
             resources.ApplyResources(tabPage2, "tabPage2");
+            tabPage2.Controls.Add(GroupCharacterStory);
             tabPage2.Controls.Add(groupBox5);
             tabPage2.Name = "tabPage2";
             tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // GroupCharacterStory
+            // 
+            resources.ApplyResources(GroupCharacterStory, "GroupCharacterStory");
+            GroupCharacterStory.Name = "GroupCharacterStory";
+            GroupCharacterStory.TabStop = false;
             // 
             // groupBox5
             // 
@@ -319,5 +327,6 @@
         private TabPage tabPage2;
         private GroupBox groupBox5;
         private FlowLayoutPanel VideoListPanel;
+        private GroupBox GroupCharacterStory;
     }
 }

@@ -1,6 +1,8 @@
 ﻿using Genshin_Checker.App.HoYoLab;
 using Genshin_Checker.resource.Languages;
 using Genshin_Checker.Window;
+using Genshin_Checker.Window.Popup;
+using Microsoft.Web.WebView2.Core;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -30,15 +32,17 @@ namespace Genshin_Checker.BrowserApp
 
             Web.CoreWebView2InitializationCompleted += Web_CoreWebView2InitializationCompleted;
             //UrlBox.Visible = false;
-            Size = new(1280, 720);//System.Windows.Forms.Screen.PrimaryScreen.Bounds.Size;
+            Size = new(Screen.PrimaryScreen.WorkingArea.Width, Screen.PrimaryScreen.WorkingArea.Height);//System.Windows.Forms.Screen.PrimaryScreen.Bounds.Size;
             StartPosition = FormStartPosition.CenterScreen;
             PopupWindowSize = new(1280,720);
             IsWebViewPopup = false;
+            WindowState = FormWindowState.Maximized;
+            FormBorderStyle = FormBorderStyle.None;
             //TopMost = true;
         }
 
         #region おまじない
-        /*
+        
         protected override System.Windows.Forms.CreateParams CreateParams
         {
             get
@@ -132,7 +136,7 @@ namespace Genshin_Checker.BrowserApp
             g_sc.Dispose();
             g_bmp.ReleaseHdc(hdc_bmp);
             g_bmp.Dispose();
-        }*/
+        }
         #endregion
         private void CoreWebView2_NavigationStarting(object? sender, Microsoft.Web.WebView2.Core.CoreWebView2NavigationStartingEventArgs e)
         {
@@ -147,9 +151,16 @@ namespace Genshin_Checker.BrowserApp
             Web.CoreWebView2.NavigationStarting += CoreWebView2_NavigationStarting;
             Web.CoreWebView2.NavigationCompleted += CoreWebView2_NavigationCompleted;
             Web.CoreWebView2.WindowCloseRequested += CoreWebView2_WindowCloseRequested;
-            //WindowState = FormWindowState.Maximized;
-            //FormBorderStyle = FormBorderStyle.None;
+            Web.CoreWebView2.ScriptDialogOpening += CoreWebView2_ScriptDialogOpening;
             Web.DefaultBackgroundColor = Color.Transparent;
+        }
+
+        private void CoreWebView2_ScriptDialogOpening(object? sender, CoreWebView2ScriptDialogOpeningEventArgs e)
+        {
+            if (e.Kind == CoreWebView2ScriptDialogKind.Alert)
+            {
+                new ErrorMessage("Message from WebPage", e.Message).ShowDialog();
+            }
         }
 
         private void CoreWebView2_WindowCloseRequested(object? sender, object e)
@@ -161,8 +172,8 @@ namespace Genshin_Checker.BrowserApp
         {
             Web.CoreWebView2.ExecuteScriptAsync(
                 "document.querySelector(\".home__close\").addEventListener(\"click\", function(){window.close();});" +
-                "miHoYoGameJSSDK.openInBrowser=function(a){window.open(a)};");// +
-              //  "miHoYoGameJSSDK.openInWebview=function(a){window.open(a);window.close()}");
+                "miHoYoGameJSSDK.openInBrowser=function(a){window.open(a)};"+
+                "miHoYoGameJSSDK.openInWebview=function(a){alert(\"Please open in game.\");}");
             Text = Localize.WindowName_GameAnnouncement;
         }
     }

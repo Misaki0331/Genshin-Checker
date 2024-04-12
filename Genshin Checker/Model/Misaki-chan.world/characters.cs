@@ -56,10 +56,6 @@ namespace Genshin_Checker.Model.Misaki_chan.Character
         public string Title { get; set; } = "";
     }
 
-    public class Name
-    {
-        public KeyValuePair<string, string> Lang { get;}
-    }
 
     public class Profile
     {
@@ -71,6 +67,9 @@ namespace Genshin_Checker.Model.Misaki_chan.Character
 
         [JsonPropertyName("birthday")]
         public string Birthday { get; set; } = "";
+
+        [JsonPropertyName("description")]
+        public Dictionary<string,string> Description { get; set; } = new();
     }
 
     public class Released

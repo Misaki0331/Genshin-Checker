@@ -53,6 +53,15 @@ namespace Genshin_Checker.Window
                 label1.Text = $"{current:m\\:ss\\:ff} / {total:m\\:ss\\:ff}";
                 SongTitle.Text = Player.Instance.CurrentTitle;
             }
+
+            if (Player.Instance.IsPlaying)
+            {
+                ButtonPlay.Text = "❘❘";
+            }
+            else
+            {
+                ButtonPlay.Text = "▶";
+            }
         }
 
         private void MusicPlayer_Load(object sender, EventArgs e)
