@@ -34,9 +34,7 @@
             CodeInput = new TextBox();
             label1 = new Label();
             panel1 = new Panel();
-            textBox2 = new TextBox();
             panel2 = new Panel();
-            panel1.SuspendLayout();
             panel2.SuspendLayout();
             SuspendLayout();
             // 
@@ -67,15 +65,8 @@
             // 
             // panel1
             // 
-            panel1.Controls.Add(textBox2);
             resources.ApplyResources(panel1, "panel1");
             panel1.Name = "panel1";
-            // 
-            // textBox2
-            // 
-            resources.ApplyResources(textBox2, "textBox2");
-            textBox2.Name = "textBox2";
-            textBox2.ReadOnly = true;
             // 
             // panel2
             // 
@@ -97,8 +88,6 @@
             MinimizeBox = false;
             Name = "CodeExchange";
             Load += CodeExchange_Load;
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             ResumeLayout(false);
@@ -113,6 +102,5 @@
         private Label label1;
         private Panel panel1;
         private Panel panel2;
-        private TextBox textBox2;
     }
 }

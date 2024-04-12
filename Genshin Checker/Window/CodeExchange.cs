@@ -1,6 +1,7 @@
 ﻿using Genshin_Checker.App.HoYoLab;
 using Genshin_Checker.resource.Languages;
 using Genshin_Checker.Store;
+using Genshin_Checker.UI.Control.CodeExchange;
 using Genshin_Checker.Window.Popup;
 using System;
 using System.Collections.Generic;
@@ -17,6 +18,7 @@ namespace Genshin_Checker.Window
     public partial class CodeExchange : Form
     {
         Dictionary<string, Account> AccountTemp = new();
+        List<UICode> Codes = new();
         public CodeExchange()
         {
             InitializeComponent();
@@ -44,8 +46,17 @@ namespace Genshin_Checker.Window
             CodeInput.Focus();
             var codes = AccountTemp[$"{ComboHoYoLabAccounts.Items[0]}"].HoYoLabInfomation.GetCodeList();
             foreach( var code in codes.Codes) {
-                textBox2.AppendText($"【{code.Code}】 {Common.ExpairTime} : {code.ExpairUtc.ToLocalTime()}{System.Environment.NewLine}");
+                var ui = new UICode(code.Code, code.ExpairUtc.ToLocalTime()) { Dock = DockStyle.Top };
+                ui.UiCodeClicked += ClickedUICode;
+                Codes.Add(ui);
+                panel1.Controls.Add(ui);
             }
+        }
+
+        private void ClickedUICode(object? sender, string e)
+        {
+            CodeInput.Text = e;
+            CodeInput.Focus();
         }
 
         private async void button1_Click(object sender, EventArgs e)
