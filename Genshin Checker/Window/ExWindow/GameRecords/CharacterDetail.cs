@@ -19,6 +19,8 @@ using Genshin_Checker.Store;
 using System.Diagnostics;
 using Genshin_Checker.Model.Misaki_chan.Character;
 using Genshin_Checker.App.General.Music;
+using Genshin_Checker.App;
+using Genshin_Checker.Model.HoYoLab;
 
 namespace Genshin_Checker.Window.ExWindow.GameRecords
 {
@@ -271,27 +273,44 @@ namespace Genshin_Checker.Window.ExWindow.GameRecords
                     });
                     foreach (var video in staticinfo.Wiki.Video)
                     {
-                        var title = video.Key switch
+                        string title = video.Key;
+                        if(Misaki_chan.Data.Info?.Localize.Wiki.TryGetValue("video",out var LocalizeVideo) == true&&
+                            LocalizeVideo.TryGetValue(video.Key,out var Video)&&
+                            Video.TryGetValue(LocalizeManager.CurrentShort,out var text))
                         {
-                            "trailer" => "実践紹介",
-                            _ => video.Key
-                        };
+                            title = text;
+                        }
                         foreach (var lang in video.Value)
                         {
-                            var langname = lang.Key switch
+                            string langname;
+                            if(lang.Key == "none")
                             {
-                                "ja" => "(日本語)",
-                                "en" => "(英語)",
-                                "none" => "",
-                                _ => $"({lang.Key})"
-                            };
+                                langname = "";
+                            }
+                            else if (Misaki_chan.Data.Info?.Localize.Lang.TryGetValue(LocalizeManager.CurrentShort, out var LocalizeLang) == true &&
+                            LocalizeLang.TryGetValue(lang.Key,out var languageText))
+                            {
+                                langname = $" ({languageText})";
+                            }
+                            else
+                            {
+                                langname = $" ({lang.Key})";
+                            }
                             addbutton($"{title}{langname}", lang.Value.Ytid, lang.Value.Title);
                         }
                     }
-                    var song = staticinfo.Wiki.Songs?.Theme;
-                    if (song != null)
+                    foreach (var music in staticinfo.Wiki.Music)
                     {
-                        addsong("テーマ曲", song.Path, song.Title["ja"]);
+                        string MusicText = music.Key;
+                        if (Misaki_chan.Data.Info?.Localize.Wiki.TryGetValue("music", out var Localize_music) == true &&
+                            Localize_music.TryGetValue(music.Key, out var music_type) &&
+                            music_type.TryGetValue(LocalizeManager.CurrentShort, out var text))
+                        {
+                            MusicText = text;
+                        }
+                        addsong(MusicText, music.Value.Path, 
+                            music.Value.Title.TryGetValue(LocalizeManager.CurrentShort, out var lng) ? lng : 
+                            music.Value.Title.TryGetValue("en", out var lng2) ? lng2 : Common.Unknown);
                     }
 
                 }
@@ -314,7 +333,15 @@ namespace Genshin_Checker.Window.ExWindow.GameRecords
                     for(int i=charastory.Story.Count-1;i>=0;i--)
                     {
                         var story = charastory.Story.ElementAt(i);
-                        var ui = new CharacterStory(story.Value.Title != null ? story.Value.Title : story.Key, null, story.Value.Text);
+                        string lang = story.Key;
+                        if (Store.Misaki_chan.Data.Info?.Localize.Wiki.TryGetValue("character-story", out var localize_story) == true)
+                            if (localize_story.TryGetValue(story.Key, out var langs))
+                                if (langs.TryGetValue(LocalizeManager.CurrentShort, out var outlang))
+                                {
+
+                                    lang = outlang;
+                                }
+                        var ui = new CharacterStory((story.Value.Title?? lang), null, story.Value.Text);
                         ui.Dock = DockStyle.Top;
                         ui.BorderStyle = BorderStyle.FixedSingle;
                         GroupCharacterStory.Controls.Add(ui);

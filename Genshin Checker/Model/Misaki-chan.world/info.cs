@@ -57,7 +57,7 @@ namespace Genshin_Checker.Model.Misaki_chan.info
         public Dictionary<string, List<string>> Talent { get; set; } = new();
 
         [JsonPropertyName("wiki")]
-        public Wiki Wiki { get; set; } = new();
+        public Dictionary<string, Dictionary<string, Dictionary<string, string>>> Wiki { get; set; } = new();
 
         [JsonPropertyName("lang")]
         public Dictionary<string, Dictionary<string, string>> Lang { get; set; } = new();
@@ -78,18 +78,6 @@ namespace Genshin_Checker.Model.Misaki_chan.info
 
         [JsonPropertyName("localize")]
         public Localize Localize { get; set; } = new();
-    }
-
-    public class Wiki
-    {
-        [JsonPropertyName("video")]
-        public Dictionary<string, Dictionary<string, string>> Video { get; set; } = new();
-
-        [JsonPropertyName("music")]
-        public Dictionary<string, Dictionary<string, string>> Music { get; set; } = new();
-
-        [JsonPropertyName("character_story")]
-        public Dictionary<string, Dictionary<string, string>> Story { get; set; } = new();
     }
 
 

@@ -85,7 +85,7 @@ namespace Genshin_Checker.Store
 
         async Task GetCharacterStory()
         {
-            var lang = "ja-jp";
+            var lang = Thread.CurrentThread.CurrentUICulture.Name.ToLower();
             var json = await App.WebRequest.GeneralGetRequest($"https://static-api.misaki-chan.world/genshin-checker/wiki/story/{lang}.json");
             var charastory = JsonChecker<Model.Misaki_chan.character_story.Root>.Check(json);
             if (charastory != null) _characterStory = charastory;

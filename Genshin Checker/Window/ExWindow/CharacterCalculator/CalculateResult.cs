@@ -12,6 +12,7 @@ using System.Windows.Forms;
 using Genshin_Checker.App.General.Convert;
 using Genshin_Checker.Window.Popup;
 using Genshin_Checker.resource.Languages;
+using Genshin_Checker.App;
 
 namespace Genshin_Checker.Window.ExWindow.CharacterCalculator
 {
@@ -453,31 +454,13 @@ namespace Genshin_Checker.Window.ExWindow.CharacterCalculator
                                 6 => World.GetBackgroundColor(World.Country.Snezhnaya),
                                 _ => World.GetBackgroundColor(World.Country.Unknown)
                             };
-                            e.Value = (int)row.Cells[nameof(TalentItemID)].Value switch
-                            {
-                                0 => Genshin.TalentBook_1_1,
-                                1 => Genshin.TalentBook_1_2,
-                                2 => Genshin.TalentBook_1_3,
-                                3 => Genshin.TalentBook_2_1,
-                                4 => Genshin.TalentBook_2_2,
-                                5 => Genshin.TalentBook_2_3,
-                                6 => Genshin.TalentBook_3_1,
-                                7 => Genshin.TalentBook_3_2,
-                                8 => Genshin.TalentBook_3_3,
-                                9 => Genshin.TalentBook_4_1,
-                                10 => Genshin.TalentBook_4_2,
-                                11 => Genshin.TalentBook_4_3,
-                                12 => Genshin.TalentBook_5_1,
-                                13 => Genshin.TalentBook_5_2,
-                                14 => Genshin.TalentBook_5_3,
-                                15 => Genshin.TalentBook_6_1,
-                                16 => Genshin.TalentBook_6_2,
-                                17 => Genshin.TalentBook_6_3,
-                                18 => Genshin.TalentBook_7_1,
-                                19 => Genshin.TalentBook_7_2,
-                                20 => Genshin.TalentBook_7_3,
-                                _ => Common.Unknown,
-                            };
+                            if(Store.Misaki_chan.Data.Info?.Localize.Talent.TryGetValue(LocalizeManager.CurrentShort,out var talents)==true) {
+                                if ((int)row.Cells[nameof(TalentItemID)].Value < talents.Count)
+                                {
+                                    e.Value = talents[(int)row.Cells[nameof(TalentItemID)].Value];
+                                }
+                                else e.Value = Common.Unknown;
+                            }
                             break;
                         case nameof(TalentItemOpenDays):
                             if (e.Value == null) return;

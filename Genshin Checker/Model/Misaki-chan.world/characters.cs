@@ -105,13 +105,8 @@ namespace Genshin_Checker.Model.Misaki_chan.Character
         public UpgradeSkills Upgrade_skills { get; set; } = new();
     }
 
-    public class Songs
-    {
-        [JsonPropertyName("theme")]
-        public Theme? Theme { get; set; }
-    }
 
-    public class Theme
+    public class MusicInfo
     {
         [JsonPropertyName("path")]
         public string Path { get; set; } = "";
@@ -134,8 +129,8 @@ namespace Genshin_Checker.Model.Misaki_chan.Character
 
     public class Wiki
     {
-        [JsonPropertyName("songs")]
-        public Songs? Songs { get; set; }
+        [JsonPropertyName("music")]
+        public Dictionary<string, MusicInfo> Music { get; set; } = new();
 
         [JsonPropertyName("video")]
         public Dictionary<string, Dictionary<string, TrailerVideo>> Video { get; set; } = new();

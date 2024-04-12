@@ -4,6 +4,7 @@ using Genshin_Checker.Window.Popup;
 using Microsoft.Toolkit.Uwp.Notifications;
 using System.Globalization;
 using Genshin_Checker.resource.Languages;
+using Genshin_Checker.App;
 
 namespace Genshin_Checker
 {
@@ -23,17 +24,7 @@ namespace Genshin_Checker
                 new System.Threading.ThreadExceptionEventHandler(
                     Application_ThreadException);
 #endif
-            //åæåÍê›íË
-            if (CultureInfo.CurrentCulture.Name == "ja-JP"|| CultureInfo.CurrentCulture.Name == "ja")
-            {
-                Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("ja-JP");
-                Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("ja-JP");
-            }
-            else
-            {
-                Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("en-US");
-                Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-US");
-            }
+            LocalizeManager.SetLanguage();
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             Application.EnableVisualStyles();
