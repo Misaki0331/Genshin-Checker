@@ -21,7 +21,10 @@ namespace Genshin_Checker.App.General.Music
         private Player()
         {
             Queues = new();
-            waveOut = new WaveOut();
+            waveOut = new WaveOut() { 
+                DesiredLatency = 10, //イベント更新時間(CurrentTimeの更新に直結するので出来れば小さい値に)
+                NumberOfBuffers= 500 //バッファ数(少ないと処理落ちするので多めに)
+            };
             LatestPosition = new();
             Stopwatch = new();
             Current = new();
@@ -48,7 +51,7 @@ namespace Genshin_Checker.App.General.Music
         public bool IsPlaying { get=>waveOut.PlaybackState== PlaybackState.Playing; }
         public static Player Instance { get => _instance ??= new(); }
         public string CurrentTitle { get => Current.Title; }
-        public System.TimeSpan CurrentTime { get => LatestPosition + Stopwatch.Elapsed; set => Seek(CurrentTime); }
+        public System.TimeSpan CurrentTime { get => WaveStream!=null?WaveStream.CurrentTime:new TimeSpan(0); set => Seek(CurrentTime); }
         public System.TimeSpan? TotalTile { get => WaveStream?.TotalTime; }
         public double Volume { get => waveOut.Volume; set => waveOut.Volume = (float)value; }
         public async Task Next(bool play=false)
