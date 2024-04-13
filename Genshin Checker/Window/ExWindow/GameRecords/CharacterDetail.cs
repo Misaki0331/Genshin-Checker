@@ -27,7 +27,6 @@ namespace Genshin_Checker.Window.ExWindow.GameRecords
     public partial class CharacterDetail : Form
     {
         PictureBox picture;
-        MusicPlayer? player;
         List<TalentInfo> MainTalent;
         List<TalentInfo> SubTalent;
         WeaponDetail WeaponDetail;
@@ -414,7 +413,6 @@ namespace Genshin_Checker.Window.ExWindow.GameRecords
 
         private void CharacterDetail_FormClosed(object sender, FormClosedEventArgs e)
         {
-            player?.Close();
         }
     }
 }

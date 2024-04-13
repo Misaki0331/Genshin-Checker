@@ -753,6 +753,7 @@ Please wait a moment...</value>
   </data>
   <data name="LabelProgressGeneral.Text" xml:space="preserve">
     <value>0.0%</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="PanelSelect.Size" type="System.Drawing.Size, System.Drawing">
     <value>344, 289</value>

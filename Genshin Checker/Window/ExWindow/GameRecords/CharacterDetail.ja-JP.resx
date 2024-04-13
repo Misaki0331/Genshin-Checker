@@ -275,7 +275,7 @@
     <value>0</value>
   </data>
   <data name="groupBox5.Text" xml:space="preserve">
-    <value>動画</value>
+    <value>ライブラリ</value>
   </data>
   <data name="VideoListPanel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -297,5 +297,8 @@
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>キャラクター詳細</value>
+  </data>
+  <data name="GroupCharacterStory.Text" xml:space="preserve">
+    <value>キャラクターストーリー</value>
   </data>
 </root>

@@ -26,6 +26,7 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
+		RESX_CultureCountyOverrides = ga=ga-IE
 		SolutionGuid = {D1675269-0000-4D01-B3C0-661E48067981}
 	EndGlobalSection
 EndGlobal

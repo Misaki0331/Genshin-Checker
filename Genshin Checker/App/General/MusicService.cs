@@ -15,9 +15,17 @@ namespace Genshin_Checker.App.General.Music
         WaveOut waveOut;
         List<QueueInfo> Queues;
         QueueInfo Current;
-        Stopwatch Stopwatch;
-        System.TimeSpan LatestPosition;
+        bool UserStopped = false;
         private static Player? _instance;
+        public enum LoopMode
+        {
+            Normal,
+            Repeat,
+            SingleRepeat
+        };
+
+        public event EventHandler? QueueListChanged;
+
         private Player()
         {
             Queues = new();
@@ -25,14 +33,17 @@ namespace Genshin_Checker.App.General.Music
                 DesiredLatency = 10, //イベント更新時間(CurrentTimeの更新に直結するので出来れば小さい値に)
                 NumberOfBuffers= 500 //バッファ数(少ないと処理落ちするので多めに)
             };
-            LatestPosition = new();
-            Stopwatch = new();
             Current = new();
             waveOut.PlaybackStopped += WaveOut_PlaybackStopped;
         }
 
         private async void WaveOut_PlaybackStopped(object? sender, StoppedEventArgs e)
         {
+            if (UserStopped)
+            {
+                UserStopped = false;
+                return;
+            }
             Stop();
             while (Queues.Count > 0)
             {
@@ -54,18 +65,34 @@ namespace Genshin_Checker.App.General.Music
         public System.TimeSpan CurrentTime { get => WaveStream!=null?WaveStream.CurrentTime:new TimeSpan(0); set => Seek(CurrentTime); }
         public System.TimeSpan? TotalTile { get => WaveStream?.TotalTime; }
         public double Volume { get => waveOut.Volume; set => waveOut.Volume = (float)value; }
+
+        LoopMode _looptype;
+        public LoopMode LoopStyle { get => _looptype; set => _looptype = value; }
         public async Task Next(bool play=false)
         {
-
             while (Queues.Count > 0)
             {
                 try
                 {
-                    Current = Queues[0];
+                    var index = 0;//ToDo: ランダマイズ用に
                     lock (Queues)
                     {
-                        Queues.Remove(Queues[0]);
+                        switch (LoopStyle)
+                        {
+                            case LoopMode.Normal:
+                                Current = Queues[index];
+                                    Queues.Remove(Queues[index]);
+                                break;
+                            case LoopMode.Repeat:
+                                Queues.Add(Current);
+                                Current = Queues[index];
+                                Queues.Remove(Queues[index]);
+                                break;
+                            case LoopMode.SingleRepeat:
+                                break;
+                        }
                     }
+                    QueueListChanged?.Invoke(this, EventArgs.Empty);
                     await FileInit($"{Current.Uri}");
                     if(play)Play();
                     break;
@@ -86,53 +113,29 @@ namespace Genshin_Checker.App.General.Music
                 Trace.WriteLine("再生できませんでした。");
                 return;
             }
-            if (seeked)
-            {
-                LatestPosition = WaveStream.CurrentTime;
-                waveOut.Play();
-                Stopwatch.Restart();
-            }
-            else
-            {
-                waveOut.Play();
-                Stopwatch.Start();
-            }
+            UserStopped = false;
+            waveOut.Play();
         }
-        bool seeked = false;
         public void Seek(TimeSpan time)
         {
             if(WaveStream == null) return;
             if (WaveStream.CanSeek)
             {
                 WaveStream.CurrentTime = time;
-                if (!IsPlaying)seeked=true;
-                else
-                {
-                    LatestPosition = time;
-                    Stopwatch.Restart();
-                }
-                
             }
         }
         public void Pause()
         {
             if (WaveStream == null) return;
-            LatestPosition += Stopwatch.Elapsed;
-            Stopwatch.Stop();
-            Stopwatch.Reset();
             waveOut.Pause();
-            WaveStream.CurrentTime = LatestPosition;
             
         }
         public void Stop()
         {
             if (WaveStream == null) return;
-            Stopwatch.Stop();
-            Stopwatch.Reset();
-            LatestPosition = new(0);
-            WaveStream.CurrentTime = LatestPosition;
+            WaveStream.CurrentTime = new(0);
+            UserStopped = true;
             waveOut.Stop();
-            WaveStream.Position = 0;
         }
         private async Task FileInit(string url)
         {
@@ -143,8 +146,6 @@ namespace Genshin_Checker.App.General.Music
             if (WaveStream != null && WaveStream.CanRead) await WaveStream.DisposeAsync();
             WaveStream = new Mp3FileReader(MusicStream);
             waveOut.Init(WaveStream);
-            LatestPosition = new(0);
-            Stopwatch.Reset();
         }
         /// <summary>
         /// 楽曲をキューに追加
@@ -158,8 +159,9 @@ namespace Genshin_Checker.App.General.Music
             {
                 Queues.Add(new() { Title = title, Uri = new(url) });
                 if (Queues.Count == 1&&!IsPlaying) Task.Run(async () => { await Next(true); });
-                return Queues.Count;
+                QueueListChanged?.Invoke(this, EventArgs.Empty);
             }
+            return Queues.Count;
         }
         /// <summary>
         /// キューの削除
@@ -175,6 +177,15 @@ namespace Genshin_Checker.App.General.Music
                 return true;
             }
         }
+        public int QueueCount { get { return Queues.Count; } }
+        public List<QueueInfo> GetQueue()
+        {
+            var list = new List<QueueInfo>();
+            foreach(var item in Queues)
+            list.Add(new() { ID = item.ID, Title = item.Title, Uri = item.Uri });
+            return list;
+        }
+
         /// <summary>
         /// サウンドデバイスの取得
         /// </summary>

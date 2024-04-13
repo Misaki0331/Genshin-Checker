@@ -73,6 +73,11 @@ GitHub : https://github.com/Misaki0331</Description>
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="resource\fluentui-emoji.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>fluentui-emoji.resx</DependentUpon>
+    </Compile>
     <Compile Update="resource\font.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -142,6 +147,10 @@ GitHub : https://github.com/Misaki0331</Description>
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="resource\fluentui-emoji.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>fluentui-emoji.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Update="resource\font.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>font.Designer.cs</LastGenOutput>
