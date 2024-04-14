@@ -117,21 +117,27 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="NotificationMenu.Size" type="System.Drawing.Size, System.Drawing">
+    <value>185, 446</value>
+  </data>
+  <data name="notification.Text" xml:space="preserve">
+    <value>原神チェッカー</value>
+  </data>
   <data name="versionNameToolStripMenuItem.Text" xml:space="preserve">
     <value>バージョン名</value>
   </data>
   <data name="詳細プレイデータToolStripMenuItem.Text" xml:space="preserve">
     <value>詳細プレイデータ</value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="AccountToolStrip.Text" xml:space="preserve">
+    <value>アカウント</value>
+  </data>
   <data name="emptyToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>94, 22</value>
   </data>
   <data name="emptyToolStripMenuItem.Text" xml:space="preserve">
     <value>(空)</value>
-  </data>
-  <data name="AccountToolStrip.Text" xml:space="preserve">
-    <value>アカウント</value>
   </data>
   <data name="ゲームログ開発者向けToolStripMenuItem.Text" xml:space="preserve">
     <value>ゲームログ(開発者向け)</value>
@@ -144,9 +150,6 @@
   </data>
   <data name="toolStripCodeExchange.Text" xml:space="preserve">
     <value>交換コード引き換え</value>
-  </data>
-  <data name="func_musicplayer.Size" type="System.Drawing.Size, System.Drawing">
-    <value>184, 22</value>
   </data>
   <data name="func_musicplayer.Text" xml:space="preserve">
     <value>音楽プレイヤー</value>
@@ -214,11 +217,5 @@
   </data>
   <data name="testToolStripMenuItem.Text" xml:space="preserve">
     <value>テスト</value>
-  </data>
-  <data name="NotificationMenu.Size" type="System.Drawing.Size, System.Drawing">
-    <value>185, 468</value>
-  </data>
-  <data name="notification.Text" xml:space="preserve">
-    <value>原神チェッカー</value>
   </data>
 </root>

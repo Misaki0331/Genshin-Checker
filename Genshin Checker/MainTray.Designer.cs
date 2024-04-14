@@ -40,6 +40,7 @@
             ゲームログ開発者向けToolStripMenuItem = new ToolStripMenuItem();
             現在のアカウント情報を取得ToolStripMenuItem = new ToolStripMenuItem();
             toolStripCodeExchange = new ToolStripMenuItem();
+            func_musicplayer = new ToolStripMenuItem();
             toolStripSeparator2 = new ToolStripSeparator();
             設定ToolStripMenuItem = new ToolStripMenuItem();
             toolStripSeparator1 = new ToolStripSeparator();
@@ -56,21 +57,20 @@
             consoleToolStripMenuItem = new ToolStripMenuItem();
             testToolStripMenuItem = new ToolStripMenuItem();
             Delay = new System.Windows.Forms.Timer(components);
-            func_musicplayer = new ToolStripMenuItem();
             NotificationMenu.SuspendLayout();
             SuspendLayout();
             // 
             // notification
             // 
-            resources.ApplyResources(notification, "notification");
             notification.ContextMenuStrip = NotificationMenu;
+            resources.ApplyResources(notification, "notification");
             notification.MouseUp += notification_Click;
             // 
             // NotificationMenu
             // 
-            resources.ApplyResources(NotificationMenu, "NotificationMenu");
             NotificationMenu.Items.AddRange(new ToolStripItem[] { versionNameToolStripMenuItem, toolStripSeparator3, 詳細プレイデータToolStripMenuItem, AccountToolStrip, ゲームログ開発者向けToolStripMenuItem, 現在のアカウント情報を取得ToolStripMenuItem, toolStripCodeExchange, func_musicplayer, toolStripSeparator2, 設定ToolStripMenuItem, toolStripSeparator1, ShortcutFunction1, ShortcutFunction2, ShortcutFunction3, ShortcutFunction4, ShortcutFunction5, ShortcutFunction6, ShortcutFunction7, ShortcutFunction8, ShortcutSeparator, 終了ToolStripMenuItem, consoleToolStripMenuItem, testToolStripMenuItem });
             NotificationMenu.Name = "contextMenuStrip1";
+            resources.ApplyResources(NotificationMenu, "NotificationMenu");
             // 
             // versionNameToolStripMenuItem
             // 
@@ -79,20 +79,20 @@
             // 
             // toolStripSeparator3
             // 
-            resources.ApplyResources(toolStripSeparator3, "toolStripSeparator3");
             toolStripSeparator3.Name = "toolStripSeparator3";
+            resources.ApplyResources(toolStripSeparator3, "toolStripSeparator3");
             // 
             // 詳細プレイデータToolStripMenuItem
             // 
-            resources.ApplyResources(詳細プレイデータToolStripMenuItem, "詳細プレイデータToolStripMenuItem");
             詳細プレイデータToolStripMenuItem.Name = "詳細プレイデータToolStripMenuItem";
+            resources.ApplyResources(詳細プレイデータToolStripMenuItem, "詳細プレイデータToolStripMenuItem");
             詳細プレイデータToolStripMenuItem.Click += 詳細プレイデータToolStripMenuItem_Click;
             // 
             // AccountToolStrip
             // 
-            resources.ApplyResources(AccountToolStrip, "AccountToolStrip");
             AccountToolStrip.DropDownItems.AddRange(new ToolStripItem[] { emptyToolStripMenuItem });
             AccountToolStrip.Name = "AccountToolStrip";
+            resources.ApplyResources(AccountToolStrip, "AccountToolStrip");
             // 
             // emptyToolStripMenuItem
             // 
@@ -101,112 +101,112 @@
             // 
             // ゲームログ開発者向けToolStripMenuItem
             // 
-            resources.ApplyResources(ゲームログ開発者向けToolStripMenuItem, "ゲームログ開発者向けToolStripMenuItem");
             ゲームログ開発者向けToolStripMenuItem.Name = "ゲームログ開発者向けToolStripMenuItem";
+            resources.ApplyResources(ゲームログ開発者向けToolStripMenuItem, "ゲームログ開発者向けToolStripMenuItem");
             ゲームログ開発者向けToolStripMenuItem.Click += ゲームログ開発者向けToolStripMenuItem_Click;
             // 
             // 現在のアカウント情報を取得ToolStripMenuItem
             // 
-            resources.ApplyResources(現在のアカウント情報を取得ToolStripMenuItem, "現在のアカウント情報を取得ToolStripMenuItem");
             現在のアカウント情報を取得ToolStripMenuItem.Name = "現在のアカウント情報を取得ToolStripMenuItem";
+            resources.ApplyResources(現在のアカウント情報を取得ToolStripMenuItem, "現在のアカウント情報を取得ToolStripMenuItem");
             現在のアカウント情報を取得ToolStripMenuItem.Click += 現在のアカウント情報を取得ToolStripMenuItem_Click;
             // 
             // toolStripCodeExchange
             // 
-            resources.ApplyResources(toolStripCodeExchange, "toolStripCodeExchange");
             toolStripCodeExchange.Name = "toolStripCodeExchange";
+            resources.ApplyResources(toolStripCodeExchange, "toolStripCodeExchange");
             toolStripCodeExchange.Click += toolStripCodeExchange_Click;
+            // 
+            // func_musicplayer
+            // 
+            func_musicplayer.Name = "func_musicplayer";
+            resources.ApplyResources(func_musicplayer, "func_musicplayer");
+            func_musicplayer.Click += func_musicplayer_Click;
             // 
             // toolStripSeparator2
             // 
-            resources.ApplyResources(toolStripSeparator2, "toolStripSeparator2");
             toolStripSeparator2.Name = "toolStripSeparator2";
+            resources.ApplyResources(toolStripSeparator2, "toolStripSeparator2");
             toolStripSeparator2.Click += toolStripSeparator2_Click;
             // 
             // 設定ToolStripMenuItem
             // 
-            resources.ApplyResources(設定ToolStripMenuItem, "設定ToolStripMenuItem");
             設定ToolStripMenuItem.Name = "設定ToolStripMenuItem";
+            resources.ApplyResources(設定ToolStripMenuItem, "設定ToolStripMenuItem");
             設定ToolStripMenuItem.Click += 設定ToolStripMenuItem_Click;
             // 
             // toolStripSeparator1
             // 
-            resources.ApplyResources(toolStripSeparator1, "toolStripSeparator1");
             toolStripSeparator1.Name = "toolStripSeparator1";
+            resources.ApplyResources(toolStripSeparator1, "toolStripSeparator1");
             // 
             // ShortcutFunction1
             // 
-            resources.ApplyResources(ShortcutFunction1, "ShortcutFunction1");
             ShortcutFunction1.Name = "ShortcutFunction1";
+            resources.ApplyResources(ShortcutFunction1, "ShortcutFunction1");
             // 
             // ShortcutFunction2
             // 
-            resources.ApplyResources(ShortcutFunction2, "ShortcutFunction2");
             ShortcutFunction2.Name = "ShortcutFunction2";
+            resources.ApplyResources(ShortcutFunction2, "ShortcutFunction2");
             // 
             // ShortcutFunction3
             // 
-            resources.ApplyResources(ShortcutFunction3, "ShortcutFunction3");
             ShortcutFunction3.Name = "ShortcutFunction3";
+            resources.ApplyResources(ShortcutFunction3, "ShortcutFunction3");
             // 
             // ShortcutFunction4
             // 
-            resources.ApplyResources(ShortcutFunction4, "ShortcutFunction4");
             ShortcutFunction4.Name = "ShortcutFunction4";
+            resources.ApplyResources(ShortcutFunction4, "ShortcutFunction4");
             // 
             // ShortcutFunction5
             // 
-            resources.ApplyResources(ShortcutFunction5, "ShortcutFunction5");
             ShortcutFunction5.Name = "ShortcutFunction5";
+            resources.ApplyResources(ShortcutFunction5, "ShortcutFunction5");
             // 
             // ShortcutFunction6
             // 
-            resources.ApplyResources(ShortcutFunction6, "ShortcutFunction6");
             ShortcutFunction6.Name = "ShortcutFunction6";
+            resources.ApplyResources(ShortcutFunction6, "ShortcutFunction6");
             // 
             // ShortcutFunction7
             // 
-            resources.ApplyResources(ShortcutFunction7, "ShortcutFunction7");
             ShortcutFunction7.Name = "ShortcutFunction7";
+            resources.ApplyResources(ShortcutFunction7, "ShortcutFunction7");
             // 
             // ShortcutFunction8
             // 
-            resources.ApplyResources(ShortcutFunction8, "ShortcutFunction8");
             ShortcutFunction8.Name = "ShortcutFunction8";
+            resources.ApplyResources(ShortcutFunction8, "ShortcutFunction8");
             // 
             // ShortcutSeparator
             // 
-            resources.ApplyResources(ShortcutSeparator, "ShortcutSeparator");
             ShortcutSeparator.Name = "ShortcutSeparator";
+            resources.ApplyResources(ShortcutSeparator, "ShortcutSeparator");
             // 
             // 終了ToolStripMenuItem
             // 
-            resources.ApplyResources(終了ToolStripMenuItem, "終了ToolStripMenuItem");
             終了ToolStripMenuItem.Name = "終了ToolStripMenuItem";
+            resources.ApplyResources(終了ToolStripMenuItem, "終了ToolStripMenuItem");
             終了ToolStripMenuItem.Click += 終了ToolStripMenuItem_Click;
             // 
             // consoleToolStripMenuItem
             // 
-            resources.ApplyResources(consoleToolStripMenuItem, "consoleToolStripMenuItem");
             consoleToolStripMenuItem.Name = "consoleToolStripMenuItem";
+            resources.ApplyResources(consoleToolStripMenuItem, "consoleToolStripMenuItem");
             consoleToolStripMenuItem.Click += consoleToolStripMenuItem_Click;
             // 
             // testToolStripMenuItem
             // 
-            resources.ApplyResources(testToolStripMenuItem, "testToolStripMenuItem");
             testToolStripMenuItem.Name = "testToolStripMenuItem";
+            resources.ApplyResources(testToolStripMenuItem, "testToolStripMenuItem");
             testToolStripMenuItem.Click += testToolStripMenuItem_ClickAsync;
             // 
             // Delay
             // 
             Delay.Enabled = true;
             Delay.Tick += Delay_Tick;
-            // 
-            // func_musicplayer
-            // 
-            resources.ApplyResources(func_musicplayer, "func_musicplayer");
-            func_musicplayer.Name = "func_musicplayer";
-            func_musicplayer.Click += func_musicplayer_Click;
             // 
             // MainTray
             // 

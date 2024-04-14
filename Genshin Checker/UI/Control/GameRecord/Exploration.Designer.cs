@@ -56,17 +56,17 @@
             // 
             // ExContain_Main
             // 
-            resources.ApplyResources(ExContain_Main, "ExContain_Main");
             ExContain_Main.Controls.Add(panel1);
             ExContain_Main.Controls.Add(ExContain_MapName);
             ExContain_Main.Controls.Add(ExContain_MapIcon);
+            resources.ApplyResources(ExContain_Main, "ExContain_Main");
             ExContain_Main.Name = "ExContain_Main";
             // 
             // panel1
             // 
-            resources.ApplyResources(panel1, "panel1");
             panel1.Controls.Add(ExContain_Index);
             panel1.Controls.Add(OculusCount);
+            resources.ApplyResources(panel1, "panel1");
             panel1.Name = "panel1";
             // 
             // ExContain_Index
@@ -86,8 +86,8 @@
             // 
             // ExContain_MapIcon
             // 
-            resources.ApplyResources(ExContain_MapIcon, "ExContain_MapIcon");
             ExContain_MapIcon.BackColor = Color.Transparent;
+            resources.ApplyResources(ExContain_MapIcon, "ExContain_MapIcon");
             ExContain_MapIcon.Name = "ExContain_MapIcon";
             ExContain_MapIcon.TabStop = false;
             // 
