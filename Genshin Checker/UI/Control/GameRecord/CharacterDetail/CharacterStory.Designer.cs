@@ -88,9 +88,10 @@
             // 
             label3.AutoSize = true;
             label3.Dock = DockStyle.Top;
+            label3.Font = new Font("Meiryo UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             label3.Location = new Point(0, 50);
             label3.Name = "label3";
-            label3.Size = new Size(38, 15);
+            label3.Size = new Size(46, 17);
             label3.TabIndex = 1;
             label3.Text = "label3";
             label3.Visible = false;
@@ -105,7 +106,7 @@
             Controls.Add(panel1);
             MinimumSize = new Size(200, 50);
             Name = "CharacterStory";
-            Size = new Size(200, 65);
+            Size = new Size(200, 67);
             Load += CharacterStory_Load;
             SizeChanged += CharacterStory_SizeChanged;
             panel1.ResumeLayout(false);

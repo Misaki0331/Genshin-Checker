@@ -246,9 +246,9 @@ namespace Genshin_Checker.Window.ExWindow.GameRecords
                     control.Dispose();
                 }
                 TrailerVideoButtons.Clear();
+                groupBox5.Visible = false;
                 if (staticinfo?.Wiki.Video != null)
                 {
-                    groupBox5.Visible = true;
                     var addbutton = new Action<string, string, string?>((string controlname, string ytid, string? title) =>
                     {
                         var b = new Button();
@@ -257,6 +257,7 @@ namespace Genshin_Checker.Window.ExWindow.GameRecords
                         b.AutoSize = true;
                         VideoListPanel.Controls.Add(b);
                         TrailerVideoButtons.Add(b);
+                        groupBox5.Visible = true;
                     });
                     var addsong = new Action<string,string,string>((string controlname,string url,string title) =>
                     {
@@ -269,6 +270,7 @@ namespace Genshin_Checker.Window.ExWindow.GameRecords
                         b.AutoSize = true;
                         VideoListPanel.Controls.Add(b);
                         TrailerVideoButtons.Add(b);
+                        groupBox5.Visible = true;
                     });
                     foreach (var video in staticinfo.Wiki.Video)
                     {
@@ -313,8 +315,6 @@ namespace Genshin_Checker.Window.ExWindow.GameRecords
                     }
 
                 }
-                else
-                    groupBox5.Visible = true;
 
                 VideoListPanel.ResumeLayout(true);
                 //キャラクターストーリー
