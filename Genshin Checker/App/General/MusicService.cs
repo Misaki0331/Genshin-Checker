@@ -17,6 +17,7 @@ namespace Genshin_Checker.App.General.Music
         QueueInfo Current;
         bool UserStopped = false;
         private static Player? _instance;
+        const int Buffer = 500; //バッファー値(ms)
         public enum LoopMode
         {
             Normal,
@@ -31,7 +32,7 @@ namespace Genshin_Checker.App.General.Music
             Queues = new();
             waveOut = new WaveOut() { 
                 DesiredLatency = 10, //イベント更新時間(CurrentTimeの更新に直結するので出来れば小さい値に)
-                NumberOfBuffers= 500 //バッファ数(少ないと処理落ちするので多めに)
+                NumberOfBuffers= Buffer //バッファ数(少ないと処理落ちするので多めに)
             };
             Current = new();
             waveOut.PlaybackStopped += WaveOut_PlaybackStopped;
@@ -62,8 +63,16 @@ namespace Genshin_Checker.App.General.Music
         public bool IsPlaying { get=>waveOut.PlaybackState== PlaybackState.Playing; }
         public static Player Instance { get => _instance ??= new(); }
         public string CurrentTitle { get => Current.Title; }
-        public System.TimeSpan CurrentTime { get => WaveStream!=null?WaveStream.CurrentTime:new TimeSpan(0); set => Seek(CurrentTime); }
-        public System.TimeSpan? TotalTile { get => WaveStream?.TotalTime; }
+        public System.TimeSpan CurrentTime
+        {
+            get => WaveStream != null ?
+                (waveOut.PlaybackState != PlaybackState.Stopped ?
+                WaveStream.CurrentTime - TimeSpan.FromMilliseconds(waveOut.NumberOfBuffers) :
+                WaveStream.CurrentTime) :
+                TimeSpan.Zero;
+            set => Seek(CurrentTime);
+        }
+        public System.TimeSpan? TotalTile { get => WaveStream?.TotalTime-TimeSpan.FromMilliseconds(waveOut.NumberOfBuffers); }
         public double Volume { get => waveOut.Volume; set => waveOut.Volume = (float)value; }
 
         LoopMode _looptype;
@@ -159,8 +168,8 @@ namespace Genshin_Checker.App.General.Music
             {
                 Queues.Add(new() { Title = title, Uri = new(url) });
                 if (Queues.Count == 1&&!IsPlaying) Task.Run(async () => { await Next(true); });
-                QueueListChanged?.Invoke(this, EventArgs.Empty);
             }
+            QueueListChanged?.Invoke(this, EventArgs.Empty);
             return Queues.Count;
         }
         /// <summary>
@@ -174,8 +183,9 @@ namespace Genshin_Checker.App.General.Music
             lock (Queues)
             {
                 Queues.RemoveAt(QueuePos);
-                return true;
             }
+            QueueListChanged?.Invoke(this, EventArgs.Empty);
+            return true;
         }
         public int QueueCount { get { return Queues.Count; } }
         public List<QueueInfo> GetQueue()

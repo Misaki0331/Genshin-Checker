@@ -112,12 +112,13 @@
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.ColumnHeader;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { TrackNum, Title, Length });
+            dataGridView1.EditMode = DataGridViewEditMode.EditProgrammatically;
             dataGridView1.MultiSelect = false;
             dataGridView1.Name = "dataGridView1";
-            dataGridView1.ReadOnly = true;
             dataGridView1.RowHeadersVisible = false;
             dataGridView1.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             dataGridView1.RowTemplate.Height = 25;
+            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView1.UserDeletedRow += dataGridView1_UserDeletedRow;
             dataGridView1.KeyDown += dataGridView1_KeyDown;
             dataGridView1.KeyPress += dataGridView1_KeyPress;
@@ -129,7 +130,6 @@
             TrackNum.Frozen = true;
             resources.ApplyResources(TrackNum, "TrackNum");
             TrackNum.Name = "TrackNum";
-            TrackNum.ReadOnly = true;
             TrackNum.Resizable = DataGridViewTriState.False;
             TrackNum.SortMode = DataGridViewColumnSortMode.NotSortable;
             // 
@@ -139,7 +139,6 @@
             Title.DataPropertyName = "Title";
             resources.ApplyResources(Title, "Title");
             Title.Name = "Title";
-            Title.ReadOnly = true;
             Title.Resizable = DataGridViewTriState.False;
             Title.SortMode = DataGridViewColumnSortMode.NotSortable;
             // 
@@ -149,7 +148,6 @@
             Length.DataPropertyName = "Length";
             resources.ApplyResources(Length, "Length");
             Length.Name = "Length";
-            Length.ReadOnly = true;
             Length.Resizable = DataGridViewTriState.False;
             Length.SortMode = DataGridViewColumnSortMode.NotSortable;
             // 

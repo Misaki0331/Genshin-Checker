@@ -105,6 +105,7 @@ namespace Genshin_Checker.InternalTools
         public MusicInfoSetter()
         {
             InitializeComponent();
+            // NumberOfBuffersが大きいほどCurrentTimeが早くズレる事が確認
             waveOut = new WaveOut() {DesiredLatency = 10, NumberOfBuffers =500 };
             waveOut.PlaybackStopped += WaveOut_PlaybackStopped;
             stopwatch = new();

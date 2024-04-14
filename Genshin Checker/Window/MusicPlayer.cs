@@ -41,6 +41,7 @@ namespace Genshin_Checker.Window
                     dataGridView1.Rows.Add(i, item.Title, "-:--.--");
                     i++;
                 }
+                dataGridView1.ClearSelection();
             });
         }
 
@@ -69,6 +70,7 @@ namespace Genshin_Checker.Window
                 var current = Player.Instance.CurrentTime;
                 int per = (int)((double)current.TotalMilliseconds / (double)total.Value.TotalMilliseconds * 10000.0);
                 if (per > 10000) per = 10000;
+                if (per < 0) per = 0;
                 progressBar1.Value = per;
                 label1.Text = $"{current:m\\:ss\\:ff} / {total:m\\:ss\\:ff}";
                 SongTitle.Text = Player.Instance.CurrentTitle;
@@ -120,7 +122,9 @@ namespace Genshin_Checker.Window
 
         private async void ButtonNext_Click(object sender, EventArgs e)
         {
-            await Player.Instance.Next(Player.Instance.IsPlaying);
+            if (Player.Instance.QueueCount == 0) return;
+            Player.Instance.Stop();
+            await Player.Instance.Next(true);
         }
 
         private void ButtonLoop_Click(object sender, EventArgs e)
