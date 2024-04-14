@@ -27,6 +27,6 @@ namespace Genshin_Checker.Model.Misaki_chan.character_story
         [JsonPropertyName("text")]
         public string Text { get; set; } = "";
         [JsonPropertyName("title")]
-        public string? Title { get; set; } = null;
+        public string? Title { get; set; }
     }
 }
