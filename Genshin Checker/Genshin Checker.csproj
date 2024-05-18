@@ -206,6 +206,7 @@ GitHub : https://github.com/Misaki0331</Description>
 
   <ItemGroup>
     <Folder Include="Window\Contains\" />
+    <Folder Include="WebTools\" />
   </ItemGroup>
 
   <Target Name="BeforeBuild">
