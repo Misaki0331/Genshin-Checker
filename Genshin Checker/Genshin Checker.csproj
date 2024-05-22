@@ -133,6 +133,21 @@ GitHub : https://github.com/Misaki0331</Description>
       <AutoGen>True</AutoGen>
       <DependentUpon>Render.resx</DependentUpon>
     </Compile>
+    <Compile Update="resource\Web-Static\css.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>css.resx</DependentUpon>
+    </Compile>
+    <Compile Update="resource\Web-Static\html.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>html.resx</DependentUpon>
+    </Compile>
+    <Compile Update="resource\Web-Static\javascript.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>javascript.resx</DependentUpon>
+    </Compile>
     <Compile Update="UI\Control\GameRecord\ExplorationProgressBarArea.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -194,6 +209,18 @@ GitHub : https://github.com/Misaki0331</Description>
     <EmbeddedResource Update="resource\Render.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Render.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="resource\Web-Static\css.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>css.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="resource\Web-Static\html.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>html.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="resource\Web-Static\javascript.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>javascript.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
 

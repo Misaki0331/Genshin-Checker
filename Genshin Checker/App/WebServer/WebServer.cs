@@ -7,21 +7,29 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.ApplicationModel.Resources.Core;
 
 namespace Genshin_Checker.App.WebServer
 {
     public class WebServer
     {
+        private Dictionary<string, System.Resources.ResourceManager> StaticResources;
         private HttpListener listener;
         public bool IsServerRun
         {
             get => listener.IsListening;
             set { if (value) WebStart(); else WebStop(); }
         }
-        int Port = 29049;
+        int Port = 29055;
         public WebServer()
         {
             listener = new HttpListener();
+            StaticResources = new()
+            {
+                { "html", resource.WebStatic.html.ResourceManager },
+                { "css", resource.WebStatic.css.ResourceManager },
+                { "javascript", resource.WebStatic.javascript.ResourceManager }
+            };
         }
         async Task Listen()
         {
@@ -45,7 +53,7 @@ namespace Genshin_Checker.App.WebServer
         {
             if (listener.IsListening) listener.Stop();
         }
-        static async Task ProcessRequest(HttpListenerContext context)
+        async Task ProcessRequest(HttpListenerContext context)
         {
             HttpListenerRequest request = context.Request;
             HttpListenerResponse response = context.Response;
@@ -56,22 +64,35 @@ namespace Genshin_Checker.App.WebServer
             Trace.WriteLine(endpoint);
             string[] path = endpoint.Split("/");
             byte[] buffer = Array.Empty<byte>();
-            if (endpoint.StartsWith("/api/")) { 
-            }
-            else if (endpoint.StartsWith("/static/")) { 
-            
-            }
-            else if (endpoint == "/favicon.ico")
+            if (endpoint == "/favicon.ico")
             {
-                    using (var ms = new MemoryStream())
-                    {
-                        Bitmap bmp = resource.icon.nahida.ToBitmap();
-                        bmp.Save(ms, ImageFormat.Png);
-                        buffer = ms.GetBuffer();
-                    }
-            }else if(endpoint == "/")
-            {
-                buffer = Encoding.UTF8.GetBytes("<html><body>Hello, World!</body></html>");
+                using (var ms = new MemoryStream())
+                {
+                    Bitmap bmp = resource.icon.nahida.ToBitmap();
+                    bmp.Save(ms, ImageFormat.Png);
+                    buffer = ms.GetBuffer();
+                }
+            } else if(path.Length>=3){
+                switch (path[1])
+                {
+                    case "api":
+                        buffer = Encoding.UTF8.GetBytes("{\"error\":\"未実装(ToDo)\"}");
+                        response.StatusCode = 500;
+                        break;
+                    case "html":
+                    case "css":
+                    case "javascript":
+                        var test = StaticResources[path[1]].GetString(path[2]);
+                        if (test == null) response.StatusCode = 404;
+                        else
+                        {
+                            buffer = Encoding.UTF8.GetBytes(test);
+                        }
+                        break;
+                }
+            }
+            else{
+                response.StatusCode = 404;
             } 
             response.ContentLength64 = buffer.Length;
 
