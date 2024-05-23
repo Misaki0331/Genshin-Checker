@@ -63,6 +63,10 @@ namespace Genshin_Checker.Model.API.UserInfo
         /// ツールチップ情報
         /// </summary>
         public ToolTip tooltip { get; set; } = new();
+        /// <summary>
+        /// アイコン
+        /// </summary>
+        public string? icon { get; set; } = null;
     }
     public class BadgeColor
     {

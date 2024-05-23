@@ -43,6 +43,7 @@ namespace Genshin_Checker.App.WebServer
         {
             if (!listener.IsListening)
             {
+                APIManager.InitializeEndpoints();
                 listener = new HttpListener();
                 listener.Prefixes.Add($"http://localhost:{Port}/");
                 listener.Start();
@@ -63,30 +64,34 @@ namespace Genshin_Checker.App.WebServer
             endpoint ??= "/";
             Trace.WriteLine(endpoint);
             string[] path = endpoint.Split("/");
-            byte[] buffer = Array.Empty<byte>();
             if (endpoint == "/favicon.ico")
             {
                 using (var ms = new MemoryStream())
                 {
                     Bitmap bmp = resource.icon.nahida.ToBitmap();
                     bmp.Save(ms, ImageFormat.Png);
-                    buffer = ms.GetBuffer();
+                    var buf = ms.GetBuffer();
+                    response.ContentLength64 = buf.Length;
+                    using var output = response.OutputStream;
+                    await output.WriteAsync(buf, 0, buf.Length);
                 }
             } else if(path.Length>=3){
                 switch (path[1])
                 {
                     case "api":
-                        buffer = Encoding.UTF8.GetBytes("{\"error\":\"未実装(ToDo)\"}");
-                        response.StatusCode = 500;
+                        await APIManager.GET(response, endpoint.Remove(0, $"/{path[1]}/".Length),request.QueryString);
                         break;
                     case "html":
                     case "css":
                     case "javascript":
-                        var test = StaticResources[path[1]].GetString(path[2]);
+                        var test = StaticResources[path[1]].GetString(endpoint.Remove(0,$"/{path[1]}/".Length));
                         if (test == null) response.StatusCode = 404;
                         else
                         {
-                            buffer = Encoding.UTF8.GetBytes(test);
+                            var buf = Encoding.UTF8.GetBytes(test);
+                            response.ContentLength64 = buf.Length;
+                            using var output = response.OutputStream;
+                            await output.WriteAsync(buf);
                         }
                         break;
                 }
@@ -94,12 +99,6 @@ namespace Genshin_Checker.App.WebServer
             else{
                 response.StatusCode = 404;
             } 
-            response.ContentLength64 = buffer.Length;
-
-            using (var output = response.OutputStream)
-            {
-                await output.WriteAsync(buffer, 0, buffer.Length);
-            }
         }
     }
 }
