@@ -225,7 +225,7 @@ body {
     width: 50px; /* アイコンサイズを大きく */
     height: 50px; /* アイコンサイズを大きく */
     transition: opacity 1s; /* 画像のフェードイン */
-    opacity: 0; /* 画像の初期状態を透明に */
+    opacity: 1; /* 画像の初期状態を透明に */
 }
 
 .stat-item .name img.loaded {

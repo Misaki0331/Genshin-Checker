@@ -116,6 +116,10 @@ namespace Genshin_Checker.Model.API.UserInfo
         /// </summary>
         public string icon { get; set; } = "";
         /// <summary>
+        /// アイコンオーバーレイURL
+        /// </summary>
+        public string icon_overlay { get; set; } = "";
+        /// <summary>
         /// 左側の値
         /// </summary>
         public string value { get; set; } = "";

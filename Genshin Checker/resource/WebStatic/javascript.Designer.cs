@@ -22,14 +22,14 @@ namespace Genshin_Checker.resource.WebStatic {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class css {
+    internal class javascript {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal css() {
+        internal javascript() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace Genshin_Checker.resource.WebStatic {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Genshin_Checker.resource.Web_Static.css", typeof(css).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Genshin_Checker.resource.WebStatic.javascript", typeof(javascript).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,29 +61,24 @@ namespace Genshin_Checker.resource.WebStatic {
         }
         
         /// <summary>
-        ///   @font-face {
-        ///    font-family: &apos;DefaultFont&apos;;
-        ///    src: url(&apos;https://static-api.misaki-chan.world/genshin-checker/webtools/fonts/default.woff2&apos;) format(&apos;woff2&apos;);
-        ///}
+        ///   document.addEventListener(&apos;DOMContentLoaded&apos;, () =&gt; {
+        ///    const tooltip = document.createElement(&apos;div&apos;);
+        ///    tooltip.classList.add(&apos;tooltip&apos;);
+        ///    document.body.appendChild(tooltip);
         ///
-        ///body {
-        ///    font-family: &apos;DefaultFont&apos;, Arial, sans-serif;
-        ///    margin: 0;
-        ///    padding: 20px;
-        ///    background-color: #25294A; /* ページ全体の背景色 */
-        ///    color: #ffffff; /* 文字色を白に変更 */
-        ///    position: relative; /* ポップアップを中央に配置するために追加 */
-        ///}
+        ///    const uid = new URLSearchParams(window.location.search).get(&apos;uid&apos;);
+        ///    let currentData = {};
+        ///    const userLang = navigator.language || navigator.userLanguage;
+        ///    const isJapanese = userLang.startsWith(&apos;ja&apos;);
         ///
-        ///.profile-card {
-        ///    display: flex;
-        ///    align-items: center;
-        ///    justify-content: space-between;
-        ///    widt [残りの文字列は切り詰められました]&quot;; に類似しているローカライズされた文字列を検索します。
+        ///    if (uid) {
+        ///        fetchUserInfo(uid);
+        ///        setInterval(() =&gt; {
+        ///            fetchUserInfo(ui [残りの文字列は切り詰められました]&quot;; に類似しているローカライズされた文字列を検索します。
         /// </summary>
-        internal static string user_info_css {
+        internal static string user_info_js {
             get {
-                return ResourceManager.GetString("user-info.css", resourceCulture);
+                return ResourceManager.GetString("user-info.js", resourceCulture);
             }
         }
     }

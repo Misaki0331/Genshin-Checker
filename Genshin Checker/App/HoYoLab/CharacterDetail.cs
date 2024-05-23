@@ -19,7 +19,7 @@ namespace Genshin_Checker.App.HoYoLab
             Cache = new();
             ServerUpdate.Start();
         }
-        private class DataList{
+        public class DataList{
             public DateTime UpdateTime;
             public int CharacterID;
             public Model.HoYoLab.CharacterDetail.Data Data=new();
@@ -135,6 +135,12 @@ namespace Genshin_Checker.App.HoYoLab
                 UpdateSemaphore.Release();
             }
             return IsSuccessed;
+        }
+        public List<DataList> CachedCharacters()
+        {
+            var list = new List<DataList>();
+            foreach(var e in Cache.FindAll(a => a.UpdateTime.AddSeconds(CacheSecond) > DateTime.UtcNow))list.Add(e);
+            return list;
         }
         public async Task<bool> IsReadyCacheData(int Timeout = -1)
         {

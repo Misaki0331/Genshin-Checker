@@ -12,9 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
         fetchUserInfo(uid);
         setInterval(() => {
             fetchUserInfo(uid);
-        }, 60000);
-    } else {
-        showErrorPopup(`Insufficient parameters. (UID)`)
+        }, 60000); // Check every minute
     }
 
     function fetchUserInfo(uid) {
@@ -26,39 +24,55 @@ document.addEventListener('DOMContentLoaded', () => {
                 } else {
                     hideErrorPopup();
                     if (JSON.stringify(data) !== JSON.stringify(currentData)) {
+                        updateProfile(data, currentData);
                         currentData = data;
-                        updateProfile(data);
                     }
                 }
             })
-            .catch(error => showErrorPopup(`Internal Error: ${error.message}`));
+            .catch(error => showErrorPopup(`サーバーエラーが発生しました: ${error.message}`));
     }
 
-    function updateProfile(data) {
+    function updateProfile(data, currentData) {
         const profile = data.profile;
         const profileCard = document.querySelector('.profile-card');
         profileCard.style.setProperty('--bg-image', `url(${profile.namecard || 'https://static-api.misaki-chan.world/genshin-checker/webtools/img/default_namecard.png'})`);
 
         const profileIcon = profileCard.querySelector('img');
-        profileIcon.src = profile.icon;
+        if (profileIcon.src !== profile.icon) {
+            profileIcon.src = profile.icon;
+        }
 
         const profileName = profileCard.querySelector('.profile-info h2');
-        profileName.textContent = profile.name;
+        if (profileName.textContent !== profile.name) {
+            profileName.textContent = profile.name;
+        }
 
         const profileMessage = profileCard.querySelector('.profile-info p');
-        profileMessage.textContent = profile.message;
+        if (profileMessage.textContent !== profile.message) {
+            profileMessage.textContent = profile.message;
+        }
 
         const userId = profileCard.querySelector('.user-id');
-        userId.textContent = `UID: ${profile.uid}`;
+        if (userId.textContent !== `UID: ${profile.uid}`) {
+            userId.textContent = `UID: ${profile.uid}`;
+        }
 
-        const badgeContainer = profileCard.querySelector('.badge-container');
-        badgeContainer.innerHTML = '';
+        updateBadges(profile.badges, currentData.profile ? currentData.profile.badges : []);
+        updateComponents(data.components, currentData.components || []);
+        attachEventListeners();
+    }
 
-        profile.badges.forEach(badge => {
+    function updateBadges(newBadges, currentBadges) {
+        const badgeContainer = document.querySelector('.badge-container');
+        badgeContainer.innerHTML = ''; // Clear existing badges
+
+        newBadges.forEach(badge => {
+            const currentBadge = currentBadges.find(b => b.name === badge.name);
+
             const badgeElement = document.createElement('div');
             badgeElement.classList.add('badge');
             badgeElement.setAttribute('data-tooltip-name', badge.tooltip.title);
-            badgeElement.setAttribute('data-tooltip', badge.tooltip.description);
+            badgeElement.setAttribute('data-tooltip', parseColorTags(badge.tooltip.description));
             badgeElement.style.backgroundColor = badge.color?.bg || '#ffffff';
             badgeElement.style.color = badge.color?.fg || 'rgba(0, 0, 0, 0.5)';
 
@@ -73,16 +87,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const badgeTooltip = document.createElement('div');
             badgeTooltip.classList.add('tooltip');
-            badgeTooltip.innerHTML = `<div class="tooltip-name">${badge.tooltip.title}</div><div class="tooltip-description">${badge.tooltip.description}</div>`;
+            badgeTooltip.innerHTML = `<div class="tooltip-name">${badge.tooltip.title}</div><div class="tooltip-description">${parseColorTags(badge.tooltip.description)}</div>`;
             badgeElement.appendChild(badgeTooltip);
 
             badgeContainer.appendChild(badgeElement);
         });
+    }
 
+    function updateComponents(newComponents, currentComponents) {
         const componentsContainer = document.querySelector('.common-components-container');
-        componentsContainer.innerHTML = '';
+        componentsContainer.innerHTML = ''; // Clear existing components
 
-        data.components.forEach(component => {
+        newComponents.forEach(component => {
             const componentElement = document.createElement('div');
             componentElement.classList.add('common-component');
             componentElement.setAttribute('data-url', component.clickto);
@@ -107,7 +123,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 setInterval(() => {
                     updateEndTime(endTimeSpan, component.endtime);
-                }, 1000); 
+                }, 60000); // Update every minute
             }
 
             const statList = document.createElement('ul');
@@ -117,17 +133,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 const statItem = document.createElement('li');
                 statItem.classList.add('stat-item');
                 statItem.setAttribute('data-tooltip-name', row.tooltip.title);
-                statItem.setAttribute('data-tooltip', row.tooltip.description);
+                statItem.setAttribute('data-tooltip', parseColorTags(row.tooltip.description));
 
                 const name = document.createElement('span');
                 name.classList.add('name');
                 const icon = document.createElement('img');
-                icon.src = row.icon;
+                if (icon.src !== row.icon) {
+                    icon.src = `${row.icon}?cache_bust=1`; // 固定のクエリパラメータを追加してキャッシュを利用
+                }
                 name.appendChild(icon);
 
                 if (row.icon_overlay) {
                     const iconOverlay = document.createElement('img');
-                    iconOverlay.src = row.icon_overlay;
+                    iconOverlay.src = `${row.icon_overlay}?cache_bust=1`; // 固定のクエリパラメータを追加してキャッシュを利用
                     iconOverlay.classList.add('icon-overlay');
                     name.appendChild(iconOverlay);
                 }
@@ -171,8 +189,6 @@ document.addEventListener('DOMContentLoaded', () => {
             componentElement.appendChild(statList);
             componentsContainer.appendChild(componentElement);
         });
-
-        attachEventListeners();
     }
 
     function updateEndTime(element, endTime) {
@@ -187,9 +203,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const days = Math.floor(diff / (24 * 60 * 60));
         const hours = Math.floor((diff % (24 * 60 * 60)) / (60 * 60));
         const minutes = Math.floor((diff % (60 * 60)) / 60);
-        const seconds = Math.floor((diff % (60)));
 
-        element.textContent = `${days}${isJapanese ? '日' : 'D'} ${hours}${isJapanese ? '時間' : 'H'} ${minutes}${isJapanese ? '分' : 'M'} ${seconds}${isJapanese ? '秒' : 'S'}`;
+        element.textContent = `${days}${isJapanese ? '日' : 'D'} ${hours}${isJapanese ? '時間' : 'H'} ${minutes}${isJapanese ? '分' : 'M'}`;
     }
 
     function attachEventListeners() {
@@ -257,6 +272,10 @@ document.addEventListener('DOMContentLoaded', () => {
         tooltip.style.top = `${top}px`;
     }
 
+    function parseColorTags(text) {
+        return text.replace(/<color=(#[0-9A-Fa-f]{6}|#[0-9A-Fa-f]{3}|[a-zA-Z]+)>(.*?)<\/color>/g, '<span style="color:$1">$2</span>');
+    }
+
     function showErrorPopup(errorMessage) {
         let popupOverlay = document.querySelector('.popup-overlay');
         if (!popupOverlay) {
@@ -275,7 +294,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 window.location.reload();
             });
         } else {
-            popupOverlay.querySelector('.popup-content p').innerText = errorMessage;
+            popupOverlay.querySelector('.popup-content p').innerHTML = errorMessage;
         }
 
         popupOverlay.classList.add('visible');

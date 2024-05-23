@@ -22,14 +22,14 @@ namespace Genshin_Checker.resource.WebStatic {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class javascript {
+    internal class html {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal javascript() {
+        internal html() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace Genshin_Checker.resource.WebStatic {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Genshin_Checker.resource.Web_Static.javascript", typeof(javascript).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Genshin_Checker.resource.WebStatic.html", typeof(html).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,24 +61,27 @@ namespace Genshin_Checker.resource.WebStatic {
         }
         
         /// <summary>
-        ///   document.addEventListener(&apos;DOMContentLoaded&apos;, () =&gt; {
-        ///    const tooltip = document.createElement(&apos;div&apos;);
-        ///    tooltip.classList.add(&apos;tooltip&apos;);
-        ///    document.body.appendChild(tooltip);
+        ///   &lt;!DOCTYPE html&gt;
+        ///&lt;html lang=&quot;ja&quot;&gt;
+        ///&lt;head&gt;
+        ///    &lt;meta charset=&quot;UTF-8&quot;&gt;
+        ///    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+        ///    &lt;title&gt;戦績ページ&lt;/title&gt;
+        ///    &lt;link rel=&quot;stylesheet&quot; href=&quot;/css/user-info.css&quot;&gt;
+        ///&lt;/head&gt;
+        ///&lt;body&gt;
         ///
-        ///    const uid = new URLSearchParams(window.location.search).get(&apos;uid&apos;);
-        ///    let currentData = {};
-        ///    const userLang = navigator.language || navigator.userLanguage;
-        ///    const isJapanese = userLang.startsWith(&apos;ja&apos;);
-        ///
-        ///    if (uid) {
-        ///        fetchUserInfo(uid);
-        ///        setInterval(() =&gt; {
-        ///            fetchUserInfo(ui [残りの文字列は切り詰められました]&quot;; に類似しているローカライズされた文字列を検索します。
+        ///&lt;div class=&quot;profile-card&quot; data-bg-image=&quot;&quot;&gt;
+        ///    &lt;img src=&quot;assets/images/image1.png&quot; alt=&quot;Profile Icon&quot;&gt;
+        ///    &lt;div class=&quot;profile-info&quot;&gt;
+        ///        &lt;h2&gt;Unknown&lt;/h2&gt;
+        ///        &lt;p&gt;This is status message.&lt;/p&gt; &lt;!-- ステータスメッセージを1行のみに --&gt;
+        ///    &lt;/div&gt;
+        ///    &lt;div class=&quot;badge-c [残りの文字列は切り詰められました]&quot;; に類似しているローカライズされた文字列を検索します。
         /// </summary>
-        internal static string user_info_js {
+        internal static string user_info_html {
             get {
-                return ResourceManager.GetString("user-info.js", resourceCulture);
+                return ResourceManager.GetString("user-info.html", resourceCulture);
             }
         }
     }

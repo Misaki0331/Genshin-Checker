@@ -121,7 +121,7 @@ namespace Genshin_Checker.App.HoYoLab
             return res;
 
         }
-        public async Task<V1> GetCurrent()
+        public async Task<V1?> GetCurrent()
         {
             if (Cache.Latest.AddMinutes(30) < DateTime.UtcNow)
             {
@@ -135,11 +135,11 @@ namespace Genshin_Checker.App.HoYoLab
             }
             return Convert(Cache.Data);
         }
-
+        public V1? CacheCurrent { get => Convert(Cache.Data); }
 
         public async Task<V1> GetOld()
         {
-            return Convert(await account.Endpoint.GetSpiralAbyss(true));
+            return Convert(await account.Endpoint.GetSpiralAbyss(false));
         }
 
         async void Save(V1 v1)

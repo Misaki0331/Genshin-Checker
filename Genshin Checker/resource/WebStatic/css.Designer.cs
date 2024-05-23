@@ -22,14 +22,14 @@ namespace Genshin_Checker.resource.WebStatic {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class html {
+    internal class css {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal html() {
+        internal css() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace Genshin_Checker.resource.WebStatic {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Genshin_Checker.resource.Web_Static.html", typeof(html).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Genshin_Checker.resource.WebStatic.css", typeof(css).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,27 +61,29 @@ namespace Genshin_Checker.resource.WebStatic {
         }
         
         /// <summary>
-        ///   &lt;!DOCTYPE html&gt;
-        ///&lt;html lang=&quot;ja&quot;&gt;
-        ///&lt;head&gt;
-        ///    &lt;meta charset=&quot;UTF-8&quot;&gt;
-        ///    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
-        ///    &lt;title&gt;戦績ページ&lt;/title&gt;
-        ///    &lt;link rel=&quot;stylesheet&quot; href=&quot;/css/user-info.css&quot;&gt;
-        ///&lt;/head&gt;
-        ///&lt;body&gt;
+        ///   @font-face {
+        ///    font-family: &apos;DefaultFont&apos;;
+        ///    src: url(&apos;https://static-api.misaki-chan.world/genshin-checker/webtools/fonts/default.woff2&apos;) format(&apos;woff2&apos;);
+        ///}
         ///
-        ///&lt;div class=&quot;profile-card&quot; data-bg-image=&quot;&quot;&gt;
-        ///    &lt;img src=&quot;assets/images/image1.png&quot; alt=&quot;Profile Icon&quot;&gt;
-        ///    &lt;div class=&quot;profile-info&quot;&gt;
-        ///        &lt;h2&gt;Unknown&lt;/h2&gt;
-        ///        &lt;p&gt;This is status message.&lt;/p&gt; &lt;!-- ステータスメッセージを1行のみに --&gt;
-        ///    &lt;/div&gt;
-        ///    &lt;div class=&quot;badge-c [残りの文字列は切り詰められました]&quot;; に類似しているローカライズされた文字列を検索します。
+        ///body {
+        ///    font-family: &apos;DefaultFont&apos;, Arial, sans-serif;
+        ///    margin: 0;
+        ///    padding: 20px;
+        ///    background-color: #25294A; /* ページ全体の背景色 */
+        ///    color: #ffffff; /* 文字色を白に変更 */
+        ///    position: relative; /* ポップアップを中央に配置するために追加 */
+        ///}
+        ///
+        ///.profile-card {
+        ///    display: flex;
+        ///    align-items: center;
+        ///    justify-content: space-between;
+        ///    widt [残りの文字列は切り詰められました]&quot;; に類似しているローカライズされた文字列を検索します。
         /// </summary>
-        internal static string user_info_html {
+        internal static string user_info_css {
             get {
-                return ResourceManager.GetString("user-info.html", resourceCulture);
+                return ResourceManager.GetString("user-info.css", resourceCulture);
             }
         }
     }

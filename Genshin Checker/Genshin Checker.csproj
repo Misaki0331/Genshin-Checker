@@ -133,17 +133,17 @@ GitHub : https://github.com/Misaki0331</Description>
       <AutoGen>True</AutoGen>
       <DependentUpon>Render.resx</DependentUpon>
     </Compile>
-    <Compile Update="resource\Web-Static\css.Designer.cs">
+    <Compile Update="resource\WebStatic\css.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>css.resx</DependentUpon>
     </Compile>
-    <Compile Update="resource\Web-Static\html.Designer.cs">
+    <Compile Update="resource\WebStatic\html.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>html.resx</DependentUpon>
     </Compile>
-    <Compile Update="resource\Web-Static\javascript.Designer.cs">
+    <Compile Update="resource\WebStatic\javascript.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>javascript.resx</DependentUpon>
@@ -210,15 +210,15 @@ GitHub : https://github.com/Misaki0331</Description>
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Render.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Update="resource\Web-Static\css.resx">
+    <EmbeddedResource Update="resource\WebStatic\css.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>css.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Update="resource\Web-Static\html.resx">
+    <EmbeddedResource Update="resource\WebStatic\html.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>html.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Update="resource\Web-Static\javascript.resx">
+    <EmbeddedResource Update="resource\WebStatic\javascript.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>javascript.Designer.cs</LastGenOutput>
     </EmbeddedResource>
@@ -232,6 +232,7 @@ GitHub : https://github.com/Misaki0331</Description>
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="resource\Web-Static\" />
     <Folder Include="Window\Contains\" />
     <Folder Include="WebTools\" />
   </ItemGroup>

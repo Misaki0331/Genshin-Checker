@@ -1,4 +1,5 @@
 ﻿using Genshin_Checker.App.HoYoLab;
+using Genshin_Checker.resource.Languages;
 using Genshin_Checker.Store;
 using Genshin_Checker.Window;
 using System;
@@ -7,6 +8,7 @@ using System.Collections.Specialized;
 using System.Linq;
 using System.Net;
 using System.Security.Cryptography;
+using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -99,7 +101,6 @@ namespace Genshin_Checker.App.WebServer.Endpoint
                 }
             });
             #endregion
-
             #region キャラクター
             result.components.Add(new()
             {
@@ -136,9 +137,370 @@ namespace Genshin_Checker.App.WebServer.Endpoint
                             }
                             return $"{(double)current/(chara.Count*9)*100.0:0.0} %";
                         })()
+                    },
+                    new(){
+                    icon = "https://static-api.misaki-chan.world/genshin-checker/webtools/img/level.png",
+                    tooltip = new()
+                    {
+                        title = "最大レベルのキャラクター数",
+                        description = "レベルが最大になったキャラクタ―数と全体の平均レベルです。"
+                    },
+                    value = user.GameRecords.Data?.avatars.FindAll(a=>a.level==90).Count.ToString("#,##0")??"-",
+                    max_value = "/ "+user.GameRecords.Data?.avatars.Count.ToString("#,##0")??"-",
+                    bottom_value = new Func<string>(()=>{
+                            if(user.GameRecords.Data==null)return "--.-- %";
+                            var chara = user.GameRecords.Data.avatars;
+                            int current = 0;
+                            foreach(var e in chara){
+                                current+=e.level;
+                            }
+                            return $"Avg. Level {((double)current/chara.Count):0.00}";
+                        })()
+                    },
+                    new(){
+                    icon = "https://static-api.misaki-chan.world/genshin-checker/webtools/img/talent.png",
+                    tooltip = new()
+                    {
+                        title = "天賦育成済みのキャラクター数",
+                        description = "全ての天賦レベルが9以上になったキャラクタ―数と\n全てのキャラクターの全天賦レベル9を100%とした育成率です。"
+                    },
+                    value = user.CharacterDetail.CachedCharacters().Count==(user.GameRecords.Data?.avatars.Count??-1)?new Func<string>(() =>
+                    {
+                        int cnt=0;
+                        foreach(var e in user.CharacterDetail.CachedCharacters()){
+                            bool IsOK=true;
+                            foreach(var c in e.Data.skill_list)
+                            {
+                                if(c.level_current==c.max_level)continue;
+                                if (c.level_current<c.max_level-1){
+                                    IsOK = false;
+                                    break;
+                                }
+                            }
+                            if(IsOK)cnt++;
+                        }
+                        return $"{cnt:#,##0}";
+                    })():"-",
+                    max_value = "/ "+user.GameRecords.Data?.avatars.Count.ToString("#,##0")??"-",
+                    bottom_value = new Func<string>(()=>{
+                        if(user.CharacterDetail.CachedCharacters().Count==(user.GameRecords.Data?.avatars.Count??-1)){
+                        int cnt=0;
+                        int max=0;
+                        foreach(var e in user.CharacterDetail.CachedCharacters()){
+                            foreach(var c in e.Data.skill_list)
+                            {
+                                if(c.max_level==1)continue;
+                                max+=c.max_level-2;
+                                cnt+=c.level_current-1;
+                            }
+                        }
+                        return $"{((double)cnt/max*100.0):0.00} %";
+                        }else return "--.-- %";
+                    })()
                     }
                 }
             });
+            #endregion
+            #region 探索
+            result.components.Add(new()
+            {
+                clickto = "",
+                title = "探索",
+                rows = new()
+                {
+                    new(){
+                    icon = "https://static-api.misaki-chan.world/genshin-checker/webtools/img/map.png",
+                    tooltip = new()
+                    {
+                        title = "全体の探索率",
+                        description = "全てのマップの平均探索率です。"
+                    },
+                    value = new Func<string>(()=> {
+                        double per = 0;
+                        int cnt = 0;
+                    foreach (var item in user.GameRecords.Data?.world_explorations??new())
+                    {
+                        if (item.Type == "Offering" && item.Exploration_percentage <= 0) continue;
+                        per += item.Exploration_percentage / 10.0;
+                        cnt++;
+                    }
+                    return $"{(per / cnt):0.00}";
+                    })(),
+                    max_value = "%"
+                    },
+                    new(){
+                    icon = "https://static-api.misaki-chan.world/genshin-checker/webtools/img/oculus.png",
+                    tooltip = new()
+                    {
+                        title = "収集した神の瞳",
+                        description = "収集した神の瞳です。"+
+                        new Func<string>(()=>
+                        {
+                            var text = "";
+                            var data = user.GameRecords.Data;
+                            if(data==null)return "";
+                            var OculusName = new List<string>() { Genshin.Oculus_Anemo, Genshin.Oculus_Geo, Genshin.Oculus_Electro, Genshin.Oculus_Dendro, Genshin.Oculus_Hydro, Genshin.Oculus_Pyro, Genshin.Oculus_Cryo };
+                            var OculusValue = new List<int>() { data.stats.OculusAnemo, data.stats.OculusGeo, data.stats.OculusElectro, data.stats.OculusDendro, data.stats.OculusHydro, data.stats.OculusPyro, data.stats.OculusCryo };
+                            for(int i = 0; i < OculusValue.Count; i++)
+                            {
+                                if(OculusValue[i]!=0)
+                                text+=$"\n{OculusName[i]} x {OculusValue[i]}";
+                            }
+                            return text;
+                        })()
+                    },
+                    value = new Func<string>(()=>{
+
+                    var data = user.GameRecords.Data?.stats;
+                    if(data==null)return "-";
+                    return (data.OculusAnemo + data.OculusGeo + data.OculusElectro + data.OculusDendro + data.OculusHydro + data.OculusPyro + data.OculusCryo).ToString("#,##0");
+
+                    })()
+                    },
+                    new(){
+                    icon = "https://static-api.misaki-chan.world/genshin-checker/webtools/img/waypoint.png",
+                    tooltip = new()
+                    {
+                        title = "開放したワープポイントの数",
+                        description = $"解放済みのワープポイント x {user.GameRecords.Data?.stats.WayPoint.ToString("#,##0")??"-"}\n"+
+                        $"解放済みの秘境 x {user.GameRecords.Data?.stats.Domains.ToString("#,##0")??"-"}\n"
+                    },
+                    value = new Func<string>(()=>{
+
+                    var data = user.GameRecords.Data?.stats;
+                    if(data==null)return "-";
+                    return (data.WayPoint+data.Domains).ToString("#,##0");
+                    })()
+                    },
+
+                    new(){
+                    icon = "https://static-api.misaki-chan.world/genshin-checker/webtools/img/chest.png",
+                    tooltip = new()
+                    {
+                        title = "開封した宝箱の数",
+                        description = $"普通の宝箱 x {user.GameRecords.Data?.stats.ChestCommon.ToString("#,##0")??"-"}\n"+
+                        $"精巧な宝箱 x {user.GameRecords.Data?.stats.ChestExquisite.ToString("#,##0")??"-"}\n"+
+                        $"貴重な宝箱 x {user.GameRecords.Data?.stats.ChestPrecious.ToString("#,##0")??"-"}\n"+
+                        $"豪華な宝箱 x {user.GameRecords.Data?.stats.ChestLuxurious.ToString("#,##0")??"-"}\n"+
+                        $"珍奇な宝箱 x {user.GameRecords.Data?.stats.ChestMagic.ToString("#,##0")??"-"}\n"
+                    },
+                    value = new Func<string>(()=>{
+
+                    var data = user.GameRecords.Data?.stats;
+                    if(data==null)return "-";
+                    return (data.ChestCommon+data.ChestExquisite+data.ChestPrecious+data.ChestLuxurious+data.ChestMagic).ToString("#,##0");
+                    })()
+                    }
+                }
+            });
+            #endregion
+            #region 深境螺旋
+            result.components.Add(new()
+            {
+                clickto = "",
+                title = "深境螺旋",
+                endtime = user.SpiralAbyss.CacheCurrent?.Data.ScheduleTime.end ?? null,
+                rows = new()
+                {
+                    new(){
+                    icon = "https://static-api.misaki-chan.world/genshin-checker/webtools/img/check.png",
+                    tooltip = new()
+                    {
+                        title = "深境螺旋のプレイ情報です",
+                        description = "クリア回数/挑戦回数"
+                    },
+                    value = user.SpiralAbyss.CacheCurrent?.Data.total_win_times.ToString("#,##0")??"-",
+                    max_value = "/ "+user.SpiralAbyss.CacheCurrent?.Data.total_battle_times.ToString("#,##0")??"-"
+                    },
+                    new(){
+                    icon = "https://static-api.misaki-chan.world/genshin-checker/webtools/img/tower.png",
+                    tooltip = new()
+                    {
+                        title = "最高記録",
+                        description = "今期で最高記録の情報です"
+                    },
+                    value = user.SpiralAbyss.CacheCurrent?.Data.max_floor??"-"
+                    },
+                    new(){
+                    icon = "https://static-api.misaki-chan.world/genshin-checker/webtools/img/tower_star.png",
+                    tooltip = new()
+                    {
+                        title = "獲得した淵星の数",
+                        description = "今期で獲得した淵星の数です。"
+                    },
+                    value = user.SpiralAbyss.CacheCurrent?.Data.total_star.ToString("#,##0")??"-"
+                    }
+                }
+            });
+            #endregion
+            #region リアルタイムノート
+            result.components.Add(new()
+            {
+                clickto = "",
+                title = "リアルタイムノート",
+                rows = new()
+                {
+                    new(){
+                    icon = "https://static-api.misaki-chan.world/genshin-checker/webtools/img/resin.png",
+                    tooltip = new()
+                    {
+                        title = "樹脂",
+                        description = "現在の貯蓄中の樹脂の数です。"
+                    },
+                    value = user.RealTimeNote.Data.RealTime?.Resin.Current.ToString("#,##0")??"-",
+                    max_value = "/ "+user.RealTimeNote.Data.RealTime?.Resin.Max.ToString("#,##0")??"-",
+                    bottom_value = new Func<string>(()=>{
+                        var r = user.RealTimeNote.Data.RealTime;
+                        if(r == null) return Common.Unknown;
+                        if (DateTime.Now > r.Resin.RecoveryTime) return Localize.WindowName_RealTimeNote_MaxOut;
+                        else
+                        {
+                            var time = (int)(r.Resin.RecoveryTime - DateTime.Now).TotalSeconds;
+                            return string.Format(Localize.WindowName_RealTimeNote_TimeLeft,$"{(time / 3600)}:{(time / 60 % 60):00}");
+                        }
+                    })()
+                    },
+                    new(){
+                    icon = "https://static-api.misaki-chan.world/genshin-checker/webtools/img/homecoin.png",
+                    tooltip = new()
+                    {
+                        title = "壺コイン",
+                        description = "現在の貯蓄中の壺コインの数です。"
+                    },
+                    value = user.RealTimeNote.Data.RealTime?.RealmCoin.Current.ToString("#,##0")??"-",
+                    max_value = "/ "+user.RealTimeNote.Data.RealTime?.RealmCoin.Max.ToString("#,##0")??"-",
+                    bottom_value = new Func<string>(()=>{
+                        var r = user.RealTimeNote.Data.RealTime;
+                        if(r == null) return Common.Unknown;
+                        if (DateTime.Now > r.RealmCoin.RecoveryTime) return Localize.WindowName_RealTimeNote_MaxOut;
+                        else
+                        {
+                            var time = (int)(r.RealmCoin.RecoveryTime - DateTime.Now).TotalSeconds;
+                            return string.Format(Localize.WindowName_RealTimeNote_TimeLeft,$"{(time / 3600)}:{(time / 60 % 60):00}");
+                        }
+                    })()
+                    },
+                    new(){
+                    icon = "https://static-api.misaki-chan.world/genshin-checker/webtools/img/quest.png",
+                    tooltip = new()
+                    {
+                        title = "デイリークエスト進捗",
+                        description = "デイリークエストの進行状況です。"
+                    },
+                    value = user.RealTimeNote.Data.RealTime?.Commission.Current.ToString("#,##0")??"-",
+                    max_value = "/ "+user.RealTimeNote.Data.RealTime?.Commission.Max.ToString("#,##0")??"-",
+                    bottom_value = new Func<string?>(()=>{
+                        var r = user.RealTimeNote.Data.RealTime;
+                        if(r == null) return Common.Unknown;
+                        if (r.Commission.IsClaimed) return Localize.WindowName_RealTimeNote_Daily_Completed;
+                        else if (r.Commission.Current == r.Commission.Max) return Localize.WindowName_RealTimeNote_Daily_NotExtraClaimed;
+                        return null;
+                    })()
+                    },
+                    new(){
+                    icon = "https://static-api.misaki-chan.world/genshin-checker/webtools/img/explore.png",
+                    tooltip = new()
+                    {
+                        title = "探索派遣進捗",
+                        description = new Func<string?>(() =>
+                        {
+                            var str = "探索派遣の進捗情報です。";
+                            int cnt=1;
+                            foreach(var e in user.RealTimeNote.Data.RealTime?.Expedition.Expeditions??new())
+                            {
+                                str+=$"\nNo.{cnt} : ";
+                        if (DateTime.Now > e.EstimatedTime) str += Localize.WindowName_RealTimeNote_ExpeditionCompleted;
+                        else
+                        {
+                            var time = (int)(e.EstimatedTime - DateTime.Now).TotalSeconds;
+                            str += $"{(time / 3600)}:{(time / 60 % 60):00}";
+                        }
+
+                        cnt++;
+                            }
+                            return str;
+                        })()
+                    },
+                    value = user.RealTimeNote.Data.RealTime?.Expedition.Dispatched.Current.ToString("#,##0")??"-",
+                    max_value = "/ "+user.RealTimeNote.Data.RealTime?.Expedition.Dispatched.Max.ToString("#,##0")??"-",
+                    bottom_value = new Func<string?>(()=>{
+                        int max =0;
+                        int completed=0;
+                         foreach(var e in user.RealTimeNote.Data.RealTime?.Expedition.Expeditions??new())
+                            {
+                        if (DateTime.Now <= e.EstimatedTime) 
+                        {
+                            var time = (int)(e.EstimatedTime - DateTime.Now).TotalSeconds;
+                                if(max<time)max=time;
+                            }
+                            else
+                            {
+                                completed++;
+                            }
+                            }
+                        if (max > 0)
+                        {
+                            return $"{(max / 3600)}:{(max / 60 % 60):00}";
+                        }
+                        if (completed == user.RealTimeNote.Data.RealTime?.Expedition.Dispatched.Current)
+                        {
+                            return Localize.WindowName_RealTimeNote_ExpeditionCompleted;
+                        }
+                        return null;
+                    })()
+                    }
+                }
+            });
+            #endregion
+            #region 旅人手帳
+            result.components.Add(new()
+            {
+                clickto = "",
+                title = "旅人手帳",
+                rows = new()
+                {
+                    new(){
+                    icon = "https://static-api.misaki-chan.world/genshin-checker/webtools/img/primogems.png",
+                    icon_overlay = "https://static-api.misaki-chan.world/genshin-checker/webtools/svg/day.svg",
+                    tooltip = new()
+                    {
+                        title = "本日獲得した原石の数",
+                        description = "祝福や紀行報酬を除く本日原石を獲得した数です。"
+                    },
+                    value = user.TravelersDiary.Data?.Data?.day_data.current_primogems.ToString("#,##0")??"-",
+                    },
+                    new(){
+                    icon = "https://static-api.misaki-chan.world/genshin-checker/webtools/img/mora.png",
+                    icon_overlay = "https://static-api.misaki-chan.world/genshin-checker/webtools/svg/day.svg",
+                    tooltip = new()
+                    {
+                        title = "本日獲得したモラの数",
+                        description = "紀行報酬を除く本日モラを獲得した数です。"
+                    },
+                    value = user.TravelersDiary.Data?.Data?.day_data.current_mora.ToString("#,##0")??"-"
+                    },
+                    new(){
+                    icon = "https://static-api.misaki-chan.world/genshin-checker/webtools/img/primogems.png",
+                    icon_overlay = "https://static-api.misaki-chan.world/genshin-checker/webtools/svg/month.svg",
+                    tooltip = new()
+                    {
+                        title = "今月獲得した原石の数",
+                        description = "課金による報酬を除く今月原石を獲得した数です。"
+                    },
+                    value = user.TravelersDiary.Data?.Data?.month_data.current_primogems.ToString("#,##0")??"-",
+                    },
+                    new(){
+                    icon = "https://static-api.misaki-chan.world/genshin-checker/webtools/img/mora.png",
+                    icon_overlay = "https://static-api.misaki-chan.world/genshin-checker/webtools/svg/month.svg",
+                    tooltip = new()
+                    {
+                        title = "今月獲得したモラの数",
+                        description = "課金による報酬を除く今月モラを獲得した数です。"
+                    },
+                    value = user.TravelersDiary.Data?.Data?.month_data.current_mora.ToString("#,##0")??"-"
+                    }
+                }
+            }) ;
             #endregion
             #endregion
 
