@@ -61,6 +61,46 @@ namespace Genshin_Checker.resource.WebStatic {
         }
         
         /// <summary>
+        ///   var tools = {};
+        ///document.addEventListener(&apos;DOMContentLoaded&apos;, () =&gt; {
+        ///    const tooltip = document.createElement(&apos;div&apos;);
+        ///    tooltip.classList.add(&apos;tooltip&apos;);
+        ///    document.body.appendChild(tooltip);
+        ///    tools.attachEventListeners = function attachEventListeners(query) {
+        ///        document.querySelectorAll(query).forEach(item =&gt; {
+        ///            item.addEventListener(&apos;mouseenter&apos;, (e) =&gt; {
+        ///                const name = item.getAttribute(&apos;data-tooltip-name&apos;);
+        ///                const description = item.getAtt [残りの文字列は切り詰められました]&quot;; に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string basic_js {
+            get {
+                return ResourceManager.GetString("basic.js", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   document.addEventListener(&apos;DOMContentLoaded&apos;, function () {
+        ///    const header = document.getElementById(&apos;profile-header&apos;);
+        ///
+        ///    function getUIDFromURL() {
+        ///        const params = new URLSearchParams(window.location.search);
+        ///        return params.get(&apos;uid&apos;);
+        ///    }
+        ///
+        ///    // プロフィールヘッダーを作成する関数
+        ///    function createProfileHeader(data) {
+        ///        header.style.setProperty(&apos;--bg-image&apos;, `url(${data.namecard})`);
+        ///
+        ///        const profileCard = document.createElement(&apos;div&apos;);
+        ///        profileCard.classList.add(&apos;pr [残りの文字列は切り詰められました]&quot;; に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string header_profile_js {
+            get {
+                return ResourceManager.GetString("header_profile.js", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   document.addEventListener(&apos;DOMContentLoaded&apos;, () =&gt; {
         ///    const tooltip = document.createElement(&apos;div&apos;);
         ///    tooltip.classList.add(&apos;tooltip&apos;);
@@ -78,7 +118,7 @@ namespace Genshin_Checker.resource.WebStatic {
         /// </summary>
         internal static string user_info_js {
             get {
-                return ResourceManager.GetString("user-info.js", resourceCulture);
+                return ResourceManager.GetString("user_info.js", resourceCulture);
             }
         }
     }

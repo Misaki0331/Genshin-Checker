@@ -66,22 +66,46 @@ namespace Genshin_Checker.resource.WebStatic {
         ///&lt;head&gt;
         ///    &lt;meta charset=&quot;UTF-8&quot;&gt;
         ///    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+        ///    &lt;title&gt;Profile Header&lt;/title&gt;
+        ///    &lt;link rel=&quot;stylesheet&quot; href=&quot;/css/basic.css&quot;&gt;
+        ///    &lt;link rel=&quot;stylesheet&quot; href=&quot;/css/header_profile.css&quot;&gt;
+        ///&lt;/head&gt;
+        ///&lt;body&gt;
+        ///    &lt;header id=&quot;profile-header&quot;&gt;
+        ///        &lt;!-- Profile header will be dynamically generated here --&gt;
+        ///    &lt;/header&gt;
+        ///
+        ///    &lt;script src=&quot;/javascript/basic.js&quot;&gt;&lt;/script&gt;
+        ///    &lt;script src=&quot;/javascript/head [残りの文字列は切り詰められました]&quot;; に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string profile_test_html {
+            get {
+                return ResourceManager.GetString("profile_test.html", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   &lt;!DOCTYPE html&gt;
+        ///&lt;html lang=&quot;ja&quot;&gt;
+        ///&lt;head&gt;
+        ///    &lt;meta charset=&quot;UTF-8&quot;&gt;
+        ///    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
         ///    &lt;title&gt;戦績ページ&lt;/title&gt;
-        ///    &lt;link rel=&quot;stylesheet&quot; href=&quot;/css/user-info.css&quot;&gt;
+        ///    &lt;link rel=&quot;stylesheet&quot; href=&quot;/css/basic.css&quot;&gt;
+        ///    &lt;link rel=&quot;stylesheet&quot; href=&quot;/css/user_info.css&quot;&gt;
         ///&lt;/head&gt;
         ///&lt;body&gt;
         ///
         ///&lt;div class=&quot;profile-card&quot; data-bg-image=&quot;&quot;&gt;
-        ///    &lt;img src=&quot;assets/images/image1.png&quot; alt=&quot;Profile Icon&quot;&gt;
+        ///    &lt;img src=&quot;&quot; alt=&quot;Profile Icon&quot;&gt;
         ///    &lt;div class=&quot;profile-info&quot;&gt;
         ///        &lt;h2&gt;Unknown&lt;/h2&gt;
         ///        &lt;p&gt;This is status message.&lt;/p&gt; &lt;!-- ステータスメッセージを1行のみに --&gt;
-        ///    &lt;/div&gt;
-        ///    &lt;div class=&quot;badge-c [残りの文字列は切り詰められました]&quot;; に類似しているローカライズされた文字列を検索します。
+        ///    &lt;/di [残りの文字列は切り詰められました]&quot;; に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string user_info_html {
             get {
-                return ResourceManager.GetString("user-info.html", resourceCulture);
+                return ResourceManager.GetString("user_info.html", resourceCulture);
             }
         }
     }

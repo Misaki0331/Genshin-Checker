@@ -74,16 +74,82 @@ namespace Genshin_Checker.resource.WebStatic {
         ///    color: #ffffff; /* 文字色を白に変更 */
         ///    position: relative; /* ポップアップを中央に配置するために追加 */
         ///}
+        ////* ポップアップのスタイル */
+        ///.popup-overlay {
+        ///    position: fixed;
+        ///    top: 0;
+        ///    left: 0;
+        ///    width: 100%;
+        ///    he [残りの文字列は切り詰められました]&quot;; に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string basic_css {
+            get {
+                return ResourceManager.GetString("basic.css", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   body {
+        ///    margin: 0;
+        ///    padding: 0;
+        ///}
+        ///
+        ///header {
+        ///    width: 100%;
+        ///    position: fixed;
+        ///    top: 0;
+        ///    left: 0;
+        ///    right: 0;
+        ///    background-color: #25294A;
+        ///    z-index: 1000;
+        ///    display: flex;
+        ///    justify-content: center;
+        ///    padding: 10px 0;
+        ///}
+        ///
+        ///.profile-card {
+        ///    display: flex;
+        ///    align-items: center;
+        ///    justify-content: flex-start;
+        ///    width: 100%;
+        ///    max-width: 1200px;
+        ///    margin: 0 20px;
+        ///    padding: 10px;
+        ///    border-radius: 10px;
+        ///    box-shadow: 0 2px 4px rgba(0, 0, 0, [残りの文字列は切り詰められました]&quot;; に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string header_profile_css {
+            get {
+                return ResourceManager.GetString("header_profile.css", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   
         ///
         ///.profile-card {
         ///    display: flex;
         ///    align-items: center;
         ///    justify-content: space-between;
-        ///    widt [残りの文字列は切り詰められました]&quot;; に類似しているローカライズされた文字列を検索します。
+        ///    width: 80%;
+        ///    margin: 0 auto 20px;
+        ///    padding: 20px;
+        ///    border-radius: 10px;
+        ///    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        ///    position: relative;
+        ///    transition: filter 0.3s ease; /* ホバー時のトランジション */
+        ///    overflow: hidden; /* 疑似要素が溢れないようにする */
+        ///    background-image: var(--bg-image); /* 背景画像を設定 */
+        ///    background-size: cover;
+        ///    background-position: center;
+        ///}
+        ///
+        ///.profile-card::before {
+        ///   [残りの文字列は切り詰められました]&quot;; に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string user_info_css {
             get {
-                return ResourceManager.GetString("user-info.css", resourceCulture);
+                return ResourceManager.GetString("user_info.css", resourceCulture);
             }
         }
     }

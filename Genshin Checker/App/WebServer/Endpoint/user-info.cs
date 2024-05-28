@@ -413,7 +413,7 @@ namespace Genshin_Checker.App.WebServer.Endpoint
                         else
                         {
                             var time = (int)(e.EstimatedTime - DateTime.Now).TotalSeconds;
-                            str += $"{(time / 3600)}:{(time / 60 % 60):00}";
+                            str += string.Format(Localize.WindowName_RealTimeNote_TimeLeft,$"{(time / 3600)}:{(time / 60 % 60):00}");
                         }
 
                         cnt++;
@@ -421,7 +421,7 @@ namespace Genshin_Checker.App.WebServer.Endpoint
                             return str;
                         })()
                     },
-                    value = user.RealTimeNote.Data.RealTime?.Expedition.Dispatched.Current.ToString("#,##0")??"-",
+                    value = user.RealTimeNote.Data.RealTime?.Expedition.Expeditions.FindAll(a=>DateTime.Now>a.EstimatedTime).Count.ToString("#,##0")??"-",
                     max_value = "/ "+user.RealTimeNote.Data.RealTime?.Expedition.Dispatched.Max.ToString("#,##0")??"-",
                     bottom_value = new Func<string?>(()=>{
                         int max =0;
@@ -440,7 +440,7 @@ namespace Genshin_Checker.App.WebServer.Endpoint
                             }
                         if (max > 0)
                         {
-                            return $"{(max / 3600)}:{(max / 60 % 60):00}";
+                            return string.Format(Localize.WindowName_RealTimeNote_TimeLeft,$"{(max / 3600)}:{(max / 60 % 60):00}");
                         }
                         if (completed == user.RealTimeNote.Data.RealTime?.Expedition.Dispatched.Current)
                         {
