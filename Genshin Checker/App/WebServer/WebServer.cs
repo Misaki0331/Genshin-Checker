@@ -80,26 +80,26 @@ namespace Genshin_Checker.App.WebServer
                 {
                     case "api":
                         await APIManager.GET(response, endpoint.Remove(0, $"/{path[1]}/".Length),request.QueryString);
-                        break;
+                        return;
                     case "html":
                     case "css":
                     case "javascript":
                         var test = StaticResources[path[1]].GetString(endpoint.Remove(0,$"/{path[1]}/".Length));
-                        if (test == null) response.StatusCode = 404;
-                        else
+                        if (test != null) 
                         {
                             var buf = Encoding.UTF8.GetBytes(test);
                             response.ContentLength64 = buf.Length;
+                            response.ContentEncoding = Encoding.UTF8;
                             using var output = response.OutputStream;
                             await output.WriteAsync(buf);
+                            return;
                         }
                         break;
                 }
             }
-            else{
-                response.StatusCode = 404;
-                await SimpleResponse.Error(response, "Not Found.", 404);
-            } 
+
+            response.StatusCode = 404;
+            await SimpleResponse.Error(response, "Not Found.", 404);
         }
     }
 }

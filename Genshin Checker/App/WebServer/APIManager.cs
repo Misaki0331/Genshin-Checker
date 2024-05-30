@@ -74,6 +74,7 @@ namespace Genshin_Checker.App.WebServer
         public static async Task Result(HttpListenerResponse response, object? result, int statuscode = 200)
         {
             response.StatusCode = statuscode;
+            response.ContentEncoding = Encoding.UTF8;
             var buf = Encoding.UTF8.GetBytes(
                 JsonConvert.SerializeObject(result
                     )
