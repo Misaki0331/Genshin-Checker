@@ -98,6 +98,7 @@ namespace Genshin_Checker.App.WebServer
             }
             else{
                 response.StatusCode = 404;
+                await SimpleResponse.Error(response, "Not Found.", 404);
             } 
         }
     }

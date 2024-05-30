@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // プロフィールヘッダーを作成する関数
     function createProfileHeader(data) {
-        header.style.setProperty('--bg-image', `url(${data.namecard})`);
+        header.style.setProperty('--bg-image', `url(${data.namecard || 'https://static-api.misaki-chan.world/genshin-checker/webtools/img/default_namecard.png'})`);
 
         const profileCard = document.createElement('div');
         profileCard.classList.add('profile-card');
@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function () {
         homeButton.addEventListener('click', () => {
             const uid = getUIDFromURL();
             if (uid) {
-                window.location.href = `/html/user-info.html?uid=${uid}`;
+                window.location.href = `/html/user_info?uid=${uid}`;
             } else {
                 tools.showErrorPopup('Insufficient parameters. (UID)');
             }
@@ -98,11 +98,16 @@ document.addEventListener('DOMContentLoaded', function () {
         fetch(`/api/profile?uid=${uid}`)
             .then(response => response.json())
             .then(data => {
-                createProfileHeader(data.profile);
+                if (data.error) {
+                    tools.showErrorPopup(data.error);
+                } else {
+                    tools.hideErrorPopup();
+                    createProfileHeader(data);
+                }
             })
             .catch(error => {
                 console.error('Error fetching profile data:', error);
-                tools.showErrorPopup('エラーが発生しました。ページをリロードしてください。');
+                tools.showErrorPopup(`Web Error : ${error}`);
             });
     } else {
         tools.showErrorPopup('Insufficient parameters. (UID)');

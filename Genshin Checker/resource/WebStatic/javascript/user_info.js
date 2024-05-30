@@ -13,6 +13,8 @@ document.addEventListener('DOMContentLoaded', () => {
         setInterval(() => {
             fetchUserInfo(uid);
         }, 60000); // Check every minute
+    } else {
+        tools.showErrorPopup('Insufficient parameters. (UID)');
     }
 
     function fetchUserInfo(uid) {

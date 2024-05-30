@@ -39,38 +39,7 @@ namespace Genshin_Checker.App.WebServer.Endpoint
                 return;
             }
             var result = new Model.API.UserInfo.Root();
-            result.profile.uid = user.UID;
-            result.profile.name = user.Name;
-            result.profile.message = user.EnkaNetwork.Data.playerInfo.signature;
-            result.profile.icon = user.GameRecords.Data?.role.game_head_icon ?? "";
-            result.profile.namecard = EnkaData.Convert.Namecard.GetNameCardURL(user.EnkaNetwork.Data.playerInfo.nameCardId) ?? "";
-            #region バッジ情報
-            #region ・サーバー
-            result.profile.badges.Add(new()
-            {
-                name = user.Server.ToString(),
-                color = new() { bg = "#FFFFAF", fg = "#202020" },
-                tooltip = new()
-                {
-                    title = "サーバー情報",
-                    description = "ユーザーが所属しているサーバーです。"
-                }
-            });
-            #endregion
-            #region ・冒険ランク
-            result.profile.badges.Add(new()
-            {
-                name = $"AR.{user.GameRecords.Data?.role.Level ?? user.Level}",
-                color = new() { bg = "#AAFFAA", fg = "#202020" },
-                tooltip = new()
-                {
-                    title = $"冒険ランク {user.GameRecords.Data?.role.Level ?? user.Level}",
-                    description = "冒険ランク情報です。"
-                },
-                icon = "https://static-api.misaki-chan.world/genshin-checker/webtools/img/aep.png"
-            });
-            #endregion
-            #endregion
+            result.profile = Endpoint.Profile.GetProfile(uid);
             #region コンポーネント
             #region 概要
             result.components.Add(new()

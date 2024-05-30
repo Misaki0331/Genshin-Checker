@@ -78,9 +78,9 @@ namespace Genshin_Checker.resource.WebStatic {
         ///    &lt;script src=&quot;/javascript/basic.js&quot;&gt;&lt;/script&gt;
         ///    &lt;script src=&quot;/javascript/head [残りの文字列は切り詰められました]&quot;; に類似しているローカライズされた文字列を検索します。
         /// </summary>
-        internal static string profile_test_html {
+        internal static string profile_test {
             get {
-                return ResourceManager.GetString("profile_test.html", resourceCulture);
+                return ResourceManager.GetString("profile_test", resourceCulture);
             }
         }
         
@@ -103,9 +103,9 @@ namespace Genshin_Checker.resource.WebStatic {
         ///        &lt;p&gt;This is status message.&lt;/p&gt; &lt;!-- ステータスメッセージを1行のみに --&gt;
         ///    &lt;/di [残りの文字列は切り詰められました]&quot;; に類似しているローカライズされた文字列を検索します。
         /// </summary>
-        internal static string user_info_html {
+        internal static string user_info {
             get {
-                return ResourceManager.GetString("user_info.html", resourceCulture);
+                return ResourceManager.GetString("user_info", resourceCulture);
             }
         }
     }

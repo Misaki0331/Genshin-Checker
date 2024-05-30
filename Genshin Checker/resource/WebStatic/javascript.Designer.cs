@@ -89,10 +89,9 @@ namespace Genshin_Checker.resource.WebStatic {
         ///
         ///    // プロフィールヘッダーを作成する関数
         ///    function createProfileHeader(data) {
-        ///        header.style.setProperty(&apos;--bg-image&apos;, `url(${data.namecard})`);
+        ///        header.style.setProperty(&apos;--bg-image&apos;, `url(${data.namecard || &apos;https://static-api.misaki-chan.world/genshin-checker/webtools/img/default_namecard.png&apos;})`);
         ///
-        ///        const profileCard = document.createElement(&apos;div&apos;);
-        ///        profileCard.classList.add(&apos;pr [残りの文字列は切り詰められました]&quot;; に類似しているローカライズされた文字列を検索します。
+        ///      [残りの文字列は切り詰められました]&quot;; に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string header_profile_js {
             get {

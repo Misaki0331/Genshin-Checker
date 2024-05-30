@@ -21,75 +21,6 @@ namespace Genshin_Checker.Model.API.UserInfo
         /// </summary>
         public string? error = null;
     }
-
-    public class Profile
-    {
-        /// <summary>
-        /// ネームカードの背景URL
-        /// </summary>
-        public string namecard { get; set; } = "";
-        /// <summary>
-        /// アイコンURL
-        /// </summary>
-        public string icon { get; set; } = "";
-        /// <summary>
-        /// 名前
-        /// </summary>
-        public string name { get; set; } = "";
-        /// <summary>
-        /// ステータスメッセージ
-        /// </summary>
-        public string message { get; set; } = "";
-        /// <summary>
-        /// アカウントUID
-        /// </summary>
-        public int uid { get; set; } = 0;
-        /// <summary>
-        /// プロフィールのバッジ情報
-        /// </summary>
-        public List<Badge> badges { get; set; } = new();
-    }
-    public class Badge
-    {
-        /// <summary>
-        /// バッジに表示するテキスト
-        /// </summary>
-        public string name { get; set; } = "";
-        /// <summary>
-        /// 色情報
-        /// </summary>
-        public BadgeColor color { get; set; } = new();
-        /// <summary>
-        /// ツールチップ情報
-        /// </summary>
-        public ToolTip tooltip { get; set; } = new();
-        /// <summary>
-        /// アイコン
-        /// </summary>
-        public string? icon { get; set; } = null;
-    }
-    public class BadgeColor
-    {
-        /// <summary>
-        /// 背景色
-        /// </summary>
-        public string bg { get; set; } = "#FFFFAF";
-        /// <summary>
-        /// 文字色
-        /// </summary>
-        public string fg { get; set; } = "#202020";
-    }
-    public class ToolTip
-    {
-        /// <summary>
-        /// タイトル
-        /// </summary>
-        public string title { get; set; } = "";
-        /// <summary>
-        /// 説明文
-        /// </summary>
-        public string? description { get; set; } = null;
-    }
     public class Component
     {
         /// <summary>
@@ -134,7 +65,7 @@ namespace Genshin_Checker.Model.API.UserInfo
         /// <summary>
         /// ツールチップ情報
         /// </summary>
-        public ToolTip tooltip { get; set; } = new();
+        public API.ToolTip tooltip { get; set; } = new();
 
     }
 }
