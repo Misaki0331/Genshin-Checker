@@ -315,9 +315,10 @@ namespace Genshin_Checker.App.WebServer.Endpoint
                     {
                         title = "樹脂",
                         description = "現在の貯蓄中の樹脂の数です。"
+                        +(user.RealTimeNote.Data.RealTime==null?$"\n<color=#ff0000>{(user.RealTimeNote.Data.Meta.IsAPIError?"API Error":"Error")} : Code {user.RealTimeNote.Data.Meta.Retcode}</color>\n<color=#ff0000>{user.RealTimeNote.Data.Meta.Message}</color>":"")
                     },
                     value = user.RealTimeNote.Data.RealTime?.Resin.Current.ToString("#,##0")??"-",
-                    max_value = "/ "+user.RealTimeNote.Data.RealTime?.Resin.Max.ToString("#,##0")??"-",
+                    max_value = "/ "+(user.RealTimeNote.Data.RealTime?.Resin.Max.ToString("#,##0")??"-"),
                     bottom_value = new Func<string>(()=>{
                         var r = user.RealTimeNote.Data.RealTime;
                         if(r == null) return Common.Unknown;
@@ -335,9 +336,10 @@ namespace Genshin_Checker.App.WebServer.Endpoint
                     {
                         title = "壺コイン",
                         description = "現在の貯蓄中の壺コインの数です。"
+                        +(user.RealTimeNote.Data.RealTime==null?$"\n<color=#ff0000>{(user.RealTimeNote.Data.Meta.IsAPIError?"API Error":"Error")} : Code {user.RealTimeNote.Data.Meta.Retcode}</color>\n<color=#ff0000>{user.RealTimeNote.Data.Meta.Message}</color>":"")
                     },
                     value = user.RealTimeNote.Data.RealTime?.RealmCoin.Current.ToString("#,##0")??"-",
-                    max_value = "/ "+user.RealTimeNote.Data.RealTime?.RealmCoin.Max.ToString("#,##0")??"-",
+                    max_value = "/ "+(user.RealTimeNote.Data.RealTime?.RealmCoin.Max.ToString("#,##0")??"-"),
                     bottom_value = new Func<string>(()=>{
                         var r = user.RealTimeNote.Data.RealTime;
                         if(r == null) return Common.Unknown;
@@ -355,9 +357,10 @@ namespace Genshin_Checker.App.WebServer.Endpoint
                     {
                         title = "デイリークエスト進捗",
                         description = "デイリークエストの進行状況です。"
+                        +(user.RealTimeNote.Data.RealTime==null?$"\n<color=#ff0000>{(user.RealTimeNote.Data.Meta.IsAPIError?"API Error":"Error")} : Code {user.RealTimeNote.Data.Meta.Retcode}</color>\n<color=#ff0000>{user.RealTimeNote.Data.Meta.Message}</color>":"")
                     },
                     value = user.RealTimeNote.Data.RealTime?.Commission.Current.ToString("#,##0")??"-",
-                    max_value = "/ "+user.RealTimeNote.Data.RealTime?.Commission.Max.ToString("#,##0")??"-",
+                    max_value = "/ " +(user.RealTimeNote.Data.RealTime ?.Commission.Max.ToString("#,##0") ?? "-"),
                     bottom_value = new Func<string?>(()=>{
                         var r = user.RealTimeNote.Data.RealTime;
                         if(r == null) return Common.Unknown;
@@ -373,7 +376,8 @@ namespace Genshin_Checker.App.WebServer.Endpoint
                         title = "探索派遣進捗",
                         description = new Func<string?>(() =>
                         {
-                            var str = "探索派遣の進捗情報です。";
+                            var str = "探索派遣の進捗情報です。"
+                        +(user.RealTimeNote.Data.RealTime==null?$"\n<color=#ff0000>{(user.RealTimeNote.Data.Meta.IsAPIError?"API Error":"Error")} : Code {user.RealTimeNote.Data.Meta.Retcode}</color>\n<color=#ff0000>{user.RealTimeNote.Data.Meta.Message}</color>":"");
                             int cnt=1;
                             foreach(var e in user.RealTimeNote.Data.RealTime?.Expedition.Expeditions??new())
                             {
@@ -391,7 +395,7 @@ namespace Genshin_Checker.App.WebServer.Endpoint
                         })()
                     },
                     value = user.RealTimeNote.Data.RealTime?.Expedition.Expeditions.FindAll(a=>DateTime.Now>a.EstimatedTime).Count.ToString("#,##0")??"-",
-                    max_value = "/ "+user.RealTimeNote.Data.RealTime?.Expedition.Dispatched.Max.ToString("#,##0")??"-",
+                    max_value = "/ "+(user.RealTimeNote.Data.RealTime?.Expedition.Dispatched.Max.ToString("#,##0")??"-"),
                     bottom_value = new Func<string?>(()=>{
                         int max =0;
                         int completed=0;
@@ -435,6 +439,8 @@ namespace Genshin_Checker.App.WebServer.Endpoint
                     {
                         title = "本日獲得した原石の数",
                         description = "祝福や紀行報酬を除く本日原石を獲得した数です。"
+                        + (user.TravelersDiary.Data?.Data==null?
+                        $"\n<color=#ff0000>{user.TravelersDiary.Data?.Message.Replace("\n","</color>\n<color=#f00>")}</color>":"")
                     },
                     value = user.TravelersDiary.Data?.Data?.day_data.current_primogems.ToString("#,##0")??"-",
                     },
@@ -445,6 +451,8 @@ namespace Genshin_Checker.App.WebServer.Endpoint
                     {
                         title = "本日獲得したモラの数",
                         description = "紀行報酬を除く本日モラを獲得した数です。"
+                        + (user.TravelersDiary.Data?.Data==null?
+                        $"\n<color=#ff0000>{user.TravelersDiary.Data?.Message.Replace("\n","</color>\n<color=#f00>")}</color>":"")
                     },
                     value = user.TravelersDiary.Data?.Data?.day_data.current_mora.ToString("#,##0")??"-"
                     },
@@ -455,6 +463,8 @@ namespace Genshin_Checker.App.WebServer.Endpoint
                     {
                         title = "今月獲得した原石の数",
                         description = "課金による報酬を除く今月原石を獲得した数です。"
+                        + (user.TravelersDiary.Data?.Data==null?
+                        $"\n<color=#ff0000>{user.TravelersDiary.Data?.Message.Replace("\n","</color>\n<color=#f00>")}</color>":"")
                     },
                     value = user.TravelersDiary.Data?.Data?.month_data.current_primogems.ToString("#,##0")??"-",
                     },
@@ -465,6 +475,8 @@ namespace Genshin_Checker.App.WebServer.Endpoint
                     {
                         title = "今月獲得したモラの数",
                         description = "課金による報酬を除く今月モラを獲得した数です。"
+                        + (user.TravelersDiary.Data?.Data==null?
+                        $"\n<color=#ff0000>{user.TravelersDiary.Data?.Message.Replace("\n","</color>\n<color=#f00>")}</color>":"")
                     },
                     value = user.TravelersDiary.Data?.Data?.month_data.current_mora.ToString("#,##0")??"-"
                     }
