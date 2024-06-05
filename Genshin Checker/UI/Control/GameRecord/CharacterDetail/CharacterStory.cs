@@ -15,13 +15,15 @@ namespace Genshin_Checker.UI.Control.GameRecord.CharacterDetail
         string title;
         string? description;
         string index;
-        public CharacterStory(string title, string? description, string index)
+        public CharacterStory(string title, string? description, string index, bool IsLock)
         {
             InitializeComponent();
             label3.MaximumSize = new(this.ClientSize.Width, 32767);
             this.title = title;
             this.description = description;
             this.index = index+"\n ";
+            label1.ForeColor = Color.Red;
+            button1.Enabled = !IsLock;
         }
 
         private void CharacterStory_SizeChanged(object sender, EventArgs e)

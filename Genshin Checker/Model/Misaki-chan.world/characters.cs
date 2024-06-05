@@ -45,6 +45,8 @@ namespace Genshin_Checker.Model.Misaki_chan.Character
 
         [JsonPropertyName("skills")]
         public Skills Skills { get; set; } = new();
+        [JsonPropertyName("unlocks")]
+        public Unlocks Unlocks { get; set; } = new();
     }
 
     public class TrailerVideo
@@ -134,6 +136,37 @@ namespace Genshin_Checker.Model.Misaki_chan.Character
 
         [JsonPropertyName("video")]
         public Dictionary<string, Dictionary<string, TrailerVideo>> Video { get; set; } = new();
+    }
+    public class Unlocks
+    {
+        public Dictionary<string, UnlockStoryInfo> Story { get; set; } = new();
+    }
+    public class UnlockStoryInfo
+    {
+        /// <summary>
+        /// 非解禁時にタイトルを「？？？」に置き換える
+        /// </summary>
+        [JsonPropertyName("ishiddentitle")]
+        public bool IsHiddenTitle { get; set; } = false;
+        /// <summary>
+        /// 解禁条件
+        /// </summary>
+        [JsonPropertyName("conditions")]
+        public UnlockConditions Conditions { get; set; } = new();
+        
+    }
+    public class UnlockConditions
+    {
+        /// <summary>
+        /// 永久に解禁させない
+        /// </summary>
+        [JsonPropertyName("never")]
+        public bool Never = false;
+        /// <summary>
+        /// 特定の好感度以上であれば解禁
+        /// </summary>
+        [JsonPropertyName("friendship")]
+        public int? friendship = null;
     }
 
 

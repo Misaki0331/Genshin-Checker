@@ -21,6 +21,7 @@ using Genshin_Checker.Model.Misaki_chan.Character;
 using Genshin_Checker.App.General.Music;
 using Genshin_Checker.App;
 using Genshin_Checker.Model.HoYoLab;
+using Genshin_Checker.Model.EnkaNetwork.ShowCase;
 
 namespace Genshin_Checker.Window.ExWindow.GameRecords
 {
@@ -94,7 +95,7 @@ namespace Genshin_Checker.Window.ExWindow.GameRecords
                 //概要
                 label1.Text = $"{name}";
                 label2.Text = string.Format(Localize.UI_Character_Level, CharacterInfo.level);
-                label4.Text = string.Format(Localize.UI_FriendshipLevel, CharacterInfo.fetter);
+                label4.Text = CharacterInfo.fetter>0?string.Format(Localize.UI_FriendshipLevel, CharacterInfo.fetter):"";
                 int constellation = CharacterInfo.constellations.FindAll(a => a.is_actived).Count;
                 if (constellation == 0) label5.Text = "";
                 else if (constellation == 6) label5.Text = Localize.UI_ConstellationLevelMax;
@@ -340,7 +341,21 @@ namespace Genshin_Checker.Window.ExWindow.GameRecords
 
                                     lang = outlang;
                                 }
-                        var ui = new CharacterStory((story.Value.Title?? lang), null, story.Value.Text);
+                        string? UnlockInfomation = null;
+                        string title = story.Value.Title ?? lang;
+                        if (staticinfo!=null&&staticinfo.Unlocks.Story.TryGetValue(story.Key, out var unlocks))
+                        {
+                            bool IsUnlocked = false;
+                            if (unlocks.Conditions.friendship != null && CharacterInfo.fetter >= unlocks.Conditions.friendship) IsUnlocked = true;
+                            else UnlockInfomation = $"キャラクターの好感度がLv. {unlocks.Conditions.friendship} で解禁";
+                            if (unlocks.Conditions.Never)
+                            {
+                                UnlockInfomation = "このストーリーが解禁される時はまだ訪れていません。";
+                                IsUnlocked = false;
+                            }
+                            if (!IsUnlocked&&unlocks.IsHiddenTitle) title = "???";
+                        };
+                        var ui = new CharacterStory(title, UnlockInfomation, story.Value.Text,UnlockInfomation!=null);
                         ui.Dock = DockStyle.Top;
                         ui.BorderStyle = BorderStyle.FixedSingle;
                         GroupCharacterStory.Controls.Add(ui);
