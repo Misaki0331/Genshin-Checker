@@ -161,6 +161,7 @@ namespace Genshin_Checker.App.General
                         case 1071: return "百貨珍品報酬";
                         case 1073: return "写真イベント(フレンド協力可)";
                         case 1074: return "参量物質変化器変換報酬";
+                        case 1082: return "デートイベント報酬";
                         case 1084: return "イベントマルチミニゲーム報酬";
                         case 1100: return "塵歌壺ギフトセット報酬";
 
