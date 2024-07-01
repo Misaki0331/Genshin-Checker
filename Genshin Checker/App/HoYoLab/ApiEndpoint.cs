@@ -2,6 +2,8 @@
 using System.Globalization;
 using Genshin_Checker.App.General;
 using static Genshin_Checker.App.HoYoLab.Account;
+using Genshin_Checker.Model.HoYoLab.RoleCombat;
+using System.Web;
 
 namespace Genshin_Checker.App.HoYoLab
 {
@@ -127,6 +129,22 @@ namespace Genshin_Checker.App.HoYoLab
             if (root.Data == null) throw new HoYoLabAPIException(root.Retcode, root.Message);
             return root.Data;
         }
+
+        /// <summary>
+        /// 幻想シアター情報
+        /// </summary>
+        /// <param name="IsNeedDetail">詳細情報が必要かどうか</param>
+        /// <returns></returns>
+        /// <exception cref="InvalidDataException"></exception>
+        public async Task<Model.HoYoLab.RoleCombat.Data> GetRoleCombat(bool IsNeedDetail)
+        {
+            if (!Account.IsAuthed) throw new UserNotAuthenticatedException(Account.UID);
+            var json = await GetJson.GetRoleCombat(Account, IsNeedDetail);
+            var root = JsonChecker<Model.HoYoLab.RoleCombat.Root>.Check(json);
+            if (root.Data == null) throw new HoYoLabAPIException(root.Retcode, root.Message);
+            return root.Data;
+        }
+
         /// <summary>
         /// HoYoLabの情報を取得
         /// </summary>
@@ -318,6 +336,21 @@ namespace Genshin_Checker.App.HoYoLab
         public static async Task<string> GetCharacterDetail(Account Account, int characterID)
         {
             var url = $"https://sg-public-api.hoyolab.com/event/calculateos/sync/avatar/detail?avatar_id={characterID}&uid={Account.UID}&region={Account.Server}&lang={Account.Culture.Name.ToLower()}";
+            var json = await WebRequest.HoYoGetRequest(url, Account.Cookie);
+            return json ?? "";
+        }
+
+        /// <summary>
+        /// 幻想シアター情報
+        /// </summary>
+        /// <param name="Account">アカウント情報</param>
+        /// <param name="IsNeedDetail">詳細情報が必要か</param>
+        /// <returns></returns>
+        public static async Task<string> GetRoleCombat(Account Account, bool IsNeedDetail)
+        {
+            //以下のコメントは必要になったら。
+            //&nickname={HttpUtility.UrlEncode(HttpUtility.UrlEncode(Account.Name)).ToUpper()}
+            var url = $"https://bbs-api-os.hoyolab.com/game_record/genshin/api/role_combat?server={Account.Server}&role_id={Account.UID}&need_detail={(IsNeedDetail?"true":"false")}";
             var json = await WebRequest.HoYoGetRequest(url, Account.Cookie);
             return json ?? "";
         }
