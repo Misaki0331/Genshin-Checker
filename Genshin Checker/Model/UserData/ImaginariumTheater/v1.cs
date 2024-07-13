@@ -1,52 +1,66 @@
-﻿using System;
+﻿using Genshin_Checker.Model.HoYoLab.RoleCombat;
+using Genshin_Checker.Model.UserData.SpiralAbyss.v1;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-//幻想シアター
-namespace Genshin_Checker.Model.HoYoLab.RoleCombat
+namespace Genshin_Checker.Model.UserData.ImaginariumTheater.v1
 {
-    public class Root : Model.HoYoLab.Root<Data>
+    public class V1 : DatabaseRoot
     {
+        public Data Data { get; set; } = new();
+    }
+    public class TimeRange
+    {
+        public DateTime start { get; set; }
+        public DateTime end { get; set; }
     }
     public class Data
     {
-        /// <summary>
-        /// データ情報
-        /// </summary>
-        public List<DataGame> data { get; set; } = new();
-        /// <summary>
-        /// 解禁済みか
-        /// </summary>
-        public bool is_unlock { get; set; }
-        /// <summary>
-        /// リンク集
-        /// </summary>
-        public Dictionary<string, string> links { get; set; } = new();
+        public bool IsUnlock { get; set; } = false;
+        public int schedule_id { get; set; }
+        public int schedule_type { get; set; }
+        public TimeRange ScheduleTime { get; set; } = new();
+        public List<Detail> Detail { get; set; } = new();
+        public Stats CurrentStats { get; set; } = new();
     }
-    public class DataGame
+    public class Stats
     {
         /// <summary>
-        /// 詳細情報
+        /// 観客の声援の数
         /// </summary>
-        public Detail? detail { get; set; }
+        public int avatar_bonus_num { get; set; } = 0;
         /// <summary>
-        /// プレイステータス
+        /// 難易度
         /// </summary>
-        public Stat stat { get; set; } = new();
+        public int difficulty_id { get; set; } = 0;
         /// <summary>
-        /// スケジュール情報
+        /// ラウンドごとの星の取得情報
         /// </summary>
-        public Schedule schedule { get; set; } = new();
+        public List<int> get_medal_round_list { get; set; } = new();
         /// <summary>
-        /// 解禁済みか
+        /// レンタル数
         /// </summary>
-        public bool has_data { get; set; }
+        public int rent_cnt { get; set; } = 0;
         /// <summary>
-        /// プレイ済みか
+        /// 獲得した星の数
         /// </summary>
-        public bool has_detail_data { get; set; }
+        public int medal_num { get; set; } = 0;
+        /// <summary>
+        /// 最大到達ラウンド数
+        /// </summary>
+        public int max_round_id { get; set; } = 0;
+        /// <summary>
+        /// 紋章レベル
+        /// </summary>
+        public int heraldry { get; set; } = 0;
+        /// <summary>
+        /// 消費した「幻戯の花」の数
+        /// </summary>
+        public int coin_num { get; set; } = 0;
     }
     public class Avatar
     {
@@ -56,14 +70,9 @@ namespace Genshin_Checker.Model.HoYoLab.RoleCombat
         public int avatar_id { get; set; }
         /// <summary>
         /// 1 : プレイヤー育成<br/>
-        /// 2 : お試しキャラクター<br/>
-        /// 3 : フレンドのキャラクター
+        /// 2 : お試しキャラクター
         /// </summary>
         public int avatar_type { get; set; }
-        /// <summary>
-        /// キャラクター名
-        /// </summary>
-        public string name { get; set; } = "";
         /// <summary>
         /// 元素
         /// </summary>
@@ -115,11 +124,14 @@ namespace Genshin_Checker.Model.HoYoLab.RoleCombat
         /// <summary>
         /// ステータス
         /// </summary>
-        public Stat detail_stat { get; set; } = new();
+        public Stats Stats { get; set; } = new();
         /// <summary>
         /// 公演キャラ
         /// </summary>
         public List<Avatar> backup_avatars { get; set; } = new();
+        public DateTime UpdateAt { get; set; }
+        public DateTime FirstRoundTime { get; set; }
+        public DateTime FinalRoundTime { get; set; }
     }
 
 
@@ -130,38 +142,6 @@ namespace Genshin_Checker.Model.HoYoLab.RoleCombat
         public List<Buff> buffs { get; set; } = new();
         public bool is_get_medal { get; set; }
         public int round_id { get; set; }
-        public string finish_time { get; set; } = "";
-        public DateTimeInfo finish_date_time { get; set; } = new();
-    }
-    public class Schedule
-    {
-        public string start_time { get; set; } = "";
-        public string end_time { get; set; } = "";
-        public int schedule_type { get; set; }
-        public int schedule_id { get; set; }
-        public DateTimeInfo start_date_time { get; set; } = new();
-        public DateTimeInfo end_date_time { get; set; } = new();
-    }
-
-    public class DateTimeInfo
-    {
-        public int year { get; set; }
-        public int month { get; set; }
-        public int day { get; set; }
-        public int hour { get; set; }
-        public int minute { get; set; }
-        public int second { get; set; }
-    }
-
-    public class Stat
-    {
-        public int difficulty_id { get; set; }
-        public int max_round_id { get; set; }
-        public int heraldry { get; set; }
-        public List<int> get_medal_round_list { get; set; } = new();
-        public int medal_num { get; set; }
-        public int coin_num { get; set; }
-        public int avatar_bonus_num { get; set; }
-        public int rent_cnt { get; set; }
+        public DateTime finish_time { get; set; }
     }
 }

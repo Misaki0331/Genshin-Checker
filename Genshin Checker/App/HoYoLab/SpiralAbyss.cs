@@ -26,6 +26,7 @@ namespace Genshin_Checker.App.HoYoLab
             Cache = new();
             ServerUpdate.Start();
         }
+        private string REG_PATH { get => $"UserData\\{account.UID}\\SpiralAbyss"; }
         async void Timeout_Tick(object? sender, EventArgs e)
         {
             ServerUpdate.Stop();
@@ -144,11 +145,11 @@ namespace Genshin_Checker.App.HoYoLab
 
         async void Save(V1 v1)
         {
-            string? path = Registry.GetValue($"UserData\\{account.UID}\\SpiralAbyss", $"{v1.Data.schedule_id}",true);
+            string? path = Registry.GetValue(REG_PATH, $"{v1.Data.schedule_id}",true);
             if (path == null)
             {
                 path = AppData.GetRandomPath();
-                Registry.SetValue($"UserData\\{account.UID}\\SpiralAbyss", $"{v1.Data.schedule_id}", path, true);
+                Registry.SetValue(REG_PATH, $"{v1.Data.schedule_id}", path, true);
 
             }
             await AppData.SaveUserData(path, JsonConvert.SerializeObject(v1));
@@ -156,7 +157,7 @@ namespace Genshin_Checker.App.HoYoLab
         }
         public List<int> GetList()
         {
-            var strs = Registry.GetKeyNames($"UserData\\{account.UID}\\SpiralAbyss");
+            var strs = Registry.GetKeyNames(REG_PATH);
             var list = new List<int>();
             foreach(string str in strs)
             {
@@ -167,10 +168,10 @@ namespace Genshin_Checker.App.HoYoLab
         }
         public async Task<V1> Load(int id)
         {
-            var path = Registry.GetValue($"UserData\\{account.UID}\\SpiralAbyss", $"{id}", true) ?? throw new IOException(Localize.Error_SpiralAbyssFile_RegistryNotFound);
+            var path = Registry.GetValue(REG_PATH, $"{id}", true) ?? throw new IOException(Localize.Error_SpiralAbyssFile_RegistryNotFound);
             var data = await AppData.LoadUserData(path);
             if (string.IsNullOrEmpty(data)) throw new InvalidDataException("Data is empty.");
-            var ver = JsonChecker<Model.UserData.SpiralAbyss.Root>.Check(data??"{}");
+            var ver = JsonChecker<Model.UserData.DatabaseRoot>.Check(data??"{}");
             V1? v1 = (ver?.Version) switch
             {
                 null => throw new InvalidDataException(Localize.Error_SpiralAbyssFile_InvalidFileVersion),

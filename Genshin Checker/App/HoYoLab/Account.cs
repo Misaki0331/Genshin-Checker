@@ -25,6 +25,7 @@ namespace Genshin_Checker.App.HoYoLab
         public CharacterDetail CharacterDetail;
         public SpiralAbyss SpiralAbyss;
         public HoYoLabInfomation HoYoLabInfomation;
+        public ImaginariumTheater ImaginariumTheater;
         public static async Task<Account> GetInstance(string cookie, int UID)
         {
             var account = new Account();
@@ -54,6 +55,7 @@ namespace Genshin_Checker.App.HoYoLab
             CharacterDetail = new(this);
             SpiralAbyss = new(this);
             HoYoLabInfomation = new(this);
+            ImaginariumTheater = new(this);
             Culture = CultureInfo.CurrentCulture;
             Endpoint= new(this);
         }
