@@ -60,21 +60,19 @@ namespace Genshin_Checker.App.HoYoLab
                 Version = 2,
                 UID = account.UID,
             };
-            
+
             res.UpdateUTC = DateTime.UtcNow;
-            res.Data = new()
+            res.Data.schedule_id = data.schedule_id;
+            res.Data.is_unlock = data.is_unlock;
+            res.Data.total_battle_times = data.total_battle_times;
+            res.Data.ScheduleTime = new()
             {
-                schedule_id = data.schedule_id,
-                is_unlock = data.is_unlock,
-                total_battle_times = data.total_battle_times,
-                ScheduleTime = new() { 
-                    start = Time.GetUTCFromUnixTime(long.Parse(data.start_time)), 
-                    end = Time.GetUTCFromUnixTime(long.Parse(data.end_time)) 
-                },
-                total_win_times = data.total_win_times,
-                max_floor = data.max_floor,
-                total_star = data.total_star,
+                start = Time.GetUTCFromUnixTime(long.Parse(data.start_time)),
+                end = Time.GetUTCFromUnixTime(long.Parse(data.end_time))
             };
+            res.Data.total_win_times = data.total_win_times;
+            res.Data.max_floor = data.max_floor;
+            res.Data.total_star = data.total_star;
 
             res.Data.Ranks = new();
             foreach (var d in data.reveal_rank) res.Data.Ranks.Reveal.Add(new() { id = d.avatar_id, value = d.value });
@@ -86,7 +84,7 @@ namespace Genshin_Checker.App.HoYoLab
             foreach (var floor in data.floors)
             {
                 var flr = res.Data.floors.Find(a => a.index == floor.index);
-                bool IsNewFloor = flr==null;
+                bool IsNewFloor = flr == null;
                 flr ??= new Floor()
                 {
                     index = floor.index,
@@ -100,7 +98,7 @@ namespace Genshin_Checker.App.HoYoLab
                 foreach (var level in floor.levels)
                 {
                     var l = flr.levels.Find(l => l.index == level.index);
-                    bool IsNewLevel = l==null;
+                    bool IsNewLevel = l == null;
                     l ??= new Level()
                     {
                         index = level.index,
@@ -127,13 +125,19 @@ namespace Genshin_Checker.App.HoYoLab
                     }
                     l.history.Add(history);
                     CountOfAddBattle++;
-                    if(IsNewLevel)flr.levels.Add(l);
+                    Trace.WriteLine($"{flr.index}層{l.index}間にてデータの更新");
+                    if (IsNewLevel) flr.levels.Add(l);
                 }
-                if(IsNewFloor)res.Data.floors.Add(flr);
+                if (IsNewFloor) res.Data.floors.Add(flr);
             }
-            if(CountOfAddBattle > 0)
+            if (CountOfAddBattle > 0)
             {
+                Trace.WriteLine($"保存 : {CountOfAddBattle} 個更新");
                 await Save(res);
+            }
+            else
+            {
+                Trace.WriteLine("更新はありませんでした。");
             }
             return res;
 
