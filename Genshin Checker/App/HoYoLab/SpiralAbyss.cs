@@ -7,6 +7,7 @@ using HarfBuzzSharp;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -29,12 +30,15 @@ namespace Genshin_Checker.App.HoYoLab
             ServerUpdate.Start();
         }
         private string REG_PATH { get => $"UserData\\{account.UID}\\SpiralAbyss"; }
+        bool IsGotOldData = false;
         async void Timeout_Tick(object? sender, EventArgs e)
         {
             ServerUpdate.Stop();
             try
             {
-                Cache.Data = await Convert(await account.Endpoint.GetSpiralAbyss(false));
+                if(!IsGotOldData) await Convert(await account.Endpoint.GetSpiralAbyss(false));
+                IsGotOldData = true;
+                Cache.Data = await Convert(await account.Endpoint.GetSpiralAbyss(true));
                 Cache.Latest = DateTime.Now;
                 ServerUpdate.Interval = 60 * 15 * 1000;
                 ServerUpdate.Start();
@@ -49,12 +53,12 @@ namespace Genshin_Checker.App.HoYoLab
         public async Task<V2> Convert(Model.HoYoLab.SpiralAbyss.Data data)
         {
             int CountOfAddBattle = 0;
-            var res = new V2()
+            var res = await Load(data.schedule_id) ?? new V2()
             {
                 Version = 2,
                 UID = account.UID,
             };
-
+            
             res.UpdateUTC = DateTime.UtcNow;
             res.Data = new()
             {
@@ -119,6 +123,7 @@ namespace Genshin_Checker.App.HoYoLab
                         }
                         history.battles.Add(b);
                     }
+                    l.history.Add(history);
                     CountOfAddBattle++;
                     if(IsNewLevel)flr.levels.Add(l);
                 }
@@ -132,11 +137,6 @@ namespace Genshin_Checker.App.HoYoLab
 
         }
         public V2? GetCurrent { get => Cache.Data; }
-
-        public async Task<V2> GetOld()
-        {
-            return await Convert(await account.Endpoint.GetSpiralAbyss(false));
-        }
 
         async Task Save(V2 v2)
         {
@@ -167,15 +167,28 @@ namespace Genshin_Checker.App.HoYoLab
             var data = await AppData.LoadUserData(path);
             if (string.IsNullOrEmpty(data)) throw new InvalidDataException("Data is empty.");
             var ver = JsonChecker<Model.UserData.DatabaseRoot>.Check(data??"{}");
-            V2? v1 = (ver?.Version) switch
+            V2? v2 = (ver?.Version) switch
             {
                 null => throw new InvalidDataException(Localize.Error_SpiralAbyssFile_InvalidFileVersion),
                 1 => Model.UserData.SpiralAbyss.Convert.FromV1(JsonChecker<Model.UserData.SpiralAbyss.v1.V1>.Check(data??"")),
                 2 => JsonChecker<V2>.Check(data ?? ""),
                 _ => throw new InvalidDataException(string.Format(Localize.Error_SpiralAbyssFile_UnknownFileVersion,ver.Version)),
             } ?? throw new InvalidDataException(Localize.Error_SpiralAbyssFile_FailedConvert);
-            if (v1.UID != account.UID) throw new InvalidDataException(string.Format(Localize.Error_SpiralAbyssFile_DoesNotMatchUID, v1.UID, account.UID));
-            return v1;
+            if (v2.UID != account.UID) throw new InvalidDataException(string.Format(Localize.Error_SpiralAbyssFile_DoesNotMatchUID, v2.UID, account.UID));
+            if (ver.Version != 2)
+            {
+                Trace.WriteLine($"螺旋 {v2.Data.schedule_id} 期のデータをアップデートします...");
+                try
+                {
+                    await Save(v2);
+                    Trace.WriteLine($"→完了");
+                }
+                catch(Exception ex)
+                {
+                    Trace.WriteLine($"→失敗 {ex.Message}");
+                }
+            }
+            return v2;
         }
     }
 }
