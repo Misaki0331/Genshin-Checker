@@ -30,7 +30,10 @@
         {
             label1 = new Label();
             panel1 = new Panel();
+            LeftButton = new Button();
+            label3 = new Label();
             PanelStar = new Panel();
+            RightButton = new Button();
             PanelBattleInfo = new Panel();
             tableLayoutPanel1 = new TableLayoutPanel();
             label2 = new Label();
@@ -54,13 +57,41 @@
             // panel1
             // 
             panel1.BackColor = Color.Transparent;
+            panel1.Controls.Add(LeftButton);
+            panel1.Controls.Add(label3);
             panel1.Controls.Add(PanelStar);
             panel1.Controls.Add(label1);
+            panel1.Controls.Add(RightButton);
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
             panel1.Size = new Size(348, 38);
             panel1.TabIndex = 1;
+            // 
+            // LeftButton
+            // 
+            LeftButton.Dock = DockStyle.Right;
+            LeftButton.Font = new Font("Yu Gothic UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            LeftButton.Location = new Point(187, 0);
+            LeftButton.Name = "LeftButton";
+            LeftButton.Size = new Size(38, 38);
+            LeftButton.TabIndex = 2;
+            LeftButton.Text = "◀";
+            LeftButton.UseVisualStyleBackColor = true;
+            LeftButton.Click += LeftButton_Click;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.BackColor = Color.Transparent;
+            label3.Dock = DockStyle.Right;
+            label3.Font = new Font("Meiryo UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
+            label3.Location = new Point(225, 0);
+            label3.Name = "label3";
+            label3.Size = new Size(85, 35);
+            label3.TabIndex = 3;
+            label3.Text = "1 / 1";
+            label3.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // PanelStar
             // 
@@ -71,6 +102,18 @@
             PanelStar.Name = "PanelStar";
             PanelStar.Size = new Size(0, 38);
             PanelStar.TabIndex = 1;
+            // 
+            // RightButton
+            // 
+            RightButton.Dock = DockStyle.Right;
+            RightButton.Font = new Font("Yu Gothic UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            RightButton.Location = new Point(310, 0);
+            RightButton.Name = "RightButton";
+            RightButton.Size = new Size(38, 38);
+            RightButton.TabIndex = 4;
+            RightButton.Text = "▶";
+            RightButton.UseVisualStyleBackColor = true;
+            RightButton.Click += RightButton_Click;
             // 
             // PanelBattleInfo
             // 
@@ -139,5 +182,8 @@
         private Label label2;
         private Panel PanelStar;
         private TableLayoutPanel tableLayoutPanel1;
+        private Button LeftButton;
+        private Label label3;
+        private Button RightButton;
     }
 }

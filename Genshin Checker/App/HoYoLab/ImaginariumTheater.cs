@@ -1,6 +1,7 @@
 ﻿using Genshin_Checker.App.General;
 using Genshin_Checker.Model.UserData.ImaginariumTheater.v1;
 using Genshin_Checker.resource.Languages;
+using Genshin_Checker.App.General.Convert;
 using Microsoft.WindowsAPICodePack.Shell;
 using Newtonsoft.Json;
 using System;
@@ -41,10 +42,6 @@ namespace Genshin_Checker.App.HoYoLab
             {
                 Trace.WriteLine(ex);
             }
-        }
-        private DateTime GetUTCFromUnixTime(long unixTime)
-        {
-            return new DateTime(1970, 1, 1, 0, 0, 0,DateTimeKind.Utc).AddSeconds(unixTime);
         }
         public async Task<V1> Load(int id)
         {
@@ -117,7 +114,7 @@ namespace Genshin_Checker.App.HoYoLab
                 foreach (var round in index.detail?.rounds_data ?? new())
                 {
                     if(!long.TryParse(round.finish_time, out long t))continue;
-                    var time = GetUTCFromUnixTime(t);
+                    var time = Time.GetUTCFromUnixTime(t);
                     if (starttime > time) starttime = time;
                     if (endtime < time) endtime = time;
                 }
@@ -150,8 +147,8 @@ namespace Genshin_Checker.App.HoYoLab
                 #region 内容のコピー
 
                 //ここはスケジュール情報
-                if(int.TryParse(index.schedule.start_time,out var start)) userdata.Data.ScheduleTime.start = GetUTCFromUnixTime(start);
-                if(int.TryParse(index.schedule.end_time,out var end)) userdata.Data.ScheduleTime.end = GetUTCFromUnixTime(end);
+                if(int.TryParse(index.schedule.start_time,out var start)) userdata.Data.ScheduleTime.start = Time.GetUTCFromUnixTime(start);
+                if(int.TryParse(index.schedule.end_time,out var end)) userdata.Data.ScheduleTime.end = Time.GetUTCFromUnixTime(end);
                 userdata.Data.schedule_id = index.schedule.schedule_id;
                 userdata.Data.schedule_type = index.schedule.schedule_type;
                 userdata.Data.IsUnlock = index.has_data;
@@ -199,7 +196,7 @@ namespace Genshin_Checker.App.HoYoLab
                     {
                         if (long.TryParse(round.finish_time, out var f))
                         {
-                            var finish = GetUTCFromUnixTime(f);
+                            var finish = Time.GetUTCFromUnixTime(f);
                             if (game.FirstRoundTime > finish) game.FirstRoundTime = finish;
                             if (game.FinalRoundTime < finish) game.FinalRoundTime = finish;
                         }
@@ -207,7 +204,7 @@ namespace Genshin_Checker.App.HoYoLab
                         if (!long.TryParse(round.finish_time, out finishTime)) finishTime = 0;
                         game.rounds_data.Add(new()
                         {
-                            finish_time = GetUTCFromUnixTime(finishTime),
+                            finish_time = Time.GetUTCFromUnixTime(finishTime),
                             round_id = round.round_id,
                             is_get_medal = round.is_get_medal,
                         });

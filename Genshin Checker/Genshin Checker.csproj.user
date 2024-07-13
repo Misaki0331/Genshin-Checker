@@ -156,5 +156,8 @@
     <EmbeddedResource Update="Window\PopupWindow\FatalError.resx">
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Update="Window\SpiralAbyss.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
 </Project>

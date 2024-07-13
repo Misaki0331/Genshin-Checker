@@ -30,7 +30,7 @@ namespace Genshin_Checker.Model.API.UserInfo
         /// <summary>
         /// 開催終了のUnix時間
         /// </summary>
-        public int? endtime { get; set; } = null;
+        public double? endtime { get; set; } = null;
         /// <summary>
         /// 行情報
         /// </summary>

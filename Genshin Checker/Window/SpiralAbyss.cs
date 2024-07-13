@@ -1,5 +1,5 @@
 ﻿using Genshin_Checker.App.HoYoLab;
-using Genshin_Checker.Model.UserData.SpiralAbyss.v1;
+using Genshin_Checker.Model.UserData.SpiralAbyss.v2;
 using Genshin_Checker.resource.Languages;
 using Genshin_Checker.Window.Popup;
 using OpenTK.Graphics.ES20;
@@ -19,7 +19,7 @@ namespace Genshin_Checker.Window
     public partial class SpiralAbyss : Form
     {
         Account account;
-        V1? CurrentDisplayData = null;
+        V2? CurrentDisplayData = null;
         List<UI.Control.SpiralAbyss.LevelInfo> LevelInfo;
         UI.Control.SpiralAbyss.CharacterFrame? CharacterCount;
         List<UI.Control.SpiralAbyss.CharacterFrame> GeneralList;
@@ -48,6 +48,11 @@ namespace Genshin_Checker.Window
                 comboBox1.Items.Add(i.name);
             if (ComboData.Count > 0) comboBox1.SelectedIndex = 0;
             else comboBox1.Enabled = false;
+
+            CheckSummarize.Checked = false;
+            CheckSummarize.Enabled = false;
+            CheckSummarize.Visible = false;
+
         }
 
         private void SpiralAbyss_Load(object sender, EventArgs e)
@@ -79,14 +84,14 @@ namespace Genshin_Checker.Window
 
             LoadFloorData(-1);
         }
-        void PanelLoad(V1 v1)
+        void PanelLoad(V2 v2)
         {
             PanelReset();
             Trace.WriteLine("PanelLoad");
-            CurrentDisplayData = v1;
-            var data = v1.Data;
+            CurrentDisplayData = v2;
+            var data = v2.Data;
             LabelScheduleName.Text = string.Format(Localize.UIName_SpiralAbyss_ResultTitle, data.schedule_id);
-            LabelTimestamp.Text = $"{DateTimeOffset.FromUnixTimeSeconds(data.ScheduleTime.start).ToLocalTime():yyyy/MM/dd HH:mm:ss} ～ {DateTimeOffset.FromUnixTimeSeconds(data.ScheduleTime.end).ToLocalTime():yyyy/MM/dd HH:mm:ss}";
+            LabelTimestamp.Text = $"{data.ScheduleTime.start.ToLocalTime():yyyy/MM/dd HH:mm:ss} ～ {data.ScheduleTime.end.ToLocalTime():yyyy/MM/dd HH:mm:ss}";
 
             LabelLatestArea.Text = data.max_floor;
             LabelStarCount.Text = $"★{data.total_star}";
@@ -145,8 +150,9 @@ namespace Genshin_Checker.Window
                 DateTime latest = DateTime.MinValue;
                 foreach (var a in f.levels)
                 {
-                    var t = DateTimeOffset.FromUnixTimeSeconds(a.timestamp).ToLocalTime();
-                    if (latest < t.DateTime) latest = t.DateTime;
+                    if (a.history.Count == 0) continue;
+                    var t = a.history[^1].timestamp.ToLocalTime();
+                    if (latest < t) latest = t;
                 }
                 var controls = new UI.Control.SpiralAbyss.FloorInfo(f.index, str, !f.is_unlock, string.Join("\n", f.ley_line_disorder), f.levels.Count > 0 ? latest : null) { Dock = DockStyle.Top };
                 controls.ClickHandler += Floors_ClickHandler;
@@ -154,12 +160,11 @@ namespace Genshin_Checker.Window
                 FloorList.Add(controls);
             }
         }
-        async void LoadDataCurrent()
+        void LoadDataCurrent()
         {
             try
             {
-                var GameData = await account.SpiralAbyss.GetCurrent();
-                PanelLoad(GameData);
+                PanelLoad(account.SpiralAbyss.GetCurrent??new());
             }catch(Exception ex)
             {
                 new ErrorMessage(Common.ErrorMessage, ex.ToString()).ShowDialog();

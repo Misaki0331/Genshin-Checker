@@ -1,4 +1,5 @@
-﻿using Genshin_Checker.App.HoYoLab;
+﻿using Genshin_Checker.App.General.Convert;
+using Genshin_Checker.App.HoYoLab;
 using Genshin_Checker.resource.Languages;
 using Genshin_Checker.Store;
 using Genshin_Checker.Window;
@@ -268,7 +269,7 @@ namespace Genshin_Checker.App.WebServer.Endpoint
             {
                 clickto = "",
                 title = "深境螺旋",
-                endtime = user.SpiralAbyss.CacheCurrent?.Data.ScheduleTime.end ?? null,
+                endtime = Time.GetUnixTimeFromDateTime(user.SpiralAbyss.GetCurrent?.Data.ScheduleTime.end) ?? null,
                 rows = new()
                 {
                     new(){
@@ -278,8 +279,8 @@ namespace Genshin_Checker.App.WebServer.Endpoint
                         title = "深境螺旋のプレイ情報です",
                         description = "クリア回数/挑戦回数"
                     },
-                    value = user.SpiralAbyss.CacheCurrent?.Data.total_win_times.ToString("#,##0")??"-",
-                    max_value = "/ "+user.SpiralAbyss.CacheCurrent?.Data.total_battle_times.ToString("#,##0")??"-"
+                    value = user.SpiralAbyss.GetCurrent?.Data.total_win_times.ToString("#,##0")??"-",
+                    max_value = "/ "+user.SpiralAbyss.GetCurrent?.Data.total_battle_times.ToString("#,##0")??"-"
                     },
                     new(){
                     icon = "https://static-api.misaki-chan.world/genshin-checker/webtools/img/tower.png",
@@ -288,7 +289,7 @@ namespace Genshin_Checker.App.WebServer.Endpoint
                         title = "最高記録",
                         description = "今期で最高記録の情報です"
                     },
-                    value = user.SpiralAbyss.CacheCurrent?.Data.max_floor??"-"
+                    value = user.SpiralAbyss.GetCurrent?.Data.max_floor??"-"
                     },
                     new(){
                     icon = "https://static-api.misaki-chan.world/genshin-checker/webtools/img/tower_star.png",
@@ -297,7 +298,7 @@ namespace Genshin_Checker.App.WebServer.Endpoint
                         title = "獲得した淵星の数",
                         description = "今期で獲得した淵星の数です。"
                     },
-                    value = user.SpiralAbyss.CacheCurrent?.Data.total_star.ToString("#,##0")??"-"
+                    value = user.SpiralAbyss.GetCurrent?.Data.total_star.ToString("#,##0")??"-"
                     }
                 }
             });
