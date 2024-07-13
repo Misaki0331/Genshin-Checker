@@ -9,39 +9,26 @@ using System.Threading.Tasks;
 
 namespace Genshin_Checker.App
 {
-    public class TravelersDiary
+    public class TravelersDiary : Base
     {
-        private Account account;
-
-        public bool IsDisposed { get; private set; } = false;
-        public void Dispose()
+        public TravelersDiary(Account account):base(account,3000)
         {
-            IsDisposed = true;
-            ServerUpdate.Stop();
-        }
-        public TravelersDiary(Account account)
-        {
-            this.account = account;
-            ServerUpdate = new()
-            {
-                Interval = 10,
-                Enabled = true,
-            };
-            ServerUpdate.Tick += ServerUpdate_Tick;
+            base.account = account;
+            ServerUpdate.Elapsed += ServerUpdate_Tick;
         }
         public Model.HoYoLab.TravelersDiary.Infomation.Root Data { get; private set; } = new();
-        private async void ServerUpdate_Tick(object? sender, EventArgs e)
+        internal async void ServerUpdate_Tick(object? sender, EventArgs e)
         {
             if (IsDisposed) return;
             ServerUpdate.Stop();
-
+            Trace.WriteLine("旅人手帳を取得");
             if (!account.IsAuthed)
             {
                 ServerUpdate.Interval = 1000;
                 ServerUpdate.Start();
                 return;
             }
-                try
+            try
             {
                 var json = await getNote();
                 Data = new() { Data = json, Message = "OK" };
@@ -60,14 +47,10 @@ namespace Genshin_Checker.App
                 Trace.WriteLine(Data.Message);
             }
 
-            ServerUpdate.Interval = 300000;
+            ServerUpdate.Interval = account.LatestActiveSession>DateTime.UtcNow.AddHours(-1)?300000:3600000*3;
             ServerUpdate.Start();
         }
 
-
-        public int uid { get => account.UID; }
-
-        private readonly System.Windows.Forms.Timer ServerUpdate;
 
         private async Task<Model.HoYoLab.TravelersDiary.Infomation.Data> getNote()
         {

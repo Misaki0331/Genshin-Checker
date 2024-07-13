@@ -15,7 +15,7 @@ namespace Genshin_Checker.App.HoYoLab
         const int CacheSecond = 3600*8;
         public CharacterDetail(Account account) : base(account, 5000)
         {
-            ServerUpdate.Tick += Timeout_Tick;
+            ServerUpdate.Elapsed += Timeout_Tick;
             Cache = new();
             ServerUpdate.Start();
         }

@@ -16,7 +16,7 @@ namespace Genshin_Checker.App.HoYoLab
     {
         public GameRecords(Account account) : base(account, 1000)
         {
-            ServerUpdate.Tick += ServerUpdate_Tick;
+            ServerUpdate.Elapsed += ServerUpdate_Tick;
         }
         public Data? Data { get; private set; } = null;
         private async void ServerUpdate_Tick(object? sender, EventArgs e)
@@ -25,7 +25,7 @@ namespace Genshin_Checker.App.HoYoLab
             {
                 var a = await account.Endpoint.GetGameRecords();
                 Data = a;
-                ServerUpdate.Interval = 300000;
+                ServerUpdate.Interval = account.LatestActiveSession > DateTime.UtcNow.AddHours(-1) ? 300000 : 3600000 * 1;
             }
             catch(Exception ex)
             {

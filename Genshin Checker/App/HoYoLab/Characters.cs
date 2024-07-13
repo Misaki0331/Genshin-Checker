@@ -11,7 +11,7 @@ namespace Genshin_Checker.App.HoYoLab
     {
         public Characters(Account account) : base(account, 300000)
         {
-            ServerUpdate.Tick += Timeout_Tick;
+            ServerUpdate.Elapsed += Timeout_Tick;
         }
         private Model.HoYoLab.Characters.Data? CharacterData = null;
         private void Timeout_Tick(object? sender, EventArgs e)

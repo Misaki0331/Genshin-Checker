@@ -230,7 +230,7 @@ namespace Genshin_Checker.App.HoYoLab
 
         public TravelersDiaryDetail(Account account) : base(account, 300000)
         {
-            ServerUpdate.Tick += ServerUpdate_Tick;
+            ServerUpdate.Elapsed += ServerUpdate_Tick;
         }
 
         private void ServerUpdate_Tick(object? sender, EventArgs e)

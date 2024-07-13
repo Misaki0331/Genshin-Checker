@@ -25,27 +25,29 @@ namespace Genshin_Checker.App.HoYoLab
         CacheInfo Cache;
         public SpiralAbyss(Account account) : base(account, 5000)
         {
-            ServerUpdate.Tick += Timeout_Tick;
+            ServerUpdate.Elapsed += Timeout_Tick;
             Cache = new();
             ServerUpdate.Start();
         }
         private string REG_PATH { get => $"UserData\\{account.UID}\\SpiralAbyss"; }
         bool IsGotOldData = false;
-        async void Timeout_Tick(object? sender, EventArgs e)
+        internal async void Timeout_Tick(object? sender, EventArgs e)
         {
             ServerUpdate.Stop();
             try
             {
                 if(!IsGotOldData) await Convert(await account.Endpoint.GetSpiralAbyss(false));
+                Trace.WriteLine("深境螺旋を取得");
                 IsGotOldData = true;
                 Cache.Data = await Convert(await account.Endpoint.GetSpiralAbyss(true));
                 Cache.Latest = DateTime.Now;
-                ServerUpdate.Interval = 60 * 15 * 1000;
+                ServerUpdate.Interval = account.LatestActiveSession > DateTime.UtcNow.AddHours(-1) ? 300000 : 3600000 * 3;
                 ServerUpdate.Start();
                 return;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Trace.WriteLine(ex);
             }
             ServerUpdate.Interval = 300000;
             ServerUpdate.Start();

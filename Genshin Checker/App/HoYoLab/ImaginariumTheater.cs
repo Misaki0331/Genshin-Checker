@@ -19,16 +19,16 @@ namespace Genshin_Checker.App.HoYoLab
     {
         public ImaginariumTheater(Account account) : base(account, 5000)
         {
-            ServerUpdate.Tick += Timeout_Tick;
+            ServerUpdate.Elapsed += Timeout_Tick;
         }
         private Model.HoYoLab.RoleCombat.Data? RoleCombat = null;
         private string REG_PATH { get => $"UserData\\{account.UID}\\ImaginariumTheater"; }
-        private async void Timeout_Tick(object? sender, EventArgs e)
+        internal async void Timeout_Tick(object? sender, EventArgs e)
         {
             ServerUpdate.Stop();
-
+            Trace.WriteLine("幻想シアターを取得");
             await ScheduleReload();
-            ServerUpdate.Interval = 900000;
+            ServerUpdate.Interval = account.LatestActiveSession > DateTime.UtcNow.AddHours(-1) ? 600000 : 3600000 * 3;
             ServerUpdate.Start();
         }
         private async Task ScheduleReload()
