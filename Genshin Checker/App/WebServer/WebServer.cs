@@ -20,7 +20,11 @@ namespace Genshin_Checker.App.WebServer
             get => listener.IsListening;
             set { if (value) WebStart(); else WebStop(); }
         }
+#if DEBUG
+        int Port = 29056;
+#else
         int Port = 29055;
+#endif
         public WebServer()
         {
             listener = new HttpListener();
