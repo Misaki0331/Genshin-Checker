@@ -23,6 +23,7 @@ namespace Genshin_Checker.App.General
             RandomQuest,    //ランダムクエスト 28
             Enemy,          //敵討伐 37,52
             SpirialAbyss,   //螺旋 48,49
+            ImaginariumTheater, //幻想シアター
             Event,          //イベント
             Domains,        //秘境報酬(初回含む)
             Achievement,    //アチーブメント
@@ -96,6 +97,9 @@ namespace Genshin_Checker.App.General
                 case 81:
                 case 1054:
                     return EventType.Reputation;
+                case 117:
+                case 118:
+                    return EventType.ImaginariumTheater;
                 default:
                     return EventType.Others;
             }
@@ -149,6 +153,8 @@ namespace Genshin_Checker.App.General
                         case 101: return "イベント終了告知メール";
                         case 102: return "紀行終了告知メール";
                         case 116: return "デイリー(冒険修練)";
+                        case 117: return "幻想シアター(再演報酬)";
+                        case 118: return "幻想シアター(初演報酬)";
                         case 1016: return "秘境クリア";
                         case 1032: return "冒険の証・見聞(章制覇報酬)";
                         case 1033: return "冒険の証・見聞(単体報酬)";
@@ -161,6 +167,7 @@ namespace Genshin_Checker.App.General
                         case 1071: return "百貨珍品報酬";
                         case 1073: return "写真イベント(フレンド協力可)";
                         case 1074: return "参量物質変化器変換報酬";
+                        case 1082: return "デートイベント報酬";
                         case 1084: return "イベントマルチミニゲーム報酬";
                         case 1100: return "塵歌壺ギフトセット報酬";
 
@@ -239,6 +246,8 @@ namespace Genshin_Checker.App.General
                         case 101: return "イベント終了告知メール";
                         case 102: return "紀行終了告知メール";
                         case 116: return "デイリー(冒険修練)";
+                        case 117: return "幻想シアター(再演報酬)";
+                        case 118: return "幻想シアター(初演報酬)";
                         case 1016: return "秘境クリア";
                         case 1032: return "冒険の証・見聞(章制覇報酬)";
                         case 1033: return "冒険の証・見聞(単体報酬)";

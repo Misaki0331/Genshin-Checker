@@ -19,6 +19,7 @@ namespace Genshin_Checker
     public partial class MainTray : Form
     {
         List<string> GameLogTemp;
+        App.WebServer.WebServer WebServer;
         class StartUpData
         {
             internal string Message = "";
@@ -30,6 +31,8 @@ namespace Genshin_Checker
         {
             InitializeComponent();
             GameLogTemp = new();
+            WebServer = new();
+            WebServer.IsServerRun = true;
             notification.Icon = resource.icon.nahida;
             bool isdebug = false;
             var cmds = System.Environment.GetCommandLineArgs();

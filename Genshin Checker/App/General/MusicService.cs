@@ -77,31 +77,48 @@ namespace Genshin_Checker.App.General.Music
 
         LoopMode _looptype;
         public LoopMode LoopStyle { get => _looptype; set => _looptype = value; }
-        public async Task Next(bool play=false)
+        /// <summary>
+        /// 次のプレイリストを再生します。
+        /// </summary>
+        /// <param name="play">次に進んだ後再生するか</param>
+        /// <param name="force">強制的にプレイリストの次の楽曲を選択するか</param>
+        /// <returns></returns>
+        public async Task Next(bool play = false, bool force = false)
         {
             while (Queues.Count > 0)
             {
                 try
                 {
-                    var index = 0;//ToDo: ランダマイズ用に
-                    lock (Queues)
+                    if (force)
                     {
-                        switch (LoopStyle)
+                        lock (Queues)
                         {
-                            case LoopMode.Normal:
-                                Current = Queues[index];
-                                    Queues.Remove(Queues[index]);
-                                break;
-                            case LoopMode.Repeat:
-                                Queues.Add(Current);
-                                Current = Queues[index];
-                                Queues.Remove(Queues[index]);
-                                break;
-                            case LoopMode.SingleRepeat:
-                                break;
+                            Current = Queues[0];
+                            Queues.Remove(Queues[0]);
                         }
                     }
-                    QueueListChanged?.Invoke(this, EventArgs.Empty);
+                    else
+                    {
+                        var index = 0;//ToDo: ランダマイズ用に
+                        lock (Queues)
+                        {
+                            switch (LoopStyle)
+                            {
+                                case LoopMode.Normal:
+                                    Current = Queues[index];
+                                    Queues.Remove(Queues[index]);
+                                    break;
+                                case LoopMode.Repeat:
+                                    Queues.Add(Current);
+                                    Current = Queues[index];
+                                    Queues.Remove(Queues[index]);
+                                    break;
+                                case LoopMode.SingleRepeat:
+                                    break;
+                            }
+                        }
+                    }
+                        QueueListChanged?.Invoke(this, EventArgs.Empty);
                     await FileInit($"{Current.Uri}");
                     if(play)Play();
                     break;
@@ -114,6 +131,9 @@ namespace Genshin_Checker.App.General.Music
                 }
             }
         }
+        /// <summary>
+        /// 再生する。
+        /// </summary>
         public async void Play()
         {
             if (WaveStream == null) await Next();
@@ -125,6 +145,10 @@ namespace Genshin_Checker.App.General.Music
             UserStopped = false;
             waveOut.Play();
         }
+        /// <summary>
+        /// 再生中の楽曲をシークする
+        /// </summary>
+        /// <param name="time">シークする時間</param>
         public void Seek(TimeSpan time)
         {
             if(WaveStream == null) return;
@@ -133,12 +157,18 @@ namespace Genshin_Checker.App.General.Music
                 WaveStream.CurrentTime = time;
             }
         }
+        /// <summary>
+        /// 再生中の楽曲を一時停止する
+        /// </summary>
         public void Pause()
         {
             if (WaveStream == null) return;
             waveOut.Pause();
             
         }
+        /// <summary>
+        /// 再生中の楽曲を停止する
+        /// </summary>
         public void Stop()
         {
             if (WaveStream == null) return;
@@ -146,6 +176,12 @@ namespace Genshin_Checker.App.General.Music
             UserStopped = true;
             waveOut.Stop();
         }
+        /// <summary>
+        /// URLからファイルを取得して再生。<br/>
+        /// キャッシュ機能付き
+        /// </summary>
+        /// <param name="url"></param>
+        /// <returns></returns>
         private async Task FileInit(string url)
         {
             var data = await App.WebRequest.GetRequest(url);

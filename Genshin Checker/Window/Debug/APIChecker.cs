@@ -118,7 +118,14 @@ namespace Genshin_Checker.Window.Debug
         {
             var account = CheckAccount();
             if (account == null) return;
-            OutputBox.Text = JsonChecker<dynamic>.format(await GetJson.ExchangeCode(account,textBox1.Text));
+            OutputBox.Text = JsonChecker<dynamic>.format(await GetJson.ExchangeCode(account, textBox1.Text));
+        }
+
+        private async void ButtonTheater_Click(object sender, EventArgs e)
+        {
+            var account = CheckAccount();
+            if (account == null) return;
+            OutputBox.Text = JsonChecker<dynamic>.format(await GetJson.GetRoleCombat(account, true));
         }
     }
 }

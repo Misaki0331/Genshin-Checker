@@ -1,4 +1,5 @@
-﻿using Genshin_Checker.resource.Languages;
+﻿using Genshin_Checker.App.Game;
+using Genshin_Checker.resource.Languages;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -25,6 +26,28 @@ namespace Genshin_Checker.App.HoYoLab
         public CharacterDetail CharacterDetail;
         public SpiralAbyss SpiralAbyss;
         public HoYoLabInfomation HoYoLabInfomation;
+        public ImaginariumTheater ImaginariumTheater;
+        internal DateTime LatestActiveSession { get; private set; } = DateTime.MinValue;
+        internal ProcessTime.ProcessState LatestActivity { get; private set; } = ProcessTime.ProcessState.EmptyState;
+        private void SessionChange(object? sender,ProcessTime.Result e)
+        {
+            LatestActivity = e.State;
+            if (e.State == ProcessTime.ProcessState.Foreground)
+            {
+                if (LatestActiveSession.AddMinutes(5) < DateTime.UtcNow)
+                {
+                    Trace.WriteLine("OK");
+                    LatestActiveSession = DateTime.UtcNow;
+                    List<Base> list = new() { SpiralAbyss, ImaginariumTheater, TravelersDiary, GameRecords };
+                    foreach(var bs in list)
+                    {
+                        bs.ServerUpdate.Stop();
+                        bs.ServerUpdate.Interval = 5000;
+                        bs.ServerUpdate.Start();
+                    }
+                }
+            }
+        }
         public static async Task<Account> GetInstance(string cookie, int UID)
         {
             var account = new Account();
@@ -54,8 +77,10 @@ namespace Genshin_Checker.App.HoYoLab
             CharacterDetail = new(this);
             SpiralAbyss = new(this);
             HoYoLabInfomation = new(this);
+            ImaginariumTheater = new(this);
             Culture = CultureInfo.CurrentCulture;
             Endpoint= new(this);
+            ProcessTime.Instance.ChangedState += SessionChange;
         }
         /// <summary>
         /// Cookieの上書き検証<br/>
@@ -225,7 +250,7 @@ namespace Genshin_Checker.App.HoYoLab
             TravelersDiaryDetail.Dispose();
             GameRecords.Dispose();
             Characters.Dispose();
-            
+            ProcessTime.Instance.ChangedState -= SessionChange;
         }
         public class HoYoLabAPIException : Exception
         {

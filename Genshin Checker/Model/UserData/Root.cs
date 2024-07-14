@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Genshin_Checker.Model.UserData.SpiralAbyss
+namespace Genshin_Checker.Model.UserData
 {
-    public class Root
+
+    public class DatabaseRoot
     {
         public int Version { get; set; } = 1;
         public DateTime UpdateUTC { get; set; } = DateTime.UtcNow;

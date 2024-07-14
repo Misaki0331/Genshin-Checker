@@ -10,7 +10,7 @@ namespace Genshin_Checker.App.HoYoLab
     {
         public LoginBonus(Account account) : base(account, 1000)
         {
-            ServerUpdate.Tick += ServerUpdate_Tick;
+            ServerUpdate.Elapsed += ServerUpdate_Tick;
         }
         //ToDo: ログボ処理を書く
         private void ServerUpdate_Tick(object? sender, EventArgs e)

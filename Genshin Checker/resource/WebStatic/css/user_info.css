@@ -1,0 +1,250 @@
+
+
+.profile-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 80%;
+    margin: 0 auto 20px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+    transition: filter 0.3s ease; /* ホバー時のトランジション */
+    overflow: hidden; /* 疑似要素が溢れないようにする */
+    background-image: var(--bg-image); /* 背景画像を設定 */
+    background-size: cover;
+    background-position: center;
+}
+
+.profile-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: blur(5px) brightness(0.5); /* ぼかしと暗くする効果 */
+    z-index: 0;
+    transition: filter 0.3s ease; /* ホバー時のトランジション */
+    background-image: var(--bg-image); /* 背景画像を設定 */
+}
+
+.profile-card:hover::before {
+    filter: blur(5px) brightness(0.7); /* ホバー時に少し明るくする */
+}
+
+.profile-card img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-right: 20px;
+    transition: opacity 1s; /* 画像のフェードイン */
+    opacity: 0; /* 画像の初期状態を透明に */
+    z-index: 1; /* 画像が疑似要素の上に表示されるようにする */
+}
+
+.profile-card img.loaded {
+    opacity: 1; /* 画像の読み込み後に不透明に */
+}
+
+.profile-info {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    z-index: 1; /* 情報が疑似要素の上に表示されるようにする */
+}
+
+.profile-info h2 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.profile-info p {
+    margin: 5px 0 0;
+    font-size: 16px;
+    color: #CCCCCC; /* 文字色を少し明るい灰色に */
+}
+
+.badge-container {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    gap: 10px;
+    z-index: 1; /* バッジが疑似要素の上に表示されるようにする */
+}
+
+.badge {
+    display: flex;
+    align-items: center;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    position: relative;
+    transition: background-color 0.3s;
+    font-family: 'DefaultFont', Arial, sans-serif;
+}
+
+.badge img {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+    border-radius: 0; /* アイコンを四角形にする */
+}
+
+.badge:hover {
+    filter: brightness(1.2);
+}
+
+.user-id {
+    position: absolute;
+    bottom: 10px;
+    right: 20px;
+    font-size: 14px;
+    color: #AAAAAA; /* ユーザーIDの文字色を少し明るい灰色に */
+    z-index: 1; /* ユーザーIDが疑似要素の上に表示されるようにする */
+    font-family: 'DefaultFont', Arial, sans-serif;
+}
+
+.common-components-container {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* コンポーネントの最小幅を250pxに設定 */
+}
+
+.common-component {
+    background-color: #2D325A; /* コンポーネントの背景色 */
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    transition: filter 0.3s ease; /* ホバー時のトランジション */
+    cursor: pointer;
+    font-family: 'DefaultFont', Arial, sans-serif;
+}
+
+.common-component:hover {
+    filter: brightness(1.1); /* ホバー時に少し明るくする */
+}
+
+.common-component h3 {
+    text-align: center;
+    font-size: 24px;
+    margin: 0 10px 10px 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #FFFFFF; /* タイトルの文字色を白に */
+}
+
+.schedule {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    font-size: 18px;
+    color: #CCCCCC; /* 文字色を少し明るい灰色に */
+    margin: 10px 0;
+    cursor: pointer;
+}
+
+.schedule img {
+    width: 16px;
+    height: 16px;
+    margin-right: 5px;
+    filter: invert(1); /* アイコンを白くする */
+}
+
+.stat-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.stat-item {
+    display: flex;
+    align-items: center; /* アイテムを中央揃えに */
+    justify-content: space-between;
+    margin-bottom: 10px; /* マージンを小さく */
+    position: relative; /* ツールチップを表示するために */
+    transition: background-color 0.3s ease; /* ホバー時のトランジション */
+}
+
+.stat-item:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* ホバー時に背景色を少し明るく */
+}
+
+.stat-item:hover .tooltip {
+    display: block; /* ホバー時にツールチップを表示 */
+}
+
+.stat-item .name {
+    display: inline-block;
+    margin-right: 10px; /* アイコン間隔を詰める */
+    position: relative; /* オーバーレイアイコンを表示するために追加 */
+}
+
+.stat-item .name img {
+    width: 50px; /* アイコンサイズを大きく */
+    height: 50px; /* アイコンサイズを大きく */
+    transition: opacity 1s; /* 画像のフェードイン */
+    opacity: 0; /* 画像の初期状態を透明に */
+}
+
+.stat-item .name img.loaded {
+    opacity: 1; /* 画像の読み込み後に不透明に */
+}
+
+.stat-item .name .icon-overlay {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 20px; /* オーバーレイアイコンのサイズ */
+    height: 20px; /* オーバーレイアイコンのサイズ */
+    border-radius: 50%;
+}
+
+.stat-item .value-container {
+    display: flex;
+    flex-direction: column; /* 上下に並べる */
+    align-items: flex-end; /* 右揃えに */
+    margin-left: auto; /* 左の余白を自動調整 */
+}
+
+.stat-item .value-row {
+    display: flex; /* 横に並べる */
+    align-items: baseline;
+}
+
+.stat-item .value {
+    font-size: 36px; /* フォントサイズを40pxに */
+    font-weight: bold;
+    line-height: 1; /* 行の高さを調整 */
+    font-family: 'DefaultFont', Arial, sans-serif;
+    color: #FFFFFF; /* 文字色を白に */
+}
+
+.stat-item .max-value {
+    font-size: 18px; /* フォントサイズを20pxに */
+    color: #CCCCCC; /* 文字色を少し明るい灰色に */
+    margin-left: 0px; 
+    line-height: 1; /* 行の高さを調整 */
+    font-family: 'DefaultFont', Arial, sans-serif;
+}
+
+.stat-item .percentage-container {
+    display: flex;
+    justify-content: center; /* 中央揃えに */
+    width: 100%; /* コンテナ幅を100%に */
+}
+
+.stat-item .percentage {
+    font-size: 14px; /* フォントサイズを小さく */
+    color: #CCCCCC; /* 文字色を少し明るい灰色に */
+    margin-top: -3px; 
+    cursor: pointer;
+    font-family: 'DefaultFont', Arial, sans-serif;
+}
+

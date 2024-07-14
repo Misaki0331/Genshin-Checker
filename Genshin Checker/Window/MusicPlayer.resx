@@ -158,7 +158,6 @@
   </data>
   <data name="label1.Text" xml:space="preserve">
     <value>0:00 / 0:00</value>
-    <comment>@Invariant</comment>
   </data>
   <data name="label1.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>TopRight</value>
@@ -299,7 +298,6 @@
   <data name="volumelabel.Text" xml:space="preserve">
     <value>Vol.
 100</value>
-    <comment>@Invariant</comment>
   </data>
   <data name="volumelabel.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleCenter</value>
@@ -324,7 +322,6 @@
   </metadata>
   <data name="TrackNum.HeaderText" xml:space="preserve">
     <value>#</value>
-    <comment>@Invariant</comment>
   </data>
   <data name="TrackNum.Width" type="System.Int32, mscorlib">
     <value>40</value>

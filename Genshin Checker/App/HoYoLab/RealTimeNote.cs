@@ -59,8 +59,7 @@ namespace Genshin_Checker.App
             try
             {
                 var json = await getNote();
-
-                if (Data.RealTime.Resin.Current < json.max_resin && json.current_resin >= json.max_resin)
+                if (Data.RealTime?.Resin.Current < json.max_resin && json.current_resin >= json.max_resin)
                 {
                     if (config.Notify.RealTimeNotes.ResinMax)
                         Notification?.Invoke(Localize.Notify_ResinMax_Title, string.Format(Localize.Notify_Resin_Current, json.current_resin));
@@ -71,7 +70,7 @@ namespace Genshin_Checker.App
                     foreach (var Threshould in config.Notify.RealTimeNotes.ResinThreshold)
                     {
                         if (!Threshould.Enabled) continue;
-                        if (Data.RealTime.Resin.Current < Threshould.Value && json.current_resin >= Threshould.Value)
+                        if (Data.RealTime?.Resin.Current < Threshould.Value && json.current_resin >= Threshould.Value)
                         {
                             IsNotify = true;
                         }
@@ -80,6 +79,7 @@ namespace Genshin_Checker.App
 
                 }
 
+                Data.RealTime ??= new();
                 Data.RealTime.Resin.Current = json.current_resin;
                 Data.RealTime.Resin.Max = json.max_resin;
                 if (int.TryParse(json.resin_recovery_time, out int time))
@@ -276,6 +276,6 @@ namespace Genshin_Checker.App.Store.RealTimeNote
     public class Data
     {
         public Meta Meta { get; set; } = new();
-        public RealTime RealTime { get; set; } = new();
+        public RealTime? RealTime { get; set; } = null;
     }
 }

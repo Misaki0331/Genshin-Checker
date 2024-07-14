@@ -40,6 +40,7 @@ namespace Genshin_Checker.Window
             if (Note.Meta.Message == "OK")
             {
                 var r = Note.RealTime;
+                r ??= new();
                 panel_main.Visible = true;
                 panel_Error.Visible = false;
                 label1.Text = $"{r.Resin.Current}";

@@ -33,6 +33,7 @@
             label1 = new Label();
             OutputBox = new TextBox();
             panel2 = new Panel();
+            ButtonTheater = new Button();
             button2 = new Button();
             textBox1 = new TextBox();
             button1 = new Button();
@@ -114,6 +115,7 @@
             // 
             // panel2
             // 
+            panel2.Controls.Add(ButtonTheater);
             panel2.Controls.Add(button2);
             panel2.Controls.Add(textBox1);
             panel2.Controls.Add(button1);
@@ -145,6 +147,16 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(542, 198);
             panel2.TabIndex = 23;
+            // 
+            // ButtonTheater
+            // 
+            ButtonTheater.Location = new Point(384, 4);
+            ButtonTheater.Name = "ButtonTheater";
+            ButtonTheater.Size = new Size(89, 23);
+            ButtonTheater.TabIndex = 49;
+            ButtonTheater.Text = "Theater";
+            ButtonTheater.UseVisualStyleBackColor = true;
+            ButtonTheater.Click += ButtonTheater_Click;
             // 
             // button2
             // 
@@ -440,5 +452,6 @@
         private Button button1;
         private Button button2;
         private TextBox textBox1;
+        private Button ButtonTheater;
     }
 }

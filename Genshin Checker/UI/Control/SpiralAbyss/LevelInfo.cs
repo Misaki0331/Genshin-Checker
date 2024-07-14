@@ -17,24 +17,75 @@ namespace Genshin_Checker.UI.Control.SpiralAbyss
     {
         List<BattleInfo> Battles;
         List<PictureBox> StarPictures;
+        Model.UserData.SpiralAbyss.v2.Level level;
+        int Page = 0;
+        Account account;
         public delegate void CharacterEventHandler<T>(T args);
         public event CharacterEventHandler<int>? CharacterClickHandler;
-        public LevelInfo(Account account, Model.UserData.SpiralAbyss.v1.Level level,bool showInline=false)
+        public LevelInfo(Account account, Model.UserData.SpiralAbyss.v2.Level level, bool showInline = false)
         {
             InitializeComponent();
+            this.level = level;
+            this.account = account;
             _showinline = showInline;
             label1.Text = string.Format(Localize.UIName_SpiralAbyss_Level, level.index);
-            label2.Text = string.Format(Localize.UIName_SpiralAbyss_Timestamp, $"{DateTimeOffset.FromUnixTimeSeconds(level.timestamp).ToLocalTime():yyyy/MM/dd HH:mm:ss}");
+            Battles = new();
             StarPictures = new();
-            for (int i = level.max_star; i > 0; i--)
+            Page = level.history.Count - 1;
+            if (level.history.Count <= 1)
+            {
+                LeftButton.Visible = false;
+                RightButton.Visible = false;
+                label3.Visible = false;
+            }
+            HistoryChanged(Page);
+            this.Disposed += (s, e) =>
+            {
+                this.SuspendLayout();
+                foreach (var b in Battles)
+                {
+                    PanelBattleInfo.Controls.Remove(b);
+                    b.Dispose();
+                }
+                foreach (var p in StarPictures)
+                {
+                    PanelStar.Controls.Remove(p);
+                    p.Dispose();
+                }
+                this.ResumeLayout(true);
+            };
+        }
+        void HistoryChanged(int historyIndex)
+        {
+            if (historyIndex < 0 || historyIndex >= level.history.Count) return;
+            this.SuspendLayout();
+            foreach (var b in Battles)
+            {
+                PanelBattleInfo.Controls.Remove(b);
+                b.Dispose();
+            }
+            foreach (var p in StarPictures)
+            {
+                PanelStar.Controls.Remove(p);
+                p.Dispose();
+            }
+
+
+
+            StarPictures.Clear();
+            label3.Text = $"{historyIndex+1} / {level.history.Count}";
+            label2.Text = string.Format(Localize.UIName_SpiralAbyss_Timestamp, $"{level.history[historyIndex].timestamp.ToLocalTime():yyyy/MM/dd HH:mm:ss}");
+            RightButton.Enabled = historyIndex+1 <level.history.Count;
+            LeftButton.Enabled = historyIndex-1 >= 0;
+            for (int i = level.history[historyIndex].max_star; i > 0; i--)
             {
                 var picture = new PictureBox() { SizeMode = PictureBoxSizeMode.Zoom, Size = new(PanelStar.Height, PanelStar.Height), Dock = DockStyle.Left };
-                picture.Image = level.star >= i ? resource.icon.UI_Icon_Tower_Star : resource.icon.UI_Icon_Tower_Star_Disabled;
+                picture.Image = level.history[historyIndex].star >= i ? resource.icon.UI_Icon_Tower_Star : resource.icon.UI_Icon_Tower_Star_Disabled;
                 StarPictures.Add(picture);
                 PanelStar.Controls.Add(picture);
             }
-            Battles = new();
-            var battles = level.battles.FindAll(a => true);
+            Battles.Clear();
+            var battles = level.history[historyIndex].battles.FindAll(a => true);
             battles.Reverse();
             foreach (var battle in battles)
             {
@@ -56,46 +107,44 @@ namespace Genshin_Checker.UI.Control.SpiralAbyss
                 control.CharacterClickHandler += a => CharacterClickHandler?.Invoke(a);
                 Battles.Add(control);
             }
-            this.Disposed += (s, e) =>
-            {
-                this.SuspendLayout();
-                foreach (var b in Battles)
-                {
-                    PanelBattleInfo.Controls.Remove(b);
-                    b.Dispose();
-                }
-                foreach (var p in StarPictures)
-                {
-                    PanelStar.Controls.Remove(p);
-                    p.Dispose();
-                }
-                this.ResumeLayout(true);
-            };
+            ReloadContent();
+            this.ResumeLayout(true);
         }
-
         private void LevelInfo_Load(object sender, EventArgs e)
         {
             ReloadContent();
         }
         private bool _showinline = false;
-        public bool ShowInline { get=>_showinline; set { if (_showinline != value) { _showinline = value; ReloadContent(); } } }
+        public bool ShowInline { get => _showinline; set { if (_showinline != value) { _showinline = value; ReloadContent(); } } }
         private void ReloadContent()
         {
             tableLayoutPanel1.ColumnCount = Battles.Count;
-            foreach(ColumnStyle column in tableLayoutPanel1.ColumnStyles)
+            foreach (ColumnStyle column in tableLayoutPanel1.ColumnStyles)
             {
                 column.SizeType = SizeType.Percent;
                 column.Width = (float)100.0 / Battles.Count;
             }
-            var controls = Battles.FindAll(a=>true);
+            var controls = Battles.FindAll(a => true);
             if (ShowInline) controls.Reverse();
             foreach (var b in controls)
             {
                 if (PanelBattleInfo.Controls.IndexOf(b) > 0) PanelBattleInfo.Controls.Remove(b);
                 if (tableLayoutPanel1.Controls.IndexOf(b) > 0) tableLayoutPanel1.Controls.Remove(b);
-                if(ShowInline)tableLayoutPanel1.Controls.Add(b);
+                if (ShowInline) tableLayoutPanel1.Controls.Add(b);
                 else PanelBattleInfo.Controls.Add(b);
             }
+        }
+
+        private void LeftButton_Click(object sender, EventArgs e)
+        {
+            Page--;
+            HistoryChanged(Page);
+        }
+
+        private void RightButton_Click(object sender, EventArgs e)
+        {
+            Page++;
+            HistoryChanged(Page);
         }
     }
 }

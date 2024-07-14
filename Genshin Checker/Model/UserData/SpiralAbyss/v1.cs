@@ -42,7 +42,7 @@ namespace Genshin_Checker.Model.UserData.SpiralAbyss.v1
         /// </summary>
         public List<CharacterData> EnergySkill { get; set; } = new();
     }
-    public class V1 : Root
+    public class V1 : DatabaseRoot
     {
         public Data Data { get; set; } = new();
     }

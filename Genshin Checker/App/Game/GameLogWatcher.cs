@@ -16,6 +16,7 @@ namespace Genshin_Checker.App.Game
         readonly System.Windows.Forms.Timer Delay;
         string PATH = $"{Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)}\\AppData\\LocalLow\\miHoYo\\Genshin Impact";
         const string FILENAME = "output_log.txt";
+        public DateTime LatestUpdate = DateTime.MinValue;
         readonly SemaphoreSlim Semaphore = new(1, 1);
         /// <summary>
         /// ログファイルの最終ポジション
@@ -87,6 +88,7 @@ namespace Genshin_Checker.App.Game
                         {
                             s[i] = a[i].Value;
                         }
+                        LatestUpdate = DateTime.UtcNow;
                         LogUpdated?.Invoke(null, s);
                     }
                 }

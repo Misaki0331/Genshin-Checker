@@ -28,7 +28,7 @@ GitHub : https://github.com/Misaki0331</Description>
     <PackageProjectUrl>https://github.com/Misaki0331/Genshin-Checker/</PackageProjectUrl>
     <RepositoryUrl>https://github.com/Misaki0331/Genshin-Checker/</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <Version>0.17.0</Version>
+    <Version>0.18.0</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -133,6 +133,21 @@ GitHub : https://github.com/Misaki0331</Description>
       <AutoGen>True</AutoGen>
       <DependentUpon>Render.resx</DependentUpon>
     </Compile>
+    <Compile Update="resource\WebStatic\css.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>css.resx</DependentUpon>
+    </Compile>
+    <Compile Update="resource\WebStatic\html.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>html.resx</DependentUpon>
+    </Compile>
+    <Compile Update="resource\WebStatic\javascript.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>javascript.resx</DependentUpon>
+    </Compile>
     <Compile Update="UI\Control\GameRecord\ExplorationProgressBarArea.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -195,6 +210,18 @@ GitHub : https://github.com/Misaki0331</Description>
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Render.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Update="resource\WebStatic\css.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>css.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="resource\WebStatic\html.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>html.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="resource\WebStatic\javascript.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>javascript.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
 
   <ItemGroup>
@@ -205,7 +232,9 @@ GitHub : https://github.com/Misaki0331</Description>
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="resource\Web-Static\" />
     <Folder Include="Window\Contains\" />
+    <Folder Include="WebTools\" />
   </ItemGroup>
 
   <Target Name="BeforeBuild">
