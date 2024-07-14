@@ -29,7 +29,7 @@ namespace Genshin_Checker.App.HoYoLab
             ServerUpdate.Stop();
             Trace.WriteLine("幻想シアターを取得");
             await ScheduleReload();
-            ServerUpdate.Interval = account.LatestActiveSession > DateTime.UtcNow.AddHours(-2) ? 600000 : 3600000 * 3;
+            ServerUpdate.Interval = (account.LatestActiveSession > DateTime.UtcNow.AddHours(-2) || account.LatestActivity == Game.ProcessTime.ProcessState.Foreground )? 600000 : 3600000 * 3;
             ServerUpdate.Start();
         }
         private async Task ScheduleReload()

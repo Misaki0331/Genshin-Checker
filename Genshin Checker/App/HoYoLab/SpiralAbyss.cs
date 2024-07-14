@@ -41,7 +41,7 @@ namespace Genshin_Checker.App.HoYoLab
                 IsGotOldData = true;
                 Cache.Data = await Convert(await account.Endpoint.GetSpiralAbyss(true));
                 Cache.Latest = DateTime.Now;
-                ServerUpdate.Interval = account.LatestActiveSession > DateTime.UtcNow.AddHours(-2) ? 300000 : 3600000 * 3;
+                ServerUpdate.Interval = (account.LatestActiveSession > DateTime.UtcNow.AddHours(-2) || account.LatestActivity == Game.ProcessTime.ProcessState.Foreground) ? 300000 : 3600000 * 3;
                 ServerUpdate.Start();
                 return;
             }

@@ -28,13 +28,16 @@ namespace Genshin_Checker.App.HoYoLab
         public HoYoLabInfomation HoYoLabInfomation;
         public ImaginariumTheater ImaginariumTheater;
         internal DateTime LatestActiveSession { get; private set; } = DateTime.MinValue;
+        internal ProcessTime.ProcessState LatestActivity { get; private set; } = ProcessTime.ProcessState.EmptyState;
         private void SessionChange(object? sender,ProcessTime.Result e)
         {
-            //
-            if(e.State == ProcessTime.ProcessState.Foreground)
+            LatestActivity = e.State;
+            if (e.State == ProcessTime.ProcessState.Foreground)
             {
                 if (LatestActiveSession.AddMinutes(5) < DateTime.UtcNow)
                 {
+                    Trace.WriteLine("OK");
+                    LatestActiveSession = DateTime.UtcNow;
                     List<Base> list = new() { SpiralAbyss, ImaginariumTheater, TravelersDiary, GameRecords };
                     foreach(var bs in list)
                     {
@@ -43,7 +46,6 @@ namespace Genshin_Checker.App.HoYoLab
                         bs.ServerUpdate.Start();
                     }
                 }
-                LatestActiveSession = DateTime.UtcNow;
             }
         }
         public static async Task<Account> GetInstance(string cookie, int UID)
