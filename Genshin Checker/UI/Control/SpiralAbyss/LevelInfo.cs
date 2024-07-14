@@ -72,7 +72,7 @@ namespace Genshin_Checker.UI.Control.SpiralAbyss
 
 
 
-            StarPictures = new();
+            StarPictures.Clear();
             label3.Text = $"{historyIndex+1} / {level.history.Count}";
             label2.Text = string.Format(Localize.UIName_SpiralAbyss_Timestamp, $"{level.history[historyIndex].timestamp.ToLocalTime():yyyy/MM/dd HH:mm:ss}");
             RightButton.Enabled = historyIndex+1 <level.history.Count;
@@ -84,7 +84,7 @@ namespace Genshin_Checker.UI.Control.SpiralAbyss
                 StarPictures.Add(picture);
                 PanelStar.Controls.Add(picture);
             }
-            Battles = new();
+            Battles.Clear();
             var battles = level.history[historyIndex].battles.FindAll(a => true);
             battles.Reverse();
             foreach (var battle in battles)
@@ -107,7 +107,7 @@ namespace Genshin_Checker.UI.Control.SpiralAbyss
                 control.CharacterClickHandler += a => CharacterClickHandler?.Invoke(a);
                 Battles.Add(control);
             }
-
+            ReloadContent();
             this.ResumeLayout(true);
         }
         private void LevelInfo_Load(object sender, EventArgs e)

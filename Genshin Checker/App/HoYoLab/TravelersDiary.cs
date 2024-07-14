@@ -47,7 +47,7 @@ namespace Genshin_Checker.App
                 Trace.WriteLine(Data.Message);
             }
 
-            ServerUpdate.Interval = account.LatestActiveSession>DateTime.UtcNow.AddHours(-1)?300000:3600000*3;
+            ServerUpdate.Interval = account.LatestActiveSession>DateTime.UtcNow.AddHours(-2)?300000:3600000*3;
             ServerUpdate.Start();
         }
 

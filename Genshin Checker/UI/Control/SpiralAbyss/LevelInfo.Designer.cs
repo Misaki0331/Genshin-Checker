@@ -72,6 +72,7 @@
             // 
             LeftButton.Dock = DockStyle.Right;
             LeftButton.Font = new Font("Yu Gothic UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            LeftButton.ForeColor = Color.Black;
             LeftButton.Location = new Point(187, 0);
             LeftButton.Name = "LeftButton";
             LeftButton.Size = new Size(38, 38);
@@ -107,6 +108,7 @@
             // 
             RightButton.Dock = DockStyle.Right;
             RightButton.Font = new Font("Yu Gothic UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            RightButton.ForeColor = Color.Black;
             RightButton.Location = new Point(310, 0);
             RightButton.Name = "RightButton";
             RightButton.Size = new Size(38, 38);

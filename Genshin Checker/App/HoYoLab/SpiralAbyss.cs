@@ -41,7 +41,7 @@ namespace Genshin_Checker.App.HoYoLab
                 IsGotOldData = true;
                 Cache.Data = await Convert(await account.Endpoint.GetSpiralAbyss(true));
                 Cache.Latest = DateTime.Now;
-                ServerUpdate.Interval = account.LatestActiveSession > DateTime.UtcNow.AddHours(-1) ? 300000 : 3600000 * 3;
+                ServerUpdate.Interval = account.LatestActiveSession > DateTime.UtcNow.AddHours(-2) ? 300000 : 3600000 * 3;
                 ServerUpdate.Start();
                 return;
             }
@@ -123,6 +123,8 @@ namespace Genshin_Checker.App.HoYoLab
                         }
                         history.battles.Add(b);
                     }
+                    history.max_star = level.max_star;
+                    history.star = level.star;
                     l.history.Add(history);
                     CountOfAddBattle++;
                     Trace.WriteLine($"{flr.index}層{l.index}間にてデータの更新");

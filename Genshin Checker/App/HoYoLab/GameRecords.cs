@@ -25,7 +25,7 @@ namespace Genshin_Checker.App.HoYoLab
             {
                 var a = await account.Endpoint.GetGameRecords();
                 Data = a;
-                ServerUpdate.Interval = account.LatestActiveSession > DateTime.UtcNow.AddHours(-1) ? 300000 : 3600000 * 1;
+                ServerUpdate.Interval = account.LatestActiveSession > DateTime.UtcNow.AddHours(-2) ? 300000 : 3600000 * 1;
             }
             catch(Exception ex)
             {
