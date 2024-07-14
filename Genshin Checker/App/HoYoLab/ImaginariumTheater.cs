@@ -23,6 +23,7 @@ namespace Genshin_Checker.App.HoYoLab
         }
         private Model.HoYoLab.RoleCombat.Data? RoleCombat = null;
         private string REG_PATH { get => $"UserData\\{account.UID}\\ImaginariumTheater"; }
+        public V1? Current { get; private set; }
         internal async void Timeout_Tick(object? sender, EventArgs e)
         {
             ServerUpdate.Stop();
@@ -120,6 +121,7 @@ namespace Genshin_Checker.App.HoYoLab
                 }
 
                 Trace.WriteLine($"取得したデータは {starttime} - {endtime} です。");
+                if (Current == null || Current.Data.schedule_id <= userdata.Data.schedule_id) Current = userdata;
                 bool IsNextMove = false;
                 var game = userdata.Data.Detail.Find(a =>
                 {

@@ -303,6 +303,58 @@ namespace Genshin_Checker.App.WebServer.Endpoint
                 }
             });
             #endregion
+            #region 幻想シアター
+            var diff = new List<string>() { "なし","イージー", "ノーマル", "ハード","エクストラ","？？？" };
+            result.components.Add(new()
+            {
+                clickto = "",
+                title = "幻想シアター",
+                endtime = Time.GetUnixTimeFromDateTime(user.ImaginariumTheater.Current?.Data.ScheduleTime.end) ?? null,
+                rows = new()
+                {
+                    new(){
+                    icon = "",
+                    tooltip = new()
+                    {
+                        title = "最高記録",
+                        description = string.Join("", (user.ImaginariumTheater.Current?.Data.CurrentStats.get_medal_round_list ?? new()).Select(x => x == 0 ? "<color=#AAAAAA>☆</color>" : "<color=#D28FD6>★</color>"))
+                    },
+                    value = user.ImaginariumTheater.Current?.Data.CurrentStats.max_round_id.ToString("#,##0")??"-",
+                    max_value = "幕",
+                    bottom_value = $"難易度 : {diff[user.ImaginariumTheater.Current?.Data.CurrentStats.difficulty_id??0]}"
+                    },
+                    new(){
+                    icon = "",
+                    tooltip = new()
+                    {
+                        title = "消費した「幻戯の花」",
+                        description = "今期シアターで消費した「幻戯の花」の数です"
+                    },
+                    value = user.ImaginariumTheater.Current?.Data.CurrentStats.coin_num.ToString("#,##0")??"-"
+                    },
+                    new(){
+                    icon = "",
+                    tooltip = new()
+                    {
+                        title = "観客の応援を引き起こした回数",
+                        description = "今期シアターで観客の応援を引き起こした回数です。"
+                    },
+                    value = user.ImaginariumTheater.Current?.Data.CurrentStats.avatar_bonus_num.ToString("#,##0")??"-",
+                    max_value = "回"
+                    },
+                    new(){
+                    icon = "",
+                    tooltip = new()
+                    {
+                        title = "サポートキャスト支援回数",
+                        description = "サポートキャストが他のプレイヤーを支援した回数です。"
+                    },
+                    value = user.ImaginariumTheater.Current?.Data.CurrentStats.rent_cnt.ToString("#,##0")??"-",
+                    max_value="回"
+                    }
+                }
+            });
+            #endregion
             #region リアルタイムノート
             result.components.Add(new()
             {
