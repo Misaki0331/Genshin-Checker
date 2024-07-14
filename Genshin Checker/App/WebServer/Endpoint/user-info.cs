@@ -313,7 +313,7 @@ namespace Genshin_Checker.App.WebServer.Endpoint
                 rows = new()
                 {
                     new(){
-                    icon = "",
+                    icon = $"https://static-api.misaki-chan.world/genshin-checker/webtools/dynamic/heraldry-icon-{user.ImaginariumTheater.Current?.Data.CurrentStats.heraldry??0}.png",
                     tooltip = new()
                     {
                         title = "最高記録",
@@ -324,7 +324,7 @@ namespace Genshin_Checker.App.WebServer.Endpoint
                     bottom_value = $"難易度 : {diff[user.ImaginariumTheater.Current?.Data.CurrentStats.difficulty_id??0]}"
                     },
                     new(){
-                    icon = "",
+                    icon = "https://static-api.misaki-chan.world/genshin-checker/webtools/img/fantasia_flower.png",
                     tooltip = new()
                     {
                         title = "消費した「幻戯の花」",
@@ -333,7 +333,7 @@ namespace Genshin_Checker.App.WebServer.Endpoint
                     value = user.ImaginariumTheater.Current?.Data.CurrentStats.coin_num.ToString("#,##0")??"-"
                     },
                     new(){
-                    icon = "",
+                    icon = "https://static-api.misaki-chan.world/genshin-checker/webtools/img/charas.png",
                     tooltip = new()
                     {
                         title = "観客の応援を引き起こした回数",
@@ -343,7 +343,7 @@ namespace Genshin_Checker.App.WebServer.Endpoint
                     max_value = "回"
                     },
                     new(){
-                    icon = "",
+                    icon = "https://static-api.misaki-chan.world/genshin-checker/webtools/img/friend.png",
                     tooltip = new()
                     {
                         title = "サポートキャスト支援回数",
