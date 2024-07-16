@@ -190,6 +190,7 @@ namespace Genshin_Checker.App.HoYoLab
                 null => throw new InvalidDataException(Localize.Error_SpiralAbyssFile_InvalidFileVersion),
                 1 => Model.UserData.SpiralAbyss.Convert.FromV1(JsonChecker<Model.UserData.SpiralAbyss.v1.V1>.Check(data)),
                 2 => JsonChecker<V2>.Check(data),
+
                 _ => throw new InvalidDataException(string.Format(Localize.Error_SpiralAbyssFile_UnknownFileVersion,ver.Version)),
             } ?? throw new InvalidDataException(Localize.Error_SpiralAbyssFile_FailedConvert);
             if (v2.UID != account.UID) throw new InvalidDataException(string.Format(Localize.Error_SpiralAbyssFile_DoesNotMatchUID, v2.UID, account.UID));
