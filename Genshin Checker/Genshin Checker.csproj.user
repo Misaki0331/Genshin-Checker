@@ -147,6 +147,9 @@
     <EmbeddedResource Update="resource\font.resx">
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Update="resource\Languages\Localize.ja-JP.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Update="resource\WebStatic\css.resx">
       <SubType>Designer</SubType>
     </EmbeddedResource>

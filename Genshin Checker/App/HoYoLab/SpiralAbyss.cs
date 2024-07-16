@@ -1,6 +1,7 @@
 ﻿using Genshin_Checker.App.General;
 using Genshin_Checker.App.General.Convert;
 using Genshin_Checker.Model.HoYoLab.RoleCombat;
+using Genshin_Checker.Model.UserData;
 using Genshin_Checker.Model.UserData.SpiralAbyss.v2;
 using Genshin_Checker.resource.Languages;
 using HarfBuzzSharp;
@@ -55,7 +56,10 @@ namespace Genshin_Checker.App.HoYoLab
         public async Task<V2> Convert(Model.HoYoLab.SpiralAbyss.Data data)
         {
             int CountOfAddBattle = 0;
-            var res = await Load(data.schedule_id) ?? new V2()
+            var res = await Load(data.schedule_id, false);
+
+            bool IsEmptyData = res == null;
+            res ??= new V2()
             {
                 Version = 2,
                 UID = account.UID,
@@ -132,9 +136,9 @@ namespace Genshin_Checker.App.HoYoLab
                 }
                 if (IsNewFloor) res.Data.floors.Add(flr);
             }
-            if (CountOfAddBattle > 0)
+            if (CountOfAddBattle > 0 || IsEmptyData)
             {
-                Trace.WriteLine($"保存 : {CountOfAddBattle} 個更新");
+                Trace.WriteLine($"保存 : {CountOfAddBattle} 個更新 / 空データ:{IsEmptyData}");
                 await Save(res);
             }
             else
@@ -169,17 +173,23 @@ namespace Genshin_Checker.App.HoYoLab
             list.Sort((a, b) => a - b);
             return list;
         }
-        public async Task<V2> Load(int id)
+        public async Task<V2?> Load(int id, bool NoDataException=true)
         {
-            var path = Registry.GetValue(REG_PATH, $"{id}", true) ?? throw new IOException(Localize.Error_SpiralAbyssFile_RegistryNotFound);
-            var data = await AppData.LoadUserData(path);
+            var path = Registry.GetValue(REG_PATH, $"{id}", true);
+            if (path == null)
+            {
+                if (NoDataException) throw new IOException(Localize.Error_SpiralAbyssFile_RegistryNotFound);
+                else return null;
+            }
+            string? data = await AppData.LoadUserData(path);
             if (string.IsNullOrEmpty(data)) throw new InvalidDataException("Data is empty.");
-            var ver = JsonChecker<Model.UserData.DatabaseRoot>.Check(data??"{}");
+            data ??= JsonConvert.SerializeObject(new DatabaseRoot() {Version=2,UID=account.UID });
+            var ver = JsonChecker<DatabaseRoot>.Check(data);
             V2? v2 = (ver?.Version) switch
             {
                 null => throw new InvalidDataException(Localize.Error_SpiralAbyssFile_InvalidFileVersion),
-                1 => Model.UserData.SpiralAbyss.Convert.FromV1(JsonChecker<Model.UserData.SpiralAbyss.v1.V1>.Check(data??"")),
-                2 => JsonChecker<V2>.Check(data ?? ""),
+                1 => Model.UserData.SpiralAbyss.Convert.FromV1(JsonChecker<Model.UserData.SpiralAbyss.v1.V1>.Check(data)),
+                2 => JsonChecker<V2>.Check(data),
                 _ => throw new InvalidDataException(string.Format(Localize.Error_SpiralAbyssFile_UnknownFileVersion,ver.Version)),
             } ?? throw new InvalidDataException(Localize.Error_SpiralAbyssFile_FailedConvert);
             if (v2.UID != account.UID) throw new InvalidDataException(string.Format(Localize.Error_SpiralAbyssFile_DoesNotMatchUID, v2.UID, account.UID));
