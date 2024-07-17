@@ -232,7 +232,6 @@ GitHub : https://github.com/Misaki0331</Description>
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="resource\Web-Static\" />
     <Folder Include="Window\Contains\" />
     <Folder Include="WebTools\" />
   </ItemGroup>

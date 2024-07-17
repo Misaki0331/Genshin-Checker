@@ -323,5 +323,17 @@ namespace Genshin_Checker.Model.HoYoLab.RealTimeNote
         /// <para>冒険修練が解放済みかどうか</para>
         /// </summary>
         public bool attendance_visible { get; set; }
+        /// <summary>
+        /// <para>【デイリー任務】</para>
+        /// <para>貯蓄した長期冒険修練の値</para>
+        /// <para>doubleにも変換できるはずだが何故か文字列。謎です。</para>
+        /// </summary>
+        public string stored_attendance { get; set; } = "0.0";
+        /// <summary>
+        /// <para>【デイリー任務】</para>
+        /// <para>長期冒険修練のリセットするまでの残り時間</para>
+        /// <para>単位は「秒」</para>
+        /// </summary>
+        public int stored_attendance_refresh_countdown { get; set; } = 0;
     }
 }
