@@ -4,142 +4,142 @@
     <_LastSelectedProfileId>C:\Users\Misaki\dev\Genshin Checker\Genshin Checker\Properties\PublishProfiles\ReleaseGitHub.pubxml</_LastSelectedProfileId>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Update="InternalTools\MusicInfoSetter.cs">
+    <Compile Update="src\InternalTools\MusicInfoSetter.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="MainTray.cs">
+    <Compile Update="src\MainTray.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="UI\Control\CodeExchange\UICode.cs">
+    <Compile Update="src\UI\Control\CodeExchange\UICode.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="UI\Control\GameRecord\CharacterDetail\ArtifactInfo.cs">
+    <Compile Update="src\UI\Control\GameRecord\CharacterDetail\ArtifactInfo.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="UI\Control\GameRecord\CharacterDetail\ConstellationInfo.cs">
+    <Compile Update="src\UI\Control\GameRecord\CharacterDetail\ConstellationInfo.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="UI\Control\GameRecord\CharacterDetail\TalentInfo.cs">
+    <Compile Update="src\UI\Control\GameRecord\CharacterDetail\TalentInfo.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="UI\Control\GameRecord\CharacterDetail\CharacterStory.cs">
+    <Compile Update="src\UI\Control\GameRecord\CharacterDetail\CharacterStory.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="UI\Control\GameRecord\CharacterDetail\WeaponDetail.cs">
+    <Compile Update="src\UI\Control\GameRecord\CharacterDetail\WeaponDetail.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="UI\Control\GameRecord\CharacterInfo.cs">
+    <Compile Update="src\UI\Control\GameRecord\CharacterInfo.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="UI\Control\GameRecord\ExplorationLevel.cs">
+    <Compile Update="src\UI\Control\GameRecord\ExplorationLevel.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="UI\Control\GameRecord\ExplorationProgressBar.cs">
+    <Compile Update="src\UI\Control\GameRecord\ExplorationProgressBar.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="UI\Control\SettingWindow\AccountInfo.cs">
+    <Compile Update="src\UI\Control\SettingWindow\AccountInfo.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="UI\Control\SettingWindow\AccountNotify.cs">
+    <Compile Update="src\UI\Control\SettingWindow\AccountNotify.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="UI\Control\SpiralAbyss\BattleInfo.cs">
+    <Compile Update="src\UI\Control\SpiralAbyss\BattleInfo.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="UI\Control\SpiralAbyss\CharacterFrame.cs">
+    <Compile Update="src\UI\Control\SpiralAbyss\CharacterFrame.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="UI\Control\SpiralAbyss\EnemyInfo.cs">
+    <Compile Update="src\UI\Control\SpiralAbyss\EnemyInfo.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="UI\Control\SpiralAbyss\FloorInfo.cs">
+    <Compile Update="src\UI\Control\SpiralAbyss\FloorInfo.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="UI\Control\SpiralAbyss\LevelInfo.cs">
+    <Compile Update="src\UI\Control\SpiralAbyss\LevelInfo.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="Window\BrowserApp\BattleAuth.cs">
+    <Compile Update="src\Window\BrowserApp\BattleAuth.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Window\BrowserApp\HoYoApp.cs">
+    <Compile Update="src\Window\BrowserApp\HoYoApp.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="UI\Control\GameRecord\Exploration.cs">
+    <Compile Update="src\UI\Control\GameRecord\Exploration.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="Window\CharacterCalculator.cs">
+    <Compile Update="src\Window\CharacterCalculator.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Window\CodeExchange.cs">
+    <Compile Update="src\Window\CodeExchange.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Window\Debug\Console.cs">
+    <Compile Update="src\Window\Debug\Console.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Window\Debug\APIChecker.cs">
+    <Compile Update="src\Window\Debug\APIChecker.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Window\ExWindow\EmptyWindow.cs">
+    <Compile Update="src\Window\ExWindow\EmptyWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Window\MusicPlayer.cs">
+    <Compile Update="src\Window\MusicPlayer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Window\PopupWindow\ErrorMessage.cs">
+    <Compile Update="src\Window\PopupWindow\ErrorMessage.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Window\ExWindow\CharacterCalculator\BatchWindow.cs">
+    <Compile Update="src\Window\ExWindow\CharacterCalculator\BatchWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Window\ExWindow\CharacterCalculator\CalculateResult.cs">
+    <Compile Update="src\Window\ExWindow\CharacterCalculator\CalculateResult.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Window\ExWindow\GameRecords\CharacterDetail.cs">
+    <Compile Update="src\Window\ExWindow\GameRecords\CharacterDetail.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Window\PopupWindow\FatalError.cs">
+    <Compile Update="src\Window\PopupWindow\FatalError.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Window\GameLog.cs">
+    <Compile Update="src\Window\GameLog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Window\GameRecords.cs">
+    <Compile Update="src\Window\GameRecords.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Window\PopupWindow\InfoMessage.cs">
+    <Compile Update="src\Window\PopupWindow\InfoMessage.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Window\PopupWindow\UpdateNotice.cs">
+    <Compile Update="src\Window\PopupWindow\UpdateNotice.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Window\ProgressWindow\LoadGameDatabase.cs">
+    <Compile Update="src\Window\ProgressWindow\LoadGameDatabase.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Window\ProgressWindow\LoadTravelersDiaryDetail.cs">
+    <Compile Update="src\Window\ProgressWindow\LoadTravelersDiaryDetail.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Window\RealTimeData.cs">
+    <Compile Update="src\Window\RealTimeData.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Window\SettingWindow.cs">
+    <Compile Update="src\Window\SettingWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Window\SpiralAbyss.cs">
+    <Compile Update="src\Window\SpiralAbyss.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Window\TimeGraph.cs">
+    <Compile Update="src\Window\TimeGraph.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Window\TimerDisplay.cs">
+    <Compile Update="src\Window\TimerDisplay.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Window\TravelersDiary.cs">
+    <Compile Update="src\Window\TravelersDiary.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Window\TravelersDiaryDetailList.cs">
+    <Compile Update="src\Window\TravelersDiaryDetailList.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Window\WebMiniBrowser.cs">
+    <Compile Update="src\Window\WebMiniBrowser.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>
@@ -153,13 +153,13 @@
     <EmbeddedResource Update="resource\WebStatic\css.resx">
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Update="Window\ExWindow\CharacterCalculator\CalculateResult.resx">
+    <EmbeddedResource Update="src\Window\ExWindow\CharacterCalculator\CalculateResult.resx">
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Update="Window\PopupWindow\FatalError.resx">
+    <EmbeddedResource Update="src\Window\PopupWindow\FatalError.resx">
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Update="Window\SpiralAbyss.resx">
+    <EmbeddedResource Update="src\Window\SpiralAbyss.resx">
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
