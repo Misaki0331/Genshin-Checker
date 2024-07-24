@@ -279,7 +279,7 @@ namespace Genshin_Checker
             {
                 AccountToolStrip.DropDownItems.AddRange(new ToolStripItem[] {
             emptyToolStripMenuItem});
-            }
+            } 
         }
 
         private void consoleToolStripMenuItem_Click(object sender, EventArgs e)

@@ -40,6 +40,7 @@
             NumRealmCoinThreshold = new NumericUpDown();
             CheckRealmCoinThreshold = new CheckBox();
             AccountInfomation = new Label();
+            EnableHoYoLabAutoSignIn = new CheckBox();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)NumResinThreshold).BeginInit();
             panel2.SuspendLayout();
@@ -125,10 +126,18 @@
             resources.ApplyResources(AccountInfomation, "AccountInfomation");
             AccountInfomation.Name = "AccountInfomation";
             // 
+            // EnableHoYoLabAutoSignIn
+            // 
+            resources.ApplyResources(EnableHoYoLabAutoSignIn, "EnableHoYoLabAutoSignIn");
+            EnableHoYoLabAutoSignIn.Name = "EnableHoYoLabAutoSignIn";
+            EnableHoYoLabAutoSignIn.UseVisualStyleBackColor = true;
+            EnableHoYoLabAutoSignIn.CheckedChanged += StateChanged;
+            // 
             // AccountNotify
             // 
             resources.ApplyResources(this, "$this");
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(EnableHoYoLabAutoSignIn);
             Controls.Add(CheckExpeditionAllCompleted);
             Controls.Add(CheckTransformerReached);
             Controls.Add(CheckRealmCoinMax);
@@ -160,5 +169,6 @@
         private NumericUpDown NumRealmCoinThreshold;
         private CheckBox CheckRealmCoinThreshold;
         private Label AccountInfomation;
+        private CheckBox EnableHoYoLabAutoSignIn;
     }
 }

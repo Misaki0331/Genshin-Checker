@@ -16,5 +16,12 @@ namespace Genshin_Checker.App.HoYoLab
         private void ServerUpdate_Tick(object? sender, EventArgs e)
         {
         }
+
+        public async Task<bool> ExecuteLogin()
+        {
+            var data = await account.Endpoint.LoginBonusSignIn();
+            if (data.code == "ok") return true;
+            return false;
+        }
     }
 }

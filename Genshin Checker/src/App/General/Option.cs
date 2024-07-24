@@ -128,6 +128,7 @@ namespace Genshin_Checker.App.General.OptionClass
         /// 通知関係
         /// </summary>
         public Notification Notify = new();
+        public bool IsHoYoLabAutoSignIn { get; set; } = false;
         public class Notification
         {
             /// <summary>

@@ -304,7 +304,7 @@ namespace Genshin_Checker.App.WebServer.Endpoint
             });
             #endregion
             #region 幻想シアター
-            var diff = new List<string>() { "なし","イージー", "ノーマル", "ハード","エクストラ","？？？" };
+            var diff = new List<string>() { "なし", "イージー", "ノーマル", "ハード", "エクストラ", "？？？" };
             result.components.Add(new()
             {
                 clickto = "",
@@ -362,55 +362,79 @@ namespace Genshin_Checker.App.WebServer.Endpoint
                 title = "リアルタイムノート",
                 rows = new()
                 {
-                    new(){
-                    icon = "https://static-api.misaki-chan.world/genshin-checker/webtools/img/resin.png",
-                    tooltip = new()
-                    {
-                        title = "樹脂",
-                        description = "現在の貯蓄中の樹脂の数です。"
-                        +(user.RealTimeNote.Data.RealTime==null?$"\n<color=#ff0000>{(user.RealTimeNote.Data.Meta.IsAPIError?"API Error":"Error")} : Code {user.RealTimeNote.Data.Meta.Retcode}</color>\n<color=#ff0000>{user.RealTimeNote.Data.Meta.Message}</color>":"")
-                    },
-                    value = user.RealTimeNote.Data.RealTime?.Resin.Current.ToString("#,##0")??"-",
-                    max_value = "/ "+(user.RealTimeNote.Data.RealTime?.Resin.Max.ToString("#,##0")??"-"),
-                    bottom_value = new Func<string>(()=>{
-                        var r = user.RealTimeNote.Data.RealTime;
-                        if(r == null) return Common.Unknown;
-                        if (DateTime.Now > r.Resin.RecoveryTime) return Localize.WindowName_RealTimeNote_MaxOut;
-                        else
+                    new() {
+                        icon = "https://static-api.misaki-chan.world/genshin-checker/webtools/img/resin.png",
+                        tooltip = new()
                         {
-                            var time = (int)(r.Resin.RecoveryTime - DateTime.Now).TotalSeconds;
-                            return string.Format(Localize.WindowName_RealTimeNote_TimeLeft,$"{(time / 3600)}:{(time / 60 % 60):00}");
-                        }
-                    })()
+                            title = "樹脂",
+                            description = "現在の貯蓄中の樹脂の数です。"
+                        + (user.RealTimeNote.Data.RealTime == null ? $"\n<color=#ff0000>{(user.RealTimeNote.Data.Meta.IsAPIError ? "API Error" : "Error")} : Code {user.RealTimeNote.Data.Meta.Retcode}</color>\n<color=#ff0000>{user.RealTimeNote.Data.Meta.Message}</color>" : "")
+                        },
+                        value = user.RealTimeNote.Data.RealTime?.Resin.Current.ToString("#,##0") ?? "-",
+                        max_value = "/ " + (user.RealTimeNote.Data.RealTime?.Resin.Max.ToString("#,##0") ?? "-"),
+                        bottom_value = new Func<string>(() => {
+                            var r = user.RealTimeNote.Data.RealTime;
+                            if (r == null) return Common.Unknown;
+                            if (DateTime.Now > r.Resin.RecoveryTime) return Localize.WindowName_RealTimeNote_MaxOut;
+                            else
+                            {
+                                var time = (int)(r.Resin.RecoveryTime - DateTime.Now).TotalSeconds;
+                                return string.Format(Localize.WindowName_RealTimeNote_TimeLeft, $"{(time / 3600)}:{(time / 60 % 60):00}");
+                            }
+                        })()
                     },
-                    new(){
-                    icon = "https://static-api.misaki-chan.world/genshin-checker/webtools/img/homecoin.png",
-                    tooltip = new()
-                    {
-                        title = "壺コイン",
-                        description = "現在の貯蓄中の壺コインの数です。"
-                        +(user.RealTimeNote.Data.RealTime==null?$"\n<color=#ff0000>{(user.RealTimeNote.Data.Meta.IsAPIError?"API Error":"Error")} : Code {user.RealTimeNote.Data.Meta.Retcode}</color>\n<color=#ff0000>{user.RealTimeNote.Data.Meta.Message}</color>":"")
-                    },
-                    value = user.RealTimeNote.Data.RealTime?.RealmCoin.Current.ToString("#,##0")??"-",
-                    max_value = "/ "+(user.RealTimeNote.Data.RealTime?.RealmCoin.Max.ToString("#,##0")??"-"),
-                    bottom_value = new Func<string>(()=>{
-                        var r = user.RealTimeNote.Data.RealTime;
-                        if(r == null) return Common.Unknown;
-                        if (DateTime.Now > r.RealmCoin.RecoveryTime) return Localize.WindowName_RealTimeNote_MaxOut;
-                        else
+                    new() {
+                        icon = "https://static-api.misaki-chan.world/genshin-checker/webtools/img/homecoin.png",
+                        tooltip = new()
                         {
-                            var time = (int)(r.RealmCoin.RecoveryTime - DateTime.Now).TotalSeconds;
-                            return string.Format(Localize.WindowName_RealTimeNote_TimeLeft,$"{(time / 3600)}:{(time / 60 % 60):00}");
-                        }
-                    })()
+                            title = "壺コイン",
+                            description = "現在の貯蓄中の壺コインの数です。"
+                        + (user.RealTimeNote.Data.RealTime == null ? $"\n<color=#ff0000>{(user.RealTimeNote.Data.Meta.IsAPIError ? "API Error" : "Error")} : Code {user.RealTimeNote.Data.Meta.Retcode}</color>\n<color=#ff0000>{user.RealTimeNote.Data.Meta.Message}</color>" : "")
+                        },
+                        value = user.RealTimeNote.Data.RealTime?.RealmCoin.Current.ToString("#,##0") ?? "-",
+                        max_value = "/ " + (user.RealTimeNote.Data.RealTime?.RealmCoin.Max.ToString("#,##0") ?? "-"),
+                        bottom_value = new Func<string>(() => {
+                            var r = user.RealTimeNote.Data.RealTime;
+                            if (r == null) return Common.Unknown;
+                            if (DateTime.Now > r.RealmCoin.RecoveryTime) return Localize.WindowName_RealTimeNote_MaxOut;
+                            else
+                            {
+                                var time = (int)(r.RealmCoin.RecoveryTime - DateTime.Now).TotalSeconds;
+                                return string.Format(Localize.WindowName_RealTimeNote_TimeLeft, $"{(time / 3600)}:{(time / 60 % 60):00}");
+                            }
+                        })()
                     },
-                    new(){
-                    icon = "https://static-api.misaki-chan.world/genshin-checker/webtools/img/quest.png",
-                    tooltip = new()
-                    {
-                        title = "デイリークエスト進捗",
-                        description = "デイリークエストの進行状況です。"
-                        +(user.RealTimeNote.Data.RealTime==null?$"\n<color=#ff0000>{(user.RealTimeNote.Data.Meta.IsAPIError?"API Error":"Error")} : Code {user.RealTimeNote.Data.Meta.Retcode}</color>\n<color=#ff0000>{user.RealTimeNote.Data.Meta.Message}</color>":"")
+                    new() {
+                        icon = "https://static-api.misaki-chan.world/genshin-checker/webtools/img/quest.png",
+                        tooltip = new()
+                        {
+                            title = "デイリークエスト進捗",
+                            description = new Func<string>(() => {
+                            string result = "デイリークエストの進行状況です。\n";
+                            if (user.RealTimeNote.Data.RealTime == null)
+                            {
+                                result += $"\n<color=#ff0000>{(user.RealTimeNote.Data.Meta.IsAPIError ? "API Error" : "Error")} : Code {user.RealTimeNote.Data.Meta.Retcode}</color>\n" +
+                                $"<color=#ff0000>{user.RealTimeNote.Data.Meta.Message}</color>";
+                            }
+                            else
+                            {
+                                result += $"長期冒険修練 : ";
+                                if (user.RealTimeNote.Data.RealTime?.AttendanceInfo.IsUnlocked == false)
+                                {
+                                    result += "未開放";
+                                }
+                                else
+                                {
+                                    result += $"x <color=#D28FD6>{(user.RealTimeNote.Data.RealTime?.AttendanceInfo.Stored ?? double.NaN):0.0}</color>\n";
+                                    var left = (user.RealTimeNote.Data.RealTime?.AttendanceInfo.StoredRefreshEstimatedTime ?? DateTime.Now) - DateTime.Now;
+                                    if (left.Ticks < 0) left = TimeSpan.Zero;
+                                    var format = $"{left.Days} 日 {left.Hours} 時間 {left.Minutes} 分";
+                                    result += $"リセットまで : {format}";
+                                    }
+                                }
+                                return result;
+                            })()
+
                     },
                     value = user.RealTimeNote.Data.RealTime?.Commission.Current.ToString("#,##0")??"-",
                     max_value = "/ " +(user.RealTimeNote.Data.RealTime ?.Commission.Max.ToString("#,##0") ?? "-"),

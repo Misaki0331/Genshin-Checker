@@ -101,6 +101,17 @@ namespace Genshin_Checker.App
                     Data.RealTime.Resin.RecoveryTime = DateTime.MinValue;
                     ServerUpdate.Interval = 60000;
                 }
+                if (json.daily_task.attendance_visible)
+                {
+                    Data.RealTime.AttendanceInfo.IsUnlocked = true;
+                    if (double.TryParse(json.daily_task.stored_attendance, out double storeAttendance))
+                        Data.RealTime.AttendanceInfo.Stored = storeAttendance;
+                    Data.RealTime.AttendanceInfo.StoredRefreshEstimatedTime = DateTime.Now.AddSeconds(json.daily_task.stored_attendance_refresh_countdown);
+                    foreach(var dat in json.daily_task.attendance_rewards)
+                    {
+                        Data.RealTime.AttendanceInfo.Attendances.Add(new() { ProgressValue = dat.progress, State = dat.status }); ;
+                    }
+                }
                 ServerUpdate.Start();
 
                 if (Data.RealTime.RealmCoin.Current < json.max_home_coin && json.current_home_coin >= json.max_home_coin)
@@ -176,6 +187,7 @@ namespace Genshin_Checker.App
                     if (config.Notify.RealTimeNotes.ExpeditionAllCompleted)
                         Notification?.Invoke(Localize.Notify_ExpeditionCompleted_Title, Localize.Notify_ExpeditionCompleted_Description);
                 }
+                
                 Data.Meta.LatestSuccess = DateTime.Now;
                 Data.Meta.Retcode = 0;
                 Data.Meta.IsAPIError = false;
@@ -264,11 +276,24 @@ namespace Genshin_Checker.App.Store.RealTimeNote
         public int Minute { get; set; } = 0;
         public int Second { get; set; } = 0;
     }
+    public class AttendanceInfo
+    {
+        public bool IsUnlocked { get; set; } = false;
+        public double Stored { get; set; } = double.NaN;
+        public DateTime StoredRefreshEstimatedTime { get; set; } = DateTime.Now;
+        public List<Attendance> Attendances { get; set; } = new();
+    }
+    public class Attendance
+    {
+        public int ProgressValue { get; set; } = 0;
+        public string State { get; set; } = "";
+    }
     public class RealTime
     {
         public CurrentMaxWithRecoveryTime Resin { get; set; } = new();
         public CurrentMaxWithRecoveryTime RealmCoin { get; set; } = new();
         public CurrentMaxWithIsClaimed Commission { get; set; } = new();
+        public AttendanceInfo AttendanceInfo { get; set; } = new();
         public CurrentMax DiscountResin { get; set; } = new();
         public Transform Transform { get; set; } = new();
         public Expedition Expedition { get; set; } = new();

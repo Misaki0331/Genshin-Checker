@@ -1,11 +1,14 @@
 ﻿using Genshin_Checker.App.Game;
+using Genshin_Checker.App.General;
 using Genshin_Checker.resource.Languages;
+using Microsoft.Toolkit.Uwp.Notifications;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
@@ -27,6 +30,7 @@ namespace Genshin_Checker.App.HoYoLab
         public SpiralAbyss SpiralAbyss;
         public HoYoLabInfomation HoYoLabInfomation;
         public ImaginariumTheater ImaginariumTheater;
+        public LoginBonus LoginBonus;
         internal DateTime LatestActiveSession { get; private set; } = DateTime.MinValue;
         internal ProcessTime.ProcessState LatestActivity { get; private set; } = ProcessTime.ProcessState.EmptyState;
         private void SessionChange(object? sender,ProcessTime.Result e)
@@ -78,9 +82,11 @@ namespace Genshin_Checker.App.HoYoLab
             SpiralAbyss = new(this);
             HoYoLabInfomation = new(this);
             ImaginariumTheater = new(this);
+            LoginBonus = new(this);
             Culture = CultureInfo.CurrentCulture;
             Endpoint= new(this);
             ProcessTime.Instance.ChangedState += SessionChange;
+            ProcessTime.Instance.SessionExceeded += AutoHoYoLabSignIn;
         }
         /// <summary>
         /// Cookieの上書き検証<br/>
@@ -251,6 +257,7 @@ namespace Genshin_Checker.App.HoYoLab
             GameRecords.Dispose();
             Characters.Dispose();
             ProcessTime.Instance.ChangedState -= SessionChange;
+            ProcessTime.Instance.SessionExceeded -= AutoHoYoLabSignIn;
         }
         public class HoYoLabAPIException : Exception
         {
@@ -280,6 +287,32 @@ namespace Genshin_Checker.App.HoYoLab
                 this.uid = uid;
             }
             public readonly int uid;
+        }
+
+        private async void AutoHoYoLabSignIn(object? sender, EventArgs e)
+        {
+            try
+            {
+                Option.Instance.Accounts.TryGetValue(UID, out var account);
+                if (account != null && account.IsHoYoLabAutoSignIn)
+                {
+                    var res = await LoginBonus.ExecuteLogin();
+                    if (res)
+                    {
+                        var toastContent = new ToastContentBuilder()
+                            .AddText("本日のログインボーナスを受け取りました。")
+                            .AddAttributionText($"UID: {UID}");
+                        toastContent.Show(toast =>
+                        {
+                            toast.ExpirationTime = DateTime.Now.AddDays(1);
+                        });
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Trace.WriteLine(ex);
+            }
         }
 
         public readonly ApiEndpoint Endpoint;

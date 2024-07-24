@@ -458,7 +458,7 @@ namespace Genshin_Checker.App.HoYoLab
         {
             const string Act_ID = "e202102251931481";
             var url = $"https://sg-hk4e-api.hoyolab.com/event/sol/sign?lang=ja-jp";
-            var json = await WebRequest.HoYoPostRequest(url, Account.Cookie, $"{{act_id: \"{Act_ID}\"}}");
+            var json = await WebRequest.HoYoPostRequest(url, Account.Cookie, $"{{\"act_id\": \"{Act_ID}\"}}");
             return json ?? "";
         }
 

@@ -74,6 +74,9 @@ namespace Genshin_Checker.UI.Control.SettingWindow
                     case nameof(CheckTransformerReached):
                         realtime.TransformerReached = CheckTransformerReached.Checked;
                         break;
+                    case nameof(EnableHoYoLabAutoSignIn):
+                        config.IsHoYoLabAutoSignIn = EnableHoYoLabAutoSignIn.Checked;
+                        break;
                 }
             }else if(sender is NumericUpDown ud)
             {

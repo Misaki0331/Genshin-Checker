@@ -23,6 +23,10 @@ namespace Genshin_Checker.App.Game
         public event EventHandler<Result>? SessionEnd;
         public event EventHandler<Result>? ChangedState;
         public event EventHandler? SessionStart;
+        public event EventHandler? SessionExceeded;
+        private readonly TimeSpan SessionLimit = TimeSpan.FromMinutes(3); // nを任意の分数に置き換えてください
+        private bool sessionExceededTriggered = false;
+
         WindowInfo? WindowInfo;
         public ProcessState CurrentProcessState { get; private set; }
         public TimeSpan Session { get => SessionTime.Elapsed; }
@@ -59,6 +63,7 @@ namespace Genshin_Checker.App.Game
                     LatestTotalSessionTime += SessionTime.Elapsed;
                     SessionTime.Reset();
                     SessionStart?.Invoke(null, EventArgs.Empty);
+                    sessionExceededTriggered = false; // セッションがリセットされたのでフラグもリセット
                 }
                 switch (state)
                 {
@@ -75,11 +80,18 @@ namespace Genshin_Checker.App.Game
                             SessionTime.Stop();
                         else SessionTime.Start();
                         break;
-
                 }
                 CurrentProcessState = state;
                 ChangedState?.Invoke(null, new(SessionTime.Elapsed, state));
             }
+
+            // 新しいチェックロジック
+            if (SessionTime.Elapsed >= SessionLimit && !sessionExceededTriggered)
+            {
+                SessionExceeded?.Invoke(this, EventArgs.Empty);
+                sessionExceededTriggered = true; // イベントが一度トリガーされたら、再度トリガーされないようにする
+            }
+
             lock (lockObject)
             {
                 var a = new DateTimeOffset(DateTime.UtcNow.Ticks, TimeSpan.Zero).ToUnixTimeSeconds();
@@ -100,13 +112,13 @@ namespace Genshin_Checker.App.Game
                         case ProcessState.Foreground:
                             ps = "F";
                             break;
-
                     }
                     TimeTable.SavePoint(DateTime.UtcNow, ps);
                     LatestCheckedDateTime = a;
                 }
             }
         }
+
         /// <summary>
         /// 緊急シャットダウン用関数。進捗を保存しリセットする
         /// </summary>
