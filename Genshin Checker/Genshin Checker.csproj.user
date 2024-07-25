@@ -153,10 +153,16 @@
     <EmbeddedResource Update="resource\WebStatic\css.resx">
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Update="src\UI\Control\SettingWindow\AccountNotify.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Update="src\Window\ExWindow\CharacterCalculator\CalculateResult.resx">
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Update="src\Window\PopupWindow\FatalError.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Update="src\Window\SettingWindow.resx">
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Update="src\Window\SpiralAbyss.resx">

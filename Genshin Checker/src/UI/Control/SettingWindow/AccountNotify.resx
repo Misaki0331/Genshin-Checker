@@ -389,6 +389,7 @@
   </data>
   <data name="AccountInfomation.Text" xml:space="preserve">
     <value>Infomation</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="AccountInfomation.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>

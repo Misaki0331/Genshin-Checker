@@ -245,6 +245,7 @@
   </data>
   <data name="button1.Text" xml:space="preserve">
     <value>Browse...</value>
+    <comment>@MutedRule(PunctuationTail)</comment>
   </data>
   <data name="&gt;&gt;page_application.ZOrder" xml:space="preserve">
     <value>4</value>
@@ -260,6 +261,7 @@
   </data>
   <data name="label4.Text" xml:space="preserve">
     <value>VersionName</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="ButtonDataReset.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
@@ -269,6 +271,7 @@
   </data>
   <data name="ScreenShotTransferImageType.Items2" xml:space="preserve">
     <value>.tiff</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="label5.Text" xml:space="preserve">
     <value>Destination file format</value>
@@ -510,6 +513,7 @@
   </data>
   <data name="OpenAuthorMisskey.Text" xml:space="preserve">
     <value>Misskey</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="groupBox3.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -523,6 +527,7 @@
   <data name="label1.Text" xml:space="preserve">
     <value>When linked, the current account status can be displayed in real time.
 Examples of available information : Real-time note, Traveler's Dirty etc...</value>
+    <comment>@MutedRule(PunctuationTail)</comment>
   </data>
   <data name="&gt;&gt;TabAccountNotify.Name" xml:space="preserve">
     <value>TabAccountNotify</value>
@@ -724,6 +729,7 @@ Examples of available information : Real-time note, Traveler's Dirty etc...</val
   </data>
   <data name="ScreenShotTransferImageType.Items" xml:space="preserve">
     <value>.png</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="&gt;&gt;ScreenShotTransferImageType.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -799,6 +805,7 @@ Examples of available information : Real-time note, Traveler's Dirty etc...</val
   </data>
   <data name="OpenAuthorGitHub.Text" xml:space="preserve">
     <value>GitHub</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="&gt;&gt;groupBox6.Type" xml:space="preserve">
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -988,6 +995,7 @@ Examples of available information : Real-time note, Traveler's Dirty etc...</val
   </data>
   <data name="ScreenShotTransferImageType.Items1" xml:space="preserve">
     <value>.jpg</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="IsScreenShotAfterDelete.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1009,6 +1017,7 @@ Examples of available information : Real-time note, Traveler's Dirty etc...</val
   </data>
   <data name="label3.Text" xml:space="preserve">
     <value>Genshin Checker </value>
+    <comment>@Invariant</comment>
   </data>
   <data name="ScreenshotPath.Size" type="System.Drawing.Size, System.Drawing">
     <value>381, 23</value>
@@ -1468,6 +1477,7 @@ Examples of available information : Real-time note, Traveler's Dirty etc...</val
   </data>
   <data name="label7.Text" xml:space="preserve">
     <value>GitHub : https://github.com/Misaki0331/Genshin-Checker</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 19</value>
