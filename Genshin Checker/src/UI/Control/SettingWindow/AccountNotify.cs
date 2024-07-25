@@ -42,7 +42,7 @@ namespace Genshin_Checker.UI.Control.SettingWindow
                 }
                 CheckTransformerReached.Checked = realtime.TransformerReached;
                 CheckExpeditionAllCompleted.Checked = realtime.ExpeditionAllCompleted;
-
+                EnableHoYoLabAutoSignIn.Checked = config.IsHoYoLabAutoSignIn;
             }
         }
         private void StateChanged(object sender, EventArgs e)
