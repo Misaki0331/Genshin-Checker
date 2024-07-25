@@ -660,4 +660,7 @@ After clicking the "Feedback" button, a new browser window will open, but you ca
   <data name="Message_RedeemCode_Success" xml:space="preserve">
     <value>Please check your mailbox in game.</value>
   </data>
+  <data name="Notify_Activated_DailyBonus" xml:space="preserve">
+    <value>You received today's Daily check-in!</value>
+  </data>
 </root>

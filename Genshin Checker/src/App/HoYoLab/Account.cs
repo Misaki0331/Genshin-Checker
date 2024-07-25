@@ -300,7 +300,7 @@ namespace Genshin_Checker.App.HoYoLab
                     if (res)
                     {
                         var toastContent = new ToastContentBuilder()
-                            .AddText("本日のログインボーナスを受け取りました。")
+                            .AddText(Localize.Notify_Activated_DailyBonus)
                             .AddAttributionText($"UID: {UID}");
                         toastContent.Show(toast =>
                         {

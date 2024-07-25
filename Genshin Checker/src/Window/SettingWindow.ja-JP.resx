@@ -183,9 +183,6 @@
   <data name="page_general.Text" xml:space="preserve">
     <value>全般</value>
   </data>
-  <data name="groupBox3.Text" xml:space="preserve">
-    <value>リアルタイムノートの通知 (HoYoLab連携必須)</value>
-  </data>
   <data name="IsNotificationGameClosed.Text" xml:space="preserve">
     <value>ゲーム終了時の通知</value>
   </data>
@@ -217,6 +214,28 @@
   <data name="page_auth.Text" xml:space="preserve">
     <value>アプリ連携</value>
   </data>
+  <data name="TabAccountNotify.Size" type="System.Drawing.Size, System.Drawing">
+    <value>581, 190</value>
+  </data>
+  <data name="groupBox3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="groupBox3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>587, 212</value>
+  </data>
+  <data name="groupBox3.Text" xml:space="preserve">
+    <value>HoYoLabアカウント設定 (HoYoLab連携必須)</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="page_HoYoLab.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="page_HoYoLab.Size" type="System.Drawing.Size, System.Drawing">
+    <value>593, 433</value>
+  </data>
+  <data name="page_HoYoLab.Text" xml:space="preserve">
+    <value>HoYoLab</value>
+  </data>
   <data name="ButtonDataReset.Text" xml:space="preserve">
     <value>データ削除</value>
   </data>
@@ -225,6 +244,9 @@
   </data>
   <data name="ButtonBackup.Text" xml:space="preserve">
     <value>バックアップ</value>
+  </data>
+  <data name="groupBox9.Size" type="System.Drawing.Size, System.Drawing">
+    <value>587, 28</value>
   </data>
   <data name="groupBox9.Text" xml:space="preserve">
     <value>ユーザーデータ設定</value>

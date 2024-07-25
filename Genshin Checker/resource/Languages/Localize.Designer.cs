@@ -692,6 +692,15 @@ namespace Genshin_Checker.resource.Languages {
         }
         
         /// <summary>
+        ///   You received today&apos;s Daily check-in! に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Notify_Activated_DailyBonus {
+            get {
+                return ResourceManager.GetString("Notify_Activated_DailyBonus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Please open the game and earn rewards. に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string Notify_ExpeditionCompleted_Description {

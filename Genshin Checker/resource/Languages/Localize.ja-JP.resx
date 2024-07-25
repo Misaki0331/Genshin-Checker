@@ -653,4 +653,7 @@
   <data name="Message_RedeemCode_Success" xml:space="preserve">
     <value>ゲーム内のメールボックスをチェックしてください。</value>
   </data>
+  <data name="Notify_Activated_DailyBonus" xml:space="preserve">
+    <value>本日のログインボーナスを受け取りました！</value>
+  </data>
 </root>

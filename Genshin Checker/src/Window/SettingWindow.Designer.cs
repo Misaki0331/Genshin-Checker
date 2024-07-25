@@ -50,8 +50,6 @@
             groupBox6 = new GroupBox();
             IsCountBackground = new CheckBox();
             page_notification = new TabPage();
-            groupBox3 = new GroupBox();
-            TabAccountNotify = new TabControl();
             groupBox2 = new GroupBox();
             IsNotificationGameClosed = new CheckBox();
             IsNotificationGameStart = new CheckBox();
@@ -61,6 +59,9 @@
             label1 = new Label();
             panel1 = new Panel();
             Open_HoYoLabAuth = new Button();
+            page_HoYoLab = new TabPage();
+            groupBox3 = new GroupBox();
+            TabAccountNotify = new TabControl();
             page_application = new TabPage();
             groupBox9 = new GroupBox();
             panel7 = new Panel();
@@ -87,11 +88,12 @@
             panel4.SuspendLayout();
             groupBox6.SuspendLayout();
             page_notification.SuspendLayout();
-            groupBox3.SuspendLayout();
             groupBox2.SuspendLayout();
             page_auth.SuspendLayout();
             groupBox1.SuspendLayout();
             panel1.SuspendLayout();
+            page_HoYoLab.SuspendLayout();
+            groupBox3.SuspendLayout();
             page_application.SuspendLayout();
             groupBox9.SuspendLayout();
             panel7.SuspendLayout();
@@ -108,6 +110,7 @@
             tabControl1.Controls.Add(page_general);
             tabControl1.Controls.Add(page_notification);
             tabControl1.Controls.Add(page_auth);
+            tabControl1.Controls.Add(page_HoYoLab);
             tabControl1.Controls.Add(page_application);
             tabControl1.Controls.Add(page_about);
             tabControl1.Multiline = true;
@@ -252,24 +255,9 @@
             // page_notification
             // 
             resources.ApplyResources(page_notification, "page_notification");
-            page_notification.Controls.Add(groupBox3);
             page_notification.Controls.Add(groupBox2);
             page_notification.Name = "page_notification";
             page_notification.UseVisualStyleBackColor = true;
-            // 
-            // groupBox3
-            // 
-            resources.ApplyResources(groupBox3, "groupBox3");
-            groupBox3.Controls.Add(TabAccountNotify);
-            groupBox3.Name = "groupBox3";
-            groupBox3.TabStop = false;
-            // 
-            // TabAccountNotify
-            // 
-            resources.ApplyResources(TabAccountNotify, "TabAccountNotify");
-            TabAccountNotify.Multiline = true;
-            TabAccountNotify.Name = "TabAccountNotify";
-            TabAccountNotify.SelectedIndex = 0;
             // 
             // groupBox2
             // 
@@ -332,6 +320,27 @@
             Open_HoYoLabAuth.Name = "Open_HoYoLabAuth";
             Open_HoYoLabAuth.UseVisualStyleBackColor = true;
             Open_HoYoLabAuth.Click += Open_HoYoLabAuth_Click;
+            // 
+            // page_HoYoLab
+            // 
+            resources.ApplyResources(page_HoYoLab, "page_HoYoLab");
+            page_HoYoLab.Controls.Add(groupBox3);
+            page_HoYoLab.Name = "page_HoYoLab";
+            page_HoYoLab.UseVisualStyleBackColor = true;
+            // 
+            // groupBox3
+            // 
+            resources.ApplyResources(groupBox3, "groupBox3");
+            groupBox3.Controls.Add(TabAccountNotify);
+            groupBox3.Name = "groupBox3";
+            groupBox3.TabStop = false;
+            // 
+            // TabAccountNotify
+            // 
+            resources.ApplyResources(TabAccountNotify, "TabAccountNotify");
+            TabAccountNotify.Multiline = true;
+            TabAccountNotify.Name = "TabAccountNotify";
+            TabAccountNotify.SelectedIndex = 0;
             // 
             // page_application
             // 
@@ -485,7 +494,6 @@
             groupBox6.PerformLayout();
             page_notification.ResumeLayout(false);
             page_notification.PerformLayout();
-            groupBox3.ResumeLayout(false);
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
             page_auth.ResumeLayout(false);
@@ -494,6 +502,9 @@
             groupBox1.PerformLayout();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
+            page_HoYoLab.ResumeLayout(false);
+            page_HoYoLab.PerformLayout();
+            groupBox3.ResumeLayout(false);
             page_application.ResumeLayout(false);
             page_application.PerformLayout();
             groupBox9.ResumeLayout(false);
@@ -563,5 +574,6 @@
         private Button ButtonDataOverride;
         private Button ButtonBackup;
         private Button ButtonDataReset;
+        private TabPage page_HoYoLab;
     }
 }
