@@ -108,7 +108,7 @@ namespace Genshin_Checker.App.Game
                     { "end_time", $"{(end==null?"":$"{end:yyyy-MM-dd}")}" },
 
                 }).ReadAsStringAsync();
-            string url = $"https://hk4e-api-os.hoyoverse.com/common/hk4e_self_help_query/User/GetMonthlyCardLog?{parms}";
+            string url = $"https://public-operation-hk4e-sg.hoyoverse.com/common/hk4e_self_help_query/User/GetMonthlyCardLog?{parms}";
             string json = await GetWebString(url);
             var root = JsonChecker<Model.Game.MonthlyCardLog.Root>.Check(json);
             if (root.Data == null) throw new GameAPIException(root.Retcode, root.Message);
@@ -135,7 +135,7 @@ namespace Genshin_Checker.App.Game
                     { "end_time", end==null?"":$"{end:yyyy-MM-dd HH:mm:ss}" },
 
                 }).ReadAsStringAsync();
-            string url = $"https://hk4e-api-os.hoyoverse.com/common/hk4e_self_help_query/User/GetCrystalLog?{parms}";
+            string url = $"https://public-operation-hk4e-sg.hoyoverse.com/common/hk4e_self_help_query/User/GetCrystalLog?{parms}";
             string json = await GetWebString(url);
             var root = JsonChecker<Model.Game.ItemLog.Root>.Check(json);
             if (root.Data == null) throw new GameAPIException(root.Retcode, root.Message);
@@ -162,7 +162,7 @@ namespace Genshin_Checker.App.Game
                     { "end_time", end==null?"":$"{end:yyyy-MM-dd HH:mm:ss}" },
 
                 }).ReadAsStringAsync();
-            string url = $"https://hk4e-api-os.hoyoverse.com/common/hk4e_self_help_query/User/GetPrimogemLog?{parms}";
+            string url = $"https://public-operation-hk4e-sg.hoyoverse.com/common/hk4e_self_help_query/User/GetPrimogemLog?{parms}";
             string json = await GetWebString(url);
             var root = JsonChecker<Model.Game.ItemLog.Root>.Check(json);
             if (root.Data == null) throw new GameAPIException(root.Retcode, root.Message);
@@ -187,7 +187,7 @@ namespace Genshin_Checker.App.Game
                     { "end_time", end==null?"":$"{end:yyyy-MM-dd HH:mm:ss}" },
 
                 }).ReadAsStringAsync();
-            string url = $"https://hk4e-api-os.hoyoverse.com/common/hk4e_self_help_query/User/GetResinLog?{parms}";
+            string url = $"https://public-operation-hk4e-sg.hoyoverse.com/common/hk4e_self_help_query/User/GetResinLog?{parms}";
             string json = await GetWebString(url);
             var root = JsonChecker<Model.Game.ItemLog.Root>.Check(json);
             if (root.Data == null) throw new GameAPIException(root.Retcode, root.Message);
@@ -214,7 +214,7 @@ namespace Genshin_Checker.App.Game
                     { "end_time", end==null?"":$"{end:yyyy-MM-dd HH:mm:ss}" },
 
                 }).ReadAsStringAsync();
-            string url = $"https://hk4e-api-os.hoyoverse.com/common/hk4e_self_help_query/User/GetStarglitter?{parms}";
+            string url = $"https://public-operation-hk4e-sg.hoyoverse.com/common/hk4e_self_help_query/User/GetStarglitter?{parms}";
             string json = await GetWebString(url);
             var root = JsonChecker<Model.Game.StarItems.Root>.Check(json);
             if (root.Data == null) throw new GameAPIException(root.Retcode, root.Message);
@@ -241,7 +241,7 @@ namespace Genshin_Checker.App.Game
                     { "end_time", end==null?"":$"{end:yyyy-MM-dd HH:mm:ss}" },
 
                 }).ReadAsStringAsync();
-            string url = $"https://hk4e-api-os.hoyoverse.com/common/hk4e_self_help_query/User/GetStardustLog?{parms}";
+            string url = $"https://public-operation-hk4e-sg.hoyoverse.com/common/hk4e_self_help_query/User/GetStardustLog?{parms}";
             string json = await GetWebString(url);
             var root = JsonChecker<Model.Game.StarItems.Root>.Check(json);
             if (root.Data == null) throw new GameAPIException(root.Retcode, root.Message);
@@ -269,7 +269,7 @@ namespace Genshin_Checker.App.Game
                     { "quality", rarity==-1?"":$"{rarity}" },
 
                 }).ReadAsStringAsync();
-            string url = $"https://hk4e-api-os.hoyoverse.com/common/hk4e_self_help_query/User/GetArtifactLog?{parms}";
+            string url = $"https://public-operation-hk4e-sg.hoyoverse.com/common/hk4e_self_help_query/User/GetArtifactLog?{parms}";
             string json = await GetWebString(url);
             var root = JsonChecker<Model.Game.EquipmentLog.Root>.Check(json);
             if (root.Data == null) throw new GameAPIException(root.Retcode, root.Message);
@@ -297,7 +297,7 @@ namespace Genshin_Checker.App.Game
                     { "quality", rarity==-1?"":$"{rarity}" },
 
                 }).ReadAsStringAsync();
-            string url = $"https://hk4e-api-os.hoyoverse.com/common/hk4e_self_help_query/User/GetWeaponLog?{parms}";
+            string url = $"https://public-operation-hk4e-sg.hoyoverse.com/common/hk4e_self_help_query/User/GetWeaponLog?{parms}";
             string json = await GetWebString(url);
             var root = JsonChecker<Model.Game.EquipmentLog.Root>.Check(json);
             if (root.Data == null) throw new GameAPIException(root.Retcode, root.Message);
