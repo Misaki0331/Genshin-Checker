@@ -170,6 +170,7 @@ namespace Genshin_Checker.App.General
                         case 1082: return "デートイベント報酬";
                         case 1084: return "イベントマルチミニゲーム報酬";
                         case 1100: return "塵歌壺ギフトセット報酬";
+                        case 1180: return "期間限定マップ探索段階報酬";
 
                         default:
                             if (events != null)
@@ -262,6 +263,7 @@ namespace Genshin_Checker.App.General
                         case 1074: return "参量物質変化器変換報酬";
                         case 1084: return "イベントマルチミニゲーム報酬";
                         case 1100: return "塵歌壺ギフトセット報酬";
+                        case 1180: return "期間限定マップ探索段階報酬";
 
                         default:
                             if (events != null)
