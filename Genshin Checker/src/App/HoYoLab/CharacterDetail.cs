@@ -37,14 +37,14 @@ namespace Genshin_Checker.App.HoYoLab
         /// <param name="e"></param>
         private async void Timeout_Tick(object? sender, EventArgs e)
         {
-            Trace.WriteLine($"天賦レベル取得");
+            Log.Debug($"天賦レベル取得");
             ServerUpdate.Stop();
             ServerUpdate.Interval = 3600000*6;
-            if (await UpdateGameData(true)) Trace.WriteLine("キャラクターの更新に成功");
+            if (await UpdateGameData(true)) Log.Debug("キャラクターの更新に成功");
             else
             {
                 ServerUpdate.Interval = 60000 * 5;
-                Trace.WriteLine("キャラクターの更新に失敗");
+                Log.Debug("キャラクターの更新に失敗");
             }
             ServerUpdate.Start();
         }
@@ -104,7 +104,7 @@ namespace Genshin_Checker.App.HoYoLab
                             if (ex.Retcode == 2000000429)
                             {
                                 if (i == 29) throw new ArgumentException(Localize.Error_CharacterDetail_ReachedRetryCount,ex);
-                                Trace.WriteLine($"Ratelimit exceeded. please wait... {i}");
+                                Log.Debug($"Ratelimit exceeded. please wait... {i}");
                                 await Task.Delay(10000);
                             }
                             else
@@ -123,12 +123,12 @@ namespace Genshin_Checker.App.HoYoLab
             catch (Account.HoYoLabAPIException ex)
             {
                 LatestException= ex;
-                Trace.WriteLine($"アカウント検証エラー : {ex.Retcode} - {ex.APIMessage}");
+                Log.Debug($"アカウント検証エラー : {ex.Retcode} - {ex.APIMessage}");
             }
             catch (Exception ex)
             {
                 LatestException = ex;
-                Trace.WriteLine(ex.ToString());
+                Log.Debug(ex.ToString());
             }
             finally
             {

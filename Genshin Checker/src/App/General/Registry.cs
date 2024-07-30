@@ -76,7 +76,7 @@ namespace Genshin_Checker.App
 #if DEBUG
             var data = value;
             if (value.Length > 100) data = value[..100] + $"...({value.Length})";
-            Trace.WriteLine($"{Subkey}:{key} (Compress:{compress}) Value:\"{data}\"");
+            Log.Debug($"{Subkey}:{key} (Compress:{compress}) Value:\"{data}\"");
             compress = false;
 #endif
             //if(IsReadOnly&&!force) return;
@@ -127,7 +127,7 @@ namespace Genshin_Checker.App
                 {
                     var sub = path.CreateSubKey(item.Path);
                     sub.SetValue(item.Key, item.Value);
-                    Trace.WriteLine($"{item.Path} - {item.Key}:{item.Value}");
+                    Log.Debug($"{item.Path} - {item.Key}:{item.Value}");
                     sub.Close();
                 }
                 path.Close();

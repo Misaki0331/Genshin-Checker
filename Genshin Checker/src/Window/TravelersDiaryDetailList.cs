@@ -370,7 +370,7 @@ namespace Genshin_Checker.Window
             }
             catch (Exception ex)
             {
-                Trace.WriteLine(ex);
+                Log.Error(ex);
             }
         }
 

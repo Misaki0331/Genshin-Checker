@@ -128,7 +128,7 @@ namespace Genshin_Checker.InternalTools
             }
             catch (Exception ex)
             {
-                Trace.WriteLine(ex);
+                Log.Error(ex);
             }
         }
         public async Task FileInit(string url)

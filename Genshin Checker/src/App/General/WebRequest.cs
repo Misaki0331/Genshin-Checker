@@ -105,7 +105,7 @@ namespace Genshin_Checker.App
             foreach (KeyValuePair<string, string> header in headers)
                 client.DefaultRequestHeaders.Add(header.Key, header.Value);
             HttpResponseMessage response = await client.GetAsync(url);
-            Trace.WriteLine($"HoYoGet - {url}");
+            Log.Debug($"HoYoGet - {url}");
             if (!response.IsSuccessStatusCode)
             {
                 var data = await response.Content.ReadAsStringAsync();
@@ -155,7 +155,7 @@ namespace Genshin_Checker.App
             var content = new StringContent(data, Encoding.UTF8, @"application/json");
 
             HttpResponseMessage response = await client.PostAsync(url, content);
-            Trace.WriteLine($"HoYoPost - {url}");
+            Log.Debug($"HoYoPost - {url}");
             if (!response.IsSuccessStatusCode)
             {
                 var data2 = await response.Content.ReadAsStringAsync();
@@ -198,7 +198,7 @@ namespace Genshin_Checker.App
             foreach (KeyValuePair<string, string> header in headers)
                 client.DefaultRequestHeaders.Add(header.Key, header.Value);
             HttpResponseMessage response = await client.GetAsync(url);
-            Trace.WriteLine($"GeneralGet - {response.StatusCode} {url}");
+            Log.Debug($"GeneralGet - {response.StatusCode} {url}");
             response.EnsureSuccessStatusCode();
             return await response.Content.ReadAsStringAsync();
         }
@@ -224,12 +224,12 @@ namespace Genshin_Checker.App
                     using GZipStream zipStream = new(fs, CompressionMode.Decompress);
                     using MemoryStream cacheout = new();
                     zipStream.CopyTo(cacheout);
-                    Trace.WriteLine($"Cache ({fs.Length}->{cacheout.Length}) : {url}");
+                    Log.Debug($"Cache ({fs.Length}->{cacheout.Length}) : {url}");
                     return cacheout.ToArray();
                 }
                 catch (Exception ex)
                 {
-                    Trace.WriteLine(ex.Message);
+                    Log.Debug(ex.Message);
                 }
             }
             Stopwatch stopwatch = new();
@@ -260,14 +260,14 @@ namespace Genshin_Checker.App
                     else response = await client.GetAsync(url, (CancellationToken)token);
                     if (!response.IsSuccessStatusCode)
                     {
-                        Trace.WriteLine($"Error: {response.StatusCode} - {url}");
+                        Log.Debug($"Error: {response.StatusCode} - {url}");
                         throw new ArgumentException($"Error: {response.StatusCode} - {url}");
                     }
                     break;
                 }
                 catch (Exception ex)
                 {
-                    Trace.WriteLine(ex.Message);
+                    Log.Debug(ex.Message);
                     if (i == 9)
                     {
                         return null;
@@ -283,7 +283,7 @@ namespace Genshin_Checker.App
                 stream.CopyTo(zipStream);
                 zipStream.Close();
             }
-            Trace.WriteLine($"Downloaded ({stream.Length:#,##0} Bytes / {stopwatch.ElapsedMilliseconds / 1000.0:0.00} sec) : {url}");
+            Log.Debug($"Downloaded ({stream.Length:#,##0} Bytes / {stopwatch.ElapsedMilliseconds / 1000.0:0.00} sec) : {url}");
             byte[] buffer = new byte[16 * 1024];
             using MemoryStream ms = new();
             stream.Position = 0;

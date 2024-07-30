@@ -38,7 +38,7 @@ namespace Genshin_Checker.App.HoYoLab
             try
             {
                 if(!IsGotOldData) await Convert(await account.Endpoint.GetSpiralAbyss(false));
-                Trace.WriteLine("深境螺旋を取得");
+                Log.Debug("深境螺旋を取得");
                 IsGotOldData = true;
                 Cache.Data = await Convert(await account.Endpoint.GetSpiralAbyss(true));
                 Cache.Latest = DateTime.Now;
@@ -48,7 +48,7 @@ namespace Genshin_Checker.App.HoYoLab
             }
             catch (Exception ex)
             {
-                Trace.WriteLine(ex);
+                Log.Error(ex);
             }
             ServerUpdate.Interval = 300000;
             ServerUpdate.Start();
@@ -131,19 +131,19 @@ namespace Genshin_Checker.App.HoYoLab
                     history.star = level.star;
                     l.history.Add(history);
                     CountOfAddBattle++;
-                    Trace.WriteLine($"{flr.index}層{l.index}間にてデータの更新");
+                    Log.Debug($"{flr.index}層{l.index}間にてデータの更新");
                     if (IsNewLevel) flr.levels.Add(l);
                 }
                 if (IsNewFloor) res.Data.floors.Add(flr);
             }
             if (CountOfAddBattle > 0 || IsEmptyData)
             {
-                Trace.WriteLine($"保存 : {CountOfAddBattle} 個更新 / 空データ:{IsEmptyData}");
+                Log.Debug($"保存 : {CountOfAddBattle} 個更新 / 空データ:{IsEmptyData}");
                 await Save(res);
             }
             else
             {
-                Trace.WriteLine("更新はありませんでした。");
+                Log.Debug("更新はありませんでした。");
             }
             return res;
 
@@ -195,15 +195,15 @@ namespace Genshin_Checker.App.HoYoLab
             if (v2.UID != account.UID) throw new InvalidDataException(string.Format(Localize.Error_SpiralAbyssFile_DoesNotMatchUID, v2.UID, account.UID));
             if (ver.Version != 2)
             {
-                Trace.WriteLine($"螺旋 {v2.Data.schedule_id} 期のデータをアップデートします...");
+                Log.Debug($"螺旋 {v2.Data.schedule_id} 期のデータをアップデートします...");
                 try
                 {
                     await Save(v2);
-                    Trace.WriteLine($"→完了");
+                    Log.Debug($"→完了");
                 }
                 catch(Exception ex)
                 {
-                    Trace.WriteLine($"→失敗 {ex.Message}");
+                    Log.Debug($"→失敗 {ex.Message}");
                 }
             }
             return v2;

@@ -307,7 +307,7 @@ namespace Genshin_Checker.Window.ProgressWindow
                 Close();
                 return;
             }
-            Trace.WriteLine("解析実行開始");
+            Log.Debug("解析実行開始");
             PanelProgress.Visible = true;
             PanelSelect.Visible = false;
             await AnalysisExecution(database);

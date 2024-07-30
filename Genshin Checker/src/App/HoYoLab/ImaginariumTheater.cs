@@ -27,7 +27,7 @@ namespace Genshin_Checker.App.HoYoLab
         internal async void Timeout_Tick(object? sender, EventArgs e)
         {
             ServerUpdate.Stop();
-            Trace.WriteLine("幻想シアターを取得");
+            Log.Debug("幻想シアターを取得");
             await ScheduleReload();
             ServerUpdate.Interval = (account.LatestActiveSession > DateTime.UtcNow.AddHours(-2) || account.LatestActivity == Game.ProcessTime.ProcessState.Foreground )? 600000 : 3600000 * 3;
             ServerUpdate.Start();
@@ -41,7 +41,7 @@ namespace Genshin_Checker.App.HoYoLab
 
             }catch(Exception ex)
             {
-                Trace.WriteLine(ex);
+                Log.Error(ex);
             }
         }
         public async Task<V1> Load(int id)
@@ -79,17 +79,17 @@ namespace Genshin_Checker.App.HoYoLab
         }
         private async Task<int> SaveDatabase(Model.HoYoLab.RoleCombat.Data raw)
         {
-            Trace.WriteLine("幻想シアターのデータを保存します。");
+            Log.Debug("幻想シアターのデータを保存します。");
             int CountOfNewData = 0;
             foreach (var index in raw.data)
             {
                 var userdata = new V1();
                 #region ユーザーデータベースから過去の情報読み出し
-                Trace.WriteLine($"幻想シアター {index.schedule.schedule_id} 期");
+                Log.Debug($"幻想シアター {index.schedule.schedule_id} 期");
                 var path = Registry.GetValue(REG_PATH, $"{index.schedule.schedule_id}", true);
                 if (path != null&& AppData.IsExistFile(path))
                 {
-                    Trace.WriteLine($"→データが見つかりました。");
+                    Log.Debug($"→データが見つかりました。");
                     var json = await AppData.LoadUserData(path);
                     if (!string.IsNullOrEmpty(json))
                     {
@@ -120,7 +120,7 @@ namespace Genshin_Checker.App.HoYoLab
                     if (endtime < time) endtime = time;
                 }
 
-                Trace.WriteLine($"取得したデータは {starttime} - {endtime} です。");
+                Log.Debug($"取得したデータは {starttime} - {endtime} です。");
                 if (Current == null || Current.Data.schedule_id <= userdata.Data.schedule_id) Current = userdata;
                 bool IsNextMove = false;
                 var game = userdata.Data.Detail.Find(a =>
@@ -131,7 +131,7 @@ namespace Genshin_Checker.App.HoYoLab
                     {
                         if (end != endtime)
                         {
-                            Trace.WriteLine($"EndTime is Invalid {endtime} -> {end}");
+                            Log.Debug($"EndTime is Invalid {endtime} -> {end}");
                         }
                         else IsNextMove=true;
                         return true;
@@ -141,7 +141,7 @@ namespace Genshin_Checker.App.HoYoLab
                 #endregion
                 if (IsNextMove)
                 {
-                    Trace.WriteLine($"→データに更新が無さそうなのでスキップします。");
+                    Log.Debug($"→データに更新が無さそうなのでスキップします。");
                     continue; //データに更新が無い場合はスキップ
                 }
                 bool IsNewData = game == null;
@@ -242,16 +242,16 @@ namespace Genshin_Checker.App.HoYoLab
                 }
                 #endregion
                 CountOfNewData++;
-                Trace.WriteLine($"データ : {game.FinalRoundTime.AddHours(9)} 難易度{game.Stats.difficulty_id} ☆{game.Stats.medal_num}");
+                Log.Debug($"データ : {game.FinalRoundTime.AddHours(9)} 難易度{game.Stats.difficulty_id} ☆{game.Stats.medal_num}");
                 if (IsNewData)
                 {
-                    Trace.WriteLine($"→今回取得したデータは新しい為追加します。");
+                    Log.Debug($"→今回取得したデータは新しい為追加します。");
                     userdata.Data.Detail.Add(game);
                 }
                 await Save(userdata);
-                Trace.WriteLine($"第 {userdata.Data.schedule_id} 期保存しました。");
+                Log.Debug($"第 {userdata.Data.schedule_id} 期保存しました。");
             }
-            if (CountOfNewData == 0) Trace.WriteLine("今回は保存されませんでした。");
+            if (CountOfNewData == 0) Log.Debug("今回は保存されませんでした。");
             return CountOfNewData;
         }
     }

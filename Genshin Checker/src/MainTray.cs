@@ -85,7 +85,7 @@ namespace Genshin_Checker
             consoleToolStripMenuItem.Visible = isdebug;
             if (safemode)
             {
-                Trace.WriteLine(Localize.Warning_SafeMode);
+                Log.Debug(Localize.Warning_SafeMode);
 
                 versionNameToolStripMenuItem.Text += "[Readonly]";
                 Registry.IsReadOnly = true;
@@ -123,7 +123,7 @@ namespace Genshin_Checker
 
         void Notification(object? sender, string e)
         {
-            Trace.WriteLine(sender);
+            Log.Debug($"{sender}");
             notification.BalloonTipTitle = $"{sender}";
             notification.BalloonTipText = $"{e}";
             notification.ShowBalloonTip(30000);

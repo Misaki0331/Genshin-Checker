@@ -32,7 +32,7 @@ namespace Genshin_Checker.App.General
             }
             catch (Exception ex)
             {
-                Trace.WriteLine($"Error! {ex.Message}");
+                Log.Debug($"Error! {ex.Message}");
             }
             finally
             {
@@ -85,7 +85,7 @@ namespace Genshin_Checker.App.General
             }
             catch (Exception ex)
             {
-                Trace.WriteLine($"Error! {ex.Message}");
+                Log.Debug($"Error! {ex.Message}");
             }
             finally
             {

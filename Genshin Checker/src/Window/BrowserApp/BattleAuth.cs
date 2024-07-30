@@ -95,7 +95,7 @@ namespace Genshin_Checker.BrowserApp
                     }
                     catch (Exception ex)
                     {
-                        Trace.WriteLine(ex);
+                        Log.Error(ex);
                         timer.Stop();
                         AuthButton.Enabled = true;
                         new ErrorMessage(Localize.Error_BattleAuth_FailedToAuthentication,$"{ex.Message}\n\n{ex.GetType()}\n\n{ex.StackTrace}").ShowDialog();

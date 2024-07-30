@@ -29,7 +29,7 @@ namespace Genshin_Checker.App.HoYoLab
             }
             catch(Exception ex)
             {
-                Trace.WriteLine(ex);
+                Log.Error(ex);
                 ServerUpdate.Interval = 5000;
             }
         }

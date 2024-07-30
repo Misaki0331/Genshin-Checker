@@ -74,7 +74,7 @@ namespace Genshin_Checker.App.Game
             }
             catch (Exception ex)
             {
-                Trace.WriteLine(ex);
+                Log.Error(ex);
                 throw;
             }
             return true;
@@ -102,11 +102,11 @@ namespace Genshin_Checker.App.Game
             Dictionary<string, long> LocaleQueueEnquipment = new();//注:longの値は実行する用のend_idです。
             if (AppData.IsExistFile(localizePath))
                 localize = JsonChecker<Model.UserData.GameDatabase.NameLocalize.Root>.Check(await App.General.AppData.LoadUserData(localizePath) ?? "{}");
-            else Trace.WriteLine($"データベースは見つかりませんでした。");
+            else Log.Debug($"データベースは見つかりませんでした。");
 
             if (AppData.IsExistFile(localizePathEnquipment))
                 Enquipmentlocalize = JsonChecker<Model.UserData.GameDatabase.NameLocalize.Root>.Check(await App.General.AppData.LoadUserData(localizePathEnquipment) ?? "{}");
-            else Trace.WriteLine($"データベースは見つかりませんでした。");
+            else Log.Debug($"データベースは見つかりませんでした。");
             localize ??= new();
             Enquipmentlocalize ??= new();
             for (int i = 1; i <= MAXPAGE; i++)
@@ -122,17 +122,17 @@ namespace Genshin_Checker.App.Game
                     if (data.list.Count != 0)
                     {
                         path = GetPath($"{type}", year, month);
-                        Trace.WriteLine($"データベースのパスを取得しました。{year}/{month}({type}) : {path}");
+                        Log.Debug($"データベースのパスを取得しました。{year}/{month}({type}) : {path}");
                         if (AppData.IsExistFile(path))
                             eventLists = JsonChecker<Model.UserData.GameDatabase.Enquipment.Root>.Check(await App.General.AppData.LoadUserData(path) ?? "{}");
-                        else Trace.WriteLine($"データベースは見つかりませんでした。");
+                        else Log.Debug($"データベースは見つかりませんでした。");
                         if (eventLists != null && eventLists.Details.Count > 0) //イベントリストの下準備
                         {
                             eventLists.Details.Sort((a, b) => a.EventTime.CompareTo(b.EventTime));      //リストを獲得時刻昇順に並び替え
                             Latest = eventLists.Details[^1].EventTime;                                  //最終の獲得時刻
                             LatestCount = eventLists.Details.FindAll(a => a.EventTime == Latest).Count; //同じ最終獲得時刻のイベント数
                         }
-                        Trace.WriteLine($"現在のレコード : {eventLists?.Details.Count} Latest:{Latest} LatestCount:{LatestCount}");
+                        Log.Debug($"現在のレコード : {eventLists?.Details.Count} Latest:{Latest} LatestCount:{LatestCount}");
                         IsFirst = true;
                         Start = DateTime.Parse(data.list[0].EventTime);
                     }
@@ -156,7 +156,7 @@ namespace Genshin_Checker.App.Game
                         {//ここの条件をfalse固定にすることによって強制的にローカライズを再取得できる。
                             if (!LocaleQueue.ContainsKey(d.EventName))
                             {
-                                Trace.WriteLine($"ローカライズのキューに追加しました。[{d.EventName},{latest}]");
+                                Log.Debug($"ローカライズのキューに追加しました。[{d.EventName},{latest}]");
                                 LocaleQueue.Add(d.EventName, latest);
                             }
                         }
@@ -166,7 +166,7 @@ namespace Genshin_Checker.App.Game
                         {//ここの条件をfalse固定にすることによって強制的にローカライズを再取得できる。
                             if (!LocaleQueueEnquipment.ContainsKey(d.ItemName))
                             {
-                                Trace.WriteLine($"ローカライズのキューに追加しました。[{d.ItemName},{latest}]");
+                                Log.Debug($"ローカライズのキューに追加しました。[{d.ItemName},{latest}]");
                                 LocaleQueueEnquipment.Add(d.ItemName, latest);
                             }
                         }
@@ -180,27 +180,27 @@ namespace Genshin_Checker.App.Game
                 //終了処理
                 if (IsEnd || i == MAXPAGE)
                 {
-                    Trace.WriteLine($"終了処理");
+                    Log.Debug($"終了処理");
                     //重複があったものを削除
                     for (int r = 0; r < LatestCount && eventLists.Details.Count > 0; r++) eventLists.Details.RemoveAt(eventLists.Details.Count - 1);
                     eventLists.Details.Sort((a, b) => a.EventTime.CompareTo(b.EventTime));
                     if (path != null) await App.General.AppData.SaveUserData(path, JsonConvert.SerializeObject(eventLists));
-                    Trace.WriteLine($"セーブ完了 レコード数:{eventLists.Details.Count}");
+                    Log.Debug($"セーブ完了 レコード数:{eventLists.Details.Count}");
                     break;
                 }
-                Trace.WriteLine($"ページ:{i} 取得完了。 レコード数:{eventLists.Details.Count}");
+                Log.Debug($"ページ:{i} 取得完了。 レコード数:{eventLists.Details.Count}");
             }
 
             if (LocaleQueue.Count > 0)
             {
-                Trace.WriteLine($"ローカライズのキューが残っている為調査します(対象 : {LocaleQueue.Count})");
+                Log.Debug($"ローカライズのキューが残っている為調査します(対象 : {LocaleQueue.Count})");
                 var langs = await HoYoLab.Static.LocalizeInfo.GetLanguages();
                 if (langs.Data == null) throw new ArgumentNullException(nameof(langs.Data), "languages data is null");
                 int cnt = 0;
                 foreach (var l in LocaleQueue)
                 {
                     Dictionary<string, string> lang = new();
-                    Trace.WriteLine($"[{l.Key}] の調査");
+                    Log.Debug($"[{l.Key}] の調査");
                     foreach (var d in langs.Data.langs)
                     {
                         var data = type switch
@@ -211,27 +211,27 @@ namespace Genshin_Checker.App.Game
                         };
                         if (data.list.Count >= 1) lang.Add(d.value, data.list[0].EventName);
                         else throw new InvalidDataException("No such data.");
-                        Trace.WriteLine($"{d.value} : {data.list[0].EventName}");
+                        Log.Debug($"{d.value} : {data.list[0].EventName}");
                         //ここに進捗
                         ReportProgress(1, 3, (double)(cnt * langs.Data.langs.Count + lang.Count) / (LocaleQueue.Count * langs.Data.langs.Count), type, year, month);
                     }
-                    Trace.WriteLine($"--------------------------------------------");
+                    Log.Debug($"--------------------------------------------");
                     localize.Locale.Add(l.Key, lang);
                     cnt++;
                 }
                 if (path != null) await App.General.AppData.SaveUserData(localizePath, JsonConvert.SerializeObject(localize));
-                Trace.WriteLine($"ローカライズセーブ完了 合計:{localize.Locale.Count}件");
+                Log.Debug($"ローカライズセーブ完了 合計:{localize.Locale.Count}件");
             }
             if (LocaleQueueEnquipment.Count > 0)
             {
-                Trace.WriteLine($"装備のローカライズのキューが残っている為調査します(対象 : {LocaleQueueEnquipment.Count})");
+                Log.Debug($"装備のローカライズのキューが残っている為調査します(対象 : {LocaleQueueEnquipment.Count})");
                 var langs = await HoYoLab.Static.LocalizeInfo.GetLanguages();
                 if (langs.Data == null) throw new ArgumentNullException(nameof(langs.Data), "languages data is null");
                 int cnt = 0;
                 foreach (var l in LocaleQueueEnquipment)
                 {
                     Dictionary<string, string> lang = new();
-                    Trace.WriteLine($"[{l.Key}] の調査");
+                    Log.Debug($"[{l.Key}] の調査");
                     foreach (var d in langs.Data.langs)
                     {
                         var data = type switch
@@ -242,18 +242,18 @@ namespace Genshin_Checker.App.Game
                         };
                         if (data.list.Count >= 1) lang.Add(d.value, data.list[0].ItemName);
                         else throw new InvalidDataException("No such data.");
-                        Trace.WriteLine($"{d.value} : {data.list[0].ItemName}");
+                        Log.Debug($"{d.value} : {data.list[0].ItemName}");
                         //ここに進捗
                         ReportProgress(2, 3, (double)(cnt * langs.Data.langs.Count + lang.Count) / (LocaleQueueEnquipment.Count * langs.Data.langs.Count), type, year, month);
                     }
-                    Trace.WriteLine($"--------------------------------------------");
+                    Log.Debug($"--------------------------------------------");
                     Enquipmentlocalize.Locale.Add(l.Key, lang);
                     cnt++;
                 }
                 if (path != null) await App.General.AppData.SaveUserData(localizePathEnquipment, JsonConvert.SerializeObject(Enquipmentlocalize));
-                Trace.WriteLine($"装備ローカライズセーブ完了 合計:{Enquipmentlocalize.Locale.Count}件");
+                Log.Debug($"装備ローカライズセーブ完了 合計:{Enquipmentlocalize.Locale.Count}件");
             }
-            Trace.WriteLine($"Done!");
+            Log.Debug($"Done!");
             return;
         }
         #endregion
@@ -277,7 +277,7 @@ namespace Genshin_Checker.App.Game
             Dictionary<string, long> LocaleQueue = new();//注:longの値は実行する用のend_idです。
             if (AppData.IsExistFile(localizePath))
                 localize = JsonChecker<Model.UserData.GameDatabase.NameLocalize.Root>.Check(await App.General.AppData.LoadUserData(localizePath) ?? "{}");
-            else Trace.WriteLine($"データベースは見つかりませんでした。");
+            else Log.Debug($"データベースは見つかりませんでした。");
             localize ??= new();
             for (int i = 1; i <= MAXPAGE; i++)
             {
@@ -288,17 +288,17 @@ namespace Genshin_Checker.App.Game
                     if (data.list.Count != 0)
                     {
                         path = GetPath($"{type}", year, month);
-                        Trace.WriteLine($"データベースのパスを取得しました。{year}/{month}({type}) : {path}");
+                        Log.Debug($"データベースのパスを取得しました。{year}/{month}({type}) : {path}");
                         if (AppData.IsExistFile(path))
                             eventLists = JsonChecker<Model.UserData.GameDatabase.MonthlyCard.Root>.Check(await App.General.AppData.LoadUserData(path) ?? "{}");
-                        else Trace.WriteLine($"データベースは見つかりませんでした。");
+                        else Log.Debug($"データベースは見つかりませんでした。");
                         if (eventLists != null && eventLists.Details.Count > 0) //イベントリストの下準備
                         {
                             eventLists.Details.Sort((a, b) => a.EventTime.CompareTo(b.EventTime));      //リストを獲得時刻昇順に並び替え
                             Latest = eventLists.Details[^1].EventTime;                                  //最終の獲得時刻
                             LatestCount = eventLists.Details.FindAll(a => a.EventTime == Latest).Count; //同じ最終獲得時刻のイベント数
                         }
-                        Trace.WriteLine($"現在のレコード : {eventLists?.Details.Count} Latest:{Latest} LatestCount:{LatestCount}");
+                        Log.Debug($"現在のレコード : {eventLists?.Details.Count} Latest:{Latest} LatestCount:{LatestCount}");
                         IsFirst = true;
                         Start = DateTime.Parse(data.list[0].EventTime);
                     }
@@ -321,7 +321,7 @@ namespace Genshin_Checker.App.Game
                         if (!localize.Locale.ContainsKey(d.EventName))//ここの条件をfalse固定にすることによって強制的にローカライズを再取得できる。
                             if (!LocaleQueue.ContainsKey(d.EventName))
                             {
-                                Trace.WriteLine($"ローカライズのキューに追加しました。[{d.EventName}]");
+                                Log.Debug($"ローカライズのキューに追加しました。[{d.EventName}]");
                                 LocaleQueue.Add(d.EventName, latest);
                             }
                         eventLists.Details.Add(new() { EventTime = time, EventType = d.EventName, ID = d.ID, EventTypeID = d.EventType });
@@ -334,37 +334,37 @@ namespace Genshin_Checker.App.Game
                 //終了処理
                 if (IsEnd || i == MAXPAGE)
                 {
-                    Trace.WriteLine($"終了処理");
+                    Log.Debug($"終了処理");
                     //重複があったものを削除
                     for (int r = 0; r < LatestCount && eventLists.Details.Count > 0; r++) eventLists.Details.RemoveAt(eventLists.Details.Count - 1);
                     eventLists.Details.Sort((a, b) => a.EventTime.CompareTo(b.EventTime));
                     if (path != null) await App.General.AppData.SaveUserData(path, JsonConvert.SerializeObject(eventLists));
-                    Trace.WriteLine($"セーブ完了 レコード数:{eventLists.Details.Count}");
+                    Log.Debug($"セーブ完了 レコード数:{eventLists.Details.Count}");
                     break;
                 }
-                Trace.WriteLine($"ページ:{i} 取得完了。 レコード数:{eventLists.Details.Count}");
+                Log.Debug($"ページ:{i} 取得完了。 レコード数:{eventLists.Details.Count}");
             }
 
             if (LocaleQueue.Count > 0)
             {
-                Trace.WriteLine($"ローカライズのキューが残っている為調査します(対象 : {LocaleQueue.Count})");
+                Log.Debug($"ローカライズのキューが残っている為調査します(対象 : {LocaleQueue.Count})");
                 var langs = await HoYoLab.Static.LocalizeInfo.GetLanguages();
                 if (langs.Data == null) throw new ArgumentNullException(nameof(langs.Data), "languages data is null");
                 int cnt = 0;
                 foreach (var l in LocaleQueue)
                 {
                     Dictionary<string, string> lang = new();
-                    Trace.WriteLine($"[{l.Key}] の調査");
+                    Log.Debug($"[{l.Key}] の調査");
                     foreach (var d in langs.Data.langs)
                     {
                         var data = await GameAPI.GetMonthlyCardLog(authkey, size: 1, end_id: l.Value, begin: begin, end: end, culture: CultureInfo.GetCultureInfo(d.value));
                         if (data.list.Count >= 1) lang.Add(d.value, data.list[0].EventName);
                         else throw new InvalidDataException("No such data.");
-                        Trace.WriteLine($"{d.value} : {data.list[0].EventName}");
+                        Log.Debug($"{d.value} : {data.list[0].EventName}");
                         //ここに進捗
                         ReportProgress(1, 2, (double)(cnt * langs.Data.langs.Count + lang.Count) / (LocaleQueue.Count * langs.Data.langs.Count), type, year, month);
                     }
-                    Trace.WriteLine($"--------------------------------------------");
+                    Log.Debug($"--------------------------------------------");
                     localize.Locale.Add(l.Key, lang);
                     cnt++;
                 }
@@ -372,9 +372,9 @@ namespace Genshin_Checker.App.Game
                 {
                     await AppData.SaveUserData(localizePath, JsonConvert.SerializeObject(localize));
                 }
-                Trace.WriteLine($"ローカライズセーブ完了 合計:{localize.Locale.Count}件");
+                Log.Debug($"ローカライズセーブ完了 合計:{localize.Locale.Count}件");
             }
-            Trace.WriteLine($"Done!");
+            Log.Debug($"Done!");
             return;
         }
         #endregion
@@ -398,7 +398,7 @@ namespace Genshin_Checker.App.Game
             Dictionary<string, long> LocaleQueue = new();//注:longの値は実行する用のend_idです。
             if (AppData.IsExistFile(localizePath))
                 localize = JsonChecker<Model.UserData.GameDatabase.NameLocalize.Root>.Check(await App.General.AppData.LoadUserData(localizePath) ?? "{}");
-            else Trace.WriteLine($"データベースは見つかりませんでした。");
+            else Log.Debug($"データベースは見つかりませんでした。");
             localize ??= new();
             for (int i = 1; i <= MAXPAGE; i++)
             {
@@ -413,17 +413,17 @@ namespace Genshin_Checker.App.Game
                     if (data.list.Count != 0)
                     {
                         path = GetPath($"{type}", year, month);
-                        Trace.WriteLine($"データベースのパスを取得しました。{year}/{month}({type}) : {path}");
+                        Log.Debug($"データベースのパスを取得しました。{year}/{month}({type}) : {path}");
                         if (AppData.IsExistFile(path))
                             eventLists = JsonChecker<Model.UserData.GameDatabase.ItemNum.Root>.Check(await App.General.AppData.LoadUserData(path) ?? "{}");
-                        else Trace.WriteLine($"データベースは見つかりませんでした。");
+                        else Log.Debug($"データベースは見つかりませんでした。");
                         if (eventLists != null && eventLists.Details.Count > 0) //イベントリストの下準備
                         {
                             eventLists.Details.Sort((a, b) => a.EventTime.CompareTo(b.EventTime));      //リストを獲得時刻昇順に並び替え
                             Latest = eventLists.Details[^1].EventTime;                                  //最終の獲得時刻
                             LatestCount = eventLists.Details.FindAll(a => a.EventTime == Latest).Count; //同じ最終獲得時刻のイベント数
                         }
-                        Trace.WriteLine($"現在のレコード : {eventLists?.Details.Count} Latest:{Latest} LatestCount:{LatestCount}");
+                        Log.Debug($"現在のレコード : {eventLists?.Details.Count} Latest:{Latest} LatestCount:{LatestCount}");
                         IsFirst = true;
                         Start = DateTime.Parse(data.list[0].EventTime);
                     }
@@ -446,7 +446,7 @@ namespace Genshin_Checker.App.Game
                         if (!localize.Locale.ContainsKey(d.EventName))//ここの条件をfalse固定にすることによって強制的にローカライズを再取得できる。
                             if (!LocaleQueue.ContainsKey(d.EventName))
                             {
-                                Trace.WriteLine($"ローカライズのキューに追加しました。[{d.EventName}]");
+                                Log.Debug($"ローカライズのキューに追加しました。[{d.EventName}]");
                                 LocaleQueue.Add(d.EventName, latest);
                             }
                         eventLists.Details.Add(new() { EventTime = time, EventType = d.EventName, Count = int.Parse(d.NumItems.Replace("+", "")), ID = d.ID, EventTypeID = GameDataStringToEventID.GetIDFromString(d.EventName) });
@@ -459,27 +459,27 @@ namespace Genshin_Checker.App.Game
                 //終了処理
                 if (IsEnd || i == MAXPAGE)
                 {
-                    Trace.WriteLine($"終了処理");
+                    Log.Debug($"終了処理");
                     //重複があったものを削除
                     for (int r = 0; r < LatestCount && eventLists.Details.Count > 0; r++) eventLists.Details.RemoveAt(eventLists.Details.Count - 1);
                     eventLists.Details.Sort((a, b) => a.EventTime.CompareTo(b.EventTime));
                     if (path != null) await App.General.AppData.SaveUserData(path, JsonConvert.SerializeObject(eventLists));
-                    Trace.WriteLine($"セーブ完了 レコード数:{eventLists.Details.Count}");
+                    Log.Debug($"セーブ完了 レコード数:{eventLists.Details.Count}");
                     break;
                 }
-                Trace.WriteLine($"ページ:{i} 取得完了。 レコード数:{eventLists.Details.Count}");
+                Log.Debug($"ページ:{i} 取得完了。 レコード数:{eventLists.Details.Count}");
             }
 
             if (LocaleQueue.Count > 0)
             {
-                Trace.WriteLine($"ローカライズのキューが残っている為調査します(対象 : {LocaleQueue.Count})");
+                Log.Debug($"ローカライズのキューが残っている為調査します(対象 : {LocaleQueue.Count})");
                 var langs = await HoYoLab.Static.LocalizeInfo.GetLanguages();
                 if (langs.Data == null) throw new ArgumentNullException(nameof(langs.Data), "languages data is null");
                 int cnt = 0;
                 foreach (var l in LocaleQueue)
                 {
                     Dictionary<string, string> lang = new();
-                    Trace.WriteLine($"[{l.Key}] の調査");
+                    Log.Debug($"[{l.Key}] の調査");
                     foreach (var d in langs.Data.langs)
                     {
                         var data = type switch
@@ -490,7 +490,7 @@ namespace Genshin_Checker.App.Game
                         };
                         if (data.list.Count >= 1) lang.Add(d.value, data.list[0].EventName);
                         else throw new InvalidDataException("No such data.");
-                        Trace.WriteLine($"{d.value} : {data.list[0].EventName}");
+                        Log.Debug($"{d.value} : {data.list[0].EventName}");
                         //ここに進捗
                         ReportProgress(1, 2, (double)(cnt * langs.Data.langs.Count + lang.Count) / (LocaleQueue.Count * langs.Data.langs.Count), type, year, month);
                     }
@@ -498,21 +498,21 @@ namespace Genshin_Checker.App.Game
                     {
                         if (locale != l.Key)
                         {
-                            Trace.WriteLine($"<!>Warning<!> 翻訳先が違います！！！\n{l.Key} => {locale}");
+                            Log.Debug($"<!>Warning<!> 翻訳先が違います！！！\n{l.Key} => {locale}");
                         }
                     }
                     else
                     {
-                        Trace.WriteLine($"<!>Warning<!> 翻訳がありません！！！\n{l.Key} => null");
+                        Log.Debug($"<!>Warning<!> 翻訳がありません！！！\n{l.Key} => null");
                     }
-                    Trace.WriteLine($"--------------------------------------------");
+                    Log.Debug($"--------------------------------------------");
                     localize.Locale.Add(l.Key, lang);
                     cnt++;
                 }
                 if (path != null) await App.General.AppData.SaveUserData(localizePath, JsonConvert.SerializeObject(localize));
-                Trace.WriteLine($"ローカライズセーブ完了 合計:{localize.Locale.Count}件");
+                Log.Debug($"ローカライズセーブ完了 合計:{localize.Locale.Count}件");
             }
-            Trace.WriteLine($"Done!");
+            Log.Debug($"Done!");
             return;
         }
         #endregion
@@ -536,7 +536,7 @@ namespace Genshin_Checker.App.Game
             Dictionary<string, long> LocaleQueue = new();//注:longの値は実行する用のend_idです。
             if (AppData.IsExistFile(localizePath))
                 localize = JsonChecker<Model.UserData.GameDatabase.NameLocalize.Root>.Check(await App.General.AppData.LoadUserData(localizePath) ?? "{}");
-            else Trace.WriteLine($"データベースは見つかりませんでした。");
+            else Log.Debug($"データベースは見つかりませんでした。");
             localize ??= new();
             for (int i = 1; i <= MAXPAGE; i++)
             {
@@ -552,17 +552,17 @@ namespace Genshin_Checker.App.Game
                     if (data.list.Count != 0)
                     {
                         path = GetPath($"{type}", year, month);
-                        Trace.WriteLine($"データベースのパスを取得しました。{year}/{month}({type}) : {path}");
+                        Log.Debug($"データベースのパスを取得しました。{year}/{month}({type}) : {path}");
                         if (AppData.IsExistFile(path))
                             eventLists = JsonChecker<Model.UserData.GameDatabase.ItemNum.Root>.Check(await App.General.AppData.LoadUserData(path) ?? "{}");
-                        else Trace.WriteLine($"データベースは見つかりませんでした。");
+                        else Log.Debug($"データベースは見つかりませんでした。");
                         if (eventLists != null && eventLists.Details.Count > 0) //イベントリストの下準備
                         {
                             eventLists.Details.Sort((a, b) => a.EventTime.CompareTo(b.EventTime));      //リストを獲得時刻昇順に並び替え
                             Latest = eventLists.Details[^1].EventTime;                                  //最終の獲得時刻
                             LatestCount = eventLists.Details.FindAll(a => a.EventTime == Latest).Count; //同じ最終獲得時刻のイベント数
                         }
-                        Trace.WriteLine($"現在のレコード : {eventLists?.Details.Count} Latest:{Latest} LatestCount:{LatestCount}");
+                        Log.Debug($"現在のレコード : {eventLists?.Details.Count} Latest:{Latest} LatestCount:{LatestCount}");
                         IsFirst = true;
                         Start = DateTime.Parse(data.list[0].EventTime);
                     }
@@ -585,7 +585,7 @@ namespace Genshin_Checker.App.Game
                         if (!localize.Locale.ContainsKey(d.EventName))//ここの条件をfalse固定にすることによって強制的にローカライズを再取得できる。
                             if (!LocaleQueue.ContainsKey(d.EventName))
                             {
-                                Trace.WriteLine($"ローカライズのキューに追加しました。[{d.EventName}]");
+                                Log.Debug($"ローカライズのキューに追加しました。[{d.EventName}]");
                                 LocaleQueue.Add(d.EventName, latest);
                             }
                         eventLists.Details.Add(new() { EventTime = time, EventType = d.EventName, Count = int.Parse(d.NumItems.Replace("+", "")), ID = d.ID, EventTypeID = GameDataStringToEventID.GetIDFromString(d.EventName) });
@@ -598,27 +598,27 @@ namespace Genshin_Checker.App.Game
                 //終了処理
                 if (IsEnd || i == MAXPAGE)
                 {
-                    Trace.WriteLine($"終了処理");
+                    Log.Debug($"終了処理");
                     //重複があったものを削除
                     for (int r = 0; r < LatestCount && eventLists.Details.Count > 0; r++) eventLists.Details.RemoveAt(eventLists.Details.Count - 1);
                     eventLists.Details.Sort((a, b) => a.EventTime.CompareTo(b.EventTime));
                     if (path != null) await App.General.AppData.SaveUserData(path, JsonConvert.SerializeObject(eventLists));
-                    Trace.WriteLine($"セーブ完了 レコード数:{eventLists.Details.Count}");
+                    Log.Debug($"セーブ完了 レコード数:{eventLists.Details.Count}");
                     break;
                 }
-                Trace.WriteLine($"ページ:{i} 取得完了。 レコード数:{eventLists.Details.Count}");
+                Log.Debug($"ページ:{i} 取得完了。 レコード数:{eventLists.Details.Count}");
             }
 
             if (LocaleQueue.Count > 0)
             {
-                Trace.WriteLine($"ローカライズのキューが残っている為調査します(対象 : {LocaleQueue.Count})");
+                Log.Debug($"ローカライズのキューが残っている為調査します(対象 : {LocaleQueue.Count})");
                 var langs = await HoYoLab.Static.LocalizeInfo.GetLanguages();
                 if (langs.Data == null) throw new ArgumentNullException(nameof(langs.Data), "languages data is null");
                 int cnt = 0;
                 foreach (var l in LocaleQueue)
                 {
                     Dictionary<string, string> lang = new();
-                    Trace.WriteLine($"[{l.Key}] の調査");
+                    Log.Debug($"[{l.Key}] の調査");
                     foreach (var d in langs.Data.langs)
                     {
                         var data = type switch
@@ -630,18 +630,18 @@ namespace Genshin_Checker.App.Game
                         };
                         if (data.list.Count >= 1) lang.Add(d.value, data.list[0].EventName);
                         else throw new InvalidDataException("No such data.");
-                        Trace.WriteLine($"{d.value} : {data.list[0].EventName}");
+                        Log.Debug($"{d.value} : {data.list[0].EventName}");
                         //ここに進捗
                         ReportProgress(1, 2, (double)(cnt*langs.Data.langs.Count+lang.Count)/(LocaleQueue.Count*langs.Data.langs.Count) , type, year, month);
                     }
-                    Trace.WriteLine($"--------------------------------------------");
+                    Log.Debug($"--------------------------------------------");
                     localize.Locale.Add(l.Key, lang);
                     cnt++;
                 }
                 if (path != null) await App.General.AppData.SaveUserData(localizePath, JsonConvert.SerializeObject(localize));
-                Trace.WriteLine($"ローカライズセーブ完了 合計:{localize.Locale.Count}件");
+                Log.Debug($"ローカライズセーブ完了 合計:{localize.Locale.Count}件");
             }
-            Trace.WriteLine($"Done!");
+            Log.Debug($"Done!");
             return;
         }
         #endregion

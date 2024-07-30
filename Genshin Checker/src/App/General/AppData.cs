@@ -71,7 +71,7 @@ namespace Genshin_Checker.App.General
             catch (Exception ex)
             {
                 if (ReturnException) throw;
-                Trace.WriteLine(ex);
+                Log.Error(ex);
                 return null;
             }
         }
@@ -89,7 +89,7 @@ namespace Genshin_Checker.App.General
 #endif
             try
             {
-                Trace.WriteLine($"SAVEFILE : {path}");
+                Log.Debug($"SAVEFILE : {path}");
                 if (!Path.IsPathRooted(path)) path = Path.Combine(UserDataPath, path);
                 if (!Path.IsPathRooted(path)) Path.Combine(UserDataPath, path);
                 var directory = Path.GetDirectoryName(path);
@@ -113,7 +113,7 @@ namespace Genshin_Checker.App.General
             }
             catch (Exception ex)
             {
-                Trace.WriteLine(ex);
+                Log.Error(ex);
                 return false;
             }
         }

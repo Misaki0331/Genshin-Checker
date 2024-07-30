@@ -51,7 +51,7 @@ namespace Genshin_Checker.App.Game
                 throw new InvalidDataException("起動時にデータが取得できていなかったため、この操作は取り消されました。\nもう一度やり直してください。");
             }
             var result = links.Except(TempLinks).ToList();
-            Trace.WriteLine(result);
+            Log.Debug($"データ内のリンクは {result.Count} 件確認しました。");
             TempLinks.Clear();
             TempLinks = links;
             return result;
@@ -84,12 +84,13 @@ namespace Genshin_Checker.App.Game
                 try
                 {
                     var a = await GameAPI.GetAccountInfo(authkey);
-                    Trace.WriteLine($"{a.aid} OK");
+                    Log.Info($"Success! HoYoverse Account ID : {a.aid}");
                     LatestServiceCenterAuthKey = authkey;
                     return authkey;
                 }
-                catch (GameAPI.GameAPIException)
+                catch (GameAPI.GameAPIException ex)
                 {
+                    Log.Warn($"Failed! {ex.Message}");
                 }
             }
             return LatestServiceCenterAuthKey;

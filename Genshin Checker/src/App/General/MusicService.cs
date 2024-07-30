@@ -126,7 +126,7 @@ namespace Genshin_Checker.App.General.Music
                 }
                 catch (Exception ex)
                 {
-                    Trace.WriteLine($"再生エラー : {ex}");
+                    Log.Debug($"再生エラー : {ex}");
                     continue;
                 }
             }
@@ -139,7 +139,7 @@ namespace Genshin_Checker.App.General.Music
             if (WaveStream == null) await Next();
             if (WaveStream == null)
             {
-                Trace.WriteLine("再生できませんでした。");
+                Log.Debug("再生できませんでした。");
                 return;
             }
             UserStopped = false;
@@ -186,7 +186,7 @@ namespace Genshin_Checker.App.General.Music
         {
             var data = await App.WebRequest.GetRequest(url);
             if (data == null) return;
-            Trace.WriteLine($"Size:{data.Length / 1024.0 / 1024.0:0.00}MB");
+            Log.Debug($"Size:{data.Length / 1024.0 / 1024.0:0.00}MB");
             MusicStream = new(data);
             if (WaveStream != null && WaveStream.CanRead) await WaveStream.DisposeAsync();
             WaveStream = new Mp3FileReader(MusicStream);
@@ -199,7 +199,7 @@ namespace Genshin_Checker.App.General.Music
         /// <returns>キューの数</returns>
         public int AddQueue(string url, string title = "")
         {
-            Trace.WriteLine($"音楽キュー追加しました。 - {title}");
+            Log.Debug($"音楽キュー追加しました。 - {title}");
             lock (Queues)
             {
                 Queues.Add(new() { Title = title, Uri = new(url) });

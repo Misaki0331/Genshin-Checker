@@ -66,7 +66,7 @@ namespace Genshin_Checker.App.WebServer
             // レスポンスに書き込む内容を設定
             string? endpoint = request.Url?.AbsolutePath;
             endpoint ??= "/";
-            Trace.WriteLine(endpoint);
+            Log.Debug(endpoint);
             string[] path = endpoint.Split("/");
             if (endpoint == "/favicon.ico")
             {

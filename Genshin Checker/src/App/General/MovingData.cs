@@ -38,7 +38,7 @@ namespace Genshin_Checker.App.General
             }
             catch (Exception ex)
             {
-                Trace.WriteLine(ex);
+                Log.Error(ex);
                 if (Directory.Exists(name)) Directory.Delete(name, true);
                 return ex;
             }
@@ -84,18 +84,22 @@ namespace Genshin_Checker.App.General
             }
             catch (Exception ex)
             {
-                Trace.WriteLine(ex);
+                Log.Error(ex);
                 if (!Recovery)
                 {
                     if (IsNeedRecovery)
                     {
-                        Trace.WriteLine("ロールバックします。");
+                        Log.Warn("ロールバックします。");
                         var ex2 = await WriteToApp(Path.Combine(AppData.AppDataDirectry, "Buckup.old_zip"), true);
                         if (ex2 != null)
                         {
                             ex = new InvalidDataException($"{ManageUserData.FailedToRecovery}{ex2.GetType()}{ex2.Message}", ex);
                         }
-                        try { File.Delete(Path.Combine(AppData.AppDataDirectry, "Buckup.old_zip")); } catch { }
+                        try { File.Delete(Path.Combine(AppData.AppDataDirectry, "Buckup.old_zip")); }
+                        catch (Exception ex3)
+                        {
+                            Log.Warn($"バックアップファイルの削除に失敗しました。 {ex3.Message}");
+                        }
                     }
                 }
 

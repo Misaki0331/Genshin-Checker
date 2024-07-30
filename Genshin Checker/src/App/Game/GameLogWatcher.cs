@@ -94,7 +94,7 @@ namespace Genshin_Checker.App.Game
                 }
                 catch (Exception ex)
                 {
-                    Trace.WriteLine($"Error! {ex.Message}");
+                    Log.Error($"Genshin Log Error! {ex.Message}");
                 }
                 finally
                 {
@@ -107,7 +107,7 @@ namespace Genshin_Checker.App.Game
             }
             catch (Exception ex)
             {
-                Trace.WriteLine(ex.Message);
+                Log.Error(ex.Message);
             }
             finally
             {

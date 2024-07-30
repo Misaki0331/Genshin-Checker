@@ -165,7 +165,7 @@ namespace Genshin_Checker.Window
 
         private void progressBar1_MouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
         {
-            //Trace.WriteLine($"{e.X},{e.Y}");
+            //Log.Debug($"{e.X},{e.Y}");
             if (e.Button == MouseButtons.Left)
             {
                 if (Player.Instance.TotalTile != null)

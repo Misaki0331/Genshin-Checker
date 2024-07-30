@@ -209,7 +209,7 @@ namespace Genshin_Checker.App
                 ServerUpdate.Start();
             }
             
-            Trace.WriteLine($"次のサーバー情報更新は {ServerUpdate.Interval} ミリ秒後です。メッセージ : {Data.Meta.Message}");
+            Log.Debug($"次のサーバー情報更新は {ServerUpdate.Interval} ミリ秒後です。メッセージ : {Data.Meta.Message}");
 
         }
 

@@ -61,7 +61,7 @@ namespace Genshin_Checker.Window
         }
         void PanelReset()
         {
-            Trace.WriteLine("PanelReset");
+            Log.Debug("PanelReset");
             if (CharacterCount != null && !CharacterCount.IsDisposed)
             {
                 PanelCharacterCount.Controls.Remove(CharacterCount);
@@ -87,7 +87,7 @@ namespace Genshin_Checker.Window
         void PanelLoad(V2 v2)
         {
             PanelReset();
-            Trace.WriteLine("PanelLoad");
+            Log.Debug("PanelLoad");
             CurrentDisplayData = v2;
             var data = v2.Data;
             LabelScheduleName.Text = string.Format(Localize.UIName_SpiralAbyss_ResultTitle, data.schedule_id);
@@ -141,7 +141,7 @@ namespace Genshin_Checker.Window
             con.ClickHandler += a => GameRecords_Character_Click(a);
             FlowGeneralData.Controls.Add(con);
             GeneralList.Add(con);
-            Trace.WriteLine($"GeneralList:{GeneralList.Count}");
+            Log.Debug($"GeneralList:{GeneralList.Count}");
 
             var floor = data.floors.FindAll(a => true);
             foreach (var f in floor)

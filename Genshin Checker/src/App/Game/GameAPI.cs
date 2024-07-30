@@ -316,12 +316,12 @@ namespace Genshin_Checker.App.Game
                 catch (HttpRequestException ex) when (ex.StatusCode == System.Net.HttpStatusCode.TooManyRequests)
                 {
                     if (retry == maxRetryCount - 1) throw;
-                    Trace.WriteLine($"Received 429 error. Retrying in 5 seconds...");
+                    Log.Debug($"Received 429 error. Retrying in 5 seconds...");
                     await Task.Delay(5000);
                 }
                 catch (Exception ex)
                 {
-                    Trace.WriteLine($"{ex.Message}");
+                    Log.Debug($"{ex.Message}");
                     if (retry == maxRetryCount - 1) throw;
                 }
             }

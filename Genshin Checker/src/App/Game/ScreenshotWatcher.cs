@@ -48,7 +48,7 @@ namespace Genshin_Checker.App.Game
         public event EventHandler<string>? NewImageEvent = null;
         private void OnCreated(object? sender, FileSystemEventArgs e)
         {
-            Trace.WriteLine($"新しいファイルが生成されました: {e.Name}");
+            Log.Debug($"新しいファイルが生成されました: {e.Name}");
             NewImageEvent?.Invoke(null, e.FullPath);
         }
     }

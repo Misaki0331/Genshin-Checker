@@ -26,7 +26,7 @@ namespace Genshin_Checker.BrowserApp
 
         private void CoreWebView2_NavigationStarting(object? sender, Microsoft.Web.WebView2.Core.CoreWebView2NavigationStartingEventArgs e)
         {
-            Trace.WriteLine(e.Uri.ToString());
+            Log.Debug(e.Uri.ToString());
             var url = e.Uri;
             if (url.StartsWith("intent://webview?link="))
             {

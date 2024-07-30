@@ -40,7 +40,7 @@ namespace Genshin_Checker.App.HoYoLab
             {
                 if (LatestActiveSession.AddMinutes(5) < DateTime.UtcNow)
                 {
-                    Trace.WriteLine("OK");
+                    Log.Debug("OK");
                     LatestActiveSession = DateTime.UtcNow;
                     List<Base> list = new() { SpiralAbyss, ImaginariumTheater, TravelersDiary, GameRecords };
                     foreach(var bs in list)
@@ -311,7 +311,7 @@ namespace Genshin_Checker.App.HoYoLab
             }
             catch (Exception ex)
             {
-                Trace.WriteLine(ex);
+                Log.Error(ex);
             }
         }
 
