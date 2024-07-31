@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Diagnostics;
 using System.Runtime.ExceptionServices;
 using Genshin_Checker.App.General;
+using System.Reflection;
 
 namespace Genshin_Checker
 {
@@ -20,7 +21,7 @@ namespace Genshin_Checker
         /// <summary>ログ機能の有効化</summary>
         const bool IS_LOGFILE = true;
         /// <summary>保存先のディレクトリ</summary>
-        string LOGDIR_PATH = Path.Combine(AppData.AppDataDirectry,"Logs");
+        string LOGDIR_PATH = Path.Combine(AppData.AppDataDirectry, "Logs");
         /// <summary>書き込むログファイル</summary>
         const string LOGFILE_NAME = "console";
         /// <summary>ログファイルの最大容量</summary>
@@ -28,7 +29,7 @@ namespace Genshin_Checker
         /// <summary>ログ保存期間</summary>
         const int LOGFILE_PERIOD = 90;
         /// <summary>関数名の長さ</summary>
-        const int STACKLEN = 30;
+        const int STACKLEN = 24;
         /// <summary>ログの関数の長さ</summary>
         const int METHODNAMELEN = 256;
         List<string> Logdata = new();
@@ -46,7 +47,7 @@ namespace Genshin_Checker
         [System.Runtime.InteropServices.DllImport("kernel32.dll")] // この行を追加
         private static extern bool FreeConsole();                 // この行を追加  
 
-        public event EventHandler<string>? LogUpdateHandler;
+        public event EventHandler<LogEventArg>? LogUpdateHandler;
 
         /// <summary>
         /// 出力ログの変更
@@ -55,7 +56,7 @@ namespace Genshin_Checker
         public void SetLogLevel(LogLevel level)
         {
             LOG_LEVEL = level;
-            Info("Logger",$"ログの出力レベルを{LOG_LEVEL}に変更しました。");
+            Info("Logger", $"ログの出力レベルを{LOG_LEVEL}に変更しました。");
         }
 
         /// <summary>
@@ -102,7 +103,9 @@ namespace Genshin_Checker
         {
 #if DEBUG
             LOGDIR_PATH = Path.Combine(AppData.AppDataDirectry, "Logs.Debug");
-            AllocConsole();
+            AllocConsole(); 
+            var name = Assembly.GetExecutingAssembly().GetName();
+            Console.Title = $"Debug Console - {name.Name} {name.Version}";
 #endif
             logFilePath = LOGDIR_PATH + LOGFILE_NAME + ".log";
             // ログファイルを生成する
@@ -306,6 +309,28 @@ namespace Genshin_Checker
             }
         }
 
+        private static string FormatFunctionString(string? input)
+        {
+            if (input == null) return "";
+            // 正規表現パターンを定義
+            string pattern = @"^(.+?)\+\<(.+?)\>d__\d+$";
+            // 正規表現オブジェクトを作成
+            Regex regex = new Regex(pattern);
+
+            // マッチオブジェクトを取得
+            Match match = regex.Match(input);
+            if (match.Success)
+            {
+                // マッチした場合、新しい形式に変換
+                string className = match.Groups[1].Value;
+                string methodName = match.Groups[2].Value;
+                return $"{className}.{methodName}";
+            }
+
+            // マッチしなかった場合はそのまま返す
+            return input;
+        }
+
 
         /// <summary>
         /// ログを出力する
@@ -315,6 +340,7 @@ namespace Genshin_Checker
         private void Out(LogLevel level, string msg, string? from = null)
         {
             string strMethodName = "";
+            bool IsFunction = false;
             if (!string.IsNullOrEmpty(from)) strMethodName = from;
             else
             {
@@ -324,10 +350,19 @@ namespace Genshin_Checker
                     StackFrame? objStackFrame = new(nFrame);
                     if (objStackFrame == null) break;
                     if (objStackFrame.GetMethod() == null) break;
-                    if (string.IsNullOrWhiteSpace(strMethodName)) strMethodName = $"{objStackFrame.GetMethod().Name}";
+                    if (string.IsNullOrWhiteSpace(strMethodName))
+                    {
+                        IsFunction = true;
+                        switch (objStackFrame.GetMethod().Name)
+                        {
+                            case "MoveNext": strMethodName = "()"; break;
+                            case ".ctor": strMethodName = "<constructor>"; break;
+                        }
+                    }
                     if (objStackFrame.GetMethod().ReflectedType == null) break;
-                    strMethodName = $"{objStackFrame.GetMethod().ReflectedType.FullName}.{strMethodName}";
-                    if (objStackFrame.GetMethod().ReflectedType.FullName.Contains("MisakiEQ")) break;
+                    strMethodName = $"{FormatFunctionString(objStackFrame.GetMethod().ReflectedType.FullName)}{(IsFunction?"":".")}{strMethodName}";
+                    IsFunction = false;
+                    if (objStackFrame.GetMethod().ReflectedType.FullName.Contains("Genshin_Checker")) break;
                     if (objStackFrame.GetMethod().ReflectedType.FullName.Contains("System")) break;
 #pragma warning restore CS8602 // null 参照の可能性があるものの逆参照です。
 
@@ -346,41 +381,39 @@ namespace Genshin_Checker
             {
                 para = para.PadLeft(STACKLEN);
             }
-            string trace = msg.Replace("\n", "\n" + "".PadLeft(44 + STACKLEN, ' '));
-            string logs = $"[{DateTime.Now:yyyy/MM/dd HH:mm:ss.fff}][{tid,5}][{level,-5}] [{para}]: {trace}";
+            string logs = $"[{DateTime.Now:yyyy/MM/dd HH:mm:ss.fff}][{tid,5}][{level,-5}] [{para}]:";
+            string trace = msg.Replace("\n", "\n" + "".PadLeft(logs.Length, ' '));
+            logs += trace;
             if (level == LogLevel.DEBUG) System.Diagnostics.Debug.WriteLine(logs);
             else Trace.WriteLine(logs);
             var strings = logs.Replace("\r", "");
             var splitstrings = strings.Split('\n');
-            string col = "";
             switch (level)
             {
                 case LogLevel.DEBUG:
-                    col = "$D";
                     Console.ForegroundColor = ConsoleColor.White;
                     Console.BackgroundColor = ConsoleColor.Black;
                     break;
                 case LogLevel.INFO:
-                    col = "$I";
                     Console.ForegroundColor = ConsoleColor.Cyan;
                     Console.BackgroundColor = ConsoleColor.Black;
                     break;
                 case LogLevel.WARN:
                     Console.ForegroundColor = ConsoleColor.Yellow;
                     Console.BackgroundColor = ConsoleColor.Black;
-                    col = "$W";
                     break;
                 case LogLevel.ERROR:
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.BackgroundColor = ConsoleColor.Black;
-                    col = "$E";
                     break;
                 case LogLevel.FATAL:
                     Console.ForegroundColor = ConsoleColor.White;
                     Console.BackgroundColor = ConsoleColor.Red;
-                    col = "$F";
                     break;
             }
+            logs = $"[{DateTime.Now:HH:mm:ss.fff}][{tid,5}][{level,-5}] [{para}]:";
+            trace = msg.Replace("\n", "\n" + "".PadLeft(logs.Length, ' '));
+            logs += trace;
             Console.WriteLine(logs);
             string addtext = "";
             lock (lockListObj)
@@ -388,8 +421,8 @@ namespace Genshin_Checker
                 for (int i = 0; i < splitstrings.Length; i++)
                 {
                     if (i != 0) addtext += "\n";
-                    addtext += col + splitstrings[i];
-                    Logdata.Add(col + splitstrings[i]);
+                    addtext += splitstrings[i];
+                    Logdata.Add(splitstrings[i]);
                 }
                 while (Logdata.Count > 100)
                 {
@@ -427,7 +460,7 @@ namespace Genshin_Checker
             try
             {
                 //イベントの発生
-                LogUpdateHandler?.Invoke(null, addtext);
+                LogUpdateHandler?.Invoke(null, new(level, msg, addtext));
             }
             catch { }
         }
@@ -507,6 +540,18 @@ namespace Genshin_Checker
                     }
                 }
             }
+        }
+        public class LogEventArg
+        {
+            public LogEventArg(LogLevel lv, string raw, string viewlog)
+            {
+                LogLevel = lv;
+                RawLogData = raw;
+                ViewLogData = viewlog;
+            }
+            public LogLevel LogLevel;
+            public string RawLogData;
+            public string ViewLogData;
         }
     }
 }

@@ -132,16 +132,19 @@ namespace Genshin_Checker.Store
             FailReload.Stop();
             try
             {
-                if (_namecard == null || IsReload) await GetNameCard();
-                if (_locale == null || IsReload) await GetLocale();
-                if (_characters == null || IsReload) await GetCharacters();
-                //if (_costumes == null || IsReload) GetCostumes();
-                if (_affixes == null || IsReload) await GetAffixes();
-                if (_pfps == null || IsReload) await GetPfps();
+                await Task.Run(() =>
+                Task.WaitAll(
+                Task.Run(async () => { if (_namecard == null || IsReload) await GetNameCard(); }),
+                Task.Run(async () => { if (_locale == null || IsReload) await GetLocale(); }),
+                Task.Run(async () => { if (_characters == null || IsReload) await GetCharacters(); }),
+                Task.Run(async () => { if (_affixes == null || IsReload) await GetAffixes(); }),
+                Task.Run(async () => { if (_pfps == null || IsReload) await GetPfps(); })
+                ));
             }
             catch (Exception ex)
             {
                 if(!IsReload)FailReload.Start();
+                Log.Error($"Download Failed! - Static Data (Enka.network)\n{ex.GetType()} - {ex.Message}");
                 new ErrorMessage("Download Failed", $"Fail to load Enka.network static data.\n{ex.GetType()}\n{ex.Message}").Show();
             }
         }

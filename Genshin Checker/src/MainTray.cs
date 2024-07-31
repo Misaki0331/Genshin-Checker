@@ -14,6 +14,7 @@ using System.Drawing.Imaging;
 using System.Security.Policy;
 using Genshin_Checker.resource.Languages;
 using Genshin_Checker.Window.Debug;
+using System.Reflection.Metadata.Ecma335;
 namespace Genshin_Checker
 {
     public partial class MainTray : Form
@@ -85,7 +86,7 @@ namespace Genshin_Checker
             consoleToolStripMenuItem.Visible = isdebug;
             if (safemode)
             {
-                Log.Debug(Localize.Warning_SafeMode);
+                Log.Warn(Localize.Warning_SafeMode);
 
                 versionNameToolStripMenuItem.Text += "[Readonly]";
                 Registry.IsReadOnly = true;
@@ -148,9 +149,6 @@ namespace Genshin_Checker
             notification.BalloonTipTitle = Localize.AppName;
             notification.BalloonTipText = Localize.App_Notify_WakeUp;
             notification.ShowBalloonTip(30000);
-            await App.Game.WebViewWatcher.Init();
-            App.Game.GameLogWatcher.Instance.Init();
-            App.Game.ScreenshotWatcher.Instance.NewImageEvent += ScreenshotEvent;
 
             if (startup != null)
             {
@@ -164,9 +162,19 @@ namespace Genshin_Checker
                         break;
                 }
             }
-            if (await App.General.AppUpdater.CheckVersion()) new Window.PopupWindow.UpdateNotice().ShowDialog();
-            await EnkaData.Data.GetStoreData();
-            await Misaki_chan.Data.GetStoreData();
+            Task.WaitAll(
+                Task.Run(async () => await EnkaData.Data.GetStoreData()),
+                Task.Run(async () => await Misaki_chan.Data.GetStoreData()),
+                Task.Run(async () =>
+                {
+                    if (await AppUpdater.CheckVersion())
+                        Invoke(() => new Window.PopupWindow.UpdateNotice().ShowDialog());
+                }),
+                        Task.Run(async () => await WebViewWatcher.Init())
+                );
+            App.Game.GameLogWatcher.Instance.Init();
+            App.Game.ScreenshotWatcher.Instance.NewImageEvent += ScreenshotEvent;
+
         }
 
         private void Delay_Tick(object sender, EventArgs e)

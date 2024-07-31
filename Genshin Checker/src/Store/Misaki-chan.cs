@@ -96,9 +96,11 @@ namespace Genshin_Checker.Store
             FailReload.Stop();
             try
             {
-                if (_info == null || IsReload) await GetInfo();
-                if (_character == null || IsReload) await GetCharacter();
-                if (_characterStory == null || IsReload) await GetCharacterStory();
+                await Task.Run(() => Task.WaitAll(
+                Task.Run(async () => { if (_info == null || IsReload) await GetInfo(); }),
+                Task.Run(async () => { if (_character == null || IsReload) await GetCharacter(); }),
+                Task.Run(async () => { if (_characterStory == null || IsReload) await GetCharacterStory(); })
+                    ));
             }
             catch (Exception ex)
             {

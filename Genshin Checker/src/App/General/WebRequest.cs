@@ -179,6 +179,7 @@ namespace Genshin_Checker.App
         /// <returns>JSON</returns>
         public static async Task<string> GeneralGetRequest(string url, bool HideUserAgent = false)
         {
+            var sw = Stopwatch.StartNew();
             var uri = new Uri(url);
             var root = $"{uri.Scheme}://{uri.Host}";
             Dictionary<string, string> headers = new()
@@ -198,7 +199,7 @@ namespace Genshin_Checker.App
             foreach (KeyValuePair<string, string> header in headers)
                 client.DefaultRequestHeaders.Add(header.Key, header.Value);
             HttpResponseMessage response = await client.GetAsync(url);
-            Log.Debug($"GeneralGet - {response.StatusCode} {url}");
+            Log.Debug($"GeneralGet - {response.StatusCode} ({sw.Elapsed.TotalSeconds:0.000}s) {url}");
             response.EnsureSuccessStatusCode();
             return await response.Content.ReadAsStringAsync();
         }
