@@ -126,7 +126,7 @@ namespace Genshin_Checker.App.General.Music
                 }
                 catch (Exception ex)
                 {
-                    Log.Debug($"再生エラー : {ex}");
+                    Log.Error($"再生エラー : {ex}");
                     continue;
                 }
             }
@@ -139,7 +139,7 @@ namespace Genshin_Checker.App.General.Music
             if (WaveStream == null) await Next();
             if (WaveStream == null)
             {
-                Log.Debug("再生できませんでした。");
+                Log.Warn("再生できませんでした。");
                 return;
             }
             UserStopped = false;

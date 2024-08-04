@@ -136,10 +136,14 @@ namespace Genshin_Checker.Window.Popup
                 writer.WriteLine($"OS : {(Environment.Is64BitOperatingSystem ? "64ビット" : "32ビット")} プロセッサ : {(Environment.Is64BitProcess ? "64ビット" : "32ビット")}");
                 writer.WriteLine($"システム起動時間 : {TimeSpan.FromMilliseconds(Environment.TickCount64)}");
                 writer.Close();
+                Log.Info(GetString());
+                Log.Info($"クラッシュレポートは \"{save}\" に保存しました。");
                 return Path.GetFullPath(save);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Log.Error("クラッシュレポートの保存に失敗しました。");
+                Log.Error(ex);
                 return String.Empty;
             }
 

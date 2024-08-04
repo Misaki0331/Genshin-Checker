@@ -101,12 +101,12 @@ namespace Genshin_Checker.App.Game
             Dictionary<string, long> LocaleQueue = new();//注:longの値は実行する用のend_idです。
             Dictionary<string, long> LocaleQueueEnquipment = new();//注:longの値は実行する用のend_idです。
             if (AppData.IsExistFile(localizePath))
-                localize = JsonChecker<Model.UserData.GameDatabase.NameLocalize.Root>.Check(await App.General.AppData.LoadUserData(localizePath) ?? "{}");
-            else Log.Debug($"データベースは見つかりませんでした。");
+                localize = JsonChecker<Model.UserData.GameDatabase.NameLocalize.Root>.Check(await AppData.LoadUserData(localizePath) ?? "{}");
+            else Log.Warn($"イベント名のローカライズデータベースは見つかりませんでした。");
 
             if (AppData.IsExistFile(localizePathEnquipment))
-                Enquipmentlocalize = JsonChecker<Model.UserData.GameDatabase.NameLocalize.Root>.Check(await App.General.AppData.LoadUserData(localizePathEnquipment) ?? "{}");
-            else Log.Debug($"データベースは見つかりませんでした。");
+                Enquipmentlocalize = JsonChecker<Model.UserData.GameDatabase.NameLocalize.Root>.Check(await AppData.LoadUserData(localizePathEnquipment) ?? "{}");
+            else Log.Warn($"アイテム名のローカライズデータベースは見つかりませんでした。");
             localize ??= new();
             Enquipmentlocalize ??= new();
             for (int i = 1; i <= MAXPAGE; i++)
@@ -125,7 +125,7 @@ namespace Genshin_Checker.App.Game
                         Log.Debug($"データベースのパスを取得しました。{year}/{month}({type}) : {path}");
                         if (AppData.IsExistFile(path))
                             eventLists = JsonChecker<Model.UserData.GameDatabase.Enquipment.Root>.Check(await App.General.AppData.LoadUserData(path) ?? "{}");
-                        else Log.Debug($"データベースは見つかりませんでした。");
+                        else Log.Debug($"データベースは見つかりませんでした。　{path}");
                         if (eventLists != null && eventLists.Details.Count > 0) //イベントリストの下準備
                         {
                             eventLists.Details.Sort((a, b) => a.EventTime.CompareTo(b.EventTime));      //リストを獲得時刻昇順に並び替え
@@ -147,8 +147,11 @@ namespace Genshin_Checker.App.Game
                     {
                         if (FirstData == DateTime.MaxValue) FirstData = time;
                         //ロード中データに更新が入ったかチェック
-                        if (eventLists.Details.Count > 0 && eventLists.Details[^1].EventTime < time && !IsFirst) // 最初のみはリストの都合上除外する。
+                        if (eventLists.Details.Count > 0 && eventLists.Details[^1].EventTime < time && !IsFirst)
+                        { // 最初のみはリストの都合上除外する。
+                            Log.Error($"日付の矛盾が発生しています。{eventLists.Details[^1].EventTime} < {time}");
                             throw new InvalidDataException(Localize.Error_TravelersDiaryDetail_Conflict);
+                        }
                         else IsFirst = false;
 
                         //ここにローカライズ処理(データに無かったらキューに追加)
@@ -184,8 +187,8 @@ namespace Genshin_Checker.App.Game
                     //重複があったものを削除
                     for (int r = 0; r < LatestCount && eventLists.Details.Count > 0; r++) eventLists.Details.RemoveAt(eventLists.Details.Count - 1);
                     eventLists.Details.Sort((a, b) => a.EventTime.CompareTo(b.EventTime));
-                    if (path != null) await App.General.AppData.SaveUserData(path, JsonConvert.SerializeObject(eventLists));
-                    Log.Debug($"セーブ完了 レコード数:{eventLists.Details.Count}");
+                    if (path != null) await AppData.SaveUserData(path, JsonConvert.SerializeObject(eventLists));
+                    Log.Info($"セーブ完了 レコード数:{eventLists.Details.Count}");
                     break;
                 }
                 Log.Debug($"ページ:{i} 取得完了。 レコード数:{eventLists.Details.Count}");
@@ -498,12 +501,12 @@ namespace Genshin_Checker.App.Game
                     {
                         if (locale != l.Key)
                         {
-                            Log.Debug($"<!>Warning<!> 翻訳先が違います！！！\n{l.Key} => {locale}");
+                            Log.Warn($"<!>Warning<!> 翻訳先が違います！！！\n{l.Key} => {locale}");
                         }
                     }
                     else
                     {
-                        Log.Debug($"<!>Warning<!> 翻訳がありません！！！\n{l.Key} => null");
+                        Log.Warn($"<!>Warning<!> 翻訳がありません！！！\n{l.Key} => null");
                     }
                     Log.Debug($"--------------------------------------------");
                     localize.Locale.Add(l.Key, lang);
@@ -705,10 +708,12 @@ namespace Genshin_Checker.App.Game
                 }
             }catch(Exception ex)
             {
+                Log.Error($"ゲームセッションからの同期に失敗 ({year}/{month}:{type})");
+                Log.Error(ex);
                 ProgressFailed?.Invoke(null, ex);
                 return;
             }
-
+            Log.Info($"ゲームセッションからの同期成功 ({year}/{month}:{type})");
             ProgressCompreted?.Invoke(null,EventArgs.Empty);
             return;
         }

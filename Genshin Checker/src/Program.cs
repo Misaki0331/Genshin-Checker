@@ -121,6 +121,8 @@ namespace Genshin_Checker
         private static void Application_ThreadException(object sender,
             ThreadExceptionEventArgs e)
         {
+            Log.Fatal("Oops! Application was crashed...");
+            Log.Fatal(e.Exception);
             try
             {
                 if (HasHandle) mutex?.ReleaseMutex();

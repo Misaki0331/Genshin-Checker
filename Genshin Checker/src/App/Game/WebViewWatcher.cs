@@ -1,16 +1,7 @@
 ﻿using Genshin_Checker.App.General;
-using System;
-using System.Collections.Generic;
 using System.Collections.Specialized;
-using System.Diagnostics;
-using System.IO;
-using System.Linq;
-using System.Security.Policy;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Web;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace Genshin_Checker.App.Game
 {
@@ -48,6 +39,7 @@ namespace Genshin_Checker.App.Game
             {
                 TempLinks = new();
                 foreach (var l in links) TempLinks.Add(l);
+                Log.Warn("未初期化のためリンク取得を中止します。");
                 throw new InvalidDataException("起動時にデータが取得できていなかったため、この操作は取り消されました。\nもう一度やり直してください。");
             }
             var result = links.Except(TempLinks).ToList();
@@ -62,8 +54,9 @@ namespace Genshin_Checker.App.Game
             {
                 return await GetLinks()!=null;
             }
-            catch (InvalidDataException)
+            catch (InvalidDataException ex)
             {
+                Log.Warn($"WebLinkの初期化に失敗しました。 {ex.Message}");
                 return true;
             }
         }

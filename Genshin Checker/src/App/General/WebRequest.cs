@@ -230,7 +230,7 @@ namespace Genshin_Checker.App
                 }
                 catch (Exception ex)
                 {
-                    Log.Debug(ex.Message);
+                    Log.Warn($"Failed to load cache from {filename}\nReason : {ex.Message}");
                 }
             }
             Stopwatch stopwatch = new();
@@ -261,7 +261,7 @@ namespace Genshin_Checker.App
                     else response = await client.GetAsync(url, (CancellationToken)token);
                     if (!response.IsSuccessStatusCode)
                     {
-                        Log.Debug($"Error: {response.StatusCode} - {url}");
+                        Log.Error($"Fetch Error: {response.StatusCode} - {url}");
                         throw new ArgumentException($"Error: {response.StatusCode} - {url}");
                     }
                     break;

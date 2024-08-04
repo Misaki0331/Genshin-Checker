@@ -1,15 +1,6 @@
 ﻿using Genshin_Checker.App;
 using Genshin_Checker.App.General;
-using Genshin_Checker.App.HoYoLab;
-using Genshin_Checker.Model.HoYoLab.Characters;
-using Genshin_Checker.resource.Languages;
 using Genshin_Checker.Window.Popup;
-using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Genshin_Checker.Store
 {
@@ -31,7 +22,7 @@ namespace Genshin_Checker.Store
             {
                 if (_character == null)
                 {
-                    Task.Run(() => GetCharacter());
+                    Task.Run(async() => await GetCharacter());
                     return _character;
                 }
                 else return _character;
@@ -46,7 +37,7 @@ namespace Genshin_Checker.Store
             {
                 if (_info == null)
                 {
-                    Task.Run(() => GetInfo());
+                    Task.Run(async() => await GetInfo());
                     return _info;
                 }
                 else return _info;
@@ -61,7 +52,7 @@ namespace Genshin_Checker.Store
             {
                 if (_characterStory == null)
                 {
-                    Task.Run(() => GetCharacterStory());
+                    Task.Run(async() => await GetCharacterStory());
                     return _characterStory;
                 }
                 else return _characterStory;
@@ -105,6 +96,7 @@ namespace Genshin_Checker.Store
             catch (Exception ex)
             {
                 if (!IsReload) FailReload.Start();
+                Log.Error($"Download Failed! - Static Data (misaki-chan.world)\n{ex.GetType()} - {ex.Message}");
                 new ErrorMessage("Download Failed", $"Fail to load misaki-chan.world static data.\n{ex.GetType()}\n{ex.Message}").Show();
             }
         }

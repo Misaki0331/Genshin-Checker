@@ -38,13 +38,13 @@ namespace Genshin_Checker.App
             {
                 Data.Message = $"HoYoLab API Error\n{ex.Message}";
                 Data.Retcode = ex.Retcode;
-                Log.Debug(Data.Message);
+                Log.Error(Data.Message);
             }
             catch (Exception ex)
             {
                 Data.Message = $"{ex.GetType()}\n{ex.Message}";
                 Data.Retcode = ex.HResult;
-                Log.Debug(Data.Message);
+                Log.Error(Data.Message);
             }
 
             ServerUpdate.Interval = (account.LatestActiveSession > DateTime.UtcNow.AddHours(-2) || account.LatestActivity == Game.ProcessTime.ProcessState.Foreground) ? 300000 : 3600000 * 3;

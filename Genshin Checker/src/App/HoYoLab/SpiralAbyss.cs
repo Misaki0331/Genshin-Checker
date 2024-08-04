@@ -138,12 +138,12 @@ namespace Genshin_Checker.App.HoYoLab
             }
             if (CountOfAddBattle > 0 || IsEmptyData)
             {
-                Log.Debug($"保存 : {CountOfAddBattle} 個更新 / 空データ:{IsEmptyData}");
+                Log.Info($"深境螺旋保存 : {CountOfAddBattle} 個更新 / 空データ:{IsEmptyData}");
                 await Save(res);
             }
             else
             {
-                Log.Debug("更新はありませんでした。");
+                Log.Info("螺旋更新はありませんでした。");
             }
             return res;
 
@@ -195,15 +195,15 @@ namespace Genshin_Checker.App.HoYoLab
             if (v2.UID != account.UID) throw new InvalidDataException(string.Format(Localize.Error_SpiralAbyssFile_DoesNotMatchUID, v2.UID, account.UID));
             if (ver.Version != 2)
             {
-                Log.Debug($"螺旋 {v2.Data.schedule_id} 期のデータをアップデートします...");
+                Log.Info($"螺旋 {v2.Data.schedule_id} 期のデータをアップデートします...");
                 try
                 {
                     await Save(v2);
-                    Log.Debug($"→完了");
+                    Log.Info($"→完了");
                 }
                 catch(Exception ex)
                 {
-                    Log.Debug($"→失敗 {ex.Message}");
+                    Log.Error($"→失敗 {ex.Message}");
                 }
             }
             return v2;

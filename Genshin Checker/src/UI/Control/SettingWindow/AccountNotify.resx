@@ -118,223 +118,301 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>7, 15</value>
-  </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="CheckRealmCoinMax.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="CheckExpeditionAllCompleted.Size" type="System.Drawing.Size, System.Drawing">
-    <value>240, 19</value>
-  </data>
-  <data name="&gt;&gt;CheckResinMax.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;NumResinThreshold.Parent" xml:space="preserve">
-    <value>panel1</value>
-  </data>
-  <data name="&gt;&gt;CheckExpeditionAllCompleted.Name" xml:space="preserve">
-    <value>CheckExpeditionAllCompleted</value>
-  </data>
-  <data name="panel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>240, 23</value>
-  </data>
-  <data name="&gt;&gt;CheckResinThreshold.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="$this.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="&gt;&gt;CheckResinMax.Name" xml:space="preserve">
-    <value>CheckResinMax</value>
-  </data>
-  <data name="&gt;&gt;panel1.Name" xml:space="preserve">
-    <value>panel1</value>
-  </data>
-  <data name="AccountInfomation.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="panel1.TabIndex" type="System.Int32, mscorlib">
-    <value>12</value>
-  </data>
-  <data name="&gt;&gt;AccountInfomation.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>240, 23</value>
-  </data>
-  <data name="AccountInfomation.Size" type="System.Drawing.Size, System.Drawing">
-    <value>65, 15</value>
-  </data>
-  <data name="&gt;&gt;NumResinThreshold.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="panel2.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
-  </data>
-  <data name="CheckTransformerReached.Text" xml:space="preserve">
-    <value>Parametric Transformer is reached available</value>
-  </data>
-  <data name="&gt;&gt;CheckExpeditionAllCompleted.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="NumResinThreshold.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Right</value>
-  </data>
-  <data name="CheckTransformerReached.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="&gt;&gt;AccountInfomation.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="CheckResinMax.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 38</value>
-  </data>
-  <data name="&gt;&gt;panel2.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="CheckRealmCoinThreshold.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Left</value>
-  </data>
-  <data name="CheckTransformerReached.Size" type="System.Drawing.Size, System.Drawing">
-    <value>240, 19</value>
-  </data>
   <data name="panel2.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 57</value>
   </data>
-  <data name="CheckRealmCoinThreshold.Size" type="System.Drawing.Size, System.Drawing">
-    <value>184, 23</value>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="NumRealmCoinThreshold.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
   </data>
   <data name="NumRealmCoinThreshold.Location" type="System.Drawing.Point, System.Drawing">
     <value>184, 0</value>
   </data>
-  <data name="CheckResinMax.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="CheckResinThreshold.Size" type="System.Drawing.Size, System.Drawing">
+    <value>148, 23</value>
+  </data>
+  <data name="&gt;&gt;panel2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;CheckResinMax.Name" xml:space="preserve">
+    <value>CheckResinMax</value>
+  </data>
+  <data name="&gt;&gt;CheckResinThreshold.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="CheckRealmCoinThreshold.Text" xml:space="preserve">
+    <value>Realm coins reaches threshold :</value>
+  </data>
+  <data name="CheckResinThreshold.Text" xml:space="preserve">
+    <value>Original resin  reaches threshold :</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="EnableHoYoLabAutoSignIn.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="CheckTransformerReached.Size" type="System.Drawing.Size, System.Drawing">
+    <value>240, 19</value>
+  </data>
+  <data name="&gt;&gt;panel2.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;CheckResinMax.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;panel2.Name" xml:space="preserve">
+    <value>panel2</value>
+  </data>
+  <data name="CheckExpeditionAllCompleted.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
   </data>
-  <data name="&gt;&gt;EnableHoYoLabAutoSignIn.Name" xml:space="preserve">
-    <value>EnableHoYoLabAutoSignIn</value>
+  <data name="&gt;&gt;NumResinThreshold.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
-  <data name="&gt;&gt;EnableHoYoLabAutoSignIn.Type" xml:space="preserve">
+  <data name="&gt;&gt;CheckResinThreshold.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="NumResinThreshold.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;CheckRealmCoinMax.Type" xml:space="preserve">
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;CheckResinMax.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;NumRealmCoinThreshold.Name" xml:space="preserve">
+    <value>NumRealmCoinThreshold</value>
+  </data>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>7, 15</value>
+  </data>
+  <data name="&gt;&gt;CheckRealmCoinThreshold.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;CheckTransformerReached.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="CheckExpeditionAllCompleted.Size" type="System.Drawing.Size, System.Drawing">
+    <value>240, 19</value>
+  </data>
+  <data name="&gt;&gt;AccountInfomation.Name" xml:space="preserve">
+    <value>AccountInfomation</value>
+  </data>
+  <data name="$this.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="CheckExpeditionAllCompleted.Text" xml:space="preserve">
+    <value>Completed Expandition</value>
+  </data>
+  <data name="&gt;&gt;CheckRealmCoinThreshold.Parent" xml:space="preserve">
+    <value>panel2</value>
+  </data>
+  <data name="panel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 15</value>
+  </data>
+  <data name="panel2.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="&gt;&gt;CheckRealmCoinThreshold.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;CheckResinThreshold.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="panel1.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="&gt;&gt;CheckTransformerReached.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NumRealmCoinThreshold.Size" type="System.Drawing.Size, System.Drawing">
+    <value>49, 23</value>
+  </data>
+  <data name="CheckResinThreshold.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="&gt;&gt;NumRealmCoinThreshold.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="AccountInfomation.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="&gt;&gt;panel2.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="AccountInfomation.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="CheckRealmCoinMax.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
   </data>
   <data name="CheckResinThreshold.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="CheckResinMax.Text" xml:space="preserve">
-    <value>Original resin reach maximum</value>
+  <data name="CheckRealmCoinThreshold.Size" type="System.Drawing.Size, System.Drawing">
+    <value>184, 23</value>
+  </data>
+  <data name="CheckRealmCoinMax.Size" type="System.Drawing.Size, System.Drawing">
+    <value>240, 19</value>
+  </data>
+  <data name="&gt;&gt;NumResinThreshold.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="EnableHoYoLabAutoSignIn.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 137</value>
+  </data>
+  <data name="&gt;&gt;CheckExpeditionAllCompleted.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="CheckRealmCoinThreshold.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="&gt;&gt;CheckTransformerReached.Name" xml:space="preserve">
+    <value>CheckTransformerReached</value>
+  </data>
+  <data name="CheckRealmCoinMax.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 80</value>
+  </data>
+  <data name="CheckRealmCoinMax.Text" xml:space="preserve">
+    <value>Realm coins reach maximum</value>
+  </data>
+  <data name="&gt;&gt;CheckRealmCoinMax.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
   <data name="&gt;&gt;NumRealmCoinThreshold.Type" xml:space="preserve">
     <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="AccountInfomation.AutoSize" type="System.Boolean, mscorlib">
+  <data name="CheckTransformerReached.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 99</value>
+  </data>
+  <data name="&gt;&gt;CheckResinThreshold.Name" xml:space="preserve">
+    <value>CheckResinThreshold</value>
+  </data>
+  <data name="NumResinThreshold.Location" type="System.Drawing.Point, System.Drawing">
+    <value>148, 0</value>
+  </data>
+  <data name="CheckRealmCoinThreshold.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="CheckExpeditionAllCompleted.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="AccountInfomation.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="CheckRealmCoinMax.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>System.Windows.Forms.UserControl, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;CheckRealmCoinMax.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
+    <value>6</value>
   </data>
-  <data name="CheckRealmCoinMax.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 80</value>
+  <data name="NumRealmCoinThreshold.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
   </data>
-  <data name="CheckResinThreshold.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
+  <data name="CheckResinMax.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 38</value>
   </data>
-  <data name="CheckResinMax.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="&gt;&gt;CheckResinThreshold.Parent" xml:space="preserve">
-    <value>panel1</value>
-  </data>
-  <data name="CheckRealmCoinMax.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="NumRealmCoinThreshold.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Left</value>
-  </data>
-  <data name="CheckExpeditionAllCompleted.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="&gt;&gt;CheckResinMax.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="CheckTransformerReached.TabIndex" type="System.Int32, mscorlib">
-    <value>11</value>
-  </data>
-  <data name="AccountInfomation.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;CheckTransformerReached.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="CheckTransformerReached.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>AccountNotify</value>
   </data>
   <data name="NumResinThreshold.Size" type="System.Drawing.Size, System.Drawing">
     <value>49, 23</value>
   </data>
-  <data name="CheckExpeditionAllCompleted.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 118</value>
+  <data name="CheckResinMax.Size" type="System.Drawing.Size, System.Drawing">
+    <value>240, 19</value>
   </data>
-  <data name="&gt;&gt;CheckTransformerReached.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="CheckTransformerReached.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
   </data>
-  <data name="AccountInfomation.Text" xml:space="preserve">
-    <value>Infomation</value>
+  <data name="&gt;&gt;panel1.Name" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="CheckExpeditionAllCompleted.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
   </data>
   <data name="&gt;&gt;panel1.Type" xml:space="preserve">
     <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="NumResinThreshold.Location" type="System.Drawing.Point, System.Drawing">
-    <value>148, 0</value>
+  <data name="&gt;&gt;CheckExpeditionAllCompleted.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;NumRealmCoinThreshold.Name" xml:space="preserve">
-    <value>NumRealmCoinThreshold</value>
+  <data name="&gt;&gt;CheckTransformerReached.Parent" xml:space="preserve">
+    <value>$this</value>
   </data>
-  <data name="panel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="&gt;&gt;NumResinThreshold.Name" xml:space="preserve">
+    <value>NumResinThreshold</value>
+  </data>
+  <data name="CheckResinMax.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
   </data>
-  <data name="panel2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="CheckTransformerReached.Text" xml:space="preserve">
+    <value>Parametric Transformer is reached available</value>
+  </data>
+  <data name="CheckRealmCoinMax.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
   </data>
-  <data name="&gt;&gt;CheckResinThreshold.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="CheckTransformerReached.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
   </data>
-  <data name="CheckRealmCoinMax.Size" type="System.Drawing.Size, System.Drawing">
-    <value>240, 19</value>
+  <data name="&gt;&gt;CheckResinMax.Parent" xml:space="preserve">
+    <value>$this</value>
   </data>
-  <data name="CheckResinMax.Size" type="System.Drawing.Size, System.Drawing">
-    <value>240, 19</value>
+  <data name="&gt;&gt;AccountInfomation.ZOrder" xml:space="preserve">
+    <value>7</value>
   </data>
-  <data name="CheckRealmCoinThreshold.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="EnableHoYoLabAutoSignIn.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 137</value>
-  </data>
-  <data name="&gt;&gt;NumResinThreshold.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="AccountInfomation.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="CheckResinThreshold.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="&gt;&gt;EnableHoYoLabAutoSignIn.Name" xml:space="preserve">
+    <value>EnableHoYoLabAutoSignIn</value>
   </data>
   <data name="NumRealmCoinThreshold.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
     <value>Right</value>
   </data>
-  <data name="&gt;&gt;panel2.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="CheckResinMax.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
-  <data name="&gt;&gt;CheckTransformerReached.ZOrder" xml:space="preserve">
-    <value>2</value>
+  <data name="panel2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>240, 23</value>
   </data>
   <data name="NumResinThreshold.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
+  </data>
+  <data name="EnableHoYoLabAutoSignIn.Text" xml:space="preserve">
+    <value>Auto check-in after 3 minutes in playing game</value>
+  </data>
+  <data name="&gt;&gt;AccountInfomation.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>240, 23</value>
+  </data>
+  <data name="CheckResinThreshold.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;EnableHoYoLabAutoSignIn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="AccountInfomation.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;CheckRealmCoinThreshold.Name" xml:space="preserve">
+    <value>CheckRealmCoinThreshold</value>
+  </data>
+  <data name="&gt;&gt;NumResinThreshold.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;AccountInfomation.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="panel2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="&gt;&gt;EnableHoYoLabAutoSignIn.Parent" xml:space="preserve">
+    <value>$this</value>
   </data>
   <data name="&gt;&gt;CheckExpeditionAllCompleted.Parent" xml:space="preserve">
     <value>$this</value>
@@ -342,136 +420,58 @@
   <data name="CheckRealmCoinThreshold.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="NumRealmCoinThreshold.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="CheckResinThreshold.Text" xml:space="preserve">
-    <value>Original resin  reaches threshold :</value>
-  </data>
-  <data name="CheckExpeditionAllCompleted.Text" xml:space="preserve">
-    <value>Completed Expandition</value>
-  </data>
-  <data name="&gt;&gt;panel2.Name" xml:space="preserve">
-    <value>panel2</value>
-  </data>
-  <data name="&gt;&gt;CheckRealmCoinMax.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="CheckResinThreshold.Size" type="System.Drawing.Size, System.Drawing">
-    <value>148, 23</value>
-  </data>
-  <data name="NumResinThreshold.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="CheckResinThreshold.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Left</value>
   </data>
-  <data name="EnableHoYoLabAutoSignIn.Text" xml:space="preserve">
-    <value>Auto check-in after 3 minutes in playing game</value>
-  </data>
-  <data name="CheckRealmCoinMax.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
-  </data>
-  <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>AccountNotify</value>
-  </data>
-  <data name="&gt;&gt;CheckRealmCoinThreshold.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 15</value>
-  </data>
-  <data name="CheckTransformerReached.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 99</value>
-  </data>
-  <data name="&gt;&gt;CheckResinMax.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="CheckRealmCoinMax.Text" xml:space="preserve">
-    <value>Realm coins reach maximum</value>
+  <data name="CheckResinMax.Text" xml:space="preserve">
+    <value>Original resin reach maximum</value>
   </data>
   <data name="&gt;&gt;CheckRealmCoinMax.Name" xml:space="preserve">
     <value>CheckRealmCoinMax</value>
   </data>
-  <data name="CheckResinThreshold.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Left</value>
-  </data>
-  <data name="CheckRealmCoinThreshold.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="&gt;&gt;NumRealmCoinThreshold.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;CheckRealmCoinThreshold.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="CheckExpeditionAllCompleted.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
-  </data>
-  <data name="&gt;&gt;CheckRealmCoinMax.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;CheckRealmCoinThreshold.Parent" xml:space="preserve">
-    <value>panel2</value>
-  </data>
-  <data name="&gt;&gt;CheckResinThreshold.Name" xml:space="preserve">
-    <value>CheckResinThreshold</value>
-  </data>
-  <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
-    <value>240, 147</value>
-  </data>
-  <data name="&gt;&gt;CheckRealmCoinThreshold.Name" xml:space="preserve">
-    <value>CheckRealmCoinThreshold</value>
-  </data>
-  <data name="&gt;&gt;AccountInfomation.Name" xml:space="preserve">
-    <value>AccountInfomation</value>
-  </data>
-  <data name="CheckExpeditionAllCompleted.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="&gt;&gt;EnableHoYoLabAutoSignIn.Parent" xml:space="preserve">
+  <data name="&gt;&gt;CheckRealmCoinMax.Parent" xml:space="preserve">
     <value>$this</value>
-  </data>
-  <data name="&gt;&gt;NumResinThreshold.Name" xml:space="preserve">
-    <value>NumResinThreshold</value>
-  </data>
-  <data name="CheckRealmCoinThreshold.Text" xml:space="preserve">
-    <value>Realm coins reaches threshold :</value>
-  </data>
-  <data name="NumRealmCoinThreshold.Size" type="System.Drawing.Size, System.Drawing">
-    <value>49, 23</value>
-  </data>
-  <data name="EnableHoYoLabAutoSignIn.TabIndex" type="System.Int32, mscorlib">
-    <value>14</value>
   </data>
   <data name="CheckResinMax.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
   </data>
+  <data name="&gt;&gt;CheckExpeditionAllCompleted.Name" xml:space="preserve">
+    <value>CheckExpeditionAllCompleted</value>
+  </data>
+  <data name="CheckTransformerReached.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="CheckExpeditionAllCompleted.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 118</value>
+  </data>
+  <data name="AccountInfomation.Size" type="System.Drawing.Size, System.Drawing">
+    <value>65, 15</value>
+  </data>
   <data name="&gt;&gt;NumRealmCoinThreshold.Parent" xml:space="preserve">
     <value>panel2</value>
   </data>
-  <data name="&gt;&gt;AccountInfomation.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="NumResinThreshold.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
   </data>
-  <data name="&gt;&gt;CheckExpeditionAllCompleted.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="CheckRealmCoinThreshold.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
   </data>
-  <data name="&gt;&gt;EnableHoYoLabAutoSignIn.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="AccountInfomation.Text" xml:space="preserve">
+    <value>Infomation</value>
   </data>
   <data name="&gt;&gt;panel1.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;CheckTransformerReached.Name" xml:space="preserve">
-    <value>CheckTransformerReached</value>
+  <data name="&gt;&gt;EnableHoYoLabAutoSignIn.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
-  <data name="&gt;&gt;panel2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
+    <value>240, 147</value>
   </data>
-  <metadata name="$this.Language" type="System.Globalization.CultureInfo, System.Private.CoreLib, Culture=neutral, PublicKeyToken=7cec85d7bea7798e">
-    <value>ja-JP</value>
-  </metadata>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
+  </metadata>
+  <metadata name="$this.Language" type="System.Globalization.CultureInfo, System.Private.CoreLib, Culture=neutral, PublicKeyToken=7cec85d7bea7798e">
+    <value>ja-JP</value>
   </metadata>
 </root>

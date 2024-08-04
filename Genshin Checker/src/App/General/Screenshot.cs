@@ -12,8 +12,7 @@ namespace Genshin_Checker.App.General
             var format = Option.Instance.ScreenShot.SaveFileFormat;
             var uid = await GameApp.CurrentUID();
             format = await GenerateFormat(format);
-            Log.Debug(uid);
-            Log.Debug(format);
+            Log.Debug($"{uid} - {format}");
             var path = Path.GetFullPath(Path.Combine(savepath, format + Option.Instance.ScreenShot.SaveFileFormatType));
             if (!Directory.Exists(Path.GetDirectoryName(path)))
             {

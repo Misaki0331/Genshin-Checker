@@ -79,7 +79,7 @@ namespace Genshin_Checker.App.HoYoLab
         }
         private async Task<int> SaveDatabase(Model.HoYoLab.RoleCombat.Data raw)
         {
-            Log.Debug("幻想シアターのデータを保存します。");
+            Log.Info("幻想シアターのデータを保存します。");
             int CountOfNewData = 0;
             foreach (var index in raw.data)
             {
@@ -131,7 +131,7 @@ namespace Genshin_Checker.App.HoYoLab
                     {
                         if (end != endtime)
                         {
-                            Log.Debug($"EndTime is Invalid {endtime} -> {end}");
+                            Log.Warn($"EndTime is Invalid {endtime} -> {end}");
                         }
                         else IsNextMove=true;
                         return true;
@@ -249,9 +249,9 @@ namespace Genshin_Checker.App.HoYoLab
                     userdata.Data.Detail.Add(game);
                 }
                 await Save(userdata);
-                Log.Debug($"第 {userdata.Data.schedule_id} 期保存しました。");
+                Log.Info($"第 {userdata.Data.schedule_id} 期保存しました。");
             }
-            if (CountOfNewData == 0) Log.Debug("今回は保存されませんでした。");
+            if (CountOfNewData == 0) Log.Info("今回は保存されませんでした。");
             return CountOfNewData;
         }
     }

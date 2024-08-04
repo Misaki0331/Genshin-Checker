@@ -49,13 +49,13 @@ namespace Genshin_Checker.App.HoYoLab
             {
                 Data.Message = $"HoYoLab API Error\n{ex.Message}";
                 Data.Retcode = ex.Retcode;
-                Log.Debug(Data.Message);
+                Log.Error(Data.Message);
             }
             catch (Exception ex)
             {
                 Data.Message = $"{ex.GetType()}\n{ex.Message}";
                 Data.Retcode = ex.HResult;
-                Log.Debug(Data.Message);
+                Log.Error(Data.Message);
             }
 
             ServerUpdate.Interval = 300000;

@@ -107,7 +107,7 @@ namespace Genshin_Checker
             var name = Assembly.GetExecutingAssembly().GetName();
             Console.Title = $"Debug Console - {name.Name} {name.Version}";
 #endif
-            logFilePath = LOGDIR_PATH + LOGFILE_NAME + ".log";
+            logFilePath = Path.Combine(LOGDIR_PATH, LOGFILE_NAME + ".log");
             // ログファイルを生成する
             CreateLogfile(new FileInfo(logFilePath));
         }
