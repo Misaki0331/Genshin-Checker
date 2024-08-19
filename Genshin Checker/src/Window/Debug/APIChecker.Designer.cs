@@ -60,6 +60,8 @@
             ButtonSpiralAbyssCurrent = new Button();
             ButtonCharacters = new Button();
             ButtonGameRecord = new Button();
+            textBox2 = new TextBox();
+            button3 = new Button();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)NumCharacterDetailCharacterID).BeginInit();
@@ -104,17 +106,19 @@
             // OutputBox
             // 
             OutputBox.Dock = DockStyle.Fill;
-            OutputBox.Location = new Point(0, 226);
+            OutputBox.Location = new Point(0, 253);
             OutputBox.MaxLength = int.MaxValue;
             OutputBox.Multiline = true;
             OutputBox.Name = "OutputBox";
             OutputBox.ReadOnly = true;
             OutputBox.ScrollBars = ScrollBars.Both;
-            OutputBox.Size = new Size(542, 224);
+            OutputBox.Size = new Size(542, 197);
             OutputBox.TabIndex = 0;
             // 
             // panel2
             // 
+            panel2.Controls.Add(button3);
+            panel2.Controls.Add(textBox2);
             panel2.Controls.Add(ButtonTheater);
             panel2.Controls.Add(button2);
             panel2.Controls.Add(textBox1);
@@ -145,7 +149,7 @@
             panel2.Dock = DockStyle.Top;
             panel2.Location = new Point(0, 28);
             panel2.Name = "panel2";
-            panel2.Size = new Size(542, 198);
+            panel2.Size = new Size(542, 225);
             panel2.TabIndex = 23;
             // 
             // ButtonTheater
@@ -397,6 +401,23 @@
             ButtonGameRecord.UseVisualStyleBackColor = true;
             ButtonGameRecord.Click += ButtonGameRecord_Click;
             // 
+            // textBox2
+            // 
+            textBox2.Location = new Point(8, 196);
+            textBox2.Name = "textBox2";
+            textBox2.Size = new Size(355, 23);
+            textBox2.TabIndex = 50;
+            // 
+            // button3
+            // 
+            button3.Location = new Point(369, 196);
+            button3.Name = "button3";
+            button3.Size = new Size(124, 23);
+            button3.TabIndex = 51;
+            button3.Text = "キャラクター詳細取得";
+            button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click;
+            // 
             // APIChecker
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -453,5 +474,7 @@
         private Button button2;
         private TextBox textBox1;
         private Button ButtonTheater;
+        private Button button3;
+        private TextBox textBox2;
     }
 }

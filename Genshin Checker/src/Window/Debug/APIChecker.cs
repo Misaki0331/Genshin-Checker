@@ -1,5 +1,6 @@
 ﻿using Genshin_Checker.App.General;
 using Genshin_Checker.App.HoYoLab;
+using Genshin_Checker.Window.Popup;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -126,6 +127,27 @@ namespace Genshin_Checker.Window.Debug
             var account = CheckAccount();
             if (account == null) return;
             OutputBox.Text = JsonChecker<dynamic>.format(await GetJson.GetRoleCombat(account, true));
+        }
+
+        private async void button3_Click(object sender, EventArgs e)
+        {
+            var account = CheckAccount();
+            if (account == null) return;
+            try
+            {
+                var a = textBox2.Text.Split(" ");
+                var b = new List<int>();
+                foreach (var c in a)
+                {
+                    b.Add(int.Parse(c));
+                }
+                OutputBox.Text = JsonChecker<dynamic>.format(await GetJson.GetCharactersDetail(account, b));
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex);
+                new ErrorMessage("エラー！", ex.ToString()).ShowDialog();
+            }
         }
     }
 }

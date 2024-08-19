@@ -130,6 +130,17 @@ namespace Genshin_Checker.App.HoYoLab
             return root.Data;
         }
 
+        public async Task<Model.HoYoLab.CharacterDetailResult.Data> GetCharactersDetail(List<int> characterID)
+        {
+
+            if (!Account.IsAuthed) throw new UserNotAuthenticatedException(Account.UID);
+            var json = await GetJson.GetCharactersDetail(Account, characterID);
+            var root = JsonChecker<Model.HoYoLab.CharacterDetailResult.Root>.Check(json);
+            if (root.Data == null) throw new HoYoLabAPIException(root.Retcode, root.Message);
+            return root.Data;
+        }
+
+
         /// <summary>
         /// 幻想シアター情報
         /// </summary>
@@ -354,6 +365,28 @@ namespace Genshin_Checker.App.HoYoLab
             var json = await WebRequest.HoYoGetRequest(url, Account.Cookie);
             return json ?? "";
         }
+
+        /// <summary>
+        /// キャラクターの詳細情報
+        /// </summary>
+        /// <param name="Account">アカウント情報</param>
+        /// <param name="characterID">キャラクターID</param>
+        /// <returns></returns>
+        public static async Task<string> GetCharactersDetail(Account Account,List<int> characters)
+        {
+
+            var url = $"https://bbs-api-os.hoyolab.com/game_record/app/genshin/api/character/detail";
+            var data = new Model.HoYoLab.CharacterDetailPost.Root() { 
+                role_id = Account.UID, 
+                server = Account.Server.ToString(), 
+                character_ids = characters 
+            };
+            var json = await WebRequest.HoYoPostRequest(url, Account.Cookie,JsonConvert.SerializeObject(data));
+            return json ?? "";
+        }
+
+
+
 
         /// <summary>
         /// HoYoLabのマテリアル情報取得
