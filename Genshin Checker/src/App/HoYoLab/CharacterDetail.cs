@@ -25,6 +25,7 @@ namespace Genshin_Checker.App.HoYoLab
             public Model.HoYoLab.CharacterDetail.Data Data=new();
         }
         List<DataList> Cache;
+        Model.HoYoLab.CharacterDetailResult.Data? Cached;
         public DateTime LatestUpdateTime = DateTime.MinValue;
         readonly SemaphoreSlim UpdateSemaphore = new(1, 1);
 
@@ -90,6 +91,13 @@ namespace Genshin_Checker.App.HoYoLab
             try
             {
                 var characters = await account.Characters.GetData();
+                List<int> charaids = new();
+                foreach (var character in characters.avatars)
+                {
+                    charaids.Add(character.id);
+                }
+                var data2 = await account.Endpoint.GetCharactersDetail(charaids);
+                Cached = data2;
                 foreach (var character in characters.avatars)
                 {
                     for (int i = 0; i < 30; i++)
