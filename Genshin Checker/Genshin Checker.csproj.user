@@ -153,6 +153,9 @@
     <EmbeddedResource Update="resource\WebStatic\css.resx">
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Update="src\MainTray.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Update="src\UI\Control\SettingWindow\AccountNotify.resx">
       <SubType>Designer</SubType>
     </EmbeddedResource>

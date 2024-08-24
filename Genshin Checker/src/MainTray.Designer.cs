@@ -34,28 +34,28 @@
             NotificationMenu = new ContextMenuStrip(components);
             versionNameToolStripMenuItem = new ToolStripMenuItem();
             toolStripSeparator3 = new ToolStripSeparator();
-            詳細プレイデータToolStripMenuItem = new ToolStripMenuItem();
+            FuncDetailTime = new ToolStripMenuItem();
             AccountToolStrip = new ToolStripMenuItem();
             emptyToolStripMenuItem = new ToolStripMenuItem();
-            ゲームログ開発者向けToolStripMenuItem = new ToolStripMenuItem();
-            現在のアカウント情報を取得ToolStripMenuItem = new ToolStripMenuItem();
-            toolStripCodeExchange = new ToolStripMenuItem();
-            func_musicplayer = new ToolStripMenuItem();
+            FuncGameLog = new ToolStripMenuItem();
+            FuncAnalyzeItem = new ToolStripMenuItem();
+            FuncCodeExchange = new ToolStripMenuItem();
+            FuncMusicPlayer = new ToolStripMenuItem();
             toolStripSeparator2 = new ToolStripSeparator();
-            設定ToolStripMenuItem = new ToolStripMenuItem();
+            FuncSetting = new ToolStripMenuItem();
             toolStripSeparator1 = new ToolStripSeparator();
-            ShortcutFunction1 = new ToolStripMenuItem();
-            ShortcutFunction2 = new ToolStripMenuItem();
-            ShortcutFunction3 = new ToolStripMenuItem();
-            ShortcutFunction4 = new ToolStripMenuItem();
-            ShortcutFunction5 = new ToolStripMenuItem();
-            ShortcutFunction6 = new ToolStripMenuItem();
-            ShortcutFunction7 = new ToolStripMenuItem();
-            ShortcutFunction8 = new ToolStripMenuItem();
+            FuncShortcut1 = new ToolStripMenuItem();
+            FuncShortcut2 = new ToolStripMenuItem();
+            FuncShortcut3 = new ToolStripMenuItem();
+            FuncShortcut4 = new ToolStripMenuItem();
+            FuncShortcut5 = new ToolStripMenuItem();
+            FuncShortcut6 = new ToolStripMenuItem();
+            FuncShortcut7 = new ToolStripMenuItem();
+            FuncShortcut8 = new ToolStripMenuItem();
             ShortcutSeparator = new ToolStripSeparator();
-            終了ToolStripMenuItem = new ToolStripMenuItem();
-            consoleToolStripMenuItem = new ToolStripMenuItem();
-            testToolStripMenuItem = new ToolStripMenuItem();
+            FuncExit = new ToolStripMenuItem();
+            FuncConsole = new ToolStripMenuItem();
+            FuncTestFunction = new ToolStripMenuItem();
             Delay = new System.Windows.Forms.Timer(components);
             NotificationMenu.SuspendLayout();
             SuspendLayout();
@@ -68,7 +68,7 @@
             // 
             // NotificationMenu
             // 
-            NotificationMenu.Items.AddRange(new ToolStripItem[] { versionNameToolStripMenuItem, toolStripSeparator3, 詳細プレイデータToolStripMenuItem, AccountToolStrip, ゲームログ開発者向けToolStripMenuItem, 現在のアカウント情報を取得ToolStripMenuItem, toolStripCodeExchange, func_musicplayer, toolStripSeparator2, 設定ToolStripMenuItem, toolStripSeparator1, ShortcutFunction1, ShortcutFunction2, ShortcutFunction3, ShortcutFunction4, ShortcutFunction5, ShortcutFunction6, ShortcutFunction7, ShortcutFunction8, ShortcutSeparator, 終了ToolStripMenuItem, consoleToolStripMenuItem, testToolStripMenuItem });
+            NotificationMenu.Items.AddRange(new ToolStripItem[] { versionNameToolStripMenuItem, toolStripSeparator3, FuncDetailTime, AccountToolStrip, FuncGameLog, FuncAnalyzeItem, FuncCodeExchange, FuncMusicPlayer, toolStripSeparator2, FuncSetting, toolStripSeparator1, FuncShortcut1, FuncShortcut2, FuncShortcut3, FuncShortcut4, FuncShortcut5, FuncShortcut6, FuncShortcut7, FuncShortcut8, ShortcutSeparator, FuncExit, FuncConsole, FuncTestFunction });
             NotificationMenu.Name = "contextMenuStrip1";
             resources.ApplyResources(NotificationMenu, "NotificationMenu");
             // 
@@ -82,11 +82,11 @@
             toolStripSeparator3.Name = "toolStripSeparator3";
             resources.ApplyResources(toolStripSeparator3, "toolStripSeparator3");
             // 
-            // 詳細プレイデータToolStripMenuItem
+            // FuncDetailTime
             // 
-            詳細プレイデータToolStripMenuItem.Name = "詳細プレイデータToolStripMenuItem";
-            resources.ApplyResources(詳細プレイデータToolStripMenuItem, "詳細プレイデータToolStripMenuItem");
-            詳細プレイデータToolStripMenuItem.Click += 詳細プレイデータToolStripMenuItem_Click;
+            FuncDetailTime.Name = "FuncDetailTime";
+            resources.ApplyResources(FuncDetailTime, "FuncDetailTime");
+            FuncDetailTime.Click += UIFunction;
             // 
             // AccountToolStrip
             // 
@@ -99,109 +99,108 @@
             resources.ApplyResources(emptyToolStripMenuItem, "emptyToolStripMenuItem");
             emptyToolStripMenuItem.Name = "emptyToolStripMenuItem";
             // 
-            // ゲームログ開発者向けToolStripMenuItem
+            // FuncGameLog
             // 
-            ゲームログ開発者向けToolStripMenuItem.Name = "ゲームログ開発者向けToolStripMenuItem";
-            resources.ApplyResources(ゲームログ開発者向けToolStripMenuItem, "ゲームログ開発者向けToolStripMenuItem");
-            ゲームログ開発者向けToolStripMenuItem.Click += ゲームログ開発者向けToolStripMenuItem_Click;
+            FuncGameLog.Name = "FuncGameLog";
+            resources.ApplyResources(FuncGameLog, "FuncGameLog");
+            FuncGameLog.Click += UIFunction;
             // 
-            // 現在のアカウント情報を取得ToolStripMenuItem
+            // FuncAnalyzeItem
             // 
-            現在のアカウント情報を取得ToolStripMenuItem.Name = "現在のアカウント情報を取得ToolStripMenuItem";
-            resources.ApplyResources(現在のアカウント情報を取得ToolStripMenuItem, "現在のアカウント情報を取得ToolStripMenuItem");
-            現在のアカウント情報を取得ToolStripMenuItem.Click += 現在のアカウント情報を取得ToolStripMenuItem_Click;
+            FuncAnalyzeItem.Name = "FuncAnalyzeItem";
+            resources.ApplyResources(FuncAnalyzeItem, "FuncAnalyzeItem");
+            FuncAnalyzeItem.Click += UIFunction;
             // 
-            // toolStripCodeExchange
+            // FuncCodeExchange
             // 
-            toolStripCodeExchange.Name = "toolStripCodeExchange";
-            resources.ApplyResources(toolStripCodeExchange, "toolStripCodeExchange");
-            toolStripCodeExchange.Click += toolStripCodeExchange_Click;
+            FuncCodeExchange.Name = "FuncCodeExchange";
+            resources.ApplyResources(FuncCodeExchange, "FuncCodeExchange");
+            FuncCodeExchange.Click += UIFunction;
             // 
-            // func_musicplayer
+            // FuncMusicPlayer
             // 
-            func_musicplayer.Name = "func_musicplayer";
-            resources.ApplyResources(func_musicplayer, "func_musicplayer");
-            func_musicplayer.Click += func_musicplayer_Click;
+            FuncMusicPlayer.Name = "FuncMusicPlayer";
+            resources.ApplyResources(FuncMusicPlayer, "FuncMusicPlayer");
+            FuncMusicPlayer.Click += UIFunction;
             // 
             // toolStripSeparator2
             // 
             toolStripSeparator2.Name = "toolStripSeparator2";
             resources.ApplyResources(toolStripSeparator2, "toolStripSeparator2");
-            toolStripSeparator2.Click += toolStripSeparator2_Click;
             // 
-            // 設定ToolStripMenuItem
+            // FuncSetting
             // 
-            設定ToolStripMenuItem.Name = "設定ToolStripMenuItem";
-            resources.ApplyResources(設定ToolStripMenuItem, "設定ToolStripMenuItem");
-            設定ToolStripMenuItem.Click += 設定ToolStripMenuItem_Click;
+            FuncSetting.Name = "FuncSetting";
+            resources.ApplyResources(FuncSetting, "FuncSetting");
+            FuncSetting.Click += UIFunction;
             // 
             // toolStripSeparator1
             // 
             toolStripSeparator1.Name = "toolStripSeparator1";
             resources.ApplyResources(toolStripSeparator1, "toolStripSeparator1");
             // 
-            // ShortcutFunction1
+            // FuncShortcut1
             // 
-            ShortcutFunction1.Name = "ShortcutFunction1";
-            resources.ApplyResources(ShortcutFunction1, "ShortcutFunction1");
+            FuncShortcut1.Name = "FuncShortcut1";
+            resources.ApplyResources(FuncShortcut1, "FuncShortcut1");
             // 
-            // ShortcutFunction2
+            // FuncShortcut2
             // 
-            ShortcutFunction2.Name = "ShortcutFunction2";
-            resources.ApplyResources(ShortcutFunction2, "ShortcutFunction2");
+            FuncShortcut2.Name = "FuncShortcut2";
+            resources.ApplyResources(FuncShortcut2, "FuncShortcut2");
             // 
-            // ShortcutFunction3
+            // FuncShortcut3
             // 
-            ShortcutFunction3.Name = "ShortcutFunction3";
-            resources.ApplyResources(ShortcutFunction3, "ShortcutFunction3");
+            FuncShortcut3.Name = "FuncShortcut3";
+            resources.ApplyResources(FuncShortcut3, "FuncShortcut3");
             // 
-            // ShortcutFunction4
+            // FuncShortcut4
             // 
-            ShortcutFunction4.Name = "ShortcutFunction4";
-            resources.ApplyResources(ShortcutFunction4, "ShortcutFunction4");
+            FuncShortcut4.Name = "FuncShortcut4";
+            resources.ApplyResources(FuncShortcut4, "FuncShortcut4");
             // 
-            // ShortcutFunction5
+            // FuncShortcut5
             // 
-            ShortcutFunction5.Name = "ShortcutFunction5";
-            resources.ApplyResources(ShortcutFunction5, "ShortcutFunction5");
+            FuncShortcut5.Name = "FuncShortcut5";
+            resources.ApplyResources(FuncShortcut5, "FuncShortcut5");
             // 
-            // ShortcutFunction6
+            // FuncShortcut6
             // 
-            ShortcutFunction6.Name = "ShortcutFunction6";
-            resources.ApplyResources(ShortcutFunction6, "ShortcutFunction6");
+            FuncShortcut6.Name = "FuncShortcut6";
+            resources.ApplyResources(FuncShortcut6, "FuncShortcut6");
             // 
-            // ShortcutFunction7
+            // FuncShortcut7
             // 
-            ShortcutFunction7.Name = "ShortcutFunction7";
-            resources.ApplyResources(ShortcutFunction7, "ShortcutFunction7");
+            FuncShortcut7.Name = "FuncShortcut7";
+            resources.ApplyResources(FuncShortcut7, "FuncShortcut7");
             // 
-            // ShortcutFunction8
+            // FuncShortcut8
             // 
-            ShortcutFunction8.Name = "ShortcutFunction8";
-            resources.ApplyResources(ShortcutFunction8, "ShortcutFunction8");
+            FuncShortcut8.Name = "FuncShortcut8";
+            resources.ApplyResources(FuncShortcut8, "FuncShortcut8");
             // 
             // ShortcutSeparator
             // 
             ShortcutSeparator.Name = "ShortcutSeparator";
             resources.ApplyResources(ShortcutSeparator, "ShortcutSeparator");
             // 
-            // 終了ToolStripMenuItem
+            // FuncExit
             // 
-            終了ToolStripMenuItem.Name = "終了ToolStripMenuItem";
-            resources.ApplyResources(終了ToolStripMenuItem, "終了ToolStripMenuItem");
-            終了ToolStripMenuItem.Click += 終了ToolStripMenuItem_Click;
+            FuncExit.Name = "FuncExit";
+            resources.ApplyResources(FuncExit, "FuncExit");
+            FuncExit.Click += UIFunction;
             // 
-            // consoleToolStripMenuItem
+            // FuncConsole
             // 
-            consoleToolStripMenuItem.Name = "consoleToolStripMenuItem";
-            resources.ApplyResources(consoleToolStripMenuItem, "consoleToolStripMenuItem");
-            consoleToolStripMenuItem.Click += consoleToolStripMenuItem_Click;
+            FuncConsole.Name = "FuncConsole";
+            resources.ApplyResources(FuncConsole, "FuncConsole");
+            FuncConsole.Click += UIFunction;
             // 
-            // testToolStripMenuItem
+            // FuncTestFunction
             // 
-            testToolStripMenuItem.Name = "testToolStripMenuItem";
-            resources.ApplyResources(testToolStripMenuItem, "testToolStripMenuItem");
-            testToolStripMenuItem.Click += testToolStripMenuItem_ClickAsync;
+            FuncTestFunction.Name = "FuncTestFunction";
+            resources.ApplyResources(FuncTestFunction, "FuncTestFunction");
+            FuncTestFunction.Click += UIFunction;
             // 
             // Delay
             // 
@@ -229,30 +228,30 @@
 
         private NotifyIcon notification;
         private ContextMenuStrip NotificationMenu;
-        private ToolStripMenuItem 設定ToolStripMenuItem;
-        private ToolStripMenuItem 終了ToolStripMenuItem;
+        private ToolStripMenuItem FuncSetting;
+        private ToolStripMenuItem FuncExit;
         private System.Windows.Forms.Timer Delay;
-        private ToolStripMenuItem 詳細プレイデータToolStripMenuItem;
+        private ToolStripMenuItem FuncDetailTime;
         private ToolStripSeparator toolStripSeparator2;
         private ToolStripSeparator toolStripSeparator1;
-        private ToolStripMenuItem testToolStripMenuItem;
+        private ToolStripMenuItem FuncTestFunction;
         private ToolStripMenuItem versionNameToolStripMenuItem;
         private ToolStripSeparator toolStripSeparator3;
-        private ToolStripMenuItem ゲームログ開発者向けToolStripMenuItem;
+        private ToolStripMenuItem FuncGameLog;
         private ToolStripMenuItem AccountToolStrip;
         private ToolStripMenuItem emptyToolStripMenuItem;
-        private ToolStripMenuItem consoleToolStripMenuItem;
-        private ToolStripMenuItem 現在のアカウント情報を取得ToolStripMenuItem;
-        private ToolStripMenuItem ShortcutFunction1;
-        private ToolStripMenuItem ShortcutFunction2;
-        private ToolStripMenuItem ShortcutFunction3;
-        private ToolStripMenuItem ShortcutFunction4;
-        private ToolStripMenuItem ShortcutFunction5;
-        private ToolStripMenuItem ShortcutFunction6;
-        private ToolStripMenuItem ShortcutFunction7;
-        private ToolStripMenuItem ShortcutFunction8;
+        private ToolStripMenuItem FuncConsole;
+        private ToolStripMenuItem FuncAnalyzeItem;
+        private ToolStripMenuItem FuncShortcut1;
+        private ToolStripMenuItem FuncShortcut2;
+        private ToolStripMenuItem FuncShortcut3;
+        private ToolStripMenuItem FuncShortcut4;
+        private ToolStripMenuItem FuncShortcut5;
+        private ToolStripMenuItem FuncShortcut6;
+        private ToolStripMenuItem FuncShortcut7;
+        private ToolStripMenuItem FuncShortcut8;
         private ToolStripSeparator ShortcutSeparator;
-        private ToolStripMenuItem toolStripCodeExchange;
-        private ToolStripMenuItem func_musicplayer;
+        private ToolStripMenuItem FuncCodeExchange;
+        private ToolStripMenuItem FuncMusicPlayer;
     }
 }

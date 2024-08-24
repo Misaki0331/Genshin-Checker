@@ -2,7 +2,7 @@
 Genshin Checker/bin/
 
 Genshin Checker/obj/
-
+.vscode/
 .vs/
 Genshin Checker/Properties/PublishProfiles/ReleaseGitHub.pubxml.user
 *.user

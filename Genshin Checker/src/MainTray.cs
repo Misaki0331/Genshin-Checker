@@ -6,15 +6,9 @@ using Genshin_Checker.App.Game;
 using Genshin_Checker.App.General;
 using Genshin_Checker.Store;
 using Genshin_Checker.Window.Popup;
-using Genshin_Checker.App.General.Convert;
-using System.Text;
-using System.Security.Cryptography;
 using Microsoft.Toolkit.Uwp.Notifications;
-using System.Drawing.Imaging;
-using System.Security.Policy;
 using Genshin_Checker.resource.Languages;
 using Genshin_Checker.Window.Debug;
-using System.Reflection.Metadata.Ecma335;
 namespace Genshin_Checker
 {
     public partial class MainTray : Form
@@ -83,7 +77,7 @@ namespace Genshin_Checker
 #else
             testToolStripMenuItem.Visible = false;      
 #endif
-            consoleToolStripMenuItem.Visible = isdebug;
+            FuncConsole.Visible = isdebug;
             if (safemode)
             {
                 Log.Warn(Localize.Warning_SafeMode);
@@ -136,13 +130,6 @@ namespace Genshin_Checker
 
         }
 
-        private void 終了ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ProcessTime.Instance.EmergencyReset();
-            Close();
-        }
-
-
         private async void MainTray_Load(object sender, EventArgs e)
         {
             notification.Visible = true;
@@ -181,32 +168,64 @@ namespace Genshin_Checker
         {
             Hide();
         }
-
-        private void 詳細プレイデータToolStripMenuItem_Click(object sender, EventArgs e)
+        private void UIFunction(object sender, EventArgs e)
         {
-            OpenWindow(null, nameof(TimeGraph));
-        }
+            switch (sender)
+            {
+                case ToolStripMenuItem func when func.Equals(FuncDetailTime):
+                    //詳細プレイデータ
+                    OpenWindow(null, nameof(TimeGraph));
+                    break;
 
-        private void 設定ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            OpenWindow(null, nameof(SettingWindow));
+                case ToolStripMenuItem func when func.Equals(FuncSetting):
+                    //設定
+                    OpenWindow(null, nameof(SettingWindow));
+                    break;
+
+                case ToolStripMenuItem func when func.Equals(FuncTestFunction):
+                    //テスト用
+                    OpenWindow(null, nameof(APIChecker));
+                    break;
+
+                case ToolStripMenuItem func when func.Equals(FuncGameLog):
+                    OpenWindow(null, nameof(GameLog));
+                    break;
+
+                case ToolStripMenuItem func when func.Equals(FuncConsole):
+                    OpenWindow(null, nameof(Window.Debug.Console));
+                    break;
+
+                case ToolStripMenuItem func when func.Equals(FuncCodeExchange):
+                    OpenWindow(null, nameof(Window.CodeExchange));
+                    break;
+                    
+                case ToolStripMenuItem func when func.Equals(FuncCodeExchange):
+                    OpenWindow(null, nameof(Window.CodeExchange));
+                    break;
+                    
+                case ToolStripMenuItem func when func.Equals(FuncMusicPlayer):
+                    OpenWindow(null, nameof(Window.MusicPlayer));
+                    break;
+
+                case ToolStripMenuItem func when func.Equals(FuncAnalyzeItem):
+                    OpenWindow(null, nameof(Window.ProgressWindow.LoadGameDatabase));
+                    break;
+                
+                case ToolStripMenuItem func when func.Equals(FuncExit):
+                    ProcessTime.Instance.EmergencyReset();
+                    Close();
+                    break;
+
+                default:
+                    // その他の場合の処理（必要であれば）
+                    break;
+            }
         }
 
         private void notification_Click(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
                 OpenWindow(null, nameof(TimerDisplay));
-        }
-        //ここはテスト用
-        private void testToolStripMenuItem_ClickAsync(object sender, EventArgs e)
-        {
-            OpenWindow(null, nameof(APIChecker));
-        }
-
-
-        private void ゲームログ開発者向けToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            OpenWindow(null, nameof(GameLog));
         }
 
         private async void ScreenshotEvent(object? s, string e)
@@ -287,33 +306,9 @@ namespace Genshin_Checker
             {
                 AccountToolStrip.DropDownItems.AddRange(new ToolStripItem[] {
             emptyToolStripMenuItem});
-            } 
+            }
         }
 
-        private void consoleToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            OpenWindow(null, nameof(Window.Debug.Console));
-        }
-
-        private void 現在のアカウント情報を取得ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            OpenWindow(null, nameof(Window.ProgressWindow.LoadGameDatabase));
-        }
-
-        private void toolStripCodeExchange_Click(object sender, EventArgs e)
-        {
-            OpenWindow(null, nameof(Window.CodeExchange));
-        }
-
-        private void toolStripSeparator2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void func_musicplayer_Click(object sender, EventArgs e)
-        {
-            OpenWindow(null, nameof(Window.MusicPlayer));
-        }
     }
 
 }

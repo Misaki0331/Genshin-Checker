@@ -129,7 +129,7 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="versionNameToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>224, 22</value>
+    <value>192, 22</value>
   </data>
   <data name="versionNameToolStripMenuItem.Text" xml:space="preserve">
     <value>VersionName</value>
@@ -137,133 +137,124 @@
   <data name="toolStripSeparator3.Size" type="System.Drawing.Size, System.Drawing">
     <value>221, 6</value>
   </data>
-  <data name="詳細プレイデータToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>224, 22</value>
+  <data name="FuncDetailTime.Size" type="System.Drawing.Size, System.Drawing">
+    <value>192, 22</value>
   </data>
-  <data name="詳細プレイデータToolStripMenuItem.Text" xml:space="preserve">
-    <value>Gameplay detail</value>
-  </data>
-  <data name="emptyToolStripMenuItem.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="emptyToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>115, 22</value>
-  </data>
-  <data name="emptyToolStripMenuItem.Text" xml:space="preserve">
-    <value>(Empty)</value>
+  <data name="FuncDetailTime.Text" xml:space="preserve">
+    <value>詳細プレイ時間データ</value>
   </data>
   <data name="AccountToolStrip.Size" type="System.Drawing.Size, System.Drawing">
-    <value>224, 22</value>
+    <value>192, 22</value>
   </data>
   <data name="AccountToolStrip.Text" xml:space="preserve">
-    <value>Accounts</value>
+    <value>アカウント</value>
   </data>
-  <data name="ゲームログ開発者向けToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>224, 22</value>
+  <data name="FuncGameLog.Size" type="System.Drawing.Size, System.Drawing">
+    <value>192, 22</value>
   </data>
-  <data name="ゲームログ開発者向けToolStripMenuItem.Text" xml:space="preserve">
-    <value>Game Log</value>
+  <data name="FuncGameLog.Text" xml:space="preserve">
+    <value>ゲームクライアントログ</value>
   </data>
-  <data name="現在のアカウント情報を取得ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>224, 22</value>
+  <data name="FuncAnalyzeItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>192, 22</value>
   </data>
-  <data name="現在のアカウント情報を取得ToolStripMenuItem.Text" xml:space="preserve">
-    <value>Synchronization of item logs</value>
+  <data name="FuncAnalyzeItem.Text" xml:space="preserve">
+    <value>アイテム入手履歴の同期</value>
   </data>
-  <data name="toolStripCodeExchange.Size" type="System.Drawing.Size, System.Drawing">
-    <value>224, 22</value>
+  <data name="FuncCodeExchange.Size" type="System.Drawing.Size, System.Drawing">
+    <value>192, 22</value>
   </data>
-  <data name="toolStripCodeExchange.Text" xml:space="preserve">
-    <value>Redeem code</value>
+  <data name="FuncCodeExchange.Text" xml:space="preserve">
+    <value>交換コード引換</value>
   </data>
-  <data name="func_musicplayer.Size" type="System.Drawing.Size, System.Drawing">
-    <value>224, 22</value>
+  <data name="FuncMusicPlayer.Size" type="System.Drawing.Size, System.Drawing">
+    <value>192, 22</value>
   </data>
-  <data name="func_musicplayer.Text" xml:space="preserve">
-    <value>Music Player</value>
+  <data name="FuncMusicPlayer.Text" xml:space="preserve">
+    <value>音楽プレイヤー</value>
   </data>
   <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
     <value>221, 6</value>
   </data>
-  <data name="設定ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>224, 22</value>
+  <data name="FuncSetting.Size" type="System.Drawing.Size, System.Drawing">
+    <value>192, 22</value>
   </data>
-  <data name="設定ToolStripMenuItem.Text" xml:space="preserve">
-    <value>Setting</value>
+  <data name="FuncSetting.Text" xml:space="preserve">
+    <value>設定</value>
   </data>
   <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
     <value>221, 6</value>
   </data>
-  <data name="ShortcutFunction1.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="FuncShortcut1.Size" type="System.Drawing.Size, System.Drawing">
     <value>224, 22</value>
   </data>
-  <data name="ShortcutFunction1.Text" xml:space="preserve">
+  <data name="FuncShortcut1.Text" xml:space="preserve">
     <value>Shortcut 1</value>
   </data>
-  <data name="ShortcutFunction1.Visible" type="System.Boolean, mscorlib">
+  <data name="FuncShortcut1.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="ShortcutFunction2.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="FuncShortcut2.Size" type="System.Drawing.Size, System.Drawing">
     <value>224, 22</value>
   </data>
-  <data name="ShortcutFunction2.Text" xml:space="preserve">
+  <data name="FuncShortcut2.Text" xml:space="preserve">
     <value>Shortcut 2</value>
   </data>
-  <data name="ShortcutFunction2.Visible" type="System.Boolean, mscorlib">
+  <data name="FuncShortcut2.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="ShortcutFunction3.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="FuncShortcut3.Size" type="System.Drawing.Size, System.Drawing">
     <value>224, 22</value>
   </data>
-  <data name="ShortcutFunction3.Text" xml:space="preserve">
+  <data name="FuncShortcut3.Text" xml:space="preserve">
     <value>Shortcut 3</value>
   </data>
-  <data name="ShortcutFunction3.Visible" type="System.Boolean, mscorlib">
+  <data name="FuncShortcut3.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="ShortcutFunction4.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="FuncShortcut4.Size" type="System.Drawing.Size, System.Drawing">
     <value>224, 22</value>
   </data>
-  <data name="ShortcutFunction4.Text" xml:space="preserve">
+  <data name="FuncShortcut4.Text" xml:space="preserve">
     <value>Shortcut 4</value>
   </data>
-  <data name="ShortcutFunction4.Visible" type="System.Boolean, mscorlib">
+  <data name="FuncShortcut4.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="ShortcutFunction5.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="FuncShortcut5.Size" type="System.Drawing.Size, System.Drawing">
     <value>224, 22</value>
   </data>
-  <data name="ShortcutFunction5.Text" xml:space="preserve">
+  <data name="FuncShortcut5.Text" xml:space="preserve">
     <value>Shortcut 5</value>
   </data>
-  <data name="ShortcutFunction5.Visible" type="System.Boolean, mscorlib">
+  <data name="FuncShortcut5.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="ShortcutFunction6.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="FuncShortcut6.Size" type="System.Drawing.Size, System.Drawing">
     <value>224, 22</value>
   </data>
-  <data name="ShortcutFunction6.Text" xml:space="preserve">
+  <data name="FuncShortcut6.Text" xml:space="preserve">
     <value>Shortcut 6</value>
   </data>
-  <data name="ShortcutFunction6.Visible" type="System.Boolean, mscorlib">
+  <data name="FuncShortcut6.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="ShortcutFunction7.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="FuncShortcut7.Size" type="System.Drawing.Size, System.Drawing">
     <value>224, 22</value>
   </data>
-  <data name="ShortcutFunction7.Text" xml:space="preserve">
+  <data name="FuncShortcut7.Text" xml:space="preserve">
     <value>Shortcut 7</value>
   </data>
-  <data name="ShortcutFunction7.Visible" type="System.Boolean, mscorlib">
+  <data name="FuncShortcut7.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="ShortcutFunction8.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="FuncShortcut8.Size" type="System.Drawing.Size, System.Drawing">
     <value>224, 22</value>
   </data>
-  <data name="ShortcutFunction8.Text" xml:space="preserve">
+  <data name="FuncShortcut8.Text" xml:space="preserve">
     <value>Shortcut 8</value>
   </data>
-  <data name="ShortcutFunction8.Visible" type="System.Boolean, mscorlib">
+  <data name="FuncShortcut8.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
   <data name="ShortcutSeparator.Size" type="System.Drawing.Size, System.Drawing">
@@ -272,26 +263,26 @@
   <data name="ShortcutSeparator.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="終了ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>224, 22</value>
+  <data name="FuncExit.Size" type="System.Drawing.Size, System.Drawing">
+    <value>192, 22</value>
   </data>
-  <data name="終了ToolStripMenuItem.Text" xml:space="preserve">
-    <value>Exit</value>
+  <data name="FuncExit.Text" xml:space="preserve">
+    <value>アプリの終了</value>
   </data>
-  <data name="consoleToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>224, 22</value>
+  <data name="FuncConsole.Size" type="System.Drawing.Size, System.Drawing">
+    <value>192, 22</value>
   </data>
-  <data name="consoleToolStripMenuItem.Text" xml:space="preserve">
-    <value>Console</value>
+  <data name="FuncConsole.Text" xml:space="preserve">
+    <value>デバッグコンソール</value>
   </data>
-  <data name="testToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>224, 22</value>
+  <data name="FuncTestFunction.Size" type="System.Drawing.Size, System.Drawing">
+    <value>192, 22</value>
   </data>
-  <data name="testToolStripMenuItem.Text" xml:space="preserve">
-    <value>TestFunction</value>
+  <data name="FuncTestFunction.Text" xml:space="preserve">
+    <value>テスト用関数</value>
   </data>
   <data name="NotificationMenu.Size" type="System.Drawing.Size, System.Drawing">
-    <value>225, 468</value>
+    <value>193, 468</value>
   </data>
   <data name="&gt;&gt;NotificationMenu.Name" xml:space="preserve">
     <value>NotificationMenu</value>
@@ -302,8 +293,20 @@
   <data name="notification.Text" xml:space="preserve">
     <value>Genshin Checker</value>
   </data>
+  <data name="emptyToolStripMenuItem.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="emptyToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
+  <data name="emptyToolStripMenuItem.Text" xml:space="preserve">
+    <value>(Empty)</value>
+  </data>
   <metadata name="Delay.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>277, 17</value>
+  </metadata>
+  <metadata name="$this.Language" type="System.Globalization.CultureInfo, System.Private.CoreLib, Culture=neutral, PublicKeyToken=7cec85d7bea7798e">
+    <value>ja-JP</value>
   </metadata>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -320,7 +323,6 @@
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>MainTray</value>
-    <comment>@Invariant</comment>
   </data>
   <data name="&gt;&gt;notification.Name" xml:space="preserve">
     <value>notification</value>
@@ -340,10 +342,10 @@
   <data name="&gt;&gt;toolStripSeparator3.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;詳細プレイデータToolStripMenuItem.Name" xml:space="preserve">
-    <value>詳細プレイデータToolStripMenuItem</value>
+  <data name="&gt;&gt;FuncDetailTime.Name" xml:space="preserve">
+    <value>FuncDetailTime</value>
   </data>
-  <data name="&gt;&gt;詳細プレイデータToolStripMenuItem.Type" xml:space="preserve">
+  <data name="&gt;&gt;FuncDetailTime.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;AccountToolStrip.Name" xml:space="preserve">
@@ -358,28 +360,28 @@
   <data name="&gt;&gt;emptyToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;ゲームログ開発者向けToolStripMenuItem.Name" xml:space="preserve">
-    <value>ゲームログ開発者向けToolStripMenuItem</value>
+  <data name="&gt;&gt;FuncGameLog.Name" xml:space="preserve">
+    <value>FuncGameLog</value>
   </data>
-  <data name="&gt;&gt;ゲームログ開発者向けToolStripMenuItem.Type" xml:space="preserve">
+  <data name="&gt;&gt;FuncGameLog.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;現在のアカウント情報を取得ToolStripMenuItem.Name" xml:space="preserve">
-    <value>現在のアカウント情報を取得ToolStripMenuItem</value>
+  <data name="&gt;&gt;FuncAnalyzeItem.Name" xml:space="preserve">
+    <value>FuncAnalyzeItem</value>
   </data>
-  <data name="&gt;&gt;現在のアカウント情報を取得ToolStripMenuItem.Type" xml:space="preserve">
+  <data name="&gt;&gt;FuncAnalyzeItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;toolStripCodeExchange.Name" xml:space="preserve">
-    <value>toolStripCodeExchange</value>
+  <data name="&gt;&gt;FuncCodeExchange.Name" xml:space="preserve">
+    <value>FuncCodeExchange</value>
   </data>
-  <data name="&gt;&gt;toolStripCodeExchange.Type" xml:space="preserve">
+  <data name="&gt;&gt;FuncCodeExchange.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;func_musicplayer.Name" xml:space="preserve">
-    <value>func_musicplayer</value>
+  <data name="&gt;&gt;FuncMusicPlayer.Name" xml:space="preserve">
+    <value>FuncMusicPlayer</value>
   </data>
-  <data name="&gt;&gt;func_musicplayer.Type" xml:space="preserve">
+  <data name="&gt;&gt;FuncMusicPlayer.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolStripSeparator2.Name" xml:space="preserve">
@@ -388,10 +390,10 @@
   <data name="&gt;&gt;toolStripSeparator2.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;設定ToolStripMenuItem.Name" xml:space="preserve">
-    <value>設定ToolStripMenuItem</value>
+  <data name="&gt;&gt;FuncSetting.Name" xml:space="preserve">
+    <value>FuncSetting</value>
   </data>
-  <data name="&gt;&gt;設定ToolStripMenuItem.Type" xml:space="preserve">
+  <data name="&gt;&gt;FuncSetting.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolStripSeparator1.Name" xml:space="preserve">
@@ -400,52 +402,52 @@
   <data name="&gt;&gt;toolStripSeparator1.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;ShortcutFunction1.Name" xml:space="preserve">
-    <value>ShortcutFunction1</value>
+  <data name="&gt;&gt;FuncShortcut1.Name" xml:space="preserve">
+    <value>FuncShortcut1</value>
   </data>
-  <data name="&gt;&gt;ShortcutFunction1.Type" xml:space="preserve">
+  <data name="&gt;&gt;FuncShortcut1.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;ShortcutFunction2.Name" xml:space="preserve">
-    <value>ShortcutFunction2</value>
+  <data name="&gt;&gt;FuncShortcut2.Name" xml:space="preserve">
+    <value>FuncShortcut2</value>
   </data>
-  <data name="&gt;&gt;ShortcutFunction2.Type" xml:space="preserve">
+  <data name="&gt;&gt;FuncShortcut2.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;ShortcutFunction3.Name" xml:space="preserve">
-    <value>ShortcutFunction3</value>
+  <data name="&gt;&gt;FuncShortcut3.Name" xml:space="preserve">
+    <value>FuncShortcut3</value>
   </data>
-  <data name="&gt;&gt;ShortcutFunction3.Type" xml:space="preserve">
+  <data name="&gt;&gt;FuncShortcut3.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;ShortcutFunction4.Name" xml:space="preserve">
-    <value>ShortcutFunction4</value>
+  <data name="&gt;&gt;FuncShortcut4.Name" xml:space="preserve">
+    <value>FuncShortcut4</value>
   </data>
-  <data name="&gt;&gt;ShortcutFunction4.Type" xml:space="preserve">
+  <data name="&gt;&gt;FuncShortcut4.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;ShortcutFunction5.Name" xml:space="preserve">
-    <value>ShortcutFunction5</value>
+  <data name="&gt;&gt;FuncShortcut5.Name" xml:space="preserve">
+    <value>FuncShortcut5</value>
   </data>
-  <data name="&gt;&gt;ShortcutFunction5.Type" xml:space="preserve">
+  <data name="&gt;&gt;FuncShortcut5.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;ShortcutFunction6.Name" xml:space="preserve">
-    <value>ShortcutFunction6</value>
+  <data name="&gt;&gt;FuncShortcut6.Name" xml:space="preserve">
+    <value>FuncShortcut6</value>
   </data>
-  <data name="&gt;&gt;ShortcutFunction6.Type" xml:space="preserve">
+  <data name="&gt;&gt;FuncShortcut6.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;ShortcutFunction7.Name" xml:space="preserve">
-    <value>ShortcutFunction7</value>
+  <data name="&gt;&gt;FuncShortcut7.Name" xml:space="preserve">
+    <value>FuncShortcut7</value>
   </data>
-  <data name="&gt;&gt;ShortcutFunction7.Type" xml:space="preserve">
+  <data name="&gt;&gt;FuncShortcut7.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;ShortcutFunction8.Name" xml:space="preserve">
-    <value>ShortcutFunction8</value>
+  <data name="&gt;&gt;FuncShortcut8.Name" xml:space="preserve">
+    <value>FuncShortcut8</value>
   </data>
-  <data name="&gt;&gt;ShortcutFunction8.Type" xml:space="preserve">
+  <data name="&gt;&gt;FuncShortcut8.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;ShortcutSeparator.Name" xml:space="preserve">
@@ -454,22 +456,22 @@
   <data name="&gt;&gt;ShortcutSeparator.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;終了ToolStripMenuItem.Name" xml:space="preserve">
-    <value>終了ToolStripMenuItem</value>
+  <data name="&gt;&gt;FuncExit.Name" xml:space="preserve">
+    <value>FuncExit</value>
   </data>
-  <data name="&gt;&gt;終了ToolStripMenuItem.Type" xml:space="preserve">
+  <data name="&gt;&gt;FuncExit.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;consoleToolStripMenuItem.Name" xml:space="preserve">
-    <value>consoleToolStripMenuItem</value>
+  <data name="&gt;&gt;FuncConsole.Name" xml:space="preserve">
+    <value>FuncConsole</value>
   </data>
-  <data name="&gt;&gt;consoleToolStripMenuItem.Type" xml:space="preserve">
+  <data name="&gt;&gt;FuncConsole.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;testToolStripMenuItem.Name" xml:space="preserve">
-    <value>testToolStripMenuItem</value>
+  <data name="&gt;&gt;FuncTestFunction.Name" xml:space="preserve">
+    <value>FuncTestFunction</value>
   </data>
-  <data name="&gt;&gt;testToolStripMenuItem.Type" xml:space="preserve">
+  <data name="&gt;&gt;FuncTestFunction.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;Delay.Name" xml:space="preserve">

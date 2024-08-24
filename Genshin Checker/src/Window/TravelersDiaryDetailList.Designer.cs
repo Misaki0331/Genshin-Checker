@@ -53,15 +53,28 @@
             // 
             // toolStripContainer1
             // 
+            resources.ApplyResources(toolStripContainer1, "toolStripContainer1");
+            // 
+            // toolStripContainer1.BottomToolStripPanel
+            // 
+            resources.ApplyResources(toolStripContainer1.BottomToolStripPanel, "toolStripContainer1.BottomToolStripPanel");
             // 
             // toolStripContainer1.ContentPanel
             // 
             resources.ApplyResources(toolStripContainer1.ContentPanel, "toolStripContainer1.ContentPanel");
-            resources.ApplyResources(toolStripContainer1, "toolStripContainer1");
+            // 
+            // toolStripContainer1.LeftToolStripPanel
+            // 
+            resources.ApplyResources(toolStripContainer1.LeftToolStripPanel, "toolStripContainer1.LeftToolStripPanel");
             toolStripContainer1.Name = "toolStripContainer1";
+            // 
+            // toolStripContainer1.RightToolStripPanel
+            // 
+            resources.ApplyResources(toolStripContainer1.RightToolStripPanel, "toolStripContainer1.RightToolStripPanel");
             // 
             // toolStripContainer1.TopToolStripPanel
             // 
+            resources.ApplyResources(toolStripContainer1.TopToolStripPanel, "toolStripContainer1.TopToolStripPanel");
             toolStripContainer1.TopToolStripPanel.Controls.Add(menuStrip1);
             // 
             // menuStrip1
@@ -72,18 +85,19 @@
             // 
             // ファイルToolStripMenuItem
             // 
+            resources.ApplyResources(ファイルToolStripMenuItem, "ファイルToolStripMenuItem");
             ファイルToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { cSV出力ToolStripMenuItem });
             ファイルToolStripMenuItem.Name = "ファイルToolStripMenuItem";
-            resources.ApplyResources(ファイルToolStripMenuItem, "ファイルToolStripMenuItem");
             // 
             // cSV出力ToolStripMenuItem
             // 
-            cSV出力ToolStripMenuItem.Name = "cSV出力ToolStripMenuItem";
             resources.ApplyResources(cSV出力ToolStripMenuItem, "cSV出力ToolStripMenuItem");
+            cSV出力ToolStripMenuItem.Name = "cSV出力ToolStripMenuItem";
             cSV出力ToolStripMenuItem.Click += cSV出力ToolStripMenuItem_Click;
             // 
             // dataGridView1
             // 
+            resources.ApplyResources(dataGridView1, "dataGridView1");
             dataGridView1.AllowUserToAddRows = false;
             dataGridView1.AllowUserToDeleteRows = false;
             dataGridView1.AllowUserToResizeColumns = false;
@@ -91,7 +105,6 @@
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.ColumnHeader;
             dataGridView1.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Sunken;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            resources.ApplyResources(dataGridView1, "dataGridView1");
             dataGridView1.Name = "dataGridView1";
             dataGridView1.ReadOnly = true;
             dataGridView1.RowHeadersVisible = false;
@@ -100,11 +113,11 @@
             // 
             // panel1
             // 
+            resources.ApplyResources(panel1, "panel1");
             panel1.Controls.Add(button2);
             panel1.Controls.Add(monthlist);
             panel1.Controls.Add(button1);
             panel1.Controls.Add(listtype);
-            resources.ApplyResources(panel1, "panel1");
             panel1.Name = "panel1";
             // 
             // button2
@@ -139,20 +152,24 @@
             // 
             // statusStrip1
             // 
-            statusStrip1.Items.AddRange(new ToolStripItem[] { toolStripProgressBar1, toolStripStatusLabel1 });
             resources.ApplyResources(statusStrip1, "statusStrip1");
+            statusStrip1.Items.AddRange(new ToolStripItem[] { toolStripProgressBar1, toolStripStatusLabel1 });
             statusStrip1.Name = "statusStrip1";
             // 
             // toolStripProgressBar1
             // 
+            resources.ApplyResources(toolStripProgressBar1, "toolStripProgressBar1");
             toolStripProgressBar1.Maximum = 10000;
             toolStripProgressBar1.Name = "toolStripProgressBar1";
-            resources.ApplyResources(toolStripProgressBar1, "toolStripProgressBar1");
             // 
             // toolStripStatusLabel1
             // 
-            toolStripStatusLabel1.Name = "toolStripStatusLabel1";
             resources.ApplyResources(toolStripStatusLabel1, "toolStripStatusLabel1");
+            toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            // 
+            // saveFileDialog1
+            // 
+            resources.ApplyResources(saveFileDialog1, "saveFileDialog1");
             // 
             // TravelersDiaryDetailList
             // 
