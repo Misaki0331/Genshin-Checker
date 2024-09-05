@@ -48,6 +48,17 @@ namespace Genshin_Checker.Model.HoYoLab.RoleCombat
         /// </summary>
         public bool has_detail_data { get; set; }
     }
+    public class AvatarResult
+    {
+        /// <summary>
+        /// キャラクターID
+        /// </summary>
+        public int avatar_id { get; set; }
+        public string avatar_icon { get; set; } = "";
+        public string value { get; set; } = "";
+        public int rarity { get; set; }
+
+    }
     public class Avatar
     {
         /// <summary>
@@ -120,9 +131,26 @@ namespace Genshin_Checker.Model.HoYoLab.RoleCombat
         /// 公演キャラ
         /// </summary>
         public List<Avatar> backup_avatars { get; set; } = new();
+
+        /// <summary>
+        /// 5.0から追加
+        /// 最大ダメ、プレイ時間情報
+        /// </summary>
+        public FightStatisic fight_statisic { get; set; } = new();
     }
 
+    public class FightStatisic
+    {
+        public AvatarResult max_defeat_avatar { get; set; } = new();
+        public AvatarResult max_damage_avatar { get; set; } = new();
+        public AvatarResult max_take_damage_avatar { get; set; } = new();
+        /// <summary>
+        /// これvalueしか値入っていません。なんで？
+        /// </summary>
+        public AvatarResult total_coin_consumed { get; set; } = new();
+        public List<AvatarResult> shortest_avatar_list { get; set; } = new();
 
+    }
     public class Round
     {
         public List<Avatar> avatars { get; set; } = new();
@@ -132,6 +160,52 @@ namespace Genshin_Checker.Model.HoYoLab.RoleCombat
         public int round_id { get; set; }
         public string finish_time { get; set; } = "";
         public DateTimeInfo finish_date_time { get; set; } = new();
+
+        /// <summary>
+        /// 5.0から追加
+        /// 敵情報
+        /// </summary>
+        public List<Enemy> enemies { get; set; } = new();
+
+
+        /// <summary>
+        /// 5.0から追加
+        /// 追加バフ情報
+        /// </summary>
+        public SplendourBuff splendour_buff { get; set; } = new();
+    }
+    public class SplendourBuff
+    {
+        public SplendourSummary summary { get; set; } = new();
+        public List<SplendourBuff> buffs { get; set; } = new();
+    }
+    public class SplendourSummary
+    {
+        public int total_level { get; set; }
+        public string desc { get; set; } = "";
+    }
+    public class SplendourBuffInfo
+    {
+        public string name { get; set; } = "";
+        public string icon { get; set; } = "";
+        public int level { get; set; } 
+        public List<SplendourBuffEffect> level_effect { get; set; } = new();
+
+    }
+    public class SplendourBuffEffect
+    {
+        public string icon { get; set; } = "";
+        public string name { get; set; } = "";
+        public string desc { get; set; } = "";
+
+    }
+
+    public class Enemy
+    {
+        public string name { get; set; } = "";
+        public string icon { get; set; } = "";
+        public int level { get; set; }
+
     }
     public class Schedule
     {

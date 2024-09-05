@@ -171,5 +171,8 @@
     <EmbeddedResource Update="src\Window\SpiralAbyss.resx">
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Update="src\Window\TravelersDiaryDetailList.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
 </Project>
