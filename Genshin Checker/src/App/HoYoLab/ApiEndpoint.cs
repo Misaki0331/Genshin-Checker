@@ -408,6 +408,7 @@ namespace Genshin_Checker.App.HoYoLab
         public static async Task<string> ExchangeCode(Account Account,string campaignCode)
         {
             long unixtime = DateTime.Now.Ticks / 10000;
+            campaignCode = campaignCode.Trim();
             var url = $"https://sg-hk4e-api.hoyolab.com/common/apicdkey/api/webExchangeCdkeyHyl?cdkey={campaignCode}&game_biz=hk4e_global&lang={Account.Culture.Name.ToLower().Split('-')[0]}&region={Account.Server}&t={unixtime}&uid={Account.UID}";
             var json = await WebRequest.HoYoGetRequest(url, Account.Cookie);
             return json ?? "";

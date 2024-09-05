@@ -130,7 +130,7 @@ namespace Genshin_Checker
 
         }
 
-        private async void MainTray_Load(object sender, EventArgs e)
+        private void MainTray_Load(object sender, EventArgs e)
         {
             notification.Visible = true;
             notification.BalloonTipTitle = Localize.AppName;
@@ -174,41 +174,41 @@ namespace Genshin_Checker
             {
                 case ToolStripMenuItem func when func.Equals(FuncDetailTime):
                     //詳細プレイデータ
-                    OpenWindow(null, nameof(TimeGraph));
+                    ManageWindow.OpenWindow(null, nameof(TimeGraph));
                     break;
 
                 case ToolStripMenuItem func when func.Equals(FuncSetting):
                     //設定
-                    OpenWindow(null, nameof(SettingWindow));
+                    ManageWindow.OpenWindow(null, nameof(SettingWindow));
                     break;
 
                 case ToolStripMenuItem func when func.Equals(FuncTestFunction):
                     //テスト用
-                    OpenWindow(null, nameof(APIChecker));
+                    ManageWindow.OpenWindow(null, nameof(APIChecker));
                     break;
 
                 case ToolStripMenuItem func when func.Equals(FuncGameLog):
-                    OpenWindow(null, nameof(GameLog));
+                    ManageWindow.OpenWindow(null, nameof(GameLog));
                     break;
 
                 case ToolStripMenuItem func when func.Equals(FuncConsole):
-                    OpenWindow(null, nameof(Window.Debug.Console));
+                    ManageWindow.OpenWindow(null, nameof(Window.Debug.Console));
                     break;
 
                 case ToolStripMenuItem func when func.Equals(FuncCodeExchange):
-                    OpenWindow(null, nameof(Window.CodeExchange));
+                    ManageWindow.OpenWindow(null, nameof(Window.CodeExchange));
                     break;
                     
                 case ToolStripMenuItem func when func.Equals(FuncCodeExchange):
-                    OpenWindow(null, nameof(Window.CodeExchange));
+                    ManageWindow.OpenWindow(null, nameof(Window.CodeExchange));
                     break;
                     
                 case ToolStripMenuItem func when func.Equals(FuncMusicPlayer):
-                    OpenWindow(null, nameof(Window.MusicPlayer));
+                    ManageWindow.OpenWindow(null, nameof(Window.MusicPlayer));
                     break;
 
                 case ToolStripMenuItem func when func.Equals(FuncAnalyzeItem):
-                    OpenWindow(null, nameof(Window.ProgressWindow.LoadGameDatabase));
+                    ManageWindow.OpenWindow(null, nameof(Window.ProgressWindow.LoadGameDatabase));
                     break;
                 
                 case ToolStripMenuItem func when func.Equals(FuncExit):
@@ -225,7 +225,7 @@ namespace Genshin_Checker
         private void notification_Click(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
-                OpenWindow(null, nameof(TimerDisplay));
+                ManageWindow.OpenWindow(null, nameof(TimerDisplay));
         }
 
         private async void ScreenshotEvent(object? s, string e)
@@ -268,10 +268,6 @@ namespace Genshin_Checker
         {
             ManageWindow.CloseDiposedAccount(account);
         }
-        private void OpenWindow(Account? account, string name)
-        {
-            ManageWindow.OpenWindow(account, name);
-        }
         private void ToolStripGenerate()
         {
             AccountToolStrip.DropDownItems.Clear();
@@ -280,19 +276,19 @@ namespace Genshin_Checker
                 foreach (var account in Accounts.Data)
                 {
                     var GameRecord = new ToolStripMenuItem() { Text = Localize.WindowName_GameRecord };
-                    GameRecord.Click += (s, e) => { OpenWindow(account, nameof(Window.GameRecords)); };
+                    GameRecord.Click += (s, e) => { ManageWindow.OpenWindow(account, nameof(Window.GameRecords)); };
                     var SpiralAbyss = new ToolStripMenuItem() { Text = Localize.WindowName_SpiralAbyss };
-                    SpiralAbyss.Click += (s, e) => { OpenWindow(account, nameof(Window.SpiralAbyss)); };
+                    SpiralAbyss.Click += (s, e) => { ManageWindow.OpenWindow(account, nameof(Window.SpiralAbyss)); };
                     var RealTimeNote = new ToolStripMenuItem() { Text = Localize.WindowName_RealTimeNote };
-                    RealTimeNote.Click += (s, e) => { OpenWindow(account, nameof(Window.RealTimeData)); };
+                    RealTimeNote.Click += (s, e) => { ManageWindow.OpenWindow(account, nameof(Window.RealTimeData)); };
                     var TravelersDiary = new ToolStripMenuItem() { Text = Localize.WindowName_TravelersDiary };
-                    TravelersDiary.Click += (s, e) => { OpenWindow(account, nameof(Window.TravelersDiary)); };
+                    TravelersDiary.Click += (s, e) => { ManageWindow.OpenWindow(account, nameof(Window.TravelersDiary)); };
                     var TravelersDiaryDetailList = new ToolStripMenuItem() { Text = Localize.WindowName_TravelersDiaryDetail };
-                    TravelersDiaryDetailList.Click += (s, e) => { OpenWindow(account, nameof(Window.TravelersDiaryDetailList)); };
+                    TravelersDiaryDetailList.Click += (s, e) => { ManageWindow.OpenWindow(account, nameof(Window.TravelersDiaryDetailList)); };
                     var CharacterCalculator = new ToolStripMenuItem() { Text = Localize.WindowName_EnhancementCalculator };
-                    CharacterCalculator.Click += (s, e) => { OpenWindow(account, nameof(Window.CharacterCalculator)); };
+                    CharacterCalculator.Click += (s, e) => { ManageWindow.OpenWindow(account, nameof(Window.CharacterCalculator)); };
                     var OfficialAnnounce = new ToolStripMenuItem() { Text = Localize.WindowName_GameAnnouncement };
-                    OfficialAnnounce.Click += (s, e) => { OpenWindow(account, nameof(BrowserApp.WebGameAnnounce)); };
+                    OfficialAnnounce.Click += (s, e) => { ManageWindow.OpenWindow(account, nameof(BrowserApp.WebGameAnnounce)); };
                     var tools = new ToolStripMenuItem() { Text = $"{account.Name} (AR.{account.Level})" };
                     tools.DropDownItems.AddRange(new ToolStripItem[]
                     {
