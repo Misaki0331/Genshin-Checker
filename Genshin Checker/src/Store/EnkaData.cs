@@ -1,14 +1,4 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.Json.Serialization;
-using System.Threading.Tasks;
-using Genshin_Checker.Model.EnkaNetwork.Store;
-using Genshin_Checker.Window;
-using Microsoft.VisualBasic;
-using Genshin_Checker.Window.Popup;
+﻿using Genshin_Checker.Window.Popup;
 using Genshin_Checker.App.General;
 
 namespace Genshin_Checker.Store

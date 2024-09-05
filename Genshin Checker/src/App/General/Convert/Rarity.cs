@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Genshin_Checker.App.General.Convert
+﻿namespace Genshin_Checker.App.General.Convert
 {
     public static class Rarity
     {

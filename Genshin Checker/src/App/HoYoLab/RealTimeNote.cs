@@ -2,21 +2,7 @@
 using Genshin_Checker.App.HoYoLab;
 using Genshin_Checker.App.Store.RealTimeNote;
 using Genshin_Checker.resource.Languages;
-using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Diagnostics;
-using System.IO;
-using System.IO.Compression;
-using System.Linq;
-using System.Net;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
 using static Genshin_Checker.App.HoYoLab.Account;
-using static System.Windows.Forms.AxHost;
 
 namespace Genshin_Checker.App
 {

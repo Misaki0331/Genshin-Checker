@@ -1,21 +1,8 @@
-﻿using Genshin_Checker.App.Command.CommandList;
-using Genshin_Checker.App.General;
-using Genshin_Checker.App.General.Convert;
+﻿using Genshin_Checker.App.General;
 using Genshin_Checker.App.HoYoLab;
-using Genshin_Checker.Model.UI.GameRecords.Exploration;
-using Genshin_Checker.Model.UserData.TravelersDiary.EventLists;
-using Genshin_Checker.Model.UserData.TravelersDiary.EventName;
 using Genshin_Checker.resource.Languages;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
 using System.Globalization;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static Genshin_Checker.Window.ProgressWindow.LoadTravelersDiaryDetail;
 
 namespace Genshin_Checker.App.Game
 {

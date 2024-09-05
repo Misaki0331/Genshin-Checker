@@ -1,17 +1,7 @@
 ﻿using Genshin_Checker.App.General.Convert;
-using Genshin_Checker.App.HoYoLab;
 using Genshin_Checker.resource.Languages;
-using Genshin_Checker.Store;
-using Genshin_Checker.Window;
-using System;
-using System.Collections.Generic;
 using System.Collections.Specialized;
-using System.Linq;
 using System.Net;
-using System.Security.Cryptography;
-using System.Security.Principal;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Genshin_Checker.App.WebServer.Endpoint
 {

@@ -1,15 +1,5 @@
 ﻿using Genshin_Checker.App.General;
-using Genshin_Checker.UI.Control.SettingWindow;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
 using System.Globalization;
-using System.Linq;
-using System.Management;
-using System.Security.Policy;
-using System.Text;
-using System.Threading.Tasks;
-using static Genshin_Checker.App.HoYoLab.Account;
 
 namespace Genshin_Checker.App.Game
 {

@@ -1,11 +1,4 @@
 ﻿using Genshin_Checker.App.HoYoLab;
-using Genshin_Checker.BrowserApp;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Genshin_Checker.App
 {

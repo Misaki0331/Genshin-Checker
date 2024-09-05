@@ -1,13 +1,6 @@
-﻿using OpenTK.Graphics.ES20;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Drawing.Imaging;
-using System.Linq;
+﻿using System.Drawing.Imaging;
 using System.Net;
 using System.Text;
-using System.Threading.Tasks;
-using Windows.ApplicationModel.Resources.Core;
 
 namespace Genshin_Checker.App.WebServer
 {

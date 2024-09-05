@@ -1,7 +1,6 @@
 ﻿using Genshin_Checker.App.General;
 using Genshin_Checker.resource.Languages;
 using Newtonsoft.Json;
-using System.Diagnostics;
 using System.IO.Compression;
 using System.Text;
 

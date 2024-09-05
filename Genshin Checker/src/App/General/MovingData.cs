@@ -1,5 +1,4 @@
 ﻿using Genshin_Checker.resource.Languages;
-using System.Diagnostics;
 using System.IO.Compression;
 
 namespace Genshin_Checker.App.General

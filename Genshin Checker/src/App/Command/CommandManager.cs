@@ -1,11 +1,5 @@
-﻿using Genshin_Checker.Window;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
+﻿using System.Diagnostics;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Genshin_Checker.App.Command
 {

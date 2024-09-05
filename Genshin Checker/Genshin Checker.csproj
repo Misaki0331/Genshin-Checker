@@ -155,9 +155,7 @@ GitHub : https://github.com/Misaki0331</Description>
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="src\Window\BrowserApp\HoYoApp.cs" />
-    <Compile Update="src\Window\PopupWindow\ChooseMessage.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Update="src\Window\PopupWindow\ChooseMessage.cs" />
     <Compile Update="src\Window\PopupWindow\InfoMessage.cs" />
   </ItemGroup>
 

@@ -39,8 +39,8 @@ namespace Genshin_Checker.App.Game
             {
                 TempLinks = new();
                 foreach (var l in links) TempLinks.Add(l);
-                Log.Warn("未初期化のためリンク取得を中止します。");
-                throw new InvalidDataException("起動時にデータが取得できていなかったため、この操作は取り消されました。\nもう一度やり直してください。");
+                Log.Debug("リンク未初期化の為初期化しました。");
+                return new();
             }
             var result = links.Except(TempLinks).ToList();
             Log.Debug($"データ内のリンクは {result.Count} 件確認しました。");

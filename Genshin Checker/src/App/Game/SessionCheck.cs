@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static Genshin_Checker.App.Game.ProcessTime;
-
-namespace Genshin_Checker.App
+﻿namespace Genshin_Checker.App
 {
     internal class SessionCheck
     {

@@ -1,19 +1,9 @@
 ﻿using Genshin_Checker.App.General;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
-using System.IO;
 using System.IO.Compression;
-using System.Linq;
-using System.Net;
 using System.Security.Cryptography;
-using System.Security.Policy;
 using System.Text;
-using System.Text.Json.Nodes;
-using System.Threading.Tasks;
-using static Genshin_Checker.Window.ExWindow.CharacterCalculator.CalculateResult;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.TaskbarClock;
 
 namespace Genshin_Checker.App
 {

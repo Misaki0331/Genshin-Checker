@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Genshin_Checker.App.HoYoLab
+﻿namespace Genshin_Checker.App.HoYoLab
 {
     public class LoginBonus:Base
     {

@@ -1,16 +1,6 @@
 ﻿using Genshin_Checker.App;
-using Genshin_Checker.Window;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Net;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using Genshin_Checker.Window.Popup;
-using Genshin_Checker.App.HoYoLab;
 using Genshin_Checker.App.General;
 
 namespace Genshin_Checker.Store

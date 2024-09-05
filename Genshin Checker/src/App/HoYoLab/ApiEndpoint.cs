@@ -2,8 +2,6 @@
 using System.Globalization;
 using Genshin_Checker.App.General;
 using static Genshin_Checker.App.HoYoLab.Account;
-using Genshin_Checker.Model.HoYoLab.RoleCombat;
-using System.Web;
 
 namespace Genshin_Checker.App.HoYoLab
 {

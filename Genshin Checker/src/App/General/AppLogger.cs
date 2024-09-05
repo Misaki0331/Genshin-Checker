@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.IO.Compression;
-using System.Linq;
+﻿using System.IO.Compression;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Diagnostics;
-using System.Runtime.ExceptionServices;
 using Genshin_Checker.App.General;
 using System.Reflection;
 

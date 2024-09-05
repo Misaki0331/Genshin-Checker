@@ -2,15 +2,7 @@
 using Genshin_Checker.Model.UserData.ImaginariumTheater.v1;
 using Genshin_Checker.resource.Languages;
 using Genshin_Checker.App.General.Convert;
-using Microsoft.WindowsAPICodePack.Shell;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Windows.Services.Maps.Guidance;
 
 namespace Genshin_Checker.App.HoYoLab
 {

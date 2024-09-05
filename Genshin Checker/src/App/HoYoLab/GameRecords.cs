@@ -1,14 +1,4 @@
-﻿using Genshin_Checker.App.General;
-using Genshin_Checker.Model.UserData.TravelersDiary.EventLists;
-using Genshin_Checker.Model.UserData.TravelersDiary.EventName;
-using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Genshin_Checker.Model.HoYoLab.GameRecords;
+﻿using Genshin_Checker.Model.HoYoLab.GameRecords;
 
 namespace Genshin_Checker.App.HoYoLab
 {

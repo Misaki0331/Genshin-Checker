@@ -1,9 +1,4 @@
 ﻿using Genshin_Checker.resource.Languages;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Genshin_Checker.App.General.LocalizeValue
 {

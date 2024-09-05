@@ -1,5 +1,4 @@
 ﻿using Genshin_Checker.App.General;
-using Genshin_Checker.Window;
 
 namespace Genshin_Checker.App.Command.CommandList
 {

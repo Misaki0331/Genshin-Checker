@@ -79,16 +79,19 @@
     <Compile Update="src\Window\Debug\APIChecker.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="src\Window\ExWindow\CharacterCalculator\BatchWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="src\Window\ExWindow\EmptyWindow.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="src\Window\GameLog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="src\Window\GameRecords.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="src\Window\MusicPlayer.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="src\Window\PopupWindow\ErrorMessage.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="src\Window\ExWindow\CharacterCalculator\BatchWindow.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="src\Window\ExWindow\CharacterCalculator\CalculateResult.cs">
@@ -97,13 +100,13 @@
     <Compile Update="src\Window\ExWindow\GameRecords\CharacterDetail.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="src\Window\PopupWindow\ChooseMessage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="src\Window\PopupWindow\ErrorMessage.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="src\Window\PopupWindow\FatalError.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="src\Window\GameLog.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="src\Window\GameRecords.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="src\Window\PopupWindow\InfoMessage.cs">
