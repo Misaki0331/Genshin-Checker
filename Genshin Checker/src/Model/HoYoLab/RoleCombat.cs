@@ -141,14 +141,16 @@ namespace Genshin_Checker.Model.HoYoLab.RoleCombat
 
     public class FightStatisic
     {
-        public AvatarResult max_defeat_avatar { get; set; } = new();
-        public AvatarResult max_damage_avatar { get; set; } = new();
-        public AvatarResult max_take_damage_avatar { get; set; } = new();
+        public AvatarResult? max_defeat_avatar { get; set; } = new();
+        public AvatarResult? max_damage_avatar { get; set; } = new();
+        public AvatarResult? max_take_damage_avatar { get; set; } = new();
         /// <summary>
         /// これvalueしか値入っていません。なんで？
         /// </summary>
         public AvatarResult total_coin_consumed { get; set; } = new();
         public List<AvatarResult> shortest_avatar_list { get; set; } = new();
+        public int total_use_time { get; set; }
+        public bool is_show_battle_stats { get; set; }
 
     }
     public class Round
@@ -177,7 +179,7 @@ namespace Genshin_Checker.Model.HoYoLab.RoleCombat
     public class SplendourBuff
     {
         public SplendourSummary summary { get; set; } = new();
-        public List<SplendourBuff> buffs { get; set; } = new();
+        public List<SplendourBuffInfo> buffs { get; set; } = new();
     }
     public class SplendourSummary
     {

@@ -1,11 +1,5 @@
 ﻿using Genshin_Checker.Model.HoYoLab.RoleCombat;
-using Genshin_Checker.Model.UserData.SpiralAbyss.v1;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics.Contracts;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Text.Json.Serialization;
 
 namespace Genshin_Checker.Model.UserData.ImaginariumTheater.v2
 {
@@ -91,6 +85,17 @@ namespace Genshin_Checker.Model.UserData.ImaginariumTheater.v2
         public int rarity { get; set; }
     }
 
+    public class AvatarResult
+    {
+        /// <summary>
+        /// キャラクターID
+        /// </summary>
+        public int avatar_id { get; set; }
+        public string avatar_icon { get; set; } = "";
+        public string value { get; set; } = "";
+        public int rarity { get; set; }
+
+    }
     public class Buff
     {
         /// <summary>
@@ -129,17 +134,68 @@ namespace Genshin_Checker.Model.UserData.ImaginariumTheater.v2
         /// 公演キャラ
         /// </summary>
         public List<Avatar> backup_avatars { get; set; } = new();
+        public ResultStatus? result_status { get; set; }
         public DateTime UpdateAt { get; set; }
         public DateTime FirstRoundTime { get; set; }
         public DateTime FinalRoundTime { get; set; }
+
+    }
+    public class ResultStatus
+    {
+        public List<AvatarResult> max_defeat_avatar { get; set; } = new();
+        public List<AvatarResult> max_damage_avatar { get; set; } = new();
+        public List<AvatarResult> max_take_damage_avatar { get; set; } = new();
+        public List<AvatarResult> shortest_avatar_list { get; set; } = new();
+        public int ButtleTime { get; set; } = -1;
+    }
+    public class ShiningBlessBuff
+    {
+        public ShiningBlessSummary summary { get; set; } = new();
+        public List<SplendourBuffInfo> buffs { get; set; } = new();
+    }
+    public class ShiningBlessSummary
+    {
+        public int total_level { get; set; }
+        public string desc { get; set; } = "";
+    }
+    public class ShiningBlessBuffEffect
+    {
+        public string icon { get; set; } = "";
+        public string name { get; set; } = "";
+        public string desc { get; set; } = "";
+
     }
 
+    public class ShiningBlessBuffInfo
+    {
+        public string name { get; set; } = "";
+        public string icon { get; set; } = "";
+        public int level { get; set; }
+        public List<ShiningBlessBuffEffect> level_effect { get; set; } = new();
 
+    }
+    public class Buffs
+    {
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public List<Buff>? WonderSupport { get; set; }
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public ShiningBlessBuff? ShiningBless { get; set; }
+    }
+
+    public class Enemy
+    {
+        public int id { get; set; } = -1;
+        public string name { get; set; } = "";
+        public string icon { get; set; } = "";
+        public int level { get; set; }
+
+    }
     public class Round
     {
         public List<Avatar> avatars { get; set; } = new();
         public List<Buff> choice_cards { get; set; } = new();
-        public List<Buff> buffs { get; set; } = new();
+        public Buffs buffs { get; set; } = new();
+        public List<Enemy> enemy { get; set; } = new();
         public bool is_get_medal { get; set; }
         public int round_id { get; set; }
         public DateTime finish_time { get; set; }

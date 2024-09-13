@@ -1,4 +1,5 @@
 ﻿using Genshin_Checker.App.General;
+using Genshin_Checker.Model.UserData.ImaginariumTheater.v2;
 using Genshin_Checker.Model.UserData.ImaginariumTheater.v1;
 using Genshin_Checker.resource.Languages;
 using Genshin_Checker.App.General.Convert;
@@ -15,7 +16,7 @@ namespace Genshin_Checker.App.HoYoLab
         }
         private Model.HoYoLab.RoleCombat.Data? RoleCombat = null;
         private string REG_PATH { get => $"UserData\\{account.UID}\\ImaginariumTheater"; }
-        public V1? Current { get; private set; }
+        public V2? Current { get; private set; }
         internal async void Timeout_Tick(object? sender, EventArgs e)
         {
             ServerUpdate.Stop();
@@ -36,20 +37,21 @@ namespace Genshin_Checker.App.HoYoLab
                 Log.Error(ex);
             }
         }
-        public async Task<V1> Load(int id)
+        public async Task<V2> Load(int id)
         {
             var path = Registry.GetValue(REG_PATH, $"{id}", true) ?? throw new IOException(Localize.Error_SpiralAbyssFile_RegistryNotFound);
             var data = await AppData.LoadUserData(path);
             if (string.IsNullOrEmpty(data)) throw new InvalidDataException("Data is empty.");
             var ver = JsonChecker<Model.UserData.DatabaseRoot>.Check(data ?? "{}");
-            V1? v1 = (ver?.Version) switch
+            V2? v2 = (ver?.Version) switch
             {
                 null => throw new InvalidDataException(Localize.Error_SpiralAbyssFile_InvalidFileVersion),
-                1 => JsonChecker<V1>.Check(data ?? ""),
+                1 => Model.UserData.ImaginariumTheater.Convert.FromV1(JsonChecker<V1>.Check(data ?? "")),
+                2 => JsonChecker<V2>.Check(data ?? ""),
                 _ => throw new InvalidDataException(string.Format(Localize.Error_SpiralAbyssFile_UnknownFileVersion, ver.Version)),
             } ?? throw new InvalidDataException(Localize.Error_SpiralAbyssFile_FailedConvert);
-            if (v1.UID != account.UID) throw new InvalidDataException(string.Format(Localize.Error_SpiralAbyssFile_DoesNotMatchUID, v1.UID, account.UID));
-            return v1;
+            if (v2.UID != account.UID) throw new InvalidDataException(string.Format(Localize.Error_SpiralAbyssFile_DoesNotMatchUID, v2.UID, account.UID));
+            return v2;
         }
         public async Task<Model.HoYoLab.RoleCombat.Data> GetData()
         {
@@ -58,16 +60,16 @@ namespace Genshin_Checker.App.HoYoLab
             return data;
         }
 
-        private async Task Save(V1 v1)
+        private async Task Save(V2 v2)
         {
-            string? path = Registry.GetValue(REG_PATH, $"{v1.Data.schedule_id}", true);
+            string? path = Registry.GetValue(REG_PATH, $"{v2.Data.schedule_id}", true);
             if (path == null)
             {
                 path = AppData.GetRandomPath();
-                Registry.SetValue(REG_PATH, $"{v1.Data.schedule_id}", path, true);
+                Registry.SetValue(REG_PATH, $"{v2.Data.schedule_id}", path, true);
 
             }
-            await AppData.SaveUserData(path, JsonConvert.SerializeObject(v1));
+            await AppData.SaveUserData(path, JsonConvert.SerializeObject(v2));
         }
         private async Task<int> SaveDatabase(Model.HoYoLab.RoleCombat.Data raw)
         {
@@ -75,33 +77,23 @@ namespace Genshin_Checker.App.HoYoLab
             int CountOfNewData = 0;
             foreach (var index in raw.data)
             {
-                var userdata = new V1();
+                var userdata = new V2();
                 #region ユーザーデータベースから過去の情報読み出し
                 Log.Debug($"幻想シアター {index.schedule.schedule_id} 期");
                 var path = Registry.GetValue(REG_PATH, $"{index.schedule.schedule_id}", true);
                 if (path != null&& AppData.IsExistFile(path))
                 {
                     Log.Debug($"→データが見つかりました。");
-                    var json = await AppData.LoadUserData(path);
-                    if (!string.IsNullOrEmpty(json))
-                    {
-                        var ver = JsonChecker<Model.UserData.DatabaseRoot>.Check(json ?? "{}");
-                        userdata = (ver?.Version) switch
-                        {
-                            null => new V1(),
-                            1 => JsonChecker<V1>.Check(json ?? "{}"),
-                            _ => throw new InvalidDataException(string.Format(Localize.Error_SpiralAbyssFile_UnknownFileVersion, ver.Version)),
-                        };
-                        if (userdata.UID != account.UID)
-                            throw new InvalidDataException(
-                                string.Format(Localize.Error_SpiralAbyssFile_DoesNotMatchUID, userdata.UID, account.UID));
-                    }
+                    userdata = await Load(index.schedule.schedule_id);
+                    if(userdata.UID != account.UID)
+                        throw new InvalidDataException(
+                            string.Format(Localize.Error_SpiralAbyssFile_DoesNotMatchUID, userdata.UID, account.UID));
                 }
                 #endregion
                 #region 取得したデータが重複しているかチェック
                 userdata.UID = account.UID;
                 userdata.UpdateUTC = DateTime.UtcNow;
-                userdata.Version = 1; //v1
+                userdata.Version = 2; //v1
                 var starttime = DateTime.MaxValue;
                 var endtime = DateTime.MinValue;
                 foreach (var round in index.detail?.rounds_data ?? new())
@@ -168,6 +160,48 @@ namespace Genshin_Checker.App.HoYoLab
                 game.Stats.max_round_id = index.stat.max_round_id;
                 game.Stats.medal_num = index.stat.medal_num;
                 game.Stats.get_medal_round_list.Clear();
+                if (index.detail != null && index.detail.fight_statisic.is_show_battle_stats)
+                {
+                    game.result_status = new();
+                    var stats = index.detail.fight_statisic;
+                    var data = stats.max_damage_avatar;
+                    if (data != null)
+                        game.result_status.max_damage_avatar.Add(new()
+                        {
+                            avatar_icon = data.avatar_icon,
+                            avatar_id = data.avatar_id,
+                            rarity = data.rarity,
+                            value = data.value,
+                        });
+                    data = stats.max_take_damage_avatar;
+                    if (data != null)
+                        game.result_status.max_take_damage_avatar.Add(new()
+                        {
+                            avatar_icon = data.avatar_icon,
+                            avatar_id = data.avatar_id,
+                            rarity = data.rarity,
+                            value = data.value,
+                        });
+                    data = stats.max_defeat_avatar;
+                    if (data != null)
+                        game.result_status.max_defeat_avatar.Add(new()
+                        {
+                            avatar_icon = data.avatar_icon,
+                            avatar_id = data.avatar_id,
+                            rarity = data.rarity,
+                            value = data.value,
+                        });
+                    foreach (var data2 in stats.shortest_avatar_list)
+                        game.result_status.shortest_avatar_list.Add(new()
+                        {
+                            avatar_icon = data2.avatar_icon,
+                            avatar_id = data2.avatar_id,
+                            rarity = data2.rarity,
+                            value = data2.value,
+                        });
+                    game.result_status.ButtleTime = stats.total_use_time;
+                }
+
                 foreach (var i in index.stat.get_medal_round_list) game.Stats.get_medal_round_list.Add(i);
                 if (index.detail != null)
                 {
@@ -202,8 +236,9 @@ namespace Genshin_Checker.App.HoYoLab
                             round_id = round.round_id,
                             is_get_medal = round.is_get_medal,
                         });
+                        var roundsdata = game.rounds_data[^1];
                         foreach (var avatar in round.avatars)
-                            game.rounds_data[^1].avatars.Add(new()
+                            roundsdata.avatars.Add(new()
                             {
                                 avatar_id = avatar.avatar_id,
                                 avatar_type = avatar.avatar_type,
@@ -212,17 +247,49 @@ namespace Genshin_Checker.App.HoYoLab
                                 level = avatar.level,
                                 rarity = avatar.rarity,
                             });
+                        //幻想シアターv1のみ
                         foreach (var buff in round.buffs)
-                            game.rounds_data[^1].buffs.Add(new()
+                        {
+                            if (roundsdata.buffs.WonderSupport == null) roundsdata.buffs.WonderSupport = new();
+                            roundsdata.buffs.WonderSupport.Add(new()
                             {
-                               id = buff.id,
-                               name = buff.name,
-                               icon = buff.icon,
-                               desc = buff.desc,
-                               is_enhanced = buff.is_enhanced,
+                                id = buff.id,
+                                name = buff.name,
+                                icon = buff.icon,
+                                desc = buff.desc,
+                                is_enhanced = buff.is_enhanced,
                             });
+                        }
+                        //幻想シアターv2
+                        if(round.splendour_buff != null)
+                        {
+                            roundsdata.buffs.ShiningBless = new();
+                            var data = roundsdata.buffs.ShiningBless;
+                            data.summary.total_level = round.splendour_buff.summary.total_level;
+                            data.summary.desc = round.splendour_buff.summary.desc;
+
+                            foreach (var buff in data.buffs)
+                                data.buffs.Add(new()
+                                {
+                                    icon = buff.icon,
+                                    level = buff.level,
+                                    level_effect = buff.level_effect,
+                                    name = buff.name
+                                });
+                        }
+                        foreach (var enemy in round.enemies)
+                            roundsdata.enemy.Add(new()
+                            {
+                                icon = enemy.icon,
+                                level = enemy.level,
+                                name = enemy.name,
+                                //ToDo: 将来的にIDを推測する
+                                id = -1
+                            });
+
+
                         foreach (var card in round.choice_cards)
-                            game.rounds_data[^1].choice_cards.Add(new()
+                            roundsdata.choice_cards.Add(new()
                             {
                                 id = card.id,
                                 name = card.name,
