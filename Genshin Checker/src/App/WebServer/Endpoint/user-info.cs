@@ -294,7 +294,7 @@ namespace Genshin_Checker.App.WebServer.Endpoint
             });
             #endregion
             #region 幻想シアター
-            var diff = new List<string>() { "なし", "イージー", "ノーマル", "ハード", "エクストラ", "？？？" };
+            var diff = new List<string>() { "なし", "イージー", "ノーマル", "ハード", "マスター", "エクストラ" };
             result.components.Add(new()
             {
                 clickto = "",
