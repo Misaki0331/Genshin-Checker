@@ -17,6 +17,7 @@ namespace Genshin_Checker.App.HoYoLab
         private Model.HoYoLab.RoleCombat.Data? RoleCombat = null;
         private string REG_PATH { get => $"UserData\\{account.UID}\\ImaginariumTheater"; }
         public V2? Current { get; private set; }
+        bool IsFirstCheck = false;
         internal async void Timeout_Tick(object? sender, EventArgs e)
         {
             ServerUpdate.Stop();
@@ -50,6 +51,11 @@ namespace Genshin_Checker.App.HoYoLab
                 2 => JsonChecker<V2>.Check(data ?? ""),
                 _ => throw new InvalidDataException(string.Format(Localize.Error_SpiralAbyssFile_UnknownFileVersion, ver.Version)),
             } ?? throw new InvalidDataException(Localize.Error_SpiralAbyssFile_FailedConvert);
+            if (ver?.Version < 2)
+            {
+                Log.Info("バージョンアップグレードします。");
+                await Save(v2);
+            }
             if (v2.UID != account.UID) throw new InvalidDataException(string.Format(Localize.Error_SpiralAbyssFile_DoesNotMatchUID, v2.UID, account.UID));
             return v2;
         }
@@ -123,10 +129,14 @@ namespace Genshin_Checker.App.HoYoLab
                     else return false;
                 });
                 #endregion
-                if (IsNextMove)
+                if (IsNextMove&&IsFirstCheck)
                 {
                     Log.Debug($"→データに更新が無さそうなのでスキップします。");
                     continue; //データに更新が無い場合はスキップ
+                }
+                else
+                {
+                    IsFirstCheck = true;
                 }
                 bool IsNewData = game == null;
                 game ??= new();
@@ -268,7 +278,7 @@ namespace Genshin_Checker.App.HoYoLab
                             data.summary.total_level = round.splendour_buff.summary.total_level;
                             data.summary.desc = round.splendour_buff.summary.desc;
 
-                            foreach (var buff in data.buffs)
+                            foreach (var buff in round.splendour_buff.buffs)
                                 data.buffs.Add(new()
                                 {
                                     icon = buff.icon,
