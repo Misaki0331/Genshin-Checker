@@ -552,31 +552,6 @@ namespace Genshin_Checker.Window.ExWindow.CharacterCalculator
                                 }
                                 else e.Value = Common.Unknown;
                             }
-                            e.Value = character.talent.type switch
-                            {
-                                0 => Genshin.TalentBook_1_1,
-                                1 => Genshin.TalentBook_1_2,
-                                2 => Genshin.TalentBook_1_3,
-                                3 => Genshin.TalentBook_2_1,
-                                4 => Genshin.TalentBook_2_2,
-                                5 => Genshin.TalentBook_2_3,
-                                6 => Genshin.TalentBook_3_1,
-                                7 => Genshin.TalentBook_3_2,
-                                8 => Genshin.TalentBook_3_3,
-                                9 => Genshin.TalentBook_4_1,
-                                10 => Genshin.TalentBook_4_2,
-                                11 => Genshin.TalentBook_4_3,
-                                12 => Genshin.TalentBook_5_1,
-                                13 => Genshin.TalentBook_5_2,
-                                14 => Genshin.TalentBook_5_3,
-                                15 => Genshin.TalentBook_6_1,
-                                16 => Genshin.TalentBook_6_2,
-                                17 => Genshin.TalentBook_6_3,
-                                18 => Genshin.TalentBook_7_1,
-                                19 => Genshin.TalentBook_7_2,
-                                20 => Genshin.TalentBook_7_3,
-                                _ => Common.Unknown,
-                            };
                             break;
                         case nameof(CharacterViewTalentDay):
                             if (character.talent.type == -1) break;
