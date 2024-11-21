@@ -122,14 +122,23 @@ namespace Genshin_Checker.Store
             FailReload.Stop();
             try
             {
-                await Task.Run(() =>
-                Task.WaitAll(
-                Task.Run(async () => { if (_namecard == null || IsReload) await GetNameCard(); }),
-                Task.Run(async () => { if (_locale == null || IsReload) await GetLocale(); }),
-                Task.Run(async () => { if (_characters == null || IsReload) await GetCharacters(); }),
-                Task.Run(async () => { if (_affixes == null || IsReload) await GetAffixes(); }),
-                Task.Run(async () => { if (_pfps == null || IsReload) await GetPfps(); })
-                ));
+                await Task.Run(() => {
+                    try
+                    {
+                        Task.WaitAll(
+                        Task.Run(async () => { if (_namecard == null || IsReload) await GetNameCard(); }),
+                        Task.Run(async () => { if (_locale == null || IsReload) await GetLocale(); }),
+                        Task.Run(async () => { if (_characters == null || IsReload) await GetCharacters(); }),
+                        Task.Run(async () => { if (_affixes == null || IsReload) await GetAffixes(); }),
+                        Task.Run(async () => { if (_pfps == null || IsReload) await GetPfps(); })
+                        );
+                    }
+                    catch (Exception ex)
+                    {
+                        Log.Error(ex);
+                    }
+                }
+                );
             }
             catch (Exception ex)
             {

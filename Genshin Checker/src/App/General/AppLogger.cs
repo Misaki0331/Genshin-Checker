@@ -475,15 +475,19 @@ namespace Genshin_Checker
         /// <param name="logFile">ファイル情報</param>
         private void CreateLogfile(FileInfo logFile)
         {
-            if (!Directory.Exists(logFile.DirectoryName) && logFile.DirectoryName != null)
+            try
             {
-                Directory.CreateDirectory(logFile.DirectoryName);
-            }
+                if (!Directory.Exists(logFile.DirectoryName) && logFile.DirectoryName != null)
+                {
+                    Directory.CreateDirectory(logFile.DirectoryName);
+                }
 
-            stream = new StreamWriter(logFile.FullName, true, Encoding.UTF8)
-            {
-                AutoFlush = true
-            };
+                stream = new StreamWriter(logFile.FullName, true, Encoding.UTF8)
+                {
+                    AutoFlush = true
+                };
+            }
+            catch (Exception) { }
         }
 
         /// <summary>

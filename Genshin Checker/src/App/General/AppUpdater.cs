@@ -22,34 +22,42 @@
         /// <returns>新しいバージョンがあるかどうか</returns>
         public static async Task<bool> CheckVersion()
         {
-            var root = JsonChecker<Model.GitHub.Latest.Root>.Check(await WebRequest.GeneralGetRequest("https://api.github.com/repos/misaki0331/genshin-checker/releases/latest"));
-            NewVersion = root.tag_name;
-            NewVersionName = root.name;
-            LatestReleaseTime = root.published_at;
-            UpdateBody = root.body;
-            if (root.assets.Count > 0)
+            try
             {
-                DownloadCount = root.assets[0].download_count;
-                ApplicationSize = root.assets[0].size;
-            }
-
-            //バージョンチェック
-            var current = CurrentVersion.Split(".");
-            var latest = NewVersion.Split(".");
-            bool IsNewRelease = false;
-            for (int i = 0; i < Math.Min(current.Length, latest.Length); i++)
-            {
-                if (int.TryParse(current[i], out int c) && int.TryParse(latest[i], out int l))
+                var root = JsonChecker<Model.GitHub.Latest.Root>.Check(await WebRequest.GeneralGetRequest("https://api.github.com/repos/misaki0331/genshin-checker/releases/latest"));
+                NewVersion = root.tag_name;
+                NewVersionName = root.name;
+                LatestReleaseTime = root.published_at;
+                UpdateBody = root.body;
+                if (root.assets.Count > 0)
                 {
-                    if (c > l) break;
-                    if (c < l)
+                    DownloadCount = root.assets[0].download_count;
+                    ApplicationSize = root.assets[0].size;
+                }
+
+                //バージョンチェック
+                var current = CurrentVersion.Split(".");
+                var latest = NewVersion.Split(".");
+                bool IsNewRelease = false;
+                for (int i = 0; i < Math.Min(current.Length, latest.Length); i++)
+                {
+                    if (int.TryParse(current[i], out int c) && int.TryParse(latest[i], out int l))
                     {
-                        IsNewRelease = true;
-                        break;
+                        if (c > l) break;
+                        if (c < l)
+                        {
+                            IsNewRelease = true;
+                            break;
+                        }
                     }
                 }
+                return IsNewRelease;
             }
-            return IsNewRelease;
+            catch(Exception ex)
+            {
+                Log.Error(ex);
+                return false;
+            }
         }
     }
 }

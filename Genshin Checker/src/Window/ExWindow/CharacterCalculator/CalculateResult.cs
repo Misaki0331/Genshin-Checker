@@ -544,6 +544,14 @@ namespace Genshin_Checker.Window.ExWindow.CharacterCalculator
                                 6 => World.GetBackgroundColor(World.Country.Snezhnaya),
                                 _ => World.GetBackgroundColor(World.Country.Unknown)
                             };
+                            if (Store.Misaki_chan.Data.Info?.Localize.Talent.TryGetValue(LocalizeManager.CurrentShort, out var talents) == true)
+                            {
+                                if (character.talent.type < talents.Count)
+                                {
+                                    e.Value = talents[(int)row.Cells[character.talent.type].Value];
+                                }
+                                else e.Value = Common.Unknown;
+                            }
                             e.Value = character.talent.type switch
                             {
                                 0 => Genshin.TalentBook_1_1,

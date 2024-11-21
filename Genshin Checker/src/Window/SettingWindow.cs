@@ -157,7 +157,7 @@ namespace Genshin_Checker.Window
                 FileName = link,
                 UseShellExecute = true,
             };
-            if (link != null) Process.Start(pi);
+           if (link != null) Process.Start(pi);
         }
 
         private async void Open_HoYoLabAuth_Click(object sender, EventArgs e)

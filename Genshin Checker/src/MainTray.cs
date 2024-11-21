@@ -75,7 +75,7 @@ namespace Genshin_Checker
             versionNameToolStripMenuItem.Text += "(DEBUG)";
             isdebug = true;
 #else
-            testToolStripMenuItem.Visible = false;      
+            FuncTestFunction.Visible = false;      
 #endif
             FuncConsole.Visible = isdebug;
             if (safemode)
@@ -160,6 +160,7 @@ namespace Genshin_Checker
                         Task.Run(async () => await WebViewWatcher.Init())
                 );
             App.Game.GameLogWatcher.Instance.Init();
+            App.Game.LauncherLogWatcher.Instance.Init();
             App.Game.ScreenshotWatcher.Instance.NewImageEvent += ScreenshotEvent;
 
         }

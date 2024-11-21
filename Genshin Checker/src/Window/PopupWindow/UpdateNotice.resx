@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!--
-    Microsoft ResX Schema 
+    Microsoft ResX Schema
 
     Version 2.0
 
@@ -48,7 +48,7 @@
     value   : The object must be serialized with
             : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
             : and then encoded with base64 encoding.
-    
+
     mimetype: application/x-microsoft.net.object.soap.base64
     value   : The object must be serialized with
             : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
@@ -200,7 +200,6 @@
   </data>
   <data name="VersionText.Text" xml:space="preserve">
     <value>X.X.X.X → X.X.X</value>
-    <comment>@Invariant</comment>
   </data>
   <data name="&gt;&gt;VersionText.Name" xml:space="preserve">
     <value>VersionText</value>
@@ -234,7 +233,6 @@
   </data>
   <data name="LatestUpdate.Text" xml:space="preserve">
     <value>Latest : 20XX/XX/XX XX:XX:XX</value>
-    <comment>@Invariant</comment>
   </data>
   <data name="&gt;&gt;LatestUpdate.Name" xml:space="preserve">
     <value>LatestUpdate</value>
@@ -344,7 +342,6 @@
   </data>
   <data name="DownloadCount.Text" xml:space="preserve">
     <value>0</value>
-    <comment>@Invariant</comment>
   </data>
   <data name="DownloadCount.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>TopRight</value>
@@ -408,7 +405,6 @@
   </data>
   <data name="DownloadSize.Text" xml:space="preserve">
     <value>--.--- MB</value>
-    <comment>@Invariant</comment>
   </data>
   <data name="DownloadSize.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>TopRight</value>
@@ -520,7 +516,6 @@
   </data>
   <data name="OpenLink.Text" xml:space="preserve">
     <value>Got it!</value>
-    <comment>@MutedRule(PunctuationTail)</comment>
   </data>
   <data name="&gt;&gt;OpenLink.Name" xml:space="preserve">
     <value>OpenLink</value>

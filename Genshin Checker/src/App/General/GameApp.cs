@@ -17,7 +17,7 @@ namespace Genshin_Checker.App.General
             try
             {
                 fs = new($"{PATH}/{FILENAME}", FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
-                byte[] bytes = new byte[65536];
+                byte[] bytes = new byte[65536*4];
                 await fs.ReadAsync(bytes);
                 var res = Encoding.UTF8.GetString(bytes, 0, bytes.Length);
                 if (res != null)

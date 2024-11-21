@@ -14,13 +14,13 @@ namespace Genshin_Checker.Window
         {
             InitializeComponent();
             Log.Font = new Font("ＭＳ ゴシック", (float)numeric_FontSize.Value);
-            foreach (var item in old)
+            /*foreach (var item in old)
             {
                 LogData.Add(item.ToString());
                 Log.AppendText(item.Replace("\r\n", "\n").Replace("\n", Environment.NewLine) + Environment.NewLine);
                 LogCount++;
-            }
-            App.Game.GameLogWatcher.Instance.LogUpdated += LogUpdated;
+            }*/
+            App.Game.LauncherLogWatcher.Instance.LogUpdated += LogUpdated;
 
             ProcessTime.Instance.ChangedState += Instance_ChangedState;
 
@@ -140,7 +140,7 @@ namespace Genshin_Checker.Window
 
         private void GameLog_FormClosed(object sender, FormClosedEventArgs e)
         {
-            App.Game.GameLogWatcher.Instance.LogUpdated -= LogUpdated;
+            App.Game.LauncherLogWatcher.Instance.LogUpdated -= LogUpdated;
             ProcessTime.Instance.ChangedState -= Instance_ChangedState;
         }
 
