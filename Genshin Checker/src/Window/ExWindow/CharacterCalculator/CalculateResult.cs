@@ -548,7 +548,7 @@ namespace Genshin_Checker.Window.ExWindow.CharacterCalculator
                             {
                                 if (character.talent.type < talents.Count)
                                 {
-                                    e.Value = talents[(int)row.Cells[character.talent.type].Value];
+                                    e.Value = talents[character.talent.type];
                                 }
                                 else e.Value = Common.Unknown;
                             }
