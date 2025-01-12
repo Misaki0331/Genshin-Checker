@@ -75,22 +75,33 @@ namespace Genshin_Checker.Window
                     var setdata = set.Value ?? new();
                     if (talent.Count != 3) 
                         throw new InvalidDataException(Localize.Error_CharacterCalculator_InvalidTalentCount);
-                    int normal = 0;
-                    int skill = 0;
-                    int burst = 0;
-                    normal = staticinfo?.Skills.Upgrade_skills.Normal?.Constellations <= character.actived_constellation_num ? staticinfo?.Skills.Upgrade_skills.Normal?.Add_level??0:0;
-                    skill = staticinfo?.Skills.Upgrade_skills.Skill?.Constellations <= character.actived_constellation_num ? staticinfo?.Skills.Upgrade_skills.Skill?.Add_level??0:0;
-                    burst = staticinfo?.Skills.Upgrade_skills.Burst?.Constellations <= character.actived_constellation_num ? staticinfo?.Skills.Upgrade_skills.Burst?.Add_level??0:0;
-                    if (talent[0].level - normal < 1) normal = 0;
-                    if (talent[1].level - skill < 1) skill = 0;
-                    if (talent[2].level - burst < 1) burst = 0;
+
+                    var enkainfo = Character.GetEnkaCharaID(talent[0].skill_id, talent[1].skill_id, talent[2].skill_id);
+                    if (enkainfo == null) throw new InvalidDataException("enka is not found");
+                    var enka = Store.EnkaData.Data?.Characters?[enkainfo];
+                    var normal = talent.Find(a => enka?.SkillOrder[0] == a.skill_id);
+                    var skill = talent.Find(a => enka?.SkillOrder[1] == a.skill_id);
+                    var burst = talent.Find(a => enka?.SkillOrder[2] == a.skill_id);
+                    if (normal == null || skill == null || burst == null)
+                    {
+                        throw new InvalidDataException();
+                    }
+                    int normaladd = 0;
+                    int skilladd = 0;
+                    int burstadd = 0;
+                    normaladd = staticinfo?.Skills.Upgrade_skills.Normal?.Constellations <= character.actived_constellation_num ? staticinfo?.Skills.Upgrade_skills.Normal?.Add_level??0:0;
+                    skilladd = staticinfo?.Skills.Upgrade_skills.Skill?.Constellations <= character.actived_constellation_num ? staticinfo?.Skills.Upgrade_skills.Skill?.Add_level??0:0;
+                    burstadd = staticinfo?.Skills.Upgrade_skills.Burst?.Constellations <= character.actived_constellation_num ? staticinfo?.Skills.Upgrade_skills.Burst?.Add_level??0:0;
+                    if (normal.level - normaladd < 1) normaladd = 0;
+                    if (skill.level - skilladd < 1) skilladd = 0;
+                    if (burst.level - burstadd < 1) burstadd = 0;
                     //Todo: character.weapon.typeをIDから名称に変換する
                     CharacterView.Rows.Add(setdata.Enabled, character.id, character.rarity, Element.GetElementEnum(character.element), character.name, character.weapon.type, character.fetter, character.level,
-                        talent[0].level - normal, talent[1].level - skill, talent[2].level - burst, "",
+                        normal.level - normaladd, skill.level - skilladd, burst.level - burstadd, "",
                         character.level > setdata.SetLevel ? character.level : setdata.SetLevel,
-                        talent[0].level - normal > setdata.SetTalent1 ? talent[0].level - normal : setdata.SetTalent1,
-                        talent[1].level - skill > setdata.SetTalent2 ? talent[1].level - skill : setdata.SetTalent2,
-                        talent[2].level - burst > setdata.SetTalent3 ? talent[2].level - burst : setdata.SetTalent3);
+                        normal.level - normaladd > setdata.SetTalent1 ? normal.level - normaladd : setdata.SetTalent1,
+                        skill.level - skilladd > setdata.SetTalent2 ? skill.level - skilladd : setdata.SetTalent2,
+                        burst.level - burstadd > setdata.SetTalent3 ? burst.level - burstadd : setdata.SetTalent3);
                 }
                 Text = $"{Localize.WindowName_CharacterCalculator} (UID:{account.UID})";
             }catch(Exception ex)
