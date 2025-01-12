@@ -120,7 +120,7 @@ namespace Genshin_Checker.Window.ExWindow.CharacterCalculator
                 {
                     var RequiedItemData = new CharacterData();
                     RequiedItemData.id = input.characterID;
-                    var chr = characters.avatars.Find(a => a.id == input.characterID);
+                    var chr = characters.list.Find(a => a.id == input.characterID);
                     if (chr != null)
                     {
                         RequiedItemData.name = chr.name;
@@ -131,19 +131,20 @@ namespace Genshin_Checker.Window.ExWindow.CharacterCalculator
                     ProgressState.Text = string.Format(Localize.WindowName_CalculateResult_Loading, cnt, Inputs.Count);
                     progressBar.Value = 10000*cnt/Inputs.Count;
                     var detail = await Account.CharacterDetail.GetData(input.characterID);
-                    //キャラクターのスキルを取得
-                    var skill = detail.skill_list.FindAll(a => a.max_level != 1);
-                    if (skill.Count != 3) throw new ArgumentException(string.Format(Localize.Error_CalculateResult_InvalidTalentCount,skill.Count));
-                    var character = characters.avatars.Find(a => a.id == input.characterID);
+                    //キャラクターのスキルを取得     
+                    var skill = detail.skills.FindAll(a => App.General.Convert.Character.GetSkillGrowthable(a.skill_id,detail.baseInfo.id) && a.skill_type == 1);
+                    if (skill.Count != 3) 
+                        throw new ArgumentException(string.Format(Localize.Error_CalculateResult_InvalidTalentCount,skill.Count));
+                    var character = characters.list.Find(a => a.id == input.characterID);
                     if (character == null) throw new ArgumentNullException(nameof(character), string.Format(Localize.Error_CalculateResult_CharacterNotFound, input.characterID));
                     var skilllist = new List<Model.HoYoLab.CalculatorComputePost.SkillList>();
                     for (int i=0;i<skill.Count;i++)
                     {
-                        skilllist.Add(new() { id = skill[i].group_id, level_current = input.Talent[i].Current, level_target = input.Talent[i].To });
+                        skilllist.Add(new() { id = Character.GetSkillProudMap(skill[i].skill_id), level_current = input.Talent[i].Current, level_target = input.Talent[i].To });
                     }
-                    foreach(var data in detail.skill_list.FindAll(a => a.max_level == 1))
+                    foreach(var data in detail.skills.FindAll(a => skill.Find(b=>b.skill_id == a.skill_id)==null))
                     {
-                        skilllist.Add(new() { id = data.group_id, level_current = 1, level_target = 1 });
+                        skilllist.Add(new() { id = data.skill_id, level_current = 1, level_target = 1 });
                     }
                     var post = new Model.HoYoLab.CalculatorComputePost.Root()
                     {

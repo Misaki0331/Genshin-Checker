@@ -73,7 +73,7 @@ namespace Genshin_Checker.Window.ExWindow.GameRecords
 
                 //キャラクター情報の取得
                 var Detail = await account.Characters.GetData();
-                var CharacterInfo = Detail.avatars.Find(a => a.id == characterID);
+                var CharacterInfo = await account.CharacterDetail.GetData(characterID);
                 var staticinfo = Misaki_chan.Data.Characters?.Data.Find(a => a.Id == characterID);
                 if (CharacterInfo == null) throw new ArgumentNullException(Localize.Error_CharacterDetail_DontHaveCharacter);
 
@@ -86,21 +86,21 @@ namespace Genshin_Checker.Window.ExWindow.GameRecords
                 }
                 catch (Exception)
                 {
-                    new ErrorMessage(Localize.Error_CharacterDetail_CharacterDetailIsMissing, string.Format(Localize.Error_CharacterDetail_CharacterDetailIsMissing_Message, CharacterInfo.name)).ShowDialog();
+                    new ErrorMessage(Localize.Error_CharacterDetail_CharacterDetailIsMissing, string.Format(Localize.Error_CharacterDetail_CharacterDetailIsMissing_Message, CharacterInfo.baseInfo.name)).ShowDialog();
                 }
 
-                Text = $"{Localize.WindowName_CharacterDetail} - {CharacterInfo.name} (UID:{account.UID})";
+                Text = $"{Localize.WindowName_CharacterDetail} - {CharacterInfo.baseInfo.name} (UID:{account.UID})";
                 IsLoading = true;
                 ImageReload(true);
                 //概要
                 label1.Text = $"{name}";
-                label2.Text = string.Format(Localize.UI_Character_Level, CharacterInfo.level);
-                label4.Text = CharacterInfo.fetter>0?string.Format(Localize.UI_FriendshipLevel, CharacterInfo.fetter):"";
+                label2.Text = string.Format(Localize.UI_Character_Level, CharacterInfo.baseInfo.level);
+                label4.Text = CharacterInfo.baseInfo.fetter>0?string.Format(Localize.UI_FriendshipLevel, CharacterInfo.baseInfo.fetter):"";
                 int constellation = CharacterInfo.constellations.FindAll(a => a.is_actived).Count;
                 if (constellation == 0) label5.Text = "";
                 else if (constellation == 6) label5.Text = Localize.UI_ConstellationLevelMax;
                 else label5.Text = string.Format(Localize.UI_ConstellationLevel, constellation);
-                pictureBox1.Image = await App.WebRequest.ImageGetRequest($"https://static-api.misaki-chan.world/genshin-checker/asset/element/type-1/{CharacterInfo.element.ToLower()}.png");
+                pictureBox1.Image = await App.WebRequest.ImageGetRequest($"https://static-api.misaki-chan.world/genshin-checker/asset/element/type-1/{CharacterInfo.baseInfo.element.ToLower()}.png");
 
                 //武器
                 var weapon = CharacterInfo.weapon;
@@ -125,7 +125,7 @@ namespace Genshin_Checker.Window.ExWindow.GameRecords
                 try
                 {
                     var data = await account.CharacterDetail.GetData(characterID);
-                    var list = data.skill_list.FindAll(a => a.max_level != 1);
+                    var list = data.skills.FindAll(a =>  App.General.Convert.Character.GetSkillGrowthable(a.skill_id) && a.skill_type==1);
                     list.Reverse();
                     int cnt = 0;
                     foreach (var main in list)
@@ -137,28 +137,28 @@ namespace Genshin_Checker.Window.ExWindow.GameRecords
                         {
                             case 2:
                                 triggerConstellations = staticinfo?.Skills.Upgrade_skills.Normal?.Constellations;
-                                add_levels = staticinfo?.Skills.Upgrade_skills.Normal?.Add_level ?? 0;
+                                //add_levels = staticinfo?.Skills.Upgrade_skills.Normal?.Add_level ?? 0;
                                 break;
                             case 1:
                                 triggerConstellations = staticinfo?.Skills.Upgrade_skills.Skill?.Constellations;
-                                add_levels = staticinfo?.Skills.Upgrade_skills.Skill?.Add_level ?? 0;
+                                //add_levels = staticinfo?.Skills.Upgrade_skills.Skill?.Add_level ?? 0;
                                 break;
                             case 0:
                                 triggerConstellations = staticinfo?.Skills.Upgrade_skills.Burst?.Constellations;
-                                add_levels = staticinfo?.Skills.Upgrade_skills.Burst?.Add_level ?? 0;
+                                //add_levels = staticinfo?.Skills.Upgrade_skills.Burst?.Add_level ?? 0;
                                 break;
                         }
-                        if (triggerConstellations != null && CharacterInfo.actived_constellation_num >= triggerConstellations)
+                        if (triggerConstellations != null && CharacterInfo.baseInfo.actived_constellation_num >= triggerConstellations)
                         {
                             enabled = true;
                         }
-                        var info = new TalentInfo(main.icon, main.name, string.Format(Localize.UI_Talent_Level, main.level_current+(enabled?add_levels:0)),enabled, "概要をここに(未実装)");
+                        var info = new TalentInfo(main.icon, main.name, string.Format(Localize.UI_Talent_Level, main.level+(enabled?add_levels:0)),enabled, "概要をここに(未実装)");
                         info.Dock = DockStyle.Top;
                         Panel_MainTalent.Controls.Add(info);
                         MainTalent.Add(info);
                         cnt++;
                     }
-                    list = data.skill_list.FindAll(a => a.max_level == 1);
+                    list = data.skills.FindAll(a => a.skill_type == 2);
                     list.Reverse();
                     foreach (var sub in list)
                     {
@@ -225,7 +225,7 @@ namespace Genshin_Checker.Window.ExWindow.GameRecords
                 ArtifactInfos.Clear();
                 for (int i = 1; i <= 5; i++)
                 {
-                    var data = CharacterInfo.reliquaries.Find(a => a.pos == i);
+                    var data = CharacterInfo.relics.Find(a => a.pos == i);
                     ArtifactInfo? control = null;
                     if (data == null)
                     {
@@ -346,7 +346,7 @@ namespace Genshin_Checker.Window.ExWindow.GameRecords
                         if (staticinfo!=null&&staticinfo.Unlocks.Story.TryGetValue(story.Key, out var unlocks))
                         {
                             bool IsUnlocked = false;
-                            if (unlocks.Conditions.friendship != null && CharacterInfo.fetter >= unlocks.Conditions.friendship) IsUnlocked = true;
+                            if (unlocks.Conditions.friendship != null && CharacterInfo.baseInfo.fetter >= unlocks.Conditions.friendship) IsUnlocked = true;
                             else UnlockInfomation = $"キャラクターの好感度がLv. {unlocks.Conditions.friendship} で解禁";
                             if (unlocks.Conditions.Never)
                             {

@@ -13,7 +13,7 @@ namespace Genshin_Checker.Model.HoYoLab.CharacterDetailResult
 
     public class Data
     {
-        public List<List> list { get; set; } = new();
+        public List<Character> list { get; set; } = new();
         /// <summary>
         /// プロパティタイプの情報
         /// </summary>
@@ -170,9 +170,11 @@ namespace Genshin_Checker.Model.HoYoLab.CharacterDetailResult
         public string final { get; set; }
     }
 
-    public class List
+    public class Character
     {
-        public Base @base { get; set; }
+
+        [JsonProperty("base")]
+        public Base baseInfo { get; set; }
         public Weapon weapon { get; set; }
         public List<Relic> relics { get; set; }
         public List<Constellation> constellations { get; set; }

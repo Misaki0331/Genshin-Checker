@@ -1,7 +1,9 @@
 ﻿using Genshin_Checker.App.General.Convert;
 using Genshin_Checker.resource.Languages;
+using Genshin_Checker.Store;
 using System.Collections.Specialized;
 using System.Net;
+using Windows.ApplicationModel.Background;
 
 namespace Genshin_Checker.App.WebServer.Endpoint
 {
@@ -126,18 +128,41 @@ namespace Genshin_Checker.App.WebServer.Endpoint
                     },
                     value = user.CharacterDetail.CachedCharacters().Count==(user.GameRecords.Data?.avatars.Count??-1)?new Func<string>(() =>
                     {
-                        int cnt=0;
+                        int cnt =0;
                         foreach(var e in user.CharacterDetail.CachedCharacters()){
+                            var staticinfo = Misaki_chan.Data.Characters?.Data.Find(a => a.Id == e.baseInfo.id);
                             bool IsOK=true;
-                            foreach(var c in e.Data.skill_list)
+                            foreach(var c in e.skills)
                             {
-                                if(c.level_current==c.max_level)continue;
-                                if (c.level_current<c.max_level-1){
+                                if(c.skill_type==2)continue;
+                                int? triggerConstellations=null;
+                                int add_levels=0;
+                                bool enabled = false;
+                                switch (c.skill_id%10)
+                                {
+                                    case 2:
+                                        triggerConstellations = staticinfo?.Skills.Upgrade_skills.Normal?.Constellations;
+                                        add_levels = staticinfo?.Skills.Upgrade_skills.Normal?.Add_level ?? 0;
+                                        break;
+                                    case 1:
+                                        triggerConstellations = staticinfo?.Skills.Upgrade_skills.Skill?.Constellations;
+                                        add_levels = staticinfo?.Skills.Upgrade_skills.Skill?.Add_level ?? 0;
+                                        break;
+                                    case 0:
+                                        triggerConstellations = staticinfo?.Skills.Upgrade_skills.Burst?.Constellations;
+                                        add_levels = staticinfo?.Skills.Upgrade_skills.Burst?.Add_level ?? 0;
+                                        break;
+                                }
+                                if (triggerConstellations != null && e.baseInfo.actived_constellation_num >= triggerConstellations)
+                                {
+                                    enabled = true;
+                                }
+                                if (c.level<9+(enabled?add_levels:0)){
                                     IsOK = false;
                                     break;
                                 }
+                                if(IsOK)cnt++;
                             }
-                            if(IsOK)cnt++;
                         }
                         return $"{cnt:#,##0}";
                     })():"-",
@@ -147,11 +172,34 @@ namespace Genshin_Checker.App.WebServer.Endpoint
                         int cnt=0;
                         int max=0;
                         foreach(var e in user.CharacterDetail.CachedCharacters()){
-                            foreach(var c in e.Data.skill_list)
+                                var staticinfo = Misaki_chan.Data.Characters?.Data.Find(a => a.Id == e.baseInfo.id);
+                            foreach(var c in e.skills)
                             {
-                                if(c.max_level==1)continue;
-                                max+=c.max_level-2;
-                                cnt+=c.level_current-1;
+                                if(c.skill_type==2)continue;
+                                int? triggerConstellations=null;
+                                int add_levels=0;
+                                bool enabled = false;
+                                switch (c.skill_id%10)
+                                {
+                                    case 2:
+                                        triggerConstellations = staticinfo?.Skills.Upgrade_skills.Normal?.Constellations;
+                                        add_levels = staticinfo?.Skills.Upgrade_skills.Normal?.Add_level ?? 0;
+                                        break;
+                                    case 1:
+                                        triggerConstellations = staticinfo?.Skills.Upgrade_skills.Skill?.Constellations;
+                                        add_levels = staticinfo?.Skills.Upgrade_skills.Skill?.Add_level ?? 0;
+                                        break;
+                                    case 0:
+                                        triggerConstellations = staticinfo?.Skills.Upgrade_skills.Burst?.Constellations;
+                                        add_levels = staticinfo?.Skills.Upgrade_skills.Burst?.Add_level ?? 0;
+                                        break;
+                                }
+                                if (triggerConstellations != null && e.baseInfo.actived_constellation_num >= triggerConstellations)
+                                {
+                                    enabled = true;
+                                }
+                                max+=8;
+                                cnt+=c.level-(enabled?add_levels:0)-1;
                             }
                         }
                         return $"{((double)cnt/max*100.0):0.00} %";
@@ -468,7 +516,7 @@ namespace Genshin_Checker.App.WebServer.Endpoint
                         int completed=0;
                          foreach(var e in user.RealTimeNote.Data.RealTime?.Expedition.Expeditions??new())
                             {
-                        if (DateTime.Now <= e.EstimatedTime) 
+                        if (DateTime.Now <= e.EstimatedTime)
                         {
                             var time = (int)(e.EstimatedTime - DateTime.Now).TotalSeconds;
                                 if(max<time)max=time;
@@ -548,7 +596,7 @@ namespace Genshin_Checker.App.WebServer.Endpoint
                     value = user.TravelersDiary.Data?.Data?.month_data.current_mora.ToString("#,##0")??"-"
                     }
                 }
-            }) ;
+            });
             #endregion
             #endregion
 

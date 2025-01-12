@@ -2,6 +2,7 @@
 using System.Globalization;
 using Genshin_Checker.App.General;
 using static Genshin_Checker.App.HoYoLab.Account;
+using static System.Net.WebRequestMethods;
 
 namespace Genshin_Checker.App.HoYoLab
 {
@@ -274,7 +275,7 @@ namespace Genshin_Checker.App.HoYoLab
         /// <exception cref="HoYoLabAPIException"></exception>
         public static async Task<string> GetCharacters(Account Account)
         {
-            var url = $"https://bbs-api-os.hoyolab.com/game_record/genshin/api/character";
+            var url = $"https://sg-public-api.hoyolab.com/event/game_record/genshin/api/character/list";
             string content = $"{{\"server\":\"{Account.Server}\",\"role_id\":\"{Account.UID}\"}}";
             var json = await WebRequest.HoYoPostRequest(url, Account.Cookie, content);
             return json ?? "";
@@ -436,6 +437,7 @@ namespace Genshin_Checker.App.HoYoLab
         public static async Task<string> ComputeCalculate(Account Account, Model.HoYoLab.CalculatorComputePost.Root data)
         {
             var url = $"https://sg-public-api.hoyolab.com/event/calculateos/compute";
+            Log.Debug(JsonConvert.SerializeObject(data));
             var json = await WebRequest.HoYoPostRequest(url, Account.Cookie, JsonConvert.SerializeObject(data));
             return json ?? "";
         }

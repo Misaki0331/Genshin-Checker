@@ -9,15 +9,8 @@ namespace Genshin_Checker.App.HoYoLab
         public CharacterDetail(Account account) : base(account, 5000)
         {
             ServerUpdate.Elapsed += Timeout_Tick;
-            Cache = new();
             ServerUpdate.Start();
         }
-        public class DataList{
-            public DateTime UpdateTime;
-            public int CharacterID;
-            public Model.HoYoLab.CharacterDetail.Data Data=new();
-        }
-        List<DataList> Cache;
         Model.HoYoLab.CharacterDetailResult.Data? Cached;
         public DateTime LatestUpdateTime = DateTime.MinValue;
         readonly SemaphoreSlim UpdateSemaphore = new(1, 1);
@@ -49,28 +42,29 @@ namespace Genshin_Checker.App.HoYoLab
         /// <param name="characterID">キャラクター番号</param>
         /// <param name="Force">強制的にサーバーから取得</param>
         /// <returns></returns>
-        public async Task<Model.HoYoLab.CharacterDetail.Data> GetData(int characterID, bool Force=false, int Timeout=-1)
+        public async Task<Model.HoYoLab.CharacterDetailResult.Character> GetData(int characterID, bool Force=false, int Timeout=-1)
         {
-            var CacheData = Cache.Find(a => a.CharacterID == characterID);
-            Model.HoYoLab.CharacterDetail.Data Result;
-            if (CacheData==null)
+
+            Model.HoYoLab.CharacterDetailResult.Character? character = Cached?.list.Find(a => a.baseInfo.id == characterID);
+            if (character==null)
             {
-                var data = await account.Endpoint.GetCharacterDetail(characterID);
-                Cache.Add(new() { CharacterID= characterID, Data = data,UpdateTime=DateTime.UtcNow });
-                Result = data;
+                var data = await account.Endpoint.GetCharactersDetail((await account.Characters.GetData()).list.Select(c => c.id).ToList());
+                LatestUpdateTime = DateTime.UtcNow;
+                Cached = data;
+
             }
             else
             {
-                if (Force || CacheData.UpdateTime.AddSeconds(Timeout < 0 ? CacheSecond : Timeout) < DateTime.UtcNow)
+                if (Force || LatestUpdateTime.AddSeconds(Timeout < 0 ? CacheSecond : Timeout) < DateTime.UtcNow)
                 {
-                    var data = await account.Endpoint.GetCharacterDetail(characterID);
-                    CacheData.Data = data;
-                    CacheData.UpdateTime = DateTime.UtcNow;
+                    var data = await account.Endpoint.GetCharactersDetail((await account.Characters.GetData()).list.Select(c => c.id).ToList());
+                    Cached = data;
+                    LatestUpdateTime = DateTime.UtcNow;
 
                 }
-                Result = CacheData.Data;
             }
-            return Result;
+
+            return Cached?.list.Find(a => a.baseInfo.id == characterID) ?? throw new ArgumentNullException("Character is not found.");
         }
         /// <summary>
         /// キャッシュの生成
@@ -85,18 +79,18 @@ namespace Genshin_Checker.App.HoYoLab
             {
                 var characters = await account.Characters.GetData();
                 List<int> charaids = new();
-                foreach (var character in characters.avatars)
+                foreach (var character in characters.list)
                 {
                     charaids.Add(character.id);
                 }
                 var data2 = await account.Endpoint.GetCharactersDetail(charaids);
                 Cached = data2;
-                foreach (var character in characters.avatars)
+                foreach (var character in characters.list)
                 {
                     for (int i = 0; i < 30; i++)
                         try
                         {
-                            var data = await GetData(character.id, Force);
+                            var data = await GetData(character.id);
                             break;
                         }
                         catch (Account.HoYoLabAPIException ex)
@@ -137,20 +131,19 @@ namespace Genshin_Checker.App.HoYoLab
             }
             return IsSuccessed;
         }
-        public List<DataList> CachedCharacters()
+        public List<Model.HoYoLab.CharacterDetailResult.Character> CachedCharacters()
         {
-            var list = new List<DataList>();
-            foreach(var e in Cache.FindAll(a => a.UpdateTime.AddSeconds(CacheSecond) > DateTime.UtcNow))list.Add(e);
-            return list;
+            return Cached?.list??new();
         }
         public async Task<bool> IsReadyCacheData(int Timeout = -1)
         {
             var data = await account.Characters.GetData();
-            foreach(var character in data.avatars)
+            foreach(var character in data.list)
             {
-                var cache = Cache.Find(a => a.CharacterID == character.id &&
-                a.UpdateTime.AddSeconds(Timeout < 0 ? CacheSecond : Timeout) > DateTime.UtcNow);
+                var cache = Cached?.list.Find(a => a.baseInfo.id == character.id);
                 if (cache==null)
+                    return false;
+                if (LatestUpdateTime.AddSeconds(Timeout < 0 ? CacheSecond : Timeout) < DateTime.UtcNow)
                     return false;
             }
             return true;

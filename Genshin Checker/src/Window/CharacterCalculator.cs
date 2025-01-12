@@ -9,6 +9,8 @@ using Genshin_Checker.Window.Popup;
 using System.Security.Policy;
 using Genshin_Checker.resource.Languages;
 using Genshin_Checker.App.General;
+using Genshin_Checker.UI.Control.GameRecord;
+using Genshin_Checker.Store;
 
 namespace Genshin_Checker.Window
 {
@@ -59,22 +61,36 @@ namespace Genshin_Checker.Window
                     }
                 }
                 var Data = await account.Characters.GetData();
-                var characters = Data.avatars.FindAll(a => true);
+                var characters = Data.list.FindAll(a => true);
                 var userdata = DataLoad();
                 for (int i = 0; i < characters.Count; i++)
                 {
                     var character = characters[i];
                     var charainfo = await account.CharacterDetail.GetData(character.id);
-                    var talent = charainfo.skill_list.FindAll(a => a.max_level != 1);
+                    var talent = charainfo.skills.FindAll(a => App.General.Convert.Character.GetSkillGrowthable(a.skill_id, character.id) && a.skill_type == 1);
+                    talent.Sort((a,b)=>a.skill_id-b.skill_id);
                     var set = userdata.Datas.FirstOrDefault(a => a.Key == character.id);
+
+                    var staticinfo = Misaki_chan.Data.Characters?.Data.Find(a => a.Id == character.id);
                     var setdata = set.Value ?? new();
-                    if (talent.Count != 3) throw new InvalidDataException(Localize.Error_CharacterCalculator_InvalidTalentCount);
-                    CharacterView.Rows.Add(setdata.Enabled, character.id, character.rarity, Element.GetElementEnum(character.element), character.name, character.weapon.type_name, character.fetter, character.level,
-                        talent[0].level_current, talent[1].level_current, talent[2].level_current, "",
+                    if (talent.Count != 3) 
+                        throw new InvalidDataException(Localize.Error_CharacterCalculator_InvalidTalentCount);
+                    int normal = 0;
+                    int skill = 0;
+                    int burst = 0;
+                    normal = staticinfo?.Skills.Upgrade_skills.Normal?.Constellations <= character.actived_constellation_num ? staticinfo?.Skills.Upgrade_skills.Normal?.Add_level??0:0;
+                    skill = staticinfo?.Skills.Upgrade_skills.Skill?.Constellations <= character.actived_constellation_num ? staticinfo?.Skills.Upgrade_skills.Skill?.Add_level??0:0;
+                    burst = staticinfo?.Skills.Upgrade_skills.Burst?.Constellations <= character.actived_constellation_num ? staticinfo?.Skills.Upgrade_skills.Burst?.Add_level??0:0;
+                    if (talent[0].level - normal < 1) normal = 0;
+                    if (talent[1].level - skill < 1) skill = 0;
+                    if (talent[2].level - burst < 1) burst = 0;
+                    //Todo: character.weapon.typeをIDから名称に変換する
+                    CharacterView.Rows.Add(setdata.Enabled, character.id, character.rarity, Element.GetElementEnum(character.element), character.name, character.weapon.type, character.fetter, character.level,
+                        talent[0].level - normal, talent[1].level - skill, talent[2].level - burst, "",
                         character.level > setdata.SetLevel ? character.level : setdata.SetLevel,
-                        talent[0].level_current > setdata.SetTalent1 ? talent[0].level_current : setdata.SetTalent1,
-                        talent[1].level_current > setdata.SetTalent2 ? talent[1].level_current : setdata.SetTalent2,
-                        talent[2].level_current > setdata.SetTalent3 ? talent[2].level_current : setdata.SetTalent3);
+                        talent[0].level - normal > setdata.SetTalent1 ? talent[0].level - normal : setdata.SetTalent1,
+                        talent[1].level - skill > setdata.SetTalent2 ? talent[1].level - skill : setdata.SetTalent2,
+                        talent[2].level - burst > setdata.SetTalent3 ? talent[2].level - burst : setdata.SetTalent3);
                 }
                 Text = $"{Localize.WindowName_CharacterCalculator} (UID:{account.UID})";
             }catch(Exception ex)
@@ -193,7 +209,7 @@ namespace Genshin_Checker.Window
             if (select.Count == 1)
             {
                 var info = await account.CharacterDetail.GetData((int)select[0].Cells["ID"].Value);
-                var skills = info.skill_list.FindAll(a => a.max_level != 1);
+                var skills = info.skills.FindAll(a => App.General.Convert.Character.GetSkillGrowthable(a.skill_id, info.baseInfo.id) && a.skill_type == 1);
                 if (skills.Count != 3) return;
                 var form = new BatchWindow(new()
                 {
