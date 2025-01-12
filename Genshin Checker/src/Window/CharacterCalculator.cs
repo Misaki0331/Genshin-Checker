@@ -96,7 +96,7 @@ namespace Genshin_Checker.Window
                     if (skill.level - skilladd < 1) skilladd = 0;
                     if (burst.level - burstadd < 1) burstadd = 0;
                     //Todo: character.weapon.typeをIDから名称に変換する
-                    CharacterView.Rows.Add(setdata.Enabled, character.id, character.rarity, Element.GetElementEnum(character.element), character.name, character.weapon.type, character.fetter, character.level,
+                    CharacterView.Rows.Add(setdata.Enabled, character.id, character.rarity, Element.GetElementEnum(character.element), character.name, Character.GetWeaponTypeName(character.weapon.type), character.fetter, character.level,
                         normal.level - normaladd, skill.level - skilladd, burst.level - burstadd, "",
                         character.level > setdata.SetLevel ? character.level : setdata.SetLevel,
                         normal.level - normaladd > setdata.SetTalent1 ? normal.level - normaladd : setdata.SetTalent1,

@@ -259,4 +259,19 @@
   <data name="Resin" xml:space="preserve">
     <value>Resin</value>
   </data>
+  <data name="Weapon_Sword" xml:space="preserve">
+    <value>Sword</value>
+  </data>
+  <data name="Weapon_Claymore" xml:space="preserve">
+    <value>Claymore</value>
+  </data>
+  <data name="Weapon_Polearm" xml:space="preserve">
+    <value>Polearm</value>
+  </data>
+  <data name="Weapon_Bow" xml:space="preserve">
+    <value>Bow</value>
+  </data>
+  <data name="Weapon_Catalyst" xml:space="preserve">
+    <value>Catalyst</value>
+  </data>
 </root>

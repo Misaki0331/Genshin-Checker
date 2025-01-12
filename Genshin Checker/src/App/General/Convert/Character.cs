@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Genshin_Checker.resource.Languages;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -83,6 +84,24 @@ namespace Genshin_Checker.App.General.Convert
                 }
             }
             return null;
+        }
+        public static string GetWeaponTypeName(int ID)
+        {
+            switch (ID)
+            {
+                case 1:
+                    return Genshin.Weapon_Sword;
+                case 10:
+                    return Genshin.Weapon_Catalyst;
+                case 11:
+                    return Genshin.Weapon_Claymore;
+                case 12:
+                    return Genshin.Weapon_Bow;
+                case 13:
+                    return Genshin.Weapon_Polearm;
+                default:
+                    return Common.Unknown;
+            }
         }
     }
 }

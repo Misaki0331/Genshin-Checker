@@ -545,5 +545,50 @@ namespace Genshin_Checker.resource.Languages {
                 return ResourceManager.GetString("TalentType_NormalAttack", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Bow に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string Weapon_Bow {
+            get {
+                return ResourceManager.GetString("Weapon_Bow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Catalyst に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string Weapon_Catalyst {
+            get {
+                return ResourceManager.GetString("Weapon_Catalyst", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Claymore に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string Weapon_Claymore {
+            get {
+                return ResourceManager.GetString("Weapon_Claymore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Polearm に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string Weapon_Polearm {
+            get {
+                return ResourceManager.GetString("Weapon_Polearm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sword に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string Weapon_Sword {
+            get {
+                return ResourceManager.GetString("Weapon_Sword", resourceCulture);
+            }
+        }
     }
 }

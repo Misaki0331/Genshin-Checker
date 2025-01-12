@@ -259,4 +259,19 @@
   <data name="Resin" xml:space="preserve">
     <value>樹脂</value>
   </data>
+  <data name="Weapon_Catalyst" xml:space="preserve">
+    <value>法器</value>
+  </data>
+  <data name="Weapon_Sword" xml:space="preserve">
+    <value>片手剣</value>
+  </data>
+  <data name="Weapon_Claymore" xml:space="preserve">
+    <value>両手剣</value>
+  </data>
+  <data name="Weapon_Bow" xml:space="preserve">
+    <value>弓</value>
+  </data>
+  <data name="Weapon_Polearm" xml:space="preserve">
+    <value>長柄武器</value>
+  </data>
 </root>
