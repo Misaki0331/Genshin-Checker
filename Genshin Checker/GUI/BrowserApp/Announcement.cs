@@ -19,7 +19,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Windows.Forms;
 
-namespace Genshin_Checker.BrowserApp
+namespace Genshin_Checker.GUI.BrowserApp
 {
     public partial class WebGameAnnounce : WebMiniBrowser
     {
@@ -34,7 +34,7 @@ namespace Genshin_Checker.BrowserApp
             //UrlBox.Visible = false;
             Size = new(Screen.PrimaryScreen.WorkingArea.Width, Screen.PrimaryScreen.WorkingArea.Height);//System.Windows.Forms.Screen.PrimaryScreen.Bounds.Size;
             StartPosition = FormStartPosition.CenterScreen;
-            PopupWindowSize = new(1280,720);
+            PopupWindowSize = new(1280, 720);
             IsWebViewPopup = false;
             WindowState = FormWindowState.Maximized;
             FormBorderStyle = FormBorderStyle.None;
@@ -42,14 +42,14 @@ namespace Genshin_Checker.BrowserApp
         }
 
         #region おまじない
-        
-        protected override System.Windows.Forms.CreateParams CreateParams
+
+        protected override CreateParams CreateParams
         {
             get
             {
                 const int WS_EX_LAYERED = 0x00080000;
 
-                System.Windows.Forms.CreateParams cp = base.CreateParams;
+                CreateParams cp = base.CreateParams;
                 cp.ExStyle = cp.ExStyle | WS_EX_LAYERED;
 
                 return cp;
@@ -58,9 +58,9 @@ namespace Genshin_Checker.BrowserApp
 
         // UpdateLayeredWindow関連のAPI定義
         [DllImport("gdi32.dll", CharSet = CharSet.Auto, SetLastError = true)]
-        public static extern IntPtr SelectObject(IntPtr hdc, IntPtr hgdiobj);
+        public static extern nint SelectObject(nint hdc, nint hgdiobj);
         [DllImport("gdi32.dll", CharSet = CharSet.Auto, SetLastError = true)]
-        public static extern int DeleteObject(IntPtr hobject);
+        public static extern int DeleteObject(nint hobject);
 
         public const byte AC_SRC_OVER = 0;
         public const byte AC_SRC_ALPHA = 1;
@@ -79,17 +79,17 @@ namespace Genshin_Checker.BrowserApp
         // UpdateLayeredWindowを使うための定義
         [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = true)]
         public static extern int UpdateLayeredWindow(
-            IntPtr hwnd,
-            IntPtr hdcDst,
-            [System.Runtime.InteropServices.In()]
+            nint hwnd,
+            nint hdcDst,
+            [In()]
             ref Point pptDst,
-            [System.Runtime.InteropServices.In()]
+            [In()]
             ref Size psize,
-            IntPtr hdcSrc,
-            [System.Runtime.InteropServices.In()]
+            nint hdcSrc,
+            [In()]
             ref Point pptSrc,
             int crKey,
-            [System.Runtime.InteropServices.In()]
+            [In()]
             ref BLENDFUNCTION pblend,
             int dwFlags);
 
@@ -98,16 +98,16 @@ namespace Genshin_Checker.BrowserApp
         public void SetLayeredWindow(Bitmap srcBitmap)
         {
             // スクリーンのGraphicsと、hdcを取得
-            Graphics g_sc = Graphics.FromHwnd(IntPtr.Zero);
-            IntPtr hdc_sc = g_sc.GetHdc();
+            Graphics g_sc = Graphics.FromHwnd(nint.Zero);
+            nint hdc_sc = g_sc.GetHdc();
 
             // BITMAPのGraphicsと、hdcを取得
             Graphics g_bmp = Graphics.FromImage(srcBitmap);
-            IntPtr hdc_bmp = g_bmp.GetHdc();
+            nint hdc_bmp = g_bmp.GetHdc();
 
             // BITMAPのhdcで、サーフェイスのBITMAPを選択する
             // このとき背景を無色透明にしておく
-            IntPtr oldhbmp = SelectObject(hdc_bmp, srcBitmap.GetHbitmap(Color.FromArgb(0)));
+            nint oldhbmp = SelectObject(hdc_bmp, srcBitmap.GetHbitmap(Color.FromArgb(0)));
 
             // BLENDFUNCTION を初期化
             BLENDFUNCTION blend = new BLENDFUNCTION();
@@ -117,17 +117,17 @@ namespace Genshin_Checker.BrowserApp
             blend.AlphaFormat = AC_SRC_ALPHA;
 
             // ウィンドウ位置の設定
-            Point pos = new Point(this.Left, this.Top);
+            Point pos = new Point(Left, Top);
 
             // サーフェースサイズの設定
-            Size surfaceSize = new Size(this.Width, this.Height);
+            Size surfaceSize = new Size(Width, Height);
 
             // サーフェース位置の設定
             Point surfacePos = new Point(0, 0);
 
             // レイヤードウィンドウの設定
             UpdateLayeredWindow(
-                this.Handle, hdc_sc, ref pos, ref surfaceSize,
+                Handle, hdc_sc, ref pos, ref surfaceSize,
                 hdc_bmp, ref surfacePos, 0, ref blend, ULW_ALPHA);
 
             // 後始末
@@ -138,11 +138,11 @@ namespace Genshin_Checker.BrowserApp
             g_bmp.Dispose();
         }
         #endregion
-        private void CoreWebView2_NavigationStarting(object? sender, Microsoft.Web.WebView2.Core.CoreWebView2NavigationStartingEventArgs e)
+        private void CoreWebView2_NavigationStarting(object? sender, CoreWebView2NavigationStartingEventArgs e)
         {
         }
 
-        private void Web_CoreWebView2InitializationCompleted(object? sender, Microsoft.Web.WebView2.Core.CoreWebView2InitializationCompletedEventArgs e)
+        private void Web_CoreWebView2InitializationCompleted(object? sender, CoreWebView2InitializationCompletedEventArgs e)
         {
 
             //開発者ツールを無効化
@@ -168,11 +168,11 @@ namespace Genshin_Checker.BrowserApp
             Close();
         }
 
-        private void CoreWebView2_NavigationCompleted(object? sender, Microsoft.Web.WebView2.Core.CoreWebView2NavigationCompletedEventArgs e)
+        private void CoreWebView2_NavigationCompleted(object? sender, CoreWebView2NavigationCompletedEventArgs e)
         {
             Web.CoreWebView2.ExecuteScriptAsync(
                 "document.querySelector(\".home__close\").addEventListener(\"click\", function(){window.close();});" +
-                "miHoYoGameJSSDK.openInBrowser=function(a){window.open(a)};"+
+                "miHoYoGameJSSDK.openInBrowser=function(a){window.open(a)};" +
                 "miHoYoGameJSSDK.openInWebview=function(a){alert(\"Please open in game.\");}");
             Text = Localize.WindowName_GameAnnouncement;
         }

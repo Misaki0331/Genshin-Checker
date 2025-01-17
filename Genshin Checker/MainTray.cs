@@ -9,6 +9,9 @@ using Genshin_Checker.Window.Popup;
 using Microsoft.Toolkit.Uwp.Notifications;
 using Genshin_Checker.resource.Languages;
 using Genshin_Checker.Window.Debug;
+using Genshin_Checker.GUI.BrowserApp;
+using Genshin_Checker.GUI.Window.PopupWindow;
+using ErrorMessage = Genshin_Checker.GUI.Window.PopupWindow.ErrorMessage;
 namespace Genshin_Checker
 {
     public partial class MainTray : Form
@@ -289,7 +292,7 @@ namespace Genshin_Checker
                     var CharacterCalculator = new ToolStripMenuItem() { Text = Localize.WindowName_EnhancementCalculator };
                     CharacterCalculator.Click += (s, e) => { ManageWindow.OpenWindow(account, nameof(Window.CharacterCalculator)); };
                     var OfficialAnnounce = new ToolStripMenuItem() { Text = Localize.WindowName_GameAnnouncement };
-                    OfficialAnnounce.Click += (s, e) => { ManageWindow.OpenWindow(account, nameof(BrowserApp.WebGameAnnounce)); };
+                    OfficialAnnounce.Click += (s, e) => { ManageWindow.OpenWindow(account, nameof(WebGameAnnounce)); };
                     var tools = new ToolStripMenuItem() { Text = $"{account.Name} (AR.{account.Level})" };
                     tools.DropDownItems.AddRange(new ToolStripItem[]
                     {

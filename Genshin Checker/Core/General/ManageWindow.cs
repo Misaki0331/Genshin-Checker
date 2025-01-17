@@ -1,5 +1,6 @@
 ﻿using Genshin_Checker.Core.Game;
 using Genshin_Checker.Core.HoYoLab;
+using Genshin_Checker.GUI.BrowserApp;
 using Genshin_Checker.Window;
 
 namespace Genshin_Checker.Core.General
@@ -90,8 +91,8 @@ namespace Genshin_Checker.Core.General
                         case nameof(CharacterCalculator):
                             find = new CharacterCalculator(account) { Name = Name };
                             break;
-                        case nameof(BrowserApp.WebGameAnnounce):
-                            find = new BrowserApp.WebGameAnnounce(account) { Name = Name };
+                        case nameof(WebGameAnnounce):
+                            find = new GUI.BrowserApp.WebGameAnnounce(account) { Name = Name };
                             break;
                         case nameof(Genshin_Checker.Window.SpiralAbyss):
                             find = new Genshin_Checker.Window.SpiralAbyss(account) { Name = Name };

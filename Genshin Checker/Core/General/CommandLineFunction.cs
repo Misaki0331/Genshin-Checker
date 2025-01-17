@@ -1,4 +1,5 @@
-﻿using Genshin_Checker.resource.Languages;
+﻿using Genshin_Checker.GUI.Window.PopupWindow;
+using Genshin_Checker.resource.Languages;
 using Genshin_Checker.Window.Popup;
 using Microsoft.Toolkit.Uwp.Notifications;
 
@@ -39,7 +40,7 @@ namespace Genshin_Checker.Core.General
         /// </summary>
         public static void AllDelete()
         {
-            var a = new ChooseMessage(ManageUserData.FinalConfirm_Title, ManageUserData.FinalConfirm_Message, selectcount: 2, select1: Common.No, select2: Common.Yes);
+            var a = new GUI.Window.PopupWindow.ChooseMessage(ManageUserData.FinalConfirm_Title, ManageUserData.FinalConfirm_Message, selectcount: 2, select1: Common.No, select2: Common.Yes);
             a.ShowDialog();
             if (a.Result == 1)
             {
@@ -50,7 +51,7 @@ namespace Genshin_Checker.Core.General
                 }
                 catch (Exception e)
                 {
-                    new ErrorMessage(ManageUserData.Error_DeletedData_Title, e.ToString()).ShowDialog();
+                    new GUI.Window.PopupWindow.ErrorMessage(ManageUserData.Error_DeletedData_Title, e.ToString()).ShowDialog();
                 }
             }
             else

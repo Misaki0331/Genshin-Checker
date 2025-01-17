@@ -1,6 +1,7 @@
 ﻿using Genshin_Checker.Core;
 using Genshin_Checker.Core.Game;
 using Genshin_Checker.Core.General;
+using Genshin_Checker.GUI.Window.PopupWindow;
 using Genshin_Checker.resource.Languages;
 using Genshin_Checker.Window.Popup;
 using Newtonsoft.Json.Linq;
@@ -17,6 +18,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
 using static System.Windows.Forms.DataFormats;
+using ChooseMessage = Genshin_Checker.GUI.Window.PopupWindow.ChooseMessage;
+using ErrorMessage = Genshin_Checker.GUI.Window.PopupWindow.ErrorMessage;
 
 namespace Genshin_Checker.Window
 {
@@ -165,7 +168,7 @@ namespace Genshin_Checker.Window
             Open_HoYoLabAuth.Enabled = false;
             try
             {
-                var dialog = new BrowserApp.BattleAuth(isAutoAuth: false);
+                var dialog = new GUI.BrowserApp.BattleAuth(isAutoAuth: false);
                 dialog.ShowDialog(this);
             }
             catch (Exception)

@@ -14,6 +14,7 @@ using System.Windows.Forms;
 
 namespace Genshin_Checker.Window.Popup
 {
+    [Obsolete("このウィンドウは廃止予定です。WPF版に移行してください。")]
     public partial class FatalError : Form
     {
         public FatalError(Exception ex)

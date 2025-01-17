@@ -11,6 +11,7 @@ using System.Windows.Forms;
 
 namespace Genshin_Checker.Window.PopupWindow
 {
+    [Obsolete("このウィンドウは廃止予定です。WPF版に移行してください。")]
     public partial class UpdateNotice : Form
     {
         public UpdateNotice()

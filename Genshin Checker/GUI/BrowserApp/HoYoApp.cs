@@ -11,17 +11,17 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Windows.Forms;
 
-namespace Genshin_Checker.BrowserApp
+namespace Genshin_Checker.GUI.BrowserApp
 {
     public partial class HoYoApp : WebMiniBrowser
     {
-        public HoYoApp(Uri url): base(url) 
+        public HoYoApp(Uri url) : base(url)
         {
-            
+
             Web.CoreWebView2InitializationCompleted += Web_CoreWebView2InitializationCompleted;
             UrlBox.Visible = false;
             Size = new(450, 800);
-            StartPosition= FormStartPosition.CenterScreen;
+            StartPosition = FormStartPosition.CenterScreen;
         }
 
         private void CoreWebView2_NavigationStarting(object? sender, Microsoft.Web.WebView2.Core.CoreWebView2NavigationStartingEventArgs e)
@@ -31,7 +31,7 @@ namespace Genshin_Checker.BrowserApp
             if (url.StartsWith("intent://webview?link="))
             {
                 string decodedUrl = HttpUtility.UrlDecode(url.Substring(url.IndexOf("http")).Split(';')[0]);
-                Web.Source= new Uri(decodedUrl);
+                Web.Source = new Uri(decodedUrl);
             }
         }
 

@@ -7,7 +7,7 @@ using Genshin_Checker.Window.Popup;
 using Genshin_Checker.resource.Languages;
 using Genshin_Checker.Core.General;
 
-namespace Genshin_Checker.BrowserApp
+namespace Genshin_Checker.GUI.BrowserApp
 {
     public partial class BattleAuth : WebMiniBrowser
     {
@@ -27,8 +27,13 @@ namespace Genshin_Checker.BrowserApp
             panel_menu.Visible = true;
             AuthButton = new Button() { Visible = true, Text = Localize.WindowName_BattleAuth_AuthAndBack, AutoSize = true, Dock = DockStyle.Left };
             AuthButton.Click += (s, e) => { timer.Start(); AuthButton.Enabled = false; timer_count = 0; };
-            panel_menu.Controls.Add(new Label() { AutoSize = false, TextAlign = ContentAlignment.MiddleLeft, Dock = DockStyle.Fill, 
-                Text = Localize.WindowName_BattleAuth_Message});
+            panel_menu.Controls.Add(new Label()
+            {
+                AutoSize = false,
+                TextAlign = ContentAlignment.MiddleLeft,
+                Dock = DockStyle.Fill,
+                Text = Localize.WindowName_BattleAuth_Message
+            });
             panel_menu.Controls.Add(AuthButton);
             panel_menu.ResumeLayout(false);
             IsAutoAuth = isAutoAuth;
@@ -98,7 +103,7 @@ namespace Genshin_Checker.BrowserApp
                         Log.Error(ex);
                         timer.Stop();
                         AuthButton.Enabled = true;
-                        new ErrorMessage(Localize.Error_BattleAuth_FailedToAuthentication,$"{ex.Message}\n\n{ex.GetType()}\n\n{ex.StackTrace}").ShowDialog();
+                        new ErrorMessage(Localize.Error_BattleAuth_FailedToAuthentication, $"{ex.Message}\n\n{ex.GetType()}\n\n{ex.StackTrace}").ShowDialog();
                         return;
                     }
                 }

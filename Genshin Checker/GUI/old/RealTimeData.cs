@@ -142,7 +142,7 @@ namespace Genshin_Checker.Window
 
         private void button_Auth_Click(object sender, EventArgs e)
         {
-            var browser = new BrowserApp.BattleAuth(account: account);
+            var browser = new GUI.BrowserApp.BattleAuth(account: account);
             browser.ShowDialog(this);
         }
 

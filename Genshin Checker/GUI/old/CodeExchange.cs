@@ -1,4 +1,5 @@
 ﻿using Genshin_Checker.Core.HoYoLab;
+using Genshin_Checker.GUI.Window.PopupWindow;
 using Genshin_Checker.resource.Languages;
 using Genshin_Checker.Store;
 using Genshin_Checker.UI.Control.CodeExchange;
@@ -12,6 +13,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ErrorMessage = Genshin_Checker.GUI.Window.PopupWindow.ErrorMessage;
 
 namespace Genshin_Checker.Window
 {

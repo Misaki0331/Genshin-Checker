@@ -1,10 +1,12 @@
 ﻿using Genshin_Checker.resource.Languages;
+using Genshin_Checker.Window.Popup;
 
-namespace Genshin_Checker.Window.Popup
+namespace Genshin_Checker.GUI.old.PopupWindow
 {
+    [Obsolete("このウィンドウは廃止予定です。WPF版に移行してください。")]
     public partial class InfoMessage : ErrorMessage
     {
-        public InfoMessage(string title,string message,string? windowtitle=null): base(title,message,windowtitle)
+        public InfoMessage(string title, string message, string? windowtitle = null) : base(title, message, windowtitle)
         {
             windowtitle ??= Common.InfoMessage;
             Text = windowtitle;

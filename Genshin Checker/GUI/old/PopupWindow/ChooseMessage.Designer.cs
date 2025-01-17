@@ -1,5 +1,7 @@
-﻿namespace Genshin_Checker.Window.Popup
+﻿
+namespace Genshin_Checker.Window.Popup
 {
+    [Obsolete("このウィンドウは廃止予定です。WPF版に移行してください。")]
     partial class ChooseMessage
     {
         /// <summary>

@@ -94,8 +94,7 @@
     <Folder Include="GUI\UserInterface\CentralPanel\Page\" />
     <Folder Include="GUI\UserInterface\CharacterInfo\" />
     <Folder Include="Resource\StyleTemplete\" />
-    <Folder Include="UI\Control\Option\ControlType\" />
-    <Folder Include="Window\Contains\" />
+    <Folder Include="GUI\old\UI\Control\Option\ControlType\" />
   </ItemGroup>
 
   <ItemGroup>
