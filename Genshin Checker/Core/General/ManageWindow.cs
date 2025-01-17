@@ -2,12 +2,75 @@
 using Genshin_Checker.Core.HoYoLab;
 using Genshin_Checker.GUI.BrowserApp;
 using Genshin_Checker.Window;
+using System.Windows;
 
 namespace Genshin_Checker.Core.General
 {
     public static class ManageWindow
     {
-        static readonly List<Form> FormList = new();
+        public class WindowData
+        {
+            private Form? _form { get; set; }
+            private System.Windows.Window? _window { get; set; }
+            public bool IsWPF { get; private set; }
+            public WindowData(Form form)
+            {
+                _form = form;
+                IsWPF = false;
+            }
+            public WindowData(System.Windows.Window window)
+            {
+                _window = window;
+                IsWPF = true;
+            }
+            public void Show()
+            {
+                _form?.Show();
+                _window?.Show();
+            }
+            public void Activate()
+            {
+                _form?.Activate();
+                _window?.Activate();
+            }
+            public void Close()
+            {
+                _form?.Close();
+                _window?.Close();
+            }
+            public string Name
+            {
+                get { return (IsWPF ? _window?.Name : _form?.Name) ?? ""; }
+
+                set
+                {
+                    if (_window != null) _window.Name = value;
+                    if (_form != null) _form.Name = value;
+                }
+            }
+            public WindowState WindowState
+            {
+                get
+                {
+                    if (IsWPF) return _window?.WindowState ?? WindowState.Normal;
+                    return (WindowState)(_form?.WindowState ?? FormWindowState.Normal);
+                }
+                set
+                {
+                    if (_window != null) _window.WindowState = value;
+                    else if (_form != null) _form.WindowState = (FormWindowState)value;
+                }
+            }
+            public bool IsDisposed
+            {
+                get
+                {
+                    return ((!_window?.IsLoaded) ?? true) && (_form?.IsDisposed ?? true);
+                }
+            }
+
+        }
+        static readonly List<WindowData> FormList = new();
         /// <summary>
         /// 該当アカウントのウィンドウを削除する
         /// </summary>
@@ -30,7 +93,7 @@ namespace Genshin_Checker.Core.General
         /// </summary>
         /// <param name="account">アカウント</param>
         /// <param name="name">種類</param>
-        public static Form OpenWindow(Account? account, string name)
+        public static WindowData OpenWindow(Account? account, string name)
         {
             string Name = $"{(account != null ? account.UID : "null")},{name}";
             var delete = FormList.Find(a => a.Name == Name && a.IsDisposed);
@@ -43,31 +106,31 @@ namespace Genshin_Checker.Core.General
                     switch (name)
                     {
                         case nameof(GameLog):
-                            find = new GameLog(GameLogWatcher.Instance.GameLog) { Name = Name };
+                            find = new(new GameLog(GameLogWatcher.Instance.GameLog)) { Name = Name };
                             break;
                         case nameof(TimerDisplay):
-                            find = new TimerDisplay() { Name = Name };
+                            find = new(new TimerDisplay()) { Name = Name };
                             break;
                         case nameof(TimeGraph):
-                            find = new TimeGraph() { Name = Name };
+                            find = new(new TimeGraph()) { Name = Name };
                             break;
                         case nameof(SettingWindow):
-                            find = new SettingWindow() { Name = Name };
+                            find = new(new SettingWindow()) { Name = Name };
                             break;
                         case nameof(Genshin_Checker.Window.Debug.APIChecker):
-                            find = new Genshin_Checker.Window.Debug.APIChecker() { Name = Name };
+                            find = new(new Genshin_Checker.Window.Debug.APIChecker()) { Name = Name };
                             break;
                         case nameof(Genshin_Checker.Window.Debug.Console):
-                            find = new Genshin_Checker.Window.Debug.Console() { Name = Name };
+                            find = new(new Genshin_Checker.Window.Debug.Console()) { Name = Name };
                             break;
                         case nameof(Genshin_Checker.Window.ProgressWindow.LoadGameDatabase):
-                            find = new Genshin_Checker.Window.ProgressWindow.LoadGameDatabase() { Name = Name };
+                            find = new(new Genshin_Checker.Window.ProgressWindow.LoadGameDatabase()) { Name = Name };
                             break;
                         case nameof(Genshin_Checker.Window.CodeExchange):
-                            find = new Genshin_Checker.Window.CodeExchange() { Name = Name };
+                            find = new(new Genshin_Checker.Window.CodeExchange()) { Name = Name };
                             break;
                         case nameof(Genshin_Checker.Window.MusicPlayer):
-                            find = new Genshin_Checker.Window.MusicPlayer() { Name = Name };
+                            find = new(new Genshin_Checker.Window.MusicPlayer()) { Name = Name };
                             break;
                     }
             }
@@ -77,31 +140,31 @@ namespace Genshin_Checker.Core.General
                     switch (name)
                     {
                         case nameof(Genshin_Checker.Window.GameRecords):
-                            find = new Genshin_Checker.Window.GameRecords(account) { Name = Name };
+                            find = new(new Genshin_Checker.Window.GameRecords(account)) { Name = Name };
                             break;
                         case nameof(RealTimeData):
-                            find = new RealTimeData(account) { Name = Name };
+                            find = new(new RealTimeData(account)) { Name = Name };
                             break;
                         case nameof(Genshin_Checker.Window.TravelersDiary):
-                            find = new Genshin_Checker.Window.TravelersDiary(account) { Name = Name };
+                            find = new(new Genshin_Checker.Window.TravelersDiary(account)) { Name = Name };
                             break;
                         case nameof(TravelersDiaryDetailList):
-                            find = new TravelersDiaryDetailList(account) { Name = Name };
+                            find = new(new TravelersDiaryDetailList(account)) { Name = Name };
                             break;
                         case nameof(CharacterCalculator):
-                            find = new CharacterCalculator(account) { Name = Name };
+                            find = new(new CharacterCalculator(account)) { Name = Name };
                             break;
                         case nameof(WebGameAnnounce):
-                            find = new GUI.BrowserApp.WebGameAnnounce(account) { Name = Name };
+                            find = new(new GUI.BrowserApp.WebGameAnnounce(account)) { Name = Name };
                             break;
                         case nameof(Genshin_Checker.Window.SpiralAbyss):
-                            find = new Genshin_Checker.Window.SpiralAbyss(account) { Name = Name };
+                            find = new(new Genshin_Checker.Window.SpiralAbyss(account)) { Name = Name };
                             break;
                     }
             }
-            if (find == null) throw new ArgumentException($"{Name} is no form names.");
+            if (find == null) throw new ArgumentException($"{Name} is no window names.");
             if (IsAdd) FormList.Add(find);
-            if (find.WindowState == FormWindowState.Minimized) find.WindowState = FormWindowState.Normal;
+            if (find.WindowState == WindowState.Minimized) find.WindowState = WindowState.Normal;
             find.Show();
             find.Activate();
             return find;

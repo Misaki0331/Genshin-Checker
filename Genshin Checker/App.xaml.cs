@@ -2,6 +2,7 @@
 using Genshin_Checker.Core.General;
 using Genshin_Checker.resource.Languages;
 using Genshin_Checker.Store;
+using Genshin_Checker.Window;
 using Genshin_Checker.Window.Popup;
 using System.Windows;
 using System.Windows.Forms;
