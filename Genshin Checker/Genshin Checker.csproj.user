@@ -76,6 +76,9 @@
     <Compile Update="InternalTools\MusicInfoSetter.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="MainTray.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="UI\Control\CodeExchange\UICode.cs">
       <SubType>UserControl</SubType>
     </Compile>
