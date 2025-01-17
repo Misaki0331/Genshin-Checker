@@ -1,0 +1,147 @@
+﻿<UserControl x:Class="Genshin_Checker.GUI.UserInterface.CentralPanel.Category.RealTimeNote"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Genshin_Checker.GUI.UserInterface.CentralPanel.Category"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:templete="clr-namespace:Genshin_Checker.GUI.StyleTemplete"
+             xmlns:component="clr-namespace:Genshin_Checker.GUI.UserInterface.CentralPanel.Component"
+             Background="{DynamicResource MaterialDesignPaper}"
+             FontFamily="{DynamicResource MaterialDesignFont}"
+             mc:Ignorable="d" 
+             RenderOptions.BitmapScalingMode="HighQuality"
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <StackPanel>
+        <templete:DynamicWrapPanel>
+                <materialDesign:Card Margin="8" Width="auto" Style="{StaticResource MaterialDesignOutlinedCard}">
+                    <StackPanel Grid.Row="1" Margin="8,0,8,0">
+                        <component:InfoDisplay Title="樹脂" Number="200" Unit="/ 200" 
+                                                   SmallInfo="残り : 23 時間 59 分 59 秒"
+            IconImageSource="https://static-api.misaki-chan.world/genshin-checker/webtools/img/resin.png"/>
+                    </StackPanel>
+                </materialDesign:Card>
+                <materialDesign:Card Margin="8" Width="auto" Style="{StaticResource MaterialDesignOutlinedCard}">
+                    <StackPanel Grid.Row="1" Margin="8,0,8,0">
+                        <component:InfoDisplay Title="洞天宝銭" Number="2400" Unit="/ 2400" 
+                                                   SmallInfo="残り : 23 時間 59 分 59 秒"
+            IconImageSource="https://static-api.misaki-chan.world/genshin-checker/webtools/img/homecoin.png"/>
+                    </StackPanel>
+                </materialDesign:Card>
+                <materialDesign:Card Margin="8" Width="auto" Style="{StaticResource MaterialDesignOutlinedCard}">
+                    <StackPanel Grid.Row="1" Margin="8,0,8,0">
+                        <component:InfoDisplay Title="依頼任務" Number="4" Unit="/ 4" 
+                                                   SmallInfo="追加報酬は受取済"
+            IconImageSource="https://static-api.misaki-chan.world/genshin-checker/webtools/img/quest.png"/>
+                        <component:InfoDisplay Title="長期冒険修練" Number="1234.5"
+                                               IconKind="StarFourPointsCircleOutline"
+                                               SmallInfo="残り : 123 日 12 時間 34 分"/>
+                    </StackPanel>
+                </materialDesign:Card>
+                <materialDesign:Card Margin="8" Width="auto" Style="{StaticResource MaterialDesignOutlinedCard}">
+                    <StackPanel Grid.Row="1" Margin="8,0,8,0">
+                        <component:InfoDisplay Title="探索派遣" Number="5" Unit="/ 5" 
+                                                   SmallInfo="残り : 23 時間 59 分 59 秒"
+                                                    IconKind="CompassOutline"/>
+                        <Grid HorizontalAlignment="Stretch" >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                            </Grid.RowDefinitions>
+                            <!-- 子要素のサイズを指定し、それぞれがWrapPanelの中でラップするようにする -->
+                            <materialDesign:Chip Style="{StaticResource MaterialDesignOutlineChip}" HorizontalAlignment="Stretch"
+                                                     Grid.Column="0" Grid.Row="0">
+                                <materialDesign:Chip.Content>
+                                    <TextBlock Text="12 時間 34 分" TextAlignment="Right"/>
+                                </materialDesign:Chip.Content>
+                                    <materialDesign:Chip.Icon>
+                                        <Image  Source="https://enka.network/ui/UI_AvatarIcon_Side_Ayaka.png">
+                                            <Image.RenderTransform>
+                                                <ScaleTransform ScaleX="1.4" ScaleY="1.4" />
+                                            </Image.RenderTransform>
+                                            <Image.RenderTransformOrigin>
+                                                0.5, 1.0
+                                            </Image.RenderTransformOrigin>
+                                        </Image>
+                                    </materialDesign:Chip.Icon>
+                                </materialDesign:Chip>
+                            <materialDesign:Chip Style="{StaticResource MaterialDesignOutlineChip}" HorizontalAlignment="Stretch"
+                                                     Grid.Column="1" Grid.Row="0">
+                                <materialDesign:Chip.Content>
+                                    <TextBlock Text="12 時間 34 分" TextAlignment="Right"/>
+                                </materialDesign:Chip.Content>
+                                <materialDesign:Chip.Icon>
+                                        <Image  Source="https://enka.network/ui/UI_AvatarIcon_Side_Ayaka.png">
+                                            <Image.RenderTransform>
+                                                <ScaleTransform ScaleX="1.4" ScaleY="1.4" />
+                                            </Image.RenderTransform>
+                                            <Image.RenderTransformOrigin>
+                                                0.5, 1.0
+                                            </Image.RenderTransformOrigin>
+                                        </Image>
+                                    </materialDesign:Chip.Icon>
+                                </materialDesign:Chip>
+                            <materialDesign:Chip Style="{StaticResource MaterialDesignOutlineChip}" HorizontalAlignment="Stretch"
+                                                     Grid.Column="0" Grid.Row="1">
+                                <materialDesign:Chip.Content>
+                                    <TextBlock Text="12 時間 34 分" TextAlignment="Right"/>
+                                </materialDesign:Chip.Content>
+                                <materialDesign:Chip.Icon>
+                                        <Image  Source="https://enka.network/ui/UI_AvatarIcon_Side_Ayaka.png">
+                                            <Image.RenderTransform>
+                                                <ScaleTransform ScaleX="1.4" ScaleY="1.4" />
+                                            </Image.RenderTransform>
+                                            <Image.RenderTransformOrigin>
+                                                0.5, 1.0
+                                            </Image.RenderTransformOrigin>
+                                        </Image>
+                                    </materialDesign:Chip.Icon>
+                                </materialDesign:Chip>
+                            <materialDesign:Chip Style="{StaticResource MaterialDesignOutlineChip}" HorizontalAlignment="Stretch"
+                                                     Grid.Column="1" Grid.Row="1">
+                                <materialDesign:Chip.Content>
+                                    <TextBlock Text="12 時間 34 分" TextAlignment="Right"/>
+                                </materialDesign:Chip.Content>
+                                <materialDesign:Chip.Icon>
+                                        <Image  Source="https://enka.network/ui/UI_AvatarIcon_Side_Ayaka.png">
+                                            <Image.RenderTransform>
+                                                <ScaleTransform ScaleX="1.4" ScaleY="1.4" />
+                                            </Image.RenderTransform>
+                                            <Image.RenderTransformOrigin>
+                                                0.5, 1.0
+                                            </Image.RenderTransformOrigin>
+                                        </Image>
+                                    </materialDesign:Chip.Icon>
+                                </materialDesign:Chip>
+                            <materialDesign:Chip Style="{StaticResource MaterialDesignOutlineChip}" HorizontalAlignment="Stretch"
+                                                     Grid.Column="1" Grid.Row="2">
+                                <materialDesign:Chip.Content>
+                                    <TextBlock Text="12 時間 34 分" TextAlignment="Right"/>
+                                </materialDesign:Chip.Content>
+                                <materialDesign:Chip.Icon>
+                                        <Image  Source="https://enka.network/ui/UI_AvatarIcon_Side_Ayaka.png">
+                                            <Image.RenderTransform>
+                                                <ScaleTransform ScaleX="1.4" ScaleY="1.4" />
+                                            </Image.RenderTransform>
+                                            <Image.RenderTransformOrigin>
+                                                0.5, 1.0
+                                            </Image.RenderTransformOrigin>
+                                        </Image>
+                                    </materialDesign:Chip.Icon>
+                                </materialDesign:Chip>
+                                <!-- 他のコントロールも追加 -->
+                        </Grid>
+                    </StackPanel>
+                </materialDesign:Card>
+            </templete:DynamicWrapPanel>
+        </StackPanel>
+    </Grid>
+</UserControl>

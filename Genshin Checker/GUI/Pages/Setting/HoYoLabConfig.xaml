@@ -1,0 +1,67 @@
+﻿<Page x:Class="Genshin_Checker.GUI.Pages.Setting.HoYoLabConfig"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Genshin_Checker.GUI.Pages.Setting"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="500"
+      Title="General"
+        Background="{DynamicResource BackgroundColor}"
+        Foreground="{DynamicResource ForegroundColor}">
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/GUI/StyleTemplete/GroupBox.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <Style TargetType="{x:Type GroupBox}" BasedOn="{StaticResource FixedGroupBox}"/>
+        </ResourceDictionary>
+    </Page.Resources>
+    <Grid>
+        <StackPanel Margin="3" CanHorizontallyScroll="True">
+            <GroupBox BorderThickness="2">
+                <GroupBox.Header>
+                    <TextBlock FontWeight="Bold" Text="HoYoLabアカウント設定"/>
+                </GroupBox.Header>
+                <StackPanel Margin="4">
+                    <StackPanel Margin="4">
+                        <GroupBox BorderThickness="2">
+                            <GroupBox.Header>
+                                <StackPanel Orientation="Horizontal" Margin="0,0,2,0">
+                                    <ComboBox x:Name="ComboBoxAccount" Width="100" SelectionChanged="AccountChanged"/>
+                                    <TextBlock x:Name="TextAccountInfo" Text=" AccountName (AR.XX)" VerticalAlignment="Center" Padding="4,0,0,0"/>
+                                </StackPanel>
+                            </GroupBox.Header>
+                            <StackPanel Margin="4">
+                                <Grid Margin="0,4,0,0">
+                                    <Grid.Resources>
+                                        <Style TargetType="{x:Type CheckBox}">
+                                            <Setter Property="VerticalAlignment" Value="Center"/>
+                                            <Setter Property="Foreground" Value="{DynamicResource ForegroundColor}"/>
+                                        </Style>
+                                        <Style TargetType="{x:Type Slider}">
+                                            <Setter Property="VerticalAlignment" Value="Center"/>
+                                        </Style>
+                                        <Style TargetType="{x:Type TextBlock}">
+                                            <Setter Property="VerticalAlignment" Value="Center"/>
+                                        </Style>
+                                    </Grid.Resources>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="40"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="22"/>
+                                    </Grid.RowDefinitions>
+                                    <CheckBox x:Name="CheckBoxConfigAutoCheckIn"  Grid.Row="0" Content="起動3分後に自動ログイン" VerticalAlignment="Center" Checked="ChangedCheckState" Unchecked="ChangedCheckState"/>
+                                </Grid>
+                            </StackPanel>
+
+                        </GroupBox>
+                    </StackPanel>
+                </StackPanel>
+            </GroupBox>
+        </StackPanel>
+    </Grid>
+</Page>

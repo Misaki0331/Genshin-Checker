@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.4.33213.308
+VisualStudioVersion = 17.11.35303.130
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Genshin Checker", "Genshin Checker\Genshin Checker.csproj", "{1652A9EE-65C1-48F3-8BED-E578EC755C26}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Genshin Checker", "Genshin Checker\Genshin Checker.csproj", "{4F3F866E-0BA0-42BA-972E-99F46B759E20}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,20 +13,19 @@ Global
 		Release|x64 = Release|x64
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{1652A9EE-65C1-48F3-8BED-E578EC755C26}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1652A9EE-65C1-48F3-8BED-E578EC755C26}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1652A9EE-65C1-48F3-8BED-E578EC755C26}.Debug|x64.ActiveCfg = Debug|x64
-		{1652A9EE-65C1-48F3-8BED-E578EC755C26}.Debug|x64.Build.0 = Debug|x64
-		{1652A9EE-65C1-48F3-8BED-E578EC755C26}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1652A9EE-65C1-48F3-8BED-E578EC755C26}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1652A9EE-65C1-48F3-8BED-E578EC755C26}.Release|x64.ActiveCfg = Release|x64
-		{1652A9EE-65C1-48F3-8BED-E578EC755C26}.Release|x64.Build.0 = Release|x64
+		{4F3F866E-0BA0-42BA-972E-99F46B759E20}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F3F866E-0BA0-42BA-972E-99F46B759E20}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F3F866E-0BA0-42BA-972E-99F46B759E20}.Debug|x64.ActiveCfg = Debug|x64
+		{4F3F866E-0BA0-42BA-972E-99F46B759E20}.Debug|x64.Build.0 = Debug|x64
+		{4F3F866E-0BA0-42BA-972E-99F46B759E20}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F3F866E-0BA0-42BA-972E-99F46B759E20}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4F3F866E-0BA0-42BA-972E-99F46B759E20}.Release|x64.ActiveCfg = Release|x64
+		{4F3F866E-0BA0-42BA-972E-99F46B759E20}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		RESX_CultureCountyOverrides = ga=ga-IE
-		SolutionGuid = {D1675269-0000-4D01-B3C0-661E48067981}
+		SolutionGuid = {20D75C15-862A-4022-957F-113FE925F39E}
 	EndGlobalSection
 EndGlobal

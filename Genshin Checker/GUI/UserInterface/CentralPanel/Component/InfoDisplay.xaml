@@ -1,0 +1,64 @@
+﻿<UserControl x:Class="Genshin_Checker.GUI.UserInterface.CentralPanel.Component.InfoDisplay"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Genshin_Checker.GUI.UserInterface.CentralPanel.Component"
+             mc:Ignorable="d" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:templete="clr-namespace:Genshin_Checker.GUI.StyleTemplete"
+             xmlns:component="clr-namespace:Genshin_Checker.GUI.UserInterface.CentralPanel.Component"
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <!-- コンバーターのリソース -->
+        <local:NullToVisibilityConverter x:Key="NullToVisibilityConverter"/>
+        <local:IconVisibilityConverter x:Key="IconVisibilityConverter"/>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+        <local:VisibilityConverter x:Key="VisibilityConverter"/>
+    </UserControl.Resources>
+    <Grid Margin="0,8,0,8" ToolTip="{Binding ToolTip , RelativeSource={RelativeSource AncestorType=UserControl}}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <!-- PackIcon -->
+        <materialDesign:PackIcon x:Name="IconPack"
+                                 Kind="{Binding IconKind, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                 Width="32" Height="32" Grid.Column="0" VerticalAlignment="Center">
+            <materialDesign:PackIcon.Visibility>
+                <MultiBinding Converter="{StaticResource IconVisibilityConverter}" ConverterParameter="PackIcon">
+                    <Binding Path="IconKind" RelativeSource="{RelativeSource AncestorType=UserControl}"/>
+                    <Binding Path="IconImageSource" RelativeSource="{RelativeSource AncestorType=UserControl}"/>
+                </MultiBinding>
+            </materialDesign:PackIcon.Visibility>
+        </materialDesign:PackIcon>
+        <!-- Image -->
+        <Image x:Name="IconImage"
+               Source="{Binding IconImageSource, RelativeSource={RelativeSource AncestorType=UserControl}}"
+               Width="32" Height="32" Grid.Column="0" VerticalAlignment="Center">
+            <Image.Visibility>
+                <MultiBinding Converter="{StaticResource IconVisibilityConverter}" ConverterParameter="Image">
+                    <Binding Path="IconKind" RelativeSource="{RelativeSource AncestorType=UserControl}"/>
+                    <Binding Path="IconImageSource" RelativeSource="{RelativeSource AncestorType=UserControl}"/>
+                </MultiBinding>
+            </Image.Visibility>
+        </Image>
+        <TextBlock Text="{Binding Title, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                   Grid.Column="1" VerticalAlignment="Center" FontSize="15"/>
+        <StackPanel Grid.Column="2" Margin="8,0,0,0">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <TextBlock Text="{Binding LeftUnit, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                           FontSize="18" VerticalAlignment="Bottom"/>
+                <TextBlock Text="{Binding Number, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                           FontSize="26" FontWeight="Bold"/>
+                <TextBlock Text="{Binding Unit, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                           FontSize="18" VerticalAlignment="Bottom"/>
+            </StackPanel>
+            <TextBlock Text="{Binding SmallInfo, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                       HorizontalAlignment="Right"
+                       FontSize="10"
+                       Visibility="{Binding SmallInfo, Converter={StaticResource VisibilityConverter}, RelativeSource={RelativeSource AncestorType=UserControl}}"/>
+        </StackPanel>
+    </Grid>
+</UserControl>
