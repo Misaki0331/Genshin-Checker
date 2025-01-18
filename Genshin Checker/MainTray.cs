@@ -5,7 +5,7 @@ using Genshin_Checker.Core.HoYoLab;
 using Genshin_Checker.Core.Game;
 using Genshin_Checker.Core.General;
 using Genshin_Checker.Store;
-using Genshin_Checker.Window.Popup;
+using Genshin_Checker.GUI.Window.PopupWindow;
 using Microsoft.Toolkit.Uwp.Notifications;
 using Genshin_Checker.resource.Languages;
 using Genshin_Checker.Window.Debug;

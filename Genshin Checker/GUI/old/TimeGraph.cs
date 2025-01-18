@@ -6,7 +6,7 @@ using SkiaSharp;
 using LiveChartsCore.Defaults;
 using System.Collections.ObjectModel;
 using Genshin_Checker.resource;
-using Genshin_Checker.Window.Popup;
+using Genshin_Checker.GUI.Window.PopupWindow;
 using Genshin_Checker.resource.Languages;
 using Genshin_Checker.Resource;
 
@@ -577,7 +577,7 @@ namespace Genshin_Checker.Window
             catch (Exception ex)
             {
                 var window = new ErrorMessage(Localize.Error_TimeGraph_FailedToDrawGraph, $"{ex.GetType()}\n{ex.Message}");
-                window.ShowDialog(this);
+                window.ShowDialog();
             }
         }
 
@@ -610,7 +610,7 @@ namespace Genshin_Checker.Window
             catch (Exception ex)
             {
                 var window = new ErrorMessage(Localize.Error_TimeGraph_FailedToDrawGraph, $"{ex.GetType()}\n{ex.Message}");
-                window.ShowDialog(this);
+                window.ShowDialog();
             }
         }
 
@@ -643,7 +643,7 @@ namespace Genshin_Checker.Window
             catch (Exception ex)
             {
                 var window = new ErrorMessage(Localize.Error_TimeGraph_FailedToDrawGraph, $"{ex.GetType()}\n{ex.Message}");
-                window.ShowDialog(this);
+                window.ShowDialog();
             }
         }
 
@@ -657,7 +657,7 @@ namespace Genshin_Checker.Window
             catch (Exception ex)
             {
                 var window = new ErrorMessage(Localize.Error_TimeGraph_FailedToDrawGraph, $"{ex.GetType()}\n{ex.Message}");
-                window.ShowDialog(this);
+                window.ShowDialog();
             }
         }
     }

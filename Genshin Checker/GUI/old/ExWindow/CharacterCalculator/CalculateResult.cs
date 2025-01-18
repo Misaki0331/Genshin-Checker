@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Genshin_Checker.Core.General.Convert;
-using Genshin_Checker.Window.Popup;
+using Genshin_Checker.GUI.Window.PopupWindow;
 using Genshin_Checker.resource.Languages;
 using Genshin_Checker.Core;
 
@@ -363,6 +363,7 @@ namespace Genshin_Checker.Window.ExWindow.CharacterCalculator
         private void TableFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             if (sender is not DataGridView) return;
+            if (e.CellStyle == null) return;
             var Table = (DataGridView)sender;
             var row = Table.Rows[e.RowIndex];
             switch (Table.Name)

@@ -24,12 +24,15 @@ namespace Genshin_Checker.GUI.Window.PopupWindow
     /// </summary>
     public partial class FetalError : System.Windows.Window
     {
+        ViewModel.FatalErrorViewModel ViewModel;
         public FetalError(Exception ex)
         {
             InitializeComponent();
-            DetailTextBox.Text = CrashLog(ex);
-            ErrorMessage.Text = ex.GetType().ToString();
-            if (ex.GetType() == typeof(System.NullReferenceException)) ErrorMessage.Text = "∧＿∧\r\n(　´∀｀)＜ぬるぽ";
+            ViewModel = new();
+            DataContext = ViewModel;
+            ViewModel.MessageDetail = CrashLog(ex);
+            ViewModel.MessageTitle = ex.GetType().ToString();
+            if (ex.GetType() == typeof(System.NullReferenceException)) ViewModel.ErrorTitle = "∧＿∧\r\n(　´∀｀)＜ぬるぽ";
             if (string.IsNullOrEmpty(crashreportpath)) ButtonCrashReport.IsEnabled = false;
             this.Topmost = true;
         }

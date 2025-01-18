@@ -3,7 +3,7 @@ using Genshin_Checker.Window;
 using Newtonsoft.Json;
 using System.Diagnostics;
 using System.Text;
-using Genshin_Checker.Window.Popup;
+using Genshin_Checker.GUI.Window.PopupWindow;
 using Genshin_Checker.resource.Languages;
 using Genshin_Checker.Core.General;
 

@@ -4,10 +4,14 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Genshin_Checker.GUI.Window.PopupWindow"
+        xmlns:viewmodel="clr-namespace:Genshin_Checker.ViewModel"
         mc:Ignorable="d"
-        Title="FetalError" Height="320" Width="540" WindowStartupLocation="CenterScreen"
+        Title="{Binding WindowTitle}" Height="320" Width="540" WindowStartupLocation="CenterScreen"
         Background="{DynamicResource BackgroundColor}"
         Foreground="{DynamicResource ForegroundColor}">
+    <Window.DataContext>
+        <viewmodel:FatalErrorViewModel/>
+    </Window.DataContext>
     <Grid>
         <Grid Margin="4,4,4,4">
             <Grid.ColumnDefinitions>
@@ -21,15 +25,15 @@
             </Grid.RowDefinitions>
             <Image Source="/Genshin Checker;component/Resource/Paimon's Paint/Furina 2.png" Grid.Row="0" Grid.Column="0"/>
             <StackPanel Grid.Row="0" Grid.Column="1" Margin="4,0,0,0" VerticalAlignment="Center">
-                <TextBlock x:Name="ErrorTitle" Text="Oops! Application was crashed." FontWeight="Bold"/>
-                <TextBlock x:Name="ErrorMessage" Text="Something went wrong."/>
+                <TextBlock x:Name="ErrorTitle" Text="{Binding ErrorTitle}" FontWeight="Bold"/>
+                <TextBlock x:Name="ErrorMessage" Text="{Binding MessageTitle}"/>
             </StackPanel>
-            <TextBox x:Name="DetailTextBox" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Text="This is Text here." Margin="0,4,0,4" IsReadOnly="True" IsReadOnlyCaretVisible="True"/>
+            <TextBox x:Name="DetailTextBox" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding MessageDetail}" Margin="0,4,0,4" IsReadOnly="True" IsReadOnlyCaretVisible="True"/>
             <StackPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Right">
-                <Button Content="Update application" Width="120" Margin="4,0,0,0" Click="ButtonUpdateApplication" FontSize="10" Height="20"/>
-                <Button x:Name="ButtonCrashReport" Content="Open crash report" Width="120" Margin="4,0,0,0" Click="ButtonOpenCrashReport"  FontSize="10" Height="20"/>
-                <Button Content="Restart" Width="65" Margin="4,0,0,0" Click="ButtonRestartApplication"  FontSize="10" Height="20"/>
-                <Button Content="Exit" Width="60" Margin="4,0,0,0" Click="ButtonExit"  FontSize="10" Height="20"/>
+                <Button Content="{Binding ButtonUpdate}" Margin="4,0,0,0" Click="ButtonUpdateApplication" FontSize="10" Height="20"/>
+                <Button Content="{Binding ButtonOpenCrashReport}" x:Name="ButtonCrashReport" Margin="4,0,0,0" Click="ButtonOpenCrashReport"  FontSize="10" Height="20"/>
+                <Button Content="{Binding ButtonRestart}" Margin="4,0,0,0" Click="ButtonRestartApplication"  FontSize="10" Height="20"/>
+                <Button Content="{Binding ButtonExit}" Margin="4,0,0,0" Click="ButtonExit"  FontSize="10" Height="20"/>
             </StackPanel>
         </Grid>
     </Grid>

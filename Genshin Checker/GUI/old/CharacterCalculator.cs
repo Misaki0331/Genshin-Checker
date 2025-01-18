@@ -5,7 +5,7 @@ using Genshin_Checker.Window.ExWindow.CharacterCalculator;
 using Newtonsoft.Json;
 using System.Text;
 using Genshin_Checker.Core.General.Convert;
-using Genshin_Checker.Window.Popup;
+using Genshin_Checker.GUI.Window.PopupWindow;
 using System.Security.Policy;
 using Genshin_Checker.resource.Languages;
 using Genshin_Checker.Core.General;

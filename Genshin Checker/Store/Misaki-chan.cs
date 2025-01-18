@@ -1,6 +1,6 @@
 ﻿using Genshin_Checker.Core;
 using Genshin_Checker.Core.General;
-using Genshin_Checker.Window.Popup;
+using Genshin_Checker.GUI.Window.PopupWindow;
 
 namespace Genshin_Checker.Store
 {

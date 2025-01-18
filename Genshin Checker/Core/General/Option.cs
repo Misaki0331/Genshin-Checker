@@ -1,5 +1,5 @@
 ﻿using Genshin_Checker.resource.Languages;
-using Genshin_Checker.Window.Popup;
+using Genshin_Checker.GUI.Window.PopupWindow;
 using Newtonsoft.Json;
 
 namespace Genshin_Checker.Core.General

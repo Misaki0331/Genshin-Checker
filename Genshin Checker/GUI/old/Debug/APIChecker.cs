@@ -1,6 +1,6 @@
 ﻿using Genshin_Checker.Core.General;
 using Genshin_Checker.Core.HoYoLab;
-using Genshin_Checker.Window.Popup;
+using Genshin_Checker.GUI.Window.PopupWindow;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

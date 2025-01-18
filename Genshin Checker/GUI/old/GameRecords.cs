@@ -1,7 +1,7 @@
 ﻿using Genshin_Checker.Core.HoYoLab;
 using Genshin_Checker.Store;
 using Genshin_Checker.Model.UI.GameRecords.Exploration;
-using Genshin_Checker.Window.Popup;
+using Genshin_Checker.GUI.Window.PopupWindow;
 using Genshin_Checker.resource.Languages;
 using Genshin_Checker.Core.General.UI;
 

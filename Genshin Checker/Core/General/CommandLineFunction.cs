@@ -1,6 +1,5 @@
 ﻿using Genshin_Checker.GUI.Window.PopupWindow;
 using Genshin_Checker.resource.Languages;
-using Genshin_Checker.Window.Popup;
 using Microsoft.Toolkit.Uwp.Notifications;
 
 namespace Genshin_Checker.Core.General

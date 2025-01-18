@@ -1,4 +1,4 @@
-﻿using Genshin_Checker.Window.Popup;
+﻿using Genshin_Checker.GUI.Window.PopupWindow;
 using Genshin_Checker.Core.General;
 
 namespace Genshin_Checker.Store

@@ -1,7 +1,7 @@
 ﻿using Genshin_Checker.Core.HoYoLab;
 using Genshin_Checker.resource.Languages;
 using Genshin_Checker.Window;
-using Genshin_Checker.Window.Popup;
+using Genshin_Checker.GUI.Window.PopupWindow;
 using Microsoft.Web.WebView2.Core;
 using Newtonsoft.Json;
 using System;
