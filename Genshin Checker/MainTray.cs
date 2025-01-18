@@ -183,7 +183,7 @@ namespace Genshin_Checker
 
                 case ToolStripMenuItem func when func.Equals(FuncSetting):
                     //ê›íË
-                    ManageWindow.OpenWindow(null, nameof(SettingWindow));
+                    ManageWindow.OpenWindow(null, nameof(GUI.Window.SettingWindow));
                     break;
 
                 case ToolStripMenuItem func when func.Equals(FuncTestFunction):

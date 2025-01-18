@@ -38,16 +38,7 @@ namespace Genshin_Checker.Core.General
                 _form?.Close();
                 _window?.Close();
             }
-            public string Name
-            {
-                get { return (IsWPF ? _window?.Name : _form?.Name) ?? ""; }
-
-                set
-                {
-                    if (_window != null) _window.Name = value;
-                    if (_form != null) _form.Name = value;
-                }
-            }
+            public string Name { get; set; } = "";
             public WindowState WindowState
             {
                 get
@@ -114,8 +105,8 @@ namespace Genshin_Checker.Core.General
                         case nameof(TimeGraph):
                             find = new(new TimeGraph()) { Name = Name };
                             break;
-                        case nameof(SettingWindow):
-                            find = new(new SettingWindow()) { Name = Name };
+                        case nameof(GUI.Window.SettingWindow):
+                            find = new(new GUI.Window.SettingWindow()) { Name = Name };
                             break;
                         case nameof(Genshin_Checker.Window.Debug.APIChecker):
                             find = new(new Genshin_Checker.Window.Debug.APIChecker()) { Name = Name };
