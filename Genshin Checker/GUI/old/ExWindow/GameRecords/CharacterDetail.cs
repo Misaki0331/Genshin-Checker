@@ -86,7 +86,7 @@ namespace Genshin_Checker.Window.ExWindow.GameRecords
                 }
                 catch (Exception)
                 {
-                    new ErrorMessage(Localize.Error_CharacterDetail_CharacterDetailIsMissing, string.Format(Localize.Error_CharacterDetail_CharacterDetailIsMissing_Message, CharacterInfo.baseInfo.name)).ShowDialog();
+                    Dialog.Error(Localize.Error_CharacterDetail_CharacterDetailIsMissing, string.Format(Localize.Error_CharacterDetail_CharacterDetailIsMissing_Message, CharacterInfo.baseInfo.name));
                 }
 
                 Text = $"{Localize.WindowName_CharacterDetail} - {CharacterInfo.baseInfo.name} (UID:{account.UID})";
@@ -190,7 +190,7 @@ namespace Genshin_Checker.Window.ExWindow.GameRecords
                     textBox1.Lines = $"{ex.GetType()}\n{ex.Message}".Split('\n');
                     Error_TalentPanel.Visible = true;
                     Button_TalentHideShow.Visible = false;
-                    new ErrorMessage(Localize.Error_CharacterDetail_FailToLoadTalentInfomation, ex.ToString()).ShowDialog();
+                    Dialog.Error(Localize.Error_CharacterDetail_FailToLoadTalentInfomation, ex.ToString());
                 }
 
                 Panel_MainTalent.ResumeLayout(true);

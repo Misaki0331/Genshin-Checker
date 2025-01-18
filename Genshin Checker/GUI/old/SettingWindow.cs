@@ -137,7 +137,7 @@ namespace Genshin_Checker.Window
             catch (Exception ex)
             {
                 obj.Checked = !obj.Checked;
-                new ErrorMessage(Localize.WindowName_SettingWindow_FailedToChangeConfig, $"{ex.Message}").ShowDialog();
+                Dialog.Error(Localize.WindowName_SettingWindow_FailedToChangeConfig, $"{ex.Message}");
             }
             Option.Save();
             changeValue(obj);
@@ -185,7 +185,7 @@ namespace Genshin_Checker.Window
             var str = await GameApp.WhereScreenShotPath();
             if (str == null)
             {
-                new ErrorMessage(Localize.WindowName_SettingWindow_FailedToGetScreenshotPath_Title, Localize.WindowName_SettingWindow_FailedToGetScreenshotPath_Message).ShowDialog();
+                Dialog.Error(Localize.WindowName_SettingWindow_FailedToGetScreenshotPath_Title, Localize.WindowName_SettingWindow_FailedToGetScreenshotPath_Message);
                 return;
             }
             ScreenshotPath.Text = str;
@@ -264,11 +264,11 @@ namespace Genshin_Checker.Window
                 var result = await MovingData.BackupToZip(sfd.FileName);
                 if (result == null)
                 {
-                    new InfoMessage(ManageUserData.SaveBackup_Success_Title, ManageUserData.SaveBackup_Success_Message).ShowDialog();
+                    Dialog.Info(ManageUserData.SaveBackup_Success_Title, ManageUserData.SaveBackup_Success_Message);
                 }
                 else
                 {
-                    new ErrorMessage(ManageUserData.SaveBackup_Failed_Title, result.ToString()).ShowDialog();
+                    Dialog.Error(ManageUserData.SaveBackup_Failed_Title, result.ToString());
                 }
             }
         }

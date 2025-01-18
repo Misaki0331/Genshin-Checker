@@ -576,8 +576,7 @@ namespace Genshin_Checker.Window
             }
             catch (Exception ex)
             {
-                var window = new ErrorMessage(Localize.Error_TimeGraph_FailedToDrawGraph, $"{ex.GetType()}\n{ex.Message}");
-                window.ShowDialog();
+                Dialog.Error(Localize.Error_TimeGraph_FailedToDrawGraph, $"{ex.GetType()}\n{ex.Message}");
             }
         }
 
@@ -609,8 +608,7 @@ namespace Genshin_Checker.Window
             }
             catch (Exception ex)
             {
-                var window = new ErrorMessage(Localize.Error_TimeGraph_FailedToDrawGraph, $"{ex.GetType()}\n{ex.Message}");
-                window.ShowDialog();
+                Dialog.Error(Localize.Error_TimeGraph_FailedToDrawGraph, $"{ex.GetType()}\n{ex.Message}");
             }
         }
 
@@ -642,8 +640,7 @@ namespace Genshin_Checker.Window
             }
             catch (Exception ex)
             {
-                var window = new ErrorMessage(Localize.Error_TimeGraph_FailedToDrawGraph, $"{ex.GetType()}\n{ex.Message}");
-                window.ShowDialog();
+                Dialog.Error(Localize.Error_TimeGraph_FailedToDrawGraph, $"{ex.GetType()}\n{ex.Message}");
             }
         }
 
@@ -656,8 +653,7 @@ namespace Genshin_Checker.Window
             }
             catch (Exception ex)
             {
-                var window = new ErrorMessage(Localize.Error_TimeGraph_FailedToDrawGraph, $"{ex.GetType()}\n{ex.Message}");
-                window.ShowDialog();
+                Dialog.Error(Localize.Error_TimeGraph_FailedToDrawGraph, $"{ex.GetType()}\n{ex.Message}");
             }
         }
     }

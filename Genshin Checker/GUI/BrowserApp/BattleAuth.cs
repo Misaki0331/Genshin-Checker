@@ -103,7 +103,7 @@ namespace Genshin_Checker.GUI.BrowserApp
                         Log.Error(ex);
                         timer.Stop();
                         AuthButton.Enabled = true;
-                        new ErrorMessage(Localize.Error_BattleAuth_FailedToAuthentication, $"{ex.Message}\n\n{ex.GetType()}\n\n{ex.StackTrace}").ShowDialog();
+                        Dialog.Error(Localize.Error_BattleAuth_FailedToAuthentication, $"{ex.Message}\n\n{ex.GetType()}\n\n{ex.StackTrace}");
                         return;
                     }
                 }
@@ -112,7 +112,7 @@ namespace Genshin_Checker.GUI.BrowserApp
             if (timer_count > 10)
             {
                 AuthButton.Enabled = true;
-                new ErrorMessage(Localize.Error_BattleAuth_CouldNotAuthentication, Localize.Error_BattleAuth_ColudNotAuthentication_Message).ShowDialog();
+                Dialog.Error(Localize.Error_BattleAuth_CouldNotAuthentication, Localize.Error_BattleAuth_ColudNotAuthentication_Message);
             }
             else
             {

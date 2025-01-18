@@ -122,7 +122,7 @@ namespace Genshin_Checker.Window.ProgressWindow
                 }
                 LabelProgressGeneral.Text = Common.Failed;
                 LabelProgressDetail.Text = $"";
-                new ErrorMessage(Common.CommonErrorOccurred, $"{ex}").ShowDialog();
+                Dialog.Error(Common.CommonErrorOccurred, $"{ex}");
             }
             if (NoError)
             {
@@ -186,7 +186,7 @@ namespace Genshin_Checker.Window.ProgressWindow
                 }
                 LabelProgressGeneral.Text = Common.Failed;
                 LabelProgressDetail.Text = $"";
-                new ErrorMessage(Common.CommonErrorOccurred, $"{ex}").ShowDialog();
+                Dialog.Error(Common.CommonErrorOccurred, $"{ex}");
             }
             if (NoError)
             {
@@ -228,7 +228,7 @@ namespace Genshin_Checker.Window.ProgressWindow
 
         private void ProgressFailed(object? sender, Exception e)
         {
-            new ErrorMessage(Common.CommonErrorOccurred, $"{e}").ShowDialog();
+            Dialog.Error(Common.CommonErrorOccurred, $"{e}");
         }
 
         private void Database_ProgressCompreted(object? sender, EventArgs e)
@@ -321,7 +321,7 @@ namespace Genshin_Checker.Window.ProgressWindow
             {
                 if (account.IsDisposed)
                 {
-                    new ErrorMessage(Localize.Error_LoadGameDatabase_AccountDisposed, Localize.Error_LoadGameDatabase_AccountDisposed_Message).ShowDialog();
+                    Dialog.Error(Localize.Error_LoadGameDatabase_AccountDisposed, Localize.Error_LoadGameDatabase_AccountDisposed_Message);
                     WillClose = true;
                     Close();
                     return;

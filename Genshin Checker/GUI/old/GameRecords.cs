@@ -181,7 +181,7 @@ namespace Genshin_Checker.Window
                 }
             catch (Exception ex)
             {
-                new ErrorMessage(Localize.Error_GameRecord_FailedToLoad, $"{ex}").ShowDialog();
+                Dialog.Error(Localize.Error_GameRecord_FailedToLoad, $"{ex}");
                 Close();
             }
         }

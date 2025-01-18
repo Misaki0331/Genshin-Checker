@@ -144,7 +144,7 @@ namespace Genshin_Checker.Store
             {
                 if(!IsReload)FailReload.Start();
                 Log.Error($"Download Failed! - Static Data (Enka.network)\n{ex.GetType()} - {ex.Message}");
-                new ErrorMessage("Download Failed", $"Fail to load Enka.network static data.\n{ex.GetType()}\n{ex.Message}").Show();
+                Dialog.Error("Download Failed", $"Fail to load Enka.network static data.\n{ex.GetType()}\n{ex.Message}");
             }
         }
         System.Windows.Forms.Timer FailReload;

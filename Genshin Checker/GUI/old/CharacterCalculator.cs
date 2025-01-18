@@ -32,7 +32,7 @@ namespace Genshin_Checker.Window
                 {
                     if (!account.CharacterDetail.IsAvailableUpdate)
                     {
-                        new ErrorMessage(Localize.Error_CharacterCalculator_WaitForTalentInfomation, Localize.Error_CharacterCalculator_WaitForTalentInfomation_Message).ShowDialog();
+                        Dialog.Error(Localize.Error_CharacterCalculator_WaitForTalentInfomation, Localize.Error_CharacterCalculator_WaitForTalentInfomation_Message);
                         Close();
                         return;
                     }
@@ -49,12 +49,12 @@ namespace Genshin_Checker.Window
                                 var a = await account.CharacterDetail.UpdateGameData(false);
                                 if (!a)
                                 {
-                                    new ErrorMessage(Localize.Error_CharacterCalculator_FailedToLoadTalentsInfomation, string.Format(Localize.Error_CharacterCalculator_FailedToLoadTalentInfomation, account.CharacterDetail.LatestException)).ShowDialog();
+                                    Dialog.Error(Localize.Error_CharacterCalculator_FailedToLoadTalentsInfomation, string.Format(Localize.Error_CharacterCalculator_FailedToLoadTalentInfomation, account.CharacterDetail.LatestException));
                                 }
                             }
                             else
                             {
-                                new ErrorMessage(Localize.Error_CharacterCalculator_FailedToLoadTalentsInfomation, Localize.Error_CharacterCalculator_WorkingOtherThread).ShowDialog();
+                                Dialog.Error(Localize.Error_CharacterCalculator_FailedToLoadTalentsInfomation, Localize.Error_CharacterCalculator_WorkingOtherThread);
                                 Close();
                             }
                         }
@@ -107,7 +107,7 @@ namespace Genshin_Checker.Window
                 Text = $"{Localize.WindowName_CharacterCalculator} (UID:{account.UID})";
             }catch(Exception ex)
             {
-                new ErrorMessage(ex.GetType().ToString(), ex.ToString()).ShowDialog();
+                Dialog.Error(ex.GetType().ToString(), ex.ToString());
             }
         }
 
@@ -143,7 +143,7 @@ namespace Genshin_Checker.Window
                 if (ExceptionCount > 100) ErrorDetail.Append(string.Format(Common.Error_WithCount,$"{ExceptionCount - Exceptions.Count:#,##0}"));
                 ExceptionCount = 0;
                 Exceptions.Clear();
-                new ErrorMessage(ErrorTitle, ErrorDetail.ToString()).ShowDialog();
+                Dialog.Error(ErrorTitle, ErrorDetail.ToString());
             }
         }
 
@@ -335,7 +335,7 @@ namespace Genshin_Checker.Window
             }
             catch(Exception ex)
             {
-                new ErrorMessage(Localize.Error_CharacterCalculator_InvalidSaveData, ex.ToString()).ShowDialog();
+                Dialog.Error(Localize.Error_CharacterCalculator_InvalidSaveData, ex.ToString());
                 return new();
             }
 
@@ -378,7 +378,7 @@ namespace Genshin_Checker.Window
                 }
                 else
                 {
-                    new ErrorMessage(Localize.Error_CharacterCalculator_FailedToLoadTalentsInfomation, Localize.Error_CharacterCalculator_WorkingOtherThread).ShowDialog();
+                    Dialog.Error(Localize.Error_CharacterCalculator_FailedToLoadTalentsInfomation, Localize.Error_CharacterCalculator_WorkingOtherThread);
                 }
             }
         }

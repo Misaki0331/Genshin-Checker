@@ -232,7 +232,7 @@ namespace Genshin_Checker.Window
             }
             catch (Exception ex)
             {
-                new ErrorMessage(Localize.Error_TravelersDiaryDetailList_FailedToLoadDatabase, $"{ex}").ShowDialog();
+                Dialog.Error(Localize.Error_TravelersDiaryDetailList_FailedToLoadDatabase, $"{ex}");
             }
             finally
             {
@@ -407,7 +407,7 @@ namespace Genshin_Checker.Window
             }
             catch (Exception ex)
             {
-                new ErrorMessage(Localize.Error_TravelersDiaryDetailList_FailedToCsvOutput, $"{ex}").ShowDialog();
+                Dialog.Error(Localize.Error_TravelersDiaryDetailList_FailedToCsvOutput, $"{ex}");
             }
         }
 

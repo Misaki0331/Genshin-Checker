@@ -97,7 +97,8 @@ namespace Genshin_Checker.Core
                     //得られなかった場合は、すでに起動していると判断して終了
                     var args = "";
                     foreach (var a in System.Environment.GetCommandLineArgs()) args += $"{a} ";
-                    MessageBox.Show(string.Format(Localize.Error_Program_MultipleLaunched,args), "Genshin Checker", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Dialog.Error("Genshin Checker", string.Format(Localize.Error_Program_MultipleLaunched, args));
+                    //MessageBox.Show(string.Format(Localize.Error_Program_MultipleLaunched,args), "Genshin Checker", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 #endif

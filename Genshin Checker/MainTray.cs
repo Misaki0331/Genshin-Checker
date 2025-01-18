@@ -145,10 +145,10 @@ namespace Genshin_Checker
                 switch (startup.Style.ToLower())
                 {
                     case "info":
-                        new InfoMessage(startup.Title, startup.Message, startup.Title).ShowDialog();
+                        Dialog.Info(startup.Title, startup.Message, startup.Title);
                         break;
                     case "error":
-                        new ErrorMessage(startup.Title, startup.Message, startup.Title).ShowDialog();
+                        Dialog.Error(startup.Title, startup.Message, startup.Title);
                         break;
                 }
             }
@@ -264,7 +264,7 @@ namespace Genshin_Checker
             }
             catch (Exception ex)
             {
-                new ErrorMessage(Localize.App_Error_FailedSaveScreenshot, $"{ex}").ShowDialog();
+                Dialog.Error(Localize.App_Error_FailedSaveScreenshot, $"{ex}");
             }
         }
 

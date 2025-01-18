@@ -46,7 +46,7 @@ namespace Genshin_Checker.Core.General
                 try
                 {
                     Core.General.MovingData.AllClear();
-                    new InfoMessage(ManageUserData.Complete_DeletedData_Title, ManageUserData.Complete_DeletedData_Message).ShowDialog();
+                    Dialog.Info(ManageUserData.Complete_DeletedData_Title, ManageUserData.Complete_DeletedData_Message);
                 }
                 catch (Exception e)
                 {

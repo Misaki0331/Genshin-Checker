@@ -146,7 +146,7 @@ namespace Genshin_Checker.Window.Debug
             catch (Exception ex)
             {
                 Log.Error(ex);
-                new ErrorMessage("エラー！", ex.ToString()).ShowDialog();
+                Dialog.Error("エラー！", ex.ToString());
             }
         }
     }

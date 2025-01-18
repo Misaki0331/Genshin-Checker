@@ -40,7 +40,7 @@ namespace Genshin_Checker.Window
                 ComboHoYoLabAccounts.Items.Add(Common.NoAccount);
                 ComboHoYoLabAccounts.SelectedIndex = 0;
                 ComboHoYoLabAccounts.Enabled = false;
-                new ErrorMessage(Localize.Error_RedeemCode_MissingAccount_Title, Localize.Error_RedeemCode_MissingAccount_Message).ShowDialog();
+                Dialog.Error(Localize.Error_RedeemCode_MissingAccount_Title, Localize.Error_RedeemCode_MissingAccount_Message);
                 Close();
                 return;
             }
@@ -68,7 +68,7 @@ namespace Genshin_Checker.Window
             {
                 if (account.IsDisposed)
                 {
-                    new ErrorMessage(Localize.Error_LoadGameDatabase_AccountDisposed, Localize.Error_LoadGameDatabase_AccountDisposed_Message).ShowDialog();
+                    Dialog.Error(Localize.Error_LoadGameDatabase_AccountDisposed, Localize.Error_LoadGameDatabase_AccountDisposed_Message);
                     Close();
                     return;
                 }
@@ -76,15 +76,15 @@ namespace Genshin_Checker.Window
                 try
                 {
                     var result = await account.Endpoint.CodeExchange(CodeInput.Text);
-                    new InfoMessage(result.msg, Localize.Message_RedeemCode_Success).ShowDialog();
+                    Dialog.Info(result.msg, Localize.Message_RedeemCode_Success);
                 }
                 catch (Account.HoYoLabAPIException ex)
                 {
-                    new ErrorMessage(Localize.Error_RedeemCode_FailedToRedeem, $"{ex.APIMessage}\nCode : {ex.Retcode}").ShowDialog();
+                    Dialog.Error(Localize.Error_RedeemCode_FailedToRedeem, $"{ex.APIMessage}\nCode : {ex.Retcode}");
                 }
                 catch (Exception ex)
                 {
-                    new ErrorMessage(Common.ErrorMessage, $"{ex}").ShowDialog();
+                    Dialog.Error(Common.ErrorMessage, $"{ex}");
                 }
             }
         }

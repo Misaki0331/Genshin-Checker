@@ -70,8 +70,7 @@ namespace Genshin_Checker.Window
             }
             catch (Exception ex)
             {
-                var n = new ErrorMessage(ex.GetType().ToString(), ex.Message);
-                n.ShowDialog(this);
+                Dialog.Error(ex.GetType().ToString(), ex.Message);
                 Close();
             }
             UIUpdate_Tick(new object(),EventArgs.Empty);

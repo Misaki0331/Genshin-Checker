@@ -159,7 +159,7 @@ namespace Genshin_Checker.GUI.BrowserApp
         {
             if (e.Kind == CoreWebView2ScriptDialogKind.Alert)
             {
-                new ErrorMessage("Message from WebPage", e.Message).ShowDialog();
+                Dialog.Info("Message from WebPage", e.Message);
             }
         }
 

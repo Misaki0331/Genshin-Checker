@@ -39,8 +39,7 @@ namespace Genshin_Checker.Store
                 }
             }catch(Exception ex)
             {
-                var a=new ErrorMessage("アカウントセーブデータに異常があります。", $"{ex.GetType()}\n{ex.Message}");
-                a.Show();
+                Dialog.Error("アカウントセーブデータに異常があります。", $"{ex.GetType()}\n{ex.Message}");
             }
             AccountChanges?.Invoke(null, EventArgs.Empty);
         }

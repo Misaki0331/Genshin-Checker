@@ -38,7 +38,7 @@ namespace Genshin_Checker.Core.General
             }
             catch (Exception ex)
             {
-                new ErrorMessage(Localize.Error_Config_FailToLoad, $"{ex}").ShowDialog();
+                Dialog.Error(Localize.Error_Config_FailToLoad, $"{ex}");
             }
         }
         /// <summary>

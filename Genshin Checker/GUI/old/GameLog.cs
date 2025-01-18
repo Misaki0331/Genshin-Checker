@@ -67,7 +67,7 @@ namespace Genshin_Checker.Window
             }
             catch(Exception ex)
             {
-                new ErrorMessage(Localize.Error_Config_FailToLoad, $"{ex}").ShowDialog();
+                Dialog.Error(Localize.Error_Config_FailToLoad, $"{ex}");
             }
         }
 

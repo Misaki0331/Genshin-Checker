@@ -167,7 +167,7 @@ namespace Genshin_Checker.Window
                 PanelLoad(account.SpiralAbyss.GetCurrent??new());
             }catch(Exception ex)
             {
-                new ErrorMessage(Common.ErrorMessage, ex.ToString()).ShowDialog();
+                Dialog.Error(Common.ErrorMessage, ex.ToString());
                 Close();
             }
 
@@ -231,7 +231,7 @@ namespace Genshin_Checker.Window
             }
             catch (Exception ex)
             {
-                new ErrorMessage(Common.CommonErrorOccurred, ex.ToString()).ShowDialog();
+                Dialog.Error(Common.CommonErrorOccurred, ex.ToString());
             }
 
         }

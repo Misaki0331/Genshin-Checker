@@ -46,9 +46,9 @@ namespace Genshin_Checker.GUI.Pages.Setting
             {
                 var result = await MovingData.BackupToZip(sfd.FileName);
                 if (result == null)
-                    new InfoMessage(ManageUserData.SaveBackup_Success_Title, ManageUserData.SaveBackup_Success_Message).ShowDialog();
+                    Dialog.Info(ManageUserData.SaveBackup_Success_Title, ManageUserData.SaveBackup_Success_Message);
                 else
-                    new ErrorMessage(ManageUserData.SaveBackup_Failed_Title, result.ToString()).ShowDialog();
+                    Dialog.Error(ManageUserData.SaveBackup_Failed_Title, result.ToString());
             }
         }
         private void ClickOverwrite(object sender, RoutedEventArgs e)

@@ -47,7 +47,7 @@ namespace Genshin_Checker.Window.ProgressWindow
                 await account.TravelersDiaryDetail.Correct(month,(TravelersDiaryDetail.CorrectMode)mode);
             }catch(Exception ex)
             {
-                new ErrorMessage(Localize.Error_LoadTravelersDiaryDetail_FailedToLoadFromDatabase, $"{ex}").ShowDialog();
+                Dialog.Error(Localize.Error_LoadTravelersDiaryDetail_FailedToLoadFromDatabase, $"{ex}");
             }
             finally
             {

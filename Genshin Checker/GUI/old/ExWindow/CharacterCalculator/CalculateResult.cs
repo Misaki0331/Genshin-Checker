@@ -356,7 +356,7 @@ namespace Genshin_Checker.Window.ExWindow.CharacterCalculator
             }
             catch(Exception ex)
             {
-                new ErrorMessage(Localize.Error_CharacterResult_FailedToLoad, ex.ToString()).ShowDialog();
+                Dialog.Error(Localize.Error_CharacterResult_FailedToLoad, ex.ToString());
             }
         }
 
