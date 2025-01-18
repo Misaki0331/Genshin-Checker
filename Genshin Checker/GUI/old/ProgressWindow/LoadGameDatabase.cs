@@ -2,7 +2,7 @@
 using Genshin_Checker.Core.HoYoLab;
 using Genshin_Checker.resource.Languages;
 using Genshin_Checker.Store;
-using Genshin_Checker.Window.Popup;
+using Genshin_Checker.GUI.Window.PopupWindow;
 using System.Diagnostics;
 using System.IO;
 using System.Runtime.InteropServices;
@@ -283,7 +283,7 @@ namespace Genshin_Checker.Window.ProgressWindow
             var authkey = await WebViewWatcher.GetServiceCenterAuthKey();
             if (authkey == null)
             {
-                new ErrorMessage(Localize.Error_LoadGameDatabase_FailedToReadAuth, Localize.Windowname_LoadGameDatabase_AuthkeyTip).ShowDialog();
+                Dialog.Error(Localize.Error_LoadGameDatabase_FailedToReadAuth, Localize.Windowname_LoadGameDatabase_AuthkeyTip);
                 WillClose = true;
                 Close();
                 return;
@@ -296,14 +296,14 @@ namespace Genshin_Checker.Window.ProgressWindow
             }
             catch (GameAPI.GameAPIException ex)
             {
-                new ErrorMessage(Localize.Error_LoadGameDatabase_FailedToAuth, $"{Localize.Windowname_LoadGameDatabase_AuthkeyTip}\n{ex.Message}").ShowDialog();
+                Dialog.Error(Localize.Error_LoadGameDatabase_FailedToAuth, $"{Localize.Windowname_LoadGameDatabase_AuthkeyTip}\n{ex.Message}");
                 WillClose = true;
                 Close();
                 return;
             }
             catch (Exception ex)
             {
-                new ErrorMessage(Common.CommonErrorOccurred, $"{ex}").ShowDialog();
+                Dialog.Error(Common.CommonErrorOccurred, $"{ex}");
                 WillClose = true;
                 Close();
                 return;
