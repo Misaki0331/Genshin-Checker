@@ -21,6 +21,7 @@ namespace Genshin_Checker.GUI.Window
     {
         public SettingWindow()
         {
+            Log.Debug($"IsLoaded = {IsLoaded}");
             InitializeComponent();
         }
     }

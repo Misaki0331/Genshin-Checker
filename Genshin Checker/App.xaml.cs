@@ -22,6 +22,8 @@ namespace Genshin_Checker.Core
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
+
+            this.ShutdownMode = ShutdownMode.OnExplicitShutdown;
 #if !DEBUG
             //ThreadExceptionイベントハンドラを追加
             Application.ThreadException +=

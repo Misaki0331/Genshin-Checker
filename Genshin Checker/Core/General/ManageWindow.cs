@@ -87,8 +87,7 @@ namespace Genshin_Checker.Core.General
         public static WindowData OpenWindow(Account? account, string name)
         {
             string Name = $"{(account != null ? account.UID : "null")},{name}";
-            var delete = FormList.Find(a => a.Name == Name && a.IsDisposed);
-            if (delete != null) FormList.Remove(delete);
+            FormList.RemoveAll(a=> a.IsDisposed);
             var find = FormList.Find(a => a.Name == Name);
             bool IsAdd = find == null;
             if (account == null)
