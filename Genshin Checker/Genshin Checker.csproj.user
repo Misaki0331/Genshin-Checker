@@ -49,6 +49,9 @@
     <Compile Update="GUI\Window\CentralPanel.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="GUI\Window\HoYoContentViewer.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="GUI\Window\PopupWindow\ErrorMessage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -276,6 +279,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="GUI\Window\CentralPanel.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="GUI\Window\HoYoContentViewer.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Themes\Light.xaml">

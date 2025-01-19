@@ -122,6 +122,9 @@ namespace Genshin_Checker.Core.General
                         case nameof(Genshin_Checker.Window.MusicPlayer):
                             find = new(new Genshin_Checker.Window.MusicPlayer()) { Name = Name };
                             break;
+                        case nameof(Genshin_Checker.GUI.Window.HoYoContentViewer):
+                            find = new(new Genshin_Checker.GUI.Window.HoYoContentViewer()) { Name = Name };
+                            break;
                     }
             }
             else

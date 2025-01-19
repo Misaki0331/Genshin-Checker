@@ -188,7 +188,7 @@ namespace Genshin_Checker
 
                 case ToolStripMenuItem func when func.Equals(FuncTestFunction):
                     //テスト用
-                    ManageWindow.OpenWindow(null, nameof(APIChecker));
+                    ManageWindow.OpenWindow(null, nameof(GUI.Window.HoYoContentViewer));
                     break;
 
                 case ToolStripMenuItem func when func.Equals(FuncGameLog):
