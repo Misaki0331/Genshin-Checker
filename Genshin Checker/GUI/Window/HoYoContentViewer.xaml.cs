@@ -25,37 +25,51 @@ namespace Genshin_Checker.GUI.Window
 
         private async void LoadArticles()
         {
-            ArticleList.ItemsSource = new List<Article> { new Article { Title = "読み込み中...", Summary = "" } };
+            ArticleList.ItemsSource = new List<Article> { new Article { Title = "Loading...", Summary = "" } };
 
             var articles = await FetchArticlesAsync();
-
             ArticleList.ItemsSource = articles;
+            if(ArticleList.Items.Count>0) ArticleList.SelectedIndex = 0;
         }
 
         private async Task<List<Article>> FetchArticlesAsync()
         {
             var articles = new List<Article>();
-
-            using (var client = new HttpClient())
+            try
             {
-                var responseBytes = await client.GetByteArrayAsync("https://dynamic-api.misaki-chan.world/genshin/bbs/ja");
-                var responseString = System.Text.Encoding.UTF8.GetString(responseBytes);
-                var root = JsonSerializer.Deserialize<Root>(responseString);
-
-                if (root != null)
+                using (var client = new HttpClient())
                 {
-                    foreach (var result in root.Results)
+                    var responseBytes = await client.GetByteArrayAsync("https://dynamic-api.misaki-chan.world/genshin/bbs/ja");
+                    var responseString = System.Text.Encoding.UTF8.GetString(responseBytes);
+                    var root = JsonSerializer.Deserialize<Root>(responseString);
+
+                    if (root != null)
                     {
-                        articles.Add(new Article
+                        foreach (var result in root.Results)
                         {
-                            Title = result.Subject,
-                            Summary = result.Description,
-                            Content = $"<meta charset=\"UTF-8\"><style>img {{ max-width: 100%; height: auto; }}</style>{result.Content.HTMLText}"
-                        });
+                            string AddContent = "";
+                            if (result.Content.IsSimple)
+                            {
+                                foreach (var img in result.Content.Images)
+                                {
+                                    AddContent += $"<br/><img src=\"{img}\"/>";
+                                }
+                            }
+                            articles.Add(new Article
+                            {
+                                Title = result.Subject,
+                                Summary = result.Description,
+                                Content = result.Content.HTMLText + AddContent
+                            });
+                        }
                     }
                 }
+            }catch(Exception ex)
+            {
+                Log.Error(ex);
+                Dialog.Error("取得エラー", $"{ex}");
+                Close();
             }
-
             return articles;
         }
 
@@ -63,7 +77,8 @@ namespace Genshin_Checker.GUI.Window
         {
             if (ArticleList.SelectedItem is Article selectedArticle)
             {
-                HtmlViewer.NavigateToString(selectedArticle.Content);
+                HtmlViewer.NavigateToString("<meta charset=\"UTF-8\"><style>img { width: 100%; height: auto; }\niframe { width: 100%; aspect-ratio: 16 / 9;}</style>" + selectedArticle.Content);
+                Title = selectedArticle.Title;
             }
         }
     }
