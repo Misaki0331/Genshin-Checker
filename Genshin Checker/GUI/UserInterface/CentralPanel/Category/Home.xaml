@@ -1,0 +1,176 @@
+﻿<UserControl x:Class="Genshin_Checker.GUI.UserInterface.CentralPanel.Category.Home"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Genshin_Checker.GUI.UserInterface.CentralPanel.Category"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:templete="clr-namespace:Genshin_Checker.GUI.StyleTemplete"
+             xmlns:component="clr-namespace:Genshin_Checker.GUI.UserInterface.CentralPanel.Component"
+             mc:Ignorable="d" 
+             Background="{DynamicResource MaterialDesignPaper}"
+             FontFamily="{DynamicResource MaterialDesignFont}"
+             RenderOptions.BitmapScalingMode="HighQuality"
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Grid>
+                <materialDesign:Chip Content="4 / 4" Style="{StaticResource MaterialDesignOutlineChip}">
+                    <materialDesign:Chip.Icon>
+                        <Image  Source="https://static-api.misaki-chan.world/genshin-checker/webtools/img/quest.png"/>
+                    </materialDesign:Chip.Icon>
+                    <materialDesign:Chip.ToolTip>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Text="貯蓄冒険修練 : 1,234.5" Grid.Row="0"/>
+                            <TextBlock Text="テスト" Grid.Row="1"/>
+                            <TextBlock Text="あいうえおかきくけこ" Grid.Row="2"/>
+                        </Grid>
+                    </materialDesign:Chip.ToolTip>
+                </materialDesign:Chip>
+            </Grid>
+            <Grid>
+                <materialDesign:Chip Content="200 / 200" Style="{StaticResource MaterialDesignOutlineChip}">
+                    <materialDesign:Chip.Icon>
+                        <Image  Source="https://static-api.misaki-chan.world/genshin-checker/webtools/img/resin.png"/>
+                    </materialDesign:Chip.Icon>
+                </materialDesign:Chip>
+            </Grid>
+            <Grid>
+                <materialDesign:Chip Content="2400 / 2400" Style="{StaticResource MaterialDesignOutlineChip}">
+                    <materialDesign:Chip.Icon>
+                        <Image Source="https://static-api.misaki-chan.world/genshin-checker/webtools/img/homecoin.png"/>
+                    </materialDesign:Chip.Icon>
+                </materialDesign:Chip>
+            </Grid>
+        </StackPanel>
+
+        <templete:DynamicWrapPanel Grid.Row="1" Grid.Column="0">
+            <materialDesign:Card Margin="8" Width="auto" Style="{StaticResource MaterialDesignOutlinedCard}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <StackPanel Grid.Row="1" Margin="8,8,8,0">
+                        <TextBlock FontWeight="Bold" FontSize="18" TextAlignment="Center" Text="アクティビティ"/>
+                        <Separator/>
+                        <component:InfoDisplay Title="プレイ時間" Number="12:34" 
+                IconKind="ClockOutLine"
+                ToolTip="今日1日で原神をプレイした時間です。"/>
+                        <component:InfoDisplay Title="獲得数" Number="1,234"
+                IconImageSource="https://static-api.misaki-chan.world/genshin-checker/webtools/img/primogems.png"
+                ToolTip="実績を獲得した数です。"/>
+                        <component:InfoDisplay Title="獲得数" Number="123.4" Unit="万"
+                IconImageSource="https://static-api.misaki-chan.world/genshin-checker/webtools/img/mora.png"
+                ToolTip="実績を獲得した数です。"/>
+                    </StackPanel>
+
+                </Grid>
+            </materialDesign:Card>
+            <materialDesign:Card Margin="8" Width="auto" Style="{StaticResource MaterialDesignOutlinedCard}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <StackPanel Grid.Row="1" Margin="8,8,8,0">
+                        <TextBlock FontWeight="Bold" FontSize="18" TextAlignment="Center" Text="活動情報"/>
+                        <Separator/>
+                        <component:InfoDisplay Title="ログイン日数" Number="1,234" Unit="日"
+                            IconKind="CalendarMonthOutline"
+                            ToolTip="あなたがパイモンと一緒に旅をした日数です。"/>
+                        <component:InfoDisplay Title="アチーブメント" Number="1,234" Unit="個"
+                            IconImageSource="https://static-api.misaki-chan.world/genshin-checker/webtools/img/achievement.png"
+                            ToolTip="実績を獲得した数です。"/>
+                    </StackPanel>
+                    
+                </Grid>
+            </materialDesign:Card>
+
+            <materialDesign:Card Margin="8" Width="auto" Style="{StaticResource MaterialDesignOutlinedCard}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <StackPanel Grid.Row="1" Margin="8,8,8,0">
+                        <TextBlock FontWeight="Bold" FontSize="18" TextAlignment="Center" Text="探索"/>
+                        <Separator/>
+                        <component:InfoDisplay Title="探索率" Number="100.00" Unit="%"
+                            IconKind="MapCheck"
+    ToolTip="あなたがパイモンと一緒に旅をした日数です。"/>
+                        <component:InfoDisplay Title="神の瞳" Number="1,234"
+    IconImageSource="https://static-api.misaki-chan.world/genshin-checker/webtools/img/oculus.png"
+    ToolTip="あなたがパイモンと一緒に旅をした日数です。"/>
+                        <component:InfoDisplay Title="開けた宝箱" Number="12,345"
+    IconImageSource="https://static-api.misaki-chan.world/genshin-checker/webtools/img/chest.png"
+    ToolTip="あなたがパイモンと一緒に旅をした日数です。"/>
+                    </StackPanel>
+
+                </Grid>
+            </materialDesign:Card>
+            <materialDesign:Card Margin="8" Width="auto" Style="{StaticResource MaterialDesignOutlinedCard}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <StackPanel Grid.Row="1" Margin="8,8,8,0">
+                        <TextBlock FontWeight="Bold" FontSize="18" TextAlignment="Center" Text="深境螺旋"/>
+                        <Separator/>
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Autorenew" />
+                            <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Text="あと 12 時間 34 分"/>
+                        </StackPanel>
+                        <component:InfoDisplay Title="到達エリア" Number="12-3"
+                IconKind="Check"
+                ToolTip="あなたがパイモンと一緒に旅をした日数です。"/>
+                        <component:InfoDisplay Title="淵星" Number="36"
+                IconKind="Hexagram"
+                ToolTip="あなたがパイモンと一緒に旅をした日数です。"/>
+                    </StackPanel>
+
+                </Grid>
+            </materialDesign:Card>
+            <materialDesign:Card Margin="8" Width="auto" Style="{StaticResource MaterialDesignOutlinedCard}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <StackPanel Grid.Row="1" Margin="8,8,8,0">
+                        <TextBlock FontWeight="Bold" FontSize="18" TextAlignment="Center" Text="幻想シアター"/>
+                        <Separator/>
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Autorenew" />
+                            <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Text="あと 12 時間 34 分"/>
+                        </StackPanel>
+                        <component:InfoDisplay Title="到達エリア" LeftUnit="第" Number="10" Unit="幕"
+                                               SmallInfo="難易度 : マスター"
+                IconImageSource="https://static-api.misaki-chan.world/genshin-checker/webtools/dynamic/heraldry-icon-4.png"
+                ToolTip="あなたがパイモンと一緒に旅をした日数です。"/>
+                        <component:InfoDisplay Title="幻戯の花" Number="1,234"
+                IconImageSource="https://static-api.misaki-chan.world/genshin-checker/webtools/img/fantasia_flower.png"
+                ToolTip="あなたがパイモンと一緒に旅をした日数です。"/>
+                    </StackPanel>
+
+                </Grid>
+            </materialDesign:Card>
+        </templete:DynamicWrapPanel>
+    </Grid>
+</UserControl>

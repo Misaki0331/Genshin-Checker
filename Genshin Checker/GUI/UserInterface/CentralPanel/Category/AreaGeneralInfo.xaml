@@ -1,0 +1,113 @@
+﻿<UserControl x:Class="Genshin_Checker.GUI.UserInterface.CentralPanel.Category.AreaGeneralInfo"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Genshin_Checker.GUI.UserInterface.CentralPanel.Category"
+             mc:Ignorable="d" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:templete="clr-namespace:Genshin_Checker.GUI.StyleTemplete"
+             xmlns:component="clr-namespace:Genshin_Checker.GUI.UserInterface.CentralPanel.Component"
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <StackPanel>
+            <materialDesign:Card Margin="8" Width="auto" Style="{StaticResource MaterialDesignOutlinedCard}">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="活動日数" FontSize="24" Margin="8" Grid.Column="0" VerticalAlignment="Center"/>
+                    <StackPanel Grid.Column="2" Orientation="Horizontal" Margin="8">
+                        <TextBlock Text="1,234" FontSize="32" FontWeight="Bold" VerticalAlignment="Center"/>
+                        <TextBlock Text="日" FontSize="24" VerticalAlignment="Bottom"/>
+                    </StackPanel>
+                </Grid>
+            </materialDesign:Card>
+            <templete:DynamicWrapPanel>
+                <materialDesign:Card Margin="8" Width="auto" Style="{StaticResource MaterialDesignOutlinedCard}">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <StackPanel Grid.Row="1" Margin="8,8,8,0">
+                            <TextBlock FontWeight="Bold" FontSize="18" TextAlignment="Center" Text="獲得した神の瞳"/>
+                            <Separator/>
+                            <component:InfoDisplay Title="風神の瞳" Number="66" Unit="/ 66" 
+IconImageSource="https://static-api.misaki-chan.world/genshin-checker/asset/items/oculies/1.png"
+ToolTip=""/>
+                            <component:InfoDisplay Title="岩神の瞳" Number="181" Unit="/ 181"
+IconImageSource="https://static-api.misaki-chan.world/genshin-checker/asset/items/oculies/2.png"
+ToolTip="実績を獲得した数です。"/>
+                            <component:InfoDisplay Title="雷神の瞳" Number="181" Unit="/ 181"
+IconImageSource="https://static-api.misaki-chan.world/genshin-checker/asset/items/oculies/3.png"
+ToolTip="実績を獲得した数です。"/>
+                            <component:InfoDisplay Title="草神の瞳" Number="271" Unit="/ 271"
+IconImageSource="https://static-api.misaki-chan.world/genshin-checker/asset/items/oculies/4.png"
+ToolTip="実績を獲得した数です。"/>
+                            <component:InfoDisplay Title="水神の瞳" Number="225" Unit="/ 225"
+IconImageSource="https://static-api.misaki-chan.world/genshin-checker/asset/items/oculies/5.png"
+ToolTip="実績を獲得した数です。"/>
+                            <component:InfoDisplay Title="炎神の瞳" Number="108" Unit="/ 108"
+IconImageSource="https://static-api.misaki-chan.world/genshin-checker/asset/items/oculies/6.png"
+ToolTip="実績を獲得した数です。"/>
+                        </StackPanel>
+
+                    </Grid>
+                </materialDesign:Card>
+                <materialDesign:Card Margin="8" Width="auto" Style="{StaticResource MaterialDesignOutlinedCard}">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <StackPanel Grid.Row="1" Margin="8,8,8,0">
+                            <TextBlock FontWeight="Bold" FontSize="18" TextAlignment="Center" Text="開封した宝箱の数"/>
+                            <Separator/>
+                            <component:InfoDisplay Title="普通の宝箱" Number="1,234" 
+    IconImageSource="https://static-api.misaki-chan.world/genshin-checker/asset/items/common/chest-1.png"
+    ToolTip=""/>
+                            <component:InfoDisplay Title="精巧な宝箱" Number="1,234"
+    IconImageSource="https://static-api.misaki-chan.world/genshin-checker/asset/items/common/chest-2.png"
+    ToolTip="実績を獲得した数です。"/>
+                            <component:InfoDisplay Title="貴重な宝箱" Number="1,234"
+    IconImageSource="https://static-api.misaki-chan.world/genshin-checker/asset/items/common/chest-3.png"
+    ToolTip="実績を獲得した数です。"/>
+                            <component:InfoDisplay Title="豪華な宝箱" Number="1,234"
+    IconImageSource="https://static-api.misaki-chan.world/genshin-checker/asset/items/common/chest-5.png"
+    ToolTip="実績を獲得した数です。"/>
+                            <component:InfoDisplay Title="珍奇な宝箱" Number="1,234"
+    IconImageSource="https://static-api.misaki-chan.world/genshin-checker/asset/items/common/chest-4.png"
+    ToolTip="実績を獲得した数です。"/>
+                        </StackPanel>
+
+                    </Grid>
+                </materialDesign:Card>
+                <materialDesign:Card Margin="8" Width="auto" Style="{StaticResource MaterialDesignOutlinedCard}">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <StackPanel Grid.Row="1" Margin="8,8,8,0">
+                            <TextBlock FontWeight="Bold" FontSize="18" TextAlignment="Center" Text="マップ開放情報"/>
+                            <Separator/>
+                            <component:InfoDisplay Title="ワープポイント" Number="1,234" 
+IconImageSource="https://static-api.misaki-chan.world/genshin-checker/asset/items/common/waypoint.png"
+ToolTip=""/>
+                            <component:InfoDisplay Title="開放した秘境" Number="1,234"
+IconImageSource="https://static-api.misaki-chan.world/genshin-checker/asset/items/common/domain.png"
+ToolTip="実績を獲得した数です。"/>
+                        </StackPanel>
+
+                    </Grid>
+                </materialDesign:Card>
+            </templete:DynamicWrapPanel>
+        </StackPanel>
+    </Grid>
+</UserControl>
