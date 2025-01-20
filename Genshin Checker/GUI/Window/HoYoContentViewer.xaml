@@ -7,7 +7,9 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:wv2="clr-namespace:Microsoft.Web.WebView2.Wpf;assembly=Microsoft.Web.WebView2.Wpf"
         mc:Ignorable="d"
-        Title="HoYoContentViewer" Height="450" Width="800"
+        Title="HoYoContentViewer" Height="800" Width="1000"
+        
+             RenderOptions.BitmapScalingMode="HighQuality"
         Style="{StaticResource MaterialDesignWindow}">
     <Window.Resources>
         <ResourceDictionary>
@@ -18,17 +20,30 @@
     </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="300" />
-            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="3*" />
         </Grid.ColumnDefinitions>
 
         <ListBox Name="ArticleList" SelectionChanged="ArticleList_SelectionChanged"
                  Style="{StaticResource MaterialDesignListBox}" Margin="0">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel>
-                        <TextBlock Text="{Binding Title}" FontWeight="Bold" FontSize="16" />
-                        <TextBlock Text="{Binding Summary}" FontSize="14" Foreground="Gray" />
+                    <StackPanel Orientation="Vertical">
+                    <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid Grid.Column="1" Margin="4,0,0,0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                            <TextBlock Grid.Row="0" Text="{Binding Title}" FontWeight="Bold" FontSize="16" TextTrimming="CharacterEllipsis" />
+                            <TextBlock Grid.Row="1" Text="{Binding Summary}" FontSize="14" Foreground="Gray" TextTrimming="CharacterEllipsis" MaxHeight="40" TextWrapping="Wrap" VerticalAlignment="Bottom" />
+                            </Grid>
+                                <Image Grid.Column="0" Grid.RowSpan="2" MaxHeight="64" Source="{Binding PreviewImage}" Opacity="1" Margin="0"/>
+                    </Grid>
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
