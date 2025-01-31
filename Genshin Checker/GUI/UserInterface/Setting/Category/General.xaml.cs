@@ -5,13 +5,14 @@ using System.Windows;
 using System.Windows.Controls;
 using Brushes = System.Windows.Media.Brushes;
 using CheckBox = System.Windows.Controls.CheckBox;
+using UserControl = System.Windows.Controls.UserControl;
 
-namespace Genshin_Checker.GUI.Pages.Setting
+namespace Genshin_Checker.GUI.UserInterface.Setting.Category
 {
     /// <summary>
     /// General.xaml の相互作用ロジック
     /// </summary>
-    public partial class General : Page
+    public partial class General : UserControl
     {
         public EventHandler<string>? ErrorHandle;
         private List<string> ScreenshotFileExtension;

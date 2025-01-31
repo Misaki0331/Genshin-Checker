@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:label="clr-namespace:Genshin_Checker.GUI.UserInterface.Component"
+             xmlns:categoly="clr-namespace:Genshin_Checker.GUI.UserInterface.Setting.Category"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d" 
       d:DesignHeight="720" d:DesignWidth="960"
@@ -11,41 +12,103 @@
         Foreground="{DynamicResource ForegroundColor}">
 
     <Grid>
-        <Grid.Resources>
-            <Style TargetType="label:CategoryLabel">
-                <Setter Property="Margin" Value="5"/>
-            </Style>
-        </Grid.Resources>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="200"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-
-        <ScrollViewer Grid.Column="0" Grid.Row="1"  VerticalScrollBarVisibility="Auto">
-            <StackPanel Background="#202442" >
-                <label:CategoryLabel x:Name="Category_General" Click="CategoryClick" Tag="General" Text="全般" IsSelected="True"/>
-                <label:CategoryLabel x:Name="Category_Notification" Click="CategoryClick" Tag="Notification" Text="通知" IsSelected="False"/>
-                <label:CategoryLabel x:Name="Category_AuthApp" Click="CategoryClick" Tag="AuthApp" Text="アプリ連携" IsSelected="False"/>
-                <label:CategoryLabel x:Name="Category_HoYoLabConfig" Click="CategoryClick" Tag="HoYoLabConfig" Text="HoYoLab" IsSelected="False"/>
-                <label:CategoryLabel x:Name="Category_AppData" Click="CategoryClick" Tag="ApplicationData" Text="アプリデータ" IsSelected="False"/>
-                <label:CategoryLabel x:Name="Category_VersionInfo" Click="CategoryClick" Tag="VersionInfo" Text="バージョン情報" IsSelected="False"/>
-            </StackPanel>
-        </ScrollViewer>
-        <ScrollViewer Grid.Column="1" Grid.Row="1" VerticalScrollBarVisibility="Auto">
-            <Frame x:Name="PageFrame" NavigationUIVisibility="Hidden"
-                   ScrollViewer.VerticalScrollBarVisibility="Auto" 
-                    ScrollViewer.CanContentScroll="True" />
-        </ScrollViewer>
-        <materialDesign:Snackbar x:Name="ErrorMessage"
-            MessageQueue="{materialDesign:MessageQueue}"
-            Foreground="Yellow"
-            Grid.Row="1" Grid.Column="1"
-            HorizontalAlignment="Center"
-            HorizontalContentAlignment="Center"
-            VerticalAlignment="Bottom"/>
+        <materialDesign:Card >
+            <TabControl
+    materialDesign:NavigationRailAssist.ShowSelectionBackground="True"
+    SnapsToDevicePixels="True"
+    Style="{StaticResource MaterialDesignNavigationRailTabControl}"
+    TabStripPlacement="Left">
+                <TabItem>
+                    <TabItem.Header>
+                        <StackPanel Width="auto" Height="auto">
+                            <materialDesign:PackIcon Width="24" Height="24" HorizontalAlignment="Center" Kind="Cog" />
+                            <TextBlock HorizontalAlignment="Center" Text="全般" />
+                        </StackPanel>
+                    </TabItem.Header>
+                    <Grid>
+                        <ScrollViewer Grid.Column="0" Grid.Row="1"  VerticalScrollBarVisibility="Auto">
+                            <StackPanel Background="#202442" >
+                                <categoly:General/>
+                            </StackPanel>
+                        </ScrollViewer>
+                    </Grid>
+                </TabItem>
+                <TabItem>
+                    <TabItem.Header>
+                        <StackPanel Width="auto" Height="auto">
+                            <materialDesign:PackIcon Width="24" Height="24" HorizontalAlignment="Center" Kind="Bell" />
+                            <TextBlock HorizontalAlignment="Center" Text="通知" />
+                        </StackPanel>
+                    </TabItem.Header>
+                    <Grid>
+                        <ScrollViewer Grid.Column="0" Grid.Row="1"  VerticalScrollBarVisibility="Auto">
+                            <StackPanel Background="#202442" >
+                                <categoly:Notification/>
+                            </StackPanel>
+                        </ScrollViewer>
+                    </Grid>
+                </TabItem>
+                <TabItem>
+                    <TabItem.Header>
+                        <StackPanel Width="auto" Height="auto">
+                            <materialDesign:PackIcon Width="24" Height="24" HorizontalAlignment="Center" Kind="CardAccountDetails" />
+                            <TextBlock HorizontalAlignment="Center" Text="アプリ連携" />
+                        </StackPanel>
+                    </TabItem.Header>
+                    <Grid>
+                        <ScrollViewer Grid.Column="0" Grid.Row="1"  VerticalScrollBarVisibility="Auto">
+                            <StackPanel Background="#202442" >
+                                <categoly:AuthApp/>
+                            </StackPanel>
+                        </ScrollViewer>
+                    </Grid>
+                </TabItem>
+                <TabItem>
+                    <TabItem.Header>
+                        <StackPanel Width="auto" Height="auto">
+                            <materialDesign:PackIcon Width="24" Height="24" HorizontalAlignment="Center" Kind="AccountCog" />
+                            <TextBlock HorizontalAlignment="Center" Text="HoYoLab" />
+                        </StackPanel>
+                    </TabItem.Header>
+                    <Grid>
+                        <ScrollViewer Grid.Column="0" Grid.Row="1"  VerticalScrollBarVisibility="Auto">
+                            <StackPanel Background="#202442" >
+                                <categoly:HoYoLabConfig/>
+                            </StackPanel>
+                        </ScrollViewer>
+                    </Grid>
+                </TabItem>
+                <TabItem>
+                    <TabItem.Header>
+                        <StackPanel Width="auto" Height="auto">
+                            <materialDesign:PackIcon Width="24" Height="24" HorizontalAlignment="Center" Kind="Database" />
+                            <TextBlock HorizontalAlignment="Center" Text="アプリデータ" />
+                        </StackPanel>
+                    </TabItem.Header>
+                    <Grid>
+                        <ScrollViewer Grid.Column="0" Grid.Row="1"  VerticalScrollBarVisibility="Auto">
+                            <StackPanel Background="#202442" >
+                                <categoly:AppData/>
+                            </StackPanel>
+                        </ScrollViewer>
+                    </Grid>
+                </TabItem>
+                <TabItem>
+                    <TabItem.Header>
+                        <StackPanel Width="auto" Height="auto">
+                            <materialDesign:PackIcon Width="24" Height="24" HorizontalAlignment="Center" Kind="Info" />
+                            <TextBlock HorizontalAlignment="Center" Text="バージョン" />
+                        </StackPanel>
+                    </TabItem.Header>
+                    <Grid>
+                        <ScrollViewer Grid.Column="0" Grid.Row="1"  VerticalScrollBarVisibility="Auto">
+                            <StackPanel Background="#202442" >
+                                <categoly:VersionInfo/>
+                            </StackPanel>
+                        </ScrollViewer>
+                    </Grid>
+                </TabItem>
+            </TabControl>
+        </materialDesign:Card>
     </Grid>
 </UserControl>

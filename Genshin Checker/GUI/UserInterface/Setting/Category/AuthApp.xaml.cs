@@ -15,13 +15,14 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using UserControl = System.Windows.Controls.UserControl;
 
-namespace Genshin_Checker.GUI.Pages.Setting
+namespace Genshin_Checker.GUI.UserInterface.Setting.Category
 {
     /// <summary>
     /// General.xaml の相互作用ロジック
     /// </summary>
-    public partial class AuthApp : Page
+    public partial class AuthApp : UserControl
     {
         public EventHandler<string>? ErrorHandle;
         public AuthApp()

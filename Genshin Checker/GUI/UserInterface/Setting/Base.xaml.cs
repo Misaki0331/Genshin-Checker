@@ -28,22 +28,21 @@ namespace Genshin_Checker.GUI.UserInterface.Setting
         {
             InitializeComponent();
 
-            var next = new Pages.Setting.General();
-            next.ErrorHandle += new EventHandler<string>((sender, e) => ChildErrorHandle(sender, e));
-            PageFrame.Navigate(next);
+            //var next = new Pages.Setting.General();
+            //next.ErrorHandle += new EventHandler<string>((sender, e) => ChildErrorHandle(sender, e));
+            //PageFrame.Navigate(next);
         }
 
 
         private void CategoryClick(object sender, EventArgs e)
         {
-            var Categories = new Dictionary<CategoryLabel, Type>() {
+            /*var Categories = new Dictionary<CategoryLabel, Type>() {
                 { Category_General, typeof(Pages.Setting.General) },
                 {Category_Notification,typeof(Pages.Setting.Notification)},
                 {Category_AuthApp,typeof(Pages.Setting.AuthApp)},
                 {Category_HoYoLabConfig,typeof(Pages.Setting.HoYoLabConfig)},
                 {Category_AppData,typeof(Pages.Setting.AppData)},
                 { Category_VersionInfo,typeof(Pages.Setting.VersionInfo) }
-            };
             if (sender is not CategoryLabel category) return;
             var pagetype = Categories[category];
             if (pagetype == null) return;
@@ -62,12 +61,13 @@ namespace Genshin_Checker.GUI.UserInterface.Setting
                 while (entry != null)
                     entry = PageFrame.RemoveBackEntry();
             }
+            };*/
         }
 
         private void ChildErrorHandle(object? sender, string e)
         {
-            ErrorMessage.MessageQueue?.Clear();
-            ErrorMessage.MessageQueue?.Enqueue(e);
+            //ErrorMessage.MessageQueue?.Clear();
+            //ErrorMessage.MessageQueue?.Enqueue(e);
         }
     }
 }

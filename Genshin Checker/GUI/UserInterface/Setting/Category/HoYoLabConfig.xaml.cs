@@ -14,13 +14,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using CheckBox = System.Windows.Controls.CheckBox;
+using UserControl = System.Windows.Controls.UserControl;
 
-namespace Genshin_Checker.GUI.Pages.Setting
+namespace Genshin_Checker.GUI.UserInterface.Setting.Category
 {
     /// <summary>
     /// General.xaml の相互作用ロジック
     /// </summary>
-    public partial class HoYoLabConfig : Page
+    public partial class HoYoLabConfig : UserControl
     {
         public EventHandler<string>? ErrorHandle;
         bool IsAccountLoaded;

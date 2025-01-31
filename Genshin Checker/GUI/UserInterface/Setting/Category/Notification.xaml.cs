@@ -18,12 +18,13 @@ using Windows.ApplicationModel.Contacts;
 using Windows.Media.Protection.PlayReady;
 using CheckBox = System.Windows.Controls.CheckBox;
 
-namespace Genshin_Checker.GUI.Pages.Setting
+using UserControl = System.Windows.Controls.UserControl;
+namespace Genshin_Checker.GUI.UserInterface.Setting.Category
 {
     /// <summary>
     /// General.xaml の相互作用ロジック
     /// </summary>
-    public partial class Notification : Page
+    public partial class Notification : UserControl
     {
         public EventHandler<string>? ErrorHandle;
         bool IsAccountLoaded;

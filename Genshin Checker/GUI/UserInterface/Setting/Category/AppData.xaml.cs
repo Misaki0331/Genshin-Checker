@@ -17,13 +17,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Application = System.Windows.Forms.Application;
+using UserControl = System.Windows.Controls.UserControl;
 
-namespace Genshin_Checker.GUI.Pages.Setting
+namespace Genshin_Checker.GUI.UserInterface.Setting.Category
 {
     /// <summary>
     /// General.xaml の相互作用ロジック
     /// </summary>
-    public partial class AppData : Page
+    public partial class AppData : UserControl
     {
         public EventHandler<string>? ErrorHandle;
         public AppData()

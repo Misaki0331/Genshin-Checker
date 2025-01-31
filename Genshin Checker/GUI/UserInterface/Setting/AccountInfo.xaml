@@ -6,6 +6,7 @@
              xmlns:local="clr-namespace:Genshin_Checker.GUI.UserInterface.Setting"
              mc:Ignorable="d" 
              d:DesignHeight="100" d:DesignWidth="500"
+             RenderOptions.BitmapScalingMode="HighQuality"
         Foreground="{DynamicResource ForegroundColor}" Loaded="ControlLoaded">
     <UserControl.Background>
         <ImageBrush x:Name="BackgroundImage" ImageSource="https://enka.network/ui/UI_NameCardPic_0_P.png" Opacity="0.8" Stretch="UniformToFill"/>
@@ -49,6 +50,6 @@ Opacity="1" />
             </TextBlock.Effect>
         </TextBlock>
         <TextBlock x:Name="UID" Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="1" Grid.RowSpan="3" Text="8XXXXXXXX" Margin="10,0,10,0" FontSize="15" FontFamily="Meiryo UI" Padding="2,2,2,2" FontWeight="Bold" VerticalAlignment="Bottom"/>
-        <Button Grid.Row="3" Grid.Column="2" Content="Disconnect" Margin="0,0,2,2" Padding="2,2,2,2" Click="Disconnect_Click"/>
+        <Button Grid.Row="3" Grid.Column="2" Content="連携解除" Margin="0,0,2,2" Padding="2,2,2,2" Click="Disconnect_Click"/>
     </Grid>
 </UserControl>

@@ -9,9 +9,6 @@
     </Resource>
   </ItemGroup>
   <ItemGroup>
-    <Compile Update="GUI\Pages\Setting\General.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Update="GUI\UserInterface\CentralPanel\Base.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -232,24 +229,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="GUI\Pages\Setting\AuthApp.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="GUI\Pages\Setting\AppData.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="GUI\Pages\Setting\HoYoLabConfig.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="GUI\Pages\Setting\VersionInfo.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="GUI\Pages\Setting\Notification.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="GUI\Pages\Setting\General.xaml">
-      <SubType>Designer</SubType>
-    </Page>
     <Page Update="GUI\UserInterface\CentralPanel\Base.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -278,6 +257,24 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="GUI\UserInterface\Setting\AccountInfo.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="GUI\UserInterface\Setting\Category\AppData.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="GUI\UserInterface\Setting\Category\AuthApp.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="GUI\UserInterface\Setting\Category\General.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="GUI\UserInterface\Setting\Category\HoYoLabConfig.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="GUI\UserInterface\Setting\Category\Notification.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="GUI\UserInterface\Setting\Category\VersionInfo.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="GUI\Window\CentralPanel.xaml">

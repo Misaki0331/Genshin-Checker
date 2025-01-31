@@ -71,19 +71,22 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="GUI\Pages\Setting\AuthApp.xaml.cs">
+    <Compile Update="GUI\UserInterface\Setting\Category\AppData.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="GUI\Pages\Setting\AppData.xaml.cs">
+    <Compile Update="GUI\UserInterface\Setting\Category\AuthApp.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="GUI\Pages\Setting\HoYoLabConfig.xaml.cs">
+    <Compile Update="GUI\UserInterface\Setting\Category\General.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="GUI\Pages\Setting\VersionInfo.xaml.cs">
+    <Compile Update="GUI\UserInterface\Setting\Category\HoYoLabConfig.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="GUI\Pages\Setting\Notification.xaml.cs">
+    <Compile Update="GUI\UserInterface\Setting\Category\Notification.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="GUI\UserInterface\Setting\Category\VersionInfo.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="GUI\Window\PopupWindow\ChooseMessage.xaml.cs">
@@ -100,6 +103,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="GUI\Pages\" />
     <Folder Include="GUI\UserInterface\CentralPanel\Page\" />
     <Folder Include="GUI\UserInterface\CharacterInfo\" />
     <Folder Include="Resource\StyleTemplete\" />
