@@ -68,7 +68,7 @@
                                     <TextBlock FontSize="20" Text="水咲(みさき)"/>
                                     <TextBlock FontSize="13" Margin="0,5,0,0">
                                         <Hyperlink RequestNavigate="Hyperlink_RequestNavigate" NavigateUri="https://github.com/Misaki0331" Foreground="Gray">GitHub</Hyperlink>
-                                        <Hyperlink RequestNavigate="Hyperlink_RequestNavigate" NavigateUri="https://misaki-chan.net/@Misaki" Foreground="#86b300">Misskey</Hyperlink>
+                                        <Hyperlink RequestNavigate="Hyperlink_RequestNavigate" NavigateUri="https://misaki-chan.world/@Misaki" Foreground="#86b300">Misskey</Hyperlink>
                                         <Hyperlink RequestNavigate="Hyperlink_RequestNavigate" NavigateUri="https://x.com/0x7FF">X</Hyperlink>
                                     </TextBlock>
                                 </StackPanel>

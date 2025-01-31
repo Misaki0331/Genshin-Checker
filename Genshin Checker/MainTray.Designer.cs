@@ -41,6 +41,7 @@
             FuncAnalyzeItem = new ToolStripMenuItem();
             FuncCodeExchange = new ToolStripMenuItem();
             FuncMusicPlayer = new ToolStripMenuItem();
+            FuncOfficialInfo = new ToolStripMenuItem();
             toolStripSeparator2 = new ToolStripSeparator();
             FuncSetting = new ToolStripMenuItem();
             toolStripSeparator1 = new ToolStripSeparator();
@@ -68,7 +69,7 @@
             // 
             // NotificationMenu
             // 
-            NotificationMenu.Items.AddRange(new ToolStripItem[] { versionNameToolStripMenuItem, toolStripSeparator3, FuncDetailTime, AccountToolStrip, FuncGameLog, FuncAnalyzeItem, FuncCodeExchange, FuncMusicPlayer, toolStripSeparator2, FuncSetting, toolStripSeparator1, FuncShortcut1, FuncShortcut2, FuncShortcut3, FuncShortcut4, FuncShortcut5, FuncShortcut6, FuncShortcut7, FuncShortcut8, ShortcutSeparator, FuncExit, FuncConsole, FuncTestFunction });
+            NotificationMenu.Items.AddRange(new ToolStripItem[] { versionNameToolStripMenuItem, toolStripSeparator3, FuncDetailTime, AccountToolStrip, FuncGameLog, FuncAnalyzeItem, FuncCodeExchange, FuncMusicPlayer, FuncOfficialInfo, toolStripSeparator2, FuncSetting, toolStripSeparator1, FuncShortcut1, FuncShortcut2, FuncShortcut3, FuncShortcut4, FuncShortcut5, FuncShortcut6, FuncShortcut7, FuncShortcut8, ShortcutSeparator, FuncExit, FuncConsole, FuncTestFunction });
             NotificationMenu.Name = "contextMenuStrip1";
             resources.ApplyResources(NotificationMenu, "NotificationMenu");
             // 
@@ -122,6 +123,12 @@
             FuncMusicPlayer.Name = "FuncMusicPlayer";
             resources.ApplyResources(FuncMusicPlayer, "FuncMusicPlayer");
             FuncMusicPlayer.Click += UIFunction;
+            // 
+            // FuncOfficialInfo
+            // 
+            FuncOfficialInfo.Name = "FuncOfficialInfo";
+            resources.ApplyResources(FuncOfficialInfo, "FuncOfficialInfo");
+            FuncOfficialInfo.Click += UIFunction;
             // 
             // toolStripSeparator2
             // 
@@ -212,7 +219,6 @@
             resources.ApplyResources(this, "$this");
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Black;
-            BackgroundImage = resource.namecard.Genshin_Impact_A_New_World;
             DoubleBuffered = true;
             FormBorderStyle = FormBorderStyle.FixedToolWindow;
             Name = "MainTray";
@@ -253,5 +259,6 @@
         private ToolStripSeparator ShortcutSeparator;
         private ToolStripMenuItem FuncCodeExchange;
         private ToolStripMenuItem FuncMusicPlayer;
+        private ToolStripMenuItem FuncOfficialInfo;
     }
 }

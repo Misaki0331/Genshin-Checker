@@ -202,11 +202,11 @@ namespace Genshin_Checker
                 case ToolStripMenuItem func when func.Equals(FuncCodeExchange):
                     ManageWindow.OpenWindow(null, nameof(Window.CodeExchange));
                     break;
-                    
+
                 case ToolStripMenuItem func when func.Equals(FuncCodeExchange):
                     ManageWindow.OpenWindow(null, nameof(Window.CodeExchange));
                     break;
-                    
+
                 case ToolStripMenuItem func when func.Equals(FuncMusicPlayer):
                     ManageWindow.OpenWindow(null, nameof(Window.MusicPlayer));
                     break;
@@ -214,7 +214,10 @@ namespace Genshin_Checker
                 case ToolStripMenuItem func when func.Equals(FuncAnalyzeItem):
                     ManageWindow.OpenWindow(null, nameof(Window.ProgressWindow.LoadGameDatabase));
                     break;
-                
+
+                case ToolStripMenuItem func when func.Equals(FuncOfficialInfo):
+                    ManageWindow.OpenWindow(null, nameof(GUI.Window.HoYoContentViewer));
+                    break;
                 case ToolStripMenuItem func when func.Equals(FuncExit):
                     ProcessTime.Instance.EmergencyReset();
                     Close();
@@ -308,7 +311,6 @@ namespace Genshin_Checker
             emptyToolStripMenuItem});
             }
         }
-
     }
 
 }

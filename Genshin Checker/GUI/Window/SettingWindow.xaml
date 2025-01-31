@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:ui="clr-namespace:Genshin_Checker.GUI.UserInterface.Setting"
         mc:Ignorable="d"
-        Title="SettingWindow" Height="450" Width="800"
+        Title="設定" Height="450" Width="800"
         Background="{DynamicResource BackgroundColor}"
         Foreground="{DynamicResource ForegroundColor}">
     <Grid>

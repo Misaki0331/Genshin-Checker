@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!--
-    Microsoft ResX Schema 
+    Microsoft ResX Schema
 
     Version 2.0
 
@@ -48,7 +48,7 @@
     value   : The object must be serialized with
             : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
             : and then encoded with base64 encoding.
-    
+
     mimetype: application/x-microsoft.net.object.soap.base64
     value   : The object must be serialized with
             : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
@@ -129,64 +129,79 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="versionNameToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>192, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="versionNameToolStripMenuItem.Text" xml:space="preserve">
     <value>VersionName</value>
   </data>
   <data name="toolStripSeparator3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>221, 6</value>
+    <value>177, 6</value>
   </data>
   <data name="FuncDetailTime.Size" type="System.Drawing.Size, System.Drawing">
-    <value>192, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="FuncDetailTime.Text" xml:space="preserve">
-    <value>詳細プレイ時間データ</value>
+    <value>Play time info</value>
+  </data>
+  <data name="emptyToolStripMenuItem.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="emptyToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>115, 22</value>
+  </data>
+  <data name="emptyToolStripMenuItem.Text" xml:space="preserve">
+    <value>(Empty)</value>
   </data>
   <data name="AccountToolStrip.Size" type="System.Drawing.Size, System.Drawing">
-    <value>192, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="AccountToolStrip.Text" xml:space="preserve">
-    <value>アカウント</value>
+    <value>Account</value>
   </data>
   <data name="FuncGameLog.Size" type="System.Drawing.Size, System.Drawing">
-    <value>192, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="FuncGameLog.Text" xml:space="preserve">
-    <value>ゲームクライアントログ</value>
+    <value>App Client Log</value>
   </data>
   <data name="FuncAnalyzeItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>192, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="FuncAnalyzeItem.Text" xml:space="preserve">
-    <value>アイテム入手履歴の同期</value>
+    <value>Update to Item Log</value>
   </data>
   <data name="FuncCodeExchange.Size" type="System.Drawing.Size, System.Drawing">
-    <value>192, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="FuncCodeExchange.Text" xml:space="preserve">
-    <value>交換コード引換</value>
+    <value>Redeem Code</value>
   </data>
   <data name="FuncMusicPlayer.Size" type="System.Drawing.Size, System.Drawing">
-    <value>192, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="FuncMusicPlayer.Text" xml:space="preserve">
-    <value>音楽プレイヤー</value>
+    <value>Music Player</value>
+  </data>
+  <data name="FuncOfficialInfo.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
+  <data name="FuncOfficialInfo.Text" xml:space="preserve">
+    <value>Official infomation</value>
   </data>
   <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>221, 6</value>
+    <value>177, 6</value>
   </data>
   <data name="FuncSetting.Size" type="System.Drawing.Size, System.Drawing">
-    <value>192, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="FuncSetting.Text" xml:space="preserve">
-    <value>設定</value>
+    <value>Settings</value>
   </data>
   <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>221, 6</value>
+    <value>177, 6</value>
   </data>
   <data name="FuncShortcut1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>224, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="FuncShortcut1.Text" xml:space="preserve">
     <value>Shortcut 1</value>
@@ -195,7 +210,7 @@
     <value>False</value>
   </data>
   <data name="FuncShortcut2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>224, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="FuncShortcut2.Text" xml:space="preserve">
     <value>Shortcut 2</value>
@@ -204,7 +219,7 @@
     <value>False</value>
   </data>
   <data name="FuncShortcut3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>224, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="FuncShortcut3.Text" xml:space="preserve">
     <value>Shortcut 3</value>
@@ -213,7 +228,7 @@
     <value>False</value>
   </data>
   <data name="FuncShortcut4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>224, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="FuncShortcut4.Text" xml:space="preserve">
     <value>Shortcut 4</value>
@@ -222,7 +237,7 @@
     <value>False</value>
   </data>
   <data name="FuncShortcut5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>224, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="FuncShortcut5.Text" xml:space="preserve">
     <value>Shortcut 5</value>
@@ -231,7 +246,7 @@
     <value>False</value>
   </data>
   <data name="FuncShortcut6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>224, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="FuncShortcut6.Text" xml:space="preserve">
     <value>Shortcut 6</value>
@@ -240,7 +255,7 @@
     <value>False</value>
   </data>
   <data name="FuncShortcut7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>224, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="FuncShortcut7.Text" xml:space="preserve">
     <value>Shortcut 7</value>
@@ -249,7 +264,7 @@
     <value>False</value>
   </data>
   <data name="FuncShortcut8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>224, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="FuncShortcut8.Text" xml:space="preserve">
     <value>Shortcut 8</value>
@@ -258,31 +273,31 @@
     <value>False</value>
   </data>
   <data name="ShortcutSeparator.Size" type="System.Drawing.Size, System.Drawing">
-    <value>221, 6</value>
+    <value>177, 6</value>
   </data>
   <data name="ShortcutSeparator.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
   <data name="FuncExit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>192, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="FuncExit.Text" xml:space="preserve">
-    <value>アプリの終了</value>
+    <value>Exit App</value>
   </data>
   <data name="FuncConsole.Size" type="System.Drawing.Size, System.Drawing">
-    <value>192, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="FuncConsole.Text" xml:space="preserve">
     <value>デバッグコンソール</value>
   </data>
   <data name="FuncTestFunction.Size" type="System.Drawing.Size, System.Drawing">
-    <value>192, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="FuncTestFunction.Text" xml:space="preserve">
     <value>テスト用関数</value>
   </data>
   <data name="NotificationMenu.Size" type="System.Drawing.Size, System.Drawing">
-    <value>193, 468</value>
+    <value>181, 490</value>
   </data>
   <data name="&gt;&gt;NotificationMenu.Name" xml:space="preserve">
     <value>NotificationMenu</value>
@@ -293,20 +308,8 @@
   <data name="notification.Text" xml:space="preserve">
     <value>Genshin Checker</value>
   </data>
-  <data name="emptyToolStripMenuItem.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="emptyToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
-  </data>
-  <data name="emptyToolStripMenuItem.Text" xml:space="preserve">
-    <value>(Empty)</value>
-  </data>
   <metadata name="Delay.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>277, 17</value>
-  </metadata>
-  <metadata name="$this.Language" type="System.Globalization.CultureInfo, System.Private.CoreLib, Culture=neutral, PublicKeyToken=7cec85d7bea7798e">
-    <value>ja-JP</value>
   </metadata>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -382,6 +385,12 @@
     <value>FuncMusicPlayer</value>
   </data>
   <data name="&gt;&gt;FuncMusicPlayer.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;FuncOfficialInfo.Name" xml:space="preserve">
+    <value>FuncOfficialInfo</value>
+  </data>
+  <data name="&gt;&gt;FuncOfficialInfo.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolStripSeparator2.Name" xml:space="preserve">
