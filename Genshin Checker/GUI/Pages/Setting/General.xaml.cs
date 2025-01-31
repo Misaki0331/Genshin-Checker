@@ -124,7 +124,7 @@ namespace Genshin_Checker.GUI.Pages.Setting
             var result = await Core.General.ScreenShot.SetFileFormat(format);
             if (!string.IsNullOrEmpty(result))
             {
-                ErrorHandle?.Invoke(this,result);
+                ErrorHandle?.Invoke(this, result);
                 TextBoxScreenshotFormat.Background = Brushes.LightPink;
             }
             else

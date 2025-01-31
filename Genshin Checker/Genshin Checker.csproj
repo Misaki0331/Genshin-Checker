@@ -9,6 +9,11 @@
     <UseWPF>true</UseWPF>
     <UseWindowsForms>True</UseWindowsForms>
     <Platforms>AnyCPU;x64</Platforms>
+    <Copyright>水咲(みさき)</Copyright>
+    <PackageIcon>Furina 3.png</PackageIcon>
+    <AssemblyVersion>0.20.0</AssemblyVersion>
+    <FileVersion>0.20.0</FileVersion>
+    <ApplicationIcon>icon.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
@@ -28,6 +33,10 @@
   <ItemGroup>
     <Page Remove="App.xaml" />
     <Page Remove="GUI\StyleTemplete\GroupBox.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="icon.ico" />
   </ItemGroup>
 
   <ItemGroup>
@@ -95,6 +104,13 @@
     <Folder Include="GUI\UserInterface\CharacterInfo\" />
     <Folder Include="Resource\StyleTemplete\" />
     <Folder Include="GUI\old\UI\Control\Option\ControlType\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\..\source\repos\Genshin Checker\Genshin Checker\Resource\Paimon's Paint\Furina 3.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
   </ItemGroup>
 
   <ItemGroup>
