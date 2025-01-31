@@ -42,7 +42,7 @@
                             <TextBlock Grid.Row="0" Text="{Binding Title}" FontWeight="Bold" FontSize="16" TextTrimming="CharacterEllipsis" />
                             <TextBlock Grid.Row="1" Text="{Binding Summary}" FontSize="14" Foreground="Gray" TextTrimming="CharacterEllipsis" MaxHeight="40" TextWrapping="Wrap" VerticalAlignment="Bottom" />
                             </Grid>
-                                <Image Grid.Column="0" Grid.RowSpan="2" MaxHeight="64" Source="{Binding PreviewImage}" Opacity="1" Margin="0"/>
+                                <Image Grid.Column="0" Grid.RowSpan="2" MaxHeight="64" MaxWidth="100" Source="{Binding PreviewImage}" Opacity="1" Margin="0"/>
                     </Grid>
                     </StackPanel>
                 </DataTemplate>

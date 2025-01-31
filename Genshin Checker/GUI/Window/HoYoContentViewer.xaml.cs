@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Net.Http;
 using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using Genshin_Checker.Model.Misaki_chan.HoYoContent;
+using HarfBuzzSharp;
 
 namespace Genshin_Checker.GUI.Window
 {
@@ -20,12 +22,13 @@ namespace Genshin_Checker.GUI.Window
 
         private async void InitializeWebView2()
         {
-            await HtmlViewer.EnsureCoreWebView2Async(null);
             HtmlViewer.CoreWebView2InitializationCompleted += HtmlViewer_CoreWebView2InitializationCompleted;
+            await HtmlViewer.EnsureCoreWebView2Async(null);
         }
 
         private void HtmlViewer_CoreWebView2InitializationCompleted(object? sender, Microsoft.Web.WebView2.Core.CoreWebView2InitializationCompletedEventArgs e)
         {
+
             HtmlViewer.CoreWebView2.NavigationStarting += (sender, args) =>
             {
                 if (args.IsUserInitiated)
@@ -33,14 +36,12 @@ namespace Genshin_Checker.GUI.Window
                     args.Cancel = true;
                 }
             };
-
-            HtmlViewer.CoreWebView2.HistoryChanged += (sender, args) =>
+            HtmlViewer.CoreWebView2.NewWindowRequested += (sender, args) =>
             {
-                if (HtmlViewer.CoreWebView2.CanGoBack)
-                {
-                    HtmlViewer.CoreWebView2.GoBack();
-                }
+                args.Handled = true;
+                Process.Start(new ProcessStartInfo(args.Uri) { UseShellExecute = true });
             };
+
 
             HtmlViewer.CoreWebView2.ContextMenuRequested += (sender, args) =>
             {
@@ -49,7 +50,7 @@ namespace Genshin_Checker.GUI.Window
 
             if (ArticleList.Items.Count > 0) ArticleList.SelectedIndex = 0;
 #if !DEBUG
-            HtmlViewer.CoreWebView2.Settings.AreDevToolsEnabled = false;
+                HtmlViewer.CoreWebView2.Settings.AreDevToolsEnabled = false;
 #endif
         }
 
@@ -85,12 +86,19 @@ namespace Genshin_Checker.GUI.Window
                                     AddContent += $"<br/><img src=\"{img}\"/>";
                                 }
                             }
+                            var preview = "";
+                            foreach (var a in result.Content.Images)
+                            {
+                                if (a.Contains("hyl-static-res-prod.hoyolab.com")) continue;
+                                preview = a;
+                                break;
+                            }
                             articles.Add(new Article
                             {
                                 Title = result.Subject,
                                 Summary = result.Content.IsSimple ? result.Content.HTMLText.Replace("<br/>", "\n") : result.Description,
                                 Content = result.Content.HTMLText + AddContent,
-                                PreviewImage = result.Content.Images.Count > 0 ? result.Content.Images[0] : ""
+                                PreviewImage = preview
                             });
                         }
                     }
@@ -107,11 +115,12 @@ namespace Genshin_Checker.GUI.Window
 
         private void ArticleList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            const string scripts = "document.addEventListener('contextmenu', e => e.preventDefault()); window.addEventListener('popstate', e => { history.pushState(null, null, document.URL); e.preventDefault(); });";
             try
             {
                 if (ArticleList.SelectedItem is Article selectedArticle)
                 {
-                    HtmlViewer.NavigateToString("<meta charset=\"UTF-8\"><style>img { width: 100%; height: auto; }\niframe { width: 100%; aspect-ratio: 16 / 9;}</style>" + selectedArticle.Content);
+                    HtmlViewer.NavigateToString("<meta charset=\"UTF-8\"><script>" + scripts + "</script><style>img { width: 100%; height: auto; }\niframe { width: 100%; aspect-ratio: 16 / 9;}</style>" + selectedArticle.Content);
                     Title = selectedArticle.Title;
                 }
             }
@@ -121,7 +130,7 @@ namespace Genshin_Checker.GUI.Window
                 {
                     if (ArticleList.SelectedItem is Article selectedArticle)
                     {
-                        HtmlViewer.NavigateToString("<meta charset=\"UTF-8\"><style>img { width: 100%; height: auto; }\niframe { width: 100%; aspect-ratio: 16 / 9;}</style>" + selectedArticle.Content);
+                        HtmlViewer.NavigateToString("<meta charset=\"UTF-8\"><script>" + scripts + "</script><style>img { width: 100%; height: auto; }\niframe { width: 100%; aspect-ratio: 16 / 9;}</style>" + selectedArticle.Content);
                         Title = selectedArticle.Title;
                     }
                 };
