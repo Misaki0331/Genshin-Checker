@@ -35,24 +35,26 @@ namespace Genshin_Checker.GUI.UserInterface.Setting.Category
             LoadConfig();
 
         }
-        private void LoadConfig()
+        public void LoadConfig()
         {
+            ComboBoxAccount.SelectedIndex = -1;
+            ComboBoxAccount.Items.Clear();
             CheckBoxGameStart.IsChecked = Option.Instance.Notification.IsGameStart;
             CheckBoxGameExit.IsChecked = Option.Instance.Notification.IsGameEnd;
+            bool IsEnabled = Store.Accounts.Data.Count > 0;
 
+            ComboBoxAccount.IsEnabled = IsEnabled;
+            CheckBoxNoteCoinMax.IsEnabled = IsEnabled;
+            CheckBoxNoteCoinThreshold.IsEnabled = IsEnabled;
+            CheckBoxNoteExpedition.IsEnabled = IsEnabled;
+            CheckBoxNoteResinMax.IsEnabled = IsEnabled;
+            CheckBoxNoteResinThreshold.IsEnabled = IsEnabled;
+            CheckBoxNoteTransform.IsEnabled = IsEnabled;
+            SliderNoteCoinThreshold.IsEnabled = IsEnabled;
+            SliderNoteResinThreshold.IsEnabled = IsEnabled;
             if (Store.Accounts.Data.Count == 0)
             {
                 TextAccountInfo.Text = "連携しているアカウントがありません。";
-                ComboBoxAccount.IsEnabled = false;
-
-                CheckBoxNoteCoinMax.IsEnabled = false;
-                CheckBoxNoteCoinThreshold.IsEnabled = false;
-                CheckBoxNoteExpedition.IsEnabled = false;
-                CheckBoxNoteResinMax.IsEnabled = false;
-                CheckBoxNoteResinThreshold.IsEnabled = false;
-                CheckBoxNoteTransform.IsEnabled = false;
-                SliderNoteCoinThreshold.IsEnabled = false;
-                SliderNoteResinThreshold.IsEnabled = false;
                 TextNoteCoinThreshold.Text = "---";
                 TextNoteResinThreshold.Text = "---";
             }

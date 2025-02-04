@@ -34,11 +34,11 @@
             <TextBox x:Name="MessageDetail" Grid.Column="1" Grid.Row="1" Grid.RowSpan="1" Margin="0,0,0,4"  TextWrapping="Wrap" 
                      Text="{Binding MessageDetail}" IsReadOnly="True" VerticalScrollBarVisibility="Auto"/>
             <StackPanel Grid.Column="1" Grid.Row="2" HorizontalAlignment="Right" Orientation="Horizontal">
-                <Button x:Name="Button5" Content="{Binding Button5Text}" IsDefault="True" Click="ButtonClicked1" Margin="4,0,0,0"/>
-                <Button x:Name="Button4" Content="{Binding Button4Text}" Click="ButtonClicked2" Margin="4,0,0,0"/>
+                <Button x:Name="Button5" Content="{Binding Button5Text}" IsDefault="True" Click="ButtonClicked5" Margin="4,0,0,0"/>
+                <Button x:Name="Button4" Content="{Binding Button4Text}" Click="ButtonClicked4" Margin="4,0,0,0"/>
                 <Button x:Name="Button3" Content="{Binding Button3Text}" Click="ButtonClicked3" Margin="4,0,0,0"/>
-                <Button x:Name="Button2" Content="{Binding Button2Text}" Click="ButtonClicked4" Margin="4,0,0,0"/>
-                <Button x:Name="Button1" Content="{Binding Button1Text}" Click="ButtonClicked5" Margin="4,0,0,0"/>
+                <Button x:Name="Button2" Content="{Binding Button2Text}" Click="ButtonClicked2" Margin="4,0,0,0"/>
+                <Button x:Name="Button1" Content="{Binding Button1Text}" Click="ButtonClicked1" Margin="4,0,0,0"/>
             </StackPanel>
         </Grid>
     </Grid>

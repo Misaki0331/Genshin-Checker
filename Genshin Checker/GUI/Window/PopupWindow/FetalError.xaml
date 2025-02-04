@@ -6,34 +6,34 @@
         xmlns:local="clr-namespace:Genshin_Checker.GUI.Window.PopupWindow"
         xmlns:viewmodel="clr-namespace:Genshin_Checker.ViewModel"
         mc:Ignorable="d"
-        Title="{Binding WindowTitle}" Height="320" Width="540" WindowStartupLocation="CenterScreen"
+        Title="{Binding WindowTitle}" Height="640" Width="1080" WindowStartupLocation="CenterScreen"
         Background="{DynamicResource BackgroundColor}"
         Foreground="{DynamicResource ForegroundColor}">
     <Window.DataContext>
         <viewmodel:FatalErrorViewModel/>
     </Window.DataContext>
     <Grid>
-        <Grid Margin="4,4,4,4">
+        <Grid Margin="8,8,8,8">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="64"/>
+                <ColumnDefinition Width="128"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="64"/>
+                <RowDefinition Height="128"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
             <Image Source="/Genshin Checker;component/Resource/Paimon's Paint/Furina 2.png" Grid.Row="0" Grid.Column="0"/>
             <StackPanel Grid.Row="0" Grid.Column="1" Margin="4,0,0,0" VerticalAlignment="Center">
-                <TextBlock x:Name="ErrorTitle" Text="{Binding ErrorTitle}" FontWeight="Bold"/>
-                <TextBlock x:Name="ErrorMessage" Text="{Binding MessageTitle}"/>
+                <TextBlock x:Name="ErrorTitle" Text="{Binding ErrorTitle}" FontWeight="Bold" FontSize="30"/>
+                <TextBlock x:Name="ErrorMessage" Text="{Binding MessageTitle}" FontSize="30"/>
             </StackPanel>
-            <TextBox x:Name="DetailTextBox" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding MessageDetail}" Margin="0,4,0,4" IsReadOnly="True" IsReadOnlyCaretVisible="True"/>
+            <TextBox x:Name="DetailTextBox" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding MessageDetail}" Margin="0,4,0,4" IsReadOnly="True" IsReadOnlyCaretVisible="True"  FontSize="20"/>
             <StackPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Right">
-                <Button Content="{Binding ButtonUpdate}" Margin="4,0,0,0" Click="ButtonUpdateApplication" FontSize="10" Height="20"/>
-                <Button Content="{Binding ButtonOpenCrashReport}" x:Name="ButtonCrashReport" Margin="4,0,0,0" Click="ButtonOpenCrashReport"  FontSize="10" Height="20"/>
-                <Button Content="{Binding ButtonRestart}" Margin="4,0,0,0" Click="ButtonRestartApplication"  FontSize="10" Height="20"/>
-                <Button Content="{Binding ButtonExit}" Margin="4,0,0,0" Click="ButtonExit"  FontSize="10" Height="20"/>
+                <Button Content="{Binding ButtonUpdate}" Margin="4,0,0,0" Click="ButtonUpdateApplication" FontSize="15"/>
+                <Button Content="{Binding ButtonOpenCrashReport}" x:Name="ButtonCrashReport" Margin="4,0,0,0" Click="ButtonOpenCrashReport"  FontSize="15"/>
+                <Button Content="{Binding ButtonRestart}" Margin="4,0,0,0" Click="ButtonRestartApplication"  FontSize="15"/>
+                <Button Content="{Binding ButtonExit}" Margin="4,0,0,0" Click="ButtonExit"  FontSize="15"/>
             </StackPanel>
         </Grid>
     </Grid>

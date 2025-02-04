@@ -221,6 +221,8 @@ namespace Genshin_Checker
                 case ToolStripMenuItem func when func.Equals(FuncExit):
                     ProcessTime.Instance.EmergencyReset();
                     Close();
+                    Log.Info("アプリケーションを終了します。");
+                    Task.Run(() => { System.Threading.Thread.Sleep(3000); Environment.Exit(0); });
                     break;
 
                 default:

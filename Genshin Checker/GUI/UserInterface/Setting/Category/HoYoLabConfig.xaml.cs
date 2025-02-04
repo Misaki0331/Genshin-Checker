@@ -31,14 +31,17 @@ namespace Genshin_Checker.GUI.UserInterface.Setting.Category
             IsAccountLoaded = false;
             LoadConfig();
         }
-        private void LoadConfig()
+        public void LoadConfig()
         {
+            ComboBoxAccount.SelectedIndex = -1;
+            ComboBoxAccount.Items.Clear();
+            bool IsEnabled = Store.Accounts.Data.Count > 0;
+            ComboBoxAccount.IsEnabled = IsEnabled;
+            CheckBoxConfigAutoCheckIn.IsEnabled = IsEnabled;
+
             if (Store.Accounts.Data.Count == 0)
             {
                 TextAccountInfo.Text = "連携しているアカウントがありません。";
-                ComboBoxAccount.IsEnabled = false;
-
-                CheckBoxConfigAutoCheckIn.IsEnabled = false;
             }
             else
             {

@@ -21,8 +21,8 @@ namespace Genshin_Checker.GUI.Window
     {
         public SettingWindow()
         {
-            Log.Debug($"IsLoaded = {IsLoaded}");
             InitializeComponent();
+            System.Windows.Forms.Integration.ElementHost.EnableModelessKeyboardInterop(this);
         }
     }
 }

@@ -37,11 +37,8 @@ namespace Genshin_Checker.GUI.UserInterface.Setting
         private void Disconnect_Click(object sender, RoutedEventArgs e)
         {
 
-            var choose = new ChooseMessage(Localize.Message_AccountDisconnect_Title,
-                string.Format(Localize.Message_AccountDisconnect_Message, account.Name, account.UID),
-                Localize.Message_AccountDisconnect_WindowTitle);
-            choose.ShowDialog();
-            if (choose.Result == 1)
+            var res = Dialog.ChooseYesNo(Localize.Message_AccountDisconnect_Title, string.Format(Localize.Message_AccountDisconnect_Message, account.Name, account.UID));
+            if (res == 0)
             {
                 account.Dispose();
                 Store.Accounts.Data.Remove(account);

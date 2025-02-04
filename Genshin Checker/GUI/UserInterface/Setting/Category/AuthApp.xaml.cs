@@ -25,6 +25,7 @@ namespace Genshin_Checker.GUI.UserInterface.Setting.Category
     public partial class AuthApp : UserControl
     {
         public EventHandler<string>? ErrorHandle;
+        public EventHandler? ChangedAccountList;
         public AuthApp()
         {
             InitializeComponent();
@@ -44,6 +45,7 @@ namespace Genshin_Checker.GUI.UserInterface.Setting.Category
         private void AccountRemoveRequest(object? sender, EventArgs e)
         {
             ReloadAccountList();
+            ChangedAccountList?.Invoke(this, EventArgs.Empty);
         }
 
         private void ContentLoaded(object sender, RoutedEventArgs e)
@@ -68,6 +70,8 @@ namespace Genshin_Checker.GUI.UserInterface.Setting.Category
             {
 
             }
+
+            ChangedAccountList?.Invoke(this, EventArgs.Empty);
             await Task.Delay(1000);
             ReloadAccountList();
         }

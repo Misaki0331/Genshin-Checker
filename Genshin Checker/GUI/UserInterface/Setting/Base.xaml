@@ -17,6 +17,7 @@
     materialDesign:NavigationRailAssist.ShowSelectionBackground="True"
     SnapsToDevicePixels="True"
     Style="{StaticResource MaterialDesignNavigationRailTabControl}"
+                SelectionChanged="TabControl_SelectionChanged"
     TabStripPlacement="Left">
                 <TabItem>
                     <TabItem.Header>
@@ -28,12 +29,12 @@
                     <Grid>
                         <ScrollViewer Grid.Column="0" Grid.Row="1"  VerticalScrollBarVisibility="Auto">
                             <StackPanel Background="#202442" >
-                                <categoly:General/>
+                                <categoly:General x:Name="CategoryGeneral"/>
                             </StackPanel>
                         </ScrollViewer>
                     </Grid>
                 </TabItem>
-                <TabItem>
+                <TabItem x:Name="TabNotification">
                     <TabItem.Header>
                         <StackPanel Width="auto" Height="auto">
                             <materialDesign:PackIcon Width="24" Height="24" HorizontalAlignment="Center" Kind="Bell" />
@@ -43,7 +44,7 @@
                     <Grid>
                         <ScrollViewer Grid.Column="0" Grid.Row="1"  VerticalScrollBarVisibility="Auto">
                             <StackPanel Background="#202442" >
-                                <categoly:Notification/>
+                                <categoly:Notification x:Name="CategoryNotification"/>
                             </StackPanel>
                         </ScrollViewer>
                     </Grid>
@@ -58,12 +59,12 @@
                     <Grid>
                         <ScrollViewer Grid.Column="0" Grid.Row="1"  VerticalScrollBarVisibility="Auto">
                             <StackPanel Background="#202442" >
-                                <categoly:AuthApp/>
+                                <categoly:AuthApp x:Name="CategoryAuthApp"/>
                             </StackPanel>
                         </ScrollViewer>
                     </Grid>
                 </TabItem>
-                <TabItem>
+                <TabItem x:Name="TabHoYoLabConfig">
                     <TabItem.Header>
                         <StackPanel Width="auto" Height="auto">
                             <materialDesign:PackIcon Width="24" Height="24" HorizontalAlignment="Center" Kind="AccountCog" />
@@ -73,7 +74,7 @@
                     <Grid>
                         <ScrollViewer Grid.Column="0" Grid.Row="1"  VerticalScrollBarVisibility="Auto">
                             <StackPanel Background="#202442" >
-                                <categoly:HoYoLabConfig/>
+                                <categoly:HoYoLabConfig x:Name="CategoryHoYoLabConfig"/>
                             </StackPanel>
                         </ScrollViewer>
                     </Grid>
@@ -88,7 +89,7 @@
                     <Grid>
                         <ScrollViewer Grid.Column="0" Grid.Row="1"  VerticalScrollBarVisibility="Auto">
                             <StackPanel Background="#202442" >
-                                <categoly:AppData/>
+                                <categoly:AppData x:Name="CategoryAppData"/>
                             </StackPanel>
                         </ScrollViewer>
                     </Grid>
@@ -103,12 +104,15 @@
                     <Grid>
                         <ScrollViewer Grid.Column="0" Grid.Row="1"  VerticalScrollBarVisibility="Auto">
                             <StackPanel Background="#202442" >
-                                <categoly:VersionInfo/>
+                                <categoly:VersionInfo x:Name="CategoryVersionInfo"/>
                             </StackPanel>
                         </ScrollViewer>
                     </Grid>
                 </TabItem>
             </TabControl>
         </materialDesign:Card>
+        <!-- simplest form -->
+        <materialDesign:Snackbar x:Name="ErrorMessage" IsActive="False" Foreground="Red" MessageQueue="{materialDesign:MessageQueue}">
+        </materialDesign:Snackbar>
     </Grid>
 </UserControl>

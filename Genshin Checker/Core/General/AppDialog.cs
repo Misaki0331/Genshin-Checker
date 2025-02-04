@@ -1,4 +1,6 @@
 ﻿using Genshin_Checker.GUI.Window.PopupWindow;
+using Genshin_Checker.Model.Misaki_chan.info;
+using Genshin_Checker.resource.Languages;
 using MaterialDesignThemes.Wpf;
 using System;
 using System.Collections.Generic;
@@ -20,6 +22,10 @@ namespace Genshin_Checker
             var dialog = new InfoMessage(title, message, windowName);
             dialog.ShowDialog();
         }
+        public static int ChooseYesNo(string title, string message)
+        {
+            return Choose(title, message, new() { Common.Yes, Common.No });
+        }
         public static int Choose(string title, string message, List<string> choose)
         {
             if (choose.Count < 2)
@@ -29,7 +35,7 @@ namespace Genshin_Checker
             List<string?> selectedChoices = new(5);
             for (int i = 0; i < 5; i++)
             {
-                selectedChoices[i] = i < choose.Count ? choose[i] : null;
+                selectedChoices.Add(i < choose.Count ? choose[i] : null);
             }
             var dialog = new ChooseMessage(title, message, selectcount:choose.Count, 
                 select1:selectedChoices[0],
