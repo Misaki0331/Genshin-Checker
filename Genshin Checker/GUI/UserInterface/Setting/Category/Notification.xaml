@@ -1,0 +1,87 @@
+﻿<UserControl x:Class="Genshin_Checker.GUI.UserInterface.Setting.Category.Notification"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Genshin_Checker.GUI.UserInterface.Setting.Category"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="500"
+        Background="{DynamicResource BackgroundColor}"
+        Foreground="{DynamicResource ForegroundColor}">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/GUI/StyleTemplete/GroupBox.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <Style TargetType="{x:Type GroupBox}" BasedOn="{StaticResource FixedGroupBox}"/>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid>
+        <StackPanel Margin="3" CanHorizontallyScroll="True">
+            <GroupBox BorderThickness="2">
+                <GroupBox.Header>
+                    <TextBlock FontWeight="Bold" Text="ゲーム通知"/>
+                </GroupBox.Header>
+                <StackPanel Margin="4">
+                    <CheckBox x:Name="CheckBoxGameStart" Content="ゲーム起動時の通知" Margin="0,0,0,5" Checked="ChangedCheckState" Unchecked="ChangedCheckState"/>
+                    <CheckBox x:Name="CheckBoxGameExit" Content="ゲーム終了時の通知" Checked="ChangedCheckState" Unchecked="ChangedCheckState"/>
+                </StackPanel>
+            </GroupBox>
+            <GroupBox BorderThickness="2">
+                <GroupBox.Header>
+                    <TextBlock FontWeight="Bold" Text="ゲーム通知設定"/>
+                </GroupBox.Header>
+                <StackPanel Margin="4">
+                    <GroupBox BorderThickness="2">
+                        <GroupBox.Header>
+                            <StackPanel Orientation="Horizontal" Margin="0,0,2,0">
+                                <ComboBox x:Name="ComboBoxAccount" Width="100" SelectionChanged="AccountChanged"/>
+                                <TextBlock x:Name="TextAccountInfo" Text=" AccountName (AR.XX)" VerticalAlignment="Center" Padding="4,0,0,0"/>
+                            </StackPanel>
+                        </GroupBox.Header>
+                        <StackPanel Margin="4">
+                            <Grid Margin="0,4,0,0">
+                                <Grid.Resources>
+                                    <Style TargetType="{x:Type CheckBox}">
+                                        <Setter Property="VerticalAlignment" Value="Center"/>
+                                        <Setter Property="Foreground" Value="{DynamicResource ForegroundColor}"/>
+                                    </Style>
+                                    <Style TargetType="{x:Type Slider}">
+                                        <Setter Property="VerticalAlignment" Value="Center"/>
+                                    </Style>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Setter Property="VerticalAlignment" Value="Center"/>
+                                    </Style>
+                                </Grid.Resources>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="40"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="22"/>
+                                    <RowDefinition Height="22"/>
+                                    <RowDefinition Height="22"/>
+                                    <RowDefinition Height="22"/>
+                                    <RowDefinition Height="22"/>
+                                    <RowDefinition Height="22"/>
+                                </Grid.RowDefinitions>
+                                <CheckBox x:Name="CheckBoxNoteResinMax"  Grid.Row="0" Content="樹脂が最大" VerticalAlignment="Center" Checked="ChangedCheckState" Unchecked="ChangedCheckState"/>
+                                <CheckBox x:Name="CheckBoxNoteResinThreshold" Grid.Row="1" Grid.Column="0" Content="樹脂がしきい値以上" Checked="ChangedCheckState" Unchecked="ChangedCheckState" />
+                                <Slider x:Name="SliderNoteResinThreshold" Grid.Row="1" Grid.Column="1" Value="160" Minimum="20" Maximum="200" ValueChanged="SliderValueChanged"/>
+                                <CheckBox x:Name="CheckBoxNoteCoinMax" Grid.Row="2" Content="塵歌壺の洞天宝銭が最大" Checked="ChangedCheckState" Unchecked="ChangedCheckState" />
+                                <TextBlock x:Name="TextNoteResinThreshold" Grid.Row="1" Grid.Column="2" Text="160" HorizontalAlignment="Center" />
+                                <CheckBox x:Name="CheckBoxNoteCoinThreshold" Grid.Row="3"  Content="塵歌壺の洞天宝銭がしきい値以上" Checked="ChangedCheckState" Unchecked="ChangedCheckState" />
+                                <Slider x:Name="SliderNoteCoinThreshold" Grid.Row="3" Grid.Column="1" Value="1800" Minimum="20" Maximum="2400" ValueChanged="SliderValueChanged"/>
+                                <TextBlock x:Name="TextNoteCoinThreshold" Grid.Row="3" Grid.Column="2" Text="1800" HorizontalAlignment="Center" />
+                                <CheckBox x:Name="CheckBoxNoteTransform" Grid.Row="4" Content="参量物質変換器が使用可能" Checked="ChangedCheckState" Unchecked="ChangedCheckState" />
+                                <CheckBox x:Name="CheckBoxNoteExpedition" Grid.Row="5" Content="探索派遣が全員完了" Checked="ChangedCheckState" Unchecked="ChangedCheckState"/>
+                            </Grid>
+                        </StackPanel>
+
+                    </GroupBox>
+                </StackPanel>
+            </GroupBox>
+        </StackPanel>
+    </Grid>
+</UserControl>

@@ -1,0 +1,45 @@
+﻿<Window x:Class="Genshin_Checker.GUI.Window.PopupWindow.ChooseMessage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Genshin_Checker.GUI.Window.PopupWindow"
+        mc:Ignorable="d"
+        xmlns:viewmodel="clr-namespace:Genshin_Checker.ViewModel"
+        Title="{Binding WindowTitle}" Height="260" Width="500" WindowStartupLocation="CenterScreen"
+        Background="{DynamicResource BackgroundColor}"
+        Foreground="{DynamicResource ForegroundColor}">
+
+    <Window.DataContext>
+        <viewmodel:MessageBoxViewModel/>
+    </Window.DataContext>
+    <Window.Style>
+        <Style>
+        </Style>
+    </Window.Style>
+    <Grid>
+        <Grid Grid.Column="2" Grid.Row="3" Margin="5,5,5,5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="120"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+            <Image Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" Source="/Genshin Checker;component/Resource/Paimon's Paint/Furina 1.png" VerticalAlignment="Top"/>
+            <TextBlock x:Name="MessageTitle" Grid.Column="1" Grid.ColumnSpan="1" Grid.Row="0" Text="{Binding MessageTitle}" FontWeight="Bold" FontSize="18" VerticalAlignment="Bottom" FontFamily="Meiryo" TextWrapping="Wrap"/>
+            <TextBox x:Name="MessageDetail" Grid.Column="1" Grid.Row="1" Grid.RowSpan="1" Margin="0,0,0,4"  TextWrapping="Wrap" 
+                     Text="{Binding MessageDetail}" IsReadOnly="True" VerticalScrollBarVisibility="Auto"/>
+            <StackPanel Grid.Column="1" Grid.Row="2" HorizontalAlignment="Right" Orientation="Horizontal">
+                <Button x:Name="Button5" Content="{Binding Button5Text}" IsDefault="True" Click="ButtonClicked5" Margin="4,0,0,0"/>
+                <Button x:Name="Button4" Content="{Binding Button4Text}" Click="ButtonClicked4" Margin="4,0,0,0"/>
+                <Button x:Name="Button3" Content="{Binding Button3Text}" Click="ButtonClicked3" Margin="4,0,0,0"/>
+                <Button x:Name="Button2" Content="{Binding Button2Text}" Click="ButtonClicked2" Margin="4,0,0,0"/>
+                <Button x:Name="Button1" Content="{Binding Button1Text}" Click="ButtonClicked1" Margin="4,0,0,0"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>

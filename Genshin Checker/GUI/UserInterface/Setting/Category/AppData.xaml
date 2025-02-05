@@ -1,0 +1,58 @@
+﻿<UserControl x:Class="Genshin_Checker.GUI.UserInterface.Setting.Category.AppData"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Genshin_Checker.GUI.UserInterface.Setting.Category"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="500"
+        Background="{DynamicResource BackgroundColor}"
+        Foreground="{DynamicResource ForegroundColor}">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/GUI/StyleTemplete/GroupBox.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <Style TargetType="{x:Type GroupBox}" BasedOn="{StaticResource FixedGroupBox}"/>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid>
+        <StackPanel Margin="3" CanHorizontallyScroll="True">
+            <GroupBox BorderThickness="2">
+                <GroupBox.Header>
+                    <TextBlock FontWeight="Bold" Text="ユーザーデータ設定"/>
+                </GroupBox.Header>
+                <Grid>
+                    <Grid.Resources>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="VerticalAlignment" Value="Center"/>
+                            <Setter Property="Padding" Value="10,3,10,3"/>
+                            <Setter Property="Margin" Value="0,2,5,2"/>
+                        </Style>
+                        <Style TargetType="{x:Type TextBlock}">
+                            <Setter Property="VerticalAlignment" Value="Center"/>
+                            <Setter Property="Foreground" Value="{DynamicResource ForegroundColor}"/>
+                        </Style>
+                    </Grid.Resources>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+                    <Button Grid.Column="0" Grid.Row="0" Content="バックアップ" Click="ClickBackup"/>
+                    <TextBlock Grid.Column="1" Grid.Row="0" Text="ログイン情報を除く全てのユーザーデータをバックアップします。"/>
+
+                    <Button Grid.Column="0" Grid.Row="1" Content="上書き" Foreground="Red" Click="ClickOverwrite"/>
+                    <TextBlock Grid.Column="1" Grid.Row="1">バックアップデータからデータを復元します。<LineBreak/>
+                        (元のデータは一度削除される為、事前にバックアップが必要です)</TextBlock>
+                    <Button Grid.Column="0" Grid.Row="2" Content="データ削除" Foreground="Red" FontWeight="Bold" Click="ClickClear"/>
+                    <TextBlock Grid.Column="1" Grid.Row="2" Text="ユーザーデータを全て削除します。"/>
+                </Grid>
+            </GroupBox>
+        </StackPanel>
+    </Grid>
+</UserControl>

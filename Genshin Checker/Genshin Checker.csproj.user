@@ -1,181 +1,323 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <_LastSelectedProfileId>C:\Users\Misaki\dev\Genshin Checker\Genshin Checker\Properties\PublishProfiles\ReleaseGitHub.pubxml</_LastSelectedProfileId>
+    <_LastSelectedProfileId>C:\Users\Misaki\dev\Genshin Checker\Genshin Checker\Properties\PublishProfiles\FolderProfile.pubxml</_LastSelectedProfileId>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Update="src\InternalTools\MusicInfoSetter.cs">
+    <Resource Update="App.xaml">
+      <SubType>Designer</SubType>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="GUI\UserInterface\CentralPanel\Base.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="GUI\UserInterface\CentralPanel\Category\AreaGeneralInfo.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="GUI\UserInterface\CentralPanel\Category\GameRecords.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="GUI\UserInterface\CentralPanel\Category\Home.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="GUI\UserInterface\CentralPanel\Category\RealTimeNote.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="GUI\UserInterface\CentralPanel\Category\TravelerDiary.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="GUI\UserInterface\CentralPanel\Component\AreaInfo.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="GUI\UserInterface\CentralPanel\Component\InfoDisplay.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="GUI\UserInterface\General\CharacterIcon.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="GUI\UserInterface\Setting\AccountInfo.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="GUI\UserInterface\Setting\Base.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="GUI\UserInterface\Component\CategoryLabel.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="GUI\Window\CentralPanel.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="GUI\Window\HoYoContentViewer.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="GUI\Window\PopupWindow\ErrorMessage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="GUI\Window\PopupWindow\FetalError.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="GUI\Window\PopupWindow\UpdateNotice.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="GUI\Window\SettingWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="GUI\Window\WebApp\Announcement.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="src\MainTray.cs">
+    <Compile Update="GUI\Window\WebApp\BattleAuth.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="src\UI\Control\CodeExchange\UICode.cs">
+    <Compile Update="GUI\Window\WebApp\FormBrowser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="GUI\Window\WebMiniBrowser.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="InternalTools\MusicInfoSetter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="MainTray.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="GUI\old\UI\Control\CodeExchange\UICode.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="src\UI\Control\GameRecord\CharacterDetail\ArtifactInfo.cs">
+    <Compile Update="GUI\old\UI\Control\GameRecord\CharacterDetail\ArtifactInfo.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="src\UI\Control\GameRecord\CharacterDetail\ConstellationInfo.cs">
+    <Compile Update="GUI\old\UI\Control\GameRecord\CharacterDetail\CharacterStory.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="src\UI\Control\GameRecord\CharacterDetail\TalentInfo.cs">
+    <Compile Update="GUI\old\UI\Control\GameRecord\CharacterDetail\ConstellationInfo.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="src\UI\Control\GameRecord\CharacterDetail\CharacterStory.cs">
+    <Compile Update="GUI\old\UI\Control\GameRecord\CharacterDetail\TalentInfo.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="src\UI\Control\GameRecord\CharacterDetail\WeaponDetail.cs">
+    <Compile Update="GUI\old\UI\Control\GameRecord\CharacterDetail\WeaponDetail.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="src\UI\Control\GameRecord\CharacterInfo.cs">
+    <Compile Update="GUI\old\UI\Control\GameRecord\CharacterInfo.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="src\UI\Control\GameRecord\ExplorationLevel.cs">
+    <Compile Update="GUI\old\UI\Control\GameRecord\Exploration.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="src\UI\Control\GameRecord\ExplorationProgressBar.cs">
+    <Compile Update="GUI\old\UI\Control\GameRecord\ExplorationLevel.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="src\UI\Control\SettingWindow\AccountInfo.cs">
+    <Compile Update="GUI\old\UI\Control\GameRecord\ExplorationProgressBar.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="src\UI\Control\SettingWindow\AccountNotify.cs">
+    <Compile Update="GUI\old\UI\Control\GameRecord\ExplorationProgressBarArea.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="src\UI\Control\SpiralAbyss\BattleInfo.cs">
+    <Compile Update="GUI\old\UI\Control\SettingWindow\AccountInfo.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="src\UI\Control\SpiralAbyss\CharacterFrame.cs">
+    <Compile Update="GUI\old\UI\Control\SettingWindow\AccountNotify.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="src\UI\Control\SpiralAbyss\EnemyInfo.cs">
+    <Compile Update="GUI\old\UI\Control\SpiralAbyss\BattleInfo.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="src\UI\Control\SpiralAbyss\FloorInfo.cs">
+    <Compile Update="GUI\old\UI\Control\SpiralAbyss\CharacterFrame.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="src\UI\Control\SpiralAbyss\LevelInfo.cs">
+    <Compile Update="GUI\old\UI\Control\SpiralAbyss\EnemyInfo.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="src\Window\BrowserApp\BattleAuth.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="src\Window\BrowserApp\HoYoApp.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="src\UI\Control\GameRecord\Exploration.cs">
+    <Compile Update="GUI\old\UI\Control\SpiralAbyss\FloorInfo.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="src\Window\CharacterCalculator.cs">
+    <Compile Update="GUI\old\UI\Control\SpiralAbyss\LevelInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="GUI\BrowserApp\Announcement.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="src\Window\CodeExchange.cs">
+    <Compile Update="GUI\BrowserApp\BattleAuth.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="src\Window\Debug\Console.cs">
+    <Compile Update="GUI\BrowserApp\HoYoApp.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="src\Window\Debug\APIChecker.cs">
+    <Compile Update="GUI\old\CharacterCalculator.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="src\Window\ExWindow\CharacterCalculator\BatchWindow.cs">
+    <Compile Update="GUI\old\CodeExchange.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="src\Window\ExWindow\EmptyWindow.cs">
+    <Compile Update="GUI\old\Debug\APIChecker.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="src\Window\GameLog.cs">
+    <Compile Update="GUI\old\Debug\Console.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="src\Window\GameRecords.cs">
+    <Compile Update="GUI\old\ExWindow\CharacterCalculator\BatchWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="src\Window\MusicPlayer.cs">
+    <Compile Update="GUI\old\ExWindow\CharacterCalculator\CalculateResult.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="src\Window\ExWindow\CharacterCalculator\CalculateResult.cs">
+    <Compile Update="GUI\old\ExWindow\EmptyWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="src\Window\ExWindow\GameRecords\CharacterDetail.cs">
+    <Compile Update="GUI\old\ExWindow\GameRecords\CharacterDetail.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="src\Window\PopupWindow\ChooseMessage.cs">
+    <Compile Update="GUI\old\GameLog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="src\Window\PopupWindow\ErrorMessage.cs">
+    <Compile Update="GUI\old\GameRecords.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="src\Window\PopupWindow\FatalError.cs">
+    <Compile Update="GUI\old\MusicPlayer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="src\Window\PopupWindow\InfoMessage.cs">
+    <Compile Update="GUI\old\PopupWindow\ChooseMessage.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="src\Window\PopupWindow\UpdateNotice.cs">
+    <Compile Update="GUI\old\PopupWindow\ErrorMessage.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="src\Window\ProgressWindow\LoadGameDatabase.cs">
+    <Compile Update="GUI\old\PopupWindow\FatalError.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="src\Window\ProgressWindow\LoadTravelersDiaryDetail.cs">
+    <Compile Update="GUI\old\PopupWindow\InfoMessage.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="src\Window\RealTimeData.cs">
+    <Compile Update="GUI\old\PopupWindow\UpdateNotice.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="src\Window\SettingWindow.cs">
+    <Compile Update="GUI\old\ProgressWindow\LoadGameDatabase.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="src\Window\SpiralAbyss.cs">
+    <Compile Update="GUI\old\ProgressWindow\LoadTravelersDiaryDetail.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="src\Window\TimeGraph.cs">
+    <Compile Update="GUI\old\RealTimeData.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="src\Window\TimerDisplay.cs">
+    <Compile Update="GUI\old\SettingWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="src\Window\TravelersDiary.cs">
+    <Compile Update="GUI\old\SpiralAbyss.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="src\Window\TravelersDiaryDetailList.cs">
+    <Compile Update="GUI\old\TimeGraph.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="src\Window\WebMiniBrowser.cs">
+    <Compile Update="GUI\old\TimerDisplay.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="GUI\old\TravelersDiary.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="GUI\old\TravelersDiaryDetailList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="GUI\old\WebMiniBrowser.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Update="resource\font.resx">
+    <EmbeddedResource Update="Resource\Render.resx">
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Update="resource\Languages\Localize.ja-JP.resx">
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="GUI\UserInterface\CentralPanel\Base.xaml">
       <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Update="resource\WebStatic\css.resx">
+    </Page>
+    <Page Update="GUI\UserInterface\CentralPanel\Category\AreaGeneralInfo.xaml">
       <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Update="src\MainTray.resx">
+    </Page>
+    <Page Update="GUI\UserInterface\CentralPanel\Category\GameRecords.xaml">
       <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Update="src\UI\Control\SettingWindow\AccountNotify.resx">
+    </Page>
+    <Page Update="GUI\UserInterface\CentralPanel\Category\Home.xaml">
       <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Update="src\Window\ExWindow\CharacterCalculator\CalculateResult.resx">
+    </Page>
+    <Page Update="GUI\UserInterface\CentralPanel\Category\RealTimeNote.xaml">
       <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Update="src\Window\PopupWindow\FatalError.resx">
+    </Page>
+    <Page Update="GUI\UserInterface\CentralPanel\Category\TravelerDiary.xaml">
       <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Update="src\Window\SettingWindow.resx">
+    </Page>
+    <Page Update="GUI\UserInterface\CentralPanel\Component\AreaInfo.xaml">
       <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Update="src\Window\SpiralAbyss.resx">
+    </Page>
+    <Page Update="GUI\UserInterface\CentralPanel\Component\InfoDisplay.xaml">
       <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Update="src\Window\TravelersDiaryDetailList.resx">
+    </Page>
+    <Page Update="GUI\UserInterface\General\CharacterIcon.xaml">
       <SubType>Designer</SubType>
-    </EmbeddedResource>
+    </Page>
+    <Page Update="GUI\UserInterface\Setting\AccountInfo.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="GUI\UserInterface\Setting\Category\AppData.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="GUI\UserInterface\Setting\Category\AuthApp.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="GUI\UserInterface\Setting\Category\General.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="GUI\UserInterface\Setting\Category\HoYoLabConfig.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="GUI\UserInterface\Setting\Category\Notification.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="GUI\UserInterface\Setting\Category\VersionInfo.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="GUI\Window\CentralPanel.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="GUI\Window\HoYoContentViewer.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Themes\Light.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Resource Update="GUI\StyleTemplete\GroupBox.xaml">
+      <SubType>Designer</SubType>
+    </Resource>
+    <Page Update="GUI\UserInterface\Setting\Base.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="GUI\UserInterface\Component\CategoryLabel.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="MainWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="GUI\Window\PopupWindow\ChooseMessage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="GUI\Window\PopupWindow\FetalError.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="GUI\Window\PopupWindow\InfoMessage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="GUI\Window\PopupWindow\ErrorMessage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="GUI\Window\PopupWindow\UpdateNotice.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="GUI\Window\SettingWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="GUI\Window\WebMiniBrowser.xaml">
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
 </Project>

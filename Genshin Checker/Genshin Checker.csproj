@@ -1,245 +1,127 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup Label="Globals">
-    <WebView2LoaderPreference>Dynamic</WebView2LoaderPreference>
-    <Platforms>AnyCPU;x64</Platforms>
-  </PropertyGroup>
-
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net6.0-windows10.0.17763.0</TargetFramework>
+    <TargetFramework>net8.0-windows10.0.22621.0</TargetFramework>
     <RootNamespace>Genshin_Checker</RootNamespace>
     <Nullable>enable</Nullable>
-    <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
-    <ApplicationIcon>resource\Icon\nahida.ico</ApplicationIcon>
-    <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
-    <AssemblyVersion></AssemblyVersion>
-    <FileVersion></FileVersion>
-    <RunPostBuildEvent>OnOutputUpdated</RunPostBuildEvent>
-    <AssemblyName>GenshinChecker</AssemblyName>
-    <Copyright>水咲(みさき) (https://github.com/Misaki0331)</Copyright>
-    <Title>Genshin Checker</Title>
-    <Company>水咲(みさき)</Company>
-    <Authors>水咲(みさき)</Authors>
-    <Description>This Project : https://github.com/Misaki0331/Genshin-Checker/
-Fediverse : ms@misskey.io (https://misskey.io/@ms)
-GitHub : https://github.com/Misaki0331</Description>
-    <PackageProjectUrl>https://github.com/Misaki0331/Genshin-Checker/</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/Misaki0331/Genshin-Checker/</RepositoryUrl>
-    <RepositoryType>git</RepositoryType>
-    <Version>0.19.4</Version>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <NoWarn>1701;1702; NU1701; NU1702; MSB3568</NoWarn>
-    <DebugType>embedded</DebugType>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <NoWarn>1701;1702; NU1701; NU1702; MSB3568</NoWarn>
-    <DebugType>embedded</DebugType>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <NoWarn>1701;1702; NU1701; NU1702; MSB3568</NoWarn>
-    <DebugType>embedded</DebugType>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <NoWarn>1701;1702; NU1701; NU1702; MSB3568</NoWarn>
-    <DebugType>embedded</DebugType>
+    <UseWPF>true</UseWPF>
+    <UseWindowsForms>True</UseWindowsForms>
+    <Platforms>AnyCPU;x64</Platforms>
+    <Copyright>水咲(みさき)</Copyright>
+    <PackageIcon>Furina 3.png</PackageIcon>
+    <AssemblyVersion>0.20.0</AssemblyVersion>
+    <FileVersion>0.20.0</FileVersion>
+    <ApplicationIcon>icon.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="resource\Item\nahida.ico" />
+    <EditorConfigFiles Remove="App.xaml" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="resource\Icon\nahida.ico" />
+    <None Remove="Resource\Assembly\Icon.png" />
+    <None Remove="Resource\FailImage.png" />
+    <None Remove="Resource\icon.ico" />
+    <None Remove="Resource\Paimon%27s Paint\Furina 1.png" />
+    <None Remove="Resource\Paimon%27s Paint\Furina 2.png" />
+    <None Remove="Resource\Paimon%27s Paint\Furina 3.png" />
+    <None Remove="Resource\Project Members\Misaki0331.jpg" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="LiveChartsCore" Version="2.0.0-rc2" />
-    <PackageReference Include="LiveChartsCore.SkiaSharpView.WinForms" Version="2.0.0-rc2" />
+    <Page Remove="App.xaml" />
+    <Page Remove="GUI\StyleTemplete\GroupBox.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="icon.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resource\Assembly\Icon.png" />
+    <Resource Include="Resource\Project Members\Misaki0331.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resource\FailImage.png" />
+    <EmbeddedResource Include="Resource\icon.ico" />
+    <Resource Include="GUI\StyleTemplete\GroupBox.xaml" />
+    <Resource Include="Resource\Paimon's Paint\Furina 1.png" />
+    <Resource Include="Resource\Paimon's Paint\Furina 2.png" />
+    <Resource Include="Resource\Paimon's Paint\Furina 3.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="App.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="LiveChartsCore" Version="2.0.0-rc5.1" />
+    <PackageReference Include="LiveChartsCore.SkiaSharpView" Version="2.0.0-rc5.1" />
+    <PackageReference Include="LiveChartsCore.SkiaSharpView.WinForms" Version="2.0.0-rc5.1" />
+    <PackageReference Include="LiveChartsCore.SkiaSharpView.WPF" Version="2.0.0-rc5.1" />
+    <PackageReference Include="MaterialDesignThemes" Version="5.1.1-ci780" />
     <PackageReference Include="Microsoft.Toolkit.Uwp.Notifications" Version="7.1.3" />
-    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.2194-prerelease" />
+    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.2950-prerelease" />
     <PackageReference Include="NAudio" Version="2.2.1" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-    <PackageReference Include="SharpGen.Runtime" Version="2.1.2-beta" />
-    <PackageReference Include="SharpGen.Runtime.COM" Version="2.1.2-beta" />
     <PackageReference Include="System.Management" Version="8.0.0" />
-    <PackageReference Include="WindowsAPICodePack-Shell" Version="1.1.1" />
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="resource\fluentui-emoji.Designer.cs">
+    <Compile Update="GUI\UserInterface\Setting\Category\AppData.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="GUI\UserInterface\Setting\Category\AuthApp.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="GUI\UserInterface\Setting\Category\General.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="GUI\UserInterface\Setting\Category\HoYoLabConfig.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="GUI\UserInterface\Setting\Category\Notification.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="GUI\UserInterface\Setting\Category\VersionInfo.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="GUI\Window\PopupWindow\ChooseMessage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="GUI\Window\PopupWindow\InfoMessage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Resource\GUI.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
-      <DependentUpon>fluentui-emoji.resx</DependentUpon>
+      <DependentUpon>GUI.resx</DependentUpon>
     </Compile>
-    <Compile Update="resource\font.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>font.resx</DependentUpon>
-    </Compile>
-    <Compile Update="resource\icon.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>icon.resx</DependentUpon>
-    </Compile>
-    <Compile Update="resource\Languages\Common.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Common.resx</DependentUpon>
-    </Compile>
-    <Compile Update="resource\Languages\Genshin.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Genshin.resx</DependentUpon>
-    </Compile>
-    <Compile Update="resource\Languages\HoYoLabAPIRetcode.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>HoYoLabAPIRetcode.resx</DependentUpon>
-    </Compile>
-    <Compile Update="resource\Languages\Localize.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Localize.resx</DependentUpon>
-    </Compile>
-    <Compile Update="resource\Languages\ManageUserData.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>ManageUserData.resx</DependentUpon>
-    </Compile>
-    <Compile Update="resource\namecard.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>namecard.resx</DependentUpon>
-    </Compile>
-    <Compile Update="resource\GenshinAsset.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>GenshinAsset.resx</DependentUpon>
-    </Compile>
-    <Compile Update="resource\PaimonsPaint.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>PaimonsPaint.resx</DependentUpon>
-    </Compile>
-    <Compile Update="resource\Render.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Render.resx</DependentUpon>
-    </Compile>
-    <Compile Update="resource\WebStatic\css.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>css.resx</DependentUpon>
-    </Compile>
-    <Compile Update="resource\WebStatic\html.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>html.resx</DependentUpon>
-    </Compile>
-    <Compile Update="resource\WebStatic\javascript.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>javascript.resx</DependentUpon>
-    </Compile>
-    <Compile Update="src\UI\Control\GameRecord\ExplorationProgressBarArea.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Update="src\Window\BrowserApp\Announcement.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="src\Window\BrowserApp\HoYoApp.cs" />
-    <Compile Update="src\Window\PopupWindow\ChooseMessage.cs" />
-    <Compile Update="src\Window\PopupWindow\InfoMessage.cs" />
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="resource\fluentui-emoji.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>fluentui-emoji.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Update="resource\font.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>font.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Update="resource\icon.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>icon.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Update="resource\Languages\Common.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Common.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Update="resource\Languages\Genshin.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Genshin.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Update="resource\Languages\HoYoLabAPIRetcode.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>HoYoLabAPIRetcode.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Update="resource\Languages\Localize.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Localize.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Update="resource\Languages\ManageUserData.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>ManageUserData.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Update="resource\namecard.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>namecard.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Update="resource\GenshinAsset.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>GenshinAsset.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Update="resource\PaimonsPaint.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>PaimonsPaint.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Update="resource\Render.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Render.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Update="resource\WebStatic\css.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>css.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Update="resource\WebStatic\html.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>html.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Update="resource\WebStatic\javascript.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>javascript.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
+    <Folder Include="GUI\Pages\" />
+    <Folder Include="GUI\UserInterface\CentralPanel\Page\" />
+    <Folder Include="GUI\UserInterface\CharacterInfo\" />
+    <Folder Include="Resource\StyleTemplete\" />
+    <Folder Include="GUI\old\UI\Control\Option\ControlType\" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="resource\GenshinAsset\SeasonName.txt">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>SeasonName.Designer.cs</LastGenOutput>
+    <None Include="..\..\..\source\repos\Genshin Checker\Genshin Checker\Resource\Paimon's Paint\Furina 3.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
     </None>
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="src\Window\Contains\" />
+    <EmbeddedResource Update="Resource\GUI.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>GUI.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
-
-  <Target Name="BeforeBuild">
-    <ItemGroup>
-      <AssemblyAttributes Include="AssemblyVersion">
-        <_Parameter1>1.0.0.$([System.DateTime]::Now.ToString(`yyMMdd`))</_Parameter1>
-      </AssemblyAttributes>
-    </ItemGroup>
-    <WriteCodeFragment Language="C#" OutputFile="BuildVersion.cs" AssemblyAttributes="@(AssemblyAttributes)" />
-  </Target>
 
 </Project>
