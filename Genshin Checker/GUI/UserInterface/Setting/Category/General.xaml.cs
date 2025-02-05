@@ -120,7 +120,6 @@ namespace Genshin_Checker.GUI.UserInterface.Setting.Category
         /// <param name="e"></param>
         private async void ScreenShotTransferFileFormat_TextChanged(object sender, TextChangedEventArgs e)
         {
-            Log.Debug("!");
             if (!IsLoadedConfig) return;
             var format = TextBoxScreenshotFormat.Text;
             var result = await Core.General.ScreenShot.SetFileFormat(format);
