@@ -73,7 +73,7 @@ namespace Genshin_Checker.GUI.UserInterface.Setting.Category
 
         private void AccountChanged(object sender, SelectionChangedEventArgs? e)
         {
-            if(!int.TryParse(ComboBoxAccount.Text,out int uid))
+            if(!int.TryParse(ComboBoxAccount.SelectedItem.ToString() ,out int uid))
             {
                 return;
             }
