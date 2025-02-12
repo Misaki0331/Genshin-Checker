@@ -20,7 +20,7 @@ namespace Genshin_Checker.Window
                 Log.AppendText(item.Replace("\r\n", "\n").Replace("\n", Environment.NewLine) + Environment.NewLine);
                 LogCount++;
             }*/
-            Core.Game.LauncherLogWatcher.Instance.LogUpdated += LogUpdated;
+            Core.Game.GameLogWatcher.Instance.LogUpdated += LogUpdated;
 
             ProcessTime.Instance.ChangedState += Instance_ChangedState;
 
