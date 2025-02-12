@@ -45,12 +45,12 @@ namespace Genshin_Checker.Core.General
             {
                 try
                 {
-                    Core.General.MovingData.AllClear();
+                    MovingData.AllClear();
                     Dialog.Info(ManageUserData.Complete_DeletedData_Title, ManageUserData.Complete_DeletedData_Message);
                 }
                 catch (Exception e)
                 {
-                    new GUI.Window.PopupWindow.ErrorMessage(ManageUserData.Error_DeletedData_Title, e.ToString()).ShowDialog();
+                    Dialog.Error(ManageUserData.Error_DeletedData_Title, e.ToString());
                 }
             }
             else
