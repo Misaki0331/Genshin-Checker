@@ -253,7 +253,6 @@
             // pictureBox6
             // 
             resources.ApplyResources(pictureBox6, "pictureBox6");
-            pictureBox6.Image = resource.icon.Item_Fragile_Resin;
             pictureBox6.Name = "pictureBox6";
             pictureBox6.TabStop = false;
             // 
@@ -284,7 +283,6 @@
             // pictureBox5
             // 
             resources.ApplyResources(pictureBox5, "pictureBox5");
-            pictureBox5.Image = resource.icon.Item_Mora;
             pictureBox5.Name = "pictureBox5";
             pictureBox5.TabStop = false;
             // 
@@ -336,7 +334,6 @@
             ViewLocalSpecialtyItem.Name = "ViewLocalSpecialtyItem";
             ViewLocalSpecialtyItem.ReadOnly = true;
             ViewLocalSpecialtyItem.RowHeadersVisible = false;
-            ViewLocalSpecialtyItem.RowTemplate.Height = 25;
             ViewLocalSpecialtyItem.CellFormatting += TableFormatting;
             ViewLocalSpecialtyItem.Leave += ViewLeave;
             // 
@@ -395,7 +392,6 @@
             ViewAscensionMaterial.Name = "ViewAscensionMaterial";
             ViewAscensionMaterial.ReadOnly = true;
             ViewAscensionMaterial.RowHeadersVisible = false;
-            ViewAscensionMaterial.RowTemplate.Height = 25;
             ViewAscensionMaterial.CellFormatting += TableFormatting;
             ViewAscensionMaterial.Leave += ViewLeave;
             // 
@@ -469,7 +465,6 @@
             ViewBossItem.Name = "ViewBossItem";
             ViewBossItem.ReadOnly = true;
             ViewBossItem.RowHeadersVisible = false;
-            ViewBossItem.RowTemplate.Height = 25;
             ViewBossItem.CellFormatting += TableFormatting;
             ViewBossItem.Leave += ViewLeave;
             // 
@@ -532,7 +527,6 @@
             // pictureBox1
             // 
             resources.ApplyResources(pictureBox1, "pictureBox1");
-            pictureBox1.Image = resource.icon.Item_Heros_Wit;
             pictureBox1.Name = "pictureBox1";
             pictureBox1.TabStop = false;
             // 
@@ -573,7 +567,6 @@
             // pictureBox2
             // 
             resources.ApplyResources(pictureBox2, "pictureBox2");
-            pictureBox2.Image = resource.icon.Item_Mora;
             pictureBox2.Name = "pictureBox2";
             pictureBox2.TabStop = false;
             // 
@@ -626,7 +619,6 @@
             // pictureBox3
             // 
             resources.ApplyResources(pictureBox3, "pictureBox3");
-            pictureBox3.Image = resource.icon.Item_Crown_of_Insight;
             pictureBox3.Name = "pictureBox3";
             pictureBox3.TabStop = false;
             // 
@@ -657,7 +649,6 @@
             // pictureBox4
             // 
             resources.ApplyResources(pictureBox4, "pictureBox4");
-            pictureBox4.Image = resource.icon.Item_Mora;
             pictureBox4.Name = "pictureBox4";
             pictureBox4.TabStop = false;
             // 
@@ -682,7 +673,6 @@
             ViewTalentItems.Name = "ViewTalentItems";
             ViewTalentItems.ReadOnly = true;
             ViewTalentItems.RowHeadersVisible = false;
-            ViewTalentItems.RowTemplate.Height = 25;
             ViewTalentItems.CellFormatting += TableFormatting;
             ViewTalentItems.Leave += ViewLeave;
             // 
@@ -757,7 +747,6 @@
             ViewWeeklyBossItems.Name = "ViewWeeklyBossItems";
             ViewWeeklyBossItems.ReadOnly = true;
             ViewWeeklyBossItems.RowHeadersVisible = false;
-            ViewWeeklyBossItems.RowTemplate.Height = 25;
             ViewWeeklyBossItems.CellFormatting += TableFormatting;
             ViewWeeklyBossItems.Leave += ViewLeave;
             // 
@@ -833,7 +822,6 @@
             ViewEnemyItems.Name = "ViewEnemyItems";
             ViewEnemyItems.ReadOnly = true;
             ViewEnemyItems.RowHeadersVisible = false;
-            ViewEnemyItems.RowTemplate.Height = 25;
             ViewEnemyItems.CellFormatting += TableFormatting;
             ViewEnemyItems.Leave += ViewLeave;
             // 
@@ -1011,7 +999,6 @@
             CharacterView.Name = "CharacterView";
             CharacterView.ReadOnly = true;
             CharacterView.RowHeadersVisible = false;
-            CharacterView.RowTemplate.Height = 25;
             CharacterView.CellFormatting += TableFormatting;
             // 
             // CharacterViewID
