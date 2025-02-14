@@ -199,6 +199,21 @@ namespace Genshin_Checker.Core.HoYoLab
         }
 
         /// <summary>
+        /// 育成計算機(バッチ処理)
+        /// </summary>
+        /// <param name="data">キャラクターの計算変数</param>
+        /// <returns></returns>
+        /// <exception cref="InvalidDataException"></exception>
+        public async Task<Model.HoYoLab.CalculatorComputeBatchGet.Data> ComputeBatchCalculate(Model.HoYoLab.CalculatorComputeBatchPost.Root data)
+        {
+            if (!Account.IsAuthed) throw new UserNotAuthenticatedException(Account.UID);
+            var json = await GetJson.ComputeBatchCalculate(Account, data);
+            var root = JsonChecker<Model.HoYoLab.CalculatorComputeBatchGet.Root>.Check(json);
+            if (root.Data == null) throw new HoYoLabAPIException(root.Retcode, root.Message);
+            return root.Data;
+        }
+
+        /// <summary>
         /// ログボ受取
         /// </summary>
         /// <returns></returns>
@@ -437,6 +452,20 @@ namespace Genshin_Checker.Core.HoYoLab
         public static async Task<string> ComputeCalculate(Account Account, Model.HoYoLab.CalculatorComputePost.Root data)
         {
             var url = $"https://sg-public-api.hoyolab.com/event/calculateos/compute";
+            Log.Debug(JsonConvert.SerializeObject(data));
+            var json = await WebRequest.HoYoPostRequest(url, Account.Cookie, JsonConvert.SerializeObject(data));
+            return json ?? "";
+        }
+
+        /// <summary>
+        /// 育成計算機(バッチ処理)
+        /// </summary>
+        /// <param name="data">キャラクターの計算変数</param>
+        /// <returns></returns>
+        /// <exception cref="InvalidDataException"></exception>
+        public static async Task<string> ComputeBatchCalculate(Account Account, Model.HoYoLab.CalculatorComputeBatchPost.Root data)
+        {
+            var url = $"https://sg-public-api.hoyolab.com/event/e20200928calculate/v3/batch_compute";
             Log.Debug(JsonConvert.SerializeObject(data));
             var json = await WebRequest.HoYoPostRequest(url, Account.Cookie, JsonConvert.SerializeObject(data));
             return json ?? "";

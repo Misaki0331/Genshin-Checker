@@ -13,6 +13,7 @@ using Genshin_Checker.Core.General.Convert;
 using Genshin_Checker.GUI.Window.PopupWindow;
 using Genshin_Checker.resource.Languages;
 using Genshin_Checker.Core;
+using static Genshin_Checker.Window.ExWindow.CharacterCalculator.CalculateResult;
 
 namespace Genshin_Checker.Window.ExWindow.CharacterCalculator
 {
@@ -112,11 +113,13 @@ namespace Genshin_Checker.Window.ExWindow.CharacterCalculator
             int BossItemCount = 0;
             int TalentBooksCount = 0;
             int cnt = 0;
+            var PostData = new Model.HoYoLab.CalculatorComputeBatchPost.Root();
+            var CharacterDatas = new List<CharacterData>();
             try
             {
                 characterDatas.Clear();
                 var characters = await Account.Characters.GetData();
-                foreach(Input input in Inputs)
+                foreach (Input input in Inputs)
                 {
                     var RequiedItemData = new CharacterData();
                     RequiedItemData.id = input.characterID;
@@ -127,194 +130,206 @@ namespace Genshin_Checker.Window.ExWindow.CharacterCalculator
                         RequiedItemData.element = Element.GetElementEnum(chr.element);
                         RequiedItemData.star = chr.rarity;
                     }
+                    CharacterDatas.Add(RequiedItemData);
                     cnt++;
-                    ProgressState.Text = string.Format(Localize.WindowName_CalculateResult_Loading, cnt, Inputs.Count);
-                    progressBar.Value = 10000*cnt/Inputs.Count;
+                    //ProgressState.Text = string.Format(Localize.WindowName_CalculateResult_Loading, cnt, Inputs.Count);
+                    //progressBar.Value = 10000 * cnt / Inputs.Count;
                     var detail = await Account.CharacterDetail.GetData(input.characterID);
                     //キャラクターのスキルを取得     
-                    var skill = detail.skills.FindAll(a => Core.General.Convert.Character.GetSkillGrowthable(a.skill_id,detail.baseInfo.id) && a.skill_type == 1);
-                    if (skill.Count != 3) 
-                        throw new ArgumentException(string.Format(Localize.Error_CalculateResult_InvalidTalentCount,skill.Count));
+                    var skill = detail.skills.FindAll(a => Core.General.Convert.Character.GetSkillGrowthable(a.skill_id, detail.baseInfo.id) && a.skill_type == 1);
+                    if (skill.Count != 3)
+                        throw new ArgumentException(string.Format(Localize.Error_CalculateResult_InvalidTalentCount, skill.Count));
                     var character = characters.list.Find(a => a.id == input.characterID);
                     if (character == null) throw new ArgumentNullException(nameof(character), string.Format(Localize.Error_CalculateResult_CharacterNotFound, input.characterID));
-                    var skilllist = new List<Model.HoYoLab.CalculatorComputePost.SkillList>();
-                    for (int i=0;i<skill.Count;i++)
+                    var skilllist = new List<Model.HoYoLab.CalculatorComputeBatchPost.SkillList>();
+                    for (int i = 0; i < skill.Count; i++)
                     {
                         skilllist.Add(new() { id = Character.GetSkillProudMap(skill[i].skill_id), level_current = input.Talent[i].Current, level_target = input.Talent[i].To });
                     }
-                    foreach(var data in detail.skills.FindAll(a => skill.Find(b=>b.skill_id == a.skill_id)==null))
+                    foreach (var data in detail.skills.FindAll(a => skill.Find(b => b.skill_id == a.skill_id) == null))
                     {
                         skilllist.Add(new() { id = data.skill_id, level_current = 1, level_target = 1 });
                     }
-                    var post = new Model.HoYoLab.CalculatorComputePost.Root()
+                    PostData.items.Add(new Model.HoYoLab.CalculatorComputeBatchPost.Characters()
                     {
                         avatar_id = input.characterID,
                         avatar_level_current = input.Level.Current,
                         avatar_level_target = input.Level.To,
                         element_attr_id = (int)Element.GetElementEnum(character.element),
-                        skill_list= skilllist
-                    };
-                    var result = await Account.Endpoint.ComputeCalculate(post);
+                        skill_list = skilllist
+                    });
+                }
+                var result = await Account.Endpoint.ComputeBatchCalculate(PostData);
+                foreach(var a in result.single_role_result){
 
-                    foreach(var data in result.avatar_consume)
+                    var RequiedItemData = CharacterDatas[0];
+                    CharacterDatas.RemoveAt(0);
+                    foreach (var res in a.overall_material_consume.avatar_consume)
                     {
-                        if (data.id == 202) //モラ
+                        foreach (var data in res.consume)
                         {
-                            RequiedItemData.Mora = data.num;
-                            CharacterMora += data.num;
-                            CharacterMoraResult.Text = $"{CharacterMora:#,##0}";
-                            TotalMoraResult.Text = $"{(TalentMora + CharacterMora):#,##0}";
-                        }
-                        else if (data.id == 104003) //大英雄の経験
-                        {
-                            RequiedItemData.HerosWit = data.num;
-                            CharacterExp += data.num;
-                            CharacterExpResult.Text = $"{CharacterExp:#,##0}";
-                        }
-                        else if (data.id > 104100 && data.id < 104200)
-                        {
-                            int id = (data.id - 104100) / 10; 
-                            string type = "";
-                            switch (data.id % 10) //アイテムIDの1の位
+                            if (data.id == 202) //モラ
                             {
-                                case 1:
-                                    RequiedItemData.ascension.Sliver = data.num;
-                                    type = nameof(AscensionNumSliver); 
-                                    break;
-                                case 2:
-                                    RequiedItemData.ascension.Fragment = data.num;
-                                    type = nameof(AscensionNumFragment); 
-                                    break;
-                                case 3:
-                                    RequiedItemData.ascension.Chunk = data.num;
-                                    type = nameof(AscensionNumChunk); 
-                                    break;
-                                case 4:
-                                    RequiedItemData.ascension.Gemstone = data.num;
-                                    type = nameof(AscensionNumGemstone); 
-                                    break;
-                                default: throw new ArgumentException(string.Format(Localize.Error_CalculateResult_InvalidItemID, data.id, data.name));
+                                RequiedItemData.Mora = data.num;
+                                CharacterMora += data.num;
+                                CharacterMoraResult.Text = $"{CharacterMora:#,##0}";
+                                TotalMoraResult.Text = $"{(TalentMora + CharacterMora):#,##0}";
                             }
-                            var row = GetRow(ViewAscensionMaterial, a => (int)a.Cells[nameof(AscensionTypeID)].Value == id);
-                            if (row == null)
+                            else if (data.id == 104003) //大英雄の経験
                             {
-                                ViewAscensionMaterial.Rows.Add(id, id, 0, 0, 0, 0);
-                                row = GetRow(ViewAscensionMaterial, a => (int)a.Cells[nameof(AscensionTypeID)].Value == id);
+                                RequiedItemData.HerosWit = data.num;
+                                CharacterExp += data.num;
+                                CharacterExpResult.Text = $"{CharacterExp:#,##0}";
                             }
-                            if (row != null) row.Cells[type].Value = (int)row.Cells[type].Value + data.num;
-                        }
-                        else if (data.id > 113000 && data.id < 114000)
-                        {
-                            RequiedItemData.enemybossitem = new() { iconurl = data.icon_url, name = data.name, id = data.id, num = data.num };
-                            var row = GetRow(ViewBossItem, a => (int)a.Cells[nameof(BossItemID)].Value == data.id);
-                            if (row == null)
+                            else if (data.id > 104100 && data.id < 104200)
                             {
-                                ViewBossItem.Rows.Add(data.id, await Core.WebRequest.ImageGetRequest(data.icon_url), data.name, data.num);
+                                int id = (data.id - 104100) / 10;
+                                string type = "";
+                                switch (data.id % 10) //アイテムIDの1の位
+                                {
+                                    case 1:
+                                        RequiedItemData.ascension.Sliver = data.num;
+                                        type = nameof(AscensionNumSliver);
+                                        break;
+                                    case 2:
+                                        RequiedItemData.ascension.Fragment = data.num;
+                                        type = nameof(AscensionNumFragment);
+                                        break;
+                                    case 3:
+                                        RequiedItemData.ascension.Chunk = data.num;
+                                        type = nameof(AscensionNumChunk);
+                                        break;
+                                    case 4:
+                                        RequiedItemData.ascension.Gemstone = data.num;
+                                        type = nameof(AscensionNumGemstone);
+                                        break;
+                                    default: throw new ArgumentException(string.Format(Localize.Error_CalculateResult_InvalidItemID, data.id, data.name));
+                                }
+                                var row = GetRow(ViewAscensionMaterial, a => (int)a.Cells[nameof(AscensionTypeID)].Value == id);
+                                if (row == null)
+                                {
+                                    ViewAscensionMaterial.Rows.Add(id, id, 0, 0, 0, 0);
+                                    row = GetRow(ViewAscensionMaterial, a => (int)a.Cells[nameof(AscensionTypeID)].Value == id);
+                                }
+                                if (row != null) row.Cells[type].Value = (int)row.Cells[type].Value + data.num;
                             }
-                            else row.Cells[nameof(BossItemNum)].Value = (int)row.Cells[nameof(BossItemNum)].Value + data.num;
-                            BossItemCount += data.num;
-                        }
-                        else if ((data.id > 100000 && data.id <= 100099) || (data.id > 101200 && data.id <= 101299))
-                        {
-                            RequiedItemData.localitem = new() { iconurl = data.icon_url, name = data.name, id = data.id, num = data.num };
-                            var row = GetRow(ViewLocalSpecialtyItem, a => (int)a.Cells[nameof(LocalSpecialtyID)].Value == data.id);
-                            if (row == null)
+                            else if (data.id > 113000 && data.id < 114000)
                             {
-                                ViewLocalSpecialtyItem.Rows.Add(data.id, await Core.WebRequest.ImageGetRequest(data.icon_url), data.name, data.num);
+                                RequiedItemData.enemybossitem = new() { iconurl = data.icon_url, name = data.name, id = data.id, num = data.num };
+                                var row = GetRow(ViewBossItem, a => (int)a.Cells[nameof(BossItemID)].Value == data.id);
+                                if (row == null)
+                                {
+                                    ViewBossItem.Rows.Add(data.id, await Core.WebRequest.ImageGetRequest(data.icon_url), data.name, data.num);
+                                }
+                                else row.Cells[nameof(BossItemNum)].Value = (int)row.Cells[nameof(BossItemNum)].Value + data.num;
+                                BossItemCount += data.num;
                             }
-                            else row.Cells[nameof(LocalSpecialtyItemNum)].Value = (int)row.Cells[nameof(LocalSpecialtyItemNum)].Value + data.num;
-                        }else if ((data.id >= 112002 && data.id < 113000))
-                        {
-                            var find = RequiedItemData.items.Find(a => a.id == data.id);
-                            if (find != null) find.num += data.num;
-                            else RequiedItemData.items.Add(new() { iconurl = data.icon_url, name = data.name, id = data.id, num = data.num });
-                            var row = GetRow(ViewEnemyItems, a => (int)a.Cells[nameof(EnemyItemID)].Value == data.id);
-                            if (row == null)
+                            else if ((data.id > 100000 && data.id <= 100099) || (data.id > 101200 && data.id <= 101299))
                             {
-                                ViewEnemyItems.Rows.Add(data.id, await Core.WebRequest.ImageGetRequest(data.icon_url), data.name, data.num, 0, data.num);
+                                RequiedItemData.localitem = new() { iconurl = data.icon_url, name = data.name, id = data.id, num = data.num };
+                                var row = GetRow(ViewLocalSpecialtyItem, a => (int)a.Cells[nameof(LocalSpecialtyID)].Value == data.id);
+                                if (row == null)
+                                {
+                                    ViewLocalSpecialtyItem.Rows.Add(data.id, await Core.WebRequest.ImageGetRequest(data.icon_url), data.name, data.num);
+                                }
+                                else row.Cells[nameof(LocalSpecialtyItemNum)].Value = (int)row.Cells[nameof(LocalSpecialtyItemNum)].Value + data.num;
                             }
-                            else
+                            else if ((data.id >= 112002 && data.id < 113000))
                             {
-                                row.Cells[nameof(EnemyItemCharacterNum)].Value = (int)row.Cells[nameof(EnemyItemCharacterNum)].Value + data.num;
-                                row.Cells[nameof(EnemyItemTotalNum)].Value = (int)row.Cells[nameof(EnemyItemCharacterNum)].Value + (int)row.Cells[nameof(EnemyItemTalentNum)].Value;
+                                var find = RequiedItemData.items.Find(a => a.id == data.id);
+                                if (find != null) find.num += data.num;
+                                else RequiedItemData.items.Add(new() { iconurl = data.icon_url, name = data.name, id = data.id, num = data.num });
+                                var row = GetRow(ViewEnemyItems, a => (int)a.Cells[nameof(EnemyItemID)].Value == data.id);
+                                if (row == null)
+                                {
+                                    ViewEnemyItems.Rows.Add(data.id, await Core.WebRequest.ImageGetRequest(data.icon_url), data.name, data.num, 0, data.num);
+                                }
+                                else
+                                {
+                                    row.Cells[nameof(EnemyItemCharacterNum)].Value = (int)row.Cells[nameof(EnemyItemCharacterNum)].Value + data.num;
+                                    row.Cells[nameof(EnemyItemTotalNum)].Value = (int)row.Cells[nameof(EnemyItemCharacterNum)].Value + (int)row.Cells[nameof(EnemyItemTalentNum)].Value;
+                                }
                             }
                         }
                     }
 
-                    foreach (var data in result.avatar_skill_consume)
+                    foreach (var res in a.overall_material_consume.avatar_skill_consume)
                     {
-                        if (data.id == 202)
+                        foreach (var data in res.consume)
                         {
-                            RequiedItemData.Mora += data.num;
-                            TalentMora += data.num;
-                            TalentMoraResult.Text = $"{TalentMora:#,##0}";
-                            TotalMoraResult.Text = $"{(TalentMora + CharacterMora):#,##0}";
-                        }
-                        else if (data.id == 104319)
-                        {
-                            RequiedItemData.talentcrown += data.num;
-                            TalentCrown += data.num;
-                            TalentCrownResult.Text = $"{TalentCrown:#,##0}";
-                        }
-                        else if (data.id > 104300 && data.id < 104400)
-                        {
-                            var id = data.id - 104301;
-                            if (id >= 19) id -= 1;
-                            string pos = "";
-                            switch(id % 3)
+                            if (data.id == 202)
                             {
-                                case 0 : 
-                                    pos = nameof(TalentItemNumTeachings);
-                                    RequiedItemData.talent.teaching = data.num;
-                                    break;
-                                case 1 : 
-                                    pos = nameof(TalentItemNumGuide);
-                                    RequiedItemData.talent.guide = data.num;
-                                    break;
-                                case 2 : 
-                                    pos = nameof(TalentItemNumPhilosophies);
-                                    RequiedItemData.talent.philosophies = data.num;
-                                    break;
-                                default: 
-                                    throw new ArgumentException(string.Format(Localize.Error_CalculateResult_InvalidItemID, data.id, data.name));
-                            };
-                            RequiedItemData.talent.type = id / 3;
-                            var row = GetRow(ViewTalentItems, a => (int)a.Cells[nameof(TalentItemID)].Value == id / 3);
-                            if (row == null)
-                            {
-                                ViewTalentItems.Rows.Add((int)id / 3, (int)id / 3, (int)id / 3 % 3, 0, 0, 0);
-                                row = GetRow(ViewTalentItems, a => (int)a.Cells[nameof(TalentItemID)].Value == id / 3);
+                                RequiedItemData.Mora += data.num;
+                                TalentMora += data.num;
+                                TalentMoraResult.Text = $"{TalentMora:#,##0}";
+                                TotalMoraResult.Text = $"{(TalentMora + CharacterMora):#,##0}";
                             }
-                            if (row != null) row.Cells[pos].Value = (int)row.Cells[pos].Value + data.num;
-                            int x = 1;
-                            if (id % 3 == 1) x = 3;
-                            if (id % 3 == 2) x = 9;
-                            TalentBooksCount += data.num * x;
-                        }
-                        else if (data.id > 113000 && data.id < 114000)
-                        {
-                            RequiedItemData.weeklybossitem = new() { iconurl = data.icon_url, name = data.name, id = data.id, num = data.num };
-                            var row = GetRow(ViewWeeklyBossItems, a => (int)a.Cells[nameof(WeeklyBossItemID)].Value == data.id);
-                            if (row == null)
+                            else if (data.id == 104319)
                             {
-                                ViewWeeklyBossItems.Rows.Add(data.id, await Core.WebRequest.ImageGetRequest(data.icon_url), data.name, data.num);
+                                RequiedItemData.talentcrown += data.num;
+                                TalentCrown += data.num;
+                                TalentCrownResult.Text = $"{TalentCrown:#,##0}";
                             }
-                            else row.Cells[nameof(WeeklyBossItemNum)].Value = (int)row.Cells[nameof(WeeklyBossItemNum)].Value + data.num;
-                        }
-                        else if ((data.id >= 112002 && data.id < 113000))
-                        {
-                            var find = RequiedItemData.items.Find(a => a.id == data.id);
-                            if (find != null) find.num += data.num;
-                            else RequiedItemData.items.Add(new() { iconurl = data.icon_url, name = data.name, id = data.id, num = data.num });
-                            var row = GetRow(ViewEnemyItems, a => (int)a.Cells[nameof(EnemyItemID)].Value == data.id);
-                            if (row == null)
+                            else if (data.id > 104300 && data.id < 104400)
                             {
-                                ViewEnemyItems.Rows.Add(data.id, await Core.WebRequest.ImageGetRequest(data.icon_url), data.name, 0, data.num, data.num);
+                                var id = data.id - 104301;
+                                if (id >= 19) id -= 1;
+                                string pos = "";
+                                switch (id % 3)
+                                {
+                                    case 0:
+                                        pos = nameof(TalentItemNumTeachings);
+                                        RequiedItemData.talent.teaching = data.num;
+                                        break;
+                                    case 1:
+                                        pos = nameof(TalentItemNumGuide);
+                                        RequiedItemData.talent.guide = data.num;
+                                        break;
+                                    case 2:
+                                        pos = nameof(TalentItemNumPhilosophies);
+                                        RequiedItemData.talent.philosophies = data.num;
+                                        break;
+                                    default:
+                                        throw new ArgumentException(string.Format(Localize.Error_CalculateResult_InvalidItemID, data.id, data.name));
+                                };
+                                RequiedItemData.talent.type = id / 3;
+                                var row = GetRow(ViewTalentItems, a => (int)a.Cells[nameof(TalentItemID)].Value == id / 3);
+                                if (row == null)
+                                {
+                                    ViewTalentItems.Rows.Add((int)id / 3, (int)id / 3, (int)id / 3 % 3, 0, 0, 0);
+                                    row = GetRow(ViewTalentItems, a => (int)a.Cells[nameof(TalentItemID)].Value == id / 3);
+                                }
+                                if (row != null) row.Cells[pos].Value = (int)row.Cells[pos].Value + data.num;
+                                int x = 1;
+                                if (id % 3 == 1) x = 3;
+                                if (id % 3 == 2) x = 9;
+                                TalentBooksCount += data.num * x;
                             }
-                            else
+                            else if (data.id > 113000 && data.id < 114000)
                             {
-                                row.Cells[nameof(EnemyItemTalentNum)].Value = (int)row.Cells[nameof(EnemyItemTalentNum)].Value + data.num;
-                                row.Cells[nameof(EnemyItemTotalNum)].Value = (int)row.Cells[nameof(EnemyItemCharacterNum)].Value + (int)row.Cells[nameof(EnemyItemTalentNum)].Value;
+                                RequiedItemData.weeklybossitem = new() { iconurl = data.icon_url, name = data.name, id = data.id, num = data.num };
+                                var row = GetRow(ViewWeeklyBossItems, a => (int)a.Cells[nameof(WeeklyBossItemID)].Value == data.id);
+                                if (row == null)
+                                {
+                                    ViewWeeklyBossItems.Rows.Add(data.id, await Core.WebRequest.ImageGetRequest(data.icon_url), data.name, data.num);
+                                }
+                                else row.Cells[nameof(WeeklyBossItemNum)].Value = (int)row.Cells[nameof(WeeklyBossItemNum)].Value + data.num;
+                            }
+                            else if ((data.id >= 112002 && data.id < 113000))
+                            {
+                                var find = RequiedItemData.items.Find(a => a.id == data.id);
+                                if (find != null) find.num += data.num;
+                                else RequiedItemData.items.Add(new() { iconurl = data.icon_url, name = data.name, id = data.id, num = data.num });
+                                var row = GetRow(ViewEnemyItems, a => (int)a.Cells[nameof(EnemyItemID)].Value == data.id);
+                                if (row == null)
+                                {
+                                    ViewEnemyItems.Rows.Add(data.id, await Core.WebRequest.ImageGetRequest(data.icon_url), data.name, 0, data.num, data.num);
+                                }
+                                else
+                                {
+                                    row.Cells[nameof(EnemyItemTalentNum)].Value = (int)row.Cells[nameof(EnemyItemTalentNum)].Value + data.num;
+                                    row.Cells[nameof(EnemyItemTotalNum)].Value = (int)row.Cells[nameof(EnemyItemCharacterNum)].Value + (int)row.Cells[nameof(EnemyItemTalentNum)].Value;
+                                }
                             }
                         }
                     }
